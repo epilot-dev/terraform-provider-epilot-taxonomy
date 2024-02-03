@@ -146,9 +146,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.3.2",
-			GenVersion:        "2.230.1",
-			UserAgent:         "speakeasy-sdk/go 0.3.2 2.230.1 1.0.0 epilot-purpose",
+			SDKVersion:        "0.4.0",
+			GenVersion:        "2.248.6",
+			UserAgent:         "speakeasy-sdk/go 0.4.0 2.248.6 1.0.0 epilot-purpose",
 		},
 	}
 	for _, opt := range opts {
