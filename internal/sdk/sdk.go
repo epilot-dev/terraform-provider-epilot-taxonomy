@@ -5,8 +5,8 @@ package sdk
 import (
 	"context"
 	"fmt"
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/sdk/pkg/models/shared"
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/sdk/pkg/utils"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/models/shared"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -146,9 +146,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.3.2",
+			SDKVersion:        "0.4.0",
 			GenVersion:        "2.230.1",
-			UserAgent:         "speakeasy-sdk/go 0.3.2 2.230.1 1.0.0 epilot-purpose",
+			UserAgent:         "speakeasy-sdk/go 0.4.0 2.230.1 1.0.0 epilot-taxonomy",
 		},
 	}
 	for _, opt := range opts {

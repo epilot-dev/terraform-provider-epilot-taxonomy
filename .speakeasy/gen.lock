@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: internal
   generationVersion: 2.230.1
-  releaseVersion: 0.3.2
-  configChecksum: b106019af5102b5d4ac29ae46ddf6abb
+  releaseVersion: 0.4.0
+  configChecksum: 692779638bbf2f88a9544de4ae31ee75
   repoURL: https://github.com/epilot-dev/terraform-provider-epilot-journey.git
   repoSubDirectory: .
   published: true
@@ -93,5 +93,5 @@ generatedFiles:
   - examples/provider/provider.tf
   - internal/provider/taxonomy_resource.go
   - internal/provider/taxonomy_resource_sdk.go
-  - examples/resources/epilot-purpose_taxonomy/resource.tf
+  - examples/resources/epilot-taxonomy_taxonomy/resource.tf
   - .gitattributes

@@ -1,7 +1,7 @@
 terraform {
   required_providers {
-    epilot-purpose = {
-      source  = "epilot-dev/epilot-purpose"
+    epilot-taxonomy = {
+      source  = "epilot-dev/epilot-taxonomy"
       version = "0.3.0"
     }
   }
@@ -13,13 +13,13 @@ variable "epilot_auth" {
 }
 
 
-provider "epilot-purpose" {
+provider "epilot-taxonomy" {
   # Configuration options
   epilot_auth = var.epilot_auth
 }
 
 
-resource "epilot-purpose_taxonomy" "my_taxonomy" {
+resource "epilot-taxonomy_taxonomy" "my_taxonomy" {
   create = [
     {
       name = "Nishu Created Purpose from terraform"

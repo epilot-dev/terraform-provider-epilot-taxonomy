@@ -6,7 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	tfReflect "github.com/epilot-dev/terraform-provider-epilot-purpose/internal/provider/reflect"
+	tfReflect "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/reflect"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"

@@ -16,14 +16,14 @@ To install this provider, copy and paste this code into your Terraform configura
 ```hcl
 terraform {
   required_providers {
-    epilot-purpose = {
-      source  = "epilot-dev/epilot-purpose"
-      version = "0.3.2"
+    epilot-taxonomy = {
+      source  = "epilot-dev/epilot-taxonomy"
+      version = "0.4.0"
     }
   }
 }
 
-provider "epilot-purpose" {
+provider "epilot-taxonomy" {
   # Configuration options
 }
 ```

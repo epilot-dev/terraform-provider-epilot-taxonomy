@@ -1,12 +1,12 @@
 terraform {
   required_providers {
-    epilot-purpose = {
-      source  = "epilot-dev/epilot-purpose"
-      version = "0.3.2"
+    epilot-taxonomy = {
+      source  = "epilot-dev/epilot-taxonomy"
+      version = "0.4.0"
     }
   }
 }
 
-provider "epilot-purpose" {
+provider "epilot-taxonomy" {
   # Configuration options
 }

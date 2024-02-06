@@ -4,8 +4,8 @@ package provider
 
 import (
 	"context"
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/sdk"
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/sdk/pkg/models/shared"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/models/shared"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
@@ -13,28 +13,28 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-var _ provider.Provider = &EpilotPurposeProvider{}
+var _ provider.Provider = &EpilotTaxonomyProvider{}
 
-type EpilotPurposeProvider struct {
+type EpilotTaxonomyProvider struct {
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing.
 	version string
 }
 
-// EpilotPurposeProviderModel describes the provider data model.
-type EpilotPurposeProviderModel struct {
+// EpilotTaxonomyProviderModel describes the provider data model.
+type EpilotTaxonomyProviderModel struct {
 	ServerURL  types.String `tfsdk:"server_url"`
 	EpilotAuth types.String `tfsdk:"epilot_auth"`
 	EpilotOrg  types.String `tfsdk:"epilot_org"`
 }
 
-func (p *EpilotPurposeProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "epilot-purpose"
+func (p *EpilotTaxonomyProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
+	resp.TypeName = "epilot-taxonomy"
 	resp.Version = p.version
 }
 
-func (p *EpilotPurposeProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
+func (p *EpilotTaxonomyProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		MarkdownDescription: `Entity API: Flexible data layer for epilot Entities.` + "\n" +
 			`` + "\n" +
@@ -60,8 +60,8 @@ func (p *EpilotPurposeProvider) Schema(ctx context.Context, req provider.SchemaR
 	}
 }
 
-func (p *EpilotPurposeProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
-	var data EpilotPurposeProviderModel
+func (p *EpilotTaxonomyProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
+	var data EpilotTaxonomyProviderModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
@@ -102,19 +102,19 @@ func (p *EpilotPurposeProvider) Configure(ctx context.Context, req provider.Conf
 	resp.ResourceData = client
 }
 
-func (p *EpilotPurposeProvider) Resources(ctx context.Context) []func() resource.Resource {
+func (p *EpilotTaxonomyProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		NewTaxonomyResource,
 	}
 }
 
-func (p *EpilotPurposeProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
+func (p *EpilotTaxonomyProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{}
 }
 
 func New(version string) func() provider.Provider {
 	return func() provider.Provider {
-		return &EpilotPurposeProvider{
+		return &EpilotTaxonomyProvider{
 			version: version,
 		}
 	}

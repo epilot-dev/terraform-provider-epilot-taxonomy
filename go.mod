@@ -1,4 +1,4 @@
-module github.com/epilot-dev/terraform-provider-epilot-purpose
+module github.com/epilot-dev/terraform-provider-epilot-taxonomy
 
 go 1.18
 

@@ -5,9 +5,9 @@ package provider
 import (
 	"context"
 	"fmt"
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/sdk"
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/sdk/pkg/models/operations"
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/validators"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/models/operations"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/validators"
 	"github.com/hashicorp/terraform-plugin-framework-validators/listvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"

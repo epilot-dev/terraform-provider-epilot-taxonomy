@@ -3,7 +3,7 @@
 package shared
 
 import (
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/sdk/pkg/utils"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/utils"
 	"time"
 )
 

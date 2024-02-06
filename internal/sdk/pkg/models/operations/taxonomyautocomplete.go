@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/sdk/pkg/models/shared"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/models/shared"
 	"net/http"
 )
 

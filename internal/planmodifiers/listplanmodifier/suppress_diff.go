@@ -4,7 +4,7 @@ package listplanmodifier
 
 import (
 	"context"
-	"github.com/epilot-dev/terraform-provider-epilot-purpose/internal/planmodifiers/utils"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/planmodifiers/utils"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
