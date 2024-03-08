@@ -104,73 +104,75 @@ func (r *TaxonomyResourceModel) ToSharedClassificationsUpdate() *shared.Classifi
 }
 
 func (r *TaxonomyResourceModel) RefreshFromOperationsUpdateClassificationsForTaxonomyResponseBody(resp *operations.UpdateClassificationsForTaxonomyResponseBody) {
-	if len(r.Created) > len(resp.Created) {
-		r.Created = r.Created[:len(resp.Created)]
-	}
-	for createdCount, createdItem := range resp.Created {
-		var created1 TaxonomyClassification
-		if createdItem.CreatedAt != nil {
-			created1.CreatedAt = types.StringValue(createdItem.CreatedAt.Format(time.RFC3339Nano))
-		} else {
-			created1.CreatedAt = types.StringNull()
+	if resp != nil {
+		if len(r.Created) > len(resp.Created) {
+			r.Created = r.Created[:len(resp.Created)]
 		}
-		created1.ID = types.StringPointerValue(createdItem.ID)
-		created1.Name = types.StringValue(createdItem.Name)
-		created1.Parents = nil
-		for _, v := range createdItem.Parents {
-			created1.Parents = append(created1.Parents, types.StringValue(v))
+		for createdCount, createdItem := range resp.Created {
+			var created1 TaxonomyClassification
+			if createdItem.CreatedAt != nil {
+				created1.CreatedAt = types.StringValue(createdItem.CreatedAt.Format(time.RFC3339Nano))
+			} else {
+				created1.CreatedAt = types.StringNull()
+			}
+			created1.ID = types.StringPointerValue(createdItem.ID)
+			created1.Name = types.StringValue(createdItem.Name)
+			created1.Parents = nil
+			for _, v := range createdItem.Parents {
+				created1.Parents = append(created1.Parents, types.StringValue(v))
+			}
+			if createdItem.UpdatedAt != nil {
+				created1.UpdatedAt = types.StringValue(createdItem.UpdatedAt.Format(time.RFC3339Nano))
+			} else {
+				created1.UpdatedAt = types.StringNull()
+			}
+			if createdCount+1 > len(r.Created) {
+				r.Created = append(r.Created, created1)
+			} else {
+				r.Created[createdCount].CreatedAt = created1.CreatedAt
+				r.Created[createdCount].ID = created1.ID
+				r.Created[createdCount].Name = created1.Name
+				r.Created[createdCount].Parents = created1.Parents
+				r.Created[createdCount].UpdatedAt = created1.UpdatedAt
+			}
 		}
-		if createdItem.UpdatedAt != nil {
-			created1.UpdatedAt = types.StringValue(createdItem.UpdatedAt.Format(time.RFC3339Nano))
-		} else {
-			created1.UpdatedAt = types.StringNull()
+		r.Deleted = nil
+		for _, deletedItem := range resp.Deleted {
+			var deleted1 types.String
+			deleted1Result, _ := json.Marshal(deletedItem)
+			deleted1 = types.StringValue(string(deleted1Result))
+			r.Deleted = append(r.Deleted, deleted1)
 		}
-		if createdCount+1 > len(r.Created) {
-			r.Created = append(r.Created, created1)
-		} else {
-			r.Created[createdCount].CreatedAt = created1.CreatedAt
-			r.Created[createdCount].ID = created1.ID
-			r.Created[createdCount].Name = created1.Name
-			r.Created[createdCount].Parents = created1.Parents
-			r.Created[createdCount].UpdatedAt = created1.UpdatedAt
+		if len(r.Updated) > len(resp.Updated) {
+			r.Updated = r.Updated[:len(resp.Updated)]
 		}
-	}
-	r.Deleted = nil
-	for _, deletedItem := range resp.Deleted {
-		var deleted1 types.String
-		deleted1Result, _ := json.Marshal(deletedItem)
-		deleted1 = types.StringValue(string(deleted1Result))
-		r.Deleted = append(r.Deleted, deleted1)
-	}
-	if len(r.Updated) > len(resp.Updated) {
-		r.Updated = r.Updated[:len(resp.Updated)]
-	}
-	for updatedCount, updatedItem := range resp.Updated {
-		var updated1 TaxonomyClassification
-		if updatedItem.CreatedAt != nil {
-			updated1.CreatedAt = types.StringValue(updatedItem.CreatedAt.Format(time.RFC3339Nano))
-		} else {
-			updated1.CreatedAt = types.StringNull()
-		}
-		updated1.ID = types.StringPointerValue(updatedItem.ID)
-		updated1.Name = types.StringValue(updatedItem.Name)
-		updated1.Parents = nil
-		for _, v := range updatedItem.Parents {
-			updated1.Parents = append(updated1.Parents, types.StringValue(v))
-		}
-		if updatedItem.UpdatedAt != nil {
-			updated1.UpdatedAt = types.StringValue(updatedItem.UpdatedAt.Format(time.RFC3339Nano))
-		} else {
-			updated1.UpdatedAt = types.StringNull()
-		}
-		if updatedCount+1 > len(r.Updated) {
-			r.Updated = append(r.Updated, updated1)
-		} else {
-			r.Updated[updatedCount].CreatedAt = updated1.CreatedAt
-			r.Updated[updatedCount].ID = updated1.ID
-			r.Updated[updatedCount].Name = updated1.Name
-			r.Updated[updatedCount].Parents = updated1.Parents
-			r.Updated[updatedCount].UpdatedAt = updated1.UpdatedAt
+		for updatedCount, updatedItem := range resp.Updated {
+			var updated1 TaxonomyClassification
+			if updatedItem.CreatedAt != nil {
+				updated1.CreatedAt = types.StringValue(updatedItem.CreatedAt.Format(time.RFC3339Nano))
+			} else {
+				updated1.CreatedAt = types.StringNull()
+			}
+			updated1.ID = types.StringPointerValue(updatedItem.ID)
+			updated1.Name = types.StringValue(updatedItem.Name)
+			updated1.Parents = nil
+			for _, v := range updatedItem.Parents {
+				updated1.Parents = append(updated1.Parents, types.StringValue(v))
+			}
+			if updatedItem.UpdatedAt != nil {
+				updated1.UpdatedAt = types.StringValue(updatedItem.UpdatedAt.Format(time.RFC3339Nano))
+			} else {
+				updated1.UpdatedAt = types.StringNull()
+			}
+			if updatedCount+1 > len(r.Updated) {
+				r.Updated = append(r.Updated, updated1)
+			} else {
+				r.Updated[updatedCount].CreatedAt = updated1.CreatedAt
+				r.Updated[updatedCount].ID = updated1.ID
+				r.Updated[updatedCount].Name = updated1.Name
+				r.Updated[updatedCount].Parents = updated1.Parents
+				r.Updated[updatedCount].UpdatedAt = updated1.UpdatedAt
+			}
 		}
 	}
 }
