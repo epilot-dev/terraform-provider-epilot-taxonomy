@@ -11,6 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"net/http"
 )
 
 var _ provider.Provider = &EpilotTaxonomyProvider{}
@@ -95,6 +96,7 @@ func (p *EpilotTaxonomyProvider) Configure(ctx context.Context, req provider.Con
 	opts := []sdk.SDKOption{
 		sdk.WithServerURL(ServerURL),
 		sdk.WithSecurity(security),
+		sdk.WithClient(http.DefaultClient),
 	}
 	client := sdk.New(opts...)
 

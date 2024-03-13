@@ -3,16 +3,16 @@ id: 1afd37bc-cea9-4679-ac40-35ad5de414fc
 management:
   docChecksum: aff3033c289441cdb6ee65789a96a4e5
   docVersion: 1.0.0
-  speakeasyVersion: 1.204.1
-  generationVersion: 2.279.1
-  releaseVersion: 0.6.0
-  configChecksum: aabb0f56d76d97038a6038fc0d71413d
+  speakeasyVersion: 1.207.1
+  generationVersion: 2.280.6
+  releaseVersion: 0.6.1
+  configChecksum: 8a27fa7e7e86dca1bb36119303b6da8b
   repoURL: https://github.com/epilot-dev/terraform-provider-epilot-taxonomy.git
   repoSubDirectory: .
   published: true
 features:
   terraform:
-    core: 3.10.2
+    core: 3.10.3
     globalSecurity: 2.81.5
     globalServerURLs: 2.82.1
 generatedFiles:
