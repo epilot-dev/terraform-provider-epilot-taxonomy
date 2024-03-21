@@ -4,8 +4,9 @@ package provider
 
 import (
 	"encoding/json"
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/models/operations"
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/models/shared"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/types"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/operations"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"time"
 )
@@ -109,7 +110,7 @@ func (r *TaxonomyResourceModel) RefreshFromOperationsUpdateClassificationsForTax
 			r.Created = r.Created[:len(resp.Created)]
 		}
 		for createdCount, createdItem := range resp.Created {
-			var created1 TaxonomyClassification
+			var created1 tfTypes.TaxonomyClassification
 			if createdItem.CreatedAt != nil {
 				created1.CreatedAt = types.StringValue(createdItem.CreatedAt.Format(time.RFC3339Nano))
 			} else {
@@ -147,7 +148,7 @@ func (r *TaxonomyResourceModel) RefreshFromOperationsUpdateClassificationsForTax
 			r.Updated = r.Updated[:len(resp.Updated)]
 		}
 		for updatedCount, updatedItem := range resp.Updated {
-			var updated1 TaxonomyClassification
+			var updated1 tfTypes.TaxonomyClassification
 			if updatedItem.CreatedAt != nil {
 				updated1.CreatedAt = types.StringValue(updatedItem.CreatedAt.Format(time.RFC3339Nano))
 			} else {
