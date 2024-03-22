@@ -118,7 +118,7 @@ func (r *TaxonomyResourceModel) RefreshFromOperationsUpdateClassificationsForTax
 			}
 			created1.ID = types.StringPointerValue(createdItem.ID)
 			created1.Name = types.StringValue(createdItem.Name)
-			created1.Parents = nil
+			created1.Parents = []types.String{}
 			for _, v := range createdItem.Parents {
 				created1.Parents = append(created1.Parents, types.StringValue(v))
 			}
@@ -156,7 +156,7 @@ func (r *TaxonomyResourceModel) RefreshFromOperationsUpdateClassificationsForTax
 			}
 			updated1.ID = types.StringPointerValue(updatedItem.ID)
 			updated1.Name = types.StringValue(updatedItem.Name)
-			updated1.Parents = nil
+			updated1.Parents = []types.String{}
 			for _, v := range updatedItem.Parents {
 				updated1.Parents = append(updated1.Parents, types.StringValue(v))
 			}
