@@ -31,3 +31,51 @@ Based on:
 - Speakeasy CLI 1.147.0 (2.237.2) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [terraform v0.2.3] .
+
+## 2024-02-08 00:08:37
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.173.0 (2.250.16) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [terraform v0.5.0] .
+
+## 2024-03-08 00:08:46
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.204.1 (2.279.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [terraform v0.6.0] .
+
+## 2024-03-13 00:08:43
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.207.1 (2.280.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [terraform v0.6.1] .
+
+## 2024-03-21 00:09:45
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.215.1 (2.286.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [terraform v0.7.0] .
+
+## 2024-03-22 00:08:36
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.219.2 (2.286.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [terraform v0.7.1] .
+
+## 2024-03-27 00:08:18
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.227.0 (2.291.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [terraform v0.8.0] .

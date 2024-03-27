@@ -5,8 +5,9 @@ package provider
 import (
 	"context"
 	"fmt"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/models/operations"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/validators"
 	"github.com/hashicorp/terraform-plugin-framework-validators/listvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -35,15 +36,15 @@ type TaxonomyResource struct {
 
 // TaxonomyResourceModel describes the resource data model.
 type TaxonomyResourceModel struct {
-	Create  []TaxonomyClassification `tfsdk:"create"`
-	Created []TaxonomyClassification `tfsdk:"created"`
-	Delete  []types.String           `tfsdk:"delete"`
-	Deleted []types.String           `tfsdk:"deleted"`
-	Enabled types.Bool               `tfsdk:"enabled"`
-	Name    types.String             `tfsdk:"name"`
-	Slug    types.String             `tfsdk:"slug"`
-	Update  []TaxonomyClassification `tfsdk:"update"`
-	Updated []TaxonomyClassification `tfsdk:"updated"`
+	Create  []tfTypes.TaxonomyClassification `tfsdk:"create"`
+	Created []tfTypes.TaxonomyClassification `tfsdk:"created"`
+	Delete  []types.String                   `tfsdk:"delete"`
+	Deleted []types.String                   `tfsdk:"deleted"`
+	Enabled types.Bool                       `tfsdk:"enabled"`
+	Name    types.String                     `tfsdk:"name"`
+	Slug    types.String                     `tfsdk:"slug"`
+	Update  []tfTypes.TaxonomyClassification `tfsdk:"update"`
+	Updated []tfTypes.TaxonomyClassification `tfsdk:"updated"`
 }
 
 func (r *TaxonomyResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
