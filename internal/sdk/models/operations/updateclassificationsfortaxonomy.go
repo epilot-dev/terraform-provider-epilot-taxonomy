@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/pkg/models/shared"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"net/http"
 )
 
@@ -30,7 +30,7 @@ func (o *UpdateClassificationsForTaxonomyRequest) GetTaxonomySlug() string {
 // UpdateClassificationsForTaxonomyResponseBody - Taxonomies classifications
 type UpdateClassificationsForTaxonomyResponseBody struct {
 	Created []shared.TaxonomyClassification `json:"created,omitempty"`
-	Deleted []interface{}                   `json:"deleted,omitempty"`
+	Deleted []any                           `json:"deleted,omitempty"`
 	Updated []shared.TaxonomyClassification `json:"updated,omitempty"`
 }
 
@@ -41,7 +41,7 @@ func (o *UpdateClassificationsForTaxonomyResponseBody) GetCreated() []shared.Tax
 	return o.Created
 }
 
-func (o *UpdateClassificationsForTaxonomyResponseBody) GetDeleted() []interface{} {
+func (o *UpdateClassificationsForTaxonomyResponseBody) GetDeleted() []any {
 	if o == nil {
 		return nil
 	}
