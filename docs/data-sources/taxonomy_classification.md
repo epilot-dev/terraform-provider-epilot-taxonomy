@@ -14,7 +14,6 @@ TaxonomyClassification DataSource
 
 ```terraform
 data "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
-  classification_slug = "purpose:<name>"
 }
 ```
 
@@ -25,9 +24,8 @@ data "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
 
 - `created_at` (String)
 - `id` (String) The ID of this resource.
+- `manifest` (List of String) Manifest ID used to create/update the taxonomy classification
 - `name` (String)
 - `parents` (List of String)
 - `slug` (String) URL-friendly identifier for the classification
 - `updated_at` (String)
-
-

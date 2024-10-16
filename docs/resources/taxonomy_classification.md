@@ -14,12 +14,17 @@ TaxonomyClassification Resource
 
 ```terraform
 resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
-  classification_slug = "purpose:<name>"
-  created_at          = "2020-03-25T01:38:50.807Z"
-  id                  = "taxonomy-slug:classification-slug"
-  name                = "Wallbox PV"
-  slug                = "wallbox-pv"
-  updated_at          = "2021-07-08T16:23:04.053Z"
+  created_at = "2022-06-05T18:41:54.651Z"
+  id         = "taxonomy-slug:classification-slug"
+  manifest = [
+    "123e4567-e89b-12d3-a456-426614174000"
+  ]
+  name = "Wallbox PV"
+  parents = [
+    "taxonomy-slug:classification-slug"
+  ]
+  slug       = "wallbox-pv"
+  updated_at = "2022-01-28T11:08:25.332Z"
 }
 ```
 
@@ -33,6 +38,7 @@ resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
 ### Optional
 
 - `created_at` (String)
+- `manifest` (List of String) Manifest ID used to create/update the taxonomy classification
 - `parents` (List of String)
 - `slug` (String) URL-friendly identifier for the classification
 - `updated_at` (String)
