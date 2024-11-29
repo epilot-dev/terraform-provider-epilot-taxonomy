@@ -5,12 +5,15 @@ package provider
 import (
 	"context"
 	"fmt"
+	speakeasy_listplanmodifier "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/planmodifiers/listplanmodifier"
+	speakeasy_stringplanmodifier "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/planmodifiers/stringplanmodifier"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/validators"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -50,7 +53,9 @@ func (r *TaxonomyClassificationResource) Schema(ctx context.Context, req resourc
 		Attributes: map[string]schema.Attribute{
 			"created_at": schema.StringAttribute{
 				Computed: true,
-				Optional: true,
+				PlanModifiers: []planmodifier.String{
+					speakeasy_stringplanmodifier.SuppressDiff(speakeasy_stringplanmodifier.ExplicitSuppress),
+				},
 				Validators: []validator.String{
 					validators.IsRFC3339(),
 				},
@@ -60,8 +65,11 @@ func (r *TaxonomyClassificationResource) Schema(ctx context.Context, req resourc
 				Optional: true,
 			},
 			"manifest": schema.ListAttribute{
-				Computed:    true,
-				Optional:    true,
+				Computed: true,
+				Optional: true,
+				PlanModifiers: []planmodifier.List{
+					speakeasy_listplanmodifier.SuppressDiff(speakeasy_listplanmodifier.ExplicitSuppress),
+				},
 				ElementType: types.StringType,
 				Description: `Manifest ID used to create/update the taxonomy classification`,
 			},
@@ -80,7 +88,9 @@ func (r *TaxonomyClassificationResource) Schema(ctx context.Context, req resourc
 			},
 			"updated_at": schema.StringAttribute{
 				Computed: true,
-				Optional: true,
+				PlanModifiers: []planmodifier.String{
+					speakeasy_stringplanmodifier.SuppressDiff(speakeasy_stringplanmodifier.ExplicitSuppress),
+				},
 				Validators: []validator.String{
 					validators.IsRFC3339(),
 				},
@@ -127,7 +137,7 @@ func (r *TaxonomyClassificationResource) Create(ctx context.Context, req resourc
 		return
 	}
 
-	taxonomyClassification := data.ToSharedTaxonomyClassification()
+	taxonomyClassification := data.ToSharedTaxonomyClassificationInput()
 	var classificationSlug string
 	classificationSlug = data.Slug.ValueString()
 
@@ -230,7 +240,7 @@ func (r *TaxonomyClassificationResource) Update(ctx context.Context, req resourc
 		return
 	}
 
-	taxonomyClassification := data.ToSharedTaxonomyClassification()
+	taxonomyClassification := data.ToSharedTaxonomyClassificationInput()
 	var classificationSlug string
 	classificationSlug = data.Slug.ValueString()
 

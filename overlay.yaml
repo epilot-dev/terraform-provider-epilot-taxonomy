@@ -34,3 +34,9 @@ actions:
   - target: $["components"]["schemas"]["TaxonomyClassification"]
     update:
       x-speakeasy-entity: TaxonomyClassification
+  - target: $["components"]["schemas"]["TaxonomyClassification"]
+    update:
+      x-speakeasy-entity: TaxonomyClassification
+  - target: $["components"]["schemas"]["TaxonomyClassification"]
+    update:
+      x-speakeasy-entity: TaxonomyClassification

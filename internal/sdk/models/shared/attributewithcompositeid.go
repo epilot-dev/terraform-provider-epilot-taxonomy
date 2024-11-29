@@ -12089,7 +12089,6 @@ type PurposeAttributeSchemasInput struct {
 	// These constraints should and will be enforced by the attribute renderer.
 	//
 	Constraints  *SchemasPurposeAttributeConstraints `json:"constraints,omitempty"`
-	CreatedAt    *time.Time                          `json:"created_at,omitempty"`
 	DefaultValue any                                 `json:"default_value,omitempty"`
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
@@ -12137,7 +12136,6 @@ type PurposeAttributeSchemasInput struct {
 	// Allow sorting by this attribute in table views if `show_in_table` is true
 	Sortable       *bool                        `default:"true" json:"sortable"`
 	Type           *SchemasPurposeAttributeType `json:"type,omitempty"`
-	UpdatedAt      *time.Time                   `json:"updated_at,omitempty"`
 	ValueFormatter *string                      `json:"value_formatter,omitempty"`
 }
 
@@ -12171,13 +12169,6 @@ func (o *PurposeAttributeSchemasInput) GetConstraints() *SchemasPurposeAttribute
 		return nil
 	}
 	return o.Constraints
-}
-
-func (o *PurposeAttributeSchemasInput) GetCreatedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
 }
 
 func (o *PurposeAttributeSchemasInput) GetDefaultValue() any {
@@ -12367,13 +12358,6 @@ func (o *PurposeAttributeSchemasInput) GetType() *SchemasPurposeAttributeType {
 		return nil
 	}
 	return o.Type
-}
-
-func (o *PurposeAttributeSchemasInput) GetUpdatedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
 }
 
 func (o *PurposeAttributeSchemasInput) GetValueFormatter() *string {
@@ -20419,6 +20403,13 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var purposeAttributeSchemasInput PurposeAttributeSchemasInput = PurposeAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &purposeAttributeSchemasInput, "", true, true); err == nil {
+		u.PurposeAttributeSchemasInput = &purposeAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypePurposeAttributeSchemasInput
+		return nil
+	}
+
 	var selectAttributeSchemasInput SelectAttributeSchemasInput = SelectAttributeSchemasInput{}
 	if err := utils.UnmarshalJSON(data, &selectAttributeSchemasInput, "", true, true); err == nil {
 		u.SelectAttributeSchemasInput = &selectAttributeSchemasInput
@@ -20437,13 +20428,6 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &multiSelectAttributeSchemasInput, "", true, true); err == nil {
 		u.MultiSelectAttributeSchemasInput = &multiSelectAttributeSchemasInput
 		u.Type = AttributeWithCompositeIDInputTypeMultiSelectAttributeSchemasInput
-		return nil
-	}
-
-	var purposeAttributeSchemasInput PurposeAttributeSchemasInput = PurposeAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &purposeAttributeSchemasInput, "", true, true); err == nil {
-		u.PurposeAttributeSchemasInput = &purposeAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypePurposeAttributeSchemasInput
 		return nil
 	}
 

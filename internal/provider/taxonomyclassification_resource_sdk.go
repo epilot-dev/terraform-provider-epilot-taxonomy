@@ -8,16 +8,10 @@ import (
 	"time"
 )
 
-func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassification() *shared.TaxonomyClassification {
+func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInput() *shared.TaxonomyClassificationInput {
 	var manifest []string = []string{}
 	for _, manifestItem := range r.Manifest {
 		manifest = append(manifest, manifestItem.ValueString())
-	}
-	createdAt := new(time.Time)
-	if !r.CreatedAt.IsUnknown() && !r.CreatedAt.IsNull() {
-		*createdAt, _ = time.Parse(time.RFC3339Nano, r.CreatedAt.ValueString())
-	} else {
-		createdAt = nil
 	}
 	id := new(string)
 	if !r.ID.IsUnknown() && !r.ID.IsNull() {
@@ -38,20 +32,12 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassification() *
 	} else {
 		slug = nil
 	}
-	updatedAt := new(time.Time)
-	if !r.UpdatedAt.IsUnknown() && !r.UpdatedAt.IsNull() {
-		*updatedAt, _ = time.Parse(time.RFC3339Nano, r.UpdatedAt.ValueString())
-	} else {
-		updatedAt = nil
-	}
-	out := shared.TaxonomyClassification{
-		Manifest:  manifest,
-		CreatedAt: createdAt,
-		ID:        id,
-		Name:      name,
-		Parents:   parents,
-		Slug:      slug,
-		UpdatedAt: updatedAt,
+	out := shared.TaxonomyClassificationInput{
+		Manifest: manifest,
+		ID:       id,
+		Name:     name,
+		Parents:  parents,
+		Slug:     slug,
 	}
 	return &out
 }

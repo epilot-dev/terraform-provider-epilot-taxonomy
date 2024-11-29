@@ -4949,12 +4949,17 @@ components:
           items:
             $ref: "#/components/schemas/ClassificationId"
         created_at:
+          readOnly: true
           type: string
           format: date-time
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
+          readOnly: true
           type: string
           format: date-time
+          x-speakeasy-param-suppress-computed-diff: true  
         _manifest:
+          x-speakeasy-param-suppress-computed-diff: true
           type: array
           description: Manifest ID used to create/update the taxonomy classification
           items:

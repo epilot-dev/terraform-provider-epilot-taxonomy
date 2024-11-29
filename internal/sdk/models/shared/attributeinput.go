@@ -37,7 +37,7 @@ const (
 	AttributeInputTypeInvitationEmailAttribute       AttributeInputType = "InvitationEmailAttribute"
 	AttributeInputTypeAutomationAttribute            AttributeInputType = "AutomationAttribute"
 	AttributeInputTypeInternalUserAttribute          AttributeInputType = "InternalUserAttribute"
-	AttributeInputTypePurposeAttribute               AttributeInputType = "PurposeAttribute"
+	AttributeInputTypePurposeAttributeInput          AttributeInputType = "PurposeAttribute_input"
 	AttributeInputTypePartnerOrganisationAttribute   AttributeInputType = "PartnerOrganisationAttribute"
 )
 
@@ -68,7 +68,7 @@ type AttributeInput struct {
 	InvitationEmailAttribute       *InvitationEmailAttribute
 	AutomationAttribute            *AutomationAttribute
 	InternalUserAttribute          *InternalUserAttribute
-	PurposeAttribute               *PurposeAttribute
+	PurposeAttributeInput          *PurposeAttributeInput
 	PartnerOrganisationAttribute   *PartnerOrganisationAttribute
 
 	Type AttributeInputType
@@ -308,12 +308,12 @@ func CreateAttributeInputInternalUserAttribute(internalUserAttribute InternalUse
 	}
 }
 
-func CreateAttributeInputPurposeAttribute(purposeAttribute PurposeAttribute) AttributeInput {
-	typ := AttributeInputTypePurposeAttribute
+func CreateAttributeInputPurposeAttributeInput(purposeAttributeInput PurposeAttributeInput) AttributeInput {
+	typ := AttributeInputTypePurposeAttributeInput
 
 	return AttributeInput{
-		PurposeAttribute: &purposeAttribute,
-		Type:             typ,
+		PurposeAttributeInput: &purposeAttributeInput,
+		Type:                  typ,
 	}
 }
 
@@ -482,6 +482,13 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var purposeAttributeInput PurposeAttributeInput = PurposeAttributeInput{}
+	if err := utils.UnmarshalJSON(data, &purposeAttributeInput, "", true, true); err == nil {
+		u.PurposeAttributeInput = &purposeAttributeInput
+		u.Type = AttributeInputTypePurposeAttributeInput
+		return nil
+	}
+
 	var selectAttribute SelectAttribute = SelectAttribute{}
 	if err := utils.UnmarshalJSON(data, &selectAttribute, "", true, true); err == nil {
 		u.SelectAttribute = &selectAttribute
@@ -500,13 +507,6 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &multiSelectAttribute, "", true, true); err == nil {
 		u.MultiSelectAttribute = &multiSelectAttribute
 		u.Type = AttributeInputTypeMultiSelectAttribute
-		return nil
-	}
-
-	var purposeAttribute PurposeAttribute = PurposeAttribute{}
-	if err := utils.UnmarshalJSON(data, &purposeAttribute, "", true, true); err == nil {
-		u.PurposeAttribute = &purposeAttribute
-		u.Type = AttributeInputTypePurposeAttribute
 		return nil
 	}
 
@@ -632,8 +632,8 @@ func (u AttributeInput) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.InternalUserAttribute, "", true)
 	}
 
-	if u.PurposeAttribute != nil {
-		return utils.MarshalJSON(u.PurposeAttribute, "", true)
+	if u.PurposeAttributeInput != nil {
+		return utils.MarshalJSON(u.PurposeAttributeInput, "", true)
 	}
 
 	if u.PartnerOrganisationAttribute != nil {

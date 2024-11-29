@@ -8,12 +8,12 @@ import (
 )
 
 type UpdateTaxonomyClassificationRequest struct {
-	TaxonomyClassification *shared.TaxonomyClassification `request:"mediaType=application/json"`
+	TaxonomyClassification *shared.TaxonomyClassificationInput `request:"mediaType=application/json"`
 	// Taxonomy Classification slug
 	ClassificationSlug string `pathParam:"style=simple,explode=false,name=classificationSlug"`
 }
 
-func (o *UpdateTaxonomyClassificationRequest) GetTaxonomyClassification() *shared.TaxonomyClassification {
+func (o *UpdateTaxonomyClassificationRequest) GetTaxonomyClassification() *shared.TaxonomyClassificationInput {
 	if o == nil {
 		return nil
 	}
