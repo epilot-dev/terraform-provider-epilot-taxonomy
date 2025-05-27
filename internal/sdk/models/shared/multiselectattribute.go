@@ -90,8 +90,8 @@ const (
 )
 
 type MultiSelectAttributeOptions struct {
-	Str                   *string
-	MultiSelectAttribute2 *MultiSelectAttribute2
+	Str                   *string                `queryParam:"inline"`
+	MultiSelectAttribute2 *MultiSelectAttribute2 `queryParam:"inline"`
 
 	Type MultiSelectAttributeOptionsType
 }
@@ -209,7 +209,7 @@ type MultiSelectAttribute struct {
 	Label       string                           `json:"label"`
 	Layout      *string                          `json:"layout,omitempty"`
 	Name        string                           `json:"name"`
-	Options     []MultiSelectAttributeOptions    `json:"options,omitempty"`
+	Options     []*MultiSelectAttributeOptions   `json:"options,omitempty"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -377,7 +377,7 @@ func (o *MultiSelectAttribute) GetName() string {
 	return o.Name
 }
 
-func (o *MultiSelectAttribute) GetOptions() []MultiSelectAttributeOptions {
+func (o *MultiSelectAttribute) GetOptions() []*MultiSelectAttributeOptions {
 	if o == nil {
 		return nil
 	}

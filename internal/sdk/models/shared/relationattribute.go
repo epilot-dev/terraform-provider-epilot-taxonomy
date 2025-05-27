@@ -391,8 +391,8 @@ const (
 )
 
 type RelationAttributeSummaryFields struct {
-	Str          *string
-	SummaryField *SummaryField
+	Str          *string       `queryParam:"inline"`
+	SummaryField *SummaryField `queryParam:"inline"`
 
 	Type RelationAttributeSummaryFieldsType
 }

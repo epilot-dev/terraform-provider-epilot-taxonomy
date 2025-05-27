@@ -4,22 +4,27 @@ generation:
   usageSnippets:
     optionalPropertyRendering: withExample
   fixes:
-    nameResolutionDec2023: false
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+    securityFeb2025: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
   sdkFlattening: true
   telemetryEnabled: false
 terraform:
-  version: 0.7.2
+  version: 0.8.0
   additionalDataSources: []
   additionalDependencies: {}
+  additionalProviderAttributes:
+    httpHeaders: ""
+    tlsSkipVerify: ""
   additionalResources: []
   allowUnknownFieldsInWeakUnions: false
   author: epilot-dev
   defaultErrorName: SDKError
+  enableTypeDeduplication: true
   environmentVariables: []
   imports:
     option: openapi

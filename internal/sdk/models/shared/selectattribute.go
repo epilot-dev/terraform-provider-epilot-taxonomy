@@ -90,8 +90,8 @@ const (
 )
 
 type SelectAttributeOptions struct {
-	SelectAttribute1 *SelectAttribute1
-	Str              *string
+	SelectAttribute1 *SelectAttribute1 `queryParam:"inline"`
+	Str              *string           `queryParam:"inline"`
 
 	Type SelectAttributeOptionsType
 }
@@ -205,7 +205,7 @@ type SelectAttribute struct {
 	Label       string                      `json:"label"`
 	Layout      *string                     `json:"layout,omitempty"`
 	Name        string                      `json:"name"`
-	Options     []SelectAttributeOptions    `json:"options,omitempty"`
+	Options     []*SelectAttributeOptions   `json:"options,omitempty"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -359,7 +359,7 @@ func (o *SelectAttribute) GetName() string {
 	return o.Name
 }
 
-func (o *SelectAttribute) GetOptions() []SelectAttributeOptions {
+func (o *SelectAttribute) GetOptions() []*SelectAttributeOptions {
 	if o == nil {
 		return nil
 	}

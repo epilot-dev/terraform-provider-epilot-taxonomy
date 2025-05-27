@@ -86,8 +86,8 @@ const (
 )
 
 type SavedViewItemCreatedBy struct {
-	SavedViewItem1 *SavedViewItem1
-	SavedViewItem2 *SavedViewItem2
+	SavedViewItem1 *SavedViewItem1 `queryParam:"inline"`
+	SavedViewItem2 *SavedViewItem2 `queryParam:"inline"`
 
 	Type SavedViewItemCreatedByType
 }

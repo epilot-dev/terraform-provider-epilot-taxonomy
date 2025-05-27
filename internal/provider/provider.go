@@ -25,9 +25,9 @@ type EpilotTaxonomyProvider struct {
 
 // EpilotTaxonomyProviderModel describes the provider data model.
 type EpilotTaxonomyProviderModel struct {
-	ServerURL  types.String `tfsdk:"server_url"`
 	EpilotAuth types.String `tfsdk:"epilot_auth"`
 	EpilotOrg  types.String `tfsdk:"epilot_org"`
+	ServerURL  types.String `tfsdk:"server_url"`
 }
 
 func (p *EpilotTaxonomyProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
@@ -37,26 +37,25 @@ func (p *EpilotTaxonomyProvider) Metadata(ctx context.Context, req provider.Meta
 
 func (p *EpilotTaxonomyProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		Attributes: map[string]schema.Attribute{
+			"epilot_auth": schema.StringAttribute{
+				Optional:  true,
+				Sensitive: true,
+			},
+			"epilot_org": schema.StringAttribute{
+				Optional:  true,
+				Sensitive: true,
+			},
+			"server_url": schema.StringAttribute{
+				Description: `Server URL (defaults to https://entity.sls.epilot.io)`,
+				Optional:    true,
+			},
+		},
 		MarkdownDescription: `Entity API: Flexible data layer for epilot Entities.` + "\n" +
 			`` + "\n" +
 			`Use this API configure and access your business objects like Contacts, Opportunities and Products.` + "\n" +
 			`` + "\n" +
 			`[Feature Documentation](https://docs.epilot.io/docs/entities/flexible-entities)`,
-		Attributes: map[string]schema.Attribute{
-			"server_url": schema.StringAttribute{
-				MarkdownDescription: "Server URL (defaults to https://entity.sls.epilot.io)",
-				Optional:            true,
-				Required:            false,
-			},
-			"epilot_auth": schema.StringAttribute{
-				Sensitive: true,
-				Optional:  true,
-			},
-			"epilot_org": schema.StringAttribute{
-				Sensitive: true,
-				Optional:  true,
-			},
-		},
 	}
 }
 
@@ -92,8 +91,13 @@ func (p *EpilotTaxonomyProvider) Configure(ctx context.Context, req provider.Con
 		EpilotOrg:  epilotOrg,
 	}
 
+	providerHTTPTransportOpts := ProviderHTTPTransportOpts{
+		SetHeaders: make(map[string]string),
+		Transport:  http.DefaultTransport,
+	}
+
 	httpClient := http.DefaultClient
-	httpClient.Transport = NewLoggingHTTPTransport(http.DefaultTransport)
+	httpClient.Transport = NewProviderHTTPTransport(providerHTTPTransportOpts)
 
 	opts := []sdk.SDKOption{
 		sdk.WithServerURL(ServerURL),

@@ -30,7 +30,7 @@ actions:
       x-speakeasy-entity-operation: TaxonomyClassification#delete
   - target: $["components"]["parameters"]["TaxonomyClassificationSlugPathParam"]
     update:
-      x-speakeasy-match: slug
+      x-speakeasy-match: id
   - target: $["components"]["schemas"]["TaxonomyClassification"]
     update:
       x-speakeasy-entity: TaxonomyClassification

@@ -60,9 +60,9 @@ const (
 )
 
 type CreateView struct {
-	EntityDefaultCreate *EntityDefaultCreate
-	RedirectEntityView  *RedirectEntityView
-	EntityViewDisabled  *EntityViewDisabled
+	EntityDefaultCreate *EntityDefaultCreate `queryParam:"inline"`
+	RedirectEntityView  *RedirectEntityView  `queryParam:"inline"`
+	EntityViewDisabled  *EntityViewDisabled  `queryParam:"inline"`
 
 	Type CreateViewType
 }
@@ -145,9 +145,9 @@ const (
 )
 
 type EditView struct {
-	EntityDefaultEdit  *EntityDefaultEdit
-	RedirectEntityView *RedirectEntityView
-	EntityViewDisabled *EntityViewDisabled
+	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline"`
 
 	Type EditViewType
 }
@@ -229,8 +229,8 @@ const (
 )
 
 type SummaryAttributes struct {
-	SummaryAttribute *SummaryAttribute
-	Str              *string
+	SummaryAttribute *SummaryAttribute `queryParam:"inline"`
+	Str              *string           `queryParam:"inline"`
 
 	Type SummaryAttributesType
 }
@@ -324,9 +324,9 @@ const (
 )
 
 type SingleView struct {
-	EntityDefaultEdit  *EntityDefaultEdit
-	RedirectEntityView *RedirectEntityView
-	EntityViewDisabled *EntityViewDisabled
+	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline"`
 
 	Type SingleViewType
 }
@@ -409,9 +409,9 @@ const (
 )
 
 type TableView struct {
-	EntityDefaultTable *EntityDefaultTable
-	RedirectEntityView *RedirectEntityView
-	EntityViewDisabled *EntityViewDisabled
+	EntityDefaultTable *EntityDefaultTable `queryParam:"inline"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline"`
 
 	Type TableViewType
 }

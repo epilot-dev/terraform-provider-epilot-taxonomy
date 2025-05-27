@@ -92,8 +92,8 @@ const (
 )
 
 type StatusAttributeOptions struct {
-	Str              *string
-	StatusAttribute2 *StatusAttribute2
+	Str              *string           `queryParam:"inline"`
+	StatusAttribute2 *StatusAttribute2 `queryParam:"inline"`
 
 	Type StatusAttributeOptionsType
 }
@@ -202,7 +202,7 @@ type StatusAttribute struct {
 	Label       string                      `json:"label"`
 	Layout      *string                     `json:"layout,omitempty"`
 	Name        string                      `json:"name"`
-	Options     []StatusAttributeOptions    `json:"options,omitempty"`
+	Options     []*StatusAttributeOptions   `json:"options,omitempty"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -349,7 +349,7 @@ func (o *StatusAttribute) GetName() string {
 	return o.Name
 }
 
-func (o *StatusAttribute) GetOptions() []StatusAttributeOptions {
+func (o *StatusAttribute) GetOptions() []*StatusAttributeOptions {
 	if o == nil {
 		return nil
 	}

@@ -116,7 +116,7 @@ func (r *TaxonomyClassificationDataSource) Read(ctx context.Context, req datasou
 	}
 
 	var classificationSlug string
-	classificationSlug = data.Slug.ValueString()
+	classificationSlug = data.ID.ValueString()
 
 	request := operations.GetTaxonomyClassificationRequest{
 		ClassificationSlug: classificationSlug,

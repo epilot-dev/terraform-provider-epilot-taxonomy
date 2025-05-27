@@ -5279,7 +5279,7 @@ const (
 )
 
 type Currency struct {
-	One *One
+	One *One `queryParam:"inline"`
 
 	Type CurrencyType
 }
@@ -7154,8 +7154,8 @@ const (
 )
 
 type SummaryFields struct {
-	Str          *string
-	SummaryField *SummaryField
+	Str          *string       `queryParam:"inline"`
+	SummaryField *SummaryField `queryParam:"inline"`
 
 	Type SummaryFieldsType
 }
@@ -8083,8 +8083,8 @@ const (
 )
 
 type SchemasStatusAttributeOptions struct {
-	Str      *string
-	Schemas2 *Schemas2
+	Str      *string   `queryParam:"inline"`
+	Schemas2 *Schemas2 `queryParam:"inline"`
 
 	Type SchemasStatusAttributeOptionsType
 }
@@ -8194,7 +8194,7 @@ type StatusAttributeSchemas struct {
 	Label       string                             `json:"label"`
 	Layout      *string                            `json:"layout,omitempty"`
 	Name        string                             `json:"name"`
-	Options     []SchemasStatusAttributeOptions    `json:"options,omitempty"`
+	Options     []*SchemasStatusAttributeOptions   `json:"options,omitempty"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -8350,7 +8350,7 @@ func (o *StatusAttributeSchemas) GetName() string {
 	return o.Name
 }
 
-func (o *StatusAttributeSchemas) GetOptions() []SchemasStatusAttributeOptions {
+func (o *StatusAttributeSchemas) GetOptions() []*SchemasStatusAttributeOptions {
 	if o == nil {
 		return nil
 	}
@@ -8529,8 +8529,8 @@ const (
 )
 
 type OptionsObj struct {
-	Str *string
-	Two *Two
+	Str *string `queryParam:"inline"`
+	Two *Two    `queryParam:"inline"`
 
 	Type OptionsObjType
 }
@@ -8649,7 +8649,7 @@ type MultiSelectAttributeSchemas struct {
 	Label       string                                  `json:"label"`
 	Layout      *string                                 `json:"layout,omitempty"`
 	Name        string                                  `json:"name"`
-	Options     []OptionsObj                            `json:"options,omitempty"`
+	Options     []*OptionsObj                           `json:"options,omitempty"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -8826,7 +8826,7 @@ func (o *MultiSelectAttributeSchemas) GetName() string {
 	return o.Name
 }
 
-func (o *MultiSelectAttributeSchemas) GetOptions() []OptionsObj {
+func (o *MultiSelectAttributeSchemas) GetOptions() []*OptionsObj {
 	if o == nil {
 		return nil
 	}
@@ -9005,8 +9005,8 @@ const (
 )
 
 type SchemasOptions struct {
-	Schemas1 *Schemas1
-	Str      *string
+	Schemas1 *Schemas1 `queryParam:"inline"`
+	Str      *string   `queryParam:"inline"`
 
 	Type SchemasOptionsType
 }
@@ -9121,7 +9121,7 @@ type SelectAttributeSchemas struct {
 	Label       string                             `json:"label"`
 	Layout      *string                            `json:"layout,omitempty"`
 	Name        string                             `json:"name"`
-	Options     []SchemasOptions                   `json:"options,omitempty"`
+	Options     []*SchemasOptions                  `json:"options,omitempty"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -9284,7 +9284,7 @@ func (o *SelectAttributeSchemas) GetName() string {
 	return o.Name
 }
 
-func (o *SelectAttributeSchemas) GetOptions() []SchemasOptions {
+func (o *SelectAttributeSchemas) GetOptions() []*SchemasOptions {
 	if o == nil {
 		return nil
 	}
@@ -11208,34 +11208,34 @@ const (
 
 // AttributeWithCompositeID - a readonly computed ID for the attribute including schema slug and the attribute ID
 type AttributeWithCompositeID struct {
-	TextAttributeSchemas                  *TextAttributeSchemas
-	LinkAttributeSchemas                  *LinkAttributeSchemas
-	DateAttributeSchemas                  *DateAttributeSchemas
-	CountryAttributeSchemas               *CountryAttributeSchemas
-	BooleanAttributeSchemas               *BooleanAttributeSchemas
-	SelectAttributeSchemas                *SelectAttributeSchemas
-	MultiSelectAttributeSchemas           *MultiSelectAttributeSchemas
-	StatusAttributeSchemas                *StatusAttributeSchemas
-	SequenceAttributeSchemas              *SequenceAttributeSchemas
-	RelationAttributeSchemas              *RelationAttributeSchemas
-	UserRelationAttributeSchemas          *UserRelationAttributeSchemas
-	Schemas                               *Schemas
-	PaymentMethodRelationAttributeSchemas *PaymentMethodRelationAttributeSchemas
-	CurrencyAttributeSchemas              *CurrencyAttributeSchemas
-	RepeatableAttributeSchemas            *RepeatableAttributeSchemas
-	TagsAttributeSchemas                  *TagsAttributeSchemas
-	NumberAttributeSchemas                *NumberAttributeSchemas
-	ConsentAttributeSchemas               *ConsentAttributeSchemas
-	InternalAttributeSchemas              *InternalAttributeSchemas
-	OrderedListAttributeSchemas           *OrderedListAttributeSchemas
-	FileAttributeSchemas                  *FileAttributeSchemas
-	ComputedAttributeSchemas              *ComputedAttributeSchemas
-	PartnerStatusAttributeSchemas         *PartnerStatusAttributeSchemas
-	InvitationEmailAttributeSchemas       *InvitationEmailAttributeSchemas
-	AutomationAttributeSchemas            *AutomationAttributeSchemas
-	InternalUserAttributeSchemas          *InternalUserAttributeSchemas
-	PurposeAttributeSchemas               *PurposeAttributeSchemas
-	PartnerOrganisationAttributeSchemas   *PartnerOrganisationAttributeSchemas
+	TextAttributeSchemas                  *TextAttributeSchemas                  `queryParam:"inline"`
+	LinkAttributeSchemas                  *LinkAttributeSchemas                  `queryParam:"inline"`
+	DateAttributeSchemas                  *DateAttributeSchemas                  `queryParam:"inline"`
+	CountryAttributeSchemas               *CountryAttributeSchemas               `queryParam:"inline"`
+	BooleanAttributeSchemas               *BooleanAttributeSchemas               `queryParam:"inline"`
+	SelectAttributeSchemas                *SelectAttributeSchemas                `queryParam:"inline"`
+	MultiSelectAttributeSchemas           *MultiSelectAttributeSchemas           `queryParam:"inline"`
+	StatusAttributeSchemas                *StatusAttributeSchemas                `queryParam:"inline"`
+	SequenceAttributeSchemas              *SequenceAttributeSchemas              `queryParam:"inline"`
+	RelationAttributeSchemas              *RelationAttributeSchemas              `queryParam:"inline"`
+	UserRelationAttributeSchemas          *UserRelationAttributeSchemas          `queryParam:"inline"`
+	Schemas                               *Schemas                               `queryParam:"inline"`
+	PaymentMethodRelationAttributeSchemas *PaymentMethodRelationAttributeSchemas `queryParam:"inline"`
+	CurrencyAttributeSchemas              *CurrencyAttributeSchemas              `queryParam:"inline"`
+	RepeatableAttributeSchemas            *RepeatableAttributeSchemas            `queryParam:"inline"`
+	TagsAttributeSchemas                  *TagsAttributeSchemas                  `queryParam:"inline"`
+	NumberAttributeSchemas                *NumberAttributeSchemas                `queryParam:"inline"`
+	ConsentAttributeSchemas               *ConsentAttributeSchemas               `queryParam:"inline"`
+	InternalAttributeSchemas              *InternalAttributeSchemas              `queryParam:"inline"`
+	OrderedListAttributeSchemas           *OrderedListAttributeSchemas           `queryParam:"inline"`
+	FileAttributeSchemas                  *FileAttributeSchemas                  `queryParam:"inline"`
+	ComputedAttributeSchemas              *ComputedAttributeSchemas              `queryParam:"inline"`
+	PartnerStatusAttributeSchemas         *PartnerStatusAttributeSchemas         `queryParam:"inline"`
+	InvitationEmailAttributeSchemas       *InvitationEmailAttributeSchemas       `queryParam:"inline"`
+	AutomationAttributeSchemas            *AutomationAttributeSchemas            `queryParam:"inline"`
+	InternalUserAttributeSchemas          *InternalUserAttributeSchemas          `queryParam:"inline"`
+	PurposeAttributeSchemas               *PurposeAttributeSchemas               `queryParam:"inline"`
+	PartnerOrganisationAttributeSchemas   *PartnerOrganisationAttributeSchemas   `queryParam:"inline"`
 
 	Type AttributeWithCompositeIDType
 }
@@ -17724,7 +17724,7 @@ type StatusAttributeSchemasInput struct {
 	Label       string                             `json:"label"`
 	Layout      *string                            `json:"layout,omitempty"`
 	Name        string                             `json:"name"`
-	Options     []SchemasStatusAttributeOptions    `json:"options,omitempty"`
+	Options     []*SchemasStatusAttributeOptions   `json:"options,omitempty"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -17873,7 +17873,7 @@ func (o *StatusAttributeSchemasInput) GetName() string {
 	return o.Name
 }
 
-func (o *StatusAttributeSchemasInput) GetOptions() []SchemasStatusAttributeOptions {
+func (o *StatusAttributeSchemasInput) GetOptions() []*SchemasStatusAttributeOptions {
 	if o == nil {
 		return nil
 	}
@@ -18009,7 +18009,7 @@ type MultiSelectAttributeSchemasInput struct {
 	Label       string                                  `json:"label"`
 	Layout      *string                                 `json:"layout,omitempty"`
 	Name        string                                  `json:"name"`
-	Options     []OptionsObj                            `json:"options,omitempty"`
+	Options     []*OptionsObj                           `json:"options,omitempty"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -18179,7 +18179,7 @@ func (o *MultiSelectAttributeSchemasInput) GetName() string {
 	return o.Name
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetOptions() []OptionsObj {
+func (o *MultiSelectAttributeSchemasInput) GetOptions() []*OptionsObj {
 	if o == nil {
 		return nil
 	}
@@ -18311,7 +18311,7 @@ type SelectAttributeSchemasInput struct {
 	Label       string                             `json:"label"`
 	Layout      *string                            `json:"layout,omitempty"`
 	Name        string                             `json:"name"`
-	Options     []SchemasOptions                   `json:"options,omitempty"`
+	Options     []*SchemasOptions                  `json:"options,omitempty"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -18467,7 +18467,7 @@ func (o *SelectAttributeSchemasInput) GetName() string {
 	return o.Name
 }
 
-func (o *SelectAttributeSchemasInput) GetOptions() []SchemasOptions {
+func (o *SelectAttributeSchemasInput) GetOptions() []*SchemasOptions {
 	if o == nil {
 		return nil
 	}
@@ -19963,34 +19963,34 @@ const (
 
 // AttributeWithCompositeIDInput - a readonly computed ID for the attribute including schema slug and the attribute ID
 type AttributeWithCompositeIDInput struct {
-	TextAttributeSchemasInput                  *TextAttributeSchemasInput
-	LinkAttributeSchemasInput                  *LinkAttributeSchemasInput
-	DateAttributeSchemasInput                  *DateAttributeSchemasInput
-	CountryAttributeSchemasInput               *CountryAttributeSchemasInput
-	BooleanAttributeSchemasInput               *BooleanAttributeSchemasInput
-	SelectAttributeSchemasInput                *SelectAttributeSchemasInput
-	MultiSelectAttributeSchemasInput           *MultiSelectAttributeSchemasInput
-	StatusAttributeSchemasInput                *StatusAttributeSchemasInput
-	SequenceAttributeSchemasInput              *SequenceAttributeSchemasInput
-	RelationAttributeSchemasInput              *RelationAttributeSchemasInput
-	UserRelationAttributeSchemasInput          *UserRelationAttributeSchemasInput
-	SchemasInput                               *SchemasInput
-	PaymentMethodRelationAttributeSchemasInput *PaymentMethodRelationAttributeSchemasInput
-	CurrencyAttributeSchemasInput              *CurrencyAttributeSchemasInput
-	RepeatableAttributeSchemasInput            *RepeatableAttributeSchemasInput
-	TagsAttributeSchemasInput                  *TagsAttributeSchemasInput
-	NumberAttributeSchemasInput                *NumberAttributeSchemasInput
-	ConsentAttributeSchemasInput               *ConsentAttributeSchemasInput
-	InternalAttributeSchemasInput              *InternalAttributeSchemasInput
-	OrderedListAttributeSchemasInput           *OrderedListAttributeSchemasInput
-	FileAttributeSchemasInput                  *FileAttributeSchemasInput
-	ComputedAttributeSchemasInput              *ComputedAttributeSchemasInput
-	PartnerStatusAttributeSchemasInput         *PartnerStatusAttributeSchemasInput
-	InvitationEmailAttributeSchemasInput       *InvitationEmailAttributeSchemasInput
-	AutomationAttributeSchemasInput            *AutomationAttributeSchemasInput
-	InternalUserAttributeSchemasInput          *InternalUserAttributeSchemasInput
-	PurposeAttributeSchemasInput               *PurposeAttributeSchemasInput
-	PartnerOrganisationAttributeSchemasInput   *PartnerOrganisationAttributeSchemasInput
+	TextAttributeSchemasInput                  *TextAttributeSchemasInput                  `queryParam:"inline"`
+	LinkAttributeSchemasInput                  *LinkAttributeSchemasInput                  `queryParam:"inline"`
+	DateAttributeSchemasInput                  *DateAttributeSchemasInput                  `queryParam:"inline"`
+	CountryAttributeSchemasInput               *CountryAttributeSchemasInput               `queryParam:"inline"`
+	BooleanAttributeSchemasInput               *BooleanAttributeSchemasInput               `queryParam:"inline"`
+	SelectAttributeSchemasInput                *SelectAttributeSchemasInput                `queryParam:"inline"`
+	MultiSelectAttributeSchemasInput           *MultiSelectAttributeSchemasInput           `queryParam:"inline"`
+	StatusAttributeSchemasInput                *StatusAttributeSchemasInput                `queryParam:"inline"`
+	SequenceAttributeSchemasInput              *SequenceAttributeSchemasInput              `queryParam:"inline"`
+	RelationAttributeSchemasInput              *RelationAttributeSchemasInput              `queryParam:"inline"`
+	UserRelationAttributeSchemasInput          *UserRelationAttributeSchemasInput          `queryParam:"inline"`
+	SchemasInput                               *SchemasInput                               `queryParam:"inline"`
+	PaymentMethodRelationAttributeSchemasInput *PaymentMethodRelationAttributeSchemasInput `queryParam:"inline"`
+	CurrencyAttributeSchemasInput              *CurrencyAttributeSchemasInput              `queryParam:"inline"`
+	RepeatableAttributeSchemasInput            *RepeatableAttributeSchemasInput            `queryParam:"inline"`
+	TagsAttributeSchemasInput                  *TagsAttributeSchemasInput                  `queryParam:"inline"`
+	NumberAttributeSchemasInput                *NumberAttributeSchemasInput                `queryParam:"inline"`
+	ConsentAttributeSchemasInput               *ConsentAttributeSchemasInput               `queryParam:"inline"`
+	InternalAttributeSchemasInput              *InternalAttributeSchemasInput              `queryParam:"inline"`
+	OrderedListAttributeSchemasInput           *OrderedListAttributeSchemasInput           `queryParam:"inline"`
+	FileAttributeSchemasInput                  *FileAttributeSchemasInput                  `queryParam:"inline"`
+	ComputedAttributeSchemasInput              *ComputedAttributeSchemasInput              `queryParam:"inline"`
+	PartnerStatusAttributeSchemasInput         *PartnerStatusAttributeSchemasInput         `queryParam:"inline"`
+	InvitationEmailAttributeSchemasInput       *InvitationEmailAttributeSchemasInput       `queryParam:"inline"`
+	AutomationAttributeSchemasInput            *AutomationAttributeSchemasInput            `queryParam:"inline"`
+	InternalUserAttributeSchemasInput          *InternalUserAttributeSchemasInput          `queryParam:"inline"`
+	PurposeAttributeSchemasInput               *PurposeAttributeSchemasInput               `queryParam:"inline"`
+	PartnerOrganisationAttributeSchemasInput   *PartnerOrganisationAttributeSchemasInput   `queryParam:"inline"`
 
 	Type AttributeWithCompositeIDInputType
 }

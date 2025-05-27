@@ -44,9 +44,11 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 
 func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassification(resp *shared.TaxonomyClassification) {
 	if resp != nil {
-		r.Manifest = []types.String{}
-		for _, v := range resp.Manifest {
-			r.Manifest = append(r.Manifest, types.StringValue(v))
+		if resp.Manifest != nil {
+			r.Manifest = make([]types.String, 0, len(resp.Manifest))
+			for _, v := range resp.Manifest {
+				r.Manifest = append(r.Manifest, types.StringValue(v))
+			}
 		}
 		if resp.CreatedAt != nil {
 			r.CreatedAt = types.StringValue(resp.CreatedAt.Format(time.RFC3339Nano))
@@ -55,7 +57,7 @@ func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassific
 		}
 		r.ID = types.StringPointerValue(resp.ID)
 		r.Name = types.StringValue(resp.Name)
-		r.Parents = []types.String{}
+		r.Parents = make([]types.String, 0, len(resp.Parents))
 		for _, v := range resp.Parents {
 			r.Parents = append(r.Parents, types.StringValue(v))
 		}

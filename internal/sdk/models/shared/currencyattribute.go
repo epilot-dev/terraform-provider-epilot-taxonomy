@@ -57,7 +57,7 @@ const (
 )
 
 type CurrencyAttributeCurrency struct {
-	CurrencyAttribute1 *CurrencyAttribute1
+	CurrencyAttribute1 *CurrencyAttribute1 `queryParam:"inline"`
 
 	Type CurrencyAttributeCurrencyType
 }

@@ -139,7 +139,7 @@ func (r *TaxonomyClassificationResource) Create(ctx context.Context, req resourc
 
 	taxonomyClassification := data.ToSharedTaxonomyClassificationInput()
 	var classificationSlug string
-	classificationSlug = data.Slug.ValueString()
+	classificationSlug = data.ID.ValueString()
 
 	request := operations.UpdateTaxonomyClassificationRequest{
 		TaxonomyClassification: taxonomyClassification,
@@ -191,7 +191,7 @@ func (r *TaxonomyClassificationResource) Read(ctx context.Context, req resource.
 	}
 
 	var classificationSlug string
-	classificationSlug = data.Slug.ValueString()
+	classificationSlug = data.ID.ValueString()
 
 	request := operations.GetTaxonomyClassificationRequest{
 		ClassificationSlug: classificationSlug,
@@ -242,7 +242,7 @@ func (r *TaxonomyClassificationResource) Update(ctx context.Context, req resourc
 
 	taxonomyClassification := data.ToSharedTaxonomyClassificationInput()
 	var classificationSlug string
-	classificationSlug = data.Slug.ValueString()
+	classificationSlug = data.ID.ValueString()
 
 	request := operations.UpdateTaxonomyClassificationRequest{
 		TaxonomyClassification: taxonomyClassification,
@@ -294,7 +294,7 @@ func (r *TaxonomyClassificationResource) Delete(ctx context.Context, req resourc
 	}
 
 	var classificationSlug string
-	classificationSlug = data.Slug.ValueString()
+	classificationSlug = data.ID.ValueString()
 
 	request := operations.DeleteTaxonomyClassificationRequest{
 		ClassificationSlug: classificationSlug,
@@ -319,5 +319,5 @@ func (r *TaxonomyClassificationResource) Delete(ctx context.Context, req resourc
 }
 
 func (r *TaxonomyClassificationResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("slug"), req.ID)...)
+	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("id"), req.ID)...)
 }

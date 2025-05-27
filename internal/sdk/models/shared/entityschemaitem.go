@@ -79,9 +79,9 @@ const (
 )
 
 type EntitySchemaItemCreateView struct {
-	EntityDefaultCreate *EntityDefaultCreate
-	RedirectEntityView  *RedirectEntityView
-	EntityViewDisabled  *EntityViewDisabled
+	EntityDefaultCreate *EntityDefaultCreate `queryParam:"inline"`
+	RedirectEntityView  *RedirectEntityView  `queryParam:"inline"`
+	EntityViewDisabled  *EntityViewDisabled  `queryParam:"inline"`
 
 	Type EntitySchemaItemCreateViewType
 }
@@ -164,9 +164,9 @@ const (
 )
 
 type EntitySchemaItemEditView struct {
-	EntityDefaultEdit  *EntityDefaultEdit
-	RedirectEntityView *RedirectEntityView
-	EntityViewDisabled *EntityViewDisabled
+	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline"`
 
 	Type EntitySchemaItemEditViewType
 }
@@ -248,8 +248,8 @@ const (
 )
 
 type EntitySchemaItemSummaryAttributes struct {
-	SummaryAttribute *SummaryAttribute
-	Str              *string
+	SummaryAttribute *SummaryAttribute `queryParam:"inline"`
+	Str              *string           `queryParam:"inline"`
 
 	Type EntitySchemaItemSummaryAttributesType
 }
@@ -343,9 +343,9 @@ const (
 )
 
 type EntitySchemaItemSingleView struct {
-	EntityDefaultEdit  *EntityDefaultEdit
-	RedirectEntityView *RedirectEntityView
-	EntityViewDisabled *EntityViewDisabled
+	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline"`
 
 	Type EntitySchemaItemSingleViewType
 }
@@ -428,9 +428,9 @@ const (
 )
 
 type EntitySchemaItemTableView struct {
-	EntityDefaultTable *EntityDefaultTable
-	RedirectEntityView *RedirectEntityView
-	EntityViewDisabled *EntityViewDisabled
+	EntityDefaultTable *EntityDefaultTable `queryParam:"inline"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline"`
 
 	Type EntitySchemaItemTableViewType
 }
