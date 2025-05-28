@@ -137,15 +137,8 @@ func (r *TaxonomyClassificationResource) Create(ctx context.Context, req resourc
 		return
 	}
 
-	taxonomyClassification := data.ToSharedTaxonomyClassificationInput()
-	var classificationSlug string
-	classificationSlug = data.ID.ValueString()
-
-	request := operations.UpdateTaxonomyClassificationRequest{
-		TaxonomyClassification: taxonomyClassification,
-		ClassificationSlug:     classificationSlug,
-	}
-	res, err := r.client.Taxonomy.UpdateTaxonomyClassification(ctx, request)
+	request := data.ToSharedTaxonomyClassificationInput()
+	res, err := r.client.Taxonomy.CreateTaxonomyClassification(ctx, request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {
@@ -157,7 +150,7 @@ func (r *TaxonomyClassificationResource) Create(ctx context.Context, req resourc
 		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res))
 		return
 	}
-	if res.StatusCode != 200 {
+	if res.StatusCode != 201 {
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res.StatusCode), debugResponse(res.RawResponse))
 		return
 	}
