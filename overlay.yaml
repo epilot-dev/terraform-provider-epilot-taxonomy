@@ -22,9 +22,12 @@ actions:
   - target: $["paths"]["/v2/entity/taxonomies/classifications/{classificationSlug}"]["get"]
     update:
       x-speakeasy-entity-operation: TaxonomyClassification#get
+  - target: $["paths"]["/v2/entity/taxonomies/classifications"]["post"]
+    update:
+      x-speakeasy-entity-operation: TaxonomyClassification#create
   - target: $["paths"]["/v2/entity/taxonomies/classifications/{classificationSlug}"]["put"]
     update:
-      x-speakeasy-entity-operation: TaxonomyClassification#create,update
+      x-speakeasy-entity-operation: TaxonomyClassification#update
   - target: $["paths"]["/v2/entity/taxonomies/classifications/{classificationSlug}"]["delete"]
     update:
       x-speakeasy-entity-operation: TaxonomyClassification#delete

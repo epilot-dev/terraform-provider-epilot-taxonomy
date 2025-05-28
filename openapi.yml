@@ -1979,6 +1979,26 @@ paths:
                     items:
                       $ref: "#/components/schemas/TaxonomyClassification"
 
+  /v2/entity/taxonomies/classifications:
+    post:
+      operationId: createTaxonomyClassification
+      summary: createTaxonomyClassification
+      description: |
+        Create a new classification for a taxonomy
+      tags:
+        - Taxonomy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaxonomyClassification"
+      responses:
+        "201":
+          description: Created taxonomy classification
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaxonomyClassification"
   /v2/entity/taxonomies/classifications/{classificationSlug}:
     get:
       operationId: getTaxonomyClassification
