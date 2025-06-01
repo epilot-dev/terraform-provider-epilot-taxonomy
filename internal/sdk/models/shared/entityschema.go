@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
@@ -284,9 +285,49 @@ func (u SummaryAttributes) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type SummaryAttributes: all fields are null")
 }
 
+// ContentDirection - Show attributes in a row or column
+type ContentDirection string
+
+const (
+	ContentDirectionRow    ContentDirection = "row"
+	ContentDirectionColumn ContentDirection = "column"
+)
+
+func (e ContentDirection) ToPointer() *ContentDirection {
+	return &e
+}
+func (e *ContentDirection) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "row":
+		fallthrough
+	case "column":
+		*e = ContentDirection(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ContentDirection: %v", v)
+	}
+}
+
+type EntitySchemaUIConfig struct {
+	// Show attributes in a row or column
+	ContentDirection *ContentDirection `json:"content_direction,omitempty"`
+}
+
+func (o *EntitySchemaUIConfig) GetContentDirection() *ContentDirection {
+	if o == nil {
+		return nil
+	}
+	return o.ContentDirection
+}
+
 type ListItem struct {
-	QuickActions      []EntityAction      `json:"quick_actions,omitempty"`
-	SummaryAttributes []SummaryAttributes `json:"summary_attributes,omitempty"`
+	QuickActions      []EntityAction        `json:"quick_actions,omitempty"`
+	SummaryAttributes []SummaryAttributes   `json:"summary_attributes,omitempty"`
+	UIConfig          *EntitySchemaUIConfig `json:"ui_config,omitempty"`
 }
 
 func (o *ListItem) GetQuickActions() []EntityAction {
@@ -301,6 +342,13 @@ func (o *ListItem) GetSummaryAttributes() []SummaryAttributes {
 		return nil
 	}
 	return o.SummaryAttributes
+}
+
+func (o *ListItem) GetUIConfig() *EntitySchemaUIConfig {
+	if o == nil {
+		return nil
+	}
+	return o.UIConfig
 }
 
 type Sharing struct {
@@ -544,7 +592,10 @@ type EntitySchema struct {
 	// Reference to blueprint
 	Blueprint    *string                 `json:"blueprint,omitempty"`
 	Capabilities []EntityCapabilityInput `json:"capabilities"`
+	Category     *string                 `json:"category,omitempty"`
+	Description  *string                 `json:"description,omitempty"`
 	DialogConfig map[string]any          `json:"dialog_config,omitempty"`
+	DocsURL      *string                 `json:"docs_url,omitempty"`
 	Draft        *bool                   `json:"draft,omitempty"`
 	// This schema should only be active when one of the organization settings is enabled
 	EnableSetting []string `json:"enable_setting,omitempty"`
@@ -602,11 +653,32 @@ func (o *EntitySchema) GetCapabilities() []EntityCapabilityInput {
 	return o.Capabilities
 }
 
+func (o *EntitySchema) GetCategory() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Category
+}
+
+func (o *EntitySchema) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
 func (o *EntitySchema) GetDialogConfig() map[string]any {
 	if o == nil {
 		return nil
 	}
 	return o.DialogConfig
+}
+
+func (o *EntitySchema) GetDocsURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DocsURL
 }
 
 func (o *EntitySchema) GetDraft() *bool {

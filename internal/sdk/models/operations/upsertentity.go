@@ -43,6 +43,8 @@ type UpsertEntityRequest struct {
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
 	// Strict mode = return 409 if more than one entity is matched
 	Strict *bool `default:"false" queryParam:"style=form,explode=true,name=strict"`
+	// When true, enables entity validation against the entity schema.
+	Validate *bool `default:"false" queryParam:"style=form,explode=true,name=validate"`
 }
 
 func (u UpsertEntityRequest) MarshalJSON() ([]byte, error) {
@@ -105,11 +107,20 @@ func (o *UpsertEntityRequest) GetStrict() *bool {
 	return o.Strict
 }
 
+func (o *UpsertEntityRequest) GetValidate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Validate
+}
+
 type UpsertEntityResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Entity was updated
 	EntityItem *shared.EntityItem
+	// Entity validation error when `?validate=true`
+	EntityValidationV2ResultError *shared.EntityValidationV2ResultError
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
@@ -128,6 +139,13 @@ func (o *UpsertEntityResponse) GetEntityItem() *shared.EntityItem {
 		return nil
 	}
 	return o.EntityItem
+}
+
+func (o *UpsertEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
+	if o == nil {
+		return nil
+	}
+	return o.EntityValidationV2ResultError
 }
 
 func (o *UpsertEntityResponse) GetStatusCode() int {

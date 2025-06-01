@@ -3,6 +3,7 @@
 package operations
 
 import (
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"net/http"
 )
@@ -13,9 +14,20 @@ type DeleteEntityRequest struct {
 	// Entity id
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 	// Permanently deletes the entity when set to `true`
-	Purge *bool `queryParam:"style=form,explode=true,name=purge"`
+	Purge *bool `default:"false" queryParam:"style=form,explode=true,name=purge"`
 	// Entity Type
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
+}
+
+func (d DeleteEntityRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteEntityRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DeleteEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {

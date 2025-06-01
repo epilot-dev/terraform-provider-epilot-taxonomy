@@ -101,7 +101,8 @@ type LinkAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -129,15 +130,17 @@ type LinkAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool              `default:"true" json:"sortable"`
-	Type           *LinkAttributeType `json:"type,omitempty"`
-	ValueFormatter *string            `json:"value_formatter,omitempty"`
+	Sortable       *bool             `default:"true" json:"sortable"`
+	Type           LinkAttributeType `json:"type"`
+	ValueFormatter *string           `json:"value_formatter,omitempty"`
 }
 
 func (l LinkAttribute) MarshalJSON() ([]byte, error) {
@@ -205,6 +208,13 @@ func (o *LinkAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *LinkAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *LinkAttribute) GetHidden() *bool {
@@ -305,6 +315,13 @@ func (o *LinkAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *LinkAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *LinkAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -333,9 +350,9 @@ func (o *LinkAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *LinkAttribute) GetType() *LinkAttributeType {
+func (o *LinkAttribute) GetType() LinkAttributeType {
 	if o == nil {
-		return nil
+		return LinkAttributeType("")
 	}
 	return o.Type
 }

@@ -189,7 +189,8 @@ type SelectAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -218,15 +219,17 @@ type SelectAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                `default:"true" json:"sortable"`
-	Type           *SelectAttributeType `json:"type,omitempty"`
-	ValueFormatter *string              `json:"value_formatter,omitempty"`
+	Sortable       *bool               `default:"true" json:"sortable"`
+	Type           SelectAttributeType `json:"type"`
+	ValueFormatter *string             `json:"value_formatter,omitempty"`
 }
 
 func (s SelectAttribute) MarshalJSON() ([]byte, error) {
@@ -301,6 +304,13 @@ func (o *SelectAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *SelectAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *SelectAttribute) GetHidden() *bool {
@@ -408,6 +418,13 @@ func (o *SelectAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *SelectAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *SelectAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -436,9 +453,9 @@ func (o *SelectAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *SelectAttribute) GetType() *SelectAttributeType {
+func (o *SelectAttribute) GetType() SelectAttributeType {
 	if o == nil {
-		return nil
+		return SelectAttributeType("")
 	}
 	return o.Type
 }

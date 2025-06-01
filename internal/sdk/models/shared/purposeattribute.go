@@ -91,6 +91,10 @@ type PurposeAttribute struct {
 	// Manifest ID used to create/update the taxonomy classification
 	Manifest []string `json:"_manifest,omitempty"`
 	Purpose  []string `json:"_purpose,omitempty"`
+	// Archived classification are not visible in the UI
+	Archived *bool `default:"false" json:"archived"`
+	// Color of the classification
+	Color *string `json:"color,omitempty"`
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
@@ -103,7 +107,8 @@ type PurposeAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -131,7 +136,9 @@ type PurposeAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
@@ -139,10 +146,10 @@ type PurposeAttribute struct {
 	// URL-friendly identifier for the classification
 	Slug *string `json:"slug,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                 `default:"true" json:"sortable"`
-	Type           *PurposeAttributeType `json:"type,omitempty"`
-	UpdatedAt      *time.Time            `json:"updated_at,omitempty"`
-	ValueFormatter *string               `json:"value_formatter,omitempty"`
+	Sortable       *bool                `default:"true" json:"sortable"`
+	Type           PurposeAttributeType `json:"type"`
+	UpdatedAt      *time.Time           `json:"updated_at,omitempty"`
+	ValueFormatter *string              `json:"value_formatter,omitempty"`
 }
 
 func (p PurposeAttribute) MarshalJSON() ([]byte, error) {
@@ -168,6 +175,20 @@ func (o *PurposeAttribute) GetPurpose() []string {
 		return nil
 	}
 	return o.Purpose
+}
+
+func (o *PurposeAttribute) GetArchived() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Archived
+}
+
+func (o *PurposeAttribute) GetColor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Color
 }
 
 func (o *PurposeAttribute) GetConstraints() *PurposeAttributeConstraints {
@@ -217,6 +238,13 @@ func (o *PurposeAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *PurposeAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *PurposeAttribute) GetHidden() *bool {
@@ -324,6 +352,13 @@ func (o *PurposeAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PurposeAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PurposeAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -359,9 +394,9 @@ func (o *PurposeAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PurposeAttribute) GetType() *PurposeAttributeType {
+func (o *PurposeAttribute) GetType() PurposeAttributeType {
 	if o == nil {
-		return nil
+		return PurposeAttributeType("")
 	}
 	return o.Type
 }
@@ -385,10 +420,15 @@ type PurposeAttributeInput struct {
 	// Manifest ID used to create/update the taxonomy classification
 	Manifest []string `json:"_manifest,omitempty"`
 	Purpose  []string `json:"_purpose,omitempty"`
+	// Archived classification are not visible in the UI
+	Archived *bool `default:"false" json:"archived"`
+	// Color of the classification
+	Color *string `json:"color,omitempty"`
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
 	Constraints  *PurposeAttributeConstraints `json:"constraints,omitempty"`
+	CreatedAt    *time.Time                   `json:"created_at,omitempty"`
 	DefaultValue any                          `json:"default_value,omitempty"`
 	Deprecated   *bool                        `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
@@ -396,7 +436,8 @@ type PurposeAttributeInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -405,7 +446,6 @@ type PurposeAttributeInput struct {
 	// The value must be a valid @epilot/base-elements Icon name
 	//
 	Icon *string `json:"icon,omitempty"`
-	ID   *string `json:"id,omitempty"`
 	// A set of configurations meant to document and assist the user in filling the attribute.
 	InfoHelpers *PurposeAttributeInfoHelpers `json:"info_helpers,omitempty"`
 	Label       string                       `json:"label"`
@@ -424,7 +464,9 @@ type PurposeAttributeInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
@@ -432,9 +474,10 @@ type PurposeAttributeInput struct {
 	// URL-friendly identifier for the classification
 	Slug *string `json:"slug,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                 `default:"true" json:"sortable"`
-	Type           *PurposeAttributeType `json:"type,omitempty"`
-	ValueFormatter *string               `json:"value_formatter,omitempty"`
+	Sortable       *bool                `default:"true" json:"sortable"`
+	Type           PurposeAttributeType `json:"type"`
+	UpdatedAt      *time.Time           `json:"updated_at,omitempty"`
+	ValueFormatter *string              `json:"value_formatter,omitempty"`
 }
 
 func (p PurposeAttributeInput) MarshalJSON() ([]byte, error) {
@@ -462,11 +505,32 @@ func (o *PurposeAttributeInput) GetPurpose() []string {
 	return o.Purpose
 }
 
+func (o *PurposeAttributeInput) GetArchived() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Archived
+}
+
+func (o *PurposeAttributeInput) GetColor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Color
+}
+
 func (o *PurposeAttributeInput) GetConstraints() *PurposeAttributeConstraints {
 	if o == nil {
 		return nil
 	}
 	return o.Constraints
+}
+
+func (o *PurposeAttributeInput) GetCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
 }
 
 func (o *PurposeAttributeInput) GetDefaultValue() any {
@@ -504,6 +568,13 @@ func (o *PurposeAttributeInput) GetGroup() *string {
 	return o.Group
 }
 
+func (o *PurposeAttributeInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
 func (o *PurposeAttributeInput) GetHidden() *bool {
 	if o == nil {
 		return nil
@@ -523,13 +594,6 @@ func (o *PurposeAttributeInput) GetIcon() *string {
 		return nil
 	}
 	return o.Icon
-}
-
-func (o *PurposeAttributeInput) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
 }
 
 func (o *PurposeAttributeInput) GetInfoHelpers() *PurposeAttributeInfoHelpers {
@@ -609,6 +673,13 @@ func (o *PurposeAttributeInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PurposeAttributeInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PurposeAttributeInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -644,11 +715,18 @@ func (o *PurposeAttributeInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PurposeAttributeInput) GetType() *PurposeAttributeType {
+func (o *PurposeAttributeInput) GetType() PurposeAttributeType {
+	if o == nil {
+		return PurposeAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *PurposeAttributeInput) GetUpdatedAt() *time.Time {
 	if o == nil {
 		return nil
 	}
-	return o.Type
+	return o.UpdatedAt
 }
 
 func (o *PurposeAttributeInput) GetValueFormatter() *string {
