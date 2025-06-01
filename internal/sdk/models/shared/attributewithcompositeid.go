@@ -10,6 +10,1498 @@ import (
 	"time"
 )
 
+// SchemasPriceComponentAttributeConstraints - A set of constraints applicable to the attribute.
+// These constraints should and will be enforced by the attribute renderer.
+type SchemasPriceComponentAttributeConstraints struct {
+}
+
+// SchemasPriceComponentAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
+type SchemasPriceComponentAttributeInfoHelpers struct {
+	// The name of the custom component to be used as the hint helper.
+	// The component should be registered in the `@epilot360/entity-ui` on the index of the components directory.
+	// When specified it overrides the `hint_text` or `hint_text_key` configuration.
+	//
+	HintCustomComponent *string `json:"hint_custom_component,omitempty"`
+	// The text to be displayed in the attribute hint helper.
+	// When specified it overrides the `hint_text_key` configuration.
+	//
+	HintText *string `json:"hint_text,omitempty"`
+	// The key of the hint text to be displayed in the attribute hint helper.
+	// The key should be a valid i18n key.
+	//
+	HintTextKey *string `json:"hint_text_key,omitempty"`
+	// The placement of the hint tooltip.
+	// The value should be a valid `@mui/core` tooltip placement.
+	//
+	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (o *SchemasPriceComponentAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintCustomComponent
+}
+
+func (o *SchemasPriceComponentAttributeInfoHelpers) GetHintText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintText
+}
+
+func (o *SchemasPriceComponentAttributeInfoHelpers) GetHintTextKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTextKey
+}
+
+func (o *SchemasPriceComponentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTooltipPlacement
+}
+
+type SchemasPriceComponentAttributeType string
+
+const (
+	SchemasPriceComponentAttributeTypePriceComponent SchemasPriceComponentAttributeType = "price_component"
+)
+
+func (e SchemasPriceComponentAttributeType) ToPointer() *SchemasPriceComponentAttributeType {
+	return &e
+}
+func (e *SchemasPriceComponentAttributeType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "price_component":
+		*e = SchemasPriceComponentAttributeType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemasPriceComponentAttributeType: %v", v)
+	}
+}
+
+// PriceComponentAttributeSchemas - Price component
+type PriceComponentAttributeSchemas struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest    []string `json:"_manifest,omitempty"`
+	Purpose     []string `json:"_purpose,omitempty"`
+	CompositeID *string  `json:"composite_id,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasPriceComponentAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                                        `json:"default_value,omitempty"`
+	Deprecated   *bool                                      `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasPriceComponentAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                                     `json:"label"`
+	Layout      *string                                    `json:"layout,omitempty"`
+	Name        string                                     `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                              `default:"true" json:"sortable"`
+	Type           SchemasPriceComponentAttributeType `json:"type"`
+	ValueFormatter *string                            `json:"value_formatter,omitempty"`
+}
+
+func (p PriceComponentAttributeSchemas) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PriceComponentAttributeSchemas) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PriceComponentAttributeSchemas) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *PriceComponentAttributeSchemas) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *PriceComponentAttributeSchemas) GetCompositeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CompositeID
+}
+
+func (o *PriceComponentAttributeSchemas) GetConstraints() *SchemasPriceComponentAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *PriceComponentAttributeSchemas) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *PriceComponentAttributeSchemas) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *PriceComponentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *PriceComponentAttributeSchemas) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *PriceComponentAttributeSchemas) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *PriceComponentAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *PriceComponentAttributeSchemas) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *PriceComponentAttributeSchemas) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *PriceComponentAttributeSchemas) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *PriceComponentAttributeSchemas) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PriceComponentAttributeSchemas) GetInfoHelpers() *SchemasPriceComponentAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *PriceComponentAttributeSchemas) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *PriceComponentAttributeSchemas) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *PriceComponentAttributeSchemas) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PriceComponentAttributeSchemas) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *PriceComponentAttributeSchemas) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *PriceComponentAttributeSchemas) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *PriceComponentAttributeSchemas) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *PriceComponentAttributeSchemas) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *PriceComponentAttributeSchemas) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *PriceComponentAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *PriceComponentAttributeSchemas) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *PriceComponentAttributeSchemas) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *PriceComponentAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *PriceComponentAttributeSchemas) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *PriceComponentAttributeSchemas) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *PriceComponentAttributeSchemas) GetType() SchemasPriceComponentAttributeType {
+	if o == nil {
+		return SchemasPriceComponentAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *PriceComponentAttributeSchemas) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// SchemasPaymentAttributeConstraints - A set of constraints applicable to the attribute.
+// These constraints should and will be enforced by the attribute renderer.
+type SchemasPaymentAttributeConstraints struct {
+}
+
+// SchemasPaymentAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
+type SchemasPaymentAttributeInfoHelpers struct {
+	// The name of the custom component to be used as the hint helper.
+	// The component should be registered in the `@epilot360/entity-ui` on the index of the components directory.
+	// When specified it overrides the `hint_text` or `hint_text_key` configuration.
+	//
+	HintCustomComponent *string `json:"hint_custom_component,omitempty"`
+	// The text to be displayed in the attribute hint helper.
+	// When specified it overrides the `hint_text_key` configuration.
+	//
+	HintText *string `json:"hint_text,omitempty"`
+	// The key of the hint text to be displayed in the attribute hint helper.
+	// The key should be a valid i18n key.
+	//
+	HintTextKey *string `json:"hint_text_key,omitempty"`
+	// The placement of the hint tooltip.
+	// The value should be a valid `@mui/core` tooltip placement.
+	//
+	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (o *SchemasPaymentAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintCustomComponent
+}
+
+func (o *SchemasPaymentAttributeInfoHelpers) GetHintText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintText
+}
+
+func (o *SchemasPaymentAttributeInfoHelpers) GetHintTextKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTextKey
+}
+
+func (o *SchemasPaymentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTooltipPlacement
+}
+
+type SchemasPaymentAttributeType string
+
+const (
+	SchemasPaymentAttributeTypePayment SchemasPaymentAttributeType = "payment"
+)
+
+func (e SchemasPaymentAttributeType) ToPointer() *SchemasPaymentAttributeType {
+	return &e
+}
+func (e *SchemasPaymentAttributeType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "payment":
+		*e = SchemasPaymentAttributeType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemasPaymentAttributeType: %v", v)
+	}
+}
+
+// PaymentAttributeSchemas - Payment method
+type PaymentAttributeSchemas struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest    []string `json:"_manifest,omitempty"`
+	Purpose     []string `json:"_purpose,omitempty"`
+	CompositeID *string  `json:"composite_id,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasPaymentAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                                 `json:"default_value,omitempty"`
+	Deprecated   *bool                               `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasPaymentAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                              `json:"label"`
+	Layout      *string                             `json:"layout,omitempty"`
+	Name        string                              `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                       `default:"true" json:"sortable"`
+	Type           SchemasPaymentAttributeType `json:"type"`
+	ValueFormatter *string                     `json:"value_formatter,omitempty"`
+}
+
+func (p PaymentAttributeSchemas) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PaymentAttributeSchemas) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PaymentAttributeSchemas) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *PaymentAttributeSchemas) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *PaymentAttributeSchemas) GetCompositeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CompositeID
+}
+
+func (o *PaymentAttributeSchemas) GetConstraints() *SchemasPaymentAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *PaymentAttributeSchemas) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *PaymentAttributeSchemas) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *PaymentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *PaymentAttributeSchemas) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *PaymentAttributeSchemas) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *PaymentAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *PaymentAttributeSchemas) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *PaymentAttributeSchemas) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *PaymentAttributeSchemas) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *PaymentAttributeSchemas) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PaymentAttributeSchemas) GetInfoHelpers() *SchemasPaymentAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *PaymentAttributeSchemas) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *PaymentAttributeSchemas) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *PaymentAttributeSchemas) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PaymentAttributeSchemas) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *PaymentAttributeSchemas) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *PaymentAttributeSchemas) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *PaymentAttributeSchemas) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *PaymentAttributeSchemas) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *PaymentAttributeSchemas) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *PaymentAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *PaymentAttributeSchemas) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *PaymentAttributeSchemas) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *PaymentAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *PaymentAttributeSchemas) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *PaymentAttributeSchemas) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *PaymentAttributeSchemas) GetType() SchemasPaymentAttributeType {
+	if o == nil {
+		return SchemasPaymentAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *PaymentAttributeSchemas) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// SchemasEmailAttributeConstraints - A set of constraints applicable to the attribute.
+// These constraints should and will be enforced by the attribute renderer.
+type SchemasEmailAttributeConstraints struct {
+}
+
+// SchemasEmailAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
+type SchemasEmailAttributeInfoHelpers struct {
+	// The name of the custom component to be used as the hint helper.
+	// The component should be registered in the `@epilot360/entity-ui` on the index of the components directory.
+	// When specified it overrides the `hint_text` or `hint_text_key` configuration.
+	//
+	HintCustomComponent *string `json:"hint_custom_component,omitempty"`
+	// The text to be displayed in the attribute hint helper.
+	// When specified it overrides the `hint_text_key` configuration.
+	//
+	HintText *string `json:"hint_text,omitempty"`
+	// The key of the hint text to be displayed in the attribute hint helper.
+	// The key should be a valid i18n key.
+	//
+	HintTextKey *string `json:"hint_text_key,omitempty"`
+	// The placement of the hint tooltip.
+	// The value should be a valid `@mui/core` tooltip placement.
+	//
+	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (o *SchemasEmailAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintCustomComponent
+}
+
+func (o *SchemasEmailAttributeInfoHelpers) GetHintText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintText
+}
+
+func (o *SchemasEmailAttributeInfoHelpers) GetHintTextKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTextKey
+}
+
+func (o *SchemasEmailAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTooltipPlacement
+}
+
+type SchemasEmailAttributeType string
+
+const (
+	SchemasEmailAttributeTypeEmail SchemasEmailAttributeType = "email"
+)
+
+func (e SchemasEmailAttributeType) ToPointer() *SchemasEmailAttributeType {
+	return &e
+}
+func (e *SchemasEmailAttributeType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "email":
+		*e = SchemasEmailAttributeType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemasEmailAttributeType: %v", v)
+	}
+}
+
+// EmailAttributeSchemas - Email address
+type EmailAttributeSchemas struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest    []string `json:"_manifest,omitempty"`
+	Purpose     []string `json:"_purpose,omitempty"`
+	CompositeID *string  `json:"composite_id,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasEmailAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                               `json:"default_value,omitempty"`
+	Deprecated   *bool                             `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasEmailAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                            `json:"label"`
+	Layout      *string                           `json:"layout,omitempty"`
+	Name        string                            `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                     `default:"true" json:"sortable"`
+	Type           SchemasEmailAttributeType `json:"type"`
+	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+}
+
+func (e EmailAttributeSchemas) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EmailAttributeSchemas) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EmailAttributeSchemas) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *EmailAttributeSchemas) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *EmailAttributeSchemas) GetCompositeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CompositeID
+}
+
+func (o *EmailAttributeSchemas) GetConstraints() *SchemasEmailAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *EmailAttributeSchemas) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *EmailAttributeSchemas) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *EmailAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *EmailAttributeSchemas) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *EmailAttributeSchemas) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *EmailAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *EmailAttributeSchemas) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *EmailAttributeSchemas) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *EmailAttributeSchemas) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *EmailAttributeSchemas) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *EmailAttributeSchemas) GetInfoHelpers() *SchemasEmailAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *EmailAttributeSchemas) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *EmailAttributeSchemas) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *EmailAttributeSchemas) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *EmailAttributeSchemas) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *EmailAttributeSchemas) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *EmailAttributeSchemas) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *EmailAttributeSchemas) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *EmailAttributeSchemas) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *EmailAttributeSchemas) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *EmailAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *EmailAttributeSchemas) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *EmailAttributeSchemas) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *EmailAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *EmailAttributeSchemas) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *EmailAttributeSchemas) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *EmailAttributeSchemas) GetType() SchemasEmailAttributeType {
+	if o == nil {
+		return SchemasEmailAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *EmailAttributeSchemas) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// SchemasPhoneAttributeConstraints - A set of constraints applicable to the attribute.
+// These constraints should and will be enforced by the attribute renderer.
+type SchemasPhoneAttributeConstraints struct {
+}
+
+// SchemasPhoneAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
+type SchemasPhoneAttributeInfoHelpers struct {
+	// The name of the custom component to be used as the hint helper.
+	// The component should be registered in the `@epilot360/entity-ui` on the index of the components directory.
+	// When specified it overrides the `hint_text` or `hint_text_key` configuration.
+	//
+	HintCustomComponent *string `json:"hint_custom_component,omitempty"`
+	// The text to be displayed in the attribute hint helper.
+	// When specified it overrides the `hint_text_key` configuration.
+	//
+	HintText *string `json:"hint_text,omitempty"`
+	// The key of the hint text to be displayed in the attribute hint helper.
+	// The key should be a valid i18n key.
+	//
+	HintTextKey *string `json:"hint_text_key,omitempty"`
+	// The placement of the hint tooltip.
+	// The value should be a valid `@mui/core` tooltip placement.
+	//
+	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (o *SchemasPhoneAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintCustomComponent
+}
+
+func (o *SchemasPhoneAttributeInfoHelpers) GetHintText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintText
+}
+
+func (o *SchemasPhoneAttributeInfoHelpers) GetHintTextKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTextKey
+}
+
+func (o *SchemasPhoneAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTooltipPlacement
+}
+
+type SchemasPhoneAttributeType string
+
+const (
+	SchemasPhoneAttributeTypePhone SchemasPhoneAttributeType = "phone"
+)
+
+func (e SchemasPhoneAttributeType) ToPointer() *SchemasPhoneAttributeType {
+	return &e
+}
+func (e *SchemasPhoneAttributeType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "phone":
+		*e = SchemasPhoneAttributeType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemasPhoneAttributeType: %v", v)
+	}
+}
+
+// PhoneAttributeSchemas - Phone number
+type PhoneAttributeSchemas struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest    []string `json:"_manifest,omitempty"`
+	Purpose     []string `json:"_purpose,omitempty"`
+	CompositeID *string  `json:"composite_id,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasPhoneAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                               `json:"default_value,omitempty"`
+	Deprecated   *bool                             `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasPhoneAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                            `json:"label"`
+	Layout      *string                           `json:"layout,omitempty"`
+	Name        string                            `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                     `default:"true" json:"sortable"`
+	Type           SchemasPhoneAttributeType `json:"type"`
+	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+}
+
+func (p PhoneAttributeSchemas) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PhoneAttributeSchemas) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PhoneAttributeSchemas) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *PhoneAttributeSchemas) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *PhoneAttributeSchemas) GetCompositeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CompositeID
+}
+
+func (o *PhoneAttributeSchemas) GetConstraints() *SchemasPhoneAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *PhoneAttributeSchemas) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *PhoneAttributeSchemas) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *PhoneAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *PhoneAttributeSchemas) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *PhoneAttributeSchemas) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *PhoneAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *PhoneAttributeSchemas) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *PhoneAttributeSchemas) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *PhoneAttributeSchemas) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *PhoneAttributeSchemas) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PhoneAttributeSchemas) GetInfoHelpers() *SchemasPhoneAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *PhoneAttributeSchemas) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *PhoneAttributeSchemas) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *PhoneAttributeSchemas) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PhoneAttributeSchemas) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *PhoneAttributeSchemas) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *PhoneAttributeSchemas) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *PhoneAttributeSchemas) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *PhoneAttributeSchemas) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *PhoneAttributeSchemas) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *PhoneAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *PhoneAttributeSchemas) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *PhoneAttributeSchemas) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *PhoneAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *PhoneAttributeSchemas) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *PhoneAttributeSchemas) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *PhoneAttributeSchemas) GetType() SchemasPhoneAttributeType {
+	if o == nil {
+		return SchemasPhoneAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *PhoneAttributeSchemas) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
 // SchemasPartnerOrganisationAttributeConstraints - A set of constraints applicable to the attribute.
 // These constraints should and will be enforced by the attribute renderer.
 type SchemasPartnerOrganisationAttributeConstraints struct {
@@ -104,7 +1596,8 @@ type PartnerOrganisationAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -132,7 +1625,9 @@ type PartnerOrganisationAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -140,9 +1635,9 @@ type PartnerOrganisationAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                                    `default:"true" json:"sortable"`
-	Type           *SchemasPartnerOrganisationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                                  `json:"value_formatter,omitempty"`
+	Sortable       *bool                                   `default:"true" json:"sortable"`
+	Type           SchemasPartnerOrganisationAttributeType `json:"type"`
+	ValueFormatter *string                                 `json:"value_formatter,omitempty"`
 }
 
 func (p PartnerOrganisationAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -217,6 +1712,13 @@ func (o *PartnerOrganisationAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *PartnerOrganisationAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *PartnerOrganisationAttributeSchemas) GetHidden() *bool {
@@ -317,6 +1819,13 @@ func (o *PartnerOrganisationAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PartnerOrganisationAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PartnerOrganisationAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -352,9 +1861,9 @@ func (o *PartnerOrganisationAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetType() *SchemasPartnerOrganisationAttributeType {
+func (o *PartnerOrganisationAttributeSchemas) GetType() SchemasPartnerOrganisationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasPartnerOrganisationAttributeType("")
 	}
 	return o.Type
 }
@@ -446,9 +1955,13 @@ func (e *SchemasPurposeAttributeType) UnmarshalJSON(data []byte) error {
 // PurposeAttributeSchemas - Entity Taxonomy
 type PurposeAttributeSchemas struct {
 	// Manifest ID used to create/update the taxonomy classification
-	Manifest    []string `json:"_manifest,omitempty"`
-	Purpose     []string `json:"_purpose,omitempty"`
-	CompositeID *string  `json:"composite_id,omitempty"`
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// Archived classification are not visible in the UI
+	Archived *bool `default:"false" json:"archived"`
+	// Color of the classification
+	Color       *string `json:"color,omitempty"`
+	CompositeID *string `json:"composite_id,omitempty"`
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
@@ -461,7 +1974,8 @@ type PurposeAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -489,7 +2003,9 @@ type PurposeAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -499,10 +2015,10 @@ type PurposeAttributeSchemas struct {
 	// URL-friendly identifier for the classification
 	Slug *string `json:"slug,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                        `default:"true" json:"sortable"`
-	Type           *SchemasPurposeAttributeType `json:"type,omitempty"`
-	UpdatedAt      *time.Time                   `json:"updated_at,omitempty"`
-	ValueFormatter *string                      `json:"value_formatter,omitempty"`
+	Sortable       *bool                       `default:"true" json:"sortable"`
+	Type           SchemasPurposeAttributeType `json:"type"`
+	UpdatedAt      *time.Time                  `json:"updated_at,omitempty"`
+	ValueFormatter *string                     `json:"value_formatter,omitempty"`
 }
 
 func (p PurposeAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -528,6 +2044,20 @@ func (o *PurposeAttributeSchemas) GetPurpose() []string {
 		return nil
 	}
 	return o.Purpose
+}
+
+func (o *PurposeAttributeSchemas) GetArchived() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Archived
+}
+
+func (o *PurposeAttributeSchemas) GetColor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Color
 }
 
 func (o *PurposeAttributeSchemas) GetCompositeID() *string {
@@ -584,6 +2114,13 @@ func (o *PurposeAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *PurposeAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *PurposeAttributeSchemas) GetHidden() *bool {
@@ -691,6 +2228,13 @@ func (o *PurposeAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PurposeAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PurposeAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -733,9 +2277,9 @@ func (o *PurposeAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PurposeAttributeSchemas) GetType() *SchemasPurposeAttributeType {
+func (o *PurposeAttributeSchemas) GetType() SchemasPurposeAttributeType {
 	if o == nil {
-		return nil
+		return SchemasPurposeAttributeType("")
 	}
 	return o.Type
 }
@@ -848,7 +2392,8 @@ type InternalUserAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -876,7 +2421,9 @@ type InternalUserAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -884,9 +2431,9 @@ type InternalUserAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                             `default:"true" json:"sortable"`
-	Type           *SchemasInternalUserAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                           `json:"value_formatter,omitempty"`
+	Sortable       *bool                            `default:"true" json:"sortable"`
+	Type           SchemasInternalUserAttributeType `json:"type"`
+	ValueFormatter *string                          `json:"value_formatter,omitempty"`
 }
 
 func (i InternalUserAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -961,6 +2508,13 @@ func (o *InternalUserAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *InternalUserAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *InternalUserAttributeSchemas) GetHidden() *bool {
@@ -1061,6 +2615,13 @@ func (o *InternalUserAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *InternalUserAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *InternalUserAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -1096,9 +2657,9 @@ func (o *InternalUserAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *InternalUserAttributeSchemas) GetType() *SchemasInternalUserAttributeType {
+func (o *InternalUserAttributeSchemas) GetType() SchemasInternalUserAttributeType {
 	if o == nil {
-		return nil
+		return SchemasInternalUserAttributeType("")
 	}
 	return o.Type
 }
@@ -1110,13 +2671,13 @@ func (o *InternalUserAttributeSchemas) GetValueFormatter() *string {
 	return o.ValueFormatter
 }
 
-// SchemasConstraints - A set of constraints applicable to the attribute.
+// SchemasAutomationAttributeConstraints - A set of constraints applicable to the attribute.
 // These constraints should and will be enforced by the attribute renderer.
-type SchemasConstraints struct {
+type SchemasAutomationAttributeConstraints struct {
 }
 
-// SchemasInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
-type SchemasInfoHelpers struct {
+// SchemasAutomationAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
+type SchemasAutomationAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
 	// The component should be registered in the `@epilot360/entity-ui` on the index of the components directory.
 	// When specified it overrides the `hint_text` or `hint_text_key` configuration.
@@ -1136,54 +2697,54 @@ type SchemasInfoHelpers struct {
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
 }
 
-func (o *SchemasInfoHelpers) GetHintCustomComponent() *string {
+func (o *SchemasAutomationAttributeInfoHelpers) GetHintCustomComponent() *string {
 	if o == nil {
 		return nil
 	}
 	return o.HintCustomComponent
 }
 
-func (o *SchemasInfoHelpers) GetHintText() *string {
+func (o *SchemasAutomationAttributeInfoHelpers) GetHintText() *string {
 	if o == nil {
 		return nil
 	}
 	return o.HintText
 }
 
-func (o *SchemasInfoHelpers) GetHintTextKey() *string {
+func (o *SchemasAutomationAttributeInfoHelpers) GetHintTextKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.HintTextKey
 }
 
-func (o *SchemasInfoHelpers) GetHintTooltipPlacement() *string {
+func (o *SchemasAutomationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
 	if o == nil {
 		return nil
 	}
 	return o.HintTooltipPlacement
 }
 
-type SchemasType string
+type SchemasAutomationAttributeType string
 
 const (
-	SchemasTypeAutomation SchemasType = "automation"
+	SchemasAutomationAttributeTypeAutomation SchemasAutomationAttributeType = "automation"
 )
 
-func (e SchemasType) ToPointer() *SchemasType {
+func (e SchemasAutomationAttributeType) ToPointer() *SchemasAutomationAttributeType {
 	return &e
 }
-func (e *SchemasType) UnmarshalJSON(data []byte) error {
+func (e *SchemasAutomationAttributeType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "automation":
-		*e = SchemasType(v)
+		*e = SchemasAutomationAttributeType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SchemasType: %v", v)
+		return fmt.Errorf("invalid value for SchemasAutomationAttributeType: %v", v)
 	}
 }
 
@@ -1196,15 +2757,16 @@ type AutomationAttributeSchemas struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *SchemasConstraints `json:"constraints,omitempty"`
-	DefaultValue any                 `json:"default_value,omitempty"`
-	Deprecated   *bool               `default:"false" json:"deprecated"`
+	Constraints  *SchemasAutomationAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                                    `json:"default_value,omitempty"`
+	Deprecated   *bool                                  `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -1216,10 +2778,10 @@ type AutomationAttributeSchemas struct {
 	// ID for the entity attribute
 	ID *string `json:"id,omitempty"`
 	// A set of configurations meant to document and assist the user in filling the attribute.
-	InfoHelpers *SchemasInfoHelpers `json:"info_helpers,omitempty"`
-	Label       string              `json:"label"`
-	Layout      *string             `json:"layout,omitempty"`
-	Name        string              `json:"name"`
+	InfoHelpers *SchemasAutomationAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                                 `json:"label"`
+	Layout      *string                                `json:"layout,omitempty"`
+	Name        string                                 `json:"name"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -1232,7 +2794,9 @@ type AutomationAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -1240,9 +2804,9 @@ type AutomationAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool        `default:"true" json:"sortable"`
-	Type           *SchemasType `json:"type,omitempty"`
-	ValueFormatter *string      `json:"value_formatter,omitempty"`
+	Sortable       *bool                          `default:"true" json:"sortable"`
+	Type           SchemasAutomationAttributeType `json:"type"`
+	ValueFormatter *string                        `json:"value_formatter,omitempty"`
 }
 
 func (a AutomationAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -1277,7 +2841,7 @@ func (o *AutomationAttributeSchemas) GetCompositeID() *string {
 	return o.CompositeID
 }
 
-func (o *AutomationAttributeSchemas) GetConstraints() *SchemasConstraints {
+func (o *AutomationAttributeSchemas) GetConstraints() *SchemasAutomationAttributeConstraints {
 	if o == nil {
 		return nil
 	}
@@ -1319,6 +2883,13 @@ func (o *AutomationAttributeSchemas) GetGroup() *string {
 	return o.Group
 }
 
+func (o *AutomationAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
 func (o *AutomationAttributeSchemas) GetHidden() *bool {
 	if o == nil {
 		return nil
@@ -1347,7 +2918,7 @@ func (o *AutomationAttributeSchemas) GetID() *string {
 	return o.ID
 }
 
-func (o *AutomationAttributeSchemas) GetInfoHelpers() *SchemasInfoHelpers {
+func (o *AutomationAttributeSchemas) GetInfoHelpers() *SchemasAutomationAttributeInfoHelpers {
 	if o == nil {
 		return nil
 	}
@@ -1417,6 +2988,13 @@ func (o *AutomationAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *AutomationAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *AutomationAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -1452,9 +3030,9 @@ func (o *AutomationAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *AutomationAttributeSchemas) GetType() *SchemasType {
+func (o *AutomationAttributeSchemas) GetType() SchemasAutomationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasAutomationAttributeType("")
 	}
 	return o.Type
 }
@@ -1560,7 +3138,8 @@ type InvitationEmailAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -1588,7 +3167,9 @@ type InvitationEmailAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -1596,9 +3177,9 @@ type InvitationEmailAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                                `default:"true" json:"sortable"`
-	Type           *SchemasInvitationEmailAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                              `json:"value_formatter,omitempty"`
+	Sortable       *bool                               `default:"true" json:"sortable"`
+	Type           SchemasInvitationEmailAttributeType `json:"type"`
+	ValueFormatter *string                             `json:"value_formatter,omitempty"`
 }
 
 func (i InvitationEmailAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -1673,6 +3254,13 @@ func (o *InvitationEmailAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *InvitationEmailAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *InvitationEmailAttributeSchemas) GetHidden() *bool {
@@ -1773,6 +3361,13 @@ func (o *InvitationEmailAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *InvitationEmailAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *InvitationEmailAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -1808,9 +3403,9 @@ func (o *InvitationEmailAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *InvitationEmailAttributeSchemas) GetType() *SchemasInvitationEmailAttributeType {
+func (o *InvitationEmailAttributeSchemas) GetType() SchemasInvitationEmailAttributeType {
 	if o == nil {
-		return nil
+		return SchemasInvitationEmailAttributeType("")
 	}
 	return o.Type
 }
@@ -1916,7 +3511,8 @@ type PartnerStatusAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -1944,7 +3540,9 @@ type PartnerStatusAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -1952,9 +3550,9 @@ type PartnerStatusAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                              `default:"true" json:"sortable"`
-	Type           *SchemasPartnerStatusAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                            `json:"value_formatter,omitempty"`
+	Sortable       *bool                             `default:"true" json:"sortable"`
+	Type           SchemasPartnerStatusAttributeType `json:"type"`
+	ValueFormatter *string                           `json:"value_formatter,omitempty"`
 }
 
 func (p PartnerStatusAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -2029,6 +3627,13 @@ func (o *PartnerStatusAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *PartnerStatusAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *PartnerStatusAttributeSchemas) GetHidden() *bool {
@@ -2129,6 +3734,13 @@ func (o *PartnerStatusAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PartnerStatusAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PartnerStatusAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -2164,9 +3776,9 @@ func (o *PartnerStatusAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PartnerStatusAttributeSchemas) GetType() *SchemasPartnerStatusAttributeType {
+func (o *PartnerStatusAttributeSchemas) GetType() SchemasPartnerStatusAttributeType {
 	if o == nil {
-		return nil
+		return SchemasPartnerStatusAttributeType("")
 	}
 	return o.Type
 }
@@ -2258,21 +3870,27 @@ func (e *SchemasComputedAttributeType) UnmarshalJSON(data []byte) error {
 // ComputedAttributeSchemas - An attribute that is computed from the entity data. For more details on how to use them, check the docs [here](https://e-pilot.atlassian.net/wiki/spaces/EO/pages/5642977476/How+To+Computed+Schema+Attributes)
 type ComputedAttributeSchemas struct {
 	// Manifest ID used to create/update the schema attribute
-	Manifest    []string `json:"_manifest,omitempty"`
-	Purpose     []string `json:"_purpose,omitempty"`
-	CompositeID *string  `json:"composite_id,omitempty"`
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// A source amount field that is used to compute the value of the attribute
+	AmountField *string `json:"amount_field,omitempty"`
+	CompositeID *string `json:"composite_id,omitempty"`
+	Computed    *bool   `default:"true" json:"computed"`
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *SchemasComputedAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                                  `json:"default_value,omitempty"`
-	Deprecated   *bool                                `default:"false" json:"deprecated"`
+	Constraints *SchemasComputedAttributeConstraints `json:"constraints,omitempty"`
+	// A currency field used to format a computed currency value
+	CurrencyField *string `json:"currency_field,omitempty"`
+	DefaultValue  any     `json:"default_value,omitempty"`
+	Deprecated    *bool   `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -2289,8 +3907,9 @@ type ComputedAttributeSchemas struct {
 	Layout      *string                              `json:"layout,omitempty"`
 	Name        string                               `json:"name"`
 	// Attribute sort order (ascending) in group
-	Order                 *int64  `json:"order,omitempty"`
-	Placeholder           *string `json:"placeholder,omitempty"`
+	Order       *int64  `json:"order,omitempty"`
+	Placeholder *string `json:"placeholder,omitempty"`
+	// Variable template used to format a preview for the computed value
 	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
 	// Setting to `true` prevents the attribute from being modified / deleted
 	Protected *bool `json:"protected,omitempty"`
@@ -2300,7 +3919,9 @@ type ComputedAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -2308,9 +3929,10 @@ type ComputedAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                         `default:"true" json:"sortable"`
-	Type           *SchemasComputedAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                       `json:"value_formatter,omitempty"`
+	Sortable *bool                        `default:"true" json:"sortable"`
+	Type     SchemasComputedAttributeType `json:"type"`
+	// Variable template used to format the computed value
+	ValueFormatter string `json:"value_formatter"`
 }
 
 func (c ComputedAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -2338,6 +3960,13 @@ func (o *ComputedAttributeSchemas) GetPurpose() []string {
 	return o.Purpose
 }
 
+func (o *ComputedAttributeSchemas) GetAmountField() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AmountField
+}
+
 func (o *ComputedAttributeSchemas) GetCompositeID() *string {
 	if o == nil {
 		return nil
@@ -2345,11 +3974,25 @@ func (o *ComputedAttributeSchemas) GetCompositeID() *string {
 	return o.CompositeID
 }
 
+func (o *ComputedAttributeSchemas) GetComputed() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Computed
+}
+
 func (o *ComputedAttributeSchemas) GetConstraints() *SchemasComputedAttributeConstraints {
 	if o == nil {
 		return nil
 	}
 	return o.Constraints
+}
+
+func (o *ComputedAttributeSchemas) GetCurrencyField() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrencyField
 }
 
 func (o *ComputedAttributeSchemas) GetDefaultValue() any {
@@ -2385,6 +4028,13 @@ func (o *ComputedAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *ComputedAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *ComputedAttributeSchemas) GetHidden() *bool {
@@ -2485,6 +4135,13 @@ func (o *ComputedAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *ComputedAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *ComputedAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -2520,16 +4177,16 @@ func (o *ComputedAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *ComputedAttributeSchemas) GetType() *SchemasComputedAttributeType {
+func (o *ComputedAttributeSchemas) GetType() SchemasComputedAttributeType {
 	if o == nil {
-		return nil
+		return SchemasComputedAttributeType("")
 	}
 	return o.Type
 }
 
-func (o *ComputedAttributeSchemas) GetValueFormatter() *string {
+func (o *ComputedAttributeSchemas) GetValueFormatter() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ValueFormatter
 }
@@ -2666,7 +4323,8 @@ type FileAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -2695,7 +4353,9 @@ type FileAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -2810,6 +4470,13 @@ func (o *FileAttributeSchemas) GetGroup() *string {
 	return o.Group
 }
 
+func (o *FileAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
 func (o *FileAttributeSchemas) GetHidden() *bool {
 	if o == nil {
 		return nil
@@ -2913,6 +4580,13 @@ func (o *FileAttributeSchemas) GetRenderCondition() *string {
 		return nil
 	}
 	return o.RenderCondition
+}
+
+func (o *FileAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
 }
 
 func (o *FileAttributeSchemas) GetRequired() *bool {
@@ -3058,7 +4732,8 @@ type OrderedListAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -3086,7 +4761,9 @@ type OrderedListAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -3094,9 +4771,9 @@ type OrderedListAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                            `default:"true" json:"sortable"`
-	Type           *SchemasOrderedListAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                          `json:"value_formatter,omitempty"`
+	Sortable       *bool                           `default:"true" json:"sortable"`
+	Type           SchemasOrderedListAttributeType `json:"type"`
+	ValueFormatter *string                         `json:"value_formatter,omitempty"`
 }
 
 func (o OrderedListAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -3171,6 +4848,13 @@ func (o *OrderedListAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *OrderedListAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *OrderedListAttributeSchemas) GetHidden() *bool {
@@ -3271,6 +4955,13 @@ func (o *OrderedListAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *OrderedListAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *OrderedListAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -3306,9 +4997,9 @@ func (o *OrderedListAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *OrderedListAttributeSchemas) GetType() *SchemasOrderedListAttributeType {
+func (o *OrderedListAttributeSchemas) GetType() SchemasOrderedListAttributeType {
 	if o == nil {
-		return nil
+		return SchemasOrderedListAttributeType("")
 	}
 	return o.Type
 }
@@ -3414,7 +5105,8 @@ type InternalAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -3442,7 +5134,9 @@ type InternalAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -3450,9 +5144,9 @@ type InternalAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                         `default:"true" json:"sortable"`
-	Type           *SchemasInternalAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                       `json:"value_formatter,omitempty"`
+	Sortable       *bool                        `default:"true" json:"sortable"`
+	Type           SchemasInternalAttributeType `json:"type"`
+	ValueFormatter *string                      `json:"value_formatter,omitempty"`
 }
 
 func (i InternalAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -3527,6 +5221,13 @@ func (o *InternalAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *InternalAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *InternalAttributeSchemas) GetHidden() *bool {
@@ -3627,6 +5328,13 @@ func (o *InternalAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *InternalAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *InternalAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -3662,9 +5370,9 @@ func (o *InternalAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *InternalAttributeSchemas) GetType() *SchemasInternalAttributeType {
+func (o *InternalAttributeSchemas) GetType() SchemasInternalAttributeType {
 	if o == nil {
-		return nil
+		return SchemasInternalAttributeType("")
 	}
 	return o.Type
 }
@@ -3770,7 +5478,8 @@ type ConsentAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -3799,7 +5508,9 @@ type ConsentAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -3885,6 +5596,13 @@ func (o *ConsentAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *ConsentAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *ConsentAttributeSchemas) GetHidden() *bool {
@@ -3990,6 +5708,13 @@ func (o *ConsentAttributeSchemas) GetRenderCondition() *string {
 		return nil
 	}
 	return o.RenderCondition
+}
+
+func (o *ConsentAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
 }
 
 func (o *ConsentAttributeSchemas) GetRequired() *bool {
@@ -4143,7 +5868,8 @@ type NumberAttributeSchemas struct {
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	Format      *string `json:"format,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -4171,7 +5897,9 @@ type NumberAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -4181,9 +5909,9 @@ type NumberAttributeSchemas struct {
 	// Whether or not to show a thousands separator
 	ShowSeparator *bool `default:"true" json:"show_separator"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                       `default:"true" json:"sortable"`
-	Type           *SchemasNumberAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                     `json:"value_formatter,omitempty"`
+	Sortable       *bool                      `default:"true" json:"sortable"`
+	Type           SchemasNumberAttributeType `json:"type"`
+	ValueFormatter *string                    `json:"value_formatter,omitempty"`
 }
 
 func (n NumberAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -4265,6 +5993,13 @@ func (o *NumberAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *NumberAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *NumberAttributeSchemas) GetHidden() *bool {
@@ -4365,6 +6100,13 @@ func (o *NumberAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *NumberAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *NumberAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -4407,14 +6149,411 @@ func (o *NumberAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *NumberAttributeSchemas) GetType() *SchemasNumberAttributeType {
+func (o *NumberAttributeSchemas) GetType() SchemasNumberAttributeType {
 	if o == nil {
-		return nil
+		return SchemasNumberAttributeType("")
 	}
 	return o.Type
 }
 
 func (o *NumberAttributeSchemas) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// SchemasMessageEmailAddressAttributeConstraints - A set of constraints applicable to the attribute.
+// These constraints should and will be enforced by the attribute renderer.
+type SchemasMessageEmailAddressAttributeConstraints struct {
+}
+
+// SchemasMessageEmailAddressAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
+type SchemasMessageEmailAddressAttributeInfoHelpers struct {
+	// The name of the custom component to be used as the hint helper.
+	// The component should be registered in the `@epilot360/entity-ui` on the index of the components directory.
+	// When specified it overrides the `hint_text` or `hint_text_key` configuration.
+	//
+	HintCustomComponent *string `json:"hint_custom_component,omitempty"`
+	// The text to be displayed in the attribute hint helper.
+	// When specified it overrides the `hint_text_key` configuration.
+	//
+	HintText *string `json:"hint_text,omitempty"`
+	// The key of the hint text to be displayed in the attribute hint helper.
+	// The key should be a valid i18n key.
+	//
+	HintTextKey *string `json:"hint_text_key,omitempty"`
+	// The placement of the hint tooltip.
+	// The value should be a valid `@mui/core` tooltip placement.
+	//
+	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (o *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintCustomComponent
+}
+
+func (o *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintText
+}
+
+func (o *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintTextKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTextKey
+}
+
+func (o *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTooltipPlacement
+}
+
+type SchemasMessageEmailAddressAttributeType string
+
+const (
+	SchemasMessageEmailAddressAttributeTypeMessageEmailAddress SchemasMessageEmailAddressAttributeType = "message_email_address"
+)
+
+func (e SchemasMessageEmailAddressAttributeType) ToPointer() *SchemasMessageEmailAddressAttributeType {
+	return &e
+}
+func (e *SchemasMessageEmailAddressAttributeType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "message_email_address":
+		*e = SchemasMessageEmailAddressAttributeType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemasMessageEmailAddressAttributeType: %v", v)
+	}
+}
+
+// MessageEmailAddressAttributeSchemas - Message emil address
+type MessageEmailAddressAttributeSchemas struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest    []string `json:"_manifest,omitempty"`
+	Purpose     []string `json:"_purpose,omitempty"`
+	Address     *string  `json:"address,omitempty"`
+	CompositeID *string  `json:"composite_id,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasMessageEmailAddressAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                                             `json:"default_value,omitempty"`
+	Deprecated   *bool                                           `default:"false" json:"deprecated"`
+	EmailType    *string                                         `json:"email_type,omitempty"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasMessageEmailAddressAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                                          `json:"label"`
+	Layout      *string                                         `json:"layout,omitempty"`
+	Name        string                                          `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema     *string `json:"schema,omitempty"`
+	SendStatus *string `json:"send_status,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                                   `default:"true" json:"sortable"`
+	Type           SchemasMessageEmailAddressAttributeType `json:"type"`
+	ValueFormatter *string                                 `json:"value_formatter,omitempty"`
+}
+
+func (m MessageEmailAddressAttributeSchemas) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MessageEmailAddressAttributeSchemas) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetAddress() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Address
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetCompositeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CompositeID
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetConstraints() *SchemasMessageEmailAddressAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetEmailType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EmailType
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetInfoHelpers() *SchemasMessageEmailAddressAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetSendStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SendStatus
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetType() SchemasMessageEmailAddressAttributeType {
+	if o == nil {
+		return SchemasMessageEmailAddressAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetValueFormatter() *string {
 	if o == nil {
 		return nil
 	}
@@ -4515,7 +6654,8 @@ type TagsAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -4544,7 +6684,9 @@ type TagsAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -4552,10 +6694,10 @@ type TagsAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                     `default:"true" json:"sortable"`
-	Suggestions    []string                  `json:"suggestions,omitempty"`
-	Type           *SchemasTagsAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+	Sortable       *bool                    `default:"true" json:"sortable"`
+	Suggestions    []string                 `json:"suggestions,omitempty"`
+	Type           SchemasTagsAttributeType `json:"type"`
+	ValueFormatter *string                  `json:"value_formatter,omitempty"`
 }
 
 func (t TagsAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -4630,6 +6772,13 @@ func (o *TagsAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *TagsAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *TagsAttributeSchemas) GetHidden() *bool {
@@ -4737,6 +6886,13 @@ func (o *TagsAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *TagsAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *TagsAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -4779,452 +6935,14 @@ func (o *TagsAttributeSchemas) GetSuggestions() []string {
 	return o.Suggestions
 }
 
-func (o *TagsAttributeSchemas) GetType() *SchemasTagsAttributeType {
+func (o *TagsAttributeSchemas) GetType() SchemasTagsAttributeType {
 	if o == nil {
-		return nil
+		return SchemasTagsAttributeType("")
 	}
 	return o.Type
 }
 
 func (o *TagsAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ValueFormatter
-}
-
-// SchemasRepeatableAttributeConstraints - A set of constraints applicable to the attribute.
-// These constraints should and will be enforced by the attribute renderer.
-type SchemasRepeatableAttributeConstraints struct {
-}
-
-// SchemasRepeatableAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
-type SchemasRepeatableAttributeInfoHelpers struct {
-	// The name of the custom component to be used as the hint helper.
-	// The component should be registered in the `@epilot360/entity-ui` on the index of the components directory.
-	// When specified it overrides the `hint_text` or `hint_text_key` configuration.
-	//
-	HintCustomComponent *string `json:"hint_custom_component,omitempty"`
-	// The text to be displayed in the attribute hint helper.
-	// When specified it overrides the `hint_text_key` configuration.
-	//
-	HintText *string `json:"hint_text,omitempty"`
-	// The key of the hint text to be displayed in the attribute hint helper.
-	// The key should be a valid i18n key.
-	//
-	HintTextKey *string `json:"hint_text_key,omitempty"`
-	// The placement of the hint tooltip.
-	// The value should be a valid `@mui/core` tooltip placement.
-	//
-	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
-}
-
-func (o *SchemasRepeatableAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
-		return nil
-	}
-	return o.HintCustomComponent
-}
-
-func (o *SchemasRepeatableAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
-		return nil
-	}
-	return o.HintText
-}
-
-func (o *SchemasRepeatableAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
-		return nil
-	}
-	return o.HintTextKey
-}
-
-func (o *SchemasRepeatableAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
-		return nil
-	}
-	return o.HintTooltipPlacement
-}
-
-// SchemasRelationAffinityMode - Weak repeatable attributes are kept when duplicating an entity. Strong repeatable attributes are discarded when duplicating an entity.
-type SchemasRelationAffinityMode string
-
-const (
-	SchemasRelationAffinityModeWeak   SchemasRelationAffinityMode = "weak"
-	SchemasRelationAffinityModeStrong SchemasRelationAffinityMode = "strong"
-)
-
-func (e SchemasRelationAffinityMode) ToPointer() *SchemasRelationAffinityMode {
-	return &e
-}
-func (e *SchemasRelationAffinityMode) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "weak":
-		fallthrough
-	case "strong":
-		*e = SchemasRelationAffinityMode(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for SchemasRelationAffinityMode: %v", v)
-	}
-}
-
-type SchemasRepeatableAttributeType string
-
-const (
-	SchemasRepeatableAttributeTypeString         SchemasRepeatableAttributeType = "string"
-	SchemasRepeatableAttributeTypePhone          SchemasRepeatableAttributeType = "phone"
-	SchemasRepeatableAttributeTypeEmail          SchemasRepeatableAttributeType = "email"
-	SchemasRepeatableAttributeTypeAddress        SchemasRepeatableAttributeType = "address"
-	SchemasRepeatableAttributeTypeRelation       SchemasRepeatableAttributeType = "relation"
-	SchemasRepeatableAttributeTypePayment        SchemasRepeatableAttributeType = "payment"
-	SchemasRepeatableAttributeTypePriceComponent SchemasRepeatableAttributeType = "price_component"
-	SchemasRepeatableAttributeTypeDate           SchemasRepeatableAttributeType = "date"
-)
-
-func (e SchemasRepeatableAttributeType) ToPointer() *SchemasRepeatableAttributeType {
-	return &e
-}
-func (e *SchemasRepeatableAttributeType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "string":
-		fallthrough
-	case "phone":
-		fallthrough
-	case "email":
-		fallthrough
-	case "address":
-		fallthrough
-	case "relation":
-		fallthrough
-	case "payment":
-		fallthrough
-	case "price_component":
-		fallthrough
-	case "date":
-		*e = SchemasRepeatableAttributeType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for SchemasRepeatableAttributeType: %v", v)
-	}
-}
-
-// RepeatableAttributeSchemas - Repeatable (add N number of fields)
-type RepeatableAttributeSchemas struct {
-	// Manifest ID used to create/update the schema attribute
-	Manifest    []string `json:"_manifest,omitempty"`
-	Purpose     []string `json:"_purpose,omitempty"`
-	CompositeID *string  `json:"composite_id,omitempty"`
-	// A set of constraints applicable to the attribute.
-	// These constraints should and will be enforced by the attribute renderer.
-	//
-	Constraints  *SchemasRepeatableAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                                    `json:"default_value,omitempty"`
-	Deprecated   *bool                                  `default:"false" json:"deprecated"`
-	// when enable_relation_picker is set to true the user will be able to pick existing relations as values. Otherwise, the user will need to create new relation to link.
-	EnableRelationPicker *bool `default:"true" json:"enable_relation_picker"`
-	// Setting to `true` disables editing the attribute on the entity builder UI
-	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
-	// This attribute should only be active when the feature flag is enabled
-	FeatureFlag *string `json:"feature_flag,omitempty"`
-	// Which group the attribute should appear in. Accepts group ID or group name
-	Group      *string `json:"group,omitempty"`
-	HasPrimary *bool   `json:"has_primary,omitempty"`
-	// Do not render attribute in entity views
-	Hidden *bool `default:"false" json:"hidden"`
-	// When set to true, will hide the label of the field.
-	HideLabel *bool `json:"hide_label,omitempty"`
-	// Code name of the icon to used to represent this attribute.
-	// The value must be a valid @epilot/base-elements Icon name
-	//
-	Icon *string `json:"icon,omitempty"`
-	// ID for the entity attribute
-	ID *string `json:"id,omitempty"`
-	// A set of configurations meant to document and assist the user in filling the attribute.
-	InfoHelpers *SchemasRepeatableAttributeInfoHelpers `json:"info_helpers,omitempty"`
-	Label       string                                 `json:"label"`
-	Layout      *string                                `json:"layout,omitempty"`
-	Name        string                                 `json:"name"`
-	// Attribute sort order (ascending) in group
-	Order                 *int64  `json:"order,omitempty"`
-	Placeholder           *string `json:"placeholder,omitempty"`
-	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
-	// Setting to `true` prevents the attribute from being modified / deleted
-	Protected *bool `json:"protected,omitempty"`
-	Readonly  *bool `default:"false" json:"readonly"`
-	// Weak repeatable attributes are kept when duplicating an entity. Strong repeatable attributes are discarded when duplicating an entity.
-	RelationAffinityMode *SchemasRelationAffinityMode `json:"relation_affinity_mode,omitempty"`
-	// Defines the conditional rendering expression for showing this field.
-	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
-	// Note: Empty or invalid expression have no effect on the field visibility.
-	//
-	RenderCondition *string `json:"render_condition,omitempty"`
-	Repeatable      *bool   `json:"repeatable,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
-	// Schema slug the attribute belongs to
-	Schema *string `json:"schema,omitempty"`
-	// This attribute should only be active when one of the provided settings have the correct value
-	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
-	// Render as a column in table views. When defined, overrides `hidden`
-	ShowInTable *bool `json:"show_in_table,omitempty"`
-	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                           `default:"true" json:"sortable"`
-	Type           *SchemasRepeatableAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                         `json:"value_formatter,omitempty"`
-}
-
-func (r RepeatableAttributeSchemas) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RepeatableAttributeSchemas) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *RepeatableAttributeSchemas) GetManifest() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Manifest
-}
-
-func (o *RepeatableAttributeSchemas) GetPurpose() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Purpose
-}
-
-func (o *RepeatableAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.CompositeID
-}
-
-func (o *RepeatableAttributeSchemas) GetConstraints() *SchemasRepeatableAttributeConstraints {
-	if o == nil {
-		return nil
-	}
-	return o.Constraints
-}
-
-func (o *RepeatableAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
-		return nil
-	}
-	return o.DefaultValue
-}
-
-func (o *RepeatableAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Deprecated
-}
-
-func (o *RepeatableAttributeSchemas) GetEnableRelationPicker() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.EnableRelationPicker
-}
-
-func (o *RepeatableAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.EntityBuilderDisableEdit
-}
-
-func (o *RepeatableAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FeatureFlag
-}
-
-func (o *RepeatableAttributeSchemas) GetGroup() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Group
-}
-
-func (o *RepeatableAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasPrimary
-}
-
-func (o *RepeatableAttributeSchemas) GetHidden() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Hidden
-}
-
-func (o *RepeatableAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HideLabel
-}
-
-func (o *RepeatableAttributeSchemas) GetIcon() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Icon
-}
-
-func (o *RepeatableAttributeSchemas) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-func (o *RepeatableAttributeSchemas) GetInfoHelpers() *SchemasRepeatableAttributeInfoHelpers {
-	if o == nil {
-		return nil
-	}
-	return o.InfoHelpers
-}
-
-func (o *RepeatableAttributeSchemas) GetLabel() string {
-	if o == nil {
-		return ""
-	}
-	return o.Label
-}
-
-func (o *RepeatableAttributeSchemas) GetLayout() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Layout
-}
-
-func (o *RepeatableAttributeSchemas) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *RepeatableAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.Order
-}
-
-func (o *RepeatableAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Placeholder
-}
-
-func (o *RepeatableAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PreviewValueFormatter
-}
-
-func (o *RepeatableAttributeSchemas) GetProtected() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Protected
-}
-
-func (o *RepeatableAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Readonly
-}
-
-func (o *RepeatableAttributeSchemas) GetRelationAffinityMode() *SchemasRelationAffinityMode {
-	if o == nil {
-		return nil
-	}
-	return o.RelationAffinityMode
-}
-
-func (o *RepeatableAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
-		return nil
-	}
-	return o.RenderCondition
-}
-
-func (o *RepeatableAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Repeatable
-}
-
-func (o *RepeatableAttributeSchemas) GetRequired() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Required
-}
-
-func (o *RepeatableAttributeSchemas) GetSchema() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Schema
-}
-
-func (o *RepeatableAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
-		return nil
-	}
-	return o.SettingsFlag
-}
-
-func (o *RepeatableAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ShowInTable
-}
-
-func (o *RepeatableAttributeSchemas) GetSortable() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sortable
-}
-
-func (o *RepeatableAttributeSchemas) GetType() *SchemasRepeatableAttributeType {
-	if o == nil {
-		return nil
-	}
-	return o.Type
-}
-
-func (o *RepeatableAttributeSchemas) GetValueFormatter() *string {
 	if o == nil {
 		return nil
 	}
@@ -5405,7 +7123,8 @@ type CurrencyAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -5433,7 +7152,9 @@ type CurrencyAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -5534,6 +7255,13 @@ func (o *CurrencyAttributeSchemas) GetGroup() *string {
 	return o.Group
 }
 
+func (o *CurrencyAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
 func (o *CurrencyAttributeSchemas) GetHidden() *bool {
 	if o == nil {
 		return nil
@@ -5630,6 +7358,13 @@ func (o *CurrencyAttributeSchemas) GetRenderCondition() *string {
 		return nil
 	}
 	return o.RenderCondition
+}
+
+func (o *CurrencyAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
 }
 
 func (o *CurrencyAttributeSchemas) GetRequired() *bool {
@@ -5804,7 +7539,9 @@ type PaymentMethodRelationAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -5812,9 +7549,9 @@ type PaymentMethodRelationAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                                      `default:"true" json:"sortable"`
-	Type           *SchemasPaymentMethodRelationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                                    `json:"value_formatter,omitempty"`
+	Sortable       *bool                                     `default:"true" json:"sortable"`
+	Type           SchemasPaymentMethodRelationAttributeType `json:"type"`
+	ValueFormatter *string                                   `json:"value_formatter,omitempty"`
 }
 
 func (p PaymentMethodRelationAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -5996,6 +7733,13 @@ func (o *PaymentMethodRelationAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PaymentMethodRelationAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PaymentMethodRelationAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -6031,14 +7775,416 @@ func (o *PaymentMethodRelationAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetType() *SchemasPaymentMethodRelationAttributeType {
+func (o *PaymentMethodRelationAttributeSchemas) GetType() SchemasPaymentMethodRelationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasPaymentMethodRelationAttributeType("")
 	}
 	return o.Type
 }
 
 func (o *PaymentMethodRelationAttributeSchemas) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// SchemasConstraints - A set of constraints applicable to the attribute.
+// These constraints should and will be enforced by the attribute renderer.
+type SchemasConstraints struct {
+}
+
+// SchemasInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
+type SchemasInfoHelpers struct {
+	// The name of the custom component to be used as the hint helper.
+	// The component should be registered in the `@epilot360/entity-ui` on the index of the components directory.
+	// When specified it overrides the `hint_text` or `hint_text_key` configuration.
+	//
+	HintCustomComponent *string `json:"hint_custom_component,omitempty"`
+	// The text to be displayed in the attribute hint helper.
+	// When specified it overrides the `hint_text_key` configuration.
+	//
+	HintText *string `json:"hint_text,omitempty"`
+	// The key of the hint text to be displayed in the attribute hint helper.
+	// The key should be a valid i18n key.
+	//
+	HintTextKey *string `json:"hint_text_key,omitempty"`
+	// The placement of the hint tooltip.
+	// The value should be a valid `@mui/core` tooltip placement.
+	//
+	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (o *SchemasInfoHelpers) GetHintCustomComponent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintCustomComponent
+}
+
+func (o *SchemasInfoHelpers) GetHintText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintText
+}
+
+func (o *SchemasInfoHelpers) GetHintTextKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTextKey
+}
+
+func (o *SchemasInfoHelpers) GetHintTooltipPlacement() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HintTooltipPlacement
+}
+
+type SchemasType string
+
+const (
+	SchemasTypeRelationAddress SchemasType = "relation_address"
+)
+
+func (e SchemasType) ToPointer() *SchemasType {
+	return &e
+}
+func (e *SchemasType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "relation_address":
+		*e = SchemasType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemasType: %v", v)
+	}
+}
+
+// AddressRelationAttributeSchemas - Reference to an address attribute of another entity
+type AddressRelationAttributeSchemas struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest    []string `json:"_manifest,omitempty"`
+	Purpose     []string `json:"_purpose,omitempty"`
+	CompositeID *string  `json:"composite_id,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints *SchemasConstraints `json:"constraints,omitempty"`
+	// Default fields visible on addresses
+	//
+	// Valid values are:
+	//   - postal_code (default)
+	//   - city (default)
+	//   - street (default)
+	//   - street_number (default)
+	//   - plot_area
+	//   - plot_of_land
+	//   - suburb
+	//   - country
+	//   - additional_info
+	//   - coordinates
+	//   - start_date
+	//   - end_date
+	//   - salutation
+	//   - title
+	//   - first_name
+	//   - last_name
+	//   - company_name
+	//
+	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
+	DefaultValue         any      `json:"default_value,omitempty"`
+	Deprecated           *bool    `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string              `json:"label"`
+	Layout      *string             `json:"layout,omitempty"`
+	Name        string              `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool       `default:"true" json:"sortable"`
+	Type           SchemasType `json:"type"`
+	ValueFormatter *string     `json:"value_formatter,omitempty"`
+}
+
+func (a AddressRelationAttributeSchemas) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddressRelationAttributeSchemas) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddressRelationAttributeSchemas) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *AddressRelationAttributeSchemas) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *AddressRelationAttributeSchemas) GetCompositeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CompositeID
+}
+
+func (o *AddressRelationAttributeSchemas) GetConstraints() *SchemasConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *AddressRelationAttributeSchemas) GetDefaultAddressFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultAddressFields
+}
+
+func (o *AddressRelationAttributeSchemas) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *AddressRelationAttributeSchemas) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *AddressRelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *AddressRelationAttributeSchemas) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *AddressRelationAttributeSchemas) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *AddressRelationAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *AddressRelationAttributeSchemas) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *AddressRelationAttributeSchemas) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *AddressRelationAttributeSchemas) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *AddressRelationAttributeSchemas) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *AddressRelationAttributeSchemas) GetInfoHelpers() *SchemasInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *AddressRelationAttributeSchemas) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *AddressRelationAttributeSchemas) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *AddressRelationAttributeSchemas) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *AddressRelationAttributeSchemas) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *AddressRelationAttributeSchemas) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *AddressRelationAttributeSchemas) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *AddressRelationAttributeSchemas) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *AddressRelationAttributeSchemas) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *AddressRelationAttributeSchemas) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *AddressRelationAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *AddressRelationAttributeSchemas) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *AddressRelationAttributeSchemas) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *AddressRelationAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *AddressRelationAttributeSchemas) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *AddressRelationAttributeSchemas) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *AddressRelationAttributeSchemas) GetType() SchemasType {
+	if o == nil {
+		return SchemasType("")
+	}
+	return o.Type
+}
+
+func (o *AddressRelationAttributeSchemas) GetValueFormatter() *string {
 	if o == nil {
 		return nil
 	}
@@ -6102,7 +8248,7 @@ func (o *InfoHelpers) GetHintTooltipPlacement() *string {
 type Type string
 
 const (
-	TypeRelationAddress Type = "relation_address"
+	TypeAddress Type = "address"
 )
 
 func (e Type) ToPointer() *Type {
@@ -6114,7 +8260,7 @@ func (e *Type) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "relation_address":
+	case "address":
 		*e = Type(v)
 		return nil
 	default:
@@ -6122,7 +8268,7 @@ func (e *Type) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Schemas - Reference to an address attribute of another entity
+// Schemas - Address attribute
 type Schemas struct {
 	// Manifest ID used to create/update the schema attribute
 	Manifest    []string `json:"_manifest,omitempty"`
@@ -6131,9 +8277,31 @@ type Schemas struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *Constraints `json:"constraints,omitempty"`
-	DefaultValue any          `json:"default_value,omitempty"`
-	Deprecated   *bool        `default:"false" json:"deprecated"`
+	Constraints *Constraints `json:"constraints,omitempty"`
+	// Default fields visible on addresses
+	//
+	// Valid values are:
+	//   - postal_code (default)
+	//   - city (default)
+	//   - street (default)
+	//   - street_number (default)
+	//   - plot_area
+	//   - plot_of_land
+	//   - suburb
+	//   - country
+	//   - additional_info
+	//   - coordinates
+	//   - start_date
+	//   - end_date
+	//   - salutation
+	//   - title
+	//   - first_name
+	//   - last_name
+	//   - company_name
+	//
+	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
+	DefaultValue         any      `json:"default_value,omitempty"`
+	Deprecated           *bool    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
@@ -6168,7 +8336,9 @@ type Schemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -6177,7 +8347,7 @@ type Schemas struct {
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
 	Sortable       *bool   `default:"true" json:"sortable"`
-	Type           *Type   `json:"type,omitempty"`
+	Type           Type    `json:"type"`
 	ValueFormatter *string `json:"value_formatter,omitempty"`
 }
 
@@ -6218,6 +8388,13 @@ func (o *Schemas) GetConstraints() *Constraints {
 		return nil
 	}
 	return o.Constraints
+}
+
+func (o *Schemas) GetDefaultAddressFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultAddressFields
 }
 
 func (o *Schemas) GetDefaultValue() any {
@@ -6360,6 +8537,13 @@ func (o *Schemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *Schemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *Schemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -6395,9 +8579,9 @@ func (o *Schemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *Schemas) GetType() *Type {
+func (o *Schemas) GetType() Type {
 	if o == nil {
-		return nil
+		return Type("")
 	}
 	return o.Type
 }
@@ -6503,7 +8687,8 @@ type UserRelationAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -6532,7 +8717,9 @@ type UserRelationAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -6540,9 +8727,9 @@ type UserRelationAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                             `default:"true" json:"sortable"`
-	Type           *SchemasUserRelationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                           `json:"value_formatter,omitempty"`
+	Sortable       *bool                            `default:"true" json:"sortable"`
+	Type           SchemasUserRelationAttributeType `json:"type"`
+	ValueFormatter *string                          `json:"value_formatter,omitempty"`
 }
 
 func (u UserRelationAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -6617,6 +8804,13 @@ func (o *UserRelationAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *UserRelationAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *UserRelationAttributeSchemas) GetHidden() *bool {
@@ -6724,6 +8918,13 @@ func (o *UserRelationAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *UserRelationAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *UserRelationAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -6759,9 +8960,9 @@ func (o *UserRelationAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *UserRelationAttributeSchemas) GetType() *SchemasUserRelationAttributeType {
+func (o *UserRelationAttributeSchemas) GetType() SchemasUserRelationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasUserRelationAttributeType("")
 	}
 	return o.Type
 }
@@ -6809,121 +9010,6 @@ func (e *ActionType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type NewEntityItem struct {
-	AdditionalProperties any `additionalProperties:"true" json:"-"`
-	// Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
-	ACL       *EntityACL `json:"_acl,omitempty"`
-	CreatedAt *time.Time `json:"_created_at"`
-	ID        string     `json:"_id"`
-	// Manifest ID used to create/update the entity
-	Manifest []string `json:"_manifest,omitempty"`
-	// Organization Id the entity belongs to
-	Org     string        `json:"_org"`
-	Owners  []EntityOwner `json:"_owners,omitempty"`
-	Purpose []string      `json:"_purpose,omitempty"`
-	// URL-friendly identifier for the entity schema
-	Schema string   `json:"_schema"`
-	Tags   []string `json:"_tags,omitempty"`
-	// Title of entity
-	Title     *string    `json:"_title"`
-	UpdatedAt *time.Time `json:"_updated_at"`
-}
-
-func (n NewEntityItem) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(n, "", false)
-}
-
-func (n *NewEntityItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *NewEntityItem) GetAdditionalProperties() any {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
-}
-
-func (o *NewEntityItem) GetACL() *EntityACL {
-	if o == nil {
-		return nil
-	}
-	return o.ACL
-}
-
-func (o *NewEntityItem) GetCreatedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *NewEntityItem) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *NewEntityItem) GetManifest() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Manifest
-}
-
-func (o *NewEntityItem) GetOrg() string {
-	if o == nil {
-		return ""
-	}
-	return o.Org
-}
-
-func (o *NewEntityItem) GetOwners() []EntityOwner {
-	if o == nil {
-		return nil
-	}
-	return o.Owners
-}
-
-func (o *NewEntityItem) GetPurpose() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Purpose
-}
-
-func (o *NewEntityItem) GetSchema() string {
-	if o == nil {
-		return ""
-	}
-	return o.Schema
-}
-
-func (o *NewEntityItem) GetTags() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Tags
-}
-
-func (o *NewEntityItem) GetTitle() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Title
-}
-
-func (o *NewEntityItem) GetUpdatedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
 type Actions struct {
 	// The action type. Currently supported actions:
 	//
@@ -6939,8 +9025,9 @@ type Actions struct {
 	// Name of the feature flag that enables this action
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// The action label or action translation key (i18n)
-	Label         *string        `json:"label,omitempty"`
-	NewEntityItem *NewEntityItem `json:"new_entity_item,omitempty"`
+	Label *string `json:"label,omitempty"`
+	// Default field values for new entity to create
+	NewEntityItem map[string]any `json:"new_entity_item,omitempty"`
 	// This action should only be active when all the settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 }
@@ -6973,7 +9060,7 @@ func (o *Actions) GetLabel() *string {
 	return o.Label
 }
 
-func (o *Actions) GetNewEntityItem() *NewEntityItem {
+func (o *Actions) GetNewEntityItem() map[string]any {
 	if o == nil {
 		return nil
 	}
@@ -7118,6 +9205,18 @@ func (e *RelationAffinityMode) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for RelationAffinityMode: %v", v)
 	}
+}
+
+// RelationPickerFilter - Additional entity search filter for relation picker
+type RelationPickerFilter struct {
+	Q string `json:"q"`
+}
+
+func (o *RelationPickerFilter) GetQ() string {
+	if o == nil {
+		return ""
+	}
+	return o.Q
 }
 
 type RelationType string
@@ -7284,13 +9383,17 @@ type RelationAttributeSchemas struct {
 	Readonly  *bool `default:"false" json:"readonly"`
 	// Weak relation attributes are kept when duplicating an entity. Strong relation attributes are discarded when duplicating an entity.
 	RelationAffinityMode *RelationAffinityMode `json:"relation_affinity_mode,omitempty"`
+	// Additional entity search filter for relation picker
+	RelationPickerFilter *RelationPickerFilter `json:"relation_picker_filter,omitempty"`
 	RelationType         *RelationType         `json:"relation_type,omitempty"`
 	// Defines the conditional rendering expression for showing this field.
 	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// Relations are always repeatables
+	Repeatable *bool `default:"true" json:"repeatable"`
+	Required   *bool `default:"false" json:"required"`
 	// Map of schema slug to target relation attribute
 	ReverseAttributes map[string]string `json:"reverse_attributes,omitempty"`
 	// Schema slug the attribute belongs to
@@ -7302,10 +9405,10 @@ type RelationAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                         `default:"true" json:"sortable"`
-	SummaryFields  []SummaryFields               `json:"summary_fields,omitempty"`
-	Type           *SchemasRelationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                       `json:"value_formatter,omitempty"`
+	Sortable       *bool                        `default:"true" json:"sortable"`
+	SummaryFields  []SummaryFields              `json:"summary_fields,omitempty"`
+	Type           SchemasRelationAttributeType `json:"type"`
+	ValueFormatter *string                      `json:"value_formatter,omitempty"`
 }
 
 func (r RelationAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -7543,6 +9646,13 @@ func (o *RelationAttributeSchemas) GetRelationAffinityMode() *RelationAffinityMo
 	return o.RelationAffinityMode
 }
 
+func (o *RelationAttributeSchemas) GetRelationPickerFilter() *RelationPickerFilter {
+	if o == nil {
+		return nil
+	}
+	return o.RelationPickerFilter
+}
+
 func (o *RelationAttributeSchemas) GetRelationType() *RelationType {
 	if o == nil {
 		return nil
@@ -7555,6 +9665,13 @@ func (o *RelationAttributeSchemas) GetRenderCondition() *string {
 		return nil
 	}
 	return o.RenderCondition
+}
+
+func (o *RelationAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
 }
 
 func (o *RelationAttributeSchemas) GetRequired() *bool {
@@ -7613,9 +9730,9 @@ func (o *RelationAttributeSchemas) GetSummaryFields() []SummaryFields {
 	return o.SummaryFields
 }
 
-func (o *RelationAttributeSchemas) GetType() *SchemasRelationAttributeType {
+func (o *RelationAttributeSchemas) GetType() SchemasRelationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasRelationAttributeType("")
 	}
 	return o.Type
 }
@@ -7721,7 +9838,8 @@ type SequenceAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -7751,7 +9869,9 @@ type SequenceAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -7759,10 +9879,10 @@ type SequenceAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                         `default:"true" json:"sortable"`
-	StartNumber    *int64                        `json:"start_number,omitempty"`
-	Type           *SchemasSequenceAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                       `json:"value_formatter,omitempty"`
+	Sortable       *bool                        `default:"true" json:"sortable"`
+	StartNumber    *int64                       `json:"start_number,omitempty"`
+	Type           SchemasSequenceAttributeType `json:"type"`
+	ValueFormatter *string                      `json:"value_formatter,omitempty"`
 }
 
 func (s SequenceAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -7837,6 +9957,13 @@ func (o *SequenceAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *SequenceAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *SequenceAttributeSchemas) GetHidden() *bool {
@@ -7944,6 +10071,13 @@ func (o *SequenceAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *SequenceAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *SequenceAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -7986,9 +10120,9 @@ func (o *SequenceAttributeSchemas) GetStartNumber() *int64 {
 	return o.StartNumber
 }
 
-func (o *SequenceAttributeSchemas) GetType() *SchemasSequenceAttributeType {
+func (o *SequenceAttributeSchemas) GetType() SchemasSequenceAttributeType {
 	if o == nil {
-		return nil
+		return SchemasSequenceAttributeType("")
 	}
 	return o.Type
 }
@@ -8178,7 +10312,8 @@ type StatusAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -8207,7 +10342,9 @@ type StatusAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -8215,9 +10352,9 @@ type StatusAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                       `default:"true" json:"sortable"`
-	Type           *SchemasStatusAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                     `json:"value_formatter,omitempty"`
+	Sortable       *bool                      `default:"true" json:"sortable"`
+	Type           SchemasStatusAttributeType `json:"type"`
+	ValueFormatter *string                    `json:"value_formatter,omitempty"`
 }
 
 func (s StatusAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -8292,6 +10429,13 @@ func (o *StatusAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *StatusAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *StatusAttributeSchemas) GetHidden() *bool {
@@ -8399,6 +10543,13 @@ func (o *StatusAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *StatusAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *StatusAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -8434,9 +10585,9 @@ func (o *StatusAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *StatusAttributeSchemas) GetType() *SchemasStatusAttributeType {
+func (o *StatusAttributeSchemas) GetType() SchemasStatusAttributeType {
 	if o == nil {
-		return nil
+		return SchemasStatusAttributeType("")
 	}
 	return o.Type
 }
@@ -8633,7 +10784,8 @@ type MultiSelectAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -8662,7 +10814,9 @@ type MultiSelectAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -8670,9 +10824,9 @@ type MultiSelectAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                            `default:"true" json:"sortable"`
-	Type           *SchemasMultiSelectAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                          `json:"value_formatter,omitempty"`
+	Sortable       *bool                           `default:"true" json:"sortable"`
+	Type           SchemasMultiSelectAttributeType `json:"type"`
+	ValueFormatter *string                         `json:"value_formatter,omitempty"`
 }
 
 func (m MultiSelectAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -8768,6 +10922,13 @@ func (o *MultiSelectAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *MultiSelectAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *MultiSelectAttributeSchemas) GetHidden() *bool {
@@ -8875,6 +11036,13 @@ func (o *MultiSelectAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *MultiSelectAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *MultiSelectAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -8910,9 +11078,9 @@ func (o *MultiSelectAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *MultiSelectAttributeSchemas) GetType() *SchemasMultiSelectAttributeType {
+func (o *MultiSelectAttributeSchemas) GetType() SchemasMultiSelectAttributeType {
 	if o == nil {
-		return nil
+		return SchemasMultiSelectAttributeType("")
 	}
 	return o.Type
 }
@@ -9105,7 +11273,8 @@ type SelectAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -9134,7 +11303,9 @@ type SelectAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -9142,9 +11313,9 @@ type SelectAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                       `default:"true" json:"sortable"`
-	Type           *SchemasSelectAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                     `json:"value_formatter,omitempty"`
+	Sortable       *bool                      `default:"true" json:"sortable"`
+	Type           SchemasSelectAttributeType `json:"type"`
+	ValueFormatter *string                    `json:"value_formatter,omitempty"`
 }
 
 func (s SelectAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -9226,6 +11397,13 @@ func (o *SelectAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *SelectAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *SelectAttributeSchemas) GetHidden() *bool {
@@ -9333,6 +11511,13 @@ func (o *SelectAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *SelectAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *SelectAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -9368,9 +11553,9 @@ func (o *SelectAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *SelectAttributeSchemas) GetType() *SchemasSelectAttributeType {
+func (o *SelectAttributeSchemas) GetType() SchemasSelectAttributeType {
 	if o == nil {
-		return nil
+		return SchemasSelectAttributeType("")
 	}
 	return o.Type
 }
@@ -9385,6 +11570,32 @@ func (o *SelectAttributeSchemas) GetValueFormatter() *string {
 // SchemasBooleanAttributeConstraints - A set of constraints applicable to the attribute.
 // These constraints should and will be enforced by the attribute renderer.
 type SchemasBooleanAttributeConstraints struct {
+}
+
+type DisplayType string
+
+const (
+	DisplayTypeSwitch   DisplayType = "switch"
+	DisplayTypeCheckbox DisplayType = "checkbox"
+)
+
+func (e DisplayType) ToPointer() *DisplayType {
+	return &e
+}
+func (e *DisplayType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "switch":
+		fallthrough
+	case "checkbox":
+		*e = DisplayType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DisplayType: %v", v)
+	}
 }
 
 // SchemasBooleanAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
@@ -9471,12 +11682,14 @@ type BooleanAttributeSchemas struct {
 	Constraints  *SchemasBooleanAttributeConstraints `json:"constraints,omitempty"`
 	DefaultValue any                                 `json:"default_value,omitempty"`
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
+	DisplayType  *DisplayType                        `default:"switch" json:"display_type"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -9504,7 +11717,9 @@ type BooleanAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -9512,9 +11727,9 @@ type BooleanAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                        `default:"true" json:"sortable"`
-	Type           *SchemasBooleanAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                      `json:"value_formatter,omitempty"`
+	Sortable       *bool                       `default:"true" json:"sortable"`
+	Type           SchemasBooleanAttributeType `json:"type"`
+	ValueFormatter *string                     `json:"value_formatter,omitempty"`
 }
 
 func (b BooleanAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -9570,6 +11785,13 @@ func (o *BooleanAttributeSchemas) GetDeprecated() *bool {
 	return o.Deprecated
 }
 
+func (o *BooleanAttributeSchemas) GetDisplayType() *DisplayType {
+	if o == nil {
+		return nil
+	}
+	return o.DisplayType
+}
+
 func (o *BooleanAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 	if o == nil {
 		return nil
@@ -9589,6 +11811,13 @@ func (o *BooleanAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *BooleanAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *BooleanAttributeSchemas) GetHidden() *bool {
@@ -9689,6 +11918,13 @@ func (o *BooleanAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *BooleanAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *BooleanAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -9724,9 +11960,9 @@ func (o *BooleanAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *BooleanAttributeSchemas) GetType() *SchemasBooleanAttributeType {
+func (o *BooleanAttributeSchemas) GetType() SchemasBooleanAttributeType {
 	if o == nil {
-		return nil
+		return SchemasBooleanAttributeType("")
 	}
 	return o.Type
 }
@@ -9832,7 +12068,8 @@ type CountryAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -9860,7 +12097,9 @@ type CountryAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -9868,9 +12107,9 @@ type CountryAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                        `default:"true" json:"sortable"`
-	Type           *SchemasCountryAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                      `json:"value_formatter,omitempty"`
+	Sortable       *bool                       `default:"true" json:"sortable"`
+	Type           SchemasCountryAttributeType `json:"type"`
+	ValueFormatter *string                     `json:"value_formatter,omitempty"`
 }
 
 func (c CountryAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -9945,6 +12184,13 @@ func (o *CountryAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *CountryAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *CountryAttributeSchemas) GetHidden() *bool {
@@ -10045,6 +12291,13 @@ func (o *CountryAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *CountryAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *CountryAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -10080,9 +12333,9 @@ func (o *CountryAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *CountryAttributeSchemas) GetType() *SchemasCountryAttributeType {
+func (o *CountryAttributeSchemas) GetType() SchemasCountryAttributeType {
 	if o == nil {
-		return nil
+		return SchemasCountryAttributeType("")
 	}
 	return o.Type
 }
@@ -10191,7 +12444,8 @@ type DateAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -10219,7 +12473,9 @@ type DateAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -10227,9 +12483,9 @@ type DateAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                     `default:"true" json:"sortable"`
-	Type           *SchemasDateAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+	Sortable       *bool                    `default:"true" json:"sortable"`
+	Type           SchemasDateAttributeType `json:"type"`
+	ValueFormatter *string                  `json:"value_formatter,omitempty"`
 }
 
 func (d DateAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -10304,6 +12560,13 @@ func (o *DateAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *DateAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *DateAttributeSchemas) GetHidden() *bool {
@@ -10404,6 +12667,13 @@ func (o *DateAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *DateAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *DateAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -10439,9 +12709,9 @@ func (o *DateAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *DateAttributeSchemas) GetType() *SchemasDateAttributeType {
+func (o *DateAttributeSchemas) GetType() SchemasDateAttributeType {
 	if o == nil {
-		return nil
+		return SchemasDateAttributeType("")
 	}
 	return o.Type
 }
@@ -10547,7 +12817,8 @@ type LinkAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -10575,7 +12846,9 @@ type LinkAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -10583,9 +12856,9 @@ type LinkAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                     `default:"true" json:"sortable"`
-	Type           *SchemasLinkAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+	Sortable       *bool                    `default:"true" json:"sortable"`
+	Type           SchemasLinkAttributeType `json:"type"`
+	ValueFormatter *string                  `json:"value_formatter,omitempty"`
 }
 
 func (l LinkAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -10660,6 +12933,13 @@ func (o *LinkAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *LinkAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *LinkAttributeSchemas) GetHidden() *bool {
@@ -10760,6 +13040,13 @@ func (o *LinkAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *LinkAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *LinkAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -10795,9 +13082,9 @@ func (o *LinkAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *LinkAttributeSchemas) GetType() *SchemasLinkAttributeType {
+func (o *LinkAttributeSchemas) GetType() SchemasLinkAttributeType {
 	if o == nil {
-		return nil
+		return SchemasLinkAttributeType("")
 	}
 	return o.Type
 }
@@ -10863,6 +13150,70 @@ func (o *SchemasTextAttributeInfoHelpers) GetHintTooltipPlacement() *string {
 	return o.HintTooltipPlacement
 }
 
+type SchemasRowsType string
+
+const (
+	SchemasRowsTypeInteger SchemasRowsType = "integer"
+	SchemasRowsTypeStr     SchemasRowsType = "str"
+)
+
+// SchemasRows - Number of rows for rich_text textarea
+type SchemasRows struct {
+	Integer *int64  `queryParam:"inline"`
+	Str     *string `queryParam:"inline"`
+
+	Type SchemasRowsType
+}
+
+func CreateSchemasRowsInteger(integer int64) SchemasRows {
+	typ := SchemasRowsTypeInteger
+
+	return SchemasRows{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func CreateSchemasRowsStr(str string) SchemasRows {
+	typ := SchemasRowsTypeStr
+
+	return SchemasRows{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *SchemasRows) UnmarshalJSON(data []byte) error {
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
+		u.Integer = &integer
+		u.Type = SchemasRowsTypeInteger
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = SchemasRowsTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for SchemasRows", string(data))
+}
+
+func (u SchemasRows) MarshalJSON() ([]byte, error) {
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type SchemasRows: all fields are null")
+}
+
 type SchemasTextAttributeType string
 
 const (
@@ -10903,7 +13254,8 @@ type TextAttributeSchemas struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -10932,7 +13284,12 @@ type TextAttributeSchemas struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	RichText   *bool `json:"rich_text,omitempty"`
+	// Number of rows for rich_text textarea
+	Rows *SchemasRows `json:"rows,omitempty"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -10940,9 +13297,9 @@ type TextAttributeSchemas struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                     `default:"true" json:"sortable"`
-	Type           *SchemasTextAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+	Sortable       *bool                    `default:"true" json:"sortable"`
+	Type           SchemasTextAttributeType `json:"type"`
+	ValueFormatter *string                  `json:"value_formatter,omitempty"`
 }
 
 func (t TextAttributeSchemas) MarshalJSON() ([]byte, error) {
@@ -11017,6 +13374,13 @@ func (o *TextAttributeSchemas) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *TextAttributeSchemas) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *TextAttributeSchemas) GetHidden() *bool {
@@ -11124,11 +13488,32 @@ func (o *TextAttributeSchemas) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *TextAttributeSchemas) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *TextAttributeSchemas) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
+}
+
+func (o *TextAttributeSchemas) GetRichText() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RichText
+}
+
+func (o *TextAttributeSchemas) GetRows() *SchemasRows {
+	if o == nil {
+		return nil
+	}
+	return o.Rows
 }
 
 func (o *TextAttributeSchemas) GetSchema() *string {
@@ -11159,9 +13544,9 @@ func (o *TextAttributeSchemas) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *TextAttributeSchemas) GetType() *SchemasTextAttributeType {
+func (o *TextAttributeSchemas) GetType() SchemasTextAttributeType {
 	if o == nil {
-		return nil
+		return SchemasTextAttributeType("")
 	}
 	return o.Type
 }
@@ -11188,10 +13573,11 @@ const (
 	AttributeWithCompositeIDTypeRelationAttributeSchemas              AttributeWithCompositeIDType = "RelationAttribute_Schemas"
 	AttributeWithCompositeIDTypeUserRelationAttributeSchemas          AttributeWithCompositeIDType = "UserRelationAttribute_Schemas"
 	AttributeWithCompositeIDTypeSchemas                               AttributeWithCompositeIDType = "Schemas"
+	AttributeWithCompositeIDTypeAddressRelationAttributeSchemas       AttributeWithCompositeIDType = "AddressRelationAttribute_Schemas"
 	AttributeWithCompositeIDTypePaymentMethodRelationAttributeSchemas AttributeWithCompositeIDType = "PaymentMethodRelationAttribute_Schemas"
 	AttributeWithCompositeIDTypeCurrencyAttributeSchemas              AttributeWithCompositeIDType = "CurrencyAttribute_Schemas"
-	AttributeWithCompositeIDTypeRepeatableAttributeSchemas            AttributeWithCompositeIDType = "RepeatableAttribute_Schemas"
 	AttributeWithCompositeIDTypeTagsAttributeSchemas                  AttributeWithCompositeIDType = "TagsAttribute_Schemas"
+	AttributeWithCompositeIDTypeMessageEmailAddressAttributeSchemas   AttributeWithCompositeIDType = "MessageEmailAddressAttribute_Schemas"
 	AttributeWithCompositeIDTypeNumberAttributeSchemas                AttributeWithCompositeIDType = "NumberAttribute_Schemas"
 	AttributeWithCompositeIDTypeConsentAttributeSchemas               AttributeWithCompositeIDType = "ConsentAttribute_Schemas"
 	AttributeWithCompositeIDTypeInternalAttributeSchemas              AttributeWithCompositeIDType = "InternalAttribute_Schemas"
@@ -11204,6 +13590,10 @@ const (
 	AttributeWithCompositeIDTypeInternalUserAttributeSchemas          AttributeWithCompositeIDType = "InternalUserAttribute_Schemas"
 	AttributeWithCompositeIDTypePurposeAttributeSchemas               AttributeWithCompositeIDType = "PurposeAttribute_Schemas"
 	AttributeWithCompositeIDTypePartnerOrganisationAttributeSchemas   AttributeWithCompositeIDType = "PartnerOrganisationAttribute_Schemas"
+	AttributeWithCompositeIDTypePhoneAttributeSchemas                 AttributeWithCompositeIDType = "PhoneAttribute_Schemas"
+	AttributeWithCompositeIDTypeEmailAttributeSchemas                 AttributeWithCompositeIDType = "EmailAttribute_Schemas"
+	AttributeWithCompositeIDTypePaymentAttributeSchemas               AttributeWithCompositeIDType = "PaymentAttribute_Schemas"
+	AttributeWithCompositeIDTypePriceComponentAttributeSchemas        AttributeWithCompositeIDType = "PriceComponentAttribute_Schemas"
 )
 
 // AttributeWithCompositeID - a readonly computed ID for the attribute including schema slug and the attribute ID
@@ -11220,10 +13610,11 @@ type AttributeWithCompositeID struct {
 	RelationAttributeSchemas              *RelationAttributeSchemas              `queryParam:"inline"`
 	UserRelationAttributeSchemas          *UserRelationAttributeSchemas          `queryParam:"inline"`
 	Schemas                               *Schemas                               `queryParam:"inline"`
+	AddressRelationAttributeSchemas       *AddressRelationAttributeSchemas       `queryParam:"inline"`
 	PaymentMethodRelationAttributeSchemas *PaymentMethodRelationAttributeSchemas `queryParam:"inline"`
 	CurrencyAttributeSchemas              *CurrencyAttributeSchemas              `queryParam:"inline"`
-	RepeatableAttributeSchemas            *RepeatableAttributeSchemas            `queryParam:"inline"`
 	TagsAttributeSchemas                  *TagsAttributeSchemas                  `queryParam:"inline"`
+	MessageEmailAddressAttributeSchemas   *MessageEmailAddressAttributeSchemas   `queryParam:"inline"`
 	NumberAttributeSchemas                *NumberAttributeSchemas                `queryParam:"inline"`
 	ConsentAttributeSchemas               *ConsentAttributeSchemas               `queryParam:"inline"`
 	InternalAttributeSchemas              *InternalAttributeSchemas              `queryParam:"inline"`
@@ -11236,6 +13627,10 @@ type AttributeWithCompositeID struct {
 	InternalUserAttributeSchemas          *InternalUserAttributeSchemas          `queryParam:"inline"`
 	PurposeAttributeSchemas               *PurposeAttributeSchemas               `queryParam:"inline"`
 	PartnerOrganisationAttributeSchemas   *PartnerOrganisationAttributeSchemas   `queryParam:"inline"`
+	PhoneAttributeSchemas                 *PhoneAttributeSchemas                 `queryParam:"inline"`
+	EmailAttributeSchemas                 *EmailAttributeSchemas                 `queryParam:"inline"`
+	PaymentAttributeSchemas               *PaymentAttributeSchemas               `queryParam:"inline"`
+	PriceComponentAttributeSchemas        *PriceComponentAttributeSchemas        `queryParam:"inline"`
 
 	Type AttributeWithCompositeIDType
 }
@@ -11348,6 +13743,15 @@ func CreateAttributeWithCompositeIDSchemas(schemas Schemas) AttributeWithComposi
 	}
 }
 
+func CreateAttributeWithCompositeIDAddressRelationAttributeSchemas(addressRelationAttributeSchemas AddressRelationAttributeSchemas) AttributeWithCompositeID {
+	typ := AttributeWithCompositeIDTypeAddressRelationAttributeSchemas
+
+	return AttributeWithCompositeID{
+		AddressRelationAttributeSchemas: &addressRelationAttributeSchemas,
+		Type:                            typ,
+	}
+}
+
 func CreateAttributeWithCompositeIDPaymentMethodRelationAttributeSchemas(paymentMethodRelationAttributeSchemas PaymentMethodRelationAttributeSchemas) AttributeWithCompositeID {
 	typ := AttributeWithCompositeIDTypePaymentMethodRelationAttributeSchemas
 
@@ -11366,21 +13770,21 @@ func CreateAttributeWithCompositeIDCurrencyAttributeSchemas(currencyAttributeSch
 	}
 }
 
-func CreateAttributeWithCompositeIDRepeatableAttributeSchemas(repeatableAttributeSchemas RepeatableAttributeSchemas) AttributeWithCompositeID {
-	typ := AttributeWithCompositeIDTypeRepeatableAttributeSchemas
-
-	return AttributeWithCompositeID{
-		RepeatableAttributeSchemas: &repeatableAttributeSchemas,
-		Type:                       typ,
-	}
-}
-
 func CreateAttributeWithCompositeIDTagsAttributeSchemas(tagsAttributeSchemas TagsAttributeSchemas) AttributeWithCompositeID {
 	typ := AttributeWithCompositeIDTypeTagsAttributeSchemas
 
 	return AttributeWithCompositeID{
 		TagsAttributeSchemas: &tagsAttributeSchemas,
 		Type:                 typ,
+	}
+}
+
+func CreateAttributeWithCompositeIDMessageEmailAddressAttributeSchemas(messageEmailAddressAttributeSchemas MessageEmailAddressAttributeSchemas) AttributeWithCompositeID {
+	typ := AttributeWithCompositeIDTypeMessageEmailAddressAttributeSchemas
+
+	return AttributeWithCompositeID{
+		MessageEmailAddressAttributeSchemas: &messageEmailAddressAttributeSchemas,
+		Type:                                typ,
 	}
 }
 
@@ -11492,12 +13896,48 @@ func CreateAttributeWithCompositeIDPartnerOrganisationAttributeSchemas(partnerOr
 	}
 }
 
+func CreateAttributeWithCompositeIDPhoneAttributeSchemas(phoneAttributeSchemas PhoneAttributeSchemas) AttributeWithCompositeID {
+	typ := AttributeWithCompositeIDTypePhoneAttributeSchemas
+
+	return AttributeWithCompositeID{
+		PhoneAttributeSchemas: &phoneAttributeSchemas,
+		Type:                  typ,
+	}
+}
+
+func CreateAttributeWithCompositeIDEmailAttributeSchemas(emailAttributeSchemas EmailAttributeSchemas) AttributeWithCompositeID {
+	typ := AttributeWithCompositeIDTypeEmailAttributeSchemas
+
+	return AttributeWithCompositeID{
+		EmailAttributeSchemas: &emailAttributeSchemas,
+		Type:                  typ,
+	}
+}
+
+func CreateAttributeWithCompositeIDPaymentAttributeSchemas(paymentAttributeSchemas PaymentAttributeSchemas) AttributeWithCompositeID {
+	typ := AttributeWithCompositeIDTypePaymentAttributeSchemas
+
+	return AttributeWithCompositeID{
+		PaymentAttributeSchemas: &paymentAttributeSchemas,
+		Type:                    typ,
+	}
+}
+
+func CreateAttributeWithCompositeIDPriceComponentAttributeSchemas(priceComponentAttributeSchemas PriceComponentAttributeSchemas) AttributeWithCompositeID {
+	typ := AttributeWithCompositeIDTypePriceComponentAttributeSchemas
+
+	return AttributeWithCompositeID{
+		PriceComponentAttributeSchemas: &priceComponentAttributeSchemas,
+		Type:                           typ,
+	}
+}
+
 func (u *AttributeWithCompositeID) UnmarshalJSON(data []byte) error {
 
-	var internalAttributeSchemas InternalAttributeSchemas = InternalAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &internalAttributeSchemas, "", true, true); err == nil {
-		u.InternalAttributeSchemas = &internalAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeInternalAttributeSchemas
+	var internalUserAttributeSchemas InternalUserAttributeSchemas = InternalUserAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &internalUserAttributeSchemas, "", true, true); err == nil {
+		u.InternalUserAttributeSchemas = &internalUserAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeInternalUserAttributeSchemas
 		return nil
 	}
 
@@ -11522,38 +13962,24 @@ func (u *AttributeWithCompositeID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var booleanAttributeSchemas BooleanAttributeSchemas = BooleanAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &booleanAttributeSchemas, "", true, true); err == nil {
-		u.BooleanAttributeSchemas = &booleanAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeBooleanAttributeSchemas
+	var internalAttributeSchemas InternalAttributeSchemas = InternalAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &internalAttributeSchemas, "", true, true); err == nil {
+		u.InternalAttributeSchemas = &internalAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeInternalAttributeSchemas
 		return nil
 	}
 
-	var partnerOrganisationAttributeSchemas PartnerOrganisationAttributeSchemas = PartnerOrganisationAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &partnerOrganisationAttributeSchemas, "", true, true); err == nil {
-		u.PartnerOrganisationAttributeSchemas = &partnerOrganisationAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypePartnerOrganisationAttributeSchemas
+	var priceComponentAttributeSchemas PriceComponentAttributeSchemas = PriceComponentAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &priceComponentAttributeSchemas, "", true, true); err == nil {
+		u.PriceComponentAttributeSchemas = &priceComponentAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypePriceComponentAttributeSchemas
 		return nil
 	}
 
-	var internalUserAttributeSchemas InternalUserAttributeSchemas = InternalUserAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &internalUserAttributeSchemas, "", true, true); err == nil {
-		u.InternalUserAttributeSchemas = &internalUserAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeInternalUserAttributeSchemas
-		return nil
-	}
-
-	var automationAttributeSchemas AutomationAttributeSchemas = AutomationAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &automationAttributeSchemas, "", true, true); err == nil {
-		u.AutomationAttributeSchemas = &automationAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeAutomationAttributeSchemas
-		return nil
-	}
-
-	var invitationEmailAttributeSchemas InvitationEmailAttributeSchemas = InvitationEmailAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &invitationEmailAttributeSchemas, "", true, true); err == nil {
-		u.InvitationEmailAttributeSchemas = &invitationEmailAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeInvitationEmailAttributeSchemas
+	var paymentAttributeSchemas PaymentAttributeSchemas = PaymentAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &paymentAttributeSchemas, "", true, true); err == nil {
+		u.PaymentAttributeSchemas = &paymentAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypePaymentAttributeSchemas
 		return nil
 	}
 
@@ -11564,10 +13990,31 @@ func (u *AttributeWithCompositeID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var computedAttributeSchemas ComputedAttributeSchemas = ComputedAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &computedAttributeSchemas, "", true, true); err == nil {
-		u.ComputedAttributeSchemas = &computedAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeComputedAttributeSchemas
+	var phoneAttributeSchemas PhoneAttributeSchemas = PhoneAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &phoneAttributeSchemas, "", true, true); err == nil {
+		u.PhoneAttributeSchemas = &phoneAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypePhoneAttributeSchemas
+		return nil
+	}
+
+	var emailAttributeSchemas EmailAttributeSchemas = EmailAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &emailAttributeSchemas, "", true, true); err == nil {
+		u.EmailAttributeSchemas = &emailAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeEmailAttributeSchemas
+		return nil
+	}
+
+	var invitationEmailAttributeSchemas InvitationEmailAttributeSchemas = InvitationEmailAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &invitationEmailAttributeSchemas, "", true, true); err == nil {
+		u.InvitationEmailAttributeSchemas = &invitationEmailAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeInvitationEmailAttributeSchemas
+		return nil
+	}
+
+	var automationAttributeSchemas AutomationAttributeSchemas = AutomationAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &automationAttributeSchemas, "", true, true); err == nil {
+		u.AutomationAttributeSchemas = &automationAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeAutomationAttributeSchemas
 		return nil
 	}
 
@@ -11578,13 +14025,6 @@ func (u *AttributeWithCompositeID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var statusAttributeSchemas StatusAttributeSchemas = StatusAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &statusAttributeSchemas, "", true, true); err == nil {
-		u.StatusAttributeSchemas = &statusAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeStatusAttributeSchemas
-		return nil
-	}
-
 	var paymentMethodRelationAttributeSchemas PaymentMethodRelationAttributeSchemas = PaymentMethodRelationAttributeSchemas{}
 	if err := utils.UnmarshalJSON(data, &paymentMethodRelationAttributeSchemas, "", true, true); err == nil {
 		u.PaymentMethodRelationAttributeSchemas = &paymentMethodRelationAttributeSchemas
@@ -11592,10 +14032,10 @@ func (u *AttributeWithCompositeID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var textAttributeSchemas TextAttributeSchemas = TextAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &textAttributeSchemas, "", true, true); err == nil {
-		u.TextAttributeSchemas = &textAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeTextAttributeSchemas
+	var partnerOrganisationAttributeSchemas PartnerOrganisationAttributeSchemas = PartnerOrganisationAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &partnerOrganisationAttributeSchemas, "", true, true); err == nil {
+		u.PartnerOrganisationAttributeSchemas = &partnerOrganisationAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypePartnerOrganisationAttributeSchemas
 		return nil
 	}
 
@@ -11613,31 +14053,24 @@ func (u *AttributeWithCompositeID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var numberAttributeSchemas NumberAttributeSchemas = NumberAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &numberAttributeSchemas, "", true, true); err == nil {
-		u.NumberAttributeSchemas = &numberAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeNumberAttributeSchemas
+	var addressRelationAttributeSchemas AddressRelationAttributeSchemas = AddressRelationAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &addressRelationAttributeSchemas, "", true, true); err == nil {
+		u.AddressRelationAttributeSchemas = &addressRelationAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeAddressRelationAttributeSchemas
 		return nil
 	}
 
-	var consentAttributeSchemas ConsentAttributeSchemas = ConsentAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &consentAttributeSchemas, "", true, true); err == nil {
-		u.ConsentAttributeSchemas = &consentAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeConsentAttributeSchemas
+	var statusAttributeSchemas StatusAttributeSchemas = StatusAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &statusAttributeSchemas, "", true, true); err == nil {
+		u.StatusAttributeSchemas = &statusAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeStatusAttributeSchemas
 		return nil
 	}
 
-	var currencyAttributeSchemas CurrencyAttributeSchemas = CurrencyAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &currencyAttributeSchemas, "", true, true); err == nil {
-		u.CurrencyAttributeSchemas = &currencyAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeCurrencyAttributeSchemas
-		return nil
-	}
-
-	var tagsAttributeSchemas TagsAttributeSchemas = TagsAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &tagsAttributeSchemas, "", true, true); err == nil {
-		u.TagsAttributeSchemas = &tagsAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeTagsAttributeSchemas
+	var booleanAttributeSchemas BooleanAttributeSchemas = BooleanAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &booleanAttributeSchemas, "", true, true); err == nil {
+		u.BooleanAttributeSchemas = &booleanAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeBooleanAttributeSchemas
 		return nil
 	}
 
@@ -11648,6 +14081,34 @@ func (u *AttributeWithCompositeID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var consentAttributeSchemas ConsentAttributeSchemas = ConsentAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &consentAttributeSchemas, "", true, true); err == nil {
+		u.ConsentAttributeSchemas = &consentAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeConsentAttributeSchemas
+		return nil
+	}
+
+	var numberAttributeSchemas NumberAttributeSchemas = NumberAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &numberAttributeSchemas, "", true, true); err == nil {
+		u.NumberAttributeSchemas = &numberAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeNumberAttributeSchemas
+		return nil
+	}
+
+	var tagsAttributeSchemas TagsAttributeSchemas = TagsAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &tagsAttributeSchemas, "", true, true); err == nil {
+		u.TagsAttributeSchemas = &tagsAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeTagsAttributeSchemas
+		return nil
+	}
+
+	var currencyAttributeSchemas CurrencyAttributeSchemas = CurrencyAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &currencyAttributeSchemas, "", true, true); err == nil {
+		u.CurrencyAttributeSchemas = &currencyAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeCurrencyAttributeSchemas
+		return nil
+	}
+
 	var selectAttributeSchemas SelectAttributeSchemas = SelectAttributeSchemas{}
 	if err := utils.UnmarshalJSON(data, &selectAttributeSchemas, "", true, true); err == nil {
 		u.SelectAttributeSchemas = &selectAttributeSchemas
@@ -11655,10 +14116,24 @@ func (u *AttributeWithCompositeID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var repeatableAttributeSchemas RepeatableAttributeSchemas = RepeatableAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &repeatableAttributeSchemas, "", true, true); err == nil {
-		u.RepeatableAttributeSchemas = &repeatableAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypeRepeatableAttributeSchemas
+	var computedAttributeSchemas ComputedAttributeSchemas = ComputedAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &computedAttributeSchemas, "", true, true); err == nil {
+		u.ComputedAttributeSchemas = &computedAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeComputedAttributeSchemas
+		return nil
+	}
+
+	var messageEmailAddressAttributeSchemas MessageEmailAddressAttributeSchemas = MessageEmailAddressAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &messageEmailAddressAttributeSchemas, "", true, true); err == nil {
+		u.MessageEmailAddressAttributeSchemas = &messageEmailAddressAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeMessageEmailAddressAttributeSchemas
+		return nil
+	}
+
+	var textAttributeSchemas TextAttributeSchemas = TextAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &textAttributeSchemas, "", true, true); err == nil {
+		u.TextAttributeSchemas = &textAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypeTextAttributeSchemas
 		return nil
 	}
 
@@ -11669,17 +14144,17 @@ func (u *AttributeWithCompositeID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var purposeAttributeSchemas PurposeAttributeSchemas = PurposeAttributeSchemas{}
-	if err := utils.UnmarshalJSON(data, &purposeAttributeSchemas, "", true, true); err == nil {
-		u.PurposeAttributeSchemas = &purposeAttributeSchemas
-		u.Type = AttributeWithCompositeIDTypePurposeAttributeSchemas
-		return nil
-	}
-
 	var fileAttributeSchemas FileAttributeSchemas = FileAttributeSchemas{}
 	if err := utils.UnmarshalJSON(data, &fileAttributeSchemas, "", true, true); err == nil {
 		u.FileAttributeSchemas = &fileAttributeSchemas
 		u.Type = AttributeWithCompositeIDTypeFileAttributeSchemas
+		return nil
+	}
+
+	var purposeAttributeSchemas PurposeAttributeSchemas = PurposeAttributeSchemas{}
+	if err := utils.UnmarshalJSON(data, &purposeAttributeSchemas, "", true, true); err == nil {
+		u.PurposeAttributeSchemas = &purposeAttributeSchemas
+		u.Type = AttributeWithCompositeIDTypePurposeAttributeSchemas
 		return nil
 	}
 
@@ -11742,6 +14217,10 @@ func (u AttributeWithCompositeID) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Schemas, "", true)
 	}
 
+	if u.AddressRelationAttributeSchemas != nil {
+		return utils.MarshalJSON(u.AddressRelationAttributeSchemas, "", true)
+	}
+
 	if u.PaymentMethodRelationAttributeSchemas != nil {
 		return utils.MarshalJSON(u.PaymentMethodRelationAttributeSchemas, "", true)
 	}
@@ -11750,12 +14229,12 @@ func (u AttributeWithCompositeID) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CurrencyAttributeSchemas, "", true)
 	}
 
-	if u.RepeatableAttributeSchemas != nil {
-		return utils.MarshalJSON(u.RepeatableAttributeSchemas, "", true)
-	}
-
 	if u.TagsAttributeSchemas != nil {
 		return utils.MarshalJSON(u.TagsAttributeSchemas, "", true)
+	}
+
+	if u.MessageEmailAddressAttributeSchemas != nil {
+		return utils.MarshalJSON(u.MessageEmailAddressAttributeSchemas, "", true)
 	}
 
 	if u.NumberAttributeSchemas != nil {
@@ -11806,7 +14285,1175 @@ func (u AttributeWithCompositeID) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.PartnerOrganisationAttributeSchemas, "", true)
 	}
 
+	if u.PhoneAttributeSchemas != nil {
+		return utils.MarshalJSON(u.PhoneAttributeSchemas, "", true)
+	}
+
+	if u.EmailAttributeSchemas != nil {
+		return utils.MarshalJSON(u.EmailAttributeSchemas, "", true)
+	}
+
+	if u.PaymentAttributeSchemas != nil {
+		return utils.MarshalJSON(u.PaymentAttributeSchemas, "", true)
+	}
+
+	if u.PriceComponentAttributeSchemas != nil {
+		return utils.MarshalJSON(u.PriceComponentAttributeSchemas, "", true)
+	}
+
 	return nil, errors.New("could not marshal union type AttributeWithCompositeID: all fields are null")
+}
+
+// PriceComponentAttributeSchemasInput - Price component
+type PriceComponentAttributeSchemasInput struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasPriceComponentAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                                        `json:"default_value,omitempty"`
+	Deprecated   *bool                                      `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasPriceComponentAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                                     `json:"label"`
+	Layout      *string                                    `json:"layout,omitempty"`
+	Name        string                                     `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                              `default:"true" json:"sortable"`
+	Type           SchemasPriceComponentAttributeType `json:"type"`
+	ValueFormatter *string                            `json:"value_formatter,omitempty"`
+}
+
+func (p PriceComponentAttributeSchemasInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PriceComponentAttributeSchemasInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetConstraints() *SchemasPriceComponentAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetInfoHelpers() *SchemasPriceComponentAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetType() SchemasPriceComponentAttributeType {
+	if o == nil {
+		return SchemasPriceComponentAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// PaymentAttributeSchemasInput - Payment method
+type PaymentAttributeSchemasInput struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasPaymentAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                                 `json:"default_value,omitempty"`
+	Deprecated   *bool                               `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasPaymentAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                              `json:"label"`
+	Layout      *string                             `json:"layout,omitempty"`
+	Name        string                              `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                       `default:"true" json:"sortable"`
+	Type           SchemasPaymentAttributeType `json:"type"`
+	ValueFormatter *string                     `json:"value_formatter,omitempty"`
+}
+
+func (p PaymentAttributeSchemasInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PaymentAttributeSchemasInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PaymentAttributeSchemasInput) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *PaymentAttributeSchemasInput) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *PaymentAttributeSchemasInput) GetConstraints() *SchemasPaymentAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *PaymentAttributeSchemasInput) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *PaymentAttributeSchemasInput) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *PaymentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *PaymentAttributeSchemasInput) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *PaymentAttributeSchemasInput) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *PaymentAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *PaymentAttributeSchemasInput) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *PaymentAttributeSchemasInput) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *PaymentAttributeSchemasInput) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *PaymentAttributeSchemasInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PaymentAttributeSchemasInput) GetInfoHelpers() *SchemasPaymentAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *PaymentAttributeSchemasInput) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *PaymentAttributeSchemasInput) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *PaymentAttributeSchemasInput) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PaymentAttributeSchemasInput) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *PaymentAttributeSchemasInput) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *PaymentAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *PaymentAttributeSchemasInput) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *PaymentAttributeSchemasInput) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *PaymentAttributeSchemasInput) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *PaymentAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *PaymentAttributeSchemasInput) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *PaymentAttributeSchemasInput) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *PaymentAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *PaymentAttributeSchemasInput) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *PaymentAttributeSchemasInput) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *PaymentAttributeSchemasInput) GetType() SchemasPaymentAttributeType {
+	if o == nil {
+		return SchemasPaymentAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *PaymentAttributeSchemasInput) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// EmailAttributeSchemasInput - Email address
+type EmailAttributeSchemasInput struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasEmailAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                               `json:"default_value,omitempty"`
+	Deprecated   *bool                             `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasEmailAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                            `json:"label"`
+	Layout      *string                           `json:"layout,omitempty"`
+	Name        string                            `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                     `default:"true" json:"sortable"`
+	Type           SchemasEmailAttributeType `json:"type"`
+	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+}
+
+func (e EmailAttributeSchemasInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EmailAttributeSchemasInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EmailAttributeSchemasInput) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *EmailAttributeSchemasInput) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *EmailAttributeSchemasInput) GetConstraints() *SchemasEmailAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *EmailAttributeSchemasInput) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *EmailAttributeSchemasInput) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *EmailAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *EmailAttributeSchemasInput) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *EmailAttributeSchemasInput) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *EmailAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *EmailAttributeSchemasInput) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *EmailAttributeSchemasInput) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *EmailAttributeSchemasInput) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *EmailAttributeSchemasInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *EmailAttributeSchemasInput) GetInfoHelpers() *SchemasEmailAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *EmailAttributeSchemasInput) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *EmailAttributeSchemasInput) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *EmailAttributeSchemasInput) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *EmailAttributeSchemasInput) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *EmailAttributeSchemasInput) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *EmailAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *EmailAttributeSchemasInput) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *EmailAttributeSchemasInput) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *EmailAttributeSchemasInput) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *EmailAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *EmailAttributeSchemasInput) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *EmailAttributeSchemasInput) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *EmailAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *EmailAttributeSchemasInput) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *EmailAttributeSchemasInput) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *EmailAttributeSchemasInput) GetType() SchemasEmailAttributeType {
+	if o == nil {
+		return SchemasEmailAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *EmailAttributeSchemasInput) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// PhoneAttributeSchemasInput - Phone number
+type PhoneAttributeSchemasInput struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasPhoneAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                               `json:"default_value,omitempty"`
+	Deprecated   *bool                             `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasPhoneAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                            `json:"label"`
+	Layout      *string                           `json:"layout,omitempty"`
+	Name        string                            `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                     `default:"true" json:"sortable"`
+	Type           SchemasPhoneAttributeType `json:"type"`
+	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+}
+
+func (p PhoneAttributeSchemasInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PhoneAttributeSchemasInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PhoneAttributeSchemasInput) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *PhoneAttributeSchemasInput) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *PhoneAttributeSchemasInput) GetConstraints() *SchemasPhoneAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *PhoneAttributeSchemasInput) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *PhoneAttributeSchemasInput) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *PhoneAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *PhoneAttributeSchemasInput) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *PhoneAttributeSchemasInput) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *PhoneAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *PhoneAttributeSchemasInput) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *PhoneAttributeSchemasInput) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *PhoneAttributeSchemasInput) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *PhoneAttributeSchemasInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PhoneAttributeSchemasInput) GetInfoHelpers() *SchemasPhoneAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *PhoneAttributeSchemasInput) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *PhoneAttributeSchemasInput) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *PhoneAttributeSchemasInput) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PhoneAttributeSchemasInput) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *PhoneAttributeSchemasInput) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *PhoneAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *PhoneAttributeSchemasInput) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *PhoneAttributeSchemasInput) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *PhoneAttributeSchemasInput) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *PhoneAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *PhoneAttributeSchemasInput) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *PhoneAttributeSchemasInput) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *PhoneAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *PhoneAttributeSchemasInput) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *PhoneAttributeSchemasInput) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *PhoneAttributeSchemasInput) GetType() SchemasPhoneAttributeType {
+	if o == nil {
+		return SchemasPhoneAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *PhoneAttributeSchemasInput) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
 }
 
 // PartnerOrganisationAttributeSchemasInput - Shared Partner Organisations
@@ -11825,7 +15472,8 @@ type PartnerOrganisationAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -11853,7 +15501,9 @@ type PartnerOrganisationAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -11861,9 +15511,9 @@ type PartnerOrganisationAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                                    `default:"true" json:"sortable"`
-	Type           *SchemasPartnerOrganisationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                                  `json:"value_formatter,omitempty"`
+	Sortable       *bool                                   `default:"true" json:"sortable"`
+	Type           SchemasPartnerOrganisationAttributeType `json:"type"`
+	ValueFormatter *string                                 `json:"value_formatter,omitempty"`
 }
 
 func (p PartnerOrganisationAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -11931,6 +15581,13 @@ func (o *PartnerOrganisationAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *PartnerOrganisationAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *PartnerOrganisationAttributeSchemasInput) GetHidden() *bool {
@@ -12031,6 +15688,13 @@ func (o *PartnerOrganisationAttributeSchemasInput) GetRenderCondition() *string 
 	return o.RenderCondition
 }
 
+func (o *PartnerOrganisationAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PartnerOrganisationAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -12066,9 +15730,9 @@ func (o *PartnerOrganisationAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetType() *SchemasPartnerOrganisationAttributeType {
+func (o *PartnerOrganisationAttributeSchemasInput) GetType() SchemasPartnerOrganisationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasPartnerOrganisationAttributeType("")
 	}
 	return o.Type
 }
@@ -12085,10 +15749,15 @@ type PurposeAttributeSchemasInput struct {
 	// Manifest ID used to create/update the taxonomy classification
 	Manifest []string `json:"_manifest,omitempty"`
 	Purpose  []string `json:"_purpose,omitempty"`
+	// Archived classification are not visible in the UI
+	Archived *bool `default:"false" json:"archived"`
+	// Color of the classification
+	Color *string `json:"color,omitempty"`
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
 	Constraints  *SchemasPurposeAttributeConstraints `json:"constraints,omitempty"`
+	CreatedAt    *time.Time                          `json:"created_at,omitempty"`
 	DefaultValue any                                 `json:"default_value,omitempty"`
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
@@ -12096,7 +15765,8 @@ type PurposeAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -12105,7 +15775,6 @@ type PurposeAttributeSchemasInput struct {
 	// The value must be a valid @epilot/base-elements Icon name
 	//
 	Icon *string `json:"icon,omitempty"`
-	ID   *string `json:"id,omitempty"`
 	// A set of configurations meant to document and assist the user in filling the attribute.
 	InfoHelpers *SchemasPurposeAttributeInfoHelpers `json:"info_helpers,omitempty"`
 	Label       string                              `json:"label"`
@@ -12124,7 +15793,9 @@ type PurposeAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -12134,9 +15805,10 @@ type PurposeAttributeSchemasInput struct {
 	// URL-friendly identifier for the classification
 	Slug *string `json:"slug,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                        `default:"true" json:"sortable"`
-	Type           *SchemasPurposeAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                      `json:"value_formatter,omitempty"`
+	Sortable       *bool                       `default:"true" json:"sortable"`
+	Type           SchemasPurposeAttributeType `json:"type"`
+	UpdatedAt      *time.Time                  `json:"updated_at,omitempty"`
+	ValueFormatter *string                     `json:"value_formatter,omitempty"`
 }
 
 func (p PurposeAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -12164,11 +15836,32 @@ func (o *PurposeAttributeSchemasInput) GetPurpose() []string {
 	return o.Purpose
 }
 
+func (o *PurposeAttributeSchemasInput) GetArchived() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Archived
+}
+
+func (o *PurposeAttributeSchemasInput) GetColor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Color
+}
+
 func (o *PurposeAttributeSchemasInput) GetConstraints() *SchemasPurposeAttributeConstraints {
 	if o == nil {
 		return nil
 	}
 	return o.Constraints
+}
+
+func (o *PurposeAttributeSchemasInput) GetCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
 }
 
 func (o *PurposeAttributeSchemasInput) GetDefaultValue() any {
@@ -12206,6 +15899,13 @@ func (o *PurposeAttributeSchemasInput) GetGroup() *string {
 	return o.Group
 }
 
+func (o *PurposeAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
 func (o *PurposeAttributeSchemasInput) GetHidden() *bool {
 	if o == nil {
 		return nil
@@ -12225,13 +15925,6 @@ func (o *PurposeAttributeSchemasInput) GetIcon() *string {
 		return nil
 	}
 	return o.Icon
-}
-
-func (o *PurposeAttributeSchemasInput) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
 }
 
 func (o *PurposeAttributeSchemasInput) GetInfoHelpers() *SchemasPurposeAttributeInfoHelpers {
@@ -12311,6 +16004,13 @@ func (o *PurposeAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PurposeAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PurposeAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -12353,11 +16053,18 @@ func (o *PurposeAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PurposeAttributeSchemasInput) GetType() *SchemasPurposeAttributeType {
+func (o *PurposeAttributeSchemasInput) GetType() SchemasPurposeAttributeType {
+	if o == nil {
+		return SchemasPurposeAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *PurposeAttributeSchemasInput) GetUpdatedAt() *time.Time {
 	if o == nil {
 		return nil
 	}
-	return o.Type
+	return o.UpdatedAt
 }
 
 func (o *PurposeAttributeSchemasInput) GetValueFormatter() *string {
@@ -12383,7 +16090,8 @@ type InternalUserAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -12411,7 +16119,9 @@ type InternalUserAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -12419,9 +16129,9 @@ type InternalUserAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                             `default:"true" json:"sortable"`
-	Type           *SchemasInternalUserAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                           `json:"value_formatter,omitempty"`
+	Sortable       *bool                            `default:"true" json:"sortable"`
+	Type           SchemasInternalUserAttributeType `json:"type"`
+	ValueFormatter *string                          `json:"value_formatter,omitempty"`
 }
 
 func (i InternalUserAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -12489,6 +16199,13 @@ func (o *InternalUserAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *InternalUserAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *InternalUserAttributeSchemasInput) GetHidden() *bool {
@@ -12589,6 +16306,13 @@ func (o *InternalUserAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *InternalUserAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *InternalUserAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -12624,9 +16348,9 @@ func (o *InternalUserAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *InternalUserAttributeSchemasInput) GetType() *SchemasInternalUserAttributeType {
+func (o *InternalUserAttributeSchemasInput) GetType() SchemasInternalUserAttributeType {
 	if o == nil {
-		return nil
+		return SchemasInternalUserAttributeType("")
 	}
 	return o.Type
 }
@@ -12646,15 +16370,16 @@ type AutomationAttributeSchemasInput struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *SchemasConstraints `json:"constraints,omitempty"`
-	DefaultValue any                 `json:"default_value,omitempty"`
-	Deprecated   *bool               `default:"false" json:"deprecated"`
+	Constraints  *SchemasAutomationAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                                    `json:"default_value,omitempty"`
+	Deprecated   *bool                                  `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -12666,10 +16391,10 @@ type AutomationAttributeSchemasInput struct {
 	// ID for the entity attribute
 	ID *string `json:"id,omitempty"`
 	// A set of configurations meant to document and assist the user in filling the attribute.
-	InfoHelpers *SchemasInfoHelpers `json:"info_helpers,omitempty"`
-	Label       string              `json:"label"`
-	Layout      *string             `json:"layout,omitempty"`
-	Name        string              `json:"name"`
+	InfoHelpers *SchemasAutomationAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                                 `json:"label"`
+	Layout      *string                                `json:"layout,omitempty"`
+	Name        string                                 `json:"name"`
 	// Attribute sort order (ascending) in group
 	Order                 *int64  `json:"order,omitempty"`
 	Placeholder           *string `json:"placeholder,omitempty"`
@@ -12682,7 +16407,9 @@ type AutomationAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -12690,9 +16417,9 @@ type AutomationAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool        `default:"true" json:"sortable"`
-	Type           *SchemasType `json:"type,omitempty"`
-	ValueFormatter *string      `json:"value_formatter,omitempty"`
+	Sortable       *bool                          `default:"true" json:"sortable"`
+	Type           SchemasAutomationAttributeType `json:"type"`
+	ValueFormatter *string                        `json:"value_formatter,omitempty"`
 }
 
 func (a AutomationAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -12720,7 +16447,7 @@ func (o *AutomationAttributeSchemasInput) GetPurpose() []string {
 	return o.Purpose
 }
 
-func (o *AutomationAttributeSchemasInput) GetConstraints() *SchemasConstraints {
+func (o *AutomationAttributeSchemasInput) GetConstraints() *SchemasAutomationAttributeConstraints {
 	if o == nil {
 		return nil
 	}
@@ -12762,6 +16489,13 @@ func (o *AutomationAttributeSchemasInput) GetGroup() *string {
 	return o.Group
 }
 
+func (o *AutomationAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
 func (o *AutomationAttributeSchemasInput) GetHidden() *bool {
 	if o == nil {
 		return nil
@@ -12790,7 +16524,7 @@ func (o *AutomationAttributeSchemasInput) GetID() *string {
 	return o.ID
 }
 
-func (o *AutomationAttributeSchemasInput) GetInfoHelpers() *SchemasInfoHelpers {
+func (o *AutomationAttributeSchemasInput) GetInfoHelpers() *SchemasAutomationAttributeInfoHelpers {
 	if o == nil {
 		return nil
 	}
@@ -12860,6 +16594,13 @@ func (o *AutomationAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *AutomationAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *AutomationAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -12895,9 +16636,9 @@ func (o *AutomationAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *AutomationAttributeSchemasInput) GetType() *SchemasType {
+func (o *AutomationAttributeSchemasInput) GetType() SchemasAutomationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasAutomationAttributeType("")
 	}
 	return o.Type
 }
@@ -12925,7 +16666,8 @@ type InvitationEmailAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -12953,7 +16695,9 @@ type InvitationEmailAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -12961,9 +16705,9 @@ type InvitationEmailAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                                `default:"true" json:"sortable"`
-	Type           *SchemasInvitationEmailAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                              `json:"value_formatter,omitempty"`
+	Sortable       *bool                               `default:"true" json:"sortable"`
+	Type           SchemasInvitationEmailAttributeType `json:"type"`
+	ValueFormatter *string                             `json:"value_formatter,omitempty"`
 }
 
 func (i InvitationEmailAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -13031,6 +16775,13 @@ func (o *InvitationEmailAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *InvitationEmailAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *InvitationEmailAttributeSchemasInput) GetHidden() *bool {
@@ -13131,6 +16882,13 @@ func (o *InvitationEmailAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *InvitationEmailAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *InvitationEmailAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -13166,9 +16924,9 @@ func (o *InvitationEmailAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetType() *SchemasInvitationEmailAttributeType {
+func (o *InvitationEmailAttributeSchemasInput) GetType() SchemasInvitationEmailAttributeType {
 	if o == nil {
-		return nil
+		return SchemasInvitationEmailAttributeType("")
 	}
 	return o.Type
 }
@@ -13196,7 +16954,8 @@ type PartnerStatusAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -13224,7 +16983,9 @@ type PartnerStatusAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -13232,9 +16993,9 @@ type PartnerStatusAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                              `default:"true" json:"sortable"`
-	Type           *SchemasPartnerStatusAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                            `json:"value_formatter,omitempty"`
+	Sortable       *bool                             `default:"true" json:"sortable"`
+	Type           SchemasPartnerStatusAttributeType `json:"type"`
+	ValueFormatter *string                           `json:"value_formatter,omitempty"`
 }
 
 func (p PartnerStatusAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -13302,6 +17063,13 @@ func (o *PartnerStatusAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *PartnerStatusAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *PartnerStatusAttributeSchemasInput) GetHidden() *bool {
@@ -13402,6 +17170,13 @@ func (o *PartnerStatusAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PartnerStatusAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PartnerStatusAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -13437,9 +17212,9 @@ func (o *PartnerStatusAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetType() *SchemasPartnerStatusAttributeType {
+func (o *PartnerStatusAttributeSchemasInput) GetType() SchemasPartnerStatusAttributeType {
 	if o == nil {
-		return nil
+		return SchemasPartnerStatusAttributeType("")
 	}
 	return o.Type
 }
@@ -13456,18 +17231,24 @@ type ComputedAttributeSchemasInput struct {
 	// Manifest ID used to create/update the schema attribute
 	Manifest []string `json:"_manifest,omitempty"`
 	Purpose  []string `json:"_purpose,omitempty"`
+	// A source amount field that is used to compute the value of the attribute
+	AmountField *string `json:"amount_field,omitempty"`
+	Computed    *bool   `default:"true" json:"computed"`
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *SchemasComputedAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                                  `json:"default_value,omitempty"`
-	Deprecated   *bool                                `default:"false" json:"deprecated"`
+	Constraints *SchemasComputedAttributeConstraints `json:"constraints,omitempty"`
+	// A currency field used to format a computed currency value
+	CurrencyField *string `json:"currency_field,omitempty"`
+	DefaultValue  any     `json:"default_value,omitempty"`
+	Deprecated    *bool   `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -13484,8 +17265,9 @@ type ComputedAttributeSchemasInput struct {
 	Layout      *string                              `json:"layout,omitempty"`
 	Name        string                               `json:"name"`
 	// Attribute sort order (ascending) in group
-	Order                 *int64  `json:"order,omitempty"`
-	Placeholder           *string `json:"placeholder,omitempty"`
+	Order       *int64  `json:"order,omitempty"`
+	Placeholder *string `json:"placeholder,omitempty"`
+	// Variable template used to format a preview for the computed value
 	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
 	// Setting to `true` prevents the attribute from being modified / deleted
 	Protected *bool `json:"protected,omitempty"`
@@ -13495,7 +17277,9 @@ type ComputedAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -13503,9 +17287,10 @@ type ComputedAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                         `default:"true" json:"sortable"`
-	Type           *SchemasComputedAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                       `json:"value_formatter,omitempty"`
+	Sortable *bool                        `default:"true" json:"sortable"`
+	Type     SchemasComputedAttributeType `json:"type"`
+	// Variable template used to format the computed value
+	ValueFormatter string `json:"value_formatter"`
 }
 
 func (c ComputedAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -13533,11 +17318,32 @@ func (o *ComputedAttributeSchemasInput) GetPurpose() []string {
 	return o.Purpose
 }
 
+func (o *ComputedAttributeSchemasInput) GetAmountField() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AmountField
+}
+
+func (o *ComputedAttributeSchemasInput) GetComputed() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Computed
+}
+
 func (o *ComputedAttributeSchemasInput) GetConstraints() *SchemasComputedAttributeConstraints {
 	if o == nil {
 		return nil
 	}
 	return o.Constraints
+}
+
+func (o *ComputedAttributeSchemasInput) GetCurrencyField() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrencyField
 }
 
 func (o *ComputedAttributeSchemasInput) GetDefaultValue() any {
@@ -13573,6 +17379,13 @@ func (o *ComputedAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *ComputedAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *ComputedAttributeSchemasInput) GetHidden() *bool {
@@ -13673,6 +17486,13 @@ func (o *ComputedAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *ComputedAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *ComputedAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -13708,16 +17528,16 @@ func (o *ComputedAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *ComputedAttributeSchemasInput) GetType() *SchemasComputedAttributeType {
+func (o *ComputedAttributeSchemasInput) GetType() SchemasComputedAttributeType {
 	if o == nil {
-		return nil
+		return SchemasComputedAttributeType("")
 	}
 	return o.Type
 }
 
-func (o *ComputedAttributeSchemasInput) GetValueFormatter() *string {
+func (o *ComputedAttributeSchemasInput) GetValueFormatter() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ValueFormatter
 }
@@ -13747,7 +17567,8 @@ type FileAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -13776,7 +17597,9 @@ type FileAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -13884,6 +17707,13 @@ func (o *FileAttributeSchemasInput) GetGroup() *string {
 	return o.Group
 }
 
+func (o *FileAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
 func (o *FileAttributeSchemasInput) GetHidden() *bool {
 	if o == nil {
 		return nil
@@ -13989,6 +17819,13 @@ func (o *FileAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *FileAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *FileAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -14054,7 +17891,8 @@ type OrderedListAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -14082,7 +17920,9 @@ type OrderedListAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -14090,9 +17930,9 @@ type OrderedListAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                            `default:"true" json:"sortable"`
-	Type           *SchemasOrderedListAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                          `json:"value_formatter,omitempty"`
+	Sortable       *bool                           `default:"true" json:"sortable"`
+	Type           SchemasOrderedListAttributeType `json:"type"`
+	ValueFormatter *string                         `json:"value_formatter,omitempty"`
 }
 
 func (o OrderedListAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -14160,6 +18000,13 @@ func (o *OrderedListAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *OrderedListAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *OrderedListAttributeSchemasInput) GetHidden() *bool {
@@ -14260,6 +18107,13 @@ func (o *OrderedListAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *OrderedListAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *OrderedListAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -14295,9 +18149,9 @@ func (o *OrderedListAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *OrderedListAttributeSchemasInput) GetType() *SchemasOrderedListAttributeType {
+func (o *OrderedListAttributeSchemasInput) GetType() SchemasOrderedListAttributeType {
 	if o == nil {
-		return nil
+		return SchemasOrderedListAttributeType("")
 	}
 	return o.Type
 }
@@ -14325,7 +18179,8 @@ type InternalAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -14353,7 +18208,9 @@ type InternalAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -14361,9 +18218,9 @@ type InternalAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                         `default:"true" json:"sortable"`
-	Type           *SchemasInternalAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                       `json:"value_formatter,omitempty"`
+	Sortable       *bool                        `default:"true" json:"sortable"`
+	Type           SchemasInternalAttributeType `json:"type"`
+	ValueFormatter *string                      `json:"value_formatter,omitempty"`
 }
 
 func (i InternalAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -14431,6 +18288,13 @@ func (o *InternalAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *InternalAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *InternalAttributeSchemasInput) GetHidden() *bool {
@@ -14531,6 +18395,13 @@ func (o *InternalAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *InternalAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *InternalAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -14566,9 +18437,9 @@ func (o *InternalAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *InternalAttributeSchemasInput) GetType() *SchemasInternalAttributeType {
+func (o *InternalAttributeSchemasInput) GetType() SchemasInternalAttributeType {
 	if o == nil {
-		return nil
+		return SchemasInternalAttributeType("")
 	}
 	return o.Type
 }
@@ -14596,7 +18467,8 @@ type ConsentAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -14625,7 +18497,9 @@ type ConsentAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -14704,6 +18578,13 @@ func (o *ConsentAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *ConsentAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *ConsentAttributeSchemasInput) GetHidden() *bool {
@@ -14811,6 +18692,13 @@ func (o *ConsentAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *ConsentAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *ConsentAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -14884,7 +18772,8 @@ type NumberAttributeSchemasInput struct {
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	Format      *string `json:"format,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -14912,7 +18801,9 @@ type NumberAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -14922,9 +18813,9 @@ type NumberAttributeSchemasInput struct {
 	// Whether or not to show a thousands separator
 	ShowSeparator *bool `default:"true" json:"show_separator"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                       `default:"true" json:"sortable"`
-	Type           *SchemasNumberAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                     `json:"value_formatter,omitempty"`
+	Sortable       *bool                      `default:"true" json:"sortable"`
+	Type           SchemasNumberAttributeType `json:"type"`
+	ValueFormatter *string                    `json:"value_formatter,omitempty"`
 }
 
 func (n NumberAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -14999,6 +18890,13 @@ func (o *NumberAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *NumberAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *NumberAttributeSchemasInput) GetHidden() *bool {
@@ -15099,6 +18997,13 @@ func (o *NumberAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *NumberAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *NumberAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -15141,14 +19046,326 @@ func (o *NumberAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *NumberAttributeSchemasInput) GetType() *SchemasNumberAttributeType {
+func (o *NumberAttributeSchemasInput) GetType() SchemasNumberAttributeType {
 	if o == nil {
-		return nil
+		return SchemasNumberAttributeType("")
 	}
 	return o.Type
 }
 
 func (o *NumberAttributeSchemasInput) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// MessageEmailAddressAttributeSchemasInput - Message emil address
+type MessageEmailAddressAttributeSchemasInput struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	Address  *string  `json:"address,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints  *SchemasMessageEmailAddressAttributeConstraints `json:"constraints,omitempty"`
+	DefaultValue any                                             `json:"default_value,omitempty"`
+	Deprecated   *bool                                           `default:"false" json:"deprecated"`
+	EmailType    *string                                         `json:"email_type,omitempty"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasMessageEmailAddressAttributeInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string                                          `json:"label"`
+	Layout      *string                                         `json:"layout,omitempty"`
+	Name        string                                          `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema     *string `json:"schema,omitempty"`
+	SendStatus *string `json:"send_status,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool                                   `default:"true" json:"sortable"`
+	Type           SchemasMessageEmailAddressAttributeType `json:"type"`
+	ValueFormatter *string                                 `json:"value_formatter,omitempty"`
+}
+
+func (m MessageEmailAddressAttributeSchemasInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MessageEmailAddressAttributeSchemasInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetAddress() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Address
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetConstraints() *SchemasMessageEmailAddressAttributeConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetEmailType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EmailType
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetInfoHelpers() *SchemasMessageEmailAddressAttributeInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetSendStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SendStatus
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetType() SchemasMessageEmailAddressAttributeType {
+	if o == nil {
+		return SchemasMessageEmailAddressAttributeType("")
+	}
+	return o.Type
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetValueFormatter() *string {
 	if o == nil {
 		return nil
 	}
@@ -15171,7 +19388,8 @@ type TagsAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -15200,7 +19418,9 @@ type TagsAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -15208,10 +19428,10 @@ type TagsAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                     `default:"true" json:"sortable"`
-	Suggestions    []string                  `json:"suggestions,omitempty"`
-	Type           *SchemasTagsAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+	Sortable       *bool                    `default:"true" json:"sortable"`
+	Suggestions    []string                 `json:"suggestions,omitempty"`
+	Type           SchemasTagsAttributeType `json:"type"`
+	ValueFormatter *string                  `json:"value_formatter,omitempty"`
 }
 
 func (t TagsAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -15279,6 +19499,13 @@ func (o *TagsAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *TagsAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *TagsAttributeSchemasInput) GetHidden() *bool {
@@ -15386,6 +19613,13 @@ func (o *TagsAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *TagsAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *TagsAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -15428,319 +19662,14 @@ func (o *TagsAttributeSchemasInput) GetSuggestions() []string {
 	return o.Suggestions
 }
 
-func (o *TagsAttributeSchemasInput) GetType() *SchemasTagsAttributeType {
+func (o *TagsAttributeSchemasInput) GetType() SchemasTagsAttributeType {
 	if o == nil {
-		return nil
+		return SchemasTagsAttributeType("")
 	}
 	return o.Type
 }
 
 func (o *TagsAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ValueFormatter
-}
-
-// RepeatableAttributeSchemasInput - Repeatable (add N number of fields)
-type RepeatableAttributeSchemasInput struct {
-	// Manifest ID used to create/update the schema attribute
-	Manifest []string `json:"_manifest,omitempty"`
-	Purpose  []string `json:"_purpose,omitempty"`
-	// A set of constraints applicable to the attribute.
-	// These constraints should and will be enforced by the attribute renderer.
-	//
-	Constraints  *SchemasRepeatableAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                                    `json:"default_value,omitempty"`
-	Deprecated   *bool                                  `default:"false" json:"deprecated"`
-	// when enable_relation_picker is set to true the user will be able to pick existing relations as values. Otherwise, the user will need to create new relation to link.
-	EnableRelationPicker *bool `default:"true" json:"enable_relation_picker"`
-	// Setting to `true` disables editing the attribute on the entity builder UI
-	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
-	// This attribute should only be active when the feature flag is enabled
-	FeatureFlag *string `json:"feature_flag,omitempty"`
-	// Which group the attribute should appear in. Accepts group ID or group name
-	Group      *string `json:"group,omitempty"`
-	HasPrimary *bool   `json:"has_primary,omitempty"`
-	// Do not render attribute in entity views
-	Hidden *bool `default:"false" json:"hidden"`
-	// When set to true, will hide the label of the field.
-	HideLabel *bool `json:"hide_label,omitempty"`
-	// Code name of the icon to used to represent this attribute.
-	// The value must be a valid @epilot/base-elements Icon name
-	//
-	Icon *string `json:"icon,omitempty"`
-	// ID for the entity attribute
-	ID *string `json:"id,omitempty"`
-	// A set of configurations meant to document and assist the user in filling the attribute.
-	InfoHelpers *SchemasRepeatableAttributeInfoHelpers `json:"info_helpers,omitempty"`
-	Label       string                                 `json:"label"`
-	Layout      *string                                `json:"layout,omitempty"`
-	Name        string                                 `json:"name"`
-	// Attribute sort order (ascending) in group
-	Order                 *int64  `json:"order,omitempty"`
-	Placeholder           *string `json:"placeholder,omitempty"`
-	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
-	// Setting to `true` prevents the attribute from being modified / deleted
-	Protected *bool `json:"protected,omitempty"`
-	Readonly  *bool `default:"false" json:"readonly"`
-	// Weak repeatable attributes are kept when duplicating an entity. Strong repeatable attributes are discarded when duplicating an entity.
-	RelationAffinityMode *SchemasRelationAffinityMode `json:"relation_affinity_mode,omitempty"`
-	// Defines the conditional rendering expression for showing this field.
-	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
-	// Note: Empty or invalid expression have no effect on the field visibility.
-	//
-	RenderCondition *string `json:"render_condition,omitempty"`
-	Repeatable      *bool   `json:"repeatable,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
-	// Schema slug the attribute belongs to
-	Schema *string `json:"schema,omitempty"`
-	// This attribute should only be active when one of the provided settings have the correct value
-	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
-	// Render as a column in table views. When defined, overrides `hidden`
-	ShowInTable *bool `json:"show_in_table,omitempty"`
-	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                           `default:"true" json:"sortable"`
-	Type           *SchemasRepeatableAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                         `json:"value_formatter,omitempty"`
-}
-
-func (r RepeatableAttributeSchemasInput) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RepeatableAttributeSchemasInput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *RepeatableAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Manifest
-}
-
-func (o *RepeatableAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Purpose
-}
-
-func (o *RepeatableAttributeSchemasInput) GetConstraints() *SchemasRepeatableAttributeConstraints {
-	if o == nil {
-		return nil
-	}
-	return o.Constraints
-}
-
-func (o *RepeatableAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
-		return nil
-	}
-	return o.DefaultValue
-}
-
-func (o *RepeatableAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Deprecated
-}
-
-func (o *RepeatableAttributeSchemasInput) GetEnableRelationPicker() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.EnableRelationPicker
-}
-
-func (o *RepeatableAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.EntityBuilderDisableEdit
-}
-
-func (o *RepeatableAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FeatureFlag
-}
-
-func (o *RepeatableAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Group
-}
-
-func (o *RepeatableAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasPrimary
-}
-
-func (o *RepeatableAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Hidden
-}
-
-func (o *RepeatableAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HideLabel
-}
-
-func (o *RepeatableAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Icon
-}
-
-func (o *RepeatableAttributeSchemasInput) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-func (o *RepeatableAttributeSchemasInput) GetInfoHelpers() *SchemasRepeatableAttributeInfoHelpers {
-	if o == nil {
-		return nil
-	}
-	return o.InfoHelpers
-}
-
-func (o *RepeatableAttributeSchemasInput) GetLabel() string {
-	if o == nil {
-		return ""
-	}
-	return o.Label
-}
-
-func (o *RepeatableAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Layout
-}
-
-func (o *RepeatableAttributeSchemasInput) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *RepeatableAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.Order
-}
-
-func (o *RepeatableAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Placeholder
-}
-
-func (o *RepeatableAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PreviewValueFormatter
-}
-
-func (o *RepeatableAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Protected
-}
-
-func (o *RepeatableAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Readonly
-}
-
-func (o *RepeatableAttributeSchemasInput) GetRelationAffinityMode() *SchemasRelationAffinityMode {
-	if o == nil {
-		return nil
-	}
-	return o.RelationAffinityMode
-}
-
-func (o *RepeatableAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
-		return nil
-	}
-	return o.RenderCondition
-}
-
-func (o *RepeatableAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Repeatable
-}
-
-func (o *RepeatableAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Required
-}
-
-func (o *RepeatableAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Schema
-}
-
-func (o *RepeatableAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
-		return nil
-	}
-	return o.SettingsFlag
-}
-
-func (o *RepeatableAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ShowInTable
-}
-
-func (o *RepeatableAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sortable
-}
-
-func (o *RepeatableAttributeSchemasInput) GetType() *SchemasRepeatableAttributeType {
-	if o == nil {
-		return nil
-	}
-	return o.Type
-}
-
-func (o *RepeatableAttributeSchemasInput) GetValueFormatter() *string {
 	if o == nil {
 		return nil
 	}
@@ -15766,7 +19695,8 @@ type CurrencyAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -15794,7 +19724,9 @@ type CurrencyAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -15886,6 +19818,13 @@ func (o *CurrencyAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *CurrencyAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *CurrencyAttributeSchemasInput) GetHidden() *bool {
@@ -15986,6 +19925,13 @@ func (o *CurrencyAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *CurrencyAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *CurrencyAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -16080,7 +20026,9 @@ type PaymentMethodRelationAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -16088,9 +20036,9 @@ type PaymentMethodRelationAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                                      `default:"true" json:"sortable"`
-	Type           *SchemasPaymentMethodRelationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                                    `json:"value_formatter,omitempty"`
+	Sortable       *bool                                     `default:"true" json:"sortable"`
+	Type           SchemasPaymentMethodRelationAttributeType `json:"type"`
+	ValueFormatter *string                                   `json:"value_formatter,omitempty"`
 }
 
 func (p PaymentMethodRelationAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -16265,6 +20213,13 @@ func (o *PaymentMethodRelationAttributeSchemasInput) GetRenderCondition() *strin
 	return o.RenderCondition
 }
 
+func (o *PaymentMethodRelationAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PaymentMethodRelationAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -16300,9 +20255,9 @@ func (o *PaymentMethodRelationAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetType() *SchemasPaymentMethodRelationAttributeType {
+func (o *PaymentMethodRelationAttributeSchemasInput) GetType() SchemasPaymentMethodRelationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasPaymentMethodRelationAttributeType("")
 	}
 	return o.Type
 }
@@ -16314,7 +20269,324 @@ func (o *PaymentMethodRelationAttributeSchemasInput) GetValueFormatter() *string
 	return o.ValueFormatter
 }
 
-// SchemasInput - Reference to an address attribute of another entity
+// AddressRelationAttributeSchemasInput - Reference to an address attribute of another entity
+type AddressRelationAttributeSchemasInput struct {
+	// Manifest ID used to create/update the schema attribute
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// A set of constraints applicable to the attribute.
+	// These constraints should and will be enforced by the attribute renderer.
+	//
+	Constraints *SchemasConstraints `json:"constraints,omitempty"`
+	// Default fields visible on addresses
+	//
+	// Valid values are:
+	//   - postal_code (default)
+	//   - city (default)
+	//   - street (default)
+	//   - street_number (default)
+	//   - plot_area
+	//   - plot_of_land
+	//   - suburb
+	//   - country
+	//   - additional_info
+	//   - coordinates
+	//   - start_date
+	//   - end_date
+	//   - salutation
+	//   - title
+	//   - first_name
+	//   - last_name
+	//   - company_name
+	//
+	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
+	DefaultValue         any      `json:"default_value,omitempty"`
+	Deprecated           *bool    `default:"false" json:"deprecated"`
+	// Setting to `true` disables editing the attribute on the entity builder UI
+	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// This attribute should only be active when the feature flag is enabled
+	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// Which group the attribute should appear in. Accepts group ID or group name
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
+	// Do not render attribute in entity views
+	Hidden *bool `default:"false" json:"hidden"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// Code name of the icon to used to represent this attribute.
+	// The value must be a valid @epilot/base-elements Icon name
+	//
+	Icon *string `json:"icon,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
+	// A set of configurations meant to document and assist the user in filling the attribute.
+	InfoHelpers *SchemasInfoHelpers `json:"info_helpers,omitempty"`
+	Label       string              `json:"label"`
+	Layout      *string             `json:"layout,omitempty"`
+	Name        string              `json:"name"`
+	// Attribute sort order (ascending) in group
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
+	// Setting to `true` prevents the attribute from being modified / deleted
+	Protected *bool `json:"protected,omitempty"`
+	Readonly  *bool `default:"false" json:"readonly"`
+	// Defines the conditional rendering expression for showing this field.
+	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
+	// Note: Empty or invalid expression have no effect on the field visibility.
+	//
+	RenderCondition *string `json:"render_condition,omitempty"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	// Schema slug the attribute belongs to
+	Schema *string `json:"schema,omitempty"`
+	// This attribute should only be active when one of the provided settings have the correct value
+	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
+	// Render as a column in table views. When defined, overrides `hidden`
+	ShowInTable *bool `json:"show_in_table,omitempty"`
+	// Allow sorting by this attribute in table views if `show_in_table` is true
+	Sortable       *bool       `default:"true" json:"sortable"`
+	Type           SchemasType `json:"type"`
+	ValueFormatter *string     `json:"value_formatter,omitempty"`
+}
+
+func (a AddressRelationAttributeSchemasInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddressRelationAttributeSchemasInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetConstraints() *SchemasConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetDefaultAddressFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultAddressFields
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetDefaultValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultValue
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deprecated
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EntityBuilderDisableEdit
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetFeatureFlag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlag
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetHidden() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetInfoHelpers() *SchemasInfoHelpers {
+	if o == nil {
+		return nil
+	}
+	return o.InfoHelpers
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetLayout() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Layout
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetOrder() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewValueFormatter
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetProtected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Protected
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetReadonly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Readonly
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetRenderCondition() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RenderCondition
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if o == nil {
+		return nil
+	}
+	return o.SettingsFlag
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetShowInTable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ShowInTable
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetSortable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sortable
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetType() SchemasType {
+	if o == nil {
+		return SchemasType("")
+	}
+	return o.Type
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetValueFormatter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValueFormatter
+}
+
+// SchemasInput - Address attribute
 type SchemasInput struct {
 	// Manifest ID used to create/update the schema attribute
 	Manifest []string `json:"_manifest,omitempty"`
@@ -16322,9 +20594,31 @@ type SchemasInput struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *Constraints `json:"constraints,omitempty"`
-	DefaultValue any          `json:"default_value,omitempty"`
-	Deprecated   *bool        `default:"false" json:"deprecated"`
+	Constraints *Constraints `json:"constraints,omitempty"`
+	// Default fields visible on addresses
+	//
+	// Valid values are:
+	//   - postal_code (default)
+	//   - city (default)
+	//   - street (default)
+	//   - street_number (default)
+	//   - plot_area
+	//   - plot_of_land
+	//   - suburb
+	//   - country
+	//   - additional_info
+	//   - coordinates
+	//   - start_date
+	//   - end_date
+	//   - salutation
+	//   - title
+	//   - first_name
+	//   - last_name
+	//   - company_name
+	//
+	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
+	DefaultValue         any      `json:"default_value,omitempty"`
+	Deprecated           *bool    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
@@ -16359,7 +20653,9 @@ type SchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -16368,7 +20664,7 @@ type SchemasInput struct {
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
 	Sortable       *bool   `default:"true" json:"sortable"`
-	Type           *Type   `json:"type,omitempty"`
+	Type           Type    `json:"type"`
 	ValueFormatter *string `json:"value_formatter,omitempty"`
 }
 
@@ -16402,6 +20698,13 @@ func (o *SchemasInput) GetConstraints() *Constraints {
 		return nil
 	}
 	return o.Constraints
+}
+
+func (o *SchemasInput) GetDefaultAddressFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultAddressFields
 }
 
 func (o *SchemasInput) GetDefaultValue() any {
@@ -16544,6 +20847,13 @@ func (o *SchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *SchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *SchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -16579,9 +20889,9 @@ func (o *SchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *SchemasInput) GetType() *Type {
+func (o *SchemasInput) GetType() Type {
 	if o == nil {
-		return nil
+		return Type("")
 	}
 	return o.Type
 }
@@ -16609,7 +20919,8 @@ type UserRelationAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -16638,7 +20949,9 @@ type UserRelationAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -16646,9 +20959,9 @@ type UserRelationAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                             `default:"true" json:"sortable"`
-	Type           *SchemasUserRelationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                           `json:"value_formatter,omitempty"`
+	Sortable       *bool                            `default:"true" json:"sortable"`
+	Type           SchemasUserRelationAttributeType `json:"type"`
+	ValueFormatter *string                          `json:"value_formatter,omitempty"`
 }
 
 func (u UserRelationAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -16716,6 +21029,13 @@ func (o *UserRelationAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *UserRelationAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *UserRelationAttributeSchemasInput) GetHidden() *bool {
@@ -16823,6 +21143,13 @@ func (o *UserRelationAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *UserRelationAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *UserRelationAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -16858,9 +21185,9 @@ func (o *UserRelationAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *UserRelationAttributeSchemasInput) GetType() *SchemasUserRelationAttributeType {
+func (o *UserRelationAttributeSchemasInput) GetType() SchemasUserRelationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasUserRelationAttributeType("")
 	}
 	return o.Type
 }
@@ -16872,157 +21199,12 @@ func (o *UserRelationAttributeSchemasInput) GetValueFormatter() *string {
 	return o.ValueFormatter
 }
 
-type SchemasNewEntityItem struct {
-	AdditionalProperties any `additionalProperties:"true" json:"-"`
-	// Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
-	ACL *EntityACL `json:"_acl,omitempty"`
-	ID  string     `json:"_id"`
-	// Manifest ID used to create/update the entity
-	Manifest []string `json:"_manifest,omitempty"`
-	Purpose  []string `json:"_purpose,omitempty"`
-	// URL-friendly identifier for the entity schema
-	Schema string   `json:"_schema"`
-	Tags   []string `json:"_tags,omitempty"`
-	// Title of entity
-	Title *string `json:"_title"`
-}
-
-func (s SchemasNewEntityItem) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
-}
-
-func (s *SchemasNewEntityItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *SchemasNewEntityItem) GetAdditionalProperties() any {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
-}
-
-func (o *SchemasNewEntityItem) GetACL() *EntityACL {
-	if o == nil {
-		return nil
-	}
-	return o.ACL
-}
-
-func (o *SchemasNewEntityItem) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *SchemasNewEntityItem) GetManifest() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Manifest
-}
-
-func (o *SchemasNewEntityItem) GetPurpose() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Purpose
-}
-
-func (o *SchemasNewEntityItem) GetSchema() string {
-	if o == nil {
-		return ""
-	}
-	return o.Schema
-}
-
-func (o *SchemasNewEntityItem) GetTags() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Tags
-}
-
-func (o *SchemasNewEntityItem) GetTitle() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Title
-}
-
-type SchemasActions struct {
-	// The action type. Currently supported actions:
-	//
-	// | action | description |
-	// |--------|-------------|
-	// | add_existing | Enables the user to pick an existing entity to link as relation |
-	// | create_new | Enables the user to create a new entity using the first/main `allowed_schemas` schema
-	// | create_from_existing | Enables the user to pick an existing entity to clone from, while creating a blank new entity to link as relation |
-	//
-	ActionType *ActionType `json:"action_type,omitempty"`
-	// Sets the action as the default action, visible as the main action button.
-	Default *bool `json:"default,omitempty"`
-	// Name of the feature flag that enables this action
-	FeatureFlag *string `json:"feature_flag,omitempty"`
-	// The action label or action translation key (i18n)
-	Label         *string               `json:"label,omitempty"`
-	NewEntityItem *SchemasNewEntityItem `json:"new_entity_item,omitempty"`
-	// This action should only be active when all the settings have the correct value
-	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
-}
-
-func (o *SchemasActions) GetActionType() *ActionType {
-	if o == nil {
-		return nil
-	}
-	return o.ActionType
-}
-
-func (o *SchemasActions) GetDefault() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Default
-}
-
-func (o *SchemasActions) GetFeatureFlag() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FeatureFlag
-}
-
-func (o *SchemasActions) GetLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Label
-}
-
-func (o *SchemasActions) GetNewEntityItem() *SchemasNewEntityItem {
-	if o == nil {
-		return nil
-	}
-	return o.NewEntityItem
-}
-
-func (o *SchemasActions) GetSettingsFlag() []SettingFlag {
-	if o == nil {
-		return nil
-	}
-	return o.SettingsFlag
-}
-
 // RelationAttributeSchemasInput - Entity Relationship
 type RelationAttributeSchemasInput struct {
 	// Manifest ID used to create/update the schema attribute
-	Manifest []string         `json:"_manifest,omitempty"`
-	Purpose  []string         `json:"_purpose,omitempty"`
-	Actions  []SchemasActions `json:"actions,omitempty"`
+	Manifest []string  `json:"_manifest,omitempty"`
+	Purpose  []string  `json:"_purpose,omitempty"`
+	Actions  []Actions `json:"actions,omitempty"`
 	// Optional label for the add button. The translated value for add_button_lable is used, if found else the string is used as is.
 	AddButtonLabel *string  `json:"add_button_label,omitempty"`
 	AllowedSchemas []string `json:"allowedSchemas,omitempty"`
@@ -17068,13 +21250,17 @@ type RelationAttributeSchemasInput struct {
 	Readonly  *bool `default:"false" json:"readonly"`
 	// Weak relation attributes are kept when duplicating an entity. Strong relation attributes are discarded when duplicating an entity.
 	RelationAffinityMode *RelationAffinityMode `json:"relation_affinity_mode,omitempty"`
+	// Additional entity search filter for relation picker
+	RelationPickerFilter *RelationPickerFilter `json:"relation_picker_filter,omitempty"`
 	RelationType         *RelationType         `json:"relation_type,omitempty"`
 	// Defines the conditional rendering expression for showing this field.
 	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// Relations are always repeatables
+	Repeatable *bool `default:"true" json:"repeatable"`
+	Required   *bool `default:"false" json:"required"`
 	// Map of schema slug to target relation attribute
 	ReverseAttributes map[string]string `json:"reverse_attributes,omitempty"`
 	// Schema slug the attribute belongs to
@@ -17086,10 +21272,10 @@ type RelationAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                         `default:"true" json:"sortable"`
-	SummaryFields  []SummaryFields               `json:"summary_fields,omitempty"`
-	Type           *SchemasRelationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                       `json:"value_formatter,omitempty"`
+	Sortable       *bool                        `default:"true" json:"sortable"`
+	SummaryFields  []SummaryFields              `json:"summary_fields,omitempty"`
+	Type           SchemasRelationAttributeType `json:"type"`
+	ValueFormatter *string                      `json:"value_formatter,omitempty"`
 }
 
 func (r RelationAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -17117,7 +21303,7 @@ func (o *RelationAttributeSchemasInput) GetPurpose() []string {
 	return o.Purpose
 }
 
-func (o *RelationAttributeSchemasInput) GetActions() []SchemasActions {
+func (o *RelationAttributeSchemasInput) GetActions() []Actions {
 	if o == nil {
 		return nil
 	}
@@ -17320,6 +21506,13 @@ func (o *RelationAttributeSchemasInput) GetRelationAffinityMode() *RelationAffin
 	return o.RelationAffinityMode
 }
 
+func (o *RelationAttributeSchemasInput) GetRelationPickerFilter() *RelationPickerFilter {
+	if o == nil {
+		return nil
+	}
+	return o.RelationPickerFilter
+}
+
 func (o *RelationAttributeSchemasInput) GetRelationType() *RelationType {
 	if o == nil {
 		return nil
@@ -17332,6 +21525,13 @@ func (o *RelationAttributeSchemasInput) GetRenderCondition() *string {
 		return nil
 	}
 	return o.RenderCondition
+}
+
+func (o *RelationAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
 }
 
 func (o *RelationAttributeSchemasInput) GetRequired() *bool {
@@ -17390,9 +21590,9 @@ func (o *RelationAttributeSchemasInput) GetSummaryFields() []SummaryFields {
 	return o.SummaryFields
 }
 
-func (o *RelationAttributeSchemasInput) GetType() *SchemasRelationAttributeType {
+func (o *RelationAttributeSchemasInput) GetType() SchemasRelationAttributeType {
 	if o == nil {
-		return nil
+		return SchemasRelationAttributeType("")
 	}
 	return o.Type
 }
@@ -17420,7 +21620,8 @@ type SequenceAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -17450,7 +21651,9 @@ type SequenceAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -17458,10 +21661,10 @@ type SequenceAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                         `default:"true" json:"sortable"`
-	StartNumber    *int64                        `json:"start_number,omitempty"`
-	Type           *SchemasSequenceAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                       `json:"value_formatter,omitempty"`
+	Sortable       *bool                        `default:"true" json:"sortable"`
+	StartNumber    *int64                       `json:"start_number,omitempty"`
+	Type           SchemasSequenceAttributeType `json:"type"`
+	ValueFormatter *string                      `json:"value_formatter,omitempty"`
 }
 
 func (s SequenceAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -17529,6 +21732,13 @@ func (o *SequenceAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *SequenceAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *SequenceAttributeSchemasInput) GetHidden() *bool {
@@ -17636,6 +21846,13 @@ func (o *SequenceAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *SequenceAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *SequenceAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -17678,9 +21895,9 @@ func (o *SequenceAttributeSchemasInput) GetStartNumber() *int64 {
 	return o.StartNumber
 }
 
-func (o *SequenceAttributeSchemasInput) GetType() *SchemasSequenceAttributeType {
+func (o *SequenceAttributeSchemasInput) GetType() SchemasSequenceAttributeType {
 	if o == nil {
-		return nil
+		return SchemasSequenceAttributeType("")
 	}
 	return o.Type
 }
@@ -17708,7 +21925,8 @@ type StatusAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -17737,7 +21955,9 @@ type StatusAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -17745,9 +21965,9 @@ type StatusAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                       `default:"true" json:"sortable"`
-	Type           *SchemasStatusAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                     `json:"value_formatter,omitempty"`
+	Sortable       *bool                      `default:"true" json:"sortable"`
+	Type           SchemasStatusAttributeType `json:"type"`
+	ValueFormatter *string                    `json:"value_formatter,omitempty"`
 }
 
 func (s StatusAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -17815,6 +22035,13 @@ func (o *StatusAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *StatusAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *StatusAttributeSchemasInput) GetHidden() *bool {
@@ -17922,6 +22149,13 @@ func (o *StatusAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *StatusAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *StatusAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -17957,9 +22191,9 @@ func (o *StatusAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *StatusAttributeSchemasInput) GetType() *SchemasStatusAttributeType {
+func (o *StatusAttributeSchemasInput) GetType() SchemasStatusAttributeType {
 	if o == nil {
-		return nil
+		return SchemasStatusAttributeType("")
 	}
 	return o.Type
 }
@@ -17993,7 +22227,8 @@ type MultiSelectAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -18022,7 +22257,9 @@ type MultiSelectAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -18030,9 +22267,9 @@ type MultiSelectAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                            `default:"true" json:"sortable"`
-	Type           *SchemasMultiSelectAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                          `json:"value_formatter,omitempty"`
+	Sortable       *bool                           `default:"true" json:"sortable"`
+	Type           SchemasMultiSelectAttributeType `json:"type"`
+	ValueFormatter *string                         `json:"value_formatter,omitempty"`
 }
 
 func (m MultiSelectAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -18121,6 +22358,13 @@ func (o *MultiSelectAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *MultiSelectAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *MultiSelectAttributeSchemasInput) GetHidden() *bool {
@@ -18228,6 +22472,13 @@ func (o *MultiSelectAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *MultiSelectAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *MultiSelectAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -18263,9 +22514,9 @@ func (o *MultiSelectAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetType() *SchemasMultiSelectAttributeType {
+func (o *MultiSelectAttributeSchemasInput) GetType() SchemasMultiSelectAttributeType {
 	if o == nil {
-		return nil
+		return SchemasMultiSelectAttributeType("")
 	}
 	return o.Type
 }
@@ -18295,7 +22546,8 @@ type SelectAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -18324,7 +22576,9 @@ type SelectAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -18332,9 +22586,9 @@ type SelectAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                       `default:"true" json:"sortable"`
-	Type           *SchemasSelectAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                     `json:"value_formatter,omitempty"`
+	Sortable       *bool                      `default:"true" json:"sortable"`
+	Type           SchemasSelectAttributeType `json:"type"`
+	ValueFormatter *string                    `json:"value_formatter,omitempty"`
 }
 
 func (s SelectAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -18409,6 +22663,13 @@ func (o *SelectAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *SelectAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *SelectAttributeSchemasInput) GetHidden() *bool {
@@ -18516,6 +22777,13 @@ func (o *SelectAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *SelectAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *SelectAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -18551,9 +22819,9 @@ func (o *SelectAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *SelectAttributeSchemasInput) GetType() *SchemasSelectAttributeType {
+func (o *SelectAttributeSchemasInput) GetType() SchemasSelectAttributeType {
 	if o == nil {
-		return nil
+		return SchemasSelectAttributeType("")
 	}
 	return o.Type
 }
@@ -18576,12 +22844,14 @@ type BooleanAttributeSchemasInput struct {
 	Constraints  *SchemasBooleanAttributeConstraints `json:"constraints,omitempty"`
 	DefaultValue any                                 `json:"default_value,omitempty"`
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
+	DisplayType  *DisplayType                        `default:"switch" json:"display_type"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -18609,7 +22879,9 @@ type BooleanAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -18617,9 +22889,9 @@ type BooleanAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                        `default:"true" json:"sortable"`
-	Type           *SchemasBooleanAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                      `json:"value_formatter,omitempty"`
+	Sortable       *bool                       `default:"true" json:"sortable"`
+	Type           SchemasBooleanAttributeType `json:"type"`
+	ValueFormatter *string                     `json:"value_formatter,omitempty"`
 }
 
 func (b BooleanAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -18668,6 +22940,13 @@ func (o *BooleanAttributeSchemasInput) GetDeprecated() *bool {
 	return o.Deprecated
 }
 
+func (o *BooleanAttributeSchemasInput) GetDisplayType() *DisplayType {
+	if o == nil {
+		return nil
+	}
+	return o.DisplayType
+}
+
 func (o *BooleanAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 	if o == nil {
 		return nil
@@ -18687,6 +22966,13 @@ func (o *BooleanAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *BooleanAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *BooleanAttributeSchemasInput) GetHidden() *bool {
@@ -18787,6 +23073,13 @@ func (o *BooleanAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *BooleanAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *BooleanAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -18822,9 +23115,9 @@ func (o *BooleanAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *BooleanAttributeSchemasInput) GetType() *SchemasBooleanAttributeType {
+func (o *BooleanAttributeSchemasInput) GetType() SchemasBooleanAttributeType {
 	if o == nil {
-		return nil
+		return SchemasBooleanAttributeType("")
 	}
 	return o.Type
 }
@@ -18852,7 +23145,8 @@ type CountryAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -18880,7 +23174,9 @@ type CountryAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -18888,9 +23184,9 @@ type CountryAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                        `default:"true" json:"sortable"`
-	Type           *SchemasCountryAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                      `json:"value_formatter,omitempty"`
+	Sortable       *bool                       `default:"true" json:"sortable"`
+	Type           SchemasCountryAttributeType `json:"type"`
+	ValueFormatter *string                     `json:"value_formatter,omitempty"`
 }
 
 func (c CountryAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -18958,6 +23254,13 @@ func (o *CountryAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *CountryAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *CountryAttributeSchemasInput) GetHidden() *bool {
@@ -19058,6 +23361,13 @@ func (o *CountryAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *CountryAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *CountryAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -19093,9 +23403,9 @@ func (o *CountryAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *CountryAttributeSchemasInput) GetType() *SchemasCountryAttributeType {
+func (o *CountryAttributeSchemasInput) GetType() SchemasCountryAttributeType {
 	if o == nil {
-		return nil
+		return SchemasCountryAttributeType("")
 	}
 	return o.Type
 }
@@ -19123,7 +23433,8 @@ type DateAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -19151,7 +23462,9 @@ type DateAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -19159,9 +23472,9 @@ type DateAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                     `default:"true" json:"sortable"`
-	Type           *SchemasDateAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+	Sortable       *bool                    `default:"true" json:"sortable"`
+	Type           SchemasDateAttributeType `json:"type"`
+	ValueFormatter *string                  `json:"value_formatter,omitempty"`
 }
 
 func (d DateAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -19229,6 +23542,13 @@ func (o *DateAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *DateAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *DateAttributeSchemasInput) GetHidden() *bool {
@@ -19329,6 +23649,13 @@ func (o *DateAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *DateAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *DateAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -19364,9 +23691,9 @@ func (o *DateAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *DateAttributeSchemasInput) GetType() *SchemasDateAttributeType {
+func (o *DateAttributeSchemasInput) GetType() SchemasDateAttributeType {
 	if o == nil {
-		return nil
+		return SchemasDateAttributeType("")
 	}
 	return o.Type
 }
@@ -19394,7 +23721,8 @@ type LinkAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -19422,7 +23750,9 @@ type LinkAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -19430,9 +23760,9 @@ type LinkAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                     `default:"true" json:"sortable"`
-	Type           *SchemasLinkAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+	Sortable       *bool                    `default:"true" json:"sortable"`
+	Type           SchemasLinkAttributeType `json:"type"`
+	ValueFormatter *string                  `json:"value_formatter,omitempty"`
 }
 
 func (l LinkAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -19500,6 +23830,13 @@ func (o *LinkAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *LinkAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *LinkAttributeSchemasInput) GetHidden() *bool {
@@ -19600,6 +23937,13 @@ func (o *LinkAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *LinkAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *LinkAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -19635,9 +23979,9 @@ func (o *LinkAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *LinkAttributeSchemasInput) GetType() *SchemasLinkAttributeType {
+func (o *LinkAttributeSchemasInput) GetType() SchemasLinkAttributeType {
 	if o == nil {
-		return nil
+		return SchemasLinkAttributeType("")
 	}
 	return o.Type
 }
@@ -19665,7 +24009,8 @@ type TextAttributeSchemasInput struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -19694,7 +24039,12 @@ type TextAttributeSchemasInput struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	RichText   *bool `json:"rich_text,omitempty"`
+	// Number of rows for rich_text textarea
+	Rows *SchemasRows `json:"rows,omitempty"`
 	// Schema slug the attribute belongs to
 	Schema *string `json:"schema,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
@@ -19702,9 +24052,9 @@ type TextAttributeSchemasInput struct {
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                     `default:"true" json:"sortable"`
-	Type           *SchemasTextAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+	Sortable       *bool                    `default:"true" json:"sortable"`
+	Type           SchemasTextAttributeType `json:"type"`
+	ValueFormatter *string                  `json:"value_formatter,omitempty"`
 }
 
 func (t TextAttributeSchemasInput) MarshalJSON() ([]byte, error) {
@@ -19772,6 +24122,13 @@ func (o *TextAttributeSchemasInput) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *TextAttributeSchemasInput) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *TextAttributeSchemasInput) GetHidden() *bool {
@@ -19879,11 +24236,32 @@ func (o *TextAttributeSchemasInput) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *TextAttributeSchemasInput) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *TextAttributeSchemasInput) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
+}
+
+func (o *TextAttributeSchemasInput) GetRichText() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RichText
+}
+
+func (o *TextAttributeSchemasInput) GetRows() *SchemasRows {
+	if o == nil {
+		return nil
+	}
+	return o.Rows
 }
 
 func (o *TextAttributeSchemasInput) GetSchema() *string {
@@ -19914,9 +24292,9 @@ func (o *TextAttributeSchemasInput) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *TextAttributeSchemasInput) GetType() *SchemasTextAttributeType {
+func (o *TextAttributeSchemasInput) GetType() SchemasTextAttributeType {
 	if o == nil {
-		return nil
+		return SchemasTextAttributeType("")
 	}
 	return o.Type
 }
@@ -19943,10 +24321,11 @@ const (
 	AttributeWithCompositeIDInputTypeRelationAttributeSchemasInput              AttributeWithCompositeIDInputType = "RelationAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypeUserRelationAttributeSchemasInput          AttributeWithCompositeIDInputType = "UserRelationAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypeSchemasInput                               AttributeWithCompositeIDInputType = "Schemas_input"
+	AttributeWithCompositeIDInputTypeAddressRelationAttributeSchemasInput       AttributeWithCompositeIDInputType = "AddressRelationAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypePaymentMethodRelationAttributeSchemasInput AttributeWithCompositeIDInputType = "PaymentMethodRelationAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypeCurrencyAttributeSchemasInput              AttributeWithCompositeIDInputType = "CurrencyAttribute_Schemas_input"
-	AttributeWithCompositeIDInputTypeRepeatableAttributeSchemasInput            AttributeWithCompositeIDInputType = "RepeatableAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypeTagsAttributeSchemasInput                  AttributeWithCompositeIDInputType = "TagsAttribute_Schemas_input"
+	AttributeWithCompositeIDInputTypeMessageEmailAddressAttributeSchemasInput   AttributeWithCompositeIDInputType = "MessageEmailAddressAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypeNumberAttributeSchemasInput                AttributeWithCompositeIDInputType = "NumberAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypeConsentAttributeSchemasInput               AttributeWithCompositeIDInputType = "ConsentAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypeInternalAttributeSchemasInput              AttributeWithCompositeIDInputType = "InternalAttribute_Schemas_input"
@@ -19959,6 +24338,10 @@ const (
 	AttributeWithCompositeIDInputTypeInternalUserAttributeSchemasInput          AttributeWithCompositeIDInputType = "InternalUserAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypePurposeAttributeSchemasInput               AttributeWithCompositeIDInputType = "PurposeAttribute_Schemas_input"
 	AttributeWithCompositeIDInputTypePartnerOrganisationAttributeSchemasInput   AttributeWithCompositeIDInputType = "PartnerOrganisationAttribute_Schemas_input"
+	AttributeWithCompositeIDInputTypePhoneAttributeSchemasInput                 AttributeWithCompositeIDInputType = "PhoneAttribute_Schemas_input"
+	AttributeWithCompositeIDInputTypeEmailAttributeSchemasInput                 AttributeWithCompositeIDInputType = "EmailAttribute_Schemas_input"
+	AttributeWithCompositeIDInputTypePaymentAttributeSchemasInput               AttributeWithCompositeIDInputType = "PaymentAttribute_Schemas_input"
+	AttributeWithCompositeIDInputTypePriceComponentAttributeSchemasInput        AttributeWithCompositeIDInputType = "PriceComponentAttribute_Schemas_input"
 )
 
 // AttributeWithCompositeIDInput - a readonly computed ID for the attribute including schema slug and the attribute ID
@@ -19975,10 +24358,11 @@ type AttributeWithCompositeIDInput struct {
 	RelationAttributeSchemasInput              *RelationAttributeSchemasInput              `queryParam:"inline"`
 	UserRelationAttributeSchemasInput          *UserRelationAttributeSchemasInput          `queryParam:"inline"`
 	SchemasInput                               *SchemasInput                               `queryParam:"inline"`
+	AddressRelationAttributeSchemasInput       *AddressRelationAttributeSchemasInput       `queryParam:"inline"`
 	PaymentMethodRelationAttributeSchemasInput *PaymentMethodRelationAttributeSchemasInput `queryParam:"inline"`
 	CurrencyAttributeSchemasInput              *CurrencyAttributeSchemasInput              `queryParam:"inline"`
-	RepeatableAttributeSchemasInput            *RepeatableAttributeSchemasInput            `queryParam:"inline"`
 	TagsAttributeSchemasInput                  *TagsAttributeSchemasInput                  `queryParam:"inline"`
+	MessageEmailAddressAttributeSchemasInput   *MessageEmailAddressAttributeSchemasInput   `queryParam:"inline"`
 	NumberAttributeSchemasInput                *NumberAttributeSchemasInput                `queryParam:"inline"`
 	ConsentAttributeSchemasInput               *ConsentAttributeSchemasInput               `queryParam:"inline"`
 	InternalAttributeSchemasInput              *InternalAttributeSchemasInput              `queryParam:"inline"`
@@ -19991,6 +24375,10 @@ type AttributeWithCompositeIDInput struct {
 	InternalUserAttributeSchemasInput          *InternalUserAttributeSchemasInput          `queryParam:"inline"`
 	PurposeAttributeSchemasInput               *PurposeAttributeSchemasInput               `queryParam:"inline"`
 	PartnerOrganisationAttributeSchemasInput   *PartnerOrganisationAttributeSchemasInput   `queryParam:"inline"`
+	PhoneAttributeSchemasInput                 *PhoneAttributeSchemasInput                 `queryParam:"inline"`
+	EmailAttributeSchemasInput                 *EmailAttributeSchemasInput                 `queryParam:"inline"`
+	PaymentAttributeSchemasInput               *PaymentAttributeSchemasInput               `queryParam:"inline"`
+	PriceComponentAttributeSchemasInput        *PriceComponentAttributeSchemasInput        `queryParam:"inline"`
 
 	Type AttributeWithCompositeIDInputType
 }
@@ -20103,6 +24491,15 @@ func CreateAttributeWithCompositeIDInputSchemasInput(schemasInput SchemasInput) 
 	}
 }
 
+func CreateAttributeWithCompositeIDInputAddressRelationAttributeSchemasInput(addressRelationAttributeSchemasInput AddressRelationAttributeSchemasInput) AttributeWithCompositeIDInput {
+	typ := AttributeWithCompositeIDInputTypeAddressRelationAttributeSchemasInput
+
+	return AttributeWithCompositeIDInput{
+		AddressRelationAttributeSchemasInput: &addressRelationAttributeSchemasInput,
+		Type:                                 typ,
+	}
+}
+
 func CreateAttributeWithCompositeIDInputPaymentMethodRelationAttributeSchemasInput(paymentMethodRelationAttributeSchemasInput PaymentMethodRelationAttributeSchemasInput) AttributeWithCompositeIDInput {
 	typ := AttributeWithCompositeIDInputTypePaymentMethodRelationAttributeSchemasInput
 
@@ -20121,21 +24518,21 @@ func CreateAttributeWithCompositeIDInputCurrencyAttributeSchemasInput(currencyAt
 	}
 }
 
-func CreateAttributeWithCompositeIDInputRepeatableAttributeSchemasInput(repeatableAttributeSchemasInput RepeatableAttributeSchemasInput) AttributeWithCompositeIDInput {
-	typ := AttributeWithCompositeIDInputTypeRepeatableAttributeSchemasInput
-
-	return AttributeWithCompositeIDInput{
-		RepeatableAttributeSchemasInput: &repeatableAttributeSchemasInput,
-		Type:                            typ,
-	}
-}
-
 func CreateAttributeWithCompositeIDInputTagsAttributeSchemasInput(tagsAttributeSchemasInput TagsAttributeSchemasInput) AttributeWithCompositeIDInput {
 	typ := AttributeWithCompositeIDInputTypeTagsAttributeSchemasInput
 
 	return AttributeWithCompositeIDInput{
 		TagsAttributeSchemasInput: &tagsAttributeSchemasInput,
 		Type:                      typ,
+	}
+}
+
+func CreateAttributeWithCompositeIDInputMessageEmailAddressAttributeSchemasInput(messageEmailAddressAttributeSchemasInput MessageEmailAddressAttributeSchemasInput) AttributeWithCompositeIDInput {
+	typ := AttributeWithCompositeIDInputTypeMessageEmailAddressAttributeSchemasInput
+
+	return AttributeWithCompositeIDInput{
+		MessageEmailAddressAttributeSchemasInput: &messageEmailAddressAttributeSchemasInput,
+		Type:                                     typ,
 	}
 }
 
@@ -20247,12 +24644,48 @@ func CreateAttributeWithCompositeIDInputPartnerOrganisationAttributeSchemasInput
 	}
 }
 
+func CreateAttributeWithCompositeIDInputPhoneAttributeSchemasInput(phoneAttributeSchemasInput PhoneAttributeSchemasInput) AttributeWithCompositeIDInput {
+	typ := AttributeWithCompositeIDInputTypePhoneAttributeSchemasInput
+
+	return AttributeWithCompositeIDInput{
+		PhoneAttributeSchemasInput: &phoneAttributeSchemasInput,
+		Type:                       typ,
+	}
+}
+
+func CreateAttributeWithCompositeIDInputEmailAttributeSchemasInput(emailAttributeSchemasInput EmailAttributeSchemasInput) AttributeWithCompositeIDInput {
+	typ := AttributeWithCompositeIDInputTypeEmailAttributeSchemasInput
+
+	return AttributeWithCompositeIDInput{
+		EmailAttributeSchemasInput: &emailAttributeSchemasInput,
+		Type:                       typ,
+	}
+}
+
+func CreateAttributeWithCompositeIDInputPaymentAttributeSchemasInput(paymentAttributeSchemasInput PaymentAttributeSchemasInput) AttributeWithCompositeIDInput {
+	typ := AttributeWithCompositeIDInputTypePaymentAttributeSchemasInput
+
+	return AttributeWithCompositeIDInput{
+		PaymentAttributeSchemasInput: &paymentAttributeSchemasInput,
+		Type:                         typ,
+	}
+}
+
+func CreateAttributeWithCompositeIDInputPriceComponentAttributeSchemasInput(priceComponentAttributeSchemasInput PriceComponentAttributeSchemasInput) AttributeWithCompositeIDInput {
+	typ := AttributeWithCompositeIDInputTypePriceComponentAttributeSchemasInput
+
+	return AttributeWithCompositeIDInput{
+		PriceComponentAttributeSchemasInput: &priceComponentAttributeSchemasInput,
+		Type:                                typ,
+	}
+}
+
 func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 
-	var internalAttributeSchemasInput InternalAttributeSchemasInput = InternalAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &internalAttributeSchemasInput, "", true, true); err == nil {
-		u.InternalAttributeSchemasInput = &internalAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeInternalAttributeSchemasInput
+	var internalUserAttributeSchemasInput InternalUserAttributeSchemasInput = InternalUserAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &internalUserAttributeSchemasInput, "", true, true); err == nil {
+		u.InternalUserAttributeSchemasInput = &internalUserAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeInternalUserAttributeSchemasInput
 		return nil
 	}
 
@@ -20277,38 +24710,24 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var booleanAttributeSchemasInput BooleanAttributeSchemasInput = BooleanAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &booleanAttributeSchemasInput, "", true, true); err == nil {
-		u.BooleanAttributeSchemasInput = &booleanAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeBooleanAttributeSchemasInput
+	var internalAttributeSchemasInput InternalAttributeSchemasInput = InternalAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &internalAttributeSchemasInput, "", true, true); err == nil {
+		u.InternalAttributeSchemasInput = &internalAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeInternalAttributeSchemasInput
 		return nil
 	}
 
-	var partnerOrganisationAttributeSchemasInput PartnerOrganisationAttributeSchemasInput = PartnerOrganisationAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &partnerOrganisationAttributeSchemasInput, "", true, true); err == nil {
-		u.PartnerOrganisationAttributeSchemasInput = &partnerOrganisationAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypePartnerOrganisationAttributeSchemasInput
+	var priceComponentAttributeSchemasInput PriceComponentAttributeSchemasInput = PriceComponentAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &priceComponentAttributeSchemasInput, "", true, true); err == nil {
+		u.PriceComponentAttributeSchemasInput = &priceComponentAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypePriceComponentAttributeSchemasInput
 		return nil
 	}
 
-	var internalUserAttributeSchemasInput InternalUserAttributeSchemasInput = InternalUserAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &internalUserAttributeSchemasInput, "", true, true); err == nil {
-		u.InternalUserAttributeSchemasInput = &internalUserAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeInternalUserAttributeSchemasInput
-		return nil
-	}
-
-	var automationAttributeSchemasInput AutomationAttributeSchemasInput = AutomationAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &automationAttributeSchemasInput, "", true, true); err == nil {
-		u.AutomationAttributeSchemasInput = &automationAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeAutomationAttributeSchemasInput
-		return nil
-	}
-
-	var invitationEmailAttributeSchemasInput InvitationEmailAttributeSchemasInput = InvitationEmailAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &invitationEmailAttributeSchemasInput, "", true, true); err == nil {
-		u.InvitationEmailAttributeSchemasInput = &invitationEmailAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeInvitationEmailAttributeSchemasInput
+	var paymentAttributeSchemasInput PaymentAttributeSchemasInput = PaymentAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &paymentAttributeSchemasInput, "", true, true); err == nil {
+		u.PaymentAttributeSchemasInput = &paymentAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypePaymentAttributeSchemasInput
 		return nil
 	}
 
@@ -20319,10 +24738,31 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var computedAttributeSchemasInput ComputedAttributeSchemasInput = ComputedAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &computedAttributeSchemasInput, "", true, true); err == nil {
-		u.ComputedAttributeSchemasInput = &computedAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeComputedAttributeSchemasInput
+	var phoneAttributeSchemasInput PhoneAttributeSchemasInput = PhoneAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &phoneAttributeSchemasInput, "", true, true); err == nil {
+		u.PhoneAttributeSchemasInput = &phoneAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypePhoneAttributeSchemasInput
+		return nil
+	}
+
+	var emailAttributeSchemasInput EmailAttributeSchemasInput = EmailAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &emailAttributeSchemasInput, "", true, true); err == nil {
+		u.EmailAttributeSchemasInput = &emailAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeEmailAttributeSchemasInput
+		return nil
+	}
+
+	var invitationEmailAttributeSchemasInput InvitationEmailAttributeSchemasInput = InvitationEmailAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &invitationEmailAttributeSchemasInput, "", true, true); err == nil {
+		u.InvitationEmailAttributeSchemasInput = &invitationEmailAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeInvitationEmailAttributeSchemasInput
+		return nil
+	}
+
+	var automationAttributeSchemasInput AutomationAttributeSchemasInput = AutomationAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &automationAttributeSchemasInput, "", true, true); err == nil {
+		u.AutomationAttributeSchemasInput = &automationAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeAutomationAttributeSchemasInput
 		return nil
 	}
 
@@ -20333,13 +24773,6 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var statusAttributeSchemasInput StatusAttributeSchemasInput = StatusAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &statusAttributeSchemasInput, "", true, true); err == nil {
-		u.StatusAttributeSchemasInput = &statusAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeStatusAttributeSchemasInput
-		return nil
-	}
-
 	var paymentMethodRelationAttributeSchemasInput PaymentMethodRelationAttributeSchemasInput = PaymentMethodRelationAttributeSchemasInput{}
 	if err := utils.UnmarshalJSON(data, &paymentMethodRelationAttributeSchemasInput, "", true, true); err == nil {
 		u.PaymentMethodRelationAttributeSchemasInput = &paymentMethodRelationAttributeSchemasInput
@@ -20347,10 +24780,10 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var textAttributeSchemasInput TextAttributeSchemasInput = TextAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &textAttributeSchemasInput, "", true, true); err == nil {
-		u.TextAttributeSchemasInput = &textAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeTextAttributeSchemasInput
+	var partnerOrganisationAttributeSchemasInput PartnerOrganisationAttributeSchemasInput = PartnerOrganisationAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &partnerOrganisationAttributeSchemasInput, "", true, true); err == nil {
+		u.PartnerOrganisationAttributeSchemasInput = &partnerOrganisationAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypePartnerOrganisationAttributeSchemasInput
 		return nil
 	}
 
@@ -20368,31 +24801,24 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var numberAttributeSchemasInput NumberAttributeSchemasInput = NumberAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &numberAttributeSchemasInput, "", true, true); err == nil {
-		u.NumberAttributeSchemasInput = &numberAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeNumberAttributeSchemasInput
+	var addressRelationAttributeSchemasInput AddressRelationAttributeSchemasInput = AddressRelationAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &addressRelationAttributeSchemasInput, "", true, true); err == nil {
+		u.AddressRelationAttributeSchemasInput = &addressRelationAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeAddressRelationAttributeSchemasInput
 		return nil
 	}
 
-	var consentAttributeSchemasInput ConsentAttributeSchemasInput = ConsentAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &consentAttributeSchemasInput, "", true, true); err == nil {
-		u.ConsentAttributeSchemasInput = &consentAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeConsentAttributeSchemasInput
+	var statusAttributeSchemasInput StatusAttributeSchemasInput = StatusAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &statusAttributeSchemasInput, "", true, true); err == nil {
+		u.StatusAttributeSchemasInput = &statusAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeStatusAttributeSchemasInput
 		return nil
 	}
 
-	var currencyAttributeSchemasInput CurrencyAttributeSchemasInput = CurrencyAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &currencyAttributeSchemasInput, "", true, true); err == nil {
-		u.CurrencyAttributeSchemasInput = &currencyAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeCurrencyAttributeSchemasInput
-		return nil
-	}
-
-	var tagsAttributeSchemasInput TagsAttributeSchemasInput = TagsAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &tagsAttributeSchemasInput, "", true, true); err == nil {
-		u.TagsAttributeSchemasInput = &tagsAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeTagsAttributeSchemasInput
+	var booleanAttributeSchemasInput BooleanAttributeSchemasInput = BooleanAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &booleanAttributeSchemasInput, "", true, true); err == nil {
+		u.BooleanAttributeSchemasInput = &booleanAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeBooleanAttributeSchemasInput
 		return nil
 	}
 
@@ -20403,10 +24829,31 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var purposeAttributeSchemasInput PurposeAttributeSchemasInput = PurposeAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &purposeAttributeSchemasInput, "", true, true); err == nil {
-		u.PurposeAttributeSchemasInput = &purposeAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypePurposeAttributeSchemasInput
+	var consentAttributeSchemasInput ConsentAttributeSchemasInput = ConsentAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &consentAttributeSchemasInput, "", true, true); err == nil {
+		u.ConsentAttributeSchemasInput = &consentAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeConsentAttributeSchemasInput
+		return nil
+	}
+
+	var numberAttributeSchemasInput NumberAttributeSchemasInput = NumberAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &numberAttributeSchemasInput, "", true, true); err == nil {
+		u.NumberAttributeSchemasInput = &numberAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeNumberAttributeSchemasInput
+		return nil
+	}
+
+	var tagsAttributeSchemasInput TagsAttributeSchemasInput = TagsAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &tagsAttributeSchemasInput, "", true, true); err == nil {
+		u.TagsAttributeSchemasInput = &tagsAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeTagsAttributeSchemasInput
+		return nil
+	}
+
+	var currencyAttributeSchemasInput CurrencyAttributeSchemasInput = CurrencyAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &currencyAttributeSchemasInput, "", true, true); err == nil {
+		u.CurrencyAttributeSchemasInput = &currencyAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeCurrencyAttributeSchemasInput
 		return nil
 	}
 
@@ -20417,10 +24864,24 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var repeatableAttributeSchemasInput RepeatableAttributeSchemasInput = RepeatableAttributeSchemasInput{}
-	if err := utils.UnmarshalJSON(data, &repeatableAttributeSchemasInput, "", true, true); err == nil {
-		u.RepeatableAttributeSchemasInput = &repeatableAttributeSchemasInput
-		u.Type = AttributeWithCompositeIDInputTypeRepeatableAttributeSchemasInput
+	var computedAttributeSchemasInput ComputedAttributeSchemasInput = ComputedAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &computedAttributeSchemasInput, "", true, true); err == nil {
+		u.ComputedAttributeSchemasInput = &computedAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeComputedAttributeSchemasInput
+		return nil
+	}
+
+	var messageEmailAddressAttributeSchemasInput MessageEmailAddressAttributeSchemasInput = MessageEmailAddressAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &messageEmailAddressAttributeSchemasInput, "", true, true); err == nil {
+		u.MessageEmailAddressAttributeSchemasInput = &messageEmailAddressAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeMessageEmailAddressAttributeSchemasInput
+		return nil
+	}
+
+	var textAttributeSchemasInput TextAttributeSchemasInput = TextAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &textAttributeSchemasInput, "", true, true); err == nil {
+		u.TextAttributeSchemasInput = &textAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypeTextAttributeSchemasInput
 		return nil
 	}
 
@@ -20435,6 +24896,13 @@ func (u *AttributeWithCompositeIDInput) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &fileAttributeSchemasInput, "", true, true); err == nil {
 		u.FileAttributeSchemasInput = &fileAttributeSchemasInput
 		u.Type = AttributeWithCompositeIDInputTypeFileAttributeSchemasInput
+		return nil
+	}
+
+	var purposeAttributeSchemasInput PurposeAttributeSchemasInput = PurposeAttributeSchemasInput{}
+	if err := utils.UnmarshalJSON(data, &purposeAttributeSchemasInput, "", true, true); err == nil {
+		u.PurposeAttributeSchemasInput = &purposeAttributeSchemasInput
+		u.Type = AttributeWithCompositeIDInputTypePurposeAttributeSchemasInput
 		return nil
 	}
 
@@ -20497,6 +24965,10 @@ func (u AttributeWithCompositeIDInput) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.SchemasInput, "", true)
 	}
 
+	if u.AddressRelationAttributeSchemasInput != nil {
+		return utils.MarshalJSON(u.AddressRelationAttributeSchemasInput, "", true)
+	}
+
 	if u.PaymentMethodRelationAttributeSchemasInput != nil {
 		return utils.MarshalJSON(u.PaymentMethodRelationAttributeSchemasInput, "", true)
 	}
@@ -20505,12 +24977,12 @@ func (u AttributeWithCompositeIDInput) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CurrencyAttributeSchemasInput, "", true)
 	}
 
-	if u.RepeatableAttributeSchemasInput != nil {
-		return utils.MarshalJSON(u.RepeatableAttributeSchemasInput, "", true)
-	}
-
 	if u.TagsAttributeSchemasInput != nil {
 		return utils.MarshalJSON(u.TagsAttributeSchemasInput, "", true)
+	}
+
+	if u.MessageEmailAddressAttributeSchemasInput != nil {
+		return utils.MarshalJSON(u.MessageEmailAddressAttributeSchemasInput, "", true)
 	}
 
 	if u.NumberAttributeSchemasInput != nil {
@@ -20559,6 +25031,22 @@ func (u AttributeWithCompositeIDInput) MarshalJSON() ([]byte, error) {
 
 	if u.PartnerOrganisationAttributeSchemasInput != nil {
 		return utils.MarshalJSON(u.PartnerOrganisationAttributeSchemasInput, "", true)
+	}
+
+	if u.PhoneAttributeSchemasInput != nil {
+		return utils.MarshalJSON(u.PhoneAttributeSchemasInput, "", true)
+	}
+
+	if u.EmailAttributeSchemasInput != nil {
+		return utils.MarshalJSON(u.EmailAttributeSchemasInput, "", true)
+	}
+
+	if u.PaymentAttributeSchemasInput != nil {
+		return utils.MarshalJSON(u.PaymentAttributeSchemasInput, "", true)
+	}
+
+	if u.PriceComponentAttributeSchemasInput != nil {
+		return utils.MarshalJSON(u.PriceComponentAttributeSchemasInput, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AttributeWithCompositeIDInput: all fields are null")

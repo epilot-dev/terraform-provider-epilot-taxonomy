@@ -20,13 +20,14 @@ const (
 	AttributeInputTypeMultiSelectAttribute           AttributeInputType = "MultiSelectAttribute"
 	AttributeInputTypeStatusAttribute                AttributeInputType = "StatusAttribute"
 	AttributeInputTypeSequenceAttribute              AttributeInputType = "SequenceAttribute"
-	AttributeInputTypeRelationAttributeInput         AttributeInputType = "RelationAttribute_input"
+	AttributeInputTypeRelationAttribute              AttributeInputType = "RelationAttribute"
 	AttributeInputTypeUserRelationAttribute          AttributeInputType = "UserRelationAttribute"
+	AttributeInputTypeAddressAttribute               AttributeInputType = "AddressAttribute"
 	AttributeInputTypeAddressRelationAttribute       AttributeInputType = "AddressRelationAttribute"
 	AttributeInputTypePaymentMethodRelationAttribute AttributeInputType = "PaymentMethodRelationAttribute"
 	AttributeInputTypeCurrencyAttribute              AttributeInputType = "CurrencyAttribute"
-	AttributeInputTypeRepeatableAttribute            AttributeInputType = "RepeatableAttribute"
 	AttributeInputTypeTagsAttribute                  AttributeInputType = "TagsAttribute"
+	AttributeInputTypeMessageEmailAddressAttribute   AttributeInputType = "MessageEmailAddressAttribute"
 	AttributeInputTypeNumberAttribute                AttributeInputType = "NumberAttribute"
 	AttributeInputTypeConsentAttribute               AttributeInputType = "ConsentAttribute"
 	AttributeInputTypeInternalAttribute              AttributeInputType = "InternalAttribute"
@@ -39,6 +40,10 @@ const (
 	AttributeInputTypeInternalUserAttribute          AttributeInputType = "InternalUserAttribute"
 	AttributeInputTypePurposeAttributeInput          AttributeInputType = "PurposeAttribute_input"
 	AttributeInputTypePartnerOrganisationAttribute   AttributeInputType = "PartnerOrganisationAttribute"
+	AttributeInputTypePhoneAttribute                 AttributeInputType = "PhoneAttribute"
+	AttributeInputTypeEmailAttribute                 AttributeInputType = "EmailAttribute"
+	AttributeInputTypePaymentAttribute               AttributeInputType = "PaymentAttribute"
+	AttributeInputTypePriceComponentAttribute        AttributeInputType = "PriceComponentAttribute"
 )
 
 type AttributeInput struct {
@@ -51,13 +56,14 @@ type AttributeInput struct {
 	MultiSelectAttribute           *MultiSelectAttribute           `queryParam:"inline"`
 	StatusAttribute                *StatusAttribute                `queryParam:"inline"`
 	SequenceAttribute              *SequenceAttribute              `queryParam:"inline"`
-	RelationAttributeInput         *RelationAttributeInput         `queryParam:"inline"`
+	RelationAttribute              *RelationAttribute              `queryParam:"inline"`
 	UserRelationAttribute          *UserRelationAttribute          `queryParam:"inline"`
+	AddressAttribute               *AddressAttribute               `queryParam:"inline"`
 	AddressRelationAttribute       *AddressRelationAttribute       `queryParam:"inline"`
 	PaymentMethodRelationAttribute *PaymentMethodRelationAttribute `queryParam:"inline"`
 	CurrencyAttribute              *CurrencyAttribute              `queryParam:"inline"`
-	RepeatableAttribute            *RepeatableAttribute            `queryParam:"inline"`
 	TagsAttribute                  *TagsAttribute                  `queryParam:"inline"`
+	MessageEmailAddressAttribute   *MessageEmailAddressAttribute   `queryParam:"inline"`
 	NumberAttribute                *NumberAttribute                `queryParam:"inline"`
 	ConsentAttribute               *ConsentAttribute               `queryParam:"inline"`
 	InternalAttribute              *InternalAttribute              `queryParam:"inline"`
@@ -70,6 +76,10 @@ type AttributeInput struct {
 	InternalUserAttribute          *InternalUserAttribute          `queryParam:"inline"`
 	PurposeAttributeInput          *PurposeAttributeInput          `queryParam:"inline"`
 	PartnerOrganisationAttribute   *PartnerOrganisationAttribute   `queryParam:"inline"`
+	PhoneAttribute                 *PhoneAttribute                 `queryParam:"inline"`
+	EmailAttribute                 *EmailAttribute                 `queryParam:"inline"`
+	PaymentAttribute               *PaymentAttribute               `queryParam:"inline"`
+	PriceComponentAttribute        *PriceComponentAttribute        `queryParam:"inline"`
 
 	Type AttributeInputType
 }
@@ -155,12 +165,12 @@ func CreateAttributeInputSequenceAttribute(sequenceAttribute SequenceAttribute) 
 	}
 }
 
-func CreateAttributeInputRelationAttributeInput(relationAttributeInput RelationAttributeInput) AttributeInput {
-	typ := AttributeInputTypeRelationAttributeInput
+func CreateAttributeInputRelationAttribute(relationAttribute RelationAttribute) AttributeInput {
+	typ := AttributeInputTypeRelationAttribute
 
 	return AttributeInput{
-		RelationAttributeInput: &relationAttributeInput,
-		Type:                   typ,
+		RelationAttribute: &relationAttribute,
+		Type:              typ,
 	}
 }
 
@@ -170,6 +180,15 @@ func CreateAttributeInputUserRelationAttribute(userRelationAttribute UserRelatio
 	return AttributeInput{
 		UserRelationAttribute: &userRelationAttribute,
 		Type:                  typ,
+	}
+}
+
+func CreateAttributeInputAddressAttribute(addressAttribute AddressAttribute) AttributeInput {
+	typ := AttributeInputTypeAddressAttribute
+
+	return AttributeInput{
+		AddressAttribute: &addressAttribute,
+		Type:             typ,
 	}
 }
 
@@ -200,21 +219,21 @@ func CreateAttributeInputCurrencyAttribute(currencyAttribute CurrencyAttribute) 
 	}
 }
 
-func CreateAttributeInputRepeatableAttribute(repeatableAttribute RepeatableAttribute) AttributeInput {
-	typ := AttributeInputTypeRepeatableAttribute
-
-	return AttributeInput{
-		RepeatableAttribute: &repeatableAttribute,
-		Type:                typ,
-	}
-}
-
 func CreateAttributeInputTagsAttribute(tagsAttribute TagsAttribute) AttributeInput {
 	typ := AttributeInputTypeTagsAttribute
 
 	return AttributeInput{
 		TagsAttribute: &tagsAttribute,
 		Type:          typ,
+	}
+}
+
+func CreateAttributeInputMessageEmailAddressAttribute(messageEmailAddressAttribute MessageEmailAddressAttribute) AttributeInput {
+	typ := AttributeInputTypeMessageEmailAddressAttribute
+
+	return AttributeInput{
+		MessageEmailAddressAttribute: &messageEmailAddressAttribute,
+		Type:                         typ,
 	}
 }
 
@@ -326,12 +345,48 @@ func CreateAttributeInputPartnerOrganisationAttribute(partnerOrganisationAttribu
 	}
 }
 
+func CreateAttributeInputPhoneAttribute(phoneAttribute PhoneAttribute) AttributeInput {
+	typ := AttributeInputTypePhoneAttribute
+
+	return AttributeInput{
+		PhoneAttribute: &phoneAttribute,
+		Type:           typ,
+	}
+}
+
+func CreateAttributeInputEmailAttribute(emailAttribute EmailAttribute) AttributeInput {
+	typ := AttributeInputTypeEmailAttribute
+
+	return AttributeInput{
+		EmailAttribute: &emailAttribute,
+		Type:           typ,
+	}
+}
+
+func CreateAttributeInputPaymentAttribute(paymentAttribute PaymentAttribute) AttributeInput {
+	typ := AttributeInputTypePaymentAttribute
+
+	return AttributeInput{
+		PaymentAttribute: &paymentAttribute,
+		Type:             typ,
+	}
+}
+
+func CreateAttributeInputPriceComponentAttribute(priceComponentAttribute PriceComponentAttribute) AttributeInput {
+	typ := AttributeInputTypePriceComponentAttribute
+
+	return AttributeInput{
+		PriceComponentAttribute: &priceComponentAttribute,
+		Type:                    typ,
+	}
+}
+
 func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 
-	var internalAttribute InternalAttribute = InternalAttribute{}
-	if err := utils.UnmarshalJSON(data, &internalAttribute, "", true, true); err == nil {
-		u.InternalAttribute = &internalAttribute
-		u.Type = AttributeInputTypeInternalAttribute
+	var internalUserAttribute InternalUserAttribute = InternalUserAttribute{}
+	if err := utils.UnmarshalJSON(data, &internalUserAttribute, "", true, true); err == nil {
+		u.InternalUserAttribute = &internalUserAttribute
+		u.Type = AttributeInputTypeInternalUserAttribute
 		return nil
 	}
 
@@ -356,38 +411,24 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var booleanAttribute BooleanAttribute = BooleanAttribute{}
-	if err := utils.UnmarshalJSON(data, &booleanAttribute, "", true, true); err == nil {
-		u.BooleanAttribute = &booleanAttribute
-		u.Type = AttributeInputTypeBooleanAttribute
+	var internalAttribute InternalAttribute = InternalAttribute{}
+	if err := utils.UnmarshalJSON(data, &internalAttribute, "", true, true); err == nil {
+		u.InternalAttribute = &internalAttribute
+		u.Type = AttributeInputTypeInternalAttribute
 		return nil
 	}
 
-	var partnerOrganisationAttribute PartnerOrganisationAttribute = PartnerOrganisationAttribute{}
-	if err := utils.UnmarshalJSON(data, &partnerOrganisationAttribute, "", true, true); err == nil {
-		u.PartnerOrganisationAttribute = &partnerOrganisationAttribute
-		u.Type = AttributeInputTypePartnerOrganisationAttribute
+	var priceComponentAttribute PriceComponentAttribute = PriceComponentAttribute{}
+	if err := utils.UnmarshalJSON(data, &priceComponentAttribute, "", true, true); err == nil {
+		u.PriceComponentAttribute = &priceComponentAttribute
+		u.Type = AttributeInputTypePriceComponentAttribute
 		return nil
 	}
 
-	var internalUserAttribute InternalUserAttribute = InternalUserAttribute{}
-	if err := utils.UnmarshalJSON(data, &internalUserAttribute, "", true, true); err == nil {
-		u.InternalUserAttribute = &internalUserAttribute
-		u.Type = AttributeInputTypeInternalUserAttribute
-		return nil
-	}
-
-	var automationAttribute AutomationAttribute = AutomationAttribute{}
-	if err := utils.UnmarshalJSON(data, &automationAttribute, "", true, true); err == nil {
-		u.AutomationAttribute = &automationAttribute
-		u.Type = AttributeInputTypeAutomationAttribute
-		return nil
-	}
-
-	var invitationEmailAttribute InvitationEmailAttribute = InvitationEmailAttribute{}
-	if err := utils.UnmarshalJSON(data, &invitationEmailAttribute, "", true, true); err == nil {
-		u.InvitationEmailAttribute = &invitationEmailAttribute
-		u.Type = AttributeInputTypeInvitationEmailAttribute
+	var paymentAttribute PaymentAttribute = PaymentAttribute{}
+	if err := utils.UnmarshalJSON(data, &paymentAttribute, "", true, true); err == nil {
+		u.PaymentAttribute = &paymentAttribute
+		u.Type = AttributeInputTypePaymentAttribute
 		return nil
 	}
 
@@ -398,10 +439,31 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var computedAttribute ComputedAttribute = ComputedAttribute{}
-	if err := utils.UnmarshalJSON(data, &computedAttribute, "", true, true); err == nil {
-		u.ComputedAttribute = &computedAttribute
-		u.Type = AttributeInputTypeComputedAttribute
+	var phoneAttribute PhoneAttribute = PhoneAttribute{}
+	if err := utils.UnmarshalJSON(data, &phoneAttribute, "", true, true); err == nil {
+		u.PhoneAttribute = &phoneAttribute
+		u.Type = AttributeInputTypePhoneAttribute
+		return nil
+	}
+
+	var emailAttribute EmailAttribute = EmailAttribute{}
+	if err := utils.UnmarshalJSON(data, &emailAttribute, "", true, true); err == nil {
+		u.EmailAttribute = &emailAttribute
+		u.Type = AttributeInputTypeEmailAttribute
+		return nil
+	}
+
+	var invitationEmailAttribute InvitationEmailAttribute = InvitationEmailAttribute{}
+	if err := utils.UnmarshalJSON(data, &invitationEmailAttribute, "", true, true); err == nil {
+		u.InvitationEmailAttribute = &invitationEmailAttribute
+		u.Type = AttributeInputTypeInvitationEmailAttribute
+		return nil
+	}
+
+	var automationAttribute AutomationAttribute = AutomationAttribute{}
+	if err := utils.UnmarshalJSON(data, &automationAttribute, "", true, true); err == nil {
+		u.AutomationAttribute = &automationAttribute
+		u.Type = AttributeInputTypeAutomationAttribute
 		return nil
 	}
 
@@ -412,13 +474,6 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var statusAttribute StatusAttribute = StatusAttribute{}
-	if err := utils.UnmarshalJSON(data, &statusAttribute, "", true, true); err == nil {
-		u.StatusAttribute = &statusAttribute
-		u.Type = AttributeInputTypeStatusAttribute
-		return nil
-	}
-
 	var paymentMethodRelationAttribute PaymentMethodRelationAttribute = PaymentMethodRelationAttribute{}
 	if err := utils.UnmarshalJSON(data, &paymentMethodRelationAttribute, "", true, true); err == nil {
 		u.PaymentMethodRelationAttribute = &paymentMethodRelationAttribute
@@ -426,10 +481,10 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var textAttribute TextAttribute = TextAttribute{}
-	if err := utils.UnmarshalJSON(data, &textAttribute, "", true, true); err == nil {
-		u.TextAttribute = &textAttribute
-		u.Type = AttributeInputTypeTextAttribute
+	var partnerOrganisationAttribute PartnerOrganisationAttribute = PartnerOrganisationAttribute{}
+	if err := utils.UnmarshalJSON(data, &partnerOrganisationAttribute, "", true, true); err == nil {
+		u.PartnerOrganisationAttribute = &partnerOrganisationAttribute
+		u.Type = AttributeInputTypePartnerOrganisationAttribute
 		return nil
 	}
 
@@ -440,6 +495,13 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var addressAttribute AddressAttribute = AddressAttribute{}
+	if err := utils.UnmarshalJSON(data, &addressAttribute, "", true, true); err == nil {
+		u.AddressAttribute = &addressAttribute
+		u.Type = AttributeInputTypeAddressAttribute
+		return nil
+	}
+
 	var addressRelationAttribute AddressRelationAttribute = AddressRelationAttribute{}
 	if err := utils.UnmarshalJSON(data, &addressRelationAttribute, "", true, true); err == nil {
 		u.AddressRelationAttribute = &addressRelationAttribute
@@ -447,31 +509,17 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var numberAttribute NumberAttribute = NumberAttribute{}
-	if err := utils.UnmarshalJSON(data, &numberAttribute, "", true, true); err == nil {
-		u.NumberAttribute = &numberAttribute
-		u.Type = AttributeInputTypeNumberAttribute
+	var statusAttribute StatusAttribute = StatusAttribute{}
+	if err := utils.UnmarshalJSON(data, &statusAttribute, "", true, true); err == nil {
+		u.StatusAttribute = &statusAttribute
+		u.Type = AttributeInputTypeStatusAttribute
 		return nil
 	}
 
-	var consentAttribute ConsentAttribute = ConsentAttribute{}
-	if err := utils.UnmarshalJSON(data, &consentAttribute, "", true, true); err == nil {
-		u.ConsentAttribute = &consentAttribute
-		u.Type = AttributeInputTypeConsentAttribute
-		return nil
-	}
-
-	var currencyAttribute CurrencyAttribute = CurrencyAttribute{}
-	if err := utils.UnmarshalJSON(data, &currencyAttribute, "", true, true); err == nil {
-		u.CurrencyAttribute = &currencyAttribute
-		u.Type = AttributeInputTypeCurrencyAttribute
-		return nil
-	}
-
-	var tagsAttribute TagsAttribute = TagsAttribute{}
-	if err := utils.UnmarshalJSON(data, &tagsAttribute, "", true, true); err == nil {
-		u.TagsAttribute = &tagsAttribute
-		u.Type = AttributeInputTypeTagsAttribute
+	var booleanAttribute BooleanAttribute = BooleanAttribute{}
+	if err := utils.UnmarshalJSON(data, &booleanAttribute, "", true, true); err == nil {
+		u.BooleanAttribute = &booleanAttribute
+		u.Type = AttributeInputTypeBooleanAttribute
 		return nil
 	}
 
@@ -482,10 +530,31 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var purposeAttributeInput PurposeAttributeInput = PurposeAttributeInput{}
-	if err := utils.UnmarshalJSON(data, &purposeAttributeInput, "", true, true); err == nil {
-		u.PurposeAttributeInput = &purposeAttributeInput
-		u.Type = AttributeInputTypePurposeAttributeInput
+	var consentAttribute ConsentAttribute = ConsentAttribute{}
+	if err := utils.UnmarshalJSON(data, &consentAttribute, "", true, true); err == nil {
+		u.ConsentAttribute = &consentAttribute
+		u.Type = AttributeInputTypeConsentAttribute
+		return nil
+	}
+
+	var numberAttribute NumberAttribute = NumberAttribute{}
+	if err := utils.UnmarshalJSON(data, &numberAttribute, "", true, true); err == nil {
+		u.NumberAttribute = &numberAttribute
+		u.Type = AttributeInputTypeNumberAttribute
+		return nil
+	}
+
+	var tagsAttribute TagsAttribute = TagsAttribute{}
+	if err := utils.UnmarshalJSON(data, &tagsAttribute, "", true, true); err == nil {
+		u.TagsAttribute = &tagsAttribute
+		u.Type = AttributeInputTypeTagsAttribute
+		return nil
+	}
+
+	var currencyAttribute CurrencyAttribute = CurrencyAttribute{}
+	if err := utils.UnmarshalJSON(data, &currencyAttribute, "", true, true); err == nil {
+		u.CurrencyAttribute = &currencyAttribute
+		u.Type = AttributeInputTypeCurrencyAttribute
 		return nil
 	}
 
@@ -496,10 +565,24 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var repeatableAttribute RepeatableAttribute = RepeatableAttribute{}
-	if err := utils.UnmarshalJSON(data, &repeatableAttribute, "", true, true); err == nil {
-		u.RepeatableAttribute = &repeatableAttribute
-		u.Type = AttributeInputTypeRepeatableAttribute
+	var computedAttribute ComputedAttribute = ComputedAttribute{}
+	if err := utils.UnmarshalJSON(data, &computedAttribute, "", true, true); err == nil {
+		u.ComputedAttribute = &computedAttribute
+		u.Type = AttributeInputTypeComputedAttribute
+		return nil
+	}
+
+	var messageEmailAddressAttribute MessageEmailAddressAttribute = MessageEmailAddressAttribute{}
+	if err := utils.UnmarshalJSON(data, &messageEmailAddressAttribute, "", true, true); err == nil {
+		u.MessageEmailAddressAttribute = &messageEmailAddressAttribute
+		u.Type = AttributeInputTypeMessageEmailAddressAttribute
+		return nil
+	}
+
+	var textAttribute TextAttribute = TextAttribute{}
+	if err := utils.UnmarshalJSON(data, &textAttribute, "", true, true); err == nil {
+		u.TextAttribute = &textAttribute
+		u.Type = AttributeInputTypeTextAttribute
 		return nil
 	}
 
@@ -517,10 +600,17 @@ func (u *AttributeInput) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var relationAttributeInput RelationAttributeInput = RelationAttributeInput{}
-	if err := utils.UnmarshalJSON(data, &relationAttributeInput, "", true, true); err == nil {
-		u.RelationAttributeInput = &relationAttributeInput
-		u.Type = AttributeInputTypeRelationAttributeInput
+	var purposeAttributeInput PurposeAttributeInput = PurposeAttributeInput{}
+	if err := utils.UnmarshalJSON(data, &purposeAttributeInput, "", true, true); err == nil {
+		u.PurposeAttributeInput = &purposeAttributeInput
+		u.Type = AttributeInputTypePurposeAttributeInput
+		return nil
+	}
+
+	var relationAttribute RelationAttribute = RelationAttribute{}
+	if err := utils.UnmarshalJSON(data, &relationAttribute, "", true, true); err == nil {
+		u.RelationAttribute = &relationAttribute
+		u.Type = AttributeInputTypeRelationAttribute
 		return nil
 	}
 
@@ -564,12 +654,16 @@ func (u AttributeInput) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.SequenceAttribute, "", true)
 	}
 
-	if u.RelationAttributeInput != nil {
-		return utils.MarshalJSON(u.RelationAttributeInput, "", true)
+	if u.RelationAttribute != nil {
+		return utils.MarshalJSON(u.RelationAttribute, "", true)
 	}
 
 	if u.UserRelationAttribute != nil {
 		return utils.MarshalJSON(u.UserRelationAttribute, "", true)
+	}
+
+	if u.AddressAttribute != nil {
+		return utils.MarshalJSON(u.AddressAttribute, "", true)
 	}
 
 	if u.AddressRelationAttribute != nil {
@@ -584,12 +678,12 @@ func (u AttributeInput) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CurrencyAttribute, "", true)
 	}
 
-	if u.RepeatableAttribute != nil {
-		return utils.MarshalJSON(u.RepeatableAttribute, "", true)
-	}
-
 	if u.TagsAttribute != nil {
 		return utils.MarshalJSON(u.TagsAttribute, "", true)
+	}
+
+	if u.MessageEmailAddressAttribute != nil {
+		return utils.MarshalJSON(u.MessageEmailAddressAttribute, "", true)
 	}
 
 	if u.NumberAttribute != nil {
@@ -638,6 +732,22 @@ func (u AttributeInput) MarshalJSON() ([]byte, error) {
 
 	if u.PartnerOrganisationAttribute != nil {
 		return utils.MarshalJSON(u.PartnerOrganisationAttribute, "", true)
+	}
+
+	if u.PhoneAttribute != nil {
+		return utils.MarshalJSON(u.PhoneAttribute, "", true)
+	}
+
+	if u.EmailAttribute != nil {
+		return utils.MarshalJSON(u.EmailAttribute, "", true)
+	}
+
+	if u.PaymentAttribute != nil {
+		return utils.MarshalJSON(u.PaymentAttribute, "", true)
+	}
+
+	if u.PriceComponentAttribute != nil {
+		return utils.MarshalJSON(u.PriceComponentAttribute, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AttributeInput: all fields are null")

@@ -85,8 +85,9 @@ type EntitySearchParams struct {
 	//
 	// Globbing and globstart (**) is supported for nested fields.
 	//
-	Fields []string `json:"fields,omitempty"`
-	From   *int64   `default:"0" json:"from"`
+	Fields    []string `json:"fields,omitempty"`
+	From      *int64   `default:"0" json:"from"`
+	Highlight any      `json:"highlight,omitempty"`
 	// When true, enables entity hydration to resolve nested $relation & $relation_ref references in-place.
 	Hydrate *bool `default:"false" json:"hydrate"`
 	// Whether to include deleted entities in the search results
@@ -137,6 +138,13 @@ func (o *EntitySearchParams) GetFrom() *int64 {
 		return nil
 	}
 	return o.From
+}
+
+func (o *EntitySearchParams) GetHighlight() any {
+	if o == nil {
+		return nil
+	}
+	return o.Highlight
 }
 
 func (o *EntitySearchParams) GetHydrate() *bool {
