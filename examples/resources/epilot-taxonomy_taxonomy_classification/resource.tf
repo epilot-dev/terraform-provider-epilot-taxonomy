@@ -1,5 +1,7 @@
 resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
-  id = "taxonomy-slug:classification-slug"
+  archived   = false
+  color      = "#FF5733"
+  created_at = "2022-06-05T18:41:54.651Z"
   manifest = [
     "123e4567-e89b-12d3-a456-426614174000"
   ]
@@ -7,5 +9,6 @@ resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
   parents = [
     "taxonomy-slug:classification-slug"
   ]
-  slug = "wallbox-pv"
+  slug       = "wallbox-pv"
+  updated_at = "2022-01-28T11:08:25.332Z"
 }

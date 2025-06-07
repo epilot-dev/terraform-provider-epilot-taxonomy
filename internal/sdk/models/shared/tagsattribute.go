@@ -101,7 +101,8 @@ type TagsAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -130,16 +131,18 @@ type TagsAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool              `default:"true" json:"sortable"`
-	Suggestions    []string           `json:"suggestions,omitempty"`
-	Type           *TagsAttributeType `json:"type,omitempty"`
-	ValueFormatter *string            `json:"value_formatter,omitempty"`
+	Sortable       *bool             `default:"true" json:"sortable"`
+	Suggestions    []string          `json:"suggestions,omitempty"`
+	Type           TagsAttributeType `json:"type"`
+	ValueFormatter *string           `json:"value_formatter,omitempty"`
 }
 
 func (t TagsAttribute) MarshalJSON() ([]byte, error) {
@@ -207,6 +210,13 @@ func (o *TagsAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *TagsAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *TagsAttribute) GetHidden() *bool {
@@ -314,6 +324,13 @@ func (o *TagsAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *TagsAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *TagsAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -349,9 +366,9 @@ func (o *TagsAttribute) GetSuggestions() []string {
 	return o.Suggestions
 }
 
-func (o *TagsAttribute) GetType() *TagsAttributeType {
+func (o *TagsAttribute) GetType() TagsAttributeType {
 	if o == nil {
-		return nil
+		return TagsAttributeType("")
 	}
 	return o.Type
 }

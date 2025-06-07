@@ -20,6 +20,8 @@ type CreateEntityRequest struct {
 	FillActivity *bool `default:"false" queryParam:"style=form,explode=true,name=fill_activity"`
 	// Entity Type
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
+	// When true, enables entity validation against the entity schema.
+	Validate *bool `default:"false" queryParam:"style=form,explode=true,name=validate"`
 }
 
 func (c CreateEntityRequest) MarshalJSON() ([]byte, error) {
@@ -68,11 +70,20 @@ func (o *CreateEntityRequest) GetSlug() string {
 	return o.Slug
 }
 
+func (o *CreateEntityRequest) GetValidate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Validate
+}
+
 type CreateEntityResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Success
 	EntityItem *shared.EntityItem
+	// Entity validation error when `?validate=true`
+	EntityValidationV2ResultError *shared.EntityValidationV2ResultError
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
@@ -91,6 +102,13 @@ func (o *CreateEntityResponse) GetEntityItem() *shared.EntityItem {
 		return nil
 	}
 	return o.EntityItem
+}
+
+func (o *CreateEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
+	if o == nil {
+		return nil
+	}
+	return o.EntityValidationV2ResultError
 }
 
 func (o *CreateEntityResponse) GetStatusCode() int {

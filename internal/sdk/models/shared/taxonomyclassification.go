@@ -9,7 +9,11 @@ import (
 
 type TaxonomyClassification struct {
 	// Manifest ID used to create/update the taxonomy classification
-	Manifest  []string   `json:"_manifest,omitempty"`
+	Manifest []string `json:"_manifest,omitempty"`
+	// Archived classification are not visible in the UI
+	Archived *bool `default:"false" json:"archived"`
+	// Color of the classification
+	Color     *string    `json:"color,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	ID        *string    `json:"id,omitempty"`
 	Name      string     `json:"name"`
@@ -35,6 +39,20 @@ func (o *TaxonomyClassification) GetManifest() []string {
 		return nil
 	}
 	return o.Manifest
+}
+
+func (o *TaxonomyClassification) GetArchived() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Archived
+}
+
+func (o *TaxonomyClassification) GetColor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Color
 }
 
 func (o *TaxonomyClassification) GetCreatedAt() *time.Time {
