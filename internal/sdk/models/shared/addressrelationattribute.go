@@ -93,9 +93,31 @@ type AddressRelationAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *AddressRelationAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                                  `json:"default_value,omitempty"`
-	Deprecated   *bool                                `default:"false" json:"deprecated"`
+	Constraints *AddressRelationAttributeConstraints `json:"constraints,omitempty"`
+	// Default fields visible on addresses
+	//
+	// Valid values are:
+	//   - postal_code (default)
+	//   - city (default)
+	//   - street (default)
+	//   - street_number (default)
+	//   - plot_area
+	//   - plot_of_land
+	//   - suburb
+	//   - country
+	//   - additional_info
+	//   - coordinates
+	//   - start_date
+	//   - end_date
+	//   - salutation
+	//   - title
+	//   - first_name
+	//   - last_name
+	//   - company_name
+	//
+	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
+	DefaultValue         any      `json:"default_value,omitempty"`
+	Deprecated           *bool    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
@@ -130,15 +152,17 @@ type AddressRelationAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                         `default:"true" json:"sortable"`
-	Type           *AddressRelationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                       `json:"value_formatter,omitempty"`
+	Sortable       *bool                        `default:"true" json:"sortable"`
+	Type           AddressRelationAttributeType `json:"type"`
+	ValueFormatter *string                      `json:"value_formatter,omitempty"`
 }
 
 func (a AddressRelationAttribute) MarshalJSON() ([]byte, error) {
@@ -171,6 +195,13 @@ func (o *AddressRelationAttribute) GetConstraints() *AddressRelationAttributeCon
 		return nil
 	}
 	return o.Constraints
+}
+
+func (o *AddressRelationAttribute) GetDefaultAddressFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultAddressFields
 }
 
 func (o *AddressRelationAttribute) GetDefaultValue() any {
@@ -313,6 +344,13 @@ func (o *AddressRelationAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *AddressRelationAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *AddressRelationAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -341,9 +379,9 @@ func (o *AddressRelationAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *AddressRelationAttribute) GetType() *AddressRelationAttributeType {
+func (o *AddressRelationAttribute) GetType() AddressRelationAttributeType {
 	if o == nil {
-		return nil
+		return AddressRelationAttributeType("")
 	}
 	return o.Type
 }

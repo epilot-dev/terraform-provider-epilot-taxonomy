@@ -19,6 +19,28 @@ func (o *GetSchemaAttributeRequest) GetCompositeID() string {
 	return o.CompositeID
 }
 
+// GetSchemaAttributeResponseBody - A generic error returned by the API
+type GetSchemaAttributeResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetSchemaAttributeResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetSchemaAttributeResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type GetSchemaAttributeResponse struct {
 	// Success
 	AttributeWithCompositeID *shared.AttributeWithCompositeID
@@ -28,6 +50,8 @@ type GetSchemaAttributeResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *GetSchemaAttributeResponseBody
 }
 
 func (o *GetSchemaAttributeResponse) GetAttributeWithCompositeID() *shared.AttributeWithCompositeID {
@@ -56,4 +80,11 @@ func (o *GetSchemaAttributeResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetSchemaAttributeResponse) GetObject() *GetSchemaAttributeResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }
