@@ -143,7 +143,7 @@ func (u CreatedBy) MarshalJSON() ([]byte, error) {
 
 // SavedView - A saved entity view
 type SavedView struct {
-	CreatedBy CreatedBy `json:"created_by"`
+	CreatedBy *CreatedBy `json:"created_by,omitempty"`
 	// List of users (IDs) that have favorited the view
 	IsFavoritedBy []string `json:"isFavoritedBy,omitempty"`
 	// User-friendly identifier for the saved view
@@ -152,14 +152,16 @@ type SavedView struct {
 	Org *string `json:"org,omitempty"`
 	// boolean property for if a view is shared with organisation
 	Shared *bool `json:"shared,omitempty"`
+	// List of users ('${userId}'), user groups ('group_${groupId}'), or partner users ('${partnerOrgId}_${partnerUserId}') that the view is shared with
+	SharedWith []string `json:"shared_with,omitempty"`
 	// list of schemas a view can belong to
 	Slug     []string       `json:"slug"`
 	UIConfig map[string]any `json:"ui_config"`
 }
 
-func (o *SavedView) GetCreatedBy() CreatedBy {
+func (o *SavedView) GetCreatedBy() *CreatedBy {
 	if o == nil {
-		return CreatedBy{}
+		return nil
 	}
 	return o.CreatedBy
 }
@@ -190,6 +192,13 @@ func (o *SavedView) GetShared() *bool {
 		return nil
 	}
 	return o.Shared
+}
+
+func (o *SavedView) GetSharedWith() []string {
+	if o == nil {
+		return nil
+	}
+	return o.SharedWith
 }
 
 func (o *SavedView) GetSlug() []string {

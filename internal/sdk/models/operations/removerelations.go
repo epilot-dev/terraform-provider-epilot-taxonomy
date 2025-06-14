@@ -66,6 +66,28 @@ func (o *RemoveRelationsRequest) GetSlug() string {
 	return o.Slug
 }
 
+// RemoveRelationsResponseBody - A generic error returned by the API
+type RemoveRelationsResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *RemoveRelationsResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *RemoveRelationsResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type RemoveRelationsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -73,6 +95,8 @@ type RemoveRelationsResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *RemoveRelationsResponseBody
 }
 
 func (o *RemoveRelationsResponse) GetContentType() string {
@@ -94,4 +118,11 @@ func (o *RemoveRelationsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *RemoveRelationsResponse) GetObject() *RemoveRelationsResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }
