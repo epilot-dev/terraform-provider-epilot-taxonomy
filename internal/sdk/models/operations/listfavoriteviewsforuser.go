@@ -3,16 +3,44 @@
 package operations
 
 import (
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"net/http"
 )
 
-// ListFavoriteViewsForUserResponseBody - Success
-type ListFavoriteViewsForUserResponseBody struct {
-	Results []shared.SavedViewItem `json:"results,omitempty"`
+// ListFavoriteViewsForUserResults - A saved entity view
+type ListFavoriteViewsForUserResults struct {
+	CreatedAt *string `json:"created_at,omitempty"`
+	// Generated uuid for a saved view
+	ID        *string `json:"id,omitempty"`
+	UpdatedAt *string `json:"updated_at,omitempty"`
 }
 
-func (o *ListFavoriteViewsForUserResponseBody) GetResults() []shared.SavedViewItem {
+func (o *ListFavoriteViewsForUserResults) GetCreatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *ListFavoriteViewsForUserResults) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *ListFavoriteViewsForUserResults) GetUpdatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+// ListFavoriteViewsForUserResponseBody - Success
+type ListFavoriteViewsForUserResponseBody struct {
+	Results []ListFavoriteViewsForUserResults `json:"results,omitempty"`
+}
+
+func (o *ListFavoriteViewsForUserResponseBody) GetResults() []ListFavoriteViewsForUserResults {
 	if o == nil {
 		return nil
 	}

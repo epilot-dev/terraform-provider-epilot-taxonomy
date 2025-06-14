@@ -22,6 +22,8 @@ data "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
 
 ### Read-Only
 
+- `archived` (Boolean) Archived classification are not visible in the UI
+- `color` (String) Color of the classification
 - `created_at` (String)
 - `id` (String) The ID of this resource.
 - `manifest` (List of String) Manifest ID used to create/update the taxonomy classification
