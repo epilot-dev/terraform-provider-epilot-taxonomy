@@ -37,6 +37,28 @@ func (o *GetRelatedEntitiesCountRequest) GetSlug() string {
 	return o.Slug
 }
 
+// GetRelatedEntitiesCountResponseBody - A generic error returned by the API
+type GetRelatedEntitiesCountResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetRelatedEntitiesCountResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetRelatedEntitiesCountResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type GetRelatedEntitiesCountResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -46,6 +68,8 @@ type GetRelatedEntitiesCountResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *GetRelatedEntitiesCountResponseBody
 }
 
 func (o *GetRelatedEntitiesCountResponse) GetContentType() string {
@@ -74,4 +98,11 @@ func (o *GetRelatedEntitiesCountResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetRelatedEntitiesCountResponse) GetObject() *GetRelatedEntitiesCountResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

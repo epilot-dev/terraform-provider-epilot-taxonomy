@@ -60,6 +60,7 @@ func (e *GroupHeadlineType) UnmarshalJSON(data []byte) error {
 type GroupHeadline struct {
 	// Manifest ID used to create/update the schema group headline
 	Manifest      []string `json:"_manifest,omitempty"`
+	Purpose       []string `json:"_purpose,omitempty"`
 	Divider       *Divider `json:"divider,omitempty"`
 	EnableDivider *bool    `default:"false" json:"enable_divider"`
 	// The group of headline attribute
@@ -89,6 +90,13 @@ func (o *GroupHeadline) GetManifest() []string {
 		return nil
 	}
 	return o.Manifest
+}
+
+func (o *GroupHeadline) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
 }
 
 func (o *GroupHeadline) GetDivider() *Divider {

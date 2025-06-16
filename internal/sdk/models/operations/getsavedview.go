@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"net/http"
 )
 
@@ -19,15 +18,68 @@ func (o *GetSavedViewRequest) GetID() string {
 	return o.ID
 }
 
+// GetSavedViewSavedViewsResponseBody - A generic error returned by the API
+type GetSavedViewSavedViewsResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetSavedViewSavedViewsResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetSavedViewSavedViewsResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+// GetSavedViewResponseBody - A saved entity view
+type GetSavedViewResponseBody struct {
+	CreatedAt *string `json:"created_at,omitempty"`
+	// Generated uuid for a saved view
+	ID        *string `json:"id,omitempty"`
+	UpdatedAt *string `json:"updated_at,omitempty"`
+}
+
+func (o *GetSavedViewResponseBody) GetCreatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetSavedViewResponseBody) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetSavedViewResponseBody) GetUpdatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
 type GetSavedViewResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
-	// Success
-	SavedViewItem *shared.SavedViewItem
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Success
+	Object *GetSavedViewResponseBody
+	// The requested resource was not found
+	Object1 *GetSavedViewSavedViewsResponseBody
 }
 
 func (o *GetSavedViewResponse) GetContentType() string {
@@ -35,13 +87,6 @@ func (o *GetSavedViewResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetSavedViewResponse) GetSavedViewItem() *shared.SavedViewItem {
-	if o == nil {
-		return nil
-	}
-	return o.SavedViewItem
 }
 
 func (o *GetSavedViewResponse) GetStatusCode() int {
@@ -56,4 +101,18 @@ func (o *GetSavedViewResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetSavedViewResponse) GetObject() *GetSavedViewResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
+}
+
+func (o *GetSavedViewResponse) GetObject1() *GetSavedViewSavedViewsResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object1
 }
