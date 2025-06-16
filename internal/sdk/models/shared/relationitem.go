@@ -6,6 +6,8 @@ type RelationItem struct {
 	Tags      []string `json:"_tags,omitempty"`
 	Attribute string   `json:"attribute"`
 	EntityID  string   `json:"entity_id"`
+	// Organization Id the entity belongs to
+	OrgID *string `json:"org_id,omitempty"`
 	// Whether this is a reverse relation
 	Reverse *bool `json:"reverse,omitempty"`
 }
@@ -29,6 +31,13 @@ func (o *RelationItem) GetEntityID() string {
 		return ""
 	}
 	return o.EntityID
+}
+
+func (o *RelationItem) GetOrgID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OrgID
 }
 
 func (o *RelationItem) GetReverse() *bool {

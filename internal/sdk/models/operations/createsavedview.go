@@ -3,19 +3,47 @@
 package operations
 
 import (
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"net/http"
 )
+
+// CreateSavedViewResponseBody - A saved entity view
+type CreateSavedViewResponseBody struct {
+	CreatedAt *string `json:"created_at,omitempty"`
+	// Generated uuid for a saved view
+	ID        *string `json:"id,omitempty"`
+	UpdatedAt *string `json:"updated_at,omitempty"`
+}
+
+func (o *CreateSavedViewResponseBody) GetCreatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateSavedViewResponseBody) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *CreateSavedViewResponseBody) GetUpdatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
 
 type CreateSavedViewResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
-	// Success
-	SavedViewItem *shared.SavedViewItem
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Success
+	Object *CreateSavedViewResponseBody
 }
 
 func (o *CreateSavedViewResponse) GetContentType() string {
@@ -23,13 +51,6 @@ func (o *CreateSavedViewResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *CreateSavedViewResponse) GetSavedViewItem() *shared.SavedViewItem {
-	if o == nil {
-		return nil
-	}
-	return o.SavedViewItem
 }
 
 func (o *CreateSavedViewResponse) GetStatusCode() int {
@@ -44,4 +65,11 @@ func (o *CreateSavedViewResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *CreateSavedViewResponse) GetObject() *CreateSavedViewResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

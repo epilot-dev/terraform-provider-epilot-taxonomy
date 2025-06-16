@@ -28,6 +28,28 @@ func (o *AttachActivityRequest) GetID() string {
 	return o.ID
 }
 
+// AttachActivityResponseBody - A generic error returned by the API
+type AttachActivityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *AttachActivityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *AttachActivityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type AttachActivityResponse struct {
 	// Success
 	BaseActivityItem *shared.BaseActivityItem
@@ -37,6 +59,8 @@ type AttachActivityResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *AttachActivityResponseBody
 }
 
 func (o *AttachActivityResponse) GetBaseActivityItem() *shared.BaseActivityItem {
@@ -65,4 +89,11 @@ func (o *AttachActivityResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *AttachActivityResponse) GetObject() *AttachActivityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

@@ -182,7 +182,8 @@ type CurrencyAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -210,7 +211,9 @@ type CurrencyAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
@@ -300,6 +303,13 @@ func (o *CurrencyAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *CurrencyAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *CurrencyAttribute) GetHidden() *bool {
@@ -398,6 +408,13 @@ func (o *CurrencyAttribute) GetRenderCondition() *string {
 		return nil
 	}
 	return o.RenderCondition
+}
+
+func (o *CurrencyAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
 }
 
 func (o *CurrencyAttribute) GetRequired() *bool {

@@ -130,15 +130,17 @@ type PaymentMethodRelationAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                               `default:"true" json:"sortable"`
-	Type           *PaymentMethodRelationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                             `json:"value_formatter,omitempty"`
+	Sortable       *bool                              `default:"true" json:"sortable"`
+	Type           PaymentMethodRelationAttributeType `json:"type"`
+	ValueFormatter *string                            `json:"value_formatter,omitempty"`
 }
 
 func (p PaymentMethodRelationAttribute) MarshalJSON() ([]byte, error) {
@@ -313,6 +315,13 @@ func (o *PaymentMethodRelationAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PaymentMethodRelationAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PaymentMethodRelationAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -341,9 +350,9 @@ func (o *PaymentMethodRelationAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PaymentMethodRelationAttribute) GetType() *PaymentMethodRelationAttributeType {
+func (o *PaymentMethodRelationAttribute) GetType() PaymentMethodRelationAttributeType {
 	if o == nil {
-		return nil
+		return PaymentMethodRelationAttributeType("")
 	}
 	return o.Type
 }

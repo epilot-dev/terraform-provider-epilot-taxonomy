@@ -95,6 +95,28 @@ func (o *UpdateRelationRequest) GetSlug() string {
 	return o.Slug
 }
 
+// UpdateRelationResponseBody - A generic error returned by the API
+type UpdateRelationResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *UpdateRelationResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *UpdateRelationResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type UpdateRelationResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -104,6 +126,8 @@ type UpdateRelationResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *UpdateRelationResponseBody
 }
 
 func (o *UpdateRelationResponse) GetContentType() string {
@@ -132,4 +156,11 @@ func (o *UpdateRelationResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *UpdateRelationResponse) GetObject() *UpdateRelationResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }
