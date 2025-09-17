@@ -52,7 +52,7 @@ func (e EntitySchemaGroup) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EntitySchemaGroup) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"label"}); err != nil {
 		return err
 	}
 	return nil

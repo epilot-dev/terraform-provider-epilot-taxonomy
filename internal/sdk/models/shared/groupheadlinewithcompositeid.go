@@ -61,6 +61,7 @@ func (e *GroupHeadlineWithCompositeIDType) UnmarshalJSON(data []byte) error {
 type GroupHeadlineWithCompositeID struct {
 	// Manifest ID used to create/update the schema group headline
 	Manifest      []string                             `json:"_manifest,omitempty"`
+	Purpose       []string                             `json:"_purpose,omitempty"`
 	CompositeID   *string                              `json:"composite_id,omitempty"`
 	Divider       *GroupHeadlineWithCompositeIDDivider `json:"divider,omitempty"`
 	EnableDivider *bool                                `default:"false" json:"enable_divider"`
@@ -82,7 +83,7 @@ func (g GroupHeadlineWithCompositeID) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GroupHeadlineWithCompositeID) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"group", "label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -93,6 +94,13 @@ func (o *GroupHeadlineWithCompositeID) GetManifest() []string {
 		return nil
 	}
 	return o.Manifest
+}
+
+func (o *GroupHeadlineWithCompositeID) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
 }
 
 func (o *GroupHeadlineWithCompositeID) GetCompositeID() *string {
@@ -176,6 +184,7 @@ func (o *GroupHeadlineWithCompositeID) GetType() GroupHeadlineWithCompositeIDTyp
 type GroupHeadlineWithCompositeIDInput struct {
 	// Manifest ID used to create/update the schema group headline
 	Manifest      []string                             `json:"_manifest,omitempty"`
+	Purpose       []string                             `json:"_purpose,omitempty"`
 	Divider       *GroupHeadlineWithCompositeIDDivider `json:"divider,omitempty"`
 	EnableDivider *bool                                `default:"false" json:"enable_divider"`
 	// The group of headline attribute
@@ -196,7 +205,7 @@ func (g GroupHeadlineWithCompositeIDInput) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GroupHeadlineWithCompositeIDInput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"group", "label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -207,6 +216,13 @@ func (o *GroupHeadlineWithCompositeIDInput) GetManifest() []string {
 		return nil
 	}
 	return o.Manifest
+}
+
+func (o *GroupHeadlineWithCompositeIDInput) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
 }
 
 func (o *GroupHeadlineWithCompositeIDInput) GetDivider() *GroupHeadlineWithCompositeIDDivider {

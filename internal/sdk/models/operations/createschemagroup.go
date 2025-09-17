@@ -7,15 +7,40 @@ import (
 	"net/http"
 )
 
+// CreateSchemaGroupResponseBody - A generic error returned by the API
+type CreateSchemaGroupResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *CreateSchemaGroupResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *CreateSchemaGroupResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type CreateSchemaGroupResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Success
 	EntitySchemaGroupWithCompositeID *shared.EntitySchemaGroupWithCompositeID
+	Headers                          map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *CreateSchemaGroupResponseBody
 }
 
 func (o *CreateSchemaGroupResponse) GetContentType() string {
@@ -32,6 +57,13 @@ func (o *CreateSchemaGroupResponse) GetEntitySchemaGroupWithCompositeID() *share
 	return o.EntitySchemaGroupWithCompositeID
 }
 
+func (o *CreateSchemaGroupResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *CreateSchemaGroupResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -44,4 +76,11 @@ func (o *CreateSchemaGroupResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *CreateSchemaGroupResponse) GetObject() *CreateSchemaGroupResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

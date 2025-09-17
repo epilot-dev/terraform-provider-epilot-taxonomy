@@ -25,7 +25,7 @@ func (r RemoveRelationsRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (r *RemoveRelationsRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "slug"}); err != nil {
 		return err
 	}
 	return nil
@@ -66,13 +66,38 @@ func (o *RemoveRelationsRequest) GetSlug() string {
 	return o.Slug
 }
 
+// RemoveRelationsResponseBody - A generic error returned by the API
+type RemoveRelationsResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *RemoveRelationsResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *RemoveRelationsResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type RemoveRelationsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *RemoveRelationsResponseBody
 }
 
 func (o *RemoveRelationsResponse) GetContentType() string {
@@ -80,6 +105,13 @@ func (o *RemoveRelationsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *RemoveRelationsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
 }
 
 func (o *RemoveRelationsResponse) GetStatusCode() int {
@@ -94,4 +126,11 @@ func (o *RemoveRelationsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *RemoveRelationsResponse) GetObject() *RemoveRelationsResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

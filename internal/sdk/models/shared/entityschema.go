@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
@@ -24,7 +25,7 @@ func (l LayoutSettings) MarshalJSON() ([]byte, error) {
 }
 
 func (l *LayoutSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -60,9 +61,9 @@ const (
 )
 
 type CreateView struct {
-	EntityDefaultCreate *EntityDefaultCreate `queryParam:"inline"`
-	RedirectEntityView  *RedirectEntityView  `queryParam:"inline"`
-	EntityViewDisabled  *EntityViewDisabled  `queryParam:"inline"`
+	EntityDefaultCreate *EntityDefaultCreate `queryParam:"inline" name:"create_view"`
+	RedirectEntityView  *RedirectEntityView  `queryParam:"inline" name:"create_view"`
+	EntityViewDisabled  *EntityViewDisabled  `queryParam:"inline" name:"create_view"`
 
 	Type CreateViewType
 }
@@ -96,24 +97,24 @@ func CreateCreateViewEntityViewDisabled(entityViewDisabled EntityViewDisabled) C
 
 func (u *CreateView) UnmarshalJSON(data []byte) error {
 
-	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
-	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, true); err == nil {
-		u.EntityViewDisabled = &entityViewDisabled
-		u.Type = CreateViewTypeEntityViewDisabled
-		return nil
-	}
-
 	var entityDefaultCreate EntityDefaultCreate = EntityDefaultCreate{}
-	if err := utils.UnmarshalJSON(data, &entityDefaultCreate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &entityDefaultCreate, "", true, nil); err == nil {
 		u.EntityDefaultCreate = &entityDefaultCreate
 		u.Type = CreateViewTypeEntityDefaultCreate
 		return nil
 	}
 
 	var redirectEntityView RedirectEntityView = RedirectEntityView{}
-	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, nil); err == nil {
 		u.RedirectEntityView = &redirectEntityView
 		u.Type = CreateViewTypeRedirectEntityView
+		return nil
+	}
+
+	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
+	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, nil); err == nil {
+		u.EntityViewDisabled = &entityViewDisabled
+		u.Type = CreateViewTypeEntityViewDisabled
 		return nil
 	}
 
@@ -145,9 +146,9 @@ const (
 )
 
 type EditView struct {
-	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline"`
-	RedirectEntityView *RedirectEntityView `queryParam:"inline"`
-	EntityViewDisabled *EntityViewDisabled `queryParam:"inline"`
+	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline" name:"edit_view"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline" name:"edit_view"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline" name:"edit_view"`
 
 	Type EditViewType
 }
@@ -181,24 +182,24 @@ func CreateEditViewEntityViewDisabled(entityViewDisabled EntityViewDisabled) Edi
 
 func (u *EditView) UnmarshalJSON(data []byte) error {
 
-	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
-	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, true); err == nil {
-		u.EntityViewDisabled = &entityViewDisabled
-		u.Type = EditViewTypeEntityViewDisabled
+	var entityDefaultEdit EntityDefaultEdit = EntityDefaultEdit{}
+	if err := utils.UnmarshalJSON(data, &entityDefaultEdit, "", true, nil); err == nil {
+		u.EntityDefaultEdit = &entityDefaultEdit
+		u.Type = EditViewTypeEntityDefaultEdit
 		return nil
 	}
 
 	var redirectEntityView RedirectEntityView = RedirectEntityView{}
-	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, nil); err == nil {
 		u.RedirectEntityView = &redirectEntityView
 		u.Type = EditViewTypeRedirectEntityView
 		return nil
 	}
 
-	var entityDefaultEdit EntityDefaultEdit = EntityDefaultEdit{}
-	if err := utils.UnmarshalJSON(data, &entityDefaultEdit, "", true, true); err == nil {
-		u.EntityDefaultEdit = &entityDefaultEdit
-		u.Type = EditViewTypeEntityDefaultEdit
+	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
+	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, nil); err == nil {
+		u.EntityViewDisabled = &entityViewDisabled
+		u.Type = EditViewTypeEntityViewDisabled
 		return nil
 	}
 
@@ -229,8 +230,8 @@ const (
 )
 
 type SummaryAttributes struct {
-	SummaryAttribute *SummaryAttribute `queryParam:"inline"`
-	Str              *string           `queryParam:"inline"`
+	SummaryAttribute *SummaryAttribute `queryParam:"inline" name:"summary_attributes"`
+	Str              *string           `queryParam:"inline" name:"summary_attributes"`
 
 	Type SummaryAttributesType
 }
@@ -256,14 +257,14 @@ func CreateSummaryAttributesStr(str string) SummaryAttributes {
 func (u *SummaryAttributes) UnmarshalJSON(data []byte) error {
 
 	var summaryAttribute SummaryAttribute = SummaryAttribute{}
-	if err := utils.UnmarshalJSON(data, &summaryAttribute, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &summaryAttribute, "", true, nil); err == nil {
 		u.SummaryAttribute = &summaryAttribute
 		u.Type = SummaryAttributesTypeSummaryAttribute
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = SummaryAttributesTypeStr
 		return nil
@@ -284,9 +285,49 @@ func (u SummaryAttributes) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type SummaryAttributes: all fields are null")
 }
 
+// ContentDirection - Show attributes in a row or column
+type ContentDirection string
+
+const (
+	ContentDirectionRow    ContentDirection = "row"
+	ContentDirectionColumn ContentDirection = "column"
+)
+
+func (e ContentDirection) ToPointer() *ContentDirection {
+	return &e
+}
+func (e *ContentDirection) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "row":
+		fallthrough
+	case "column":
+		*e = ContentDirection(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ContentDirection: %v", v)
+	}
+}
+
+type EntitySchemaSchemasUIConfig struct {
+	// Show attributes in a row or column
+	ContentDirection *ContentDirection `json:"content_direction,omitempty"`
+}
+
+func (o *EntitySchemaSchemasUIConfig) GetContentDirection() *ContentDirection {
+	if o == nil {
+		return nil
+	}
+	return o.ContentDirection
+}
+
 type ListItem struct {
-	QuickActions      []EntityAction      `json:"quick_actions,omitempty"`
-	SummaryAttributes []SummaryAttributes `json:"summary_attributes,omitempty"`
+	QuickActions      []EntityAction               `json:"quick_actions,omitempty"`
+	SummaryAttributes []SummaryAttributes          `json:"summary_attributes,omitempty"`
+	UIConfig          *EntitySchemaSchemasUIConfig `json:"ui_config,omitempty"`
 }
 
 func (o *ListItem) GetQuickActions() []EntityAction {
@@ -301,6 +342,13 @@ func (o *ListItem) GetSummaryAttributes() []SummaryAttributes {
 		return nil
 	}
 	return o.SummaryAttributes
+}
+
+func (o *ListItem) GetUIConfig() *EntitySchemaSchemasUIConfig {
+	if o == nil {
+		return nil
+	}
+	return o.UIConfig
 }
 
 type Sharing struct {
@@ -324,9 +372,9 @@ const (
 )
 
 type SingleView struct {
-	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline"`
-	RedirectEntityView *RedirectEntityView `queryParam:"inline"`
-	EntityViewDisabled *EntityViewDisabled `queryParam:"inline"`
+	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline" name:"single_view"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline" name:"single_view"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline" name:"single_view"`
 
 	Type SingleViewType
 }
@@ -360,24 +408,24 @@ func CreateSingleViewEntityViewDisabled(entityViewDisabled EntityViewDisabled) S
 
 func (u *SingleView) UnmarshalJSON(data []byte) error {
 
-	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
-	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, true); err == nil {
-		u.EntityViewDisabled = &entityViewDisabled
-		u.Type = SingleViewTypeEntityViewDisabled
+	var entityDefaultEdit EntityDefaultEdit = EntityDefaultEdit{}
+	if err := utils.UnmarshalJSON(data, &entityDefaultEdit, "", true, nil); err == nil {
+		u.EntityDefaultEdit = &entityDefaultEdit
+		u.Type = SingleViewTypeEntityDefaultEdit
 		return nil
 	}
 
 	var redirectEntityView RedirectEntityView = RedirectEntityView{}
-	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, nil); err == nil {
 		u.RedirectEntityView = &redirectEntityView
 		u.Type = SingleViewTypeRedirectEntityView
 		return nil
 	}
 
-	var entityDefaultEdit EntityDefaultEdit = EntityDefaultEdit{}
-	if err := utils.UnmarshalJSON(data, &entityDefaultEdit, "", true, true); err == nil {
-		u.EntityDefaultEdit = &entityDefaultEdit
-		u.Type = SingleViewTypeEntityDefaultEdit
+	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
+	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, nil); err == nil {
+		u.EntityViewDisabled = &entityViewDisabled
+		u.Type = SingleViewTypeEntityViewDisabled
 		return nil
 	}
 
@@ -409,9 +457,9 @@ const (
 )
 
 type TableView struct {
-	EntityDefaultTable *EntityDefaultTable `queryParam:"inline"`
-	RedirectEntityView *RedirectEntityView `queryParam:"inline"`
-	EntityViewDisabled *EntityViewDisabled `queryParam:"inline"`
+	EntityDefaultTable *EntityDefaultTable `queryParam:"inline" name:"table_view"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline" name:"table_view"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline" name:"table_view"`
 
 	Type TableViewType
 }
@@ -445,24 +493,24 @@ func CreateTableViewEntityViewDisabled(entityViewDisabled EntityViewDisabled) Ta
 
 func (u *TableView) UnmarshalJSON(data []byte) error {
 
-	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
-	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, true); err == nil {
-		u.EntityViewDisabled = &entityViewDisabled
-		u.Type = TableViewTypeEntityViewDisabled
+	var entityDefaultTable EntityDefaultTable = EntityDefaultTable{}
+	if err := utils.UnmarshalJSON(data, &entityDefaultTable, "", true, nil); err == nil {
+		u.EntityDefaultTable = &entityDefaultTable
+		u.Type = TableViewTypeEntityDefaultTable
 		return nil
 	}
 
 	var redirectEntityView RedirectEntityView = RedirectEntityView{}
-	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, nil); err == nil {
 		u.RedirectEntityView = &redirectEntityView
 		u.Type = TableViewTypeRedirectEntityView
 		return nil
 	}
 
-	var entityDefaultTable EntityDefaultTable = EntityDefaultTable{}
-	if err := utils.UnmarshalJSON(data, &entityDefaultTable, "", true, true); err == nil {
-		u.EntityDefaultTable = &entityDefaultTable
-		u.Type = TableViewTypeEntityDefaultTable
+	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
+	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, nil); err == nil {
+		u.EntityViewDisabled = &entityViewDisabled
+		u.Type = TableViewTypeEntityViewDisabled
 		return nil
 	}
 
@@ -485,7 +533,7 @@ func (u TableView) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type TableView: all fields are null")
 }
 
-type UIConfig struct {
+type EntitySchemaUIConfig struct {
 	CreateView *CreateView `json:"create_view,omitempty"`
 	EditView   *EditView   `json:"edit_view,omitempty"`
 	ListItem   *ListItem   `json:"list_item,omitempty"`
@@ -494,42 +542,42 @@ type UIConfig struct {
 	TableView  *TableView  `json:"table_view,omitempty"`
 }
 
-func (o *UIConfig) GetCreateView() *CreateView {
+func (o *EntitySchemaUIConfig) GetCreateView() *CreateView {
 	if o == nil {
 		return nil
 	}
 	return o.CreateView
 }
 
-func (o *UIConfig) GetEditView() *EditView {
+func (o *EntitySchemaUIConfig) GetEditView() *EditView {
 	if o == nil {
 		return nil
 	}
 	return o.EditView
 }
 
-func (o *UIConfig) GetListItem() *ListItem {
+func (o *EntitySchemaUIConfig) GetListItem() *ListItem {
 	if o == nil {
 		return nil
 	}
 	return o.ListItem
 }
 
-func (o *UIConfig) GetSharing() *Sharing {
+func (o *EntitySchemaUIConfig) GetSharing() *Sharing {
 	if o == nil {
 		return nil
 	}
 	return o.Sharing
 }
 
-func (o *UIConfig) GetSingleView() *SingleView {
+func (o *EntitySchemaUIConfig) GetSingleView() *SingleView {
 	if o == nil {
 		return nil
 	}
 	return o.SingleView
 }
 
-func (o *UIConfig) GetTableView() *TableView {
+func (o *EntitySchemaUIConfig) GetTableView() *TableView {
 	if o == nil {
 		return nil
 	}
@@ -540,12 +588,15 @@ func (o *UIConfig) GetTableView() *TableView {
 type EntitySchema struct {
 	Purpose []string `json:"_purpose,omitempty"`
 	// An ordered list of attributes the entity contains
-	Attributes []AttributeInput `json:"attributes"`
+	Attributes []Attribute `json:"attributes"`
 	// Reference to blueprint
-	Blueprint    *string                 `json:"blueprint,omitempty"`
-	Capabilities []EntityCapabilityInput `json:"capabilities"`
-	DialogConfig map[string]any          `json:"dialog_config,omitempty"`
-	Draft        *bool                   `json:"draft,omitempty"`
+	Blueprint    *string            `json:"blueprint,omitempty"`
+	Capabilities []EntityCapability `json:"capabilities"`
+	Category     *string            `json:"category,omitempty"`
+	Description  *string            `json:"description,omitempty"`
+	DialogConfig map[string]any     `json:"dialog_config,omitempty"`
+	DocsURL      *string            `json:"docs_url,omitempty"`
+	Draft        *bool              `json:"draft,omitempty"`
 	// This schema should only be active when one of the organization settings is enabled
 	EnableSetting []string `json:"enable_setting,omitempty"`
 	// Advanced: explicit Elasticsearch index mapping definitions for entity data
@@ -569,9 +620,9 @@ type EntitySchema struct {
 	// URL-friendly identifier for the entity schema
 	Slug string `json:"slug"`
 	// Template for rendering the title field. Uses handlebars
-	TitleTemplate *string   `json:"title_template,omitempty"`
-	UIConfig      *UIConfig `json:"ui_config,omitempty"`
-	Version       *int64    `json:"version,omitempty"`
+	TitleTemplate *string               `json:"title_template,omitempty"`
+	UIConfig      *EntitySchemaUIConfig `json:"ui_config,omitempty"`
+	Version       *int64                `json:"version,omitempty"`
 }
 
 func (o *EntitySchema) GetPurpose() []string {
@@ -581,9 +632,9 @@ func (o *EntitySchema) GetPurpose() []string {
 	return o.Purpose
 }
 
-func (o *EntitySchema) GetAttributes() []AttributeInput {
+func (o *EntitySchema) GetAttributes() []Attribute {
 	if o == nil {
-		return []AttributeInput{}
+		return []Attribute{}
 	}
 	return o.Attributes
 }
@@ -595,11 +646,25 @@ func (o *EntitySchema) GetBlueprint() *string {
 	return o.Blueprint
 }
 
-func (o *EntitySchema) GetCapabilities() []EntityCapabilityInput {
+func (o *EntitySchema) GetCapabilities() []EntityCapability {
 	if o == nil {
-		return []EntityCapabilityInput{}
+		return []EntityCapability{}
 	}
 	return o.Capabilities
+}
+
+func (o *EntitySchema) GetCategory() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Category
+}
+
+func (o *EntitySchema) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 func (o *EntitySchema) GetDialogConfig() map[string]any {
@@ -607,6 +672,13 @@ func (o *EntitySchema) GetDialogConfig() map[string]any {
 		return nil
 	}
 	return o.DialogConfig
+}
+
+func (o *EntitySchema) GetDocsURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DocsURL
 }
 
 func (o *EntitySchema) GetDraft() *bool {
@@ -700,7 +772,7 @@ func (o *EntitySchema) GetTitleTemplate() *string {
 	return o.TitleTemplate
 }
 
-func (o *EntitySchema) GetUIConfig() *UIConfig {
+func (o *EntitySchema) GetUIConfig() *EntitySchemaUIConfig {
 	if o == nil {
 		return nil
 	}

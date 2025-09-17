@@ -7,15 +7,40 @@ import (
 	"net/http"
 )
 
+// CreateTaxonomyResponseBody - A generic error returned by the API
+type CreateTaxonomyResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *CreateTaxonomyResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *CreateTaxonomyResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type CreateTaxonomyResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Taxonomy created
 	Taxonomy *shared.Taxonomy
+	// Too many requests
+	Object *CreateTaxonomyResponseBody
 }
 
 func (o *CreateTaxonomyResponse) GetContentType() string {
@@ -23,6 +48,13 @@ func (o *CreateTaxonomyResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *CreateTaxonomyResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
 }
 
 func (o *CreateTaxonomyResponse) GetStatusCode() int {
@@ -44,4 +76,11 @@ func (o *CreateTaxonomyResponse) GetTaxonomy() *shared.Taxonomy {
 		return nil
 	}
 	return o.Taxonomy
+}
+
+func (o *CreateTaxonomyResponse) GetObject() *CreateTaxonomyResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

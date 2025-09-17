@@ -3,18 +3,30 @@
 package operations
 
 import (
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"net/http"
 )
 
 type GetSchemaVersionsRequest struct {
-	DraftsFrom *float64 `queryParam:"style=form,explode=true,name=drafts_from"`
-	DraftsSize *float64 `queryParam:"style=form,explode=true,name=drafts_size"`
+	DraftsFrom *float64 `default:"0" queryParam:"style=form,explode=true,name=drafts_from"`
+	DraftsSize *float64 `default:"0" queryParam:"style=form,explode=true,name=drafts_size"`
 	Fields     []string `queryParam:"style=form,explode=false,name=fields"`
 	// Entity Type
 	Slug         string   `pathParam:"style=simple,explode=false,name=slug"`
-	VersionsFrom *float64 `queryParam:"style=form,explode=true,name=versions_from"`
-	VersionsSize *float64 `queryParam:"style=form,explode=true,name=versions_size"`
+	VersionsFrom *float64 `default:"0" queryParam:"style=form,explode=true,name=versions_from"`
+	VersionsSize *float64 `default:"20" queryParam:"style=form,explode=true,name=versions_size"`
+}
+
+func (g GetSchemaVersionsRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetSchemaVersionsRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"slug"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetSchemaVersionsRequest) GetDraftsFrom() *float64 {
@@ -61,8 +73,12 @@ func (o *GetSchemaVersionsRequest) GetVersionsSize() *float64 {
 
 // GetSchemaVersionsResponseBody - Success
 type GetSchemaVersionsResponseBody struct {
-	Drafts   []shared.EntitySchemaItem `json:"drafts,omitempty"`
-	Versions []shared.EntitySchemaItem `json:"versions,omitempty"`
+	Drafts []shared.EntitySchemaItem `json:"drafts,omitempty"`
+	// Pagination: Whether more drafts are available
+	DraftsMore *bool                     `json:"drafts_more,omitempty"`
+	Versions   []shared.EntitySchemaItem `json:"versions"`
+	// Pagination: Whether more versions are available
+	VersionsMore bool `json:"versions_more"`
 }
 
 func (o *GetSchemaVersionsResponseBody) GetDrafts() []shared.EntitySchemaItem {
@@ -72,11 +88,25 @@ func (o *GetSchemaVersionsResponseBody) GetDrafts() []shared.EntitySchemaItem {
 	return o.Drafts
 }
 
-func (o *GetSchemaVersionsResponseBody) GetVersions() []shared.EntitySchemaItem {
+func (o *GetSchemaVersionsResponseBody) GetDraftsMore() *bool {
 	if o == nil {
 		return nil
 	}
+	return o.DraftsMore
+}
+
+func (o *GetSchemaVersionsResponseBody) GetVersions() []shared.EntitySchemaItem {
+	if o == nil {
+		return []shared.EntitySchemaItem{}
+	}
 	return o.Versions
+}
+
+func (o *GetSchemaVersionsResponseBody) GetVersionsMore() bool {
+	if o == nil {
+		return false
+	}
+	return o.VersionsMore
 }
 
 type GetSchemaVersionsResponse struct {

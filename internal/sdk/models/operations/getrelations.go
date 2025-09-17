@@ -32,7 +32,7 @@ func (g GetRelationsRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetRelationsRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug"}); err != nil {
 		return err
 	}
 	return nil
@@ -94,6 +94,28 @@ func (o *GetRelationsRequest) GetSlug() string {
 	return o.Slug
 }
 
+// GetRelationsResponseBody - A generic error returned by the API
+type GetRelationsResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetRelationsResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetRelationsResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type GetRelationsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -103,6 +125,8 @@ type GetRelationsResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *GetRelationsResponseBody
 }
 
 func (o *GetRelationsResponse) GetContentType() string {
@@ -131,4 +155,11 @@ func (o *GetRelationsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetRelationsResponse) GetObject() *GetRelationsResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

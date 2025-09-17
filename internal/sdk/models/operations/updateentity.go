@@ -22,6 +22,8 @@ type UpdateEntityRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 	// Entity Type
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
+	// When true, enables entity validation against the entity schema.
+	Validate *bool `default:"false" queryParam:"style=form,explode=true,name=validate"`
 }
 
 func (u UpdateEntityRequest) MarshalJSON() ([]byte, error) {
@@ -29,7 +31,7 @@ func (u UpdateEntityRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateEntityRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "slug"}); err != nil {
 		return err
 	}
 	return nil
@@ -77,11 +79,20 @@ func (o *UpdateEntityRequest) GetSlug() string {
 	return o.Slug
 }
 
+func (o *UpdateEntityRequest) GetValidate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Validate
+}
+
 type UpdateEntityResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Success
 	EntityItem *shared.EntityItem
+	// Entity validation error when `?validate=true`
+	EntityValidationV2ResultError *shared.EntityValidationV2ResultError
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
@@ -100,6 +111,13 @@ func (o *UpdateEntityResponse) GetEntityItem() *shared.EntityItem {
 		return nil
 	}
 	return o.EntityItem
+}
+
+func (o *UpdateEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
+	if o == nil {
+		return nil
+	}
+	return o.EntityValidationV2ResultError
 }
 
 func (o *UpdateEntityResponse) GetStatusCode() int {

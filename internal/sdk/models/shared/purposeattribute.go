@@ -6,12 +6,22 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
-	"time"
 )
 
 // PurposeAttributeConstraints - A set of constraints applicable to the attribute.
 // These constraints should and will be enforced by the attribute renderer.
 type PurposeAttributeConstraints struct {
+}
+
+func (p PurposeAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PurposeAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 // PurposeAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
@@ -33,6 +43,17 @@ type PurposeAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (p PurposeAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PurposeAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PurposeAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -88,14 +109,13 @@ func (e *PurposeAttributeType) UnmarshalJSON(data []byte) error {
 
 // PurposeAttribute - Entity Taxonomy
 type PurposeAttribute struct {
-	// Manifest ID used to create/update the taxonomy classification
+	// Manifest ID used to create/update the schema attribute
 	Manifest []string `json:"_manifest,omitempty"`
 	Purpose  []string `json:"_purpose,omitempty"`
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
 	Constraints  *PurposeAttributeConstraints `json:"constraints,omitempty"`
-	CreatedAt    *time.Time                   `json:"created_at,omitempty"`
 	DefaultValue any                          `json:"default_value,omitempty"`
 	Deprecated   *bool                        `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
@@ -103,7 +123,8 @@ type PurposeAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -112,17 +133,17 @@ type PurposeAttribute struct {
 	// The value must be a valid @epilot/base-elements Icon name
 	//
 	Icon *string `json:"icon,omitempty"`
-	ID   *string `json:"id,omitempty"`
+	// ID for the entity attribute
+	ID *string `json:"id,omitempty"`
 	// A set of configurations meant to document and assist the user in filling the attribute.
 	InfoHelpers *PurposeAttributeInfoHelpers `json:"info_helpers,omitempty"`
 	Label       string                       `json:"label"`
 	Layout      *string                      `json:"layout,omitempty"`
 	Name        string                       `json:"name"`
 	// Attribute sort order (ascending) in group
-	Order                 *int64   `json:"order,omitempty"`
-	Parents               []string `json:"parents,omitempty"`
-	Placeholder           *string  `json:"placeholder,omitempty"`
-	PreviewValueFormatter *string  `json:"preview_value_formatter,omitempty"`
+	Order                 *int64  `json:"order,omitempty"`
+	Placeholder           *string `json:"placeholder,omitempty"`
+	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
 	// Setting to `true` prevents the attribute from being modified / deleted
 	Protected *bool `json:"protected,omitempty"`
 	Readonly  *bool `default:"false" json:"readonly"`
@@ -131,18 +152,17 @@ type PurposeAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
-	// URL-friendly identifier for the classification
-	Slug *string `json:"slug,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                 `default:"true" json:"sortable"`
-	Type           *PurposeAttributeType `json:"type,omitempty"`
-	UpdatedAt      *time.Time            `json:"updated_at,omitempty"`
-	ValueFormatter *string               `json:"value_formatter,omitempty"`
+	Sortable       *bool                `default:"true" json:"sortable"`
+	Type           PurposeAttributeType `json:"type"`
+	ValueFormatter *string              `json:"value_formatter,omitempty"`
 }
 
 func (p PurposeAttribute) MarshalJSON() ([]byte, error) {
@@ -150,7 +170,7 @@ func (p PurposeAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PurposeAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -175,13 +195,6 @@ func (o *PurposeAttribute) GetConstraints() *PurposeAttributeConstraints {
 		return nil
 	}
 	return o.Constraints
-}
-
-func (o *PurposeAttribute) GetCreatedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
 }
 
 func (o *PurposeAttribute) GetDefaultValue() any {
@@ -217,6 +230,13 @@ func (o *PurposeAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *PurposeAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *PurposeAttribute) GetHidden() *bool {
@@ -282,13 +302,6 @@ func (o *PurposeAttribute) GetOrder() *int64 {
 	return o.Order
 }
 
-func (o *PurposeAttribute) GetParents() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Parents
-}
-
 func (o *PurposeAttribute) GetPlaceholder() *string {
 	if o == nil {
 		return nil
@@ -324,6 +337,13 @@ func (o *PurposeAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PurposeAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PurposeAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -345,13 +365,6 @@ func (o *PurposeAttribute) GetShowInTable() *bool {
 	return o.ShowInTable
 }
 
-func (o *PurposeAttribute) GetSlug() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Slug
-}
-
 func (o *PurposeAttribute) GetSortable() *bool {
 	if o == nil {
 		return nil
@@ -359,299 +372,14 @@ func (o *PurposeAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PurposeAttribute) GetType() *PurposeAttributeType {
+func (o *PurposeAttribute) GetType() PurposeAttributeType {
 	if o == nil {
-		return nil
+		return PurposeAttributeType("")
 	}
 	return o.Type
-}
-
-func (o *PurposeAttribute) GetUpdatedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
 }
 
 func (o *PurposeAttribute) GetValueFormatter() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ValueFormatter
-}
-
-// PurposeAttributeInput - Entity Taxonomy
-type PurposeAttributeInput struct {
-	// Manifest ID used to create/update the taxonomy classification
-	Manifest []string `json:"_manifest,omitempty"`
-	Purpose  []string `json:"_purpose,omitempty"`
-	// A set of constraints applicable to the attribute.
-	// These constraints should and will be enforced by the attribute renderer.
-	//
-	Constraints  *PurposeAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                          `json:"default_value,omitempty"`
-	Deprecated   *bool                        `default:"false" json:"deprecated"`
-	// Setting to `true` disables editing the attribute on the entity builder UI
-	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
-	// This attribute should only be active when the feature flag is enabled
-	FeatureFlag *string `json:"feature_flag,omitempty"`
-	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
-	// Do not render attribute in entity views
-	Hidden *bool `default:"false" json:"hidden"`
-	// When set to true, will hide the label of the field.
-	HideLabel *bool `json:"hide_label,omitempty"`
-	// Code name of the icon to used to represent this attribute.
-	// The value must be a valid @epilot/base-elements Icon name
-	//
-	Icon *string `json:"icon,omitempty"`
-	ID   *string `json:"id,omitempty"`
-	// A set of configurations meant to document and assist the user in filling the attribute.
-	InfoHelpers *PurposeAttributeInfoHelpers `json:"info_helpers,omitempty"`
-	Label       string                       `json:"label"`
-	Layout      *string                      `json:"layout,omitempty"`
-	Name        string                       `json:"name"`
-	// Attribute sort order (ascending) in group
-	Order                 *int64   `json:"order,omitempty"`
-	Parents               []string `json:"parents,omitempty"`
-	Placeholder           *string  `json:"placeholder,omitempty"`
-	PreviewValueFormatter *string  `json:"preview_value_formatter,omitempty"`
-	// Setting to `true` prevents the attribute from being modified / deleted
-	Protected *bool `json:"protected,omitempty"`
-	Readonly  *bool `default:"false" json:"readonly"`
-	// Defines the conditional rendering expression for showing this field.
-	// When a valid expression is parsed, their evaluation defines the visibility of this attribute.
-	// Note: Empty or invalid expression have no effect on the field visibility.
-	//
-	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
-	// This attribute should only be active when one of the provided settings have the correct value
-	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
-	// Render as a column in table views. When defined, overrides `hidden`
-	ShowInTable *bool `json:"show_in_table,omitempty"`
-	// URL-friendly identifier for the classification
-	Slug *string `json:"slug,omitempty"`
-	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                 `default:"true" json:"sortable"`
-	Type           *PurposeAttributeType `json:"type,omitempty"`
-	ValueFormatter *string               `json:"value_formatter,omitempty"`
-}
-
-func (p PurposeAttributeInput) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PurposeAttributeInput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *PurposeAttributeInput) GetManifest() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Manifest
-}
-
-func (o *PurposeAttributeInput) GetPurpose() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Purpose
-}
-
-func (o *PurposeAttributeInput) GetConstraints() *PurposeAttributeConstraints {
-	if o == nil {
-		return nil
-	}
-	return o.Constraints
-}
-
-func (o *PurposeAttributeInput) GetDefaultValue() any {
-	if o == nil {
-		return nil
-	}
-	return o.DefaultValue
-}
-
-func (o *PurposeAttributeInput) GetDeprecated() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Deprecated
-}
-
-func (o *PurposeAttributeInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.EntityBuilderDisableEdit
-}
-
-func (o *PurposeAttributeInput) GetFeatureFlag() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FeatureFlag
-}
-
-func (o *PurposeAttributeInput) GetGroup() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Group
-}
-
-func (o *PurposeAttributeInput) GetHidden() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Hidden
-}
-
-func (o *PurposeAttributeInput) GetHideLabel() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HideLabel
-}
-
-func (o *PurposeAttributeInput) GetIcon() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Icon
-}
-
-func (o *PurposeAttributeInput) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-func (o *PurposeAttributeInput) GetInfoHelpers() *PurposeAttributeInfoHelpers {
-	if o == nil {
-		return nil
-	}
-	return o.InfoHelpers
-}
-
-func (o *PurposeAttributeInput) GetLabel() string {
-	if o == nil {
-		return ""
-	}
-	return o.Label
-}
-
-func (o *PurposeAttributeInput) GetLayout() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Layout
-}
-
-func (o *PurposeAttributeInput) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *PurposeAttributeInput) GetOrder() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.Order
-}
-
-func (o *PurposeAttributeInput) GetParents() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Parents
-}
-
-func (o *PurposeAttributeInput) GetPlaceholder() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Placeholder
-}
-
-func (o *PurposeAttributeInput) GetPreviewValueFormatter() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PreviewValueFormatter
-}
-
-func (o *PurposeAttributeInput) GetProtected() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Protected
-}
-
-func (o *PurposeAttributeInput) GetReadonly() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Readonly
-}
-
-func (o *PurposeAttributeInput) GetRenderCondition() *string {
-	if o == nil {
-		return nil
-	}
-	return o.RenderCondition
-}
-
-func (o *PurposeAttributeInput) GetRequired() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Required
-}
-
-func (o *PurposeAttributeInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
-		return nil
-	}
-	return o.SettingsFlag
-}
-
-func (o *PurposeAttributeInput) GetShowInTable() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ShowInTable
-}
-
-func (o *PurposeAttributeInput) GetSlug() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Slug
-}
-
-func (o *PurposeAttributeInput) GetSortable() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sortable
-}
-
-func (o *PurposeAttributeInput) GetType() *PurposeAttributeType {
-	if o == nil {
-		return nil
-	}
-	return o.Type
-}
-
-func (o *PurposeAttributeInput) GetValueFormatter() *string {
 	if o == nil {
 		return nil
 	}

@@ -1,1 +1,1 @@
-terraform import epilot-taxonomy_taxonomy_classification.my_epilot-taxonomy_taxonomy_classification "taxonomy-slug:classification-slug"
+# terraform import epilot-taxonomy_taxonomy_classification.my_epilot-taxonomy_taxonomy_classification "taxonomy-slug:classification-slug"

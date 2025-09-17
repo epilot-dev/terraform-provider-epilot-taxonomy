@@ -2,14 +2,35 @@
 
 package shared
 
+import (
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
+	"time"
+)
+
 type TaxonomyClassificationInput struct {
 	// Manifest ID used to create/update the taxonomy classification
 	Manifest []string `json:"_manifest,omitempty"`
-	ID       *string  `json:"id,omitempty"`
-	Name     string   `json:"name"`
-	Parents  []string `json:"parents,omitempty"`
+	// Archived classification are not visible in the UI
+	Archived *bool `default:"false" json:"archived"`
+	// Color of the classification
+	Color     *string    `json:"color,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Name      string     `json:"name"`
+	Parents   []string   `json:"parents,omitempty"`
 	// URL-friendly identifier for the classification
-	Slug *string `json:"slug,omitempty"`
+	Slug      string     `json:"slug"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+}
+
+func (t TaxonomyClassificationInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TaxonomyClassificationInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"name", "slug"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TaxonomyClassificationInput) GetManifest() []string {
@@ -19,11 +40,25 @@ func (o *TaxonomyClassificationInput) GetManifest() []string {
 	return o.Manifest
 }
 
-func (o *TaxonomyClassificationInput) GetID() *string {
+func (o *TaxonomyClassificationInput) GetArchived() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.ID
+	return o.Archived
+}
+
+func (o *TaxonomyClassificationInput) GetColor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Color
+}
+
+func (o *TaxonomyClassificationInput) GetCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
 }
 
 func (o *TaxonomyClassificationInput) GetName() string {
@@ -40,9 +75,16 @@ func (o *TaxonomyClassificationInput) GetParents() []string {
 	return o.Parents
 }
 
-func (o *TaxonomyClassificationInput) GetSlug() *string {
+func (o *TaxonomyClassificationInput) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *TaxonomyClassificationInput) GetUpdatedAt() *time.Time {
 	if o == nil {
 		return nil
 	}
-	return o.Slug
+	return o.UpdatedAt
 }

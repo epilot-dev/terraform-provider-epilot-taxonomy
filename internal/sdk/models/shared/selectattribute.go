@@ -14,6 +14,17 @@ import (
 type SelectAttributeConstraints struct {
 }
 
+func (s SelectAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SelectAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // SelectAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type SelectAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -33,6 +44,17 @@ type SelectAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (s SelectAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SelectAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SelectAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -68,6 +90,17 @@ type SelectAttribute1 struct {
 	Value string  `json:"value"`
 }
 
+func (s SelectAttribute1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SelectAttribute1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *SelectAttribute1) GetTitle() *string {
 	if o == nil {
 		return nil
@@ -90,8 +123,8 @@ const (
 )
 
 type SelectAttributeOptions struct {
-	SelectAttribute1 *SelectAttribute1 `queryParam:"inline"`
-	Str              *string           `queryParam:"inline"`
+	SelectAttribute1 *SelectAttribute1 `queryParam:"inline" name:"options"`
+	Str              *string           `queryParam:"inline" name:"options"`
 
 	Type SelectAttributeOptionsType
 }
@@ -117,14 +150,14 @@ func CreateSelectAttributeOptionsStr(str string) SelectAttributeOptions {
 func (u *SelectAttributeOptions) UnmarshalJSON(data []byte) error {
 
 	var selectAttribute1 SelectAttribute1 = SelectAttribute1{}
-	if err := utils.UnmarshalJSON(data, &selectAttribute1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &selectAttribute1, "", true, nil); err == nil {
 		u.SelectAttribute1 = &selectAttribute1
 		u.Type = SelectAttributeOptionsTypeSelectAttribute1
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = SelectAttributeOptionsTypeStr
 		return nil
@@ -189,7 +222,8 @@ type SelectAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -218,15 +252,17 @@ type SelectAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                `default:"true" json:"sortable"`
-	Type           *SelectAttributeType `json:"type,omitempty"`
-	ValueFormatter *string              `json:"value_formatter,omitempty"`
+	Sortable       *bool               `default:"true" json:"sortable"`
+	Type           SelectAttributeType `json:"type"`
+	ValueFormatter *string             `json:"value_formatter,omitempty"`
 }
 
 func (s SelectAttribute) MarshalJSON() ([]byte, error) {
@@ -234,7 +270,7 @@ func (s SelectAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SelectAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -301,6 +337,13 @@ func (o *SelectAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *SelectAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *SelectAttribute) GetHidden() *bool {
@@ -408,6 +451,13 @@ func (o *SelectAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *SelectAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *SelectAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -436,9 +486,9 @@ func (o *SelectAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *SelectAttribute) GetType() *SelectAttributeType {
+func (o *SelectAttribute) GetType() SelectAttributeType {
 	if o == nil {
-		return nil
+		return SelectAttributeType("")
 	}
 	return o.Type
 }

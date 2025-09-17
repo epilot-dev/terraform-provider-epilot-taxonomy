@@ -19,6 +19,28 @@ func (o *GetTaxonomyClassificationRequest) GetClassificationSlug() string {
 	return o.ClassificationSlug
 }
 
+// GetTaxonomyClassificationResponseBody - A generic error returned by the API
+type GetTaxonomyClassificationResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetTaxonomyClassificationResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetTaxonomyClassificationResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type GetTaxonomyClassificationResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -28,6 +50,8 @@ type GetTaxonomyClassificationResponse struct {
 	RawResponse *http.Response
 	// Taxonomy classification
 	TaxonomyClassification *shared.TaxonomyClassification
+	// The requested resource was not found
+	Object *GetTaxonomyClassificationResponseBody
 }
 
 func (o *GetTaxonomyClassificationResponse) GetContentType() string {
@@ -56,4 +80,11 @@ func (o *GetTaxonomyClassificationResponse) GetTaxonomyClassification() *shared.
 		return nil
 	}
 	return o.TaxonomyClassification
+}
+
+func (o *GetTaxonomyClassificationResponse) GetObject() *GetTaxonomyClassificationResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

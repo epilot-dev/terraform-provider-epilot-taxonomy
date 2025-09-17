@@ -3,6 +3,7 @@
 package operations
 
 import (
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"net/http"
 )
@@ -13,9 +14,20 @@ type DeleteEntityRequest struct {
 	// Entity id
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 	// Permanently deletes the entity when set to `true`
-	Purge *bool `queryParam:"style=form,explode=true,name=purge"`
+	Purge *bool `default:"false" queryParam:"style=form,explode=true,name=purge"`
 	// Entity Type
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
+}
+
+func (d DeleteEntityRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteEntityRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "slug"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DeleteEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {
@@ -46,13 +58,38 @@ func (o *DeleteEntityRequest) GetSlug() string {
 	return o.Slug
 }
 
+// DeleteEntityResponseBody - A generic error returned by the API
+type DeleteEntityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *DeleteEntityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *DeleteEntityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type DeleteEntityResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *DeleteEntityResponseBody
 }
 
 func (o *DeleteEntityResponse) GetContentType() string {
@@ -60,6 +97,13 @@ func (o *DeleteEntityResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *DeleteEntityResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
 }
 
 func (o *DeleteEntityResponse) GetStatusCode() int {
@@ -74,4 +118,11 @@ func (o *DeleteEntityResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *DeleteEntityResponse) GetObject() *DeleteEntityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

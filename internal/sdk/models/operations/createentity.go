@@ -20,6 +20,8 @@ type CreateEntityRequest struct {
 	FillActivity *bool `default:"false" queryParam:"style=form,explode=true,name=fill_activity"`
 	// Entity Type
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
+	// When true, enables entity validation against the entity schema.
+	Validate *bool `default:"false" queryParam:"style=form,explode=true,name=validate"`
 }
 
 func (c CreateEntityRequest) MarshalJSON() ([]byte, error) {
@@ -27,7 +29,7 @@ func (c CreateEntityRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateEntityRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"slug"}); err != nil {
 		return err
 	}
 	return nil
@@ -68,15 +70,49 @@ func (o *CreateEntityRequest) GetSlug() string {
 	return o.Slug
 }
 
+func (o *CreateEntityRequest) GetValidate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Validate
+}
+
+// CreateEntityResponseBody - A generic error returned by the API
+type CreateEntityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *CreateEntityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *CreateEntityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type CreateEntityResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Success
 	EntityItem *shared.EntityItem
+	// Entity validation error when `?validate=true`
+	EntityValidationV2ResultError *shared.EntityValidationV2ResultError
+	Headers                       map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *CreateEntityResponseBody
 }
 
 func (o *CreateEntityResponse) GetContentType() string {
@@ -93,6 +129,20 @@ func (o *CreateEntityResponse) GetEntityItem() *shared.EntityItem {
 	return o.EntityItem
 }
 
+func (o *CreateEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
+	if o == nil {
+		return nil
+	}
+	return o.EntityValidationV2ResultError
+}
+
+func (o *CreateEntityResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *CreateEntityResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -105,4 +155,11 @@ func (o *CreateEntityResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *CreateEntityResponse) GetObject() *CreateEntityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

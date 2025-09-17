@@ -7,12 +7,59 @@ import (
 	"time"
 )
 
+// ACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
+type ACL struct {
+	AdditionalProperties any      `additionalProperties:"true" json:"-"`
+	Delete               []string `json:"delete,omitempty"`
+	Edit                 []string `json:"edit,omitempty"`
+	View                 []string `json:"view,omitempty"`
+}
+
+func (a ACL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ACL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ACL) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *ACL) GetDelete() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Delete
+}
+
+func (o *ACL) GetEdit() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Edit
+}
+
+func (o *ACL) GetView() []string {
+	if o == nil {
+		return nil
+	}
+	return o.View
+}
+
 type Entity struct {
-	AdditionalProperties any `additionalProperties:"true" json:"-"`
-	// Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
-	ACL       *EntityACL `json:"_acl,omitempty"`
-	CreatedAt *time.Time `json:"_created_at,omitempty"`
-	ID        *string    `json:"_id,omitempty"`
+	AdditionalProperties any        `additionalProperties:"true" json:"-"`
+	ACL                  *ACL       `json:"_acl,omitempty"`
+	CreatedAt            *time.Time `json:"_created_at,omitempty"`
+	DeletedAt            *time.Time `json:"_deleted_at,omitempty"`
+	ID                   *string    `json:"_id,omitempty"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
@@ -32,7 +79,7 @@ func (e Entity) MarshalJSON() ([]byte, error) {
 }
 
 func (e *Entity) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -45,7 +92,7 @@ func (o *Entity) GetAdditionalProperties() any {
 	return o.AdditionalProperties
 }
 
-func (o *Entity) GetACL() *EntityACL {
+func (o *Entity) GetACL() *ACL {
 	if o == nil {
 		return nil
 	}
@@ -57,6 +104,13 @@ func (o *Entity) GetCreatedAt() *time.Time {
 		return nil
 	}
 	return o.CreatedAt
+}
+
+func (o *Entity) GetDeletedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
 }
 
 func (o *Entity) GetID() *string {
@@ -120,4 +174,85 @@ func (o *Entity) GetUpdatedAt() *time.Time {
 		return nil
 	}
 	return o.UpdatedAt
+}
+
+type EntityInput struct {
+	AdditionalProperties any     `additionalProperties:"true" json:"-"`
+	ACL                  *ACL    `json:"_acl,omitempty"`
+	ID                   *string `json:"_id,omitempty"`
+	// Manifest ID used to create/update the entity
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// URL-friendly identifier for the entity schema
+	Schema *string  `json:"_schema,omitempty"`
+	Tags   []string `json:"_tags,omitempty"`
+	// Title of entity
+	Title *string `json:"_title,omitempty"`
+}
+
+func (e EntityInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EntityInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EntityInput) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *EntityInput) GetACL() *ACL {
+	if o == nil {
+		return nil
+	}
+	return o.ACL
+}
+
+func (o *EntityInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *EntityInput) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *EntityInput) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *EntityInput) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *EntityInput) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *EntityInput) GetTitle() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Title
 }

@@ -19,15 +19,40 @@ func (o *DeleteTaxonomyClassificationRequest) GetClassificationSlug() string {
 	return o.ClassificationSlug
 }
 
+// DeleteTaxonomyClassificationResponseBody - A generic error returned by the API
+type DeleteTaxonomyClassificationResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *DeleteTaxonomyClassificationResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *DeleteTaxonomyClassificationResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type DeleteTaxonomyClassificationResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Taxonomy classification deleted
 	TaxonomyClassification *shared.TaxonomyClassification
+	// Too many requests
+	Object *DeleteTaxonomyClassificationResponseBody
 }
 
 func (o *DeleteTaxonomyClassificationResponse) GetContentType() string {
@@ -35,6 +60,13 @@ func (o *DeleteTaxonomyClassificationResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *DeleteTaxonomyClassificationResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
 }
 
 func (o *DeleteTaxonomyClassificationResponse) GetStatusCode() int {
@@ -56,4 +88,11 @@ func (o *DeleteTaxonomyClassificationResponse) GetTaxonomyClassification() *shar
 		return nil
 	}
 	return o.TaxonomyClassification
+}
+
+func (o *DeleteTaxonomyClassificationResponse) GetObject() *DeleteTaxonomyClassificationResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

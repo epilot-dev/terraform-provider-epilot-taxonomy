@@ -18,6 +18,28 @@ func (o *GetSchemaExampleRequest) GetSlug() string {
 	return o.Slug
 }
 
+// GetSchemaExampleSchemasResponseBody - A generic error returned by the API
+type GetSchemaExampleSchemasResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetSchemaExampleSchemasResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetSchemaExampleSchemasResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 // GetSchemaExampleResponseBody - Success
 type GetSchemaExampleResponseBody struct {
 }
@@ -25,12 +47,15 @@ type GetSchemaExampleResponseBody struct {
 type GetSchemaExampleResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Success
 	Object *GetSchemaExampleResponseBody
+	// Too many requests
+	Object1 *GetSchemaExampleSchemasResponseBody
 }
 
 func (o *GetSchemaExampleResponse) GetContentType() string {
@@ -38,6 +63,13 @@ func (o *GetSchemaExampleResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *GetSchemaExampleResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
 }
 
 func (o *GetSchemaExampleResponse) GetStatusCode() int {
@@ -59,4 +91,11 @@ func (o *GetSchemaExampleResponse) GetObject() *GetSchemaExampleResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetSchemaExampleResponse) GetObject1() *GetSchemaExampleSchemasResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object1
 }

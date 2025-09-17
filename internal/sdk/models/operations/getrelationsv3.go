@@ -11,6 +11,8 @@ import (
 type GetRelationsV3Request struct {
 	// Filter results to exclude schemas
 	ExcludeSchemas []string `queryParam:"style=form,explode=false,name=exclude_schemas"`
+	// List of entity fields to include in results
+	Fields []string `queryParam:"style=form,explode=true,name=fields"`
 	// Starting page number
 	From *int64 `default:"0" queryParam:"style=form,explode=true,name=from"`
 	// When true, enables entity hydration to resolve nested $relation & $relation_ref references in-place.
@@ -44,7 +46,7 @@ func (g GetRelationsV3Request) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetRelationsV3Request) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug"}); err != nil {
 		return err
 	}
 	return nil
@@ -55,6 +57,13 @@ func (o *GetRelationsV3Request) GetExcludeSchemas() []string {
 		return nil
 	}
 	return o.ExcludeSchemas
+}
+
+func (o *GetRelationsV3Request) GetFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Fields
 }
 
 func (o *GetRelationsV3Request) GetFrom() *int64 {
@@ -113,6 +122,28 @@ func (o *GetRelationsV3Request) GetSlug() string {
 	return o.Slug
 }
 
+// GetRelationsV3ResponseBody - A generic error returned by the API
+type GetRelationsV3ResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetRelationsV3ResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetRelationsV3ResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type GetRelationsV3Response struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -122,6 +153,8 @@ type GetRelationsV3Response struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *GetRelationsV3ResponseBody
 }
 
 func (o *GetRelationsV3Response) GetContentType() string {
@@ -150,4 +183,11 @@ func (o *GetRelationsV3Response) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetRelationsV3Response) GetObject() *GetRelationsV3ResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

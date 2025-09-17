@@ -2,12 +2,27 @@
 
 package shared
 
+import (
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
+)
+
 // SummaryField - Summary Fields are displayed inside list view as a resume of the relation entity.
 type SummaryField struct {
 	// An hint on how to display the summary field
 	DisplayAs *string `json:"display_as,omitempty"`
 	// The field from the entity attributes to display
 	Field *string `json:"field,omitempty"`
+}
+
+func (s SummaryField) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SummaryField) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SummaryField) GetDisplayAs() *string {

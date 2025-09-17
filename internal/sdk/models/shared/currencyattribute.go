@@ -14,12 +14,34 @@ import (
 type CurrencyAttributeConstraints struct {
 }
 
+func (c CurrencyAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CurrencyAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // CurrencyAttribute1 - A currency configuration
 type CurrencyAttribute1 struct {
 	Code        string  `json:"code"`
 	Description string  `json:"description"`
 	Flag        *string `json:"flag,omitempty"`
 	Symbol      string  `json:"symbol"`
+}
+
+func (c CurrencyAttribute1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CurrencyAttribute1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"code", "description", "symbol"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CurrencyAttribute1) GetCode() string {
@@ -57,7 +79,7 @@ const (
 )
 
 type CurrencyAttributeCurrency struct {
-	CurrencyAttribute1 *CurrencyAttribute1 `queryParam:"inline"`
+	CurrencyAttribute1 *CurrencyAttribute1 `queryParam:"inline" name:"currency"`
 
 	Type CurrencyAttributeCurrencyType
 }
@@ -74,7 +96,7 @@ func CreateCurrencyAttributeCurrencyCurrencyAttribute1(currencyAttribute1 Curren
 func (u *CurrencyAttributeCurrency) UnmarshalJSON(data []byte) error {
 
 	var currencyAttribute1 CurrencyAttribute1 = CurrencyAttribute1{}
-	if err := utils.UnmarshalJSON(data, &currencyAttribute1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &currencyAttribute1, "", true, nil); err == nil {
 		u.CurrencyAttribute1 = &currencyAttribute1
 		u.Type = CurrencyAttributeCurrencyTypeCurrencyAttribute1
 		return nil
@@ -110,6 +132,17 @@ type CurrencyAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (c CurrencyAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CurrencyAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CurrencyAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -182,7 +215,8 @@ type CurrencyAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -210,7 +244,9 @@ type CurrencyAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
@@ -226,7 +262,7 @@ func (c CurrencyAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CurrencyAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"currency", "label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -300,6 +336,13 @@ func (o *CurrencyAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *CurrencyAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *CurrencyAttribute) GetHidden() *bool {
@@ -398,6 +441,13 @@ func (o *CurrencyAttribute) GetRenderCondition() *string {
 		return nil
 	}
 	return o.RenderCondition
+}
+
+func (o *CurrencyAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
 }
 
 func (o *CurrencyAttribute) GetRequired() *bool {

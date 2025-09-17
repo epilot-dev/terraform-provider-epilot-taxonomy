@@ -7,12 +7,59 @@ import (
 	"time"
 )
 
+// EntityItemACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
+type EntityItemACL struct {
+	AdditionalProperties any      `additionalProperties:"true" json:"-"`
+	Delete               []string `json:"delete,omitempty"`
+	Edit                 []string `json:"edit,omitempty"`
+	View                 []string `json:"view,omitempty"`
+}
+
+func (e EntityItemACL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EntityItemACL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EntityItemACL) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *EntityItemACL) GetDelete() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Delete
+}
+
+func (o *EntityItemACL) GetEdit() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Edit
+}
+
+func (o *EntityItemACL) GetView() []string {
+	if o == nil {
+		return nil
+	}
+	return o.View
+}
+
 type EntityItem struct {
-	AdditionalProperties any `additionalProperties:"true" json:"-"`
-	// Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
-	ACL       *EntityACL `json:"_acl,omitempty"`
-	CreatedAt *time.Time `json:"_created_at"`
-	ID        string     `json:"_id"`
+	AdditionalProperties any            `additionalProperties:"true" json:"-"`
+	ACL                  *EntityItemACL `json:"_acl,omitempty"`
+	CreatedAt            *time.Time     `json:"_created_at"`
+	DeletedAt            *time.Time     `json:"_deleted_at,omitempty"`
+	ID                   string         `json:"_id"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
@@ -32,7 +79,7 @@ func (e EntityItem) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EntityItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"_created_at", "_id", "_org", "_schema", "_title", "_updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -45,7 +92,7 @@ func (o *EntityItem) GetAdditionalProperties() any {
 	return o.AdditionalProperties
 }
 
-func (o *EntityItem) GetACL() *EntityACL {
+func (o *EntityItem) GetACL() *EntityItemACL {
 	if o == nil {
 		return nil
 	}
@@ -57,6 +104,13 @@ func (o *EntityItem) GetCreatedAt() *time.Time {
 		return nil
 	}
 	return o.CreatedAt
+}
+
+func (o *EntityItem) GetDeletedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
 }
 
 func (o *EntityItem) GetID() string {

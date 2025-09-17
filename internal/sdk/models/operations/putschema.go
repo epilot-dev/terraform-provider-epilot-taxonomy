@@ -20,7 +20,7 @@ func (p PutSchemaRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PutSchemaRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"slug"}); err != nil {
 		return err
 	}
 	return nil
@@ -47,15 +47,40 @@ func (o *PutSchemaRequest) GetSlug() string {
 	return o.Slug
 }
 
+// PutSchemaResponseBody - A generic error returned by the API
+type PutSchemaResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *PutSchemaResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *PutSchemaResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type PutSchemaResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Success
 	EntitySchemaItem *shared.EntitySchemaItem
+	Headers          map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *PutSchemaResponseBody
 }
 
 func (o *PutSchemaResponse) GetContentType() string {
@@ -72,6 +97,13 @@ func (o *PutSchemaResponse) GetEntitySchemaItem() *shared.EntitySchemaItem {
 	return o.EntitySchemaItem
 }
 
+func (o *PutSchemaResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *PutSchemaResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -84,4 +116,11 @@ func (o *PutSchemaResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *PutSchemaResponse) GetObject() *PutSchemaResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

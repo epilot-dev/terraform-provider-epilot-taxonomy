@@ -43,6 +43,8 @@ type UpsertEntityRequest struct {
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
 	// Strict mode = return 409 if more than one entity is matched
 	Strict *bool `default:"false" queryParam:"style=form,explode=true,name=strict"`
+	// When true, enables entity validation against the entity schema.
+	Validate *bool `default:"false" queryParam:"style=form,explode=true,name=validate"`
 }
 
 func (u UpsertEntityRequest) MarshalJSON() ([]byte, error) {
@@ -50,7 +52,7 @@ func (u UpsertEntityRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpsertEntityRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"slug"}); err != nil {
 		return err
 	}
 	return nil
@@ -105,15 +107,49 @@ func (o *UpsertEntityRequest) GetStrict() *bool {
 	return o.Strict
 }
 
+func (o *UpsertEntityRequest) GetValidate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Validate
+}
+
+// UpsertEntityResponseBody - A generic error returned by the API
+type UpsertEntityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *UpsertEntityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *UpsertEntityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type UpsertEntityResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Entity was updated
 	EntityItem *shared.EntityItem
+	// Entity validation error when `?validate=true`
+	EntityValidationV2ResultError *shared.EntityValidationV2ResultError
+	Headers                       map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *UpsertEntityResponseBody
 }
 
 func (o *UpsertEntityResponse) GetContentType() string {
@@ -130,6 +166,20 @@ func (o *UpsertEntityResponse) GetEntityItem() *shared.EntityItem {
 	return o.EntityItem
 }
 
+func (o *UpsertEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
+	if o == nil {
+		return nil
+	}
+	return o.EntityValidationV2ResultError
+}
+
+func (o *UpsertEntityResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *UpsertEntityResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -142,4 +192,11 @@ func (o *UpsertEntityResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *UpsertEntityResponse) GetObject() *UpsertEntityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

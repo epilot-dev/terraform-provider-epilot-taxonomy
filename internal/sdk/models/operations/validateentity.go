@@ -27,6 +27,28 @@ func (o *ValidateEntityRequest) GetSlug() string {
 	return o.Slug
 }
 
+// ValidateEntityResponseBody - A generic error returned by the API
+type ValidateEntityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *ValidateEntityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *ValidateEntityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type ValidateEntityResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -34,10 +56,13 @@ type ValidateEntityResponse struct {
 	EntityValidationResultError *shared.EntityValidationResultError
 	// Success
 	EntityValidationResultSuccess *shared.EntityValidationResultSuccess
+	Headers                       map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *ValidateEntityResponseBody
 }
 
 func (o *ValidateEntityResponse) GetContentType() string {
@@ -61,6 +86,13 @@ func (o *ValidateEntityResponse) GetEntityValidationResultSuccess() *shared.Enti
 	return o.EntityValidationResultSuccess
 }
 
+func (o *ValidateEntityResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *ValidateEntityResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -73,4 +105,11 @@ func (o *ValidateEntityResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *ValidateEntityResponse) GetObject() *ValidateEntityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

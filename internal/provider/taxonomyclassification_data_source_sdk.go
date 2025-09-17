@@ -3,12 +3,17 @@
 package provider
 
 import (
+	"context"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/typeconvert"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"time"
 )
 
-func (r *TaxonomyClassificationDataSourceModel) RefreshFromSharedTaxonomyClassification(resp *shared.TaxonomyClassification) {
+func (r *TaxonomyClassificationDataSourceModel) RefreshFromSharedTaxonomyClassification(ctx context.Context, resp *shared.TaxonomyClassification) diag.Diagnostics {
+	var diags diag.Diagnostics
+
 	if resp != nil {
 		if resp.Manifest != nil {
 			r.Manifest = make([]types.String, 0, len(resp.Manifest))
@@ -16,22 +21,31 @@ func (r *TaxonomyClassificationDataSourceModel) RefreshFromSharedTaxonomyClassif
 				r.Manifest = append(r.Manifest, types.StringValue(v))
 			}
 		}
-		if resp.CreatedAt != nil {
-			r.CreatedAt = types.StringValue(resp.CreatedAt.Format(time.RFC3339Nano))
-		} else {
-			r.CreatedAt = types.StringNull()
-		}
+		r.Archived = types.BoolPointerValue(resp.Archived)
+		r.Color = types.StringPointerValue(resp.Color)
+		r.CreatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.CreatedAt))
 		r.ID = types.StringPointerValue(resp.ID)
 		r.Name = types.StringValue(resp.Name)
 		r.Parents = make([]types.String, 0, len(resp.Parents))
 		for _, v := range resp.Parents {
 			r.Parents = append(r.Parents, types.StringValue(v))
 		}
-		r.Slug = types.StringPointerValue(resp.Slug)
-		if resp.UpdatedAt != nil {
-			r.UpdatedAt = types.StringValue(resp.UpdatedAt.Format(time.RFC3339Nano))
-		} else {
-			r.UpdatedAt = types.StringNull()
-		}
+		r.Slug = types.StringValue(resp.Slug)
+		r.UpdatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.UpdatedAt))
 	}
+
+	return diags
+}
+
+func (r *TaxonomyClassificationDataSourceModel) ToOperationsGetTaxonomyClassificationRequest(ctx context.Context) (*operations.GetTaxonomyClassificationRequest, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	var classificationSlug string
+	classificationSlug = r.ID.ValueString()
+
+	out := operations.GetTaxonomyClassificationRequest{
+		ClassificationSlug: classificationSlug,
+	}
+
+	return &out, diags
 }

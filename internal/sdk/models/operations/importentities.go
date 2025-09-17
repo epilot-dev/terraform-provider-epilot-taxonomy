@@ -27,13 +27,38 @@ func (o *ImportEntitiesRequest) GetJobID() *string {
 	return o.JobID
 }
 
+// ImportEntitiesResponseBody - A generic error returned by the API
+type ImportEntitiesResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *ImportEntitiesResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *ImportEntitiesResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type ImportEntitiesResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *ImportEntitiesResponseBody
 }
 
 func (o *ImportEntitiesResponse) GetContentType() string {
@@ -41,6 +66,13 @@ func (o *ImportEntitiesResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *ImportEntitiesResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
 }
 
 func (o *ImportEntitiesResponse) GetStatusCode() int {
@@ -55,4 +87,11 @@ func (o *ImportEntitiesResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *ImportEntitiesResponse) GetObject() *ImportEntitiesResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

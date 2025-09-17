@@ -13,6 +13,17 @@ import (
 type PaymentMethodRelationAttributeConstraints struct {
 }
 
+func (p PaymentMethodRelationAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PaymentMethodRelationAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // PaymentMethodRelationAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type PaymentMethodRelationAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -32,6 +43,17 @@ type PaymentMethodRelationAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (p PaymentMethodRelationAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PaymentMethodRelationAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PaymentMethodRelationAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -130,15 +152,17 @@ type PaymentMethodRelationAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                               `default:"true" json:"sortable"`
-	Type           *PaymentMethodRelationAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                             `json:"value_formatter,omitempty"`
+	Sortable       *bool                              `default:"true" json:"sortable"`
+	Type           PaymentMethodRelationAttributeType `json:"type"`
+	ValueFormatter *string                            `json:"value_formatter,omitempty"`
 }
 
 func (p PaymentMethodRelationAttribute) MarshalJSON() ([]byte, error) {
@@ -146,7 +170,7 @@ func (p PaymentMethodRelationAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PaymentMethodRelationAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -313,6 +337,13 @@ func (o *PaymentMethodRelationAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *PaymentMethodRelationAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *PaymentMethodRelationAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -341,9 +372,9 @@ func (o *PaymentMethodRelationAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *PaymentMethodRelationAttribute) GetType() *PaymentMethodRelationAttributeType {
+func (o *PaymentMethodRelationAttribute) GetType() PaymentMethodRelationAttributeType {
 	if o == nil {
-		return nil
+		return PaymentMethodRelationAttributeType("")
 	}
 	return o.Type
 }

@@ -18,13 +18,38 @@ func (o *DeleteSavedViewRequest) GetID() string {
 	return o.ID
 }
 
+// DeleteSavedViewResponseBody - A generic error returned by the API
+type DeleteSavedViewResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *DeleteSavedViewResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *DeleteSavedViewResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type DeleteSavedViewResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *DeleteSavedViewResponseBody
 }
 
 func (o *DeleteSavedViewResponse) GetContentType() string {
@@ -32,6 +57,13 @@ func (o *DeleteSavedViewResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *DeleteSavedViewResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
 }
 
 func (o *DeleteSavedViewResponse) GetStatusCode() int {
@@ -46,4 +78,11 @@ func (o *DeleteSavedViewResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *DeleteSavedViewResponse) GetObject() *DeleteSavedViewResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

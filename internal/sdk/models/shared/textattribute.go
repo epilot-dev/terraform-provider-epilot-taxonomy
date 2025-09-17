@@ -4,6 +4,7 @@ package shared
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
 )
@@ -11,6 +12,17 @@ import (
 // TextAttributeConstraints - A set of constraints applicable to the attribute.
 // These constraints should and will be enforced by the attribute renderer.
 type TextAttributeConstraints struct {
+}
+
+func (t TextAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TextAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 // TextAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
@@ -32,6 +44,17 @@ type TextAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (t TextAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TextAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TextAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -60,6 +83,70 @@ func (o *TextAttributeInfoHelpers) GetHintTooltipPlacement() *string {
 		return nil
 	}
 	return o.HintTooltipPlacement
+}
+
+type RowsType string
+
+const (
+	RowsTypeInteger RowsType = "integer"
+	RowsTypeStr     RowsType = "str"
+)
+
+// Rows - Number of rows for rich_text textarea
+type Rows struct {
+	Integer *int64  `queryParam:"inline" name:"rows"`
+	Str     *string `queryParam:"inline" name:"rows"`
+
+	Type RowsType
+}
+
+func CreateRowsInteger(integer int64) Rows {
+	typ := RowsTypeInteger
+
+	return Rows{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func CreateRowsStr(str string) Rows {
+	typ := RowsTypeStr
+
+	return Rows{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *Rows) UnmarshalJSON(data []byte) error {
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
+		u.Integer = &integer
+		u.Type = RowsTypeInteger
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = RowsTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Rows", string(data))
+}
+
+func (u Rows) MarshalJSON() ([]byte, error) {
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Rows: all fields are null")
 }
 
 type TextAttributeType string
@@ -101,7 +188,8 @@ type TextAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -130,15 +218,20 @@ type TextAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
+	RichText   *bool `json:"rich_text,omitempty"`
+	// Number of rows for rich_text textarea
+	Rows *Rows `json:"rows,omitempty"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool              `default:"true" json:"sortable"`
-	Type           *TextAttributeType `json:"type,omitempty"`
-	ValueFormatter *string            `json:"value_formatter,omitempty"`
+	Sortable       *bool             `default:"true" json:"sortable"`
+	Type           TextAttributeType `json:"type"`
+	ValueFormatter *string           `json:"value_formatter,omitempty"`
 }
 
 func (t TextAttribute) MarshalJSON() ([]byte, error) {
@@ -146,7 +239,7 @@ func (t TextAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TextAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -206,6 +299,13 @@ func (o *TextAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *TextAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *TextAttribute) GetHidden() *bool {
@@ -313,11 +413,32 @@ func (o *TextAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *TextAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *TextAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
+}
+
+func (o *TextAttribute) GetRichText() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RichText
+}
+
+func (o *TextAttribute) GetRows() *Rows {
+	if o == nil {
+		return nil
+	}
+	return o.Rows
 }
 
 func (o *TextAttribute) GetSettingsFlag() []SettingFlag {
@@ -341,9 +462,9 @@ func (o *TextAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *TextAttribute) GetType() *TextAttributeType {
+func (o *TextAttribute) GetType() TextAttributeType {
 	if o == nil {
-		return nil
+		return TextAttributeType("")
 	}
 	return o.Type
 }

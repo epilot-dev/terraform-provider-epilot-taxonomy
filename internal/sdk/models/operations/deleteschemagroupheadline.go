@@ -19,15 +19,40 @@ func (o *DeleteSchemaGroupHeadlineRequest) GetCompositeID() string {
 	return o.CompositeID
 }
 
+// DeleteSchemaGroupHeadlineResponseBody - A generic error returned by the API
+type DeleteSchemaGroupHeadlineResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *DeleteSchemaGroupHeadlineResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *DeleteSchemaGroupHeadlineResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type DeleteSchemaGroupHeadlineResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Success
 	GroupHeadlineWithCompositeID *shared.GroupHeadlineWithCompositeID
+	Headers                      map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *DeleteSchemaGroupHeadlineResponseBody
 }
 
 func (o *DeleteSchemaGroupHeadlineResponse) GetContentType() string {
@@ -44,6 +69,13 @@ func (o *DeleteSchemaGroupHeadlineResponse) GetGroupHeadlineWithCompositeID() *s
 	return o.GroupHeadlineWithCompositeID
 }
 
+func (o *DeleteSchemaGroupHeadlineResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *DeleteSchemaGroupHeadlineResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -56,4 +88,11 @@ func (o *DeleteSchemaGroupHeadlineResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *DeleteSchemaGroupHeadlineResponse) GetObject() *DeleteSchemaGroupHeadlineResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

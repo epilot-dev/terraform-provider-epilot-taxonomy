@@ -7,15 +7,40 @@ import (
 	"net/http"
 )
 
+// ListEntitiesResponseBody - A generic error returned by the API
+type ListEntitiesResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *ListEntitiesResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *ListEntitiesResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type ListEntitiesResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Success
 	EntitySearchResults *shared.EntitySearchResults
+	Headers             map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *ListEntitiesResponseBody
 	// Success
 	Res *string
 }
@@ -34,6 +59,13 @@ func (o *ListEntitiesResponse) GetEntitySearchResults() *shared.EntitySearchResu
 	return o.EntitySearchResults
 }
 
+func (o *ListEntitiesResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *ListEntitiesResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -46,6 +78,13 @@ func (o *ListEntitiesResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *ListEntitiesResponse) GetObject() *ListEntitiesResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }
 
 func (o *ListEntitiesResponse) GetRes() *string {

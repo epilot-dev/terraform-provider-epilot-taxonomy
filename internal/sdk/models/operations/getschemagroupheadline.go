@@ -19,6 +19,28 @@ func (o *GetSchemaGroupHeadlineRequest) GetCompositeID() string {
 	return o.CompositeID
 }
 
+// GetSchemaGroupHeadlineResponseBody - A generic error returned by the API
+type GetSchemaGroupHeadlineResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetSchemaGroupHeadlineResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetSchemaGroupHeadlineResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type GetSchemaGroupHeadlineResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -28,6 +50,8 @@ type GetSchemaGroupHeadlineResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *GetSchemaGroupHeadlineResponseBody
 }
 
 func (o *GetSchemaGroupHeadlineResponse) GetContentType() string {
@@ -56,4 +80,11 @@ func (o *GetSchemaGroupHeadlineResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetSchemaGroupHeadlineResponse) GetObject() *GetSchemaGroupHeadlineResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

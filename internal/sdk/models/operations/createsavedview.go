@@ -3,19 +3,72 @@
 package operations
 
 import (
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"net/http"
 )
+
+// CreateSavedViewSavedViewsResponseBody - A generic error returned by the API
+type CreateSavedViewSavedViewsResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *CreateSavedViewSavedViewsResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *CreateSavedViewSavedViewsResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+// CreateSavedViewResponseBody - A saved entity view
+type CreateSavedViewResponseBody struct {
+	CreatedAt *string `json:"created_at,omitempty"`
+	// Generated uuid for a saved view
+	ID        *string `json:"id,omitempty"`
+	UpdatedAt *string `json:"updated_at,omitempty"`
+}
+
+func (o *CreateSavedViewResponseBody) GetCreatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateSavedViewResponseBody) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *CreateSavedViewResponseBody) GetUpdatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
 
 type CreateSavedViewResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
-	// Success
-	SavedViewItem *shared.SavedViewItem
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Success
+	Object *CreateSavedViewResponseBody
+	// Too many requests
+	Object1 *CreateSavedViewSavedViewsResponseBody
 }
 
 func (o *CreateSavedViewResponse) GetContentType() string {
@@ -25,11 +78,11 @@ func (o *CreateSavedViewResponse) GetContentType() string {
 	return o.ContentType
 }
 
-func (o *CreateSavedViewResponse) GetSavedViewItem() *shared.SavedViewItem {
+func (o *CreateSavedViewResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
-	return o.SavedViewItem
+	return o.Headers
 }
 
 func (o *CreateSavedViewResponse) GetStatusCode() int {
@@ -44,4 +97,18 @@ func (o *CreateSavedViewResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *CreateSavedViewResponse) GetObject() *CreateSavedViewResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
+}
+
+func (o *CreateSavedViewResponse) GetObject1() *CreateSavedViewSavedViewsResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object1
 }

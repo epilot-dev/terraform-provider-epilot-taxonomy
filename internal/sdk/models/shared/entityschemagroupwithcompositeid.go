@@ -56,7 +56,7 @@ func (e EntitySchemaGroupWithCompositeID) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EntitySchemaGroupWithCompositeID) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"label"}); err != nil {
 		return err
 	}
 	return nil
@@ -174,7 +174,7 @@ func (e EntitySchemaGroupWithCompositeIDInput) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EntitySchemaGroupWithCompositeIDInput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"label"}); err != nil {
 		return err
 	}
 	return nil

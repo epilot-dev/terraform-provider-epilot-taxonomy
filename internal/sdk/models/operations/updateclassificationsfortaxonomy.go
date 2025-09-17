@@ -27,6 +27,28 @@ func (o *UpdateClassificationsForTaxonomyRequest) GetTaxonomySlug() string {
 	return o.TaxonomySlug
 }
 
+// UpdateClassificationsForTaxonomyTaxonomyResponseBody - A generic error returned by the API
+type UpdateClassificationsForTaxonomyTaxonomyResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *UpdateClassificationsForTaxonomyTaxonomyResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *UpdateClassificationsForTaxonomyTaxonomyResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type Deleted struct {
 }
 
@@ -61,12 +83,15 @@ func (o *UpdateClassificationsForTaxonomyResponseBody) GetUpdated() []shared.Tax
 type UpdateClassificationsForTaxonomyResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Taxonomies classifications
 	Object *UpdateClassificationsForTaxonomyResponseBody
+	// The requested resource was not found
+	Object1 *UpdateClassificationsForTaxonomyTaxonomyResponseBody
 }
 
 func (o *UpdateClassificationsForTaxonomyResponse) GetContentType() string {
@@ -74,6 +99,13 @@ func (o *UpdateClassificationsForTaxonomyResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *UpdateClassificationsForTaxonomyResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
 }
 
 func (o *UpdateClassificationsForTaxonomyResponse) GetStatusCode() int {
@@ -95,4 +127,11 @@ func (o *UpdateClassificationsForTaxonomyResponse) GetObject() *UpdateClassifica
 		return nil
 	}
 	return o.Object
+}
+
+func (o *UpdateClassificationsForTaxonomyResponse) GetObject1() *UpdateClassificationsForTaxonomyTaxonomyResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object1
 }

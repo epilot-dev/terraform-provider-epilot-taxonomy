@@ -22,7 +22,7 @@ func (g GetEntityRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEntityRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug"}); err != nil {
 		return err
 	}
 	return nil
@@ -47,6 +47,28 @@ func (o *GetEntityRequest) GetSlug() string {
 		return ""
 	}
 	return o.Slug
+}
+
+// GetEntityEntitiesResponseBody - A generic error returned by the API
+type GetEntityEntitiesResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetEntityEntitiesResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetEntityEntitiesResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
 }
 
 // GetEntityResponseBody - Success
@@ -78,6 +100,8 @@ type GetEntityResponse struct {
 	RawResponse *http.Response
 	// Success
 	Object *GetEntityResponseBody
+	// The requested resource was not found
+	Object1 *GetEntityEntitiesResponseBody
 }
 
 func (o *GetEntityResponse) GetContentType() string {
@@ -106,4 +130,11 @@ func (o *GetEntityResponse) GetObject() *GetEntityResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetEntityResponse) GetObject1() *GetEntityEntitiesResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object1
 }

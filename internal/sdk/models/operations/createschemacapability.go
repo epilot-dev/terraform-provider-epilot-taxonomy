@@ -7,15 +7,40 @@ import (
 	"net/http"
 )
 
+// CreateSchemaCapabilityResponseBody - A generic error returned by the API
+type CreateSchemaCapabilityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *CreateSchemaCapabilityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *CreateSchemaCapabilityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type CreateSchemaCapabilityResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Success
 	EntityCapabilityWithCompositeID *shared.EntityCapabilityWithCompositeID
+	Headers                         map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *CreateSchemaCapabilityResponseBody
 }
 
 func (o *CreateSchemaCapabilityResponse) GetContentType() string {
@@ -32,6 +57,13 @@ func (o *CreateSchemaCapabilityResponse) GetEntityCapabilityWithCompositeID() *s
 	return o.EntityCapabilityWithCompositeID
 }
 
+func (o *CreateSchemaCapabilityResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *CreateSchemaCapabilityResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -44,4 +76,11 @@ func (o *CreateSchemaCapabilityResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *CreateSchemaCapabilityResponse) GetObject() *CreateSchemaCapabilityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

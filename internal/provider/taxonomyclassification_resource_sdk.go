@@ -3,46 +3,18 @@
 package provider
 
 import (
+	"context"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/typeconvert"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"time"
 )
 
-func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInput() *shared.TaxonomyClassificationInput {
-	var manifest []string = []string{}
-	for _, manifestItem := range r.Manifest {
-		manifest = append(manifest, manifestItem.ValueString())
-	}
-	id := new(string)
-	if !r.ID.IsUnknown() && !r.ID.IsNull() {
-		*id = r.ID.ValueString()
-	} else {
-		id = nil
-	}
-	var name string
-	name = r.Name.ValueString()
+func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassification(ctx context.Context, resp *shared.TaxonomyClassification) diag.Diagnostics {
+	var diags diag.Diagnostics
 
-	var parents []string = []string{}
-	for _, parentsItem := range r.Parents {
-		parents = append(parents, parentsItem.ValueString())
-	}
-	slug := new(string)
-	if !r.Slug.IsUnknown() && !r.Slug.IsNull() {
-		*slug = r.Slug.ValueString()
-	} else {
-		slug = nil
-	}
-	out := shared.TaxonomyClassificationInput{
-		Manifest: manifest,
-		ID:       id,
-		Name:     name,
-		Parents:  parents,
-		Slug:     slug,
-	}
-	return &out
-}
-
-func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassification(resp *shared.TaxonomyClassification) {
 	if resp != nil {
 		if resp.Manifest != nil {
 			r.Manifest = make([]types.String, 0, len(resp.Manifest))
@@ -50,22 +22,123 @@ func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassific
 				r.Manifest = append(r.Manifest, types.StringValue(v))
 			}
 		}
-		if resp.CreatedAt != nil {
-			r.CreatedAt = types.StringValue(resp.CreatedAt.Format(time.RFC3339Nano))
-		} else {
-			r.CreatedAt = types.StringNull()
-		}
+		r.Archived = types.BoolPointerValue(resp.Archived)
+		r.Color = types.StringPointerValue(resp.Color)
+		r.CreatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.CreatedAt))
 		r.ID = types.StringPointerValue(resp.ID)
 		r.Name = types.StringValue(resp.Name)
 		r.Parents = make([]types.String, 0, len(resp.Parents))
 		for _, v := range resp.Parents {
 			r.Parents = append(r.Parents, types.StringValue(v))
 		}
-		r.Slug = types.StringPointerValue(resp.Slug)
-		if resp.UpdatedAt != nil {
-			r.UpdatedAt = types.StringValue(resp.UpdatedAt.Format(time.RFC3339Nano))
-		} else {
-			r.UpdatedAt = types.StringNull()
+		r.Slug = types.StringValue(resp.Slug)
+		r.UpdatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.UpdatedAt))
+	}
+
+	return diags
+}
+
+func (r *TaxonomyClassificationResourceModel) ToOperationsDeleteTaxonomyClassificationRequest(ctx context.Context) (*operations.DeleteTaxonomyClassificationRequest, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	var classificationSlug string
+	classificationSlug = r.ID.ValueString()
+
+	out := operations.DeleteTaxonomyClassificationRequest{
+		ClassificationSlug: classificationSlug,
+	}
+
+	return &out, diags
+}
+
+func (r *TaxonomyClassificationResourceModel) ToOperationsGetTaxonomyClassificationRequest(ctx context.Context) (*operations.GetTaxonomyClassificationRequest, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	var classificationSlug string
+	classificationSlug = r.ID.ValueString()
+
+	out := operations.GetTaxonomyClassificationRequest{
+		ClassificationSlug: classificationSlug,
+	}
+
+	return &out, diags
+}
+
+func (r *TaxonomyClassificationResourceModel) ToOperationsUpdateTaxonomyClassificationRequest(ctx context.Context) (*operations.UpdateTaxonomyClassificationRequest, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	taxonomyClassification, taxonomyClassificationDiags := r.ToSharedTaxonomyClassificationInput(ctx)
+	diags.Append(taxonomyClassificationDiags...)
+
+	if diags.HasError() {
+		return nil, diags
+	}
+
+	var classificationSlug string
+	classificationSlug = r.ID.ValueString()
+
+	out := operations.UpdateTaxonomyClassificationRequest{
+		TaxonomyClassification: taxonomyClassification,
+		ClassificationSlug:     classificationSlug,
+	}
+
+	return &out, diags
+}
+
+func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInput(ctx context.Context) (*shared.TaxonomyClassificationInput, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	var manifest []string
+	if r.Manifest != nil {
+		manifest = make([]string, 0, len(r.Manifest))
+		for _, manifestItem := range r.Manifest {
+			manifest = append(manifest, manifestItem.ValueString())
 		}
 	}
+	archived := new(bool)
+	if !r.Archived.IsUnknown() && !r.Archived.IsNull() {
+		*archived = r.Archived.ValueBool()
+	} else {
+		archived = nil
+	}
+	color := new(string)
+	if !r.Color.IsUnknown() && !r.Color.IsNull() {
+		*color = r.Color.ValueString()
+	} else {
+		color = nil
+	}
+	createdAt := new(time.Time)
+	if !r.CreatedAt.IsUnknown() && !r.CreatedAt.IsNull() {
+		*createdAt, _ = time.Parse(time.RFC3339Nano, r.CreatedAt.ValueString())
+	} else {
+		createdAt = nil
+	}
+	var name string
+	name = r.Name.ValueString()
+
+	parents := make([]string, 0, len(r.Parents))
+	for _, parentsItem := range r.Parents {
+		parents = append(parents, parentsItem.ValueString())
+	}
+	var slug string
+	slug = r.Slug.ValueString()
+
+	updatedAt := new(time.Time)
+	if !r.UpdatedAt.IsUnknown() && !r.UpdatedAt.IsNull() {
+		*updatedAt, _ = time.Parse(time.RFC3339Nano, r.UpdatedAt.ValueString())
+	} else {
+		updatedAt = nil
+	}
+	out := shared.TaxonomyClassificationInput{
+		Manifest:  manifest,
+		Archived:  archived,
+		Color:     color,
+		CreatedAt: createdAt,
+		Name:      name,
+		Parents:   parents,
+		Slug:      slug,
+		UpdatedAt: updatedAt,
+	}
+
+	return &out, diags
 }

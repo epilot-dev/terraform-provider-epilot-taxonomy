@@ -6,7 +6,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/operations"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -23,11 +22,14 @@ func NewTaxonomyClassificationDataSource() datasource.DataSource {
 
 // TaxonomyClassificationDataSource is the data source implementation.
 type TaxonomyClassificationDataSource struct {
+	// Provider configured SDK client.
 	client *sdk.SDK
 }
 
 // TaxonomyClassificationDataSourceModel describes the data model.
 type TaxonomyClassificationDataSourceModel struct {
+	Archived  types.Bool     `tfsdk:"archived"`
+	Color     types.String   `tfsdk:"color"`
 	CreatedAt types.String   `tfsdk:"created_at"`
 	ID        types.String   `tfsdk:"id"`
 	Manifest  []types.String `tfsdk:"manifest"`
@@ -48,6 +50,14 @@ func (r *TaxonomyClassificationDataSource) Schema(ctx context.Context, req datas
 		MarkdownDescription: "TaxonomyClassification DataSource",
 
 		Attributes: map[string]schema.Attribute{
+			"archived": schema.BoolAttribute{
+				Computed:    true,
+				Description: `Archived classification are not visible in the UI`,
+			},
+			"color": schema.StringAttribute{
+				Computed:    true,
+				Description: `Color of the classification`,
+			},
 			"created_at": schema.StringAttribute{
 				Computed: true,
 			},
@@ -115,13 +125,13 @@ func (r *TaxonomyClassificationDataSource) Read(ctx context.Context, req datasou
 		return
 	}
 
-	var classificationSlug string
-	classificationSlug = data.ID.ValueString()
+	request, requestDiags := data.ToOperationsGetTaxonomyClassificationRequest(ctx)
+	resp.Diagnostics.Append(requestDiags...)
 
-	request := operations.GetTaxonomyClassificationRequest{
-		ClassificationSlug: classificationSlug,
+	if resp.Diagnostics.HasError() {
+		return
 	}
-	res, err := r.client.Taxonomy.GetTaxonomyClassification(ctx, request)
+	res, err := r.client.Taxonomy.GetTaxonomyClassification(ctx, *request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {
@@ -133,10 +143,6 @@ func (r *TaxonomyClassificationDataSource) Read(ctx context.Context, req datasou
 		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res))
 		return
 	}
-	if res.StatusCode == 404 {
-		resp.State.RemoveResource(ctx)
-		return
-	}
 	if res.StatusCode != 200 {
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res.StatusCode), debugResponse(res.RawResponse))
 		return
@@ -145,7 +151,11 @@ func (r *TaxonomyClassificationDataSource) Read(ctx context.Context, req datasou
 		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res.RawResponse))
 		return
 	}
-	data.RefreshFromSharedTaxonomyClassification(res.TaxonomyClassification)
+	resp.Diagnostics.Append(data.RefreshFromSharedTaxonomyClassification(ctx, res.TaxonomyClassification)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
 
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)

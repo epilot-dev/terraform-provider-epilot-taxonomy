@@ -27,15 +27,40 @@ func (o *CreateActivityRequest) GetEntities() []string {
 	return o.Entities
 }
 
+// CreateActivityResponseBody - A generic error returned by the API
+type CreateActivityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *CreateActivityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *CreateActivityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type CreateActivityResponse struct {
 	// Success
 	BaseActivityItem *shared.BaseActivityItem
 	// HTTP response content type for this operation
 	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *CreateActivityResponseBody
 }
 
 func (o *CreateActivityResponse) GetBaseActivityItem() *shared.BaseActivityItem {
@@ -52,6 +77,13 @@ func (o *CreateActivityResponse) GetContentType() string {
 	return o.ContentType
 }
 
+func (o *CreateActivityResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *CreateActivityResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -64,4 +96,11 @@ func (o *CreateActivityResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *CreateActivityResponse) GetObject() *CreateActivityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

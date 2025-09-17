@@ -13,6 +13,17 @@ import (
 type ComputedAttributeConstraints struct {
 }
 
+func (c ComputedAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ComputedAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // ComputedAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type ComputedAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -32,6 +43,17 @@ type ComputedAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (c ComputedAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ComputedAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ComputedAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -90,18 +112,24 @@ type ComputedAttribute struct {
 	// Manifest ID used to create/update the schema attribute
 	Manifest []string `json:"_manifest,omitempty"`
 	Purpose  []string `json:"_purpose,omitempty"`
+	// A source amount field that is used to compute the value of the attribute
+	AmountField *string `json:"amount_field,omitempty"`
+	Computed    *bool   `default:"true" json:"computed"`
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *ComputedAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                           `json:"default_value,omitempty"`
-	Deprecated   *bool                         `default:"false" json:"deprecated"`
+	Constraints *ComputedAttributeConstraints `json:"constraints,omitempty"`
+	// A currency field used to format a computed currency value
+	CurrencyField *string `json:"currency_field,omitempty"`
+	DefaultValue  any     `json:"default_value,omitempty"`
+	Deprecated    *bool   `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -118,8 +146,9 @@ type ComputedAttribute struct {
 	Layout      *string                       `json:"layout,omitempty"`
 	Name        string                        `json:"name"`
 	// Attribute sort order (ascending) in group
-	Order                 *int64  `json:"order,omitempty"`
-	Placeholder           *string `json:"placeholder,omitempty"`
+	Order       *int64  `json:"order,omitempty"`
+	Placeholder *string `json:"placeholder,omitempty"`
+	// Variable template used to format a preview for the computed value
 	PreviewValueFormatter *string `json:"preview_value_formatter,omitempty"`
 	// Setting to `true` prevents the attribute from being modified / deleted
 	Protected *bool `json:"protected,omitempty"`
@@ -129,15 +158,18 @@ type ComputedAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                  `default:"true" json:"sortable"`
-	Type           *ComputedAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                `json:"value_formatter,omitempty"`
+	Sortable *bool                 `default:"true" json:"sortable"`
+	Type     ComputedAttributeType `json:"type"`
+	// Variable template used to format the computed value
+	ValueFormatter string `json:"value_formatter"`
 }
 
 func (c ComputedAttribute) MarshalJSON() ([]byte, error) {
@@ -145,7 +177,7 @@ func (c ComputedAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ComputedAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"label", "name", "type", "value_formatter"}); err != nil {
 		return err
 	}
 	return nil
@@ -165,11 +197,32 @@ func (o *ComputedAttribute) GetPurpose() []string {
 	return o.Purpose
 }
 
+func (o *ComputedAttribute) GetAmountField() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AmountField
+}
+
+func (o *ComputedAttribute) GetComputed() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Computed
+}
+
 func (o *ComputedAttribute) GetConstraints() *ComputedAttributeConstraints {
 	if o == nil {
 		return nil
 	}
 	return o.Constraints
+}
+
+func (o *ComputedAttribute) GetCurrencyField() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrencyField
 }
 
 func (o *ComputedAttribute) GetDefaultValue() any {
@@ -205,6 +258,13 @@ func (o *ComputedAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *ComputedAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *ComputedAttribute) GetHidden() *bool {
@@ -305,6 +365,13 @@ func (o *ComputedAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *ComputedAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *ComputedAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -333,16 +400,16 @@ func (o *ComputedAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *ComputedAttribute) GetType() *ComputedAttributeType {
+func (o *ComputedAttribute) GetType() ComputedAttributeType {
 	if o == nil {
-		return nil
+		return ComputedAttributeType("")
 	}
 	return o.Type
 }
 
-func (o *ComputedAttribute) GetValueFormatter() *string {
+func (o *ComputedAttribute) GetValueFormatter() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ValueFormatter
 }

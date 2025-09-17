@@ -6,6 +6,29 @@ import (
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
 )
 
+type UIConfig struct {
+	// Whether the capability is filterable
+	IsFilterable *bool `default:"false" json:"is_filterable"`
+}
+
+func (u UIConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UIConfig) GetIsFilterable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsFilterable
+}
+
 // RequiredPermission - Require a permission to display UI hook
 type RequiredPermission struct {
 	Action   string  `json:"action"`
@@ -57,7 +80,7 @@ func (u UIHooks) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UIHooks) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"hook"}); err != nil {
 		return err
 	}
 	return nil
@@ -157,8 +180,10 @@ func (o *UIHooks) GetTitle() *string {
 // EntityCapability - Capabilities the Entity has. Turn features on/off for entities.
 type EntityCapability struct {
 	// Manifest ID used to create/update the schema capabilility
-	Manifest   []string    `json:"_manifest,omitempty"`
-	Purpose    []string    `json:"_purpose,omitempty"`
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// ID of the app if the capability is provided by an app
+	AppID      *string     `json:"app_id,omitempty"`
 	Attributes []Attribute `json:"attributes,omitempty"`
 	// This capability should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
@@ -169,8 +194,9 @@ type EntityCapability struct {
 	// This capability should only be active when all the settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Human readable title of the capability
-	Title   *string   `json:"title,omitempty"`
-	UIHooks []UIHooks `json:"ui_hooks,omitempty"`
+	Title    *string   `json:"title,omitempty"`
+	UIConfig *UIConfig `json:"ui_config,omitempty"`
+	UIHooks  []UIHooks `json:"ui_hooks,omitempty"`
 }
 
 func (o *EntityCapability) GetManifest() []string {
@@ -185,6 +211,13 @@ func (o *EntityCapability) GetPurpose() []string {
 		return nil
 	}
 	return o.Purpose
+}
+
+func (o *EntityCapability) GetAppID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AppID
 }
 
 func (o *EntityCapability) GetAttributes() []Attribute {
@@ -229,89 +262,14 @@ func (o *EntityCapability) GetTitle() *string {
 	return o.Title
 }
 
+func (o *EntityCapability) GetUIConfig() *UIConfig {
+	if o == nil {
+		return nil
+	}
+	return o.UIConfig
+}
+
 func (o *EntityCapability) GetUIHooks() []UIHooks {
-	if o == nil {
-		return nil
-	}
-	return o.UIHooks
-}
-
-// EntityCapabilityInput - Capabilities the Entity has. Turn features on/off for entities.
-type EntityCapabilityInput struct {
-	// Manifest ID used to create/update the schema capabilility
-	Manifest   []string         `json:"_manifest,omitempty"`
-	Purpose    []string         `json:"_purpose,omitempty"`
-	Attributes []AttributeInput `json:"attributes,omitempty"`
-	// This capability should only be active when the feature flag is enabled
-	FeatureFlag *string `json:"feature_flag,omitempty"`
-	// ID for the entity capability
-	ID *string `json:"id,omitempty"`
-	// Unique name for the capability
-	Name string `json:"name"`
-	// This capability should only be active when all the settings have the correct value
-	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
-	// Human readable title of the capability
-	Title   *string   `json:"title,omitempty"`
-	UIHooks []UIHooks `json:"ui_hooks,omitempty"`
-}
-
-func (o *EntityCapabilityInput) GetManifest() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Manifest
-}
-
-func (o *EntityCapabilityInput) GetPurpose() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Purpose
-}
-
-func (o *EntityCapabilityInput) GetAttributes() []AttributeInput {
-	if o == nil {
-		return nil
-	}
-	return o.Attributes
-}
-
-func (o *EntityCapabilityInput) GetFeatureFlag() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FeatureFlag
-}
-
-func (o *EntityCapabilityInput) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-func (o *EntityCapabilityInput) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *EntityCapabilityInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
-		return nil
-	}
-	return o.SettingsFlag
-}
-
-func (o *EntityCapabilityInput) GetTitle() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Title
-}
-
-func (o *EntityCapabilityInput) GetUIHooks() []UIHooks {
 	if o == nil {
 		return nil
 	}

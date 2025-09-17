@@ -39,9 +39,16 @@ func (o *Diff) GetUpdated() *Entity {
 type Operation string
 
 const (
-	OperationCreateEntity Operation = "createEntity"
-	OperationUpdateEntity Operation = "updateEntity"
-	OperationDeleteEntity Operation = "deleteEntity"
+	OperationCreateEntity         Operation = "createEntity"
+	OperationUpdateEntity         Operation = "updateEntity"
+	OperationDeleteEntity         Operation = "deleteEntity"
+	OperationSoftDeleteEntity     Operation = "softDeleteEntity"
+	OperationRestoreEntity        Operation = "restoreEntity"
+	OperationRelationsAdded       Operation = "relationsAdded"
+	OperationRelationsRemoved     Operation = "relationsRemoved"
+	OperationRelationsSoftDeleted Operation = "relationsSoftDeleted"
+	OperationRelationsRestored    Operation = "relationsRestored"
+	OperationRelationsDeleted     Operation = "relationsDeleted"
 )
 
 func (e Operation) ToPointer() *Operation {
@@ -58,6 +65,20 @@ func (e *Operation) UnmarshalJSON(data []byte) error {
 	case "updateEntity":
 		fallthrough
 	case "deleteEntity":
+		fallthrough
+	case "softDeleteEntity":
+		fallthrough
+	case "restoreEntity":
+		fallthrough
+	case "relationsAdded":
+		fallthrough
+	case "relationsRemoved":
+		fallthrough
+	case "relationsSoftDeleted":
+		fallthrough
+	case "relationsRestored":
+		fallthrough
+	case "relationsDeleted":
 		*e = Operation(v)
 		return nil
 	default:
@@ -85,12 +106,59 @@ func (o *Params) GetSlug() *string {
 	return o.Slug
 }
 
+// EntityOperationACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
+type EntityOperationACL struct {
+	AdditionalProperties any      `additionalProperties:"true" json:"-"`
+	Delete               []string `json:"delete,omitempty"`
+	Edit                 []string `json:"edit,omitempty"`
+	View                 []string `json:"view,omitempty"`
+}
+
+func (e EntityOperationACL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EntityOperationACL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EntityOperationACL) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *EntityOperationACL) GetDelete() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Delete
+}
+
+func (o *EntityOperationACL) GetEdit() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Edit
+}
+
+func (o *EntityOperationACL) GetView() []string {
+	if o == nil {
+		return nil
+	}
+	return o.View
+}
+
 type Payload struct {
-	AdditionalProperties any `additionalProperties:"true" json:"-"`
-	// Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
-	ACL       *EntityACL `json:"_acl,omitempty"`
-	CreatedAt *time.Time `json:"_created_at,omitempty"`
-	ID        *string    `json:"_id,omitempty"`
+	AdditionalProperties any                 `additionalProperties:"true" json:"-"`
+	ACL                  *EntityOperationACL `json:"_acl,omitempty"`
+	CreatedAt            *time.Time          `json:"_created_at,omitempty"`
+	DeletedAt            *time.Time          `json:"_deleted_at,omitempty"`
+	ID                   *string             `json:"_id,omitempty"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
@@ -110,7 +178,7 @@ func (p Payload) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Payload) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -123,7 +191,7 @@ func (o *Payload) GetAdditionalProperties() any {
 	return o.AdditionalProperties
 }
 
-func (o *Payload) GetACL() *EntityACL {
+func (o *Payload) GetACL() *EntityOperationACL {
 	if o == nil {
 		return nil
 	}
@@ -135,6 +203,13 @@ func (o *Payload) GetCreatedAt() *time.Time {
 		return nil
 	}
 	return o.CreatedAt
+}
+
+func (o *Payload) GetDeletedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
 }
 
 func (o *Payload) GetID() *string {

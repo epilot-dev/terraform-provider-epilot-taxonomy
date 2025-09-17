@@ -3,27 +3,67 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"net/http"
 	"time"
 )
 
+// PresetRange - Get activities within a predefined date range (e.g., 'today', 'last_week'). Cannot be used with 'before', 'after', 'start_date', or 'end_date'.
+type PresetRange string
+
+const (
+	PresetRangeToday    PresetRange = "today"
+	PresetRangeThisWeek PresetRange = "this_week"
+	PresetRangeLastWeek PresetRange = "last_week"
+)
+
+func (e PresetRange) ToPointer() *PresetRange {
+	return &e
+}
+func (e *PresetRange) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "today":
+		fallthrough
+	case "this_week":
+		fallthrough
+	case "last_week":
+		*e = PresetRange(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PresetRange: %v", v)
+	}
+}
+
 type GetEntityActivityFeedRequest struct {
-	// Get activities after this timestamp
+	// Get activities strictly after this timestamp. Cannot be used with 'before', 'start_date', 'end_date', or 'preset_range'.
 	After *time.Time `queryParam:"style=form,explode=true,name=after"`
-	// get activities before this timestamp
+	// Get activities strictly before this timestamp. Cannot be used with 'after', 'start_date', 'end_date', or 'preset_range'.
 	Before *time.Time `queryParam:"style=form,explode=true,name=before"`
+	// The inclusive end timestamp for a date range filter. Requires 'start_date' to also be provided. Cannot be used with 'before', 'after', or 'preset_range'.
+	EndDate *time.Time `queryParam:"style=form,explode=true,name=end_date"`
+	// Exclude all activity types that are part of an activity group from results
+	ExcludeActivityGroups *string `queryParam:"style=form,explode=true,name=exclude_activity_groups"`
 	// Starting page number
 	From *int64 `default:"0" queryParam:"style=form,explode=true,name=from"`
 	// Entity id
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 	// Include activities from related entities
 	IncludeRelations *bool `default:"false" queryParam:"style=form,explode=true,name=include_relations"`
+	// Get activities within a predefined date range (e.g., 'today', 'last_week'). Cannot be used with 'before', 'after', 'start_date', or 'end_date'.
+	PresetRange *PresetRange `queryParam:"style=form,explode=true,name=preset_range"`
 	// max number of results to return
 	Size *int64 `default:"25" queryParam:"style=form,explode=true,name=size"`
 	// Entity Type
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
+	// The inclusive start timestamp for a date range filter. Requires 'end_date' to also be provided. Cannot be used with 'before', 'after', or 'preset_range'.
+	StartDate *time.Time `queryParam:"style=form,explode=true,name=start_date"`
 	// Filter by activity type
 	Type *string `queryParam:"style=form,explode=true,name=type"`
 }
@@ -33,7 +73,7 @@ func (g GetEntityActivityFeedRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEntityActivityFeedRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug"}); err != nil {
 		return err
 	}
 	return nil
@@ -51,6 +91,20 @@ func (o *GetEntityActivityFeedRequest) GetBefore() *time.Time {
 		return nil
 	}
 	return o.Before
+}
+
+func (o *GetEntityActivityFeedRequest) GetEndDate() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.EndDate
+}
+
+func (o *GetEntityActivityFeedRequest) GetExcludeActivityGroups() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeActivityGroups
 }
 
 func (o *GetEntityActivityFeedRequest) GetFrom() *int64 {
@@ -74,6 +128,13 @@ func (o *GetEntityActivityFeedRequest) GetIncludeRelations() *bool {
 	return o.IncludeRelations
 }
 
+func (o *GetEntityActivityFeedRequest) GetPresetRange() *PresetRange {
+	if o == nil {
+		return nil
+	}
+	return o.PresetRange
+}
+
 func (o *GetEntityActivityFeedRequest) GetSize() *int64 {
 	if o == nil {
 		return nil
@@ -88,11 +149,40 @@ func (o *GetEntityActivityFeedRequest) GetSlug() string {
 	return o.Slug
 }
 
+func (o *GetEntityActivityFeedRequest) GetStartDate() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.StartDate
+}
+
 func (o *GetEntityActivityFeedRequest) GetType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Type
+}
+
+// GetEntityActivityFeedActivityResponseBody - A generic error returned by the API
+type GetEntityActivityFeedActivityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetEntityActivityFeedActivityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetEntityActivityFeedActivityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
 }
 
 // GetEntityActivityFeedResponseBody - Success
@@ -124,6 +214,8 @@ type GetEntityActivityFeedResponse struct {
 	RawResponse *http.Response
 	// Success
 	Object *GetEntityActivityFeedResponseBody
+	// The requested resource was not found
+	Object1 *GetEntityActivityFeedActivityResponseBody
 }
 
 func (o *GetEntityActivityFeedResponse) GetContentType() string {
@@ -152,4 +244,11 @@ func (o *GetEntityActivityFeedResponse) GetObject() *GetEntityActivityFeedRespon
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetEntityActivityFeedResponse) GetObject1() *GetEntityActivityFeedActivityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object1
 }

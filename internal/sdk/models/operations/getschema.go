@@ -27,6 +27,28 @@ func (o *GetSchemaRequest) GetSlug() string {
 	return o.Slug
 }
 
+// GetSchemaResponseBody - A generic error returned by the API
+type GetSchemaResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetSchemaResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetSchemaResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type GetSchemaResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -36,6 +58,8 @@ type GetSchemaResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *GetSchemaResponseBody
 }
 
 func (o *GetSchemaResponse) GetContentType() string {
@@ -64,4 +88,11 @@ func (o *GetSchemaResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetSchemaResponse) GetObject() *GetSchemaResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

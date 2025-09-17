@@ -14,6 +14,17 @@ import (
 type StatusAttributeConstraints struct {
 }
 
+func (s StatusAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StatusAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // StatusAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type StatusAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -33,6 +44,17 @@ type StatusAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (s StatusAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StatusAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *StatusAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -70,6 +92,17 @@ type StatusAttribute2 struct {
 	Value string `json:"value"`
 }
 
+func (s StatusAttribute2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StatusAttribute2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *StatusAttribute2) GetTitle() *string {
 	if o == nil {
 		return nil
@@ -92,8 +125,8 @@ const (
 )
 
 type StatusAttributeOptions struct {
-	Str              *string           `queryParam:"inline"`
-	StatusAttribute2 *StatusAttribute2 `queryParam:"inline"`
+	Str              *string           `queryParam:"inline" name:"options"`
+	StatusAttribute2 *StatusAttribute2 `queryParam:"inline" name:"options"`
 
 	Type StatusAttributeOptionsType
 }
@@ -119,14 +152,14 @@ func CreateStatusAttributeOptionsStatusAttribute2(statusAttribute2 StatusAttribu
 func (u *StatusAttributeOptions) UnmarshalJSON(data []byte) error {
 
 	var statusAttribute2 StatusAttribute2 = StatusAttribute2{}
-	if err := utils.UnmarshalJSON(data, &statusAttribute2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &statusAttribute2, "", true, nil); err == nil {
 		u.StatusAttribute2 = &statusAttribute2
 		u.Type = StatusAttributeOptionsTypeStatusAttribute2
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = StatusAttributeOptionsTypeStr
 		return nil
@@ -186,7 +219,8 @@ type StatusAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -215,15 +249,17 @@ type StatusAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                `default:"true" json:"sortable"`
-	Type           *StatusAttributeType `json:"type,omitempty"`
-	ValueFormatter *string              `json:"value_formatter,omitempty"`
+	Sortable       *bool               `default:"true" json:"sortable"`
+	Type           StatusAttributeType `json:"type"`
+	ValueFormatter *string             `json:"value_formatter,omitempty"`
 }
 
 func (s StatusAttribute) MarshalJSON() ([]byte, error) {
@@ -231,7 +267,7 @@ func (s StatusAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (s *StatusAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -291,6 +327,13 @@ func (o *StatusAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *StatusAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *StatusAttribute) GetHidden() *bool {
@@ -398,6 +441,13 @@ func (o *StatusAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *StatusAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *StatusAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -426,9 +476,9 @@ func (o *StatusAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *StatusAttribute) GetType() *StatusAttributeType {
+func (o *StatusAttribute) GetType() StatusAttributeType {
 	if o == nil {
-		return nil
+		return StatusAttributeType("")
 	}
 	return o.Type
 }

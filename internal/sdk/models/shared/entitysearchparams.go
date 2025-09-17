@@ -12,6 +12,69 @@ import (
 type EntitySearchParamsAggs struct {
 }
 
+type EntitySearchParamsSearchAfterType string
+
+const (
+	EntitySearchParamsSearchAfterTypeStr    EntitySearchParamsSearchAfterType = "str"
+	EntitySearchParamsSearchAfterTypeNumber EntitySearchParamsSearchAfterType = "number"
+)
+
+type EntitySearchParamsSearchAfter struct {
+	Str    *string  `queryParam:"inline" name:"search_after"`
+	Number *float64 `queryParam:"inline" name:"search_after"`
+
+	Type EntitySearchParamsSearchAfterType
+}
+
+func CreateEntitySearchParamsSearchAfterStr(str string) EntitySearchParamsSearchAfter {
+	typ := EntitySearchParamsSearchAfterTypeStr
+
+	return EntitySearchParamsSearchAfter{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateEntitySearchParamsSearchAfterNumber(number float64) EntitySearchParamsSearchAfter {
+	typ := EntitySearchParamsSearchAfterTypeNumber
+
+	return EntitySearchParamsSearchAfter{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *EntitySearchParamsSearchAfter) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = EntitySearchParamsSearchAfterTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = EntitySearchParamsSearchAfterTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EntitySearchParamsSearchAfter", string(data))
+}
+
+func (u EntitySearchParamsSearchAfter) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EntitySearchParamsSearchAfter: all fields are null")
+}
+
 type EntitySearchParamsSortType string
 
 const (
@@ -21,8 +84,8 @@ const (
 
 // EntitySearchParamsSort - You can pass one sort field or an array of sort fields. Each sort field can be a string
 type EntitySearchParamsSort struct {
-	Str        *string  `queryParam:"inline"`
-	ArrayOfStr []string `queryParam:"inline"`
+	Str        *string  `queryParam:"inline" name:"sort"`
+	ArrayOfStr []string `queryParam:"inline" name:"sort"`
 
 	Type EntitySearchParamsSortType
 }
@@ -48,14 +111,14 @@ func CreateEntitySearchParamsSortArrayOfStr(arrayOfStr []string) EntitySearchPar
 func (u *EntitySearchParamsSort) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = EntitySearchParamsSortTypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = EntitySearchParamsSortTypeArrayOfStr
 		return nil
@@ -86,7 +149,11 @@ type EntitySearchParams struct {
 	// Globbing and globstart (**) is supported for nested fields.
 	//
 	Fields []string `json:"fields,omitempty"`
-	From   *int64   `default:"0" json:"from"`
+	// The offset from which to start the search results.
+	// Only one of `from` or `search_after` should be used.
+	//
+	From      *int64 `default:"0" json:"from"`
+	Highlight any    `json:"highlight,omitempty"`
 	// When true, enables entity hydration to resolve nested $relation & $relation_ref references in-place.
 	Hydrate *bool `default:"false" json:"hydrate"`
 	// Whether to include deleted entities in the search results
@@ -101,10 +168,28 @@ type EntitySearchParams struct {
 	IncludeScores *bool `default:"false" json:"include_scores"`
 	// Lucene [queries supported with ElasticSearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax)
 	Q string `json:"q"`
+	// The sort values from which to start the search results.
+	// Only one of `from` or `search_after` should be used.
+	// It is strongly recommended to always use the `sort_end` field from the last search result.
+	// Used for deep pagination, typically together with `stable_query_id` to maintain the context between requests.
+	// Requires explicit sort to work reliably.
+	// Typically used sort fields are `_id` or `_created_at`.
+	//
+	SearchAfter []*EntitySearchParamsSearchAfter `json:"search_after,omitempty"`
 	// Max search size is 1000 with higher values defaulting to 1000
 	Size *int64 `default:"10" json:"size"`
 	// You can pass one sort field or an array of sort fields. Each sort field can be a string
 	Sort *EntitySearchParamsSort `json:"sort,omitempty"`
+	// A TTL (in seconds) that specifies how long the context should be maintained.
+	// Defaults to 30 seconds; configurable up to 60 seconds to prevent abuse.
+	// A value of 0 can be provided the close the context after the query.
+	// Defaults to none.
+	//
+	StableFor *int64 `json:"stable_for,omitempty"`
+	// A unique identifier of the query context from the last stable query.
+	// The context is maintained for the duration of the stable_for value.
+	//
+	StableQueryID *string `json:"stable_query_id,omitempty"`
 }
 
 func (e EntitySearchParams) MarshalJSON() ([]byte, error) {
@@ -112,7 +197,7 @@ func (e EntitySearchParams) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EntitySearchParams) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"q"}); err != nil {
 		return err
 	}
 	return nil
@@ -137,6 +222,13 @@ func (o *EntitySearchParams) GetFrom() *int64 {
 		return nil
 	}
 	return o.From
+}
+
+func (o *EntitySearchParams) GetHighlight() any {
+	if o == nil {
+		return nil
+	}
+	return o.Highlight
 }
 
 func (o *EntitySearchParams) GetHydrate() *bool {
@@ -167,6 +259,13 @@ func (o *EntitySearchParams) GetQ() string {
 	return o.Q
 }
 
+func (o *EntitySearchParams) GetSearchAfter() []*EntitySearchParamsSearchAfter {
+	if o == nil {
+		return nil
+	}
+	return o.SearchAfter
+}
+
 func (o *EntitySearchParams) GetSize() *int64 {
 	if o == nil {
 		return nil
@@ -179,4 +278,18 @@ func (o *EntitySearchParams) GetSort() *EntitySearchParamsSort {
 		return nil
 	}
 	return o.Sort
+}
+
+func (o *EntitySearchParams) GetStableFor() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.StableFor
+}
+
+func (o *EntitySearchParams) GetStableQueryID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StableQueryID
 }

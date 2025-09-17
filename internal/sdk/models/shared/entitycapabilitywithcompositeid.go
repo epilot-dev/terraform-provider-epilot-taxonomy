@@ -6,6 +6,29 @@ import (
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
 )
 
+type EntityCapabilityWithCompositeIDUIConfig struct {
+	// Whether the capability is filterable
+	IsFilterable *bool `default:"false" json:"is_filterable"`
+}
+
+func (e EntityCapabilityWithCompositeIDUIConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EntityCapabilityWithCompositeIDUIConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EntityCapabilityWithCompositeIDUIConfig) GetIsFilterable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsFilterable
+}
+
 // EntityCapabilityWithCompositeIDRequiredPermission - Require a permission to display UI hook
 type EntityCapabilityWithCompositeIDRequiredPermission struct {
 	Action   string  `json:"action"`
@@ -57,7 +80,7 @@ func (e EntityCapabilityWithCompositeIDUIHooks) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EntityCapabilityWithCompositeIDUIHooks) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"hook"}); err != nil {
 		return err
 	}
 	return nil
@@ -157,8 +180,10 @@ func (o *EntityCapabilityWithCompositeIDUIHooks) GetTitle() *string {
 // EntityCapabilityWithCompositeID - a readonly computed ID for the entity capability including schema slug and the capability ID
 type EntityCapabilityWithCompositeID struct {
 	// Manifest ID used to create/update the schema capabilility
-	Manifest    []string    `json:"_manifest,omitempty"`
-	Purpose     []string    `json:"_purpose,omitempty"`
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// ID of the app if the capability is provided by an app
+	AppID       *string     `json:"app_id,omitempty"`
 	Attributes  []Attribute `json:"attributes,omitempty"`
 	CompositeID *string     `json:"composite_id,omitempty"`
 	// This capability should only be active when the feature flag is enabled
@@ -172,8 +197,9 @@ type EntityCapabilityWithCompositeID struct {
 	// This capability should only be active when all the settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Human readable title of the capability
-	Title   *string                                  `json:"title,omitempty"`
-	UIHooks []EntityCapabilityWithCompositeIDUIHooks `json:"ui_hooks,omitempty"`
+	Title    *string                                  `json:"title,omitempty"`
+	UIConfig *EntityCapabilityWithCompositeIDUIConfig `json:"ui_config,omitempty"`
+	UIHooks  []EntityCapabilityWithCompositeIDUIHooks `json:"ui_hooks,omitempty"`
 }
 
 func (o *EntityCapabilityWithCompositeID) GetManifest() []string {
@@ -188,6 +214,13 @@ func (o *EntityCapabilityWithCompositeID) GetPurpose() []string {
 		return nil
 	}
 	return o.Purpose
+}
+
+func (o *EntityCapabilityWithCompositeID) GetAppID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AppID
 }
 
 func (o *EntityCapabilityWithCompositeID) GetAttributes() []Attribute {
@@ -246,6 +279,13 @@ func (o *EntityCapabilityWithCompositeID) GetTitle() *string {
 	return o.Title
 }
 
+func (o *EntityCapabilityWithCompositeID) GetUIConfig() *EntityCapabilityWithCompositeIDUIConfig {
+	if o == nil {
+		return nil
+	}
+	return o.UIConfig
+}
+
 func (o *EntityCapabilityWithCompositeID) GetUIHooks() []EntityCapabilityWithCompositeIDUIHooks {
 	if o == nil {
 		return nil
@@ -256,9 +296,11 @@ func (o *EntityCapabilityWithCompositeID) GetUIHooks() []EntityCapabilityWithCom
 // EntityCapabilityWithCompositeIDInput - a readonly computed ID for the entity capability including schema slug and the capability ID
 type EntityCapabilityWithCompositeIDInput struct {
 	// Manifest ID used to create/update the schema capabilility
-	Manifest   []string         `json:"_manifest,omitempty"`
-	Purpose    []string         `json:"_purpose,omitempty"`
-	Attributes []AttributeInput `json:"attributes,omitempty"`
+	Manifest []string `json:"_manifest,omitempty"`
+	Purpose  []string `json:"_purpose,omitempty"`
+	// ID of the app if the capability is provided by an app
+	AppID      *string     `json:"app_id,omitempty"`
+	Attributes []Attribute `json:"attributes,omitempty"`
 	// This capability should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// ID for the entity capability
@@ -270,8 +312,9 @@ type EntityCapabilityWithCompositeIDInput struct {
 	// This capability should only be active when all the settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Human readable title of the capability
-	Title   *string                                  `json:"title,omitempty"`
-	UIHooks []EntityCapabilityWithCompositeIDUIHooks `json:"ui_hooks,omitempty"`
+	Title    *string                                  `json:"title,omitempty"`
+	UIConfig *EntityCapabilityWithCompositeIDUIConfig `json:"ui_config,omitempty"`
+	UIHooks  []EntityCapabilityWithCompositeIDUIHooks `json:"ui_hooks,omitempty"`
 }
 
 func (o *EntityCapabilityWithCompositeIDInput) GetManifest() []string {
@@ -288,7 +331,14 @@ func (o *EntityCapabilityWithCompositeIDInput) GetPurpose() []string {
 	return o.Purpose
 }
 
-func (o *EntityCapabilityWithCompositeIDInput) GetAttributes() []AttributeInput {
+func (o *EntityCapabilityWithCompositeIDInput) GetAppID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AppID
+}
+
+func (o *EntityCapabilityWithCompositeIDInput) GetAttributes() []Attribute {
 	if o == nil {
 		return nil
 	}
@@ -335,6 +385,13 @@ func (o *EntityCapabilityWithCompositeIDInput) GetTitle() *string {
 		return nil
 	}
 	return o.Title
+}
+
+func (o *EntityCapabilityWithCompositeIDInput) GetUIConfig() *EntityCapabilityWithCompositeIDUIConfig {
+	if o == nil {
+		return nil
+	}
+	return o.UIConfig
 }
 
 func (o *EntityCapabilityWithCompositeIDInput) GetUIHooks() []EntityCapabilityWithCompositeIDUIHooks {

@@ -13,6 +13,17 @@ import (
 type ConsentAttributeConstraints struct {
 }
 
+func (c ConsentAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConsentAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // ConsentAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type ConsentAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -32,6 +43,17 @@ type ConsentAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (c ConsentAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConsentAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ConsentAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -101,7 +123,8 @@ type ConsentAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -130,7 +153,9 @@ type ConsentAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
@@ -147,7 +172,7 @@ func (c ConsentAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ConsentAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"label", "name", "topic", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -207,6 +232,13 @@ func (o *ConsentAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *ConsentAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *ConsentAttribute) GetHidden() *bool {
@@ -312,6 +344,13 @@ func (o *ConsentAttribute) GetRenderCondition() *string {
 		return nil
 	}
 	return o.RenderCondition
+}
+
+func (o *ConsentAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
 }
 
 func (o *ConsentAttribute) GetRequired() *bool {

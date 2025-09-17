@@ -7,13 +7,60 @@ import (
 	"time"
 )
 
+// RelationEntityACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
+type RelationEntityACL struct {
+	AdditionalProperties any      `additionalProperties:"true" json:"-"`
+	Delete               []string `json:"delete,omitempty"`
+	Edit                 []string `json:"edit,omitempty"`
+	View                 []string `json:"view,omitempty"`
+}
+
+func (r RelationEntityACL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RelationEntityACL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RelationEntityACL) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *RelationEntityACL) GetDelete() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Delete
+}
+
+func (o *RelationEntityACL) GetEdit() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Edit
+}
+
+func (o *RelationEntityACL) GetView() []string {
+	if o == nil {
+		return nil
+	}
+	return o.View
+}
+
 type RelationEntity struct {
-	DollarRelation       *RelationItem `json:"$relation,omitempty"`
-	AdditionalProperties any           `additionalProperties:"true" json:"-"`
-	// Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
-	ACL       *EntityACL `json:"_acl,omitempty"`
-	CreatedAt *time.Time `json:"_created_at"`
-	ID        string     `json:"_id"`
+	DollarRelation       *RelationItem      `json:"$relation,omitempty"`
+	AdditionalProperties any                `additionalProperties:"true" json:"-"`
+	ACL                  *RelationEntityACL `json:"_acl,omitempty"`
+	CreatedAt            *time.Time         `json:"_created_at"`
+	DeletedAt            *time.Time         `json:"_deleted_at,omitempty"`
+	ID                   string             `json:"_id"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
@@ -33,7 +80,7 @@ func (r RelationEntity) MarshalJSON() ([]byte, error) {
 }
 
 func (r *RelationEntity) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"_created_at", "_id", "_org", "_schema", "_title", "_updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -53,7 +100,7 @@ func (o *RelationEntity) GetAdditionalProperties() any {
 	return o.AdditionalProperties
 }
 
-func (o *RelationEntity) GetACL() *EntityACL {
+func (o *RelationEntity) GetACL() *RelationEntityACL {
 	if o == nil {
 		return nil
 	}
@@ -65,6 +112,13 @@ func (o *RelationEntity) GetCreatedAt() *time.Time {
 		return nil
 	}
 	return o.CreatedAt
+}
+
+func (o *RelationEntity) GetDeletedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
 }
 
 func (o *RelationEntity) GetID() string {

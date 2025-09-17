@@ -13,6 +13,17 @@ import (
 type NumberAttributeConstraints struct {
 }
 
+func (n NumberAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NumberAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // NumberAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type NumberAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -32,6 +43,17 @@ type NumberAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (n NumberAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NumberAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NumberAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -102,7 +124,8 @@ type NumberAttribute struct {
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	Format      *string `json:"format,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -130,7 +153,9 @@ type NumberAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
@@ -138,9 +163,9 @@ type NumberAttribute struct {
 	// Whether or not to show a thousands separator
 	ShowSeparator *bool `default:"true" json:"show_separator"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                `default:"true" json:"sortable"`
-	Type           *NumberAttributeType `json:"type,omitempty"`
-	ValueFormatter *string              `json:"value_formatter,omitempty"`
+	Sortable       *bool               `default:"true" json:"sortable"`
+	Type           NumberAttributeType `json:"type"`
+	ValueFormatter *string             `json:"value_formatter,omitempty"`
 }
 
 func (n NumberAttribute) MarshalJSON() ([]byte, error) {
@@ -148,7 +173,7 @@ func (n NumberAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (n *NumberAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -215,6 +240,13 @@ func (o *NumberAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *NumberAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *NumberAttribute) GetHidden() *bool {
@@ -315,6 +347,13 @@ func (o *NumberAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *NumberAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *NumberAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -350,9 +389,9 @@ func (o *NumberAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *NumberAttribute) GetType() *NumberAttributeType {
+func (o *NumberAttribute) GetType() NumberAttributeType {
 	if o == nil {
-		return nil
+		return NumberAttributeType("")
 	}
 	return o.Type
 }

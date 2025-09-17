@@ -24,7 +24,7 @@ func (a Activity) MarshalJSON() ([]byte, error) {
 }
 
 func (a *Activity) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"message", "title", "type"}); err != nil {
 		return err
 	}
 	return nil

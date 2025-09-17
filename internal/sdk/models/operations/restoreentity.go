@@ -49,15 +49,40 @@ func (o *RestoreEntityRequest) GetSlug() string {
 	return o.Slug
 }
 
+// RestoreEntityResponseBody - A generic error returned by the API
+type RestoreEntityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *RestoreEntityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *RestoreEntityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type RestoreEntityResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// The restored entity
 	EntityItem *shared.EntityItem
+	Headers    map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Too many requests
+	Object *RestoreEntityResponseBody
 }
 
 func (o *RestoreEntityResponse) GetContentType() string {
@@ -74,6 +99,13 @@ func (o *RestoreEntityResponse) GetEntityItem() *shared.EntityItem {
 	return o.EntityItem
 }
 
+func (o *RestoreEntityResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return map[string][]string{}
+	}
+	return o.Headers
+}
+
 func (o *RestoreEntityResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -86,4 +118,11 @@ func (o *RestoreEntityResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *RestoreEntityResponse) GetObject() *RestoreEntityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

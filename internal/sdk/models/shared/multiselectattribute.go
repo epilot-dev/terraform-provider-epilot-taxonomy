@@ -14,6 +14,17 @@ import (
 type MultiSelectAttributeConstraints struct {
 }
 
+func (m MultiSelectAttributeConstraints) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MultiSelectAttributeConstraints) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // MultiSelectAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type MultiSelectAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -33,6 +44,17 @@ type MultiSelectAttributeInfoHelpers struct {
 	// The value should be a valid `@mui/core` tooltip placement.
 	//
 	HintTooltipPlacement *string `json:"hint_tooltip_placement,omitempty"`
+}
+
+func (m MultiSelectAttributeInfoHelpers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MultiSelectAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *MultiSelectAttributeInfoHelpers) GetHintCustomComponent() *string {
@@ -68,6 +90,17 @@ type MultiSelectAttribute2 struct {
 	Value string  `json:"value"`
 }
 
+func (m MultiSelectAttribute2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MultiSelectAttribute2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *MultiSelectAttribute2) GetTitle() *string {
 	if o == nil {
 		return nil
@@ -90,8 +123,8 @@ const (
 )
 
 type MultiSelectAttributeOptions struct {
-	Str                   *string                `queryParam:"inline"`
-	MultiSelectAttribute2 *MultiSelectAttribute2 `queryParam:"inline"`
+	Str                   *string                `queryParam:"inline" name:"options"`
+	MultiSelectAttribute2 *MultiSelectAttribute2 `queryParam:"inline" name:"options"`
 
 	Type MultiSelectAttributeOptionsType
 }
@@ -117,14 +150,14 @@ func CreateMultiSelectAttributeOptionsMultiSelectAttribute2(multiSelectAttribute
 func (u *MultiSelectAttributeOptions) UnmarshalJSON(data []byte) error {
 
 	var multiSelectAttribute2 MultiSelectAttribute2 = MultiSelectAttribute2{}
-	if err := utils.UnmarshalJSON(data, &multiSelectAttribute2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &multiSelectAttribute2, "", true, nil); err == nil {
 		u.MultiSelectAttribute2 = &multiSelectAttribute2
 		u.Type = MultiSelectAttributeOptionsTypeMultiSelectAttribute2
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = MultiSelectAttributeOptionsTypeStr
 		return nil
@@ -193,7 +226,8 @@ type MultiSelectAttribute struct {
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
-	Group *string `json:"group,omitempty"`
+	Group      *string `json:"group,omitempty"`
+	HasPrimary *bool   `json:"has_primary,omitempty"`
 	// Do not render attribute in entity views
 	Hidden *bool `default:"false" json:"hidden"`
 	// When set to true, will hide the label of the field.
@@ -222,15 +256,17 @@ type MultiSelectAttribute struct {
 	// Note: Empty or invalid expression have no effect on the field visibility.
 	//
 	RenderCondition *string `json:"render_condition,omitempty"`
-	Required        *bool   `default:"false" json:"required"`
+	// The attribute is a repeatable
+	Repeatable *bool `json:"repeatable,omitempty"`
+	Required   *bool `default:"false" json:"required"`
 	// This attribute should only be active when one of the provided settings have the correct value
 	SettingsFlag []SettingFlag `json:"settings_flag,omitempty"`
 	// Render as a column in table views. When defined, overrides `hidden`
 	ShowInTable *bool `json:"show_in_table,omitempty"`
 	// Allow sorting by this attribute in table views if `show_in_table` is true
-	Sortable       *bool                     `default:"true" json:"sortable"`
-	Type           *MultiSelectAttributeType `json:"type,omitempty"`
-	ValueFormatter *string                   `json:"value_formatter,omitempty"`
+	Sortable       *bool                    `default:"true" json:"sortable"`
+	Type           MultiSelectAttributeType `json:"type"`
+	ValueFormatter *string                  `json:"value_formatter,omitempty"`
 }
 
 func (m MultiSelectAttribute) MarshalJSON() ([]byte, error) {
@@ -238,7 +274,7 @@ func (m MultiSelectAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (m *MultiSelectAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"label", "name", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -319,6 +355,13 @@ func (o *MultiSelectAttribute) GetGroup() *string {
 		return nil
 	}
 	return o.Group
+}
+
+func (o *MultiSelectAttribute) GetHasPrimary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasPrimary
 }
 
 func (o *MultiSelectAttribute) GetHidden() *bool {
@@ -426,6 +469,13 @@ func (o *MultiSelectAttribute) GetRenderCondition() *string {
 	return o.RenderCondition
 }
 
+func (o *MultiSelectAttribute) GetRepeatable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Repeatable
+}
+
 func (o *MultiSelectAttribute) GetRequired() *bool {
 	if o == nil {
 		return nil
@@ -454,9 +504,9 @@ func (o *MultiSelectAttribute) GetSortable() *bool {
 	return o.Sortable
 }
 
-func (o *MultiSelectAttribute) GetType() *MultiSelectAttributeType {
+func (o *MultiSelectAttribute) GetType() MultiSelectAttributeType {
 	if o == nil {
-		return nil
+		return MultiSelectAttributeType("")
 	}
 	return o.Type
 }

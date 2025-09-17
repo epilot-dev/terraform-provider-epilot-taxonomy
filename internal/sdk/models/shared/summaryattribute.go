@@ -2,6 +2,74 @@
 
 package shared
 
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
+)
+
+// ContentWrap - Defines white-space of the content.
+type ContentWrap string
+
+const (
+	ContentWrapNormal  ContentWrap = "normal"
+	ContentWrapNowrap  ContentWrap = "nowrap"
+	ContentWrapPre     ContentWrap = "pre"
+	ContentWrapPreWrap ContentWrap = "pre-wrap"
+)
+
+func (e ContentWrap) ToPointer() *ContentWrap {
+	return &e
+}
+func (e *ContentWrap) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "normal":
+		fallthrough
+	case "nowrap":
+		fallthrough
+	case "pre":
+		fallthrough
+	case "pre-wrap":
+		*e = ContentWrap(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ContentWrap: %v", v)
+	}
+}
+
+// DisplayMode - Defines the display mode of the summary attribute.
+// When set to `inline`, the label and value will be displayed in the same line.
+// When set to `block`, the label and value will be displayed in separate lines.
+type DisplayMode string
+
+const (
+	DisplayModeInline DisplayMode = "inline"
+	DisplayModeBlock  DisplayMode = "block"
+)
+
+func (e DisplayMode) ToPointer() *DisplayMode {
+	return &e
+}
+func (e *DisplayMode) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "inline":
+		fallthrough
+	case "block":
+		*e = DisplayMode(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DisplayMode: %v", v)
+	}
+}
+
 // SummaryAttribute - Represents an expanded version of an attribute to be displayed in the list item summary.
 // This configuration can be used in the following way:
 // ```js
@@ -16,8 +84,24 @@ package shared
 // ```
 // The value field supports handlebar expressions from which you can pick any field from the entity state.
 type SummaryAttribute struct {
+	// Defines the line numbers of the content.
+	// For instance, When set to 1, the content will be displayed in a single line.
+	//
+	ContentLineCap *float64 `json:"content_line_cap,omitempty"`
+	// Defines white-space of the content.
+	//
+	ContentWrap *ContentWrap `json:"content_wrap,omitempty"`
+	// Defines the display mode of the summary attribute.
+	// When set to `inline`, the label and value will be displayed in the same line.
+	// When set to `block`, the label and value will be displayed in separate lines.
+	//
+	DisplayMode *DisplayMode `json:"display_mode,omitempty"`
 	// Binds summary field visibility to the feature flag state.
 	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// When set to true, will hide the label of the field.
+	HideLabel *bool `json:"hide_label,omitempty"`
+	// When set to true, will highlight the container of the field.
+	HighlightContainer *bool `json:"highlight_container,omitempty"`
 	// Label to be shown on the top of the value.
 	Label string `json:"label"`
 	// Defines the conditional rendering expression for showing this field.
@@ -35,11 +119,57 @@ type SummaryAttribute struct {
 	Value string `json:"value"`
 }
 
+func (s SummaryAttribute) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SummaryAttribute) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"label", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SummaryAttribute) GetContentLineCap() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ContentLineCap
+}
+
+func (o *SummaryAttribute) GetContentWrap() *ContentWrap {
+	if o == nil {
+		return nil
+	}
+	return o.ContentWrap
+}
+
+func (o *SummaryAttribute) GetDisplayMode() *DisplayMode {
+	if o == nil {
+		return nil
+	}
+	return o.DisplayMode
+}
+
 func (o *SummaryAttribute) GetFeatureFlag() *string {
 	if o == nil {
 		return nil
 	}
 	return o.FeatureFlag
+}
+
+func (o *SummaryAttribute) GetHideLabel() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideLabel
+}
+
+func (o *SummaryAttribute) GetHighlightContainer() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HighlightContainer
 }
 
 func (o *SummaryAttribute) GetLabel() string {

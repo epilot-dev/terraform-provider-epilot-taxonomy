@@ -24,7 +24,7 @@ func (g GetActivityRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetActivityRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id"}); err != nil {
 		return err
 	}
 	return nil
@@ -51,6 +51,28 @@ func (o *GetActivityRequest) GetOperationsSize() *int64 {
 	return o.OperationsSize
 }
 
+// GetActivityResponseBody - A generic error returned by the API
+type GetActivityResponseBody struct {
+	// The error message
+	Error *string `json:"error,omitempty"`
+	// The HTTP status code of the error
+	Status *int64 `json:"status,omitempty"`
+}
+
+func (o *GetActivityResponseBody) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *GetActivityResponseBody) GetStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type GetActivityResponse struct {
 	// Success
 	ActivityItem *shared.ActivityItem
@@ -60,6 +82,8 @@ type GetActivityResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// The requested resource was not found
+	Object *GetActivityResponseBody
 }
 
 func (o *GetActivityResponse) GetActivityItem() *shared.ActivityItem {
@@ -88,4 +112,11 @@ func (o *GetActivityResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetActivityResponse) GetObject() *GetActivityResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

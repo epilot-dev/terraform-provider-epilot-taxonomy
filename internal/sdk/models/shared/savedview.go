@@ -46,7 +46,7 @@ func (s SavedView2) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SavedView2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -71,6 +71,17 @@ type SavedView1 struct {
 	UserID *string `json:"user_id,omitempty"`
 }
 
+func (s SavedView1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SavedView1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *SavedView1) GetUserID() *string {
 	if o == nil {
 		return nil
@@ -86,8 +97,8 @@ const (
 )
 
 type CreatedBy struct {
-	SavedView1 *SavedView1 `queryParam:"inline"`
-	SavedView2 *SavedView2 `queryParam:"inline"`
+	SavedView1 *SavedView1 `queryParam:"inline" name:"created_by"`
+	SavedView2 *SavedView2 `queryParam:"inline" name:"created_by"`
 
 	Type CreatedByType
 }
@@ -113,14 +124,14 @@ func CreateCreatedBySavedView2(savedView2 SavedView2) CreatedBy {
 func (u *CreatedBy) UnmarshalJSON(data []byte) error {
 
 	var savedView1 SavedView1 = SavedView1{}
-	if err := utils.UnmarshalJSON(data, &savedView1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &savedView1, "", true, nil); err == nil {
 		u.SavedView1 = &savedView1
 		u.Type = CreatedByTypeSavedView1
 		return nil
 	}
 
 	var savedView2 SavedView2 = SavedView2{}
-	if err := utils.UnmarshalJSON(data, &savedView2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &savedView2, "", true, nil); err == nil {
 		u.SavedView2 = &savedView2
 		u.Type = CreatedByTypeSavedView2
 		return nil
@@ -143,7 +154,7 @@ func (u CreatedBy) MarshalJSON() ([]byte, error) {
 
 // SavedView - A saved entity view
 type SavedView struct {
-	CreatedBy CreatedBy `json:"created_by"`
+	CreatedBy *CreatedBy `json:"created_by,omitempty"`
 	// List of users (IDs) that have favorited the view
 	IsFavoritedBy []string `json:"isFavoritedBy,omitempty"`
 	// User-friendly identifier for the saved view
@@ -152,14 +163,16 @@ type SavedView struct {
 	Org *string `json:"org,omitempty"`
 	// boolean property for if a view is shared with organisation
 	Shared *bool `json:"shared,omitempty"`
+	// List of users ('${userId}'), user groups ('group_${groupId}'), or partner users ('${partnerOrgId}_${partnerUserId}') that the view is shared with
+	SharedWith []string `json:"shared_with,omitempty"`
 	// list of schemas a view can belong to
 	Slug     []string       `json:"slug"`
 	UIConfig map[string]any `json:"ui_config"`
 }
 
-func (o *SavedView) GetCreatedBy() CreatedBy {
+func (o *SavedView) GetCreatedBy() *CreatedBy {
 	if o == nil {
-		return CreatedBy{}
+		return nil
 	}
 	return o.CreatedBy
 }
@@ -190,6 +203,13 @@ func (o *SavedView) GetShared() *bool {
 		return nil
 	}
 	return o.Shared
+}
+
+func (o *SavedView) GetSharedWith() []string {
+	if o == nil {
+		return nil
+	}
+	return o.SharedWith
 }
 
 func (o *SavedView) GetSlug() []string {
