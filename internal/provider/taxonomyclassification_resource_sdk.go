@@ -32,6 +32,7 @@ func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassific
 			r.Parents = append(r.Parents, types.StringValue(v))
 		}
 		r.Slug = types.StringValue(resp.Slug)
+		r.Starred = types.BoolPointerValue(resp.Starred)
 		r.UpdatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.UpdatedAt))
 	}
 
@@ -123,6 +124,12 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 	var slug string
 	slug = r.Slug.ValueString()
 
+	starred := new(bool)
+	if !r.Starred.IsUnknown() && !r.Starred.IsNull() {
+		*starred = r.Starred.ValueBool()
+	} else {
+		starred = nil
+	}
 	updatedAt := new(time.Time)
 	if !r.UpdatedAt.IsUnknown() && !r.UpdatedAt.IsNull() {
 		*updatedAt, _ = time.Parse(time.RFC3339Nano, r.UpdatedAt.ValueString())
@@ -137,6 +144,7 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 		Name:      name,
 		Parents:   parents,
 		Slug:      slug,
+		Starred:   starred,
 		UpdatedAt: updatedAt,
 	}
 

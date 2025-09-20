@@ -56,32 +56,32 @@ func (p *PurposeAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PurposeAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (p *PurposeAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return p.HintCustomComponent
 }
 
-func (o *PurposeAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (p *PurposeAttributeInfoHelpers) GetHintText() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintText
+	return p.HintText
 }
 
-func (o *PurposeAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (p *PurposeAttributeInfoHelpers) GetHintTextKey() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return p.HintTextKey
 }
 
-func (o *PurposeAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (p *PurposeAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return p.HintTooltipPlacement
 }
 
 type PurposeAttributeType string
@@ -176,212 +176,212 @@ func (p *PurposeAttribute) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PurposeAttribute) GetManifest() []string {
-	if o == nil {
+func (p *PurposeAttribute) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PurposeAttribute) GetPurpose() []string {
-	if o == nil {
+func (p *PurposeAttribute) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PurposeAttribute) GetConstraints() *PurposeAttributeConstraints {
-	if o == nil {
+func (p *PurposeAttribute) GetConstraints() *PurposeAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PurposeAttribute) GetDefaultValue() any {
-	if o == nil {
+func (p *PurposeAttribute) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PurposeAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PurposeAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PurposeAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PurposeAttribute) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PurposeAttribute) GetGroup() *string {
-	if o == nil {
+func (p *PurposeAttribute) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PurposeAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PurposeAttribute) GetHidden() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PurposeAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PurposeAttribute) GetIcon() *string {
-	if o == nil {
+func (p *PurposeAttribute) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PurposeAttribute) GetID() *string {
-	if o == nil {
+func (p *PurposeAttribute) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PurposeAttribute) GetInfoHelpers() *PurposeAttributeInfoHelpers {
-	if o == nil {
+func (p *PurposeAttribute) GetInfoHelpers() *PurposeAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PurposeAttribute) GetLabel() string {
-	if o == nil {
+func (p *PurposeAttribute) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PurposeAttribute) GetLayout() *string {
-	if o == nil {
+func (p *PurposeAttribute) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PurposeAttribute) GetName() string {
-	if o == nil {
+func (p *PurposeAttribute) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PurposeAttribute) GetOrder() *int64 {
-	if o == nil {
+func (p *PurposeAttribute) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PurposeAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (p *PurposeAttribute) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PurposeAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PurposeAttribute) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PurposeAttribute) GetProtected() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PurposeAttribute) GetReadonly() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PurposeAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (p *PurposeAttribute) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PurposeAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PurposeAttribute) GetRequired() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PurposeAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PurposeAttribute) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PurposeAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PurposeAttribute) GetSortable() *bool {
-	if o == nil {
+func (p *PurposeAttribute) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PurposeAttribute) GetType() PurposeAttributeType {
-	if o == nil {
+func (p *PurposeAttribute) GetType() PurposeAttributeType {
+	if p == nil {
 		return PurposeAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PurposeAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (p *PurposeAttribute) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }

@@ -102,18 +102,18 @@ func (e *EntityDefaultTableOptions) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityDefaultTableOptions) GetLabel() string {
-	if o == nil {
+func (e *EntityDefaultTableOptions) GetLabel() string {
+	if e == nil {
 		return ""
 	}
-	return o.Label
+	return e.Label
 }
 
-func (o *EntityDefaultTableOptions) GetParams() *EntityDefaultTableParams {
-	if o == nil {
+func (e *EntityDefaultTableOptions) GetParams() *EntityDefaultTableParams {
+	if e == nil {
 		return nil
 	}
-	return o.Params
+	return e.Params
 }
 
 type NavbarActions struct {
@@ -132,18 +132,18 @@ func (n *NavbarActions) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *NavbarActions) GetOptions() []EntityDefaultTableOptions {
-	if o == nil {
+func (n *NavbarActions) GetOptions() []EntityDefaultTableOptions {
+	if n == nil {
 		return nil
 	}
-	return o.Options
+	return n.Options
 }
 
-func (o *NavbarActions) GetType() string {
-	if o == nil {
+func (n *NavbarActions) GetType() string {
+	if n == nil {
 		return ""
 	}
-	return o.Type
+	return n.Type
 }
 
 type RowActionsType string
@@ -252,37 +252,37 @@ func (e *EntityDefaultTable) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityDefaultTable) GetBulkActions() []BulkActions {
-	if o == nil {
+func (e *EntityDefaultTable) GetBulkActions() []BulkActions {
+	if e == nil {
 		return nil
 	}
-	return o.BulkActions
+	return e.BulkActions
 }
 
-func (o *EntityDefaultTable) GetEnableThumbnails() *bool {
-	if o == nil {
+func (e *EntityDefaultTable) GetEnableThumbnails() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.EnableThumbnails
+	return e.EnableThumbnails
 }
 
-func (o *EntityDefaultTable) GetNavbarActions() []NavbarActions {
-	if o == nil {
+func (e *EntityDefaultTable) GetNavbarActions() []NavbarActions {
+	if e == nil {
 		return nil
 	}
-	return o.NavbarActions
+	return e.NavbarActions
 }
 
-func (o *EntityDefaultTable) GetRowActions() []RowActions {
-	if o == nil {
+func (e *EntityDefaultTable) GetRowActions() []RowActions {
+	if e == nil {
 		return nil
 	}
-	return o.RowActions
+	return e.RowActions
 }
 
-func (o *EntityDefaultTable) GetViewType() *EntityDefaultTableViewType {
-	if o == nil {
+func (e *EntityDefaultTable) GetViewType() *EntityDefaultTableViewType {
+	if e == nil {
 		return nil
 	}
-	return o.ViewType
+	return e.ViewType
 }

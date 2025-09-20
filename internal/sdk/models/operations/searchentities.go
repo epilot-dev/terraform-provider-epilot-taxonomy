@@ -15,18 +15,18 @@ type SearchEntitiesResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *SearchEntitiesResponseBody) GetError() *string {
-	if o == nil {
+func (s *SearchEntitiesResponseBody) GetError() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Error
+	return s.Error
 }
 
-func (o *SearchEntitiesResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (s *SearchEntitiesResponseBody) GetStatus() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Status
+	return s.Status
 }
 
 type SearchEntitiesResponse struct {
@@ -45,51 +45,51 @@ type SearchEntitiesResponse struct {
 	Res *string
 }
 
-func (o *SearchEntitiesResponse) GetContentType() string {
-	if o == nil {
+func (s *SearchEntitiesResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SearchEntitiesResponse) GetEntitySearchResults() *shared.EntitySearchResults {
-	if o == nil {
+func (s *SearchEntitiesResponse) GetEntitySearchResults() *shared.EntitySearchResults {
+	if s == nil {
 		return nil
 	}
-	return o.EntitySearchResults
+	return s.EntitySearchResults
 }
 
-func (o *SearchEntitiesResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (s *SearchEntitiesResponse) GetHeaders() map[string][]string {
+	if s == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return s.Headers
 }
 
-func (o *SearchEntitiesResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SearchEntitiesResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SearchEntitiesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SearchEntitiesResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }
 
-func (o *SearchEntitiesResponse) GetObject() *SearchEntitiesResponseBody {
-	if o == nil {
+func (s *SearchEntitiesResponse) GetObject() *SearchEntitiesResponseBody {
+	if s == nil {
 		return nil
 	}
-	return o.Object
+	return s.Object
 }
 
-func (o *SearchEntitiesResponse) GetRes() *string {
-	if o == nil {
+func (s *SearchEntitiesResponse) GetRes() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Res
+	return s.Res
 }
