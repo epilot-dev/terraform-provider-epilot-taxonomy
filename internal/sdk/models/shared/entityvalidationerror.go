@@ -8,11 +8,11 @@ type EntityValidationErrorParams struct {
 	Type *string `json:"type,omitempty"`
 }
 
-func (o *EntityValidationErrorParams) GetType() *string {
-	if o == nil {
+func (e *EntityValidationErrorParams) GetType() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Type
+	return e.Type
 }
 
 // EntityValidationError - Validation error for an entity attribute
@@ -27,30 +27,30 @@ type EntityValidationError struct {
 	Path []string `json:"path"`
 }
 
-func (o *EntityValidationError) GetCode() string {
-	if o == nil {
+func (e *EntityValidationError) GetCode() string {
+	if e == nil {
 		return ""
 	}
-	return o.Code
+	return e.Code
 }
 
-func (o *EntityValidationError) GetMessage() string {
-	if o == nil {
+func (e *EntityValidationError) GetMessage() string {
+	if e == nil {
 		return ""
 	}
-	return o.Message
+	return e.Message
 }
 
-func (o *EntityValidationError) GetParams() EntityValidationErrorParams {
-	if o == nil {
+func (e *EntityValidationError) GetParams() EntityValidationErrorParams {
+	if e == nil {
 		return EntityValidationErrorParams{}
 	}
-	return o.Params
+	return e.Params
 }
 
-func (o *EntityValidationError) GetPath() []string {
-	if o == nil {
+func (e *EntityValidationError) GetPath() []string {
+	if e == nil {
 		return []string{}
 	}
-	return o.Path
+	return e.Path
 }

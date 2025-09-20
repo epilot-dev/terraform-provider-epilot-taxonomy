@@ -18,7 +18,9 @@ type TaxonomyClassificationInput struct {
 	Name      string     `json:"name"`
 	Parents   []string   `json:"parents,omitempty"`
 	// URL-friendly identifier for the classification
-	Slug      string     `json:"slug"`
+	Slug string `json:"slug"`
+	// Starred taxonomy classifications can represent "favorites" or commonly used classifications
+	Starred   *bool      `default:"false" json:"starred"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
@@ -33,58 +35,65 @@ func (t *TaxonomyClassificationInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TaxonomyClassificationInput) GetManifest() []string {
-	if o == nil {
+func (t *TaxonomyClassificationInput) GetManifest() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Manifest
+	return t.Manifest
 }
 
-func (o *TaxonomyClassificationInput) GetArchived() *bool {
-	if o == nil {
+func (t *TaxonomyClassificationInput) GetArchived() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Archived
+	return t.Archived
 }
 
-func (o *TaxonomyClassificationInput) GetColor() *string {
-	if o == nil {
+func (t *TaxonomyClassificationInput) GetColor() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Color
+	return t.Color
 }
 
-func (o *TaxonomyClassificationInput) GetCreatedAt() *time.Time {
-	if o == nil {
+func (t *TaxonomyClassificationInput) GetCreatedAt() *time.Time {
+	if t == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return t.CreatedAt
 }
 
-func (o *TaxonomyClassificationInput) GetName() string {
-	if o == nil {
+func (t *TaxonomyClassificationInput) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TaxonomyClassificationInput) GetParents() []string {
-	if o == nil {
+func (t *TaxonomyClassificationInput) GetParents() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Parents
+	return t.Parents
 }
 
-func (o *TaxonomyClassificationInput) GetSlug() string {
-	if o == nil {
+func (t *TaxonomyClassificationInput) GetSlug() string {
+	if t == nil {
 		return ""
 	}
-	return o.Slug
+	return t.Slug
 }
 
-func (o *TaxonomyClassificationInput) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (t *TaxonomyClassificationInput) GetStarred() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return t.Starred
+}
+
+func (t *TaxonomyClassificationInput) GetUpdatedAt() *time.Time {
+	if t == nil {
+		return nil
+	}
+	return t.UpdatedAt
 }

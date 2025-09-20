@@ -34,46 +34,46 @@ func (d *DeleteRelationRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DeleteRelationRequest) GetActivityID() *shared.ActivityIDQueryParam {
-	if o == nil {
+func (d *DeleteRelationRequest) GetActivityID() *shared.ActivityIDQueryParam {
+	if d == nil {
 		return nil
 	}
-	return o.ActivityID
+	return d.ActivityID
 }
 
-func (o *DeleteRelationRequest) GetAsync() *bool {
-	if o == nil {
+func (d *DeleteRelationRequest) GetAsync() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Async
+	return d.Async
 }
 
-func (o *DeleteRelationRequest) GetAttribute() string {
-	if o == nil {
+func (d *DeleteRelationRequest) GetAttribute() string {
+	if d == nil {
 		return ""
 	}
-	return o.Attribute
+	return d.Attribute
 }
 
-func (o *DeleteRelationRequest) GetEntityID() string {
-	if o == nil {
+func (d *DeleteRelationRequest) GetEntityID() string {
+	if d == nil {
 		return ""
 	}
-	return o.EntityID
+	return d.EntityID
 }
 
-func (o *DeleteRelationRequest) GetID() string {
-	if o == nil {
+func (d *DeleteRelationRequest) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DeleteRelationRequest) GetSlug() string {
-	if o == nil {
+func (d *DeleteRelationRequest) GetSlug() string {
+	if d == nil {
 		return ""
 	}
-	return o.Slug
+	return d.Slug
 }
 
 // DeleteRelationResponseBody - A generic error returned by the API
@@ -84,18 +84,18 @@ type DeleteRelationResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *DeleteRelationResponseBody) GetError() *string {
-	if o == nil {
+func (d *DeleteRelationResponseBody) GetError() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Error
+	return d.Error
 }
 
-func (o *DeleteRelationResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (d *DeleteRelationResponseBody) GetStatus() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.Status
+	return d.Status
 }
 
 type DeleteRelationResponse struct {
@@ -110,37 +110,37 @@ type DeleteRelationResponse struct {
 	Object *DeleteRelationResponseBody
 }
 
-func (o *DeleteRelationResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteRelationResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteRelationResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (d *DeleteRelationResponse) GetHeaders() map[string][]string {
+	if d == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return d.Headers
 }
 
-func (o *DeleteRelationResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteRelationResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteRelationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteRelationResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }
 
-func (o *DeleteRelationResponse) GetObject() *DeleteRelationResponseBody {
-	if o == nil {
+func (d *DeleteRelationResponse) GetObject() *DeleteRelationResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

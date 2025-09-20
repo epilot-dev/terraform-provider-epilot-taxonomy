@@ -203,93 +203,93 @@ func (e *EntitySearchParams) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntitySearchParams) GetAggs() *EntitySearchParamsAggs {
-	if o == nil {
+func (e *EntitySearchParams) GetAggs() *EntitySearchParamsAggs {
+	if e == nil {
 		return nil
 	}
-	return o.Aggs
+	return e.Aggs
 }
 
-func (o *EntitySearchParams) GetFields() []string {
-	if o == nil {
+func (e *EntitySearchParams) GetFields() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Fields
+	return e.Fields
 }
 
-func (o *EntitySearchParams) GetFrom() *int64 {
-	if o == nil {
+func (e *EntitySearchParams) GetFrom() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.From
+	return e.From
 }
 
-func (o *EntitySearchParams) GetHighlight() any {
-	if o == nil {
+func (e *EntitySearchParams) GetHighlight() any {
+	if e == nil {
 		return nil
 	}
-	return o.Highlight
+	return e.Highlight
 }
 
-func (o *EntitySearchParams) GetHydrate() *bool {
-	if o == nil {
+func (e *EntitySearchParams) GetHydrate() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Hydrate
+	return e.Hydrate
 }
 
-func (o *EntitySearchParams) GetIncludeDeleted() *EntitySearchIncludeDeletedParam {
-	if o == nil {
+func (e *EntitySearchParams) GetIncludeDeleted() *EntitySearchIncludeDeletedParam {
+	if e == nil {
 		return nil
 	}
-	return o.IncludeDeleted
+	return e.IncludeDeleted
 }
 
-func (o *EntitySearchParams) GetIncludeScores() *bool {
-	if o == nil {
+func (e *EntitySearchParams) GetIncludeScores() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.IncludeScores
+	return e.IncludeScores
 }
 
-func (o *EntitySearchParams) GetQ() string {
-	if o == nil {
+func (e *EntitySearchParams) GetQ() string {
+	if e == nil {
 		return ""
 	}
-	return o.Q
+	return e.Q
 }
 
-func (o *EntitySearchParams) GetSearchAfter() []*EntitySearchParamsSearchAfter {
-	if o == nil {
+func (e *EntitySearchParams) GetSearchAfter() []*EntitySearchParamsSearchAfter {
+	if e == nil {
 		return nil
 	}
-	return o.SearchAfter
+	return e.SearchAfter
 }
 
-func (o *EntitySearchParams) GetSize() *int64 {
-	if o == nil {
+func (e *EntitySearchParams) GetSize() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.Size
+	return e.Size
 }
 
-func (o *EntitySearchParams) GetSort() *EntitySearchParamsSort {
-	if o == nil {
+func (e *EntitySearchParams) GetSort() *EntitySearchParamsSort {
+	if e == nil {
 		return nil
 	}
-	return o.Sort
+	return e.Sort
 }
 
-func (o *EntitySearchParams) GetStableFor() *int64 {
-	if o == nil {
+func (e *EntitySearchParams) GetStableFor() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.StableFor
+	return e.StableFor
 }
 
-func (o *EntitySearchParams) GetStableQueryID() *string {
-	if o == nil {
+func (e *EntitySearchParams) GetStableQueryID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.StableQueryID
+	return e.StableQueryID
 }

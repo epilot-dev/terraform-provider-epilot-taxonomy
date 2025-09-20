@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
@@ -10,6 +11,97 @@ import (
 
 // Aggs - Aggregation supported by ElasticSearch allows summarizing data as metrics, statistics, or other analytics.
 type Aggs struct {
+}
+
+// DefaultOperator - The default boolean operator used if no explicit operator is specified
+type DefaultOperator string
+
+const (
+	DefaultOperatorAnd DefaultOperator = "AND"
+	DefaultOperatorOr  DefaultOperator = "OR"
+)
+
+func (e DefaultOperator) ToPointer() *DefaultOperator {
+	return &e
+}
+func (e *DefaultOperator) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "AND":
+		fallthrough
+	case "OR":
+		*e = DefaultOperator(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DefaultOperator: %v", v)
+	}
+}
+
+// QueryString - Query string configuration based on Elasticsearch query_string query
+type QueryString struct {
+	// The default boolean operator used if no explicit operator is specified
+	DefaultOperator *DefaultOperator `default:"OR" json:"default_operator"`
+	// List of fields to search in. If not provided, searches in default fields
+	Fields []string `json:"fields,omitempty"`
+	// If true, format-based errors are ignored
+	Lenient *bool `default:"true" json:"lenient"`
+	// The actual query string using Lucene query syntax
+	Query string `json:"query"`
+}
+
+func (q QueryString) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(q, "", false)
+}
+
+func (q *QueryString) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &q, "", false, []string{"query"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (q *QueryString) GetDefaultOperator() *DefaultOperator {
+	if q == nil {
+		return nil
+	}
+	return q.DefaultOperator
+}
+
+func (q *QueryString) GetFields() []string {
+	if q == nil {
+		return nil
+	}
+	return q.Fields
+}
+
+func (q *QueryString) GetLenient() *bool {
+	if q == nil {
+		return nil
+	}
+	return q.Lenient
+}
+
+func (q *QueryString) GetQuery() string {
+	if q == nil {
+		return ""
+	}
+	return q.Query
+}
+
+// Query configuration object for searching entities
+type Query struct {
+	// Query string configuration based on Elasticsearch query_string query
+	QueryString QueryString `json:"query_string"`
+}
+
+func (q *Query) GetQueryString() QueryString {
+	if q == nil {
+		return QueryString{}
+	}
+	return q.QueryString
 }
 
 type SearchAfterType string
@@ -168,6 +260,10 @@ type EntityListParams struct {
 	// By default, no deleted entities are included in the search results.
 	//
 	IncludeDeleted *EntitySearchIncludeDeletedParam `default:"false" json:"include_deleted"`
+	// Adds a `_score` number field to results that can be used to rank by match score
+	IncludeScores *bool `default:"false" json:"include_scores"`
+	// Query configuration object for searching entities
+	Query *Query `json:"query,omitempty"`
 	// The sort values from which to start the search results.
 	// Only one of `from` or `search_after` should be used.
 	// It is strongly recommended to always use the `sort_end` field from the last search result.
@@ -203,93 +299,107 @@ func (e *EntityListParams) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityListParams) GetAggs() *Aggs {
-	if o == nil {
+func (e *EntityListParams) GetAggs() *Aggs {
+	if e == nil {
 		return nil
 	}
-	return o.Aggs
+	return e.Aggs
 }
 
-func (o *EntityListParams) GetAllowTargetingAllSchemas() *bool {
-	if o == nil {
+func (e *EntityListParams) GetAllowTargetingAllSchemas() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.AllowTargetingAllSchemas
+	return e.AllowTargetingAllSchemas
 }
 
-func (o *EntityListParams) GetFields() []string {
-	if o == nil {
+func (e *EntityListParams) GetFields() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Fields
+	return e.Fields
 }
 
-func (o *EntityListParams) GetFilter() []SearchFilter {
-	if o == nil {
+func (e *EntityListParams) GetFilter() []SearchFilter {
+	if e == nil {
 		return []SearchFilter{}
 	}
-	return o.Filter
+	return e.Filter
 }
 
-func (o *EntityListParams) GetFrom() *int64 {
-	if o == nil {
+func (e *EntityListParams) GetFrom() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.From
+	return e.From
 }
 
-func (o *EntityListParams) GetHighlight() any {
-	if o == nil {
+func (e *EntityListParams) GetHighlight() any {
+	if e == nil {
 		return nil
 	}
-	return o.Highlight
+	return e.Highlight
 }
 
-func (o *EntityListParams) GetHydrate() *bool {
-	if o == nil {
+func (e *EntityListParams) GetHydrate() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Hydrate
+	return e.Hydrate
 }
 
-func (o *EntityListParams) GetIncludeDeleted() *EntitySearchIncludeDeletedParam {
-	if o == nil {
+func (e *EntityListParams) GetIncludeDeleted() *EntitySearchIncludeDeletedParam {
+	if e == nil {
 		return nil
 	}
-	return o.IncludeDeleted
+	return e.IncludeDeleted
 }
 
-func (o *EntityListParams) GetSearchAfter() []*SearchAfter {
-	if o == nil {
+func (e *EntityListParams) GetIncludeScores() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.SearchAfter
+	return e.IncludeScores
 }
 
-func (o *EntityListParams) GetSize() *int64 {
-	if o == nil {
+func (e *EntityListParams) GetQuery() *Query {
+	if e == nil {
 		return nil
 	}
-	return o.Size
+	return e.Query
 }
 
-func (o *EntityListParams) GetSort() *Sort {
-	if o == nil {
+func (e *EntityListParams) GetSearchAfter() []*SearchAfter {
+	if e == nil {
 		return nil
 	}
-	return o.Sort
+	return e.SearchAfter
 }
 
-func (o *EntityListParams) GetStableFor() *int64 {
-	if o == nil {
+func (e *EntityListParams) GetSize() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.StableFor
+	return e.Size
 }
 
-func (o *EntityListParams) GetStableQueryID() *string {
-	if o == nil {
+func (e *EntityListParams) GetSort() *Sort {
+	if e == nil {
 		return nil
 	}
-	return o.StableQueryID
+	return e.Sort
+}
+
+func (e *EntityListParams) GetStableFor() *int64 {
+	if e == nil {
+		return nil
+	}
+	return e.StableFor
+}
+
+func (e *EntityListParams) GetStableQueryID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.StableQueryID
 }

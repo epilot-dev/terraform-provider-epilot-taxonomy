@@ -12,11 +12,11 @@ type GetSchemaAttributeRequest struct {
 	CompositeID string `pathParam:"style=simple,explode=false,name=composite_id"`
 }
 
-func (o *GetSchemaAttributeRequest) GetCompositeID() string {
-	if o == nil {
+func (g *GetSchemaAttributeRequest) GetCompositeID() string {
+	if g == nil {
 		return ""
 	}
-	return o.CompositeID
+	return g.CompositeID
 }
 
 // GetSchemaAttributeResponseBody - A generic error returned by the API
@@ -27,18 +27,18 @@ type GetSchemaAttributeResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetSchemaAttributeResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetSchemaAttributeResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetSchemaAttributeResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetSchemaAttributeResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetSchemaAttributeResponse struct {
@@ -54,37 +54,37 @@ type GetSchemaAttributeResponse struct {
 	Object *GetSchemaAttributeResponseBody
 }
 
-func (o *GetSchemaAttributeResponse) GetAttributeWithCompositeID() *shared.AttributeWithCompositeID {
-	if o == nil {
+func (g *GetSchemaAttributeResponse) GetAttributeWithCompositeID() *shared.AttributeWithCompositeID {
+	if g == nil {
 		return nil
 	}
-	return o.AttributeWithCompositeID
+	return g.AttributeWithCompositeID
 }
 
-func (o *GetSchemaAttributeResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSchemaAttributeResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSchemaAttributeResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSchemaAttributeResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSchemaAttributeResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSchemaAttributeResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSchemaAttributeResponse) GetObject() *GetSchemaAttributeResponseBody {
-	if o == nil {
+func (g *GetSchemaAttributeResponse) GetObject() *GetSchemaAttributeResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

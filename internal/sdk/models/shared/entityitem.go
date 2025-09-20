@@ -26,32 +26,32 @@ func (e *EntityItemACL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityItemACL) GetAdditionalProperties() any {
-	if o == nil {
+func (e *EntityItemACL) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *EntityItemACL) GetDelete() []string {
-	if o == nil {
+func (e *EntityItemACL) GetDelete() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Delete
+	return e.Delete
 }
 
-func (o *EntityItemACL) GetEdit() []string {
-	if o == nil {
+func (e *EntityItemACL) GetEdit() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Edit
+	return e.Edit
 }
 
-func (o *EntityItemACL) GetView() []string {
-	if o == nil {
+func (e *EntityItemACL) GetView() []string {
+	if e == nil {
 		return nil
 	}
-	return o.View
+	return e.View
 }
 
 type EntityItem struct {
@@ -85,93 +85,93 @@ func (e *EntityItem) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityItem) GetAdditionalProperties() any {
-	if o == nil {
+func (e *EntityItem) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *EntityItem) GetACL() *EntityItemACL {
-	if o == nil {
+func (e *EntityItem) GetACL() *EntityItemACL {
+	if e == nil {
 		return nil
 	}
-	return o.ACL
+	return e.ACL
 }
 
-func (o *EntityItem) GetCreatedAt() *time.Time {
-	if o == nil {
+func (e *EntityItem) GetCreatedAt() *time.Time {
+	if e == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return e.CreatedAt
 }
 
-func (o *EntityItem) GetDeletedAt() *time.Time {
-	if o == nil {
+func (e *EntityItem) GetDeletedAt() *time.Time {
+	if e == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return e.DeletedAt
 }
 
-func (o *EntityItem) GetID() string {
-	if o == nil {
+func (e *EntityItem) GetID() string {
+	if e == nil {
 		return ""
 	}
-	return o.ID
+	return e.ID
 }
 
-func (o *EntityItem) GetManifest() []string {
-	if o == nil {
+func (e *EntityItem) GetManifest() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Manifest
+	return e.Manifest
 }
 
-func (o *EntityItem) GetOrg() string {
-	if o == nil {
+func (e *EntityItem) GetOrg() string {
+	if e == nil {
 		return ""
 	}
-	return o.Org
+	return e.Org
 }
 
-func (o *EntityItem) GetOwners() []EntityOwner {
-	if o == nil {
+func (e *EntityItem) GetOwners() []EntityOwner {
+	if e == nil {
 		return nil
 	}
-	return o.Owners
+	return e.Owners
 }
 
-func (o *EntityItem) GetPurpose() []string {
-	if o == nil {
+func (e *EntityItem) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Purpose
 }
 
-func (o *EntityItem) GetSchema() string {
-	if o == nil {
+func (e *EntityItem) GetSchema() string {
+	if e == nil {
 		return ""
 	}
-	return o.Schema
+	return e.Schema
 }
 
-func (o *EntityItem) GetTags() []string {
-	if o == nil {
+func (e *EntityItem) GetTags() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Tags
+	return e.Tags
 }
 
-func (o *EntityItem) GetTitle() *string {
-	if o == nil {
+func (e *EntityItem) GetTitle() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Title
+	return e.Title
 }
 
-func (o *EntityItem) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (e *EntityItem) GetUpdatedAt() *time.Time {
+	if e == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return e.UpdatedAt
 }

@@ -13,18 +13,18 @@ type PatchSavedViewRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *PatchSavedViewRequest) GetSavedViewPartial() *shared.SavedViewPartial {
-	if o == nil {
+func (p *PatchSavedViewRequest) GetSavedViewPartial() *shared.SavedViewPartial {
+	if p == nil {
 		return nil
 	}
-	return o.SavedViewPartial
+	return p.SavedViewPartial
 }
 
-func (o *PatchSavedViewRequest) GetID() string {
-	if o == nil {
+func (p *PatchSavedViewRequest) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
 // PatchSavedViewResponseBody - A saved entity view
@@ -35,25 +35,25 @@ type PatchSavedViewResponseBody struct {
 	UpdatedAt *string `json:"updated_at,omitempty"`
 }
 
-func (o *PatchSavedViewResponseBody) GetCreatedAt() *string {
-	if o == nil {
+func (p *PatchSavedViewResponseBody) GetCreatedAt() *string {
+	if p == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PatchSavedViewResponseBody) GetID() *string {
-	if o == nil {
+func (p *PatchSavedViewResponseBody) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PatchSavedViewResponseBody) GetUpdatedAt() *string {
-	if o == nil {
+func (p *PatchSavedViewResponseBody) GetUpdatedAt() *string {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }
 
 type PatchSavedViewResponse struct {
@@ -67,30 +67,30 @@ type PatchSavedViewResponse struct {
 	Object *PatchSavedViewResponseBody
 }
 
-func (o *PatchSavedViewResponse) GetContentType() string {
-	if o == nil {
+func (p *PatchSavedViewResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PatchSavedViewResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PatchSavedViewResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PatchSavedViewResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PatchSavedViewResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
 
-func (o *PatchSavedViewResponse) GetObject() *PatchSavedViewResponseBody {
-	if o == nil {
+func (p *PatchSavedViewResponse) GetObject() *PatchSavedViewResponseBody {
+	if p == nil {
 		return nil
 	}
-	return o.Object
+	return p.Object
 }
