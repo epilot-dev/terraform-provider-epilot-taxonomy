@@ -13,18 +13,18 @@ type ValidateEntityV2Request struct {
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
 }
 
-func (o *ValidateEntityV2Request) GetEntity() *shared.EntityInput {
-	if o == nil {
+func (v *ValidateEntityV2Request) GetEntity() *shared.EntityInput {
+	if v == nil {
 		return nil
 	}
-	return o.Entity
+	return v.Entity
 }
 
-func (o *ValidateEntityV2Request) GetSlug() string {
-	if o == nil {
+func (v *ValidateEntityV2Request) GetSlug() string {
+	if v == nil {
 		return ""
 	}
-	return o.Slug
+	return v.Slug
 }
 
 // ValidateEntityV2ResponseBody - A generic error returned by the API
@@ -35,18 +35,18 @@ type ValidateEntityV2ResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *ValidateEntityV2ResponseBody) GetError() *string {
-	if o == nil {
+func (v *ValidateEntityV2ResponseBody) GetError() *string {
+	if v == nil {
 		return nil
 	}
-	return o.Error
+	return v.Error
 }
 
-func (o *ValidateEntityV2ResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (v *ValidateEntityV2ResponseBody) GetStatus() *int64 {
+	if v == nil {
 		return nil
 	}
-	return o.Status
+	return v.Status
 }
 
 type ValidateEntityV2Response struct {
@@ -65,51 +65,51 @@ type ValidateEntityV2Response struct {
 	Object *ValidateEntityV2ResponseBody
 }
 
-func (o *ValidateEntityV2Response) GetContentType() string {
-	if o == nil {
+func (v *ValidateEntityV2Response) GetContentType() string {
+	if v == nil {
 		return ""
 	}
-	return o.ContentType
+	return v.ContentType
 }
 
-func (o *ValidateEntityV2Response) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
-	if o == nil {
+func (v *ValidateEntityV2Response) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
+	if v == nil {
 		return nil
 	}
-	return o.EntityValidationV2ResultError
+	return v.EntityValidationV2ResultError
 }
 
-func (o *ValidateEntityV2Response) GetEntityValidationV2ResultSuccess() *shared.EntityValidationV2ResultSuccess {
-	if o == nil {
+func (v *ValidateEntityV2Response) GetEntityValidationV2ResultSuccess() *shared.EntityValidationV2ResultSuccess {
+	if v == nil {
 		return nil
 	}
-	return o.EntityValidationV2ResultSuccess
+	return v.EntityValidationV2ResultSuccess
 }
 
-func (o *ValidateEntityV2Response) GetHeaders() map[string][]string {
-	if o == nil {
+func (v *ValidateEntityV2Response) GetHeaders() map[string][]string {
+	if v == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return v.Headers
 }
 
-func (o *ValidateEntityV2Response) GetStatusCode() int {
-	if o == nil {
+func (v *ValidateEntityV2Response) GetStatusCode() int {
+	if v == nil {
 		return 0
 	}
-	return o.StatusCode
+	return v.StatusCode
 }
 
-func (o *ValidateEntityV2Response) GetRawResponse() *http.Response {
-	if o == nil {
+func (v *ValidateEntityV2Response) GetRawResponse() *http.Response {
+	if v == nil {
 		return nil
 	}
-	return o.RawResponse
+	return v.RawResponse
 }
 
-func (o *ValidateEntityV2Response) GetObject() *ValidateEntityV2ResponseBody {
-	if o == nil {
+func (v *ValidateEntityV2Response) GetObject() *ValidateEntityV2ResponseBody {
+	if v == nil {
 		return nil
 	}
-	return o.Object
+	return v.Object
 }

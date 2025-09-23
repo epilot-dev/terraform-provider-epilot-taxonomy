@@ -31,25 +31,25 @@ func (l *LayoutSettings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *LayoutSettings) GetAdditionalProperties() any {
-	if o == nil {
+func (l *LayoutSettings) GetAdditionalProperties() any {
+	if l == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return l.AdditionalProperties
 }
 
-func (o *LayoutSettings) GetGridGap() *string {
-	if o == nil {
+func (l *LayoutSettings) GetGridGap() *string {
+	if l == nil {
 		return nil
 	}
-	return o.GridGap
+	return l.GridGap
 }
 
-func (o *LayoutSettings) GetGridTemplateColumns() *string {
-	if o == nil {
+func (l *LayoutSettings) GetGridTemplateColumns() *string {
+	if l == nil {
 		return nil
 	}
-	return o.GridTemplateColumns
+	return l.GridTemplateColumns
 }
 
 type CreateViewType string
@@ -317,11 +317,11 @@ type EntitySchemaSchemasUIConfig struct {
 	ContentDirection *ContentDirection `json:"content_direction,omitempty"`
 }
 
-func (o *EntitySchemaSchemasUIConfig) GetContentDirection() *ContentDirection {
-	if o == nil {
+func (e *EntitySchemaSchemasUIConfig) GetContentDirection() *ContentDirection {
+	if e == nil {
 		return nil
 	}
-	return o.ContentDirection
+	return e.ContentDirection
 }
 
 type ListItem struct {
@@ -330,25 +330,25 @@ type ListItem struct {
 	UIConfig          *EntitySchemaSchemasUIConfig `json:"ui_config,omitempty"`
 }
 
-func (o *ListItem) GetQuickActions() []EntityAction {
-	if o == nil {
+func (l *ListItem) GetQuickActions() []EntityAction {
+	if l == nil {
 		return nil
 	}
-	return o.QuickActions
+	return l.QuickActions
 }
 
-func (o *ListItem) GetSummaryAttributes() []SummaryAttributes {
-	if o == nil {
+func (l *ListItem) GetSummaryAttributes() []SummaryAttributes {
+	if l == nil {
 		return nil
 	}
-	return o.SummaryAttributes
+	return l.SummaryAttributes
 }
 
-func (o *ListItem) GetUIConfig() *EntitySchemaSchemasUIConfig {
-	if o == nil {
+func (l *ListItem) GetUIConfig() *EntitySchemaSchemasUIConfig {
+	if l == nil {
 		return nil
 	}
-	return o.UIConfig
+	return l.UIConfig
 }
 
 type Sharing struct {
@@ -356,11 +356,11 @@ type Sharing struct {
 	ShowSharingButton *bool `json:"show_sharing_button,omitempty"`
 }
 
-func (o *Sharing) GetShowSharingButton() *bool {
-	if o == nil {
+func (s *Sharing) GetShowSharingButton() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowSharingButton
+	return s.ShowSharingButton
 }
 
 type SingleViewType string
@@ -542,46 +542,46 @@ type EntitySchemaUIConfig struct {
 	TableView  *TableView  `json:"table_view,omitempty"`
 }
 
-func (o *EntitySchemaUIConfig) GetCreateView() *CreateView {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetCreateView() *CreateView {
+	if e == nil {
 		return nil
 	}
-	return o.CreateView
+	return e.CreateView
 }
 
-func (o *EntitySchemaUIConfig) GetEditView() *EditView {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetEditView() *EditView {
+	if e == nil {
 		return nil
 	}
-	return o.EditView
+	return e.EditView
 }
 
-func (o *EntitySchemaUIConfig) GetListItem() *ListItem {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetListItem() *ListItem {
+	if e == nil {
 		return nil
 	}
-	return o.ListItem
+	return e.ListItem
 }
 
-func (o *EntitySchemaUIConfig) GetSharing() *Sharing {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetSharing() *Sharing {
+	if e == nil {
 		return nil
 	}
-	return o.Sharing
+	return e.Sharing
 }
 
-func (o *EntitySchemaUIConfig) GetSingleView() *SingleView {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetSingleView() *SingleView {
+	if e == nil {
 		return nil
 	}
-	return o.SingleView
+	return e.SingleView
 }
 
-func (o *EntitySchemaUIConfig) GetTableView() *TableView {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetTableView() *TableView {
+	if e == nil {
 		return nil
 	}
-	return o.TableView
+	return e.TableView
 }
 
 // EntitySchema - The "type" of an Entity. Describes the shape. Includes Entity Attributes, Relations and Capabilities.
@@ -625,163 +625,163 @@ type EntitySchema struct {
 	Version       *int64                `json:"version,omitempty"`
 }
 
-func (o *EntitySchema) GetPurpose() []string {
-	if o == nil {
+func (e *EntitySchema) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Purpose
 }
 
-func (o *EntitySchema) GetAttributes() []Attribute {
-	if o == nil {
+func (e *EntitySchema) GetAttributes() []Attribute {
+	if e == nil {
 		return []Attribute{}
 	}
-	return o.Attributes
+	return e.Attributes
 }
 
-func (o *EntitySchema) GetBlueprint() *string {
-	if o == nil {
+func (e *EntitySchema) GetBlueprint() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Blueprint
+	return e.Blueprint
 }
 
-func (o *EntitySchema) GetCapabilities() []EntityCapability {
-	if o == nil {
+func (e *EntitySchema) GetCapabilities() []EntityCapability {
+	if e == nil {
 		return []EntityCapability{}
 	}
-	return o.Capabilities
+	return e.Capabilities
 }
 
-func (o *EntitySchema) GetCategory() *string {
-	if o == nil {
+func (e *EntitySchema) GetCategory() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Category
+	return e.Category
 }
 
-func (o *EntitySchema) GetDescription() *string {
-	if o == nil {
+func (e *EntitySchema) GetDescription() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Description
+	return e.Description
 }
 
-func (o *EntitySchema) GetDialogConfig() map[string]any {
-	if o == nil {
+func (e *EntitySchema) GetDialogConfig() map[string]any {
+	if e == nil {
 		return nil
 	}
-	return o.DialogConfig
+	return e.DialogConfig
 }
 
-func (o *EntitySchema) GetDocsURL() *string {
-	if o == nil {
+func (e *EntitySchema) GetDocsURL() *string {
+	if e == nil {
 		return nil
 	}
-	return o.DocsURL
+	return e.DocsURL
 }
 
-func (o *EntitySchema) GetDraft() *bool {
-	if o == nil {
+func (e *EntitySchema) GetDraft() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Draft
+	return e.Draft
 }
 
-func (o *EntitySchema) GetEnableSetting() []string {
-	if o == nil {
+func (e *EntitySchema) GetEnableSetting() []string {
+	if e == nil {
 		return nil
 	}
-	return o.EnableSetting
+	return e.EnableSetting
 }
 
-func (o *EntitySchema) GetExplicitSearchMappings() map[string]SearchMappings {
-	if o == nil {
+func (e *EntitySchema) GetExplicitSearchMappings() map[string]SearchMappings {
+	if e == nil {
 		return nil
 	}
-	return o.ExplicitSearchMappings
+	return e.ExplicitSearchMappings
 }
 
-func (o *EntitySchema) GetFeatureFlag() *string {
-	if o == nil {
+func (e *EntitySchema) GetFeatureFlag() *string {
+	if e == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return e.FeatureFlag
 }
 
-func (o *EntitySchema) GetGroupHeadlines() []GroupHeadline {
-	if o == nil {
+func (e *EntitySchema) GetGroupHeadlines() []GroupHeadline {
+	if e == nil {
 		return nil
 	}
-	return o.GroupHeadlines
+	return e.GroupHeadlines
 }
 
-func (o *EntitySchema) GetGroupSettings() []EntitySchemaGroup {
-	if o == nil {
+func (e *EntitySchema) GetGroupSettings() []EntitySchemaGroup {
+	if e == nil {
 		return nil
 	}
-	return o.GroupSettings
+	return e.GroupSettings
 }
 
-func (o *EntitySchema) GetIcon() *string {
-	if o == nil {
+func (e *EntitySchema) GetIcon() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Icon
+	return e.Icon
 }
 
-func (o *EntitySchema) GetLayoutSettings() *LayoutSettings {
-	if o == nil {
+func (e *EntitySchema) GetLayoutSettings() *LayoutSettings {
+	if e == nil {
 		return nil
 	}
-	return o.LayoutSettings
+	return e.LayoutSettings
 }
 
-func (o *EntitySchema) GetName() string {
-	if o == nil {
+func (e *EntitySchema) GetName() string {
+	if e == nil {
 		return ""
 	}
-	return o.Name
+	return e.Name
 }
 
-func (o *EntitySchema) GetPlural() string {
-	if o == nil {
+func (e *EntitySchema) GetPlural() string {
+	if e == nil {
 		return ""
 	}
-	return o.Plural
+	return e.Plural
 }
 
-func (o *EntitySchema) GetPublished() *bool {
-	if o == nil {
+func (e *EntitySchema) GetPublished() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Published
+	return e.Published
 }
 
-func (o *EntitySchema) GetSlug() string {
-	if o == nil {
+func (e *EntitySchema) GetSlug() string {
+	if e == nil {
 		return ""
 	}
-	return o.Slug
+	return e.Slug
 }
 
-func (o *EntitySchema) GetTitleTemplate() *string {
-	if o == nil {
+func (e *EntitySchema) GetTitleTemplate() *string {
+	if e == nil {
 		return nil
 	}
-	return o.TitleTemplate
+	return e.TitleTemplate
 }
 
-func (o *EntitySchema) GetUIConfig() *EntitySchemaUIConfig {
-	if o == nil {
+func (e *EntitySchema) GetUIConfig() *EntitySchemaUIConfig {
+	if e == nil {
 		return nil
 	}
-	return o.UIConfig
+	return e.UIConfig
 }
 
-func (o *EntitySchema) GetVersion() *int64 {
-	if o == nil {
+func (e *EntitySchema) GetVersion() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.Version
+	return e.Version
 }

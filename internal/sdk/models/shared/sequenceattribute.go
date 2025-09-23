@@ -56,32 +56,32 @@ func (s *SequenceAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SequenceAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SequenceAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SequenceAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SequenceAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SequenceAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SequenceAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SequenceAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SequenceAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SequenceAttributeType string
@@ -179,226 +179,226 @@ func (s *SequenceAttribute) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SequenceAttribute) GetManifest() []string {
-	if o == nil {
+func (s *SequenceAttribute) GetManifest() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Manifest
+	return s.Manifest
 }
 
-func (o *SequenceAttribute) GetPurpose() []string {
-	if o == nil {
+func (s *SequenceAttribute) GetPurpose() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Purpose
+	return s.Purpose
 }
 
-func (o *SequenceAttribute) GetConstraints() *SequenceAttributeConstraints {
-	if o == nil {
+func (s *SequenceAttribute) GetConstraints() *SequenceAttributeConstraints {
+	if s == nil {
 		return nil
 	}
-	return o.Constraints
+	return s.Constraints
 }
 
-func (o *SequenceAttribute) GetDefaultValue() any {
-	if o == nil {
+func (s *SequenceAttribute) GetDefaultValue() any {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return s.DefaultValue
 }
 
-func (o *SequenceAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetDeprecated() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Deprecated
+	return s.Deprecated
 }
 
-func (o *SequenceAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetEntityBuilderDisableEdit() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return s.EntityBuilderDisableEdit
 }
 
-func (o *SequenceAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetFeatureFlag() *string {
+	if s == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return s.FeatureFlag
 }
 
-func (o *SequenceAttribute) GetGroup() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetGroup() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Group
+	return s.Group
 }
 
-func (o *SequenceAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetHasPrimary() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return s.HasPrimary
 }
 
-func (o *SequenceAttribute) GetHidden() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetHidden() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Hidden
+	return s.Hidden
 }
 
-func (o *SequenceAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetHideLabel() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HideLabel
+	return s.HideLabel
 }
 
-func (o *SequenceAttribute) GetIcon() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetIcon() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Icon
+	return s.Icon
 }
 
-func (o *SequenceAttribute) GetID() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SequenceAttribute) GetInfoHelpers() *SequenceAttributeInfoHelpers {
-	if o == nil {
+func (s *SequenceAttribute) GetInfoHelpers() *SequenceAttributeInfoHelpers {
+	if s == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return s.InfoHelpers
 }
 
-func (o *SequenceAttribute) GetLabel() string {
-	if o == nil {
+func (s *SequenceAttribute) GetLabel() string {
+	if s == nil {
 		return ""
 	}
-	return o.Label
+	return s.Label
 }
 
-func (o *SequenceAttribute) GetLayout() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetLayout() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Layout
+	return s.Layout
 }
 
-func (o *SequenceAttribute) GetName() string {
-	if o == nil {
+func (s *SequenceAttribute) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SequenceAttribute) GetOrder() *int64 {
-	if o == nil {
+func (s *SequenceAttribute) GetOrder() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Order
+	return s.Order
 }
 
-func (o *SequenceAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetPlaceholder() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Placeholder
+	return s.Placeholder
 }
 
-func (o *SequenceAttribute) GetPrefix() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetPrefix() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Prefix
+	return s.Prefix
 }
 
-func (o *SequenceAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetPreviewValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return s.PreviewValueFormatter
 }
 
-func (o *SequenceAttribute) GetProtected() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetProtected() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Protected
+	return s.Protected
 }
 
-func (o *SequenceAttribute) GetReadonly() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetReadonly() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Readonly
+	return s.Readonly
 }
 
-func (o *SequenceAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetRenderCondition() *string {
+	if s == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return s.RenderCondition
 }
 
-func (o *SequenceAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetRepeatable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Repeatable
+	return s.Repeatable
 }
 
-func (o *SequenceAttribute) GetRequired() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetRequired() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Required
+	return s.Required
 }
 
-func (o *SequenceAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (s *SequenceAttribute) GetSettingsFlag() []SettingFlag {
+	if s == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return s.SettingsFlag
 }
 
-func (o *SequenceAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetShowInTable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return s.ShowInTable
 }
 
-func (o *SequenceAttribute) GetSortable() *bool {
-	if o == nil {
+func (s *SequenceAttribute) GetSortable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Sortable
+	return s.Sortable
 }
 
-func (o *SequenceAttribute) GetStartNumber() *int64 {
-	if o == nil {
+func (s *SequenceAttribute) GetStartNumber() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.StartNumber
+	return s.StartNumber
 }
 
-func (o *SequenceAttribute) GetType() SequenceAttributeType {
-	if o == nil {
+func (s *SequenceAttribute) GetType() SequenceAttributeType {
+	if s == nil {
 		return SequenceAttributeType("")
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *SequenceAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (s *SequenceAttribute) GetValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return s.ValueFormatter
 }

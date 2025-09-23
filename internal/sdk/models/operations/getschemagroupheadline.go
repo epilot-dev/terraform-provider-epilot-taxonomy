@@ -12,11 +12,11 @@ type GetSchemaGroupHeadlineRequest struct {
 	CompositeID string `pathParam:"style=simple,explode=false,name=composite_id"`
 }
 
-func (o *GetSchemaGroupHeadlineRequest) GetCompositeID() string {
-	if o == nil {
+func (g *GetSchemaGroupHeadlineRequest) GetCompositeID() string {
+	if g == nil {
 		return ""
 	}
-	return o.CompositeID
+	return g.CompositeID
 }
 
 // GetSchemaGroupHeadlineResponseBody - A generic error returned by the API
@@ -27,18 +27,18 @@ type GetSchemaGroupHeadlineResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetSchemaGroupHeadlineResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetSchemaGroupHeadlineResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetSchemaGroupHeadlineResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetSchemaGroupHeadlineResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetSchemaGroupHeadlineResponse struct {
@@ -54,37 +54,37 @@ type GetSchemaGroupHeadlineResponse struct {
 	Object *GetSchemaGroupHeadlineResponseBody
 }
 
-func (o *GetSchemaGroupHeadlineResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSchemaGroupHeadlineResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSchemaGroupHeadlineResponse) GetGroupHeadlineWithCompositeID() *shared.GroupHeadlineWithCompositeID {
-	if o == nil {
+func (g *GetSchemaGroupHeadlineResponse) GetGroupHeadlineWithCompositeID() *shared.GroupHeadlineWithCompositeID {
+	if g == nil {
 		return nil
 	}
-	return o.GroupHeadlineWithCompositeID
+	return g.GroupHeadlineWithCompositeID
 }
 
-func (o *GetSchemaGroupHeadlineResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSchemaGroupHeadlineResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSchemaGroupHeadlineResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSchemaGroupHeadlineResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSchemaGroupHeadlineResponse) GetObject() *GetSchemaGroupHeadlineResponseBody {
-	if o == nil {
+func (g *GetSchemaGroupHeadlineResponse) GetObject() *GetSchemaGroupHeadlineResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

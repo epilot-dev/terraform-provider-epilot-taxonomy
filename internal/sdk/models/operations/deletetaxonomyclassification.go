@@ -12,11 +12,11 @@ type DeleteTaxonomyClassificationRequest struct {
 	ClassificationSlug string `pathParam:"style=simple,explode=false,name=classificationSlug"`
 }
 
-func (o *DeleteTaxonomyClassificationRequest) GetClassificationSlug() string {
-	if o == nil {
+func (d *DeleteTaxonomyClassificationRequest) GetClassificationSlug() string {
+	if d == nil {
 		return ""
 	}
-	return o.ClassificationSlug
+	return d.ClassificationSlug
 }
 
 // DeleteTaxonomyClassificationResponseBody - A generic error returned by the API
@@ -27,18 +27,18 @@ type DeleteTaxonomyClassificationResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *DeleteTaxonomyClassificationResponseBody) GetError() *string {
-	if o == nil {
+func (d *DeleteTaxonomyClassificationResponseBody) GetError() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Error
+	return d.Error
 }
 
-func (o *DeleteTaxonomyClassificationResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (d *DeleteTaxonomyClassificationResponseBody) GetStatus() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.Status
+	return d.Status
 }
 
 type DeleteTaxonomyClassificationResponse struct {
@@ -55,44 +55,44 @@ type DeleteTaxonomyClassificationResponse struct {
 	Object *DeleteTaxonomyClassificationResponseBody
 }
 
-func (o *DeleteTaxonomyClassificationResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteTaxonomyClassificationResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteTaxonomyClassificationResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (d *DeleteTaxonomyClassificationResponse) GetHeaders() map[string][]string {
+	if d == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return d.Headers
 }
 
-func (o *DeleteTaxonomyClassificationResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteTaxonomyClassificationResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteTaxonomyClassificationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteTaxonomyClassificationResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }
 
-func (o *DeleteTaxonomyClassificationResponse) GetTaxonomyClassification() *shared.TaxonomyClassification {
-	if o == nil {
+func (d *DeleteTaxonomyClassificationResponse) GetTaxonomyClassification() *shared.TaxonomyClassification {
+	if d == nil {
 		return nil
 	}
-	return o.TaxonomyClassification
+	return d.TaxonomyClassification
 }
 
-func (o *DeleteTaxonomyClassificationResponse) GetObject() *DeleteTaxonomyClassificationResponseBody {
-	if o == nil {
+func (d *DeleteTaxonomyClassificationResponse) GetObject() *DeleteTaxonomyClassificationResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

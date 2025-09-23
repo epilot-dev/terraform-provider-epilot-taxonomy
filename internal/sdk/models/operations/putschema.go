@@ -26,25 +26,25 @@ func (p *PutSchemaRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PutSchemaRequest) GetEntitySchema() *shared.EntitySchema {
-	if o == nil {
+func (p *PutSchemaRequest) GetEntitySchema() *shared.EntitySchema {
+	if p == nil {
 		return nil
 	}
-	return o.EntitySchema
+	return p.EntitySchema
 }
 
-func (o *PutSchemaRequest) GetDraft() *bool {
-	if o == nil {
+func (p *PutSchemaRequest) GetDraft() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Draft
+	return p.Draft
 }
 
-func (o *PutSchemaRequest) GetSlug() string {
-	if o == nil {
+func (p *PutSchemaRequest) GetSlug() string {
+	if p == nil {
 		return ""
 	}
-	return o.Slug
+	return p.Slug
 }
 
 // PutSchemaResponseBody - A generic error returned by the API
@@ -55,18 +55,18 @@ type PutSchemaResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *PutSchemaResponseBody) GetError() *string {
-	if o == nil {
+func (p *PutSchemaResponseBody) GetError() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Error
+	return p.Error
 }
 
-func (o *PutSchemaResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (p *PutSchemaResponseBody) GetStatus() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Status
+	return p.Status
 }
 
 type PutSchemaResponse struct {
@@ -83,44 +83,44 @@ type PutSchemaResponse struct {
 	Object *PutSchemaResponseBody
 }
 
-func (o *PutSchemaResponse) GetContentType() string {
-	if o == nil {
+func (p *PutSchemaResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PutSchemaResponse) GetEntitySchemaItem() *shared.EntitySchemaItem {
-	if o == nil {
+func (p *PutSchemaResponse) GetEntitySchemaItem() *shared.EntitySchemaItem {
+	if p == nil {
 		return nil
 	}
-	return o.EntitySchemaItem
+	return p.EntitySchemaItem
 }
 
-func (o *PutSchemaResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (p *PutSchemaResponse) GetHeaders() map[string][]string {
+	if p == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return p.Headers
 }
 
-func (o *PutSchemaResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PutSchemaResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PutSchemaResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PutSchemaResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
 
-func (o *PutSchemaResponse) GetObject() *PutSchemaResponseBody {
-	if o == nil {
+func (p *PutSchemaResponse) GetObject() *PutSchemaResponseBody {
+	if p == nil {
 		return nil
 	}
-	return o.Object
+	return p.Object
 }

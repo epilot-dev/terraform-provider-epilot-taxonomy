@@ -2,7 +2,7 @@
 
 package sdk
 
-// Generated from OpenAPI doc version 1.3.0 and generator version 2.694.1
+// Generated from OpenAPI doc version 2.0.0 and generator version 2.709.0
 
 import (
 	"context"
@@ -57,8 +57,6 @@ type SDK struct {
 	SDKVersion string
 	// Entity Events
 	Activity *Activity
-	// Public
-	Public *Public
 	// Model Entities
 	Schemas *Schemas
 	// Taxonomies and Classifications
@@ -71,10 +69,6 @@ type SDK struct {
 	Relations *Relations
 	// Import and Export entities via portable files (CSV)
 	ImportExport *ImportExport
-	// Elastic Cluster assignment for organizations
-	ElasticClusterAssignment *ElasticClusterAssignment
-	// Internal APIs
-	Internal *Internal
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -150,9 +144,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.10.0",
+		SDKVersion: "0.11.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/terraform 0.10.0 2.694.1 1.3.0 github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk",
+			UserAgent:  "speakeasy-sdk/terraform 0.11.0 2.709.0 2.0.0 github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -174,15 +168,12 @@ func New(opts ...SDKOption) *SDK {
 	}
 
 	sdk.Activity = newActivity(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Public = newPublic(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Taxonomy = newTaxonomy(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.SavedViews = newSavedViews(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Entities = newEntities(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Relations = newRelations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ImportExport = newImportExport(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.ElasticClusterAssignment = newElasticClusterAssignment(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Internal = newInternal(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }
