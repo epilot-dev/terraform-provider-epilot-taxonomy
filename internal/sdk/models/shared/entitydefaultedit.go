@@ -49,23 +49,23 @@ func (e *EntityDefaultEdit) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityDefaultEdit) GetSearchParams() map[string]string {
-	if o == nil {
+func (e *EntityDefaultEdit) GetSearchParams() map[string]string {
+	if e == nil {
 		return nil
 	}
-	return o.SearchParams
+	return e.SearchParams
 }
 
-func (o *EntityDefaultEdit) GetSummaryAttributes() []string {
-	if o == nil {
+func (e *EntityDefaultEdit) GetSummaryAttributes() []string {
+	if e == nil {
 		return nil
 	}
-	return o.SummaryAttributes
+	return e.SummaryAttributes
 }
 
-func (o *EntityDefaultEdit) GetViewType() *EntityDefaultEditViewType {
-	if o == nil {
+func (e *EntityDefaultEdit) GetViewType() *EntityDefaultEditViewType {
+	if e == nil {
 		return nil
 	}
-	return o.ViewType
+	return e.ViewType
 }

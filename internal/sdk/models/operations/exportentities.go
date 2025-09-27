@@ -17,32 +17,32 @@ type ExportEntitiesRequest struct {
 	Language *string `queryParam:"style=form,explode=true,name=language"`
 }
 
-func (o *ExportEntitiesRequest) GetEntitySearchParams() *shared.EntitySearchParams {
-	if o == nil {
+func (e *ExportEntitiesRequest) GetEntitySearchParams() *shared.EntitySearchParams {
+	if e == nil {
 		return nil
 	}
-	return o.EntitySearchParams
+	return e.EntitySearchParams
 }
 
-func (o *ExportEntitiesRequest) GetIsTemplate() *bool {
-	if o == nil {
+func (e *ExportEntitiesRequest) GetIsTemplate() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.IsTemplate
+	return e.IsTemplate
 }
 
-func (o *ExportEntitiesRequest) GetJobID() *string {
-	if o == nil {
+func (e *ExportEntitiesRequest) GetJobID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.JobID
+	return e.JobID
 }
 
-func (o *ExportEntitiesRequest) GetLanguage() *string {
-	if o == nil {
+func (e *ExportEntitiesRequest) GetLanguage() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Language
+	return e.Language
 }
 
 // ExportEntitiesResponseBody - A generic error returned by the API
@@ -53,18 +53,18 @@ type ExportEntitiesResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *ExportEntitiesResponseBody) GetError() *string {
-	if o == nil {
+func (e *ExportEntitiesResponseBody) GetError() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Error
+	return e.Error
 }
 
-func (o *ExportEntitiesResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (e *ExportEntitiesResponseBody) GetStatus() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.Status
+	return e.Status
 }
 
 type ExportEntitiesResponse struct {
@@ -79,37 +79,37 @@ type ExportEntitiesResponse struct {
 	Object *ExportEntitiesResponseBody
 }
 
-func (o *ExportEntitiesResponse) GetContentType() string {
-	if o == nil {
+func (e *ExportEntitiesResponse) GetContentType() string {
+	if e == nil {
 		return ""
 	}
-	return o.ContentType
+	return e.ContentType
 }
 
-func (o *ExportEntitiesResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (e *ExportEntitiesResponse) GetHeaders() map[string][]string {
+	if e == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return e.Headers
 }
 
-func (o *ExportEntitiesResponse) GetStatusCode() int {
-	if o == nil {
+func (e *ExportEntitiesResponse) GetStatusCode() int {
+	if e == nil {
 		return 0
 	}
-	return o.StatusCode
+	return e.StatusCode
 }
 
-func (o *ExportEntitiesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (e *ExportEntitiesResponse) GetRawResponse() *http.Response {
+	if e == nil {
 		return nil
 	}
-	return o.RawResponse
+	return e.RawResponse
 }
 
-func (o *ExportEntitiesResponse) GetObject() *ExportEntitiesResponseBody {
-	if o == nil {
+func (e *ExportEntitiesResponse) GetObject() *ExportEntitiesResponseBody {
+	if e == nil {
 		return nil
 	}
-	return o.Object
+	return e.Object
 }

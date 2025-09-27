@@ -56,32 +56,32 @@ func (i *InternalUserAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *InternalUserAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (i *InternalUserAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if i == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return i.HintCustomComponent
 }
 
-func (o *InternalUserAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (i *InternalUserAttributeInfoHelpers) GetHintText() *string {
+	if i == nil {
 		return nil
 	}
-	return o.HintText
+	return i.HintText
 }
 
-func (o *InternalUserAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (i *InternalUserAttributeInfoHelpers) GetHintTextKey() *string {
+	if i == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return i.HintTextKey
 }
 
-func (o *InternalUserAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (i *InternalUserAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if i == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return i.HintTooltipPlacement
 }
 
 type InternalUserAttributeType string
@@ -176,212 +176,212 @@ func (i *InternalUserAttribute) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *InternalUserAttribute) GetManifest() []string {
-	if o == nil {
+func (i *InternalUserAttribute) GetManifest() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Manifest
+	return i.Manifest
 }
 
-func (o *InternalUserAttribute) GetPurpose() []string {
-	if o == nil {
+func (i *InternalUserAttribute) GetPurpose() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Purpose
+	return i.Purpose
 }
 
-func (o *InternalUserAttribute) GetConstraints() *InternalUserAttributeConstraints {
-	if o == nil {
+func (i *InternalUserAttribute) GetConstraints() *InternalUserAttributeConstraints {
+	if i == nil {
 		return nil
 	}
-	return o.Constraints
+	return i.Constraints
 }
 
-func (o *InternalUserAttribute) GetDefaultValue() any {
-	if o == nil {
+func (i *InternalUserAttribute) GetDefaultValue() any {
+	if i == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return i.DefaultValue
 }
 
-func (o *InternalUserAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetDeprecated() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Deprecated
+	return i.Deprecated
 }
 
-func (o *InternalUserAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetEntityBuilderDisableEdit() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return i.EntityBuilderDisableEdit
 }
 
-func (o *InternalUserAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (i *InternalUserAttribute) GetFeatureFlag() *string {
+	if i == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return i.FeatureFlag
 }
 
-func (o *InternalUserAttribute) GetGroup() *string {
-	if o == nil {
+func (i *InternalUserAttribute) GetGroup() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Group
+	return i.Group
 }
 
-func (o *InternalUserAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetHasPrimary() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return i.HasPrimary
 }
 
-func (o *InternalUserAttribute) GetHidden() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetHidden() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Hidden
+	return i.Hidden
 }
 
-func (o *InternalUserAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetHideLabel() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HideLabel
+	return i.HideLabel
 }
 
-func (o *InternalUserAttribute) GetIcon() *string {
-	if o == nil {
+func (i *InternalUserAttribute) GetIcon() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Icon
+	return i.Icon
 }
 
-func (o *InternalUserAttribute) GetID() *string {
-	if o == nil {
+func (i *InternalUserAttribute) GetID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ID
+	return i.ID
 }
 
-func (o *InternalUserAttribute) GetInfoHelpers() *InternalUserAttributeInfoHelpers {
-	if o == nil {
+func (i *InternalUserAttribute) GetInfoHelpers() *InternalUserAttributeInfoHelpers {
+	if i == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return i.InfoHelpers
 }
 
-func (o *InternalUserAttribute) GetLabel() string {
-	if o == nil {
+func (i *InternalUserAttribute) GetLabel() string {
+	if i == nil {
 		return ""
 	}
-	return o.Label
+	return i.Label
 }
 
-func (o *InternalUserAttribute) GetLayout() *string {
-	if o == nil {
+func (i *InternalUserAttribute) GetLayout() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Layout
+	return i.Layout
 }
 
-func (o *InternalUserAttribute) GetName() string {
-	if o == nil {
+func (i *InternalUserAttribute) GetName() string {
+	if i == nil {
 		return ""
 	}
-	return o.Name
+	return i.Name
 }
 
-func (o *InternalUserAttribute) GetOrder() *int64 {
-	if o == nil {
+func (i *InternalUserAttribute) GetOrder() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.Order
+	return i.Order
 }
 
-func (o *InternalUserAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (i *InternalUserAttribute) GetPlaceholder() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Placeholder
+	return i.Placeholder
 }
 
-func (o *InternalUserAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (i *InternalUserAttribute) GetPreviewValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return i.PreviewValueFormatter
 }
 
-func (o *InternalUserAttribute) GetProtected() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetProtected() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Protected
+	return i.Protected
 }
 
-func (o *InternalUserAttribute) GetReadonly() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetReadonly() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Readonly
+	return i.Readonly
 }
 
-func (o *InternalUserAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (i *InternalUserAttribute) GetRenderCondition() *string {
+	if i == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return i.RenderCondition
 }
 
-func (o *InternalUserAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetRepeatable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Repeatable
+	return i.Repeatable
 }
 
-func (o *InternalUserAttribute) GetRequired() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetRequired() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Required
+	return i.Required
 }
 
-func (o *InternalUserAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (i *InternalUserAttribute) GetSettingsFlag() []SettingFlag {
+	if i == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return i.SettingsFlag
 }
 
-func (o *InternalUserAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetShowInTable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return i.ShowInTable
 }
 
-func (o *InternalUserAttribute) GetSortable() *bool {
-	if o == nil {
+func (i *InternalUserAttribute) GetSortable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Sortable
+	return i.Sortable
 }
 
-func (o *InternalUserAttribute) GetType() InternalUserAttributeType {
-	if o == nil {
+func (i *InternalUserAttribute) GetType() InternalUserAttributeType {
+	if i == nil {
 		return InternalUserAttributeType("")
 	}
-	return o.Type
+	return i.Type
 }
 
-func (o *InternalUserAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (i *InternalUserAttribute) GetValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return i.ValueFormatter
 }

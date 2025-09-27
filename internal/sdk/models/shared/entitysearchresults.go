@@ -19,8 +19,8 @@ const (
 )
 
 type SortEnd struct {
-	Str    *string  `queryParam:"inline" name:"sort_end"`
-	Number *float64 `queryParam:"inline" name:"sort_end"`
+	Str    *string  `queryParam:"inline,name=sort_end"`
+	Number *float64 `queryParam:"inline,name=sort_end"`
 
 	Type SortEndType
 }
@@ -88,37 +88,37 @@ type EntitySearchResults struct {
 	StableQueryID *string `json:"stable_query_id,omitempty"`
 }
 
-func (o *EntitySearchResults) GetAggregations() *Aggregations {
-	if o == nil {
+func (e *EntitySearchResults) GetAggregations() *Aggregations {
+	if e == nil {
 		return nil
 	}
-	return o.Aggregations
+	return e.Aggregations
 }
 
-func (o *EntitySearchResults) GetHits() *float64 {
-	if o == nil {
+func (e *EntitySearchResults) GetHits() *float64 {
+	if e == nil {
 		return nil
 	}
-	return o.Hits
+	return e.Hits
 }
 
-func (o *EntitySearchResults) GetResults() []EntityItem {
-	if o == nil {
+func (e *EntitySearchResults) GetResults() []EntityItem {
+	if e == nil {
 		return nil
 	}
-	return o.Results
+	return e.Results
 }
 
-func (o *EntitySearchResults) GetSortEnd() []*SortEnd {
-	if o == nil {
+func (e *EntitySearchResults) GetSortEnd() []*SortEnd {
+	if e == nil {
 		return nil
 	}
-	return o.SortEnd
+	return e.SortEnd
 }
 
-func (o *EntitySearchResults) GetStableQueryID() *string {
-	if o == nil {
+func (e *EntitySearchResults) GetStableQueryID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.StableQueryID
+	return e.StableQueryID
 }

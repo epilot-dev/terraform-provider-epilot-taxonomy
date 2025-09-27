@@ -56,32 +56,32 @@ func (p *PartnerStatusAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartnerStatusAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return p.HintCustomComponent
 }
 
-func (o *PartnerStatusAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeInfoHelpers) GetHintText() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintText
+	return p.HintText
 }
 
-func (o *PartnerStatusAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeInfoHelpers) GetHintTextKey() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return p.HintTextKey
 }
 
-func (o *PartnerStatusAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return p.HintTooltipPlacement
 }
 
 type PartnerStatusAttributeType string
@@ -176,212 +176,212 @@ func (p *PartnerStatusAttribute) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartnerStatusAttribute) GetManifest() []string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PartnerStatusAttribute) GetPurpose() []string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PartnerStatusAttribute) GetConstraints() *PartnerStatusAttributeConstraints {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetConstraints() *PartnerStatusAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PartnerStatusAttribute) GetDefaultValue() any {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PartnerStatusAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PartnerStatusAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PartnerStatusAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PartnerStatusAttribute) GetGroup() *string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PartnerStatusAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PartnerStatusAttribute) GetHidden() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PartnerStatusAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PartnerStatusAttribute) GetIcon() *string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PartnerStatusAttribute) GetID() *string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PartnerStatusAttribute) GetInfoHelpers() *PartnerStatusAttributeInfoHelpers {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetInfoHelpers() *PartnerStatusAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PartnerStatusAttribute) GetLabel() string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PartnerStatusAttribute) GetLayout() *string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PartnerStatusAttribute) GetName() string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PartnerStatusAttribute) GetOrder() *int64 {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PartnerStatusAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PartnerStatusAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PartnerStatusAttribute) GetProtected() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PartnerStatusAttribute) GetReadonly() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PartnerStatusAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PartnerStatusAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PartnerStatusAttribute) GetRequired() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PartnerStatusAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PartnerStatusAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PartnerStatusAttribute) GetSortable() *bool {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PartnerStatusAttribute) GetType() PartnerStatusAttributeType {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetType() PartnerStatusAttributeType {
+	if p == nil {
 		return PartnerStatusAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PartnerStatusAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (p *PartnerStatusAttribute) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
