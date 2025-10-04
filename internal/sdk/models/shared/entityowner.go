@@ -25,16 +25,16 @@ func (e *EntityOwner) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityOwner) GetOrgID() string {
-	if o == nil {
+func (e *EntityOwner) GetOrgID() string {
+	if e == nil {
 		return ""
 	}
-	return o.OrgID
+	return e.OrgID
 }
 
-func (o *EntityOwner) GetUserID() *string {
-	if o == nil {
+func (e *EntityOwner) GetUserID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.UserID
+	return e.UserID
 }

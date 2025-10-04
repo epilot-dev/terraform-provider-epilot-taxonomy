@@ -57,32 +57,32 @@ func (t *TextAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TextAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (t *TextAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if t == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return t.HintCustomComponent
 }
 
-func (o *TextAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (t *TextAttributeInfoHelpers) GetHintText() *string {
+	if t == nil {
 		return nil
 	}
-	return o.HintText
+	return t.HintText
 }
 
-func (o *TextAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (t *TextAttributeInfoHelpers) GetHintTextKey() *string {
+	if t == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return t.HintTextKey
 }
 
-func (o *TextAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (t *TextAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if t == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return t.HintTooltipPlacement
 }
 
 type RowsType string
@@ -94,8 +94,8 @@ const (
 
 // Rows - Number of rows for rich_text textarea
 type Rows struct {
-	Integer *int64  `queryParam:"inline" name:"rows"`
-	Str     *string `queryParam:"inline" name:"rows"`
+	Integer *int64  `queryParam:"inline,name=rows"`
+	Str     *string `queryParam:"inline,name=rows"`
 
 	Type RowsType
 }
@@ -245,233 +245,233 @@ func (t *TextAttribute) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TextAttribute) GetManifest() []string {
-	if o == nil {
+func (t *TextAttribute) GetManifest() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Manifest
+	return t.Manifest
 }
 
-func (o *TextAttribute) GetPurpose() []string {
-	if o == nil {
+func (t *TextAttribute) GetPurpose() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Purpose
+	return t.Purpose
 }
 
-func (o *TextAttribute) GetConstraints() *TextAttributeConstraints {
-	if o == nil {
+func (t *TextAttribute) GetConstraints() *TextAttributeConstraints {
+	if t == nil {
 		return nil
 	}
-	return o.Constraints
+	return t.Constraints
 }
 
-func (o *TextAttribute) GetDefaultValue() any {
-	if o == nil {
+func (t *TextAttribute) GetDefaultValue() any {
+	if t == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return t.DefaultValue
 }
 
-func (o *TextAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (t *TextAttribute) GetDeprecated() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Deprecated
+	return t.Deprecated
 }
 
-func (o *TextAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (t *TextAttribute) GetEntityBuilderDisableEdit() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return t.EntityBuilderDisableEdit
 }
 
-func (o *TextAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (t *TextAttribute) GetFeatureFlag() *string {
+	if t == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return t.FeatureFlag
 }
 
-func (o *TextAttribute) GetGroup() *string {
-	if o == nil {
+func (t *TextAttribute) GetGroup() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Group
+	return t.Group
 }
 
-func (o *TextAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (t *TextAttribute) GetHasPrimary() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return t.HasPrimary
 }
 
-func (o *TextAttribute) GetHidden() *bool {
-	if o == nil {
+func (t *TextAttribute) GetHidden() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Hidden
+	return t.Hidden
 }
 
-func (o *TextAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (t *TextAttribute) GetHideLabel() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HideLabel
+	return t.HideLabel
 }
 
-func (o *TextAttribute) GetIcon() *string {
-	if o == nil {
+func (t *TextAttribute) GetIcon() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Icon
+	return t.Icon
 }
 
-func (o *TextAttribute) GetID() *string {
-	if o == nil {
+func (t *TextAttribute) GetID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TextAttribute) GetInfoHelpers() *TextAttributeInfoHelpers {
-	if o == nil {
+func (t *TextAttribute) GetInfoHelpers() *TextAttributeInfoHelpers {
+	if t == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return t.InfoHelpers
 }
 
-func (o *TextAttribute) GetLabel() string {
-	if o == nil {
+func (t *TextAttribute) GetLabel() string {
+	if t == nil {
 		return ""
 	}
-	return o.Label
+	return t.Label
 }
 
-func (o *TextAttribute) GetLayout() *string {
-	if o == nil {
+func (t *TextAttribute) GetLayout() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Layout
+	return t.Layout
 }
 
-func (o *TextAttribute) GetMultiline() *bool {
-	if o == nil {
+func (t *TextAttribute) GetMultiline() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Multiline
+	return t.Multiline
 }
 
-func (o *TextAttribute) GetName() string {
-	if o == nil {
+func (t *TextAttribute) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TextAttribute) GetOrder() *int64 {
-	if o == nil {
+func (t *TextAttribute) GetOrder() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Order
+	return t.Order
 }
 
-func (o *TextAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (t *TextAttribute) GetPlaceholder() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Placeholder
+	return t.Placeholder
 }
 
-func (o *TextAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (t *TextAttribute) GetPreviewValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return t.PreviewValueFormatter
 }
 
-func (o *TextAttribute) GetProtected() *bool {
-	if o == nil {
+func (t *TextAttribute) GetProtected() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Protected
+	return t.Protected
 }
 
-func (o *TextAttribute) GetReadonly() *bool {
-	if o == nil {
+func (t *TextAttribute) GetReadonly() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Readonly
+	return t.Readonly
 }
 
-func (o *TextAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (t *TextAttribute) GetRenderCondition() *string {
+	if t == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return t.RenderCondition
 }
 
-func (o *TextAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (t *TextAttribute) GetRepeatable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Repeatable
+	return t.Repeatable
 }
 
-func (o *TextAttribute) GetRequired() *bool {
-	if o == nil {
+func (t *TextAttribute) GetRequired() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Required
+	return t.Required
 }
 
-func (o *TextAttribute) GetRichText() *bool {
-	if o == nil {
+func (t *TextAttribute) GetRichText() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.RichText
+	return t.RichText
 }
 
-func (o *TextAttribute) GetRows() *Rows {
-	if o == nil {
+func (t *TextAttribute) GetRows() *Rows {
+	if t == nil {
 		return nil
 	}
-	return o.Rows
+	return t.Rows
 }
 
-func (o *TextAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (t *TextAttribute) GetSettingsFlag() []SettingFlag {
+	if t == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return t.SettingsFlag
 }
 
-func (o *TextAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (t *TextAttribute) GetShowInTable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return t.ShowInTable
 }
 
-func (o *TextAttribute) GetSortable() *bool {
-	if o == nil {
+func (t *TextAttribute) GetSortable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Sortable
+	return t.Sortable
 }
 
-func (o *TextAttribute) GetType() TextAttributeType {
-	if o == nil {
+func (t *TextAttribute) GetType() TextAttributeType {
+	if t == nil {
 		return TextAttributeType("")
 	}
-	return o.Type
+	return t.Type
 }
 
-func (o *TextAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (t *TextAttribute) GetValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return t.ValueFormatter
 }

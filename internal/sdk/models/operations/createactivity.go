@@ -13,18 +13,18 @@ type CreateActivityRequest struct {
 	Entities []string `queryParam:"style=form,explode=false,name=entities"`
 }
 
-func (o *CreateActivityRequest) GetActivity() *shared.Activity {
-	if o == nil {
+func (c *CreateActivityRequest) GetActivity() *shared.Activity {
+	if c == nil {
 		return nil
 	}
-	return o.Activity
+	return c.Activity
 }
 
-func (o *CreateActivityRequest) GetEntities() []string {
-	if o == nil {
+func (c *CreateActivityRequest) GetEntities() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Entities
+	return c.Entities
 }
 
 // CreateActivityResponseBody - A generic error returned by the API
@@ -35,18 +35,18 @@ type CreateActivityResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *CreateActivityResponseBody) GetError() *string {
-	if o == nil {
+func (c *CreateActivityResponseBody) GetError() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Error
+	return c.Error
 }
 
-func (o *CreateActivityResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (c *CreateActivityResponseBody) GetStatus() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Status
+	return c.Status
 }
 
 type CreateActivityResponse struct {
@@ -63,44 +63,44 @@ type CreateActivityResponse struct {
 	Object *CreateActivityResponseBody
 }
 
-func (o *CreateActivityResponse) GetBaseActivityItem() *shared.BaseActivityItem {
-	if o == nil {
+func (c *CreateActivityResponse) GetBaseActivityItem() *shared.BaseActivityItem {
+	if c == nil {
 		return nil
 	}
-	return o.BaseActivityItem
+	return c.BaseActivityItem
 }
 
-func (o *CreateActivityResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateActivityResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateActivityResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (c *CreateActivityResponse) GetHeaders() map[string][]string {
+	if c == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return c.Headers
 }
 
-func (o *CreateActivityResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateActivityResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateActivityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateActivityResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateActivityResponse) GetObject() *CreateActivityResponseBody {
-	if o == nil {
+func (c *CreateActivityResponse) GetObject() *CreateActivityResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }

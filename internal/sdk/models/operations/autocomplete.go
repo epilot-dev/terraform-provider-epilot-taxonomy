@@ -31,32 +31,32 @@ func (a *AutocompleteRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AutocompleteRequest) GetAttribute() string {
-	if o == nil {
+func (a *AutocompleteRequest) GetAttribute() string {
+	if a == nil {
 		return ""
 	}
-	return o.Attribute
+	return a.Attribute
 }
 
-func (o *AutocompleteRequest) GetInput() *string {
-	if o == nil {
+func (a *AutocompleteRequest) GetInput() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Input
+	return a.Input
 }
 
-func (o *AutocompleteRequest) GetSize() *int64 {
-	if o == nil {
+func (a *AutocompleteRequest) GetSize() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.Size
+	return a.Size
 }
 
-func (o *AutocompleteRequest) GetSlug() *string {
-	if o == nil {
+func (a *AutocompleteRequest) GetSlug() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Slug
+	return a.Slug
 }
 
 type ResultsType string
@@ -68,9 +68,9 @@ const (
 )
 
 type Results struct {
-	Str      *string        `queryParam:"inline" name:"results"`
-	Boolean  *bool          `queryParam:"inline" name:"results"`
-	MapOfAny map[string]any `queryParam:"inline" name:"results"`
+	Str      *string        `queryParam:"inline,name=results"`
+	Boolean  *bool          `queryParam:"inline,name=results"`
+	MapOfAny map[string]any `queryParam:"inline,name=results"`
 
 	Type ResultsType
 }
@@ -150,18 +150,18 @@ type AutocompleteResponseBody struct {
 	Results []Results `json:"results,omitempty"`
 }
 
-func (o *AutocompleteResponseBody) GetHits() *float64 {
-	if o == nil {
+func (a *AutocompleteResponseBody) GetHits() *float64 {
+	if a == nil {
 		return nil
 	}
-	return o.Hits
+	return a.Hits
 }
 
-func (o *AutocompleteResponseBody) GetResults() []Results {
-	if o == nil {
+func (a *AutocompleteResponseBody) GetResults() []Results {
+	if a == nil {
 		return nil
 	}
-	return o.Results
+	return a.Results
 }
 
 type AutocompleteResponse struct {
@@ -175,30 +175,30 @@ type AutocompleteResponse struct {
 	Object *AutocompleteResponseBody
 }
 
-func (o *AutocompleteResponse) GetContentType() string {
-	if o == nil {
+func (a *AutocompleteResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *AutocompleteResponse) GetStatusCode() int {
-	if o == nil {
+func (a *AutocompleteResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *AutocompleteResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *AutocompleteResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }
 
-func (o *AutocompleteResponse) GetObject() *AutocompleteResponseBody {
-	if o == nil {
+func (a *AutocompleteResponse) GetObject() *AutocompleteResponseBody {
+	if a == nil {
 		return nil
 	}
-	return o.Object
+	return a.Object
 }

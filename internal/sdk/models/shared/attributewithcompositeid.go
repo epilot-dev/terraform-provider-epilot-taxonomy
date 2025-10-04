@@ -57,32 +57,32 @@ func (s *SchemasPriceComponentAttributeInfoHelpers) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (o *SchemasPriceComponentAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasPriceComponentAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasPriceComponentAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasPriceComponentAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasPriceComponentAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasPriceComponentAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasPriceComponentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasPriceComponentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasPriceComponentAttributeType string
@@ -180,228 +180,228 @@ func (p *PriceComponentAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PriceComponentAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PriceComponentAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PriceComponentAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetCompositeID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.CompositeID
+	return p.CompositeID
 }
 
-func (o *PriceComponentAttributeSchemas) GetConstraints() *SchemasPriceComponentAttributeConstraints {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetConstraints() *SchemasPriceComponentAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PriceComponentAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PriceComponentAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PriceComponentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PriceComponentAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PriceComponentAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PriceComponentAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PriceComponentAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PriceComponentAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PriceComponentAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PriceComponentAttributeSchemas) GetID() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PriceComponentAttributeSchemas) GetInfoHelpers() *SchemasPriceComponentAttributeInfoHelpers {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetInfoHelpers() *SchemasPriceComponentAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PriceComponentAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PriceComponentAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PriceComponentAttributeSchemas) GetName() string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PriceComponentAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PriceComponentAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PriceComponentAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PriceComponentAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PriceComponentAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PriceComponentAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PriceComponentAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PriceComponentAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PriceComponentAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PriceComponentAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PriceComponentAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PriceComponentAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PriceComponentAttributeSchemas) GetType() SchemasPriceComponentAttributeType {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetType() SchemasPriceComponentAttributeType {
+	if p == nil {
 		return SchemasPriceComponentAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PriceComponentAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemas) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // SchemasPaymentAttributeConstraints - A set of constraints applicable to the attribute.
@@ -452,32 +452,32 @@ func (s *SchemasPaymentAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasPaymentAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasPaymentAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasPaymentAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasPaymentAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasPaymentAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasPaymentAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasPaymentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasPaymentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasPaymentAttributeType string
@@ -575,228 +575,228 @@ func (p *PaymentAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PaymentAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PaymentAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PaymentAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetCompositeID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.CompositeID
+	return p.CompositeID
 }
 
-func (o *PaymentAttributeSchemas) GetConstraints() *SchemasPaymentAttributeConstraints {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetConstraints() *SchemasPaymentAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PaymentAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PaymentAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PaymentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PaymentAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PaymentAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PaymentAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PaymentAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PaymentAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PaymentAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PaymentAttributeSchemas) GetID() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PaymentAttributeSchemas) GetInfoHelpers() *SchemasPaymentAttributeInfoHelpers {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetInfoHelpers() *SchemasPaymentAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PaymentAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PaymentAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PaymentAttributeSchemas) GetName() string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PaymentAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PaymentAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PaymentAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PaymentAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PaymentAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PaymentAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PaymentAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PaymentAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PaymentAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PaymentAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PaymentAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PaymentAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PaymentAttributeSchemas) GetType() SchemasPaymentAttributeType {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetType() SchemasPaymentAttributeType {
+	if p == nil {
 		return SchemasPaymentAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PaymentAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemas) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // SchemasEmailAttributeConstraints - A set of constraints applicable to the attribute.
@@ -847,32 +847,32 @@ func (s *SchemasEmailAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasEmailAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasEmailAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasEmailAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasEmailAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasEmailAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasEmailAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasEmailAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasEmailAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasEmailAttributeType string
@@ -970,228 +970,228 @@ func (e *EmailAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EmailAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetManifest() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Manifest
+	return e.Manifest
 }
 
-func (o *EmailAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Purpose
 }
 
-func (o *EmailAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetCompositeID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.CompositeID
+	return e.CompositeID
 }
 
-func (o *EmailAttributeSchemas) GetConstraints() *SchemasEmailAttributeConstraints {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetConstraints() *SchemasEmailAttributeConstraints {
+	if e == nil {
 		return nil
 	}
-	return o.Constraints
+	return e.Constraints
 }
 
-func (o *EmailAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetDefaultValue() any {
+	if e == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return e.DefaultValue
 }
 
-func (o *EmailAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetDeprecated() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Deprecated
+	return e.Deprecated
 }
 
-func (o *EmailAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return e.EntityBuilderDisableEdit
 }
 
-func (o *EmailAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetFeatureFlag() *string {
+	if e == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return e.FeatureFlag
 }
 
-func (o *EmailAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetGroup() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Group
+	return e.Group
 }
 
-func (o *EmailAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetHasPrimary() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return e.HasPrimary
 }
 
-func (o *EmailAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetHidden() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Hidden
+	return e.Hidden
 }
 
-func (o *EmailAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetHideLabel() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.HideLabel
+	return e.HideLabel
 }
 
-func (o *EmailAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetIcon() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Icon
+	return e.Icon
 }
 
-func (o *EmailAttributeSchemas) GetID() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ID
+	return e.ID
 }
 
-func (o *EmailAttributeSchemas) GetInfoHelpers() *SchemasEmailAttributeInfoHelpers {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetInfoHelpers() *SchemasEmailAttributeInfoHelpers {
+	if e == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return e.InfoHelpers
 }
 
-func (o *EmailAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetLabel() string {
+	if e == nil {
 		return ""
 	}
-	return o.Label
+	return e.Label
 }
 
-func (o *EmailAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetLayout() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Layout
+	return e.Layout
 }
 
-func (o *EmailAttributeSchemas) GetName() string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetName() string {
+	if e == nil {
 		return ""
 	}
-	return o.Name
+	return e.Name
 }
 
-func (o *EmailAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetOrder() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.Order
+	return e.Order
 }
 
-func (o *EmailAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetPlaceholder() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Placeholder
+	return e.Placeholder
 }
 
-func (o *EmailAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetPreviewValueFormatter() *string {
+	if e == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return e.PreviewValueFormatter
 }
 
-func (o *EmailAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetProtected() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Protected
+	return e.Protected
 }
 
-func (o *EmailAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetReadonly() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Readonly
+	return e.Readonly
 }
 
-func (o *EmailAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetRenderCondition() *string {
+	if e == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return e.RenderCondition
 }
 
-func (o *EmailAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetRepeatable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Repeatable
+	return e.Repeatable
 }
 
-func (o *EmailAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetRequired() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Required
+	return e.Required
 }
 
-func (o *EmailAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetSchema() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Schema
+	return e.Schema
 }
 
-func (o *EmailAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if e == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return e.SettingsFlag
 }
 
-func (o *EmailAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetShowInTable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return e.ShowInTable
 }
 
-func (o *EmailAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetSortable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Sortable
+	return e.Sortable
 }
 
-func (o *EmailAttributeSchemas) GetType() SchemasEmailAttributeType {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetType() SchemasEmailAttributeType {
+	if e == nil {
 		return SchemasEmailAttributeType("")
 	}
-	return o.Type
+	return e.Type
 }
 
-func (o *EmailAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (e *EmailAttributeSchemas) GetValueFormatter() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return e.ValueFormatter
 }
 
 // SchemasPhoneAttributeConstraints - A set of constraints applicable to the attribute.
@@ -1242,32 +1242,32 @@ func (s *SchemasPhoneAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasPhoneAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasPhoneAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasPhoneAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasPhoneAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasPhoneAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasPhoneAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasPhoneAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasPhoneAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasPhoneAttributeType string
@@ -1365,228 +1365,228 @@ func (p *PhoneAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PhoneAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PhoneAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PhoneAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetCompositeID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.CompositeID
+	return p.CompositeID
 }
 
-func (o *PhoneAttributeSchemas) GetConstraints() *SchemasPhoneAttributeConstraints {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetConstraints() *SchemasPhoneAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PhoneAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PhoneAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PhoneAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PhoneAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PhoneAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PhoneAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PhoneAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PhoneAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PhoneAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PhoneAttributeSchemas) GetID() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PhoneAttributeSchemas) GetInfoHelpers() *SchemasPhoneAttributeInfoHelpers {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetInfoHelpers() *SchemasPhoneAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PhoneAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PhoneAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PhoneAttributeSchemas) GetName() string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PhoneAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PhoneAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PhoneAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PhoneAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PhoneAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PhoneAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PhoneAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PhoneAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PhoneAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PhoneAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PhoneAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PhoneAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PhoneAttributeSchemas) GetType() SchemasPhoneAttributeType {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetType() SchemasPhoneAttributeType {
+	if p == nil {
 		return SchemasPhoneAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PhoneAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemas) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // SchemasPortalAccessAttributeConstraints - A set of constraints applicable to the attribute.
@@ -1637,32 +1637,32 @@ func (s *SchemasPortalAccessAttributeInfoHelpers) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (o *SchemasPortalAccessAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasPortalAccessAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasPortalAccessAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasPortalAccessAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasPortalAccessAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasPortalAccessAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasPortalAccessAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasPortalAccessAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasPortalAccessAttributeType string
@@ -1760,228 +1760,228 @@ func (p *PortalAccessAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalAccessAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PortalAccessAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PortalAccessAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetCompositeID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.CompositeID
+	return p.CompositeID
 }
 
-func (o *PortalAccessAttributeSchemas) GetConstraints() *SchemasPortalAccessAttributeConstraints {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetConstraints() *SchemasPortalAccessAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PortalAccessAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PortalAccessAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PortalAccessAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PortalAccessAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PortalAccessAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PortalAccessAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PortalAccessAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PortalAccessAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PortalAccessAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PortalAccessAttributeSchemas) GetID() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PortalAccessAttributeSchemas) GetInfoHelpers() *SchemasPortalAccessAttributeInfoHelpers {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetInfoHelpers() *SchemasPortalAccessAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PortalAccessAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PortalAccessAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PortalAccessAttributeSchemas) GetName() string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PortalAccessAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PortalAccessAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PortalAccessAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PortalAccessAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PortalAccessAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PortalAccessAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PortalAccessAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PortalAccessAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PortalAccessAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PortalAccessAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PortalAccessAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PortalAccessAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PortalAccessAttributeSchemas) GetType() SchemasPortalAccessAttributeType {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetType() SchemasPortalAccessAttributeType {
+	if p == nil {
 		return SchemasPortalAccessAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PortalAccessAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemas) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // SchemasPartnerOrganisationAttributeConstraints - A set of constraints applicable to the attribute.
@@ -2032,32 +2032,32 @@ func (s *SchemasPartnerOrganisationAttributeInfoHelpers) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *SchemasPartnerOrganisationAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasPartnerOrganisationAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasPartnerOrganisationAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasPartnerOrganisationAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasPartnerOrganisationAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasPartnerOrganisationAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasPartnerOrganisationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasPartnerOrganisationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasPartnerOrganisationAttributeType string
@@ -2155,228 +2155,228 @@ func (p *PartnerOrganisationAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetCompositeID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.CompositeID
+	return p.CompositeID
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetConstraints() *SchemasPartnerOrganisationAttributeConstraints {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetConstraints() *SchemasPartnerOrganisationAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetID() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetInfoHelpers() *SchemasPartnerOrganisationAttributeInfoHelpers {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetInfoHelpers() *SchemasPartnerOrganisationAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetName() string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetType() SchemasPartnerOrganisationAttributeType {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetType() SchemasPartnerOrganisationAttributeType {
+	if p == nil {
 		return SchemasPartnerOrganisationAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PartnerOrganisationAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemas) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // SchemasPurposeAttributeConstraints - A set of constraints applicable to the attribute.
@@ -2427,32 +2427,32 @@ func (s *SchemasPurposeAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasPurposeAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasPurposeAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasPurposeAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasPurposeAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasPurposeAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasPurposeAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasPurposeAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasPurposeAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasPurposeAttributeType string
@@ -2550,228 +2550,228 @@ func (p *PurposeAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PurposeAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PurposeAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PurposeAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetCompositeID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.CompositeID
+	return p.CompositeID
 }
 
-func (o *PurposeAttributeSchemas) GetConstraints() *SchemasPurposeAttributeConstraints {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetConstraints() *SchemasPurposeAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PurposeAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PurposeAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PurposeAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PurposeAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PurposeAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PurposeAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PurposeAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PurposeAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PurposeAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PurposeAttributeSchemas) GetID() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PurposeAttributeSchemas) GetInfoHelpers() *SchemasPurposeAttributeInfoHelpers {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetInfoHelpers() *SchemasPurposeAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PurposeAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PurposeAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PurposeAttributeSchemas) GetName() string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PurposeAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PurposeAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PurposeAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PurposeAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PurposeAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PurposeAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PurposeAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PurposeAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PurposeAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PurposeAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PurposeAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PurposeAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PurposeAttributeSchemas) GetType() SchemasPurposeAttributeType {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetType() SchemasPurposeAttributeType {
+	if p == nil {
 		return SchemasPurposeAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PurposeAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemas) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // SchemasInternalUserAttributeConstraints - A set of constraints applicable to the attribute.
@@ -2822,32 +2822,32 @@ func (s *SchemasInternalUserAttributeInfoHelpers) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (o *SchemasInternalUserAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasInternalUserAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasInternalUserAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasInternalUserAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasInternalUserAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasInternalUserAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasInternalUserAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasInternalUserAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasInternalUserAttributeType string
@@ -2945,228 +2945,228 @@ func (i *InternalUserAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *InternalUserAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetManifest() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Manifest
+	return i.Manifest
 }
 
-func (o *InternalUserAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetPurpose() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Purpose
+	return i.Purpose
 }
 
-func (o *InternalUserAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetCompositeID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.CompositeID
+	return i.CompositeID
 }
 
-func (o *InternalUserAttributeSchemas) GetConstraints() *SchemasInternalUserAttributeConstraints {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetConstraints() *SchemasInternalUserAttributeConstraints {
+	if i == nil {
 		return nil
 	}
-	return o.Constraints
+	return i.Constraints
 }
 
-func (o *InternalUserAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetDefaultValue() any {
+	if i == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return i.DefaultValue
 }
 
-func (o *InternalUserAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetDeprecated() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Deprecated
+	return i.Deprecated
 }
 
-func (o *InternalUserAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return i.EntityBuilderDisableEdit
 }
 
-func (o *InternalUserAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetFeatureFlag() *string {
+	if i == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return i.FeatureFlag
 }
 
-func (o *InternalUserAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetGroup() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Group
+	return i.Group
 }
 
-func (o *InternalUserAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetHasPrimary() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return i.HasPrimary
 }
 
-func (o *InternalUserAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetHidden() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Hidden
+	return i.Hidden
 }
 
-func (o *InternalUserAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetHideLabel() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HideLabel
+	return i.HideLabel
 }
 
-func (o *InternalUserAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetIcon() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Icon
+	return i.Icon
 }
 
-func (o *InternalUserAttributeSchemas) GetID() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ID
+	return i.ID
 }
 
-func (o *InternalUserAttributeSchemas) GetInfoHelpers() *SchemasInternalUserAttributeInfoHelpers {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetInfoHelpers() *SchemasInternalUserAttributeInfoHelpers {
+	if i == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return i.InfoHelpers
 }
 
-func (o *InternalUserAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetLabel() string {
+	if i == nil {
 		return ""
 	}
-	return o.Label
+	return i.Label
 }
 
-func (o *InternalUserAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetLayout() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Layout
+	return i.Layout
 }
 
-func (o *InternalUserAttributeSchemas) GetName() string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetName() string {
+	if i == nil {
 		return ""
 	}
-	return o.Name
+	return i.Name
 }
 
-func (o *InternalUserAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetOrder() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.Order
+	return i.Order
 }
 
-func (o *InternalUserAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetPlaceholder() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Placeholder
+	return i.Placeholder
 }
 
-func (o *InternalUserAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetPreviewValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return i.PreviewValueFormatter
 }
 
-func (o *InternalUserAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetProtected() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Protected
+	return i.Protected
 }
 
-func (o *InternalUserAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetReadonly() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Readonly
+	return i.Readonly
 }
 
-func (o *InternalUserAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetRenderCondition() *string {
+	if i == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return i.RenderCondition
 }
 
-func (o *InternalUserAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetRepeatable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Repeatable
+	return i.Repeatable
 }
 
-func (o *InternalUserAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetRequired() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Required
+	return i.Required
 }
 
-func (o *InternalUserAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetSchema() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Schema
+	return i.Schema
 }
 
-func (o *InternalUserAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if i == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return i.SettingsFlag
 }
 
-func (o *InternalUserAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetShowInTable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return i.ShowInTable
 }
 
-func (o *InternalUserAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetSortable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Sortable
+	return i.Sortable
 }
 
-func (o *InternalUserAttributeSchemas) GetType() SchemasInternalUserAttributeType {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetType() SchemasInternalUserAttributeType {
+	if i == nil {
 		return SchemasInternalUserAttributeType("")
 	}
-	return o.Type
+	return i.Type
 }
 
-func (o *InternalUserAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemas) GetValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return i.ValueFormatter
 }
 
 // SchemasAutomationAttributeConstraints - A set of constraints applicable to the attribute.
@@ -3217,32 +3217,32 @@ func (s *SchemasAutomationAttributeInfoHelpers) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *SchemasAutomationAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasAutomationAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasAutomationAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasAutomationAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasAutomationAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasAutomationAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasAutomationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasAutomationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasAutomationAttributeType string
@@ -3340,228 +3340,228 @@ func (a *AutomationAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AutomationAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetManifest() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Manifest
+	return a.Manifest
 }
 
-func (o *AutomationAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetPurpose() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Purpose
+	return a.Purpose
 }
 
-func (o *AutomationAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetCompositeID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.CompositeID
+	return a.CompositeID
 }
 
-func (o *AutomationAttributeSchemas) GetConstraints() *SchemasAutomationAttributeConstraints {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetConstraints() *SchemasAutomationAttributeConstraints {
+	if a == nil {
 		return nil
 	}
-	return o.Constraints
+	return a.Constraints
 }
 
-func (o *AutomationAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetDefaultValue() any {
+	if a == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return a.DefaultValue
 }
 
-func (o *AutomationAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetDeprecated() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Deprecated
+	return a.Deprecated
 }
 
-func (o *AutomationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return a.EntityBuilderDisableEdit
 }
 
-func (o *AutomationAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetFeatureFlag() *string {
+	if a == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return a.FeatureFlag
 }
 
-func (o *AutomationAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetGroup() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Group
+	return a.Group
 }
 
-func (o *AutomationAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetHasPrimary() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return a.HasPrimary
 }
 
-func (o *AutomationAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetHidden() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Hidden
+	return a.Hidden
 }
 
-func (o *AutomationAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetHideLabel() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HideLabel
+	return a.HideLabel
 }
 
-func (o *AutomationAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetIcon() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Icon
+	return a.Icon
 }
 
-func (o *AutomationAttributeSchemas) GetID() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AutomationAttributeSchemas) GetInfoHelpers() *SchemasAutomationAttributeInfoHelpers {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetInfoHelpers() *SchemasAutomationAttributeInfoHelpers {
+	if a == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return a.InfoHelpers
 }
 
-func (o *AutomationAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetLabel() string {
+	if a == nil {
 		return ""
 	}
-	return o.Label
+	return a.Label
 }
 
-func (o *AutomationAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetLayout() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Layout
+	return a.Layout
 }
 
-func (o *AutomationAttributeSchemas) GetName() string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AutomationAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetOrder() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.Order
+	return a.Order
 }
 
-func (o *AutomationAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetPlaceholder() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Placeholder
+	return a.Placeholder
 }
 
-func (o *AutomationAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetPreviewValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return a.PreviewValueFormatter
 }
 
-func (o *AutomationAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetProtected() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Protected
+	return a.Protected
 }
 
-func (o *AutomationAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetReadonly() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Readonly
+	return a.Readonly
 }
 
-func (o *AutomationAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetRenderCondition() *string {
+	if a == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return a.RenderCondition
 }
 
-func (o *AutomationAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetRepeatable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Repeatable
+	return a.Repeatable
 }
 
-func (o *AutomationAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetRequired() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Required
+	return a.Required
 }
 
-func (o *AutomationAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetSchema() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Schema
+	return a.Schema
 }
 
-func (o *AutomationAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if a == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return a.SettingsFlag
 }
 
-func (o *AutomationAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetShowInTable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return a.ShowInTable
 }
 
-func (o *AutomationAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetSortable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Sortable
+	return a.Sortable
 }
 
-func (o *AutomationAttributeSchemas) GetType() SchemasAutomationAttributeType {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetType() SchemasAutomationAttributeType {
+	if a == nil {
 		return SchemasAutomationAttributeType("")
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *AutomationAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemas) GetValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return a.ValueFormatter
 }
 
 // SchemasInvitationEmailAttributeConstraints - A set of constraints applicable to the attribute.
@@ -3612,32 +3612,32 @@ func (s *SchemasInvitationEmailAttributeInfoHelpers) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (o *SchemasInvitationEmailAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasInvitationEmailAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasInvitationEmailAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasInvitationEmailAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasInvitationEmailAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasInvitationEmailAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasInvitationEmailAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasInvitationEmailAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasInvitationEmailAttributeType string
@@ -3735,228 +3735,228 @@ func (i *InvitationEmailAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *InvitationEmailAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetManifest() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Manifest
+	return i.Manifest
 }
 
-func (o *InvitationEmailAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetPurpose() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Purpose
+	return i.Purpose
 }
 
-func (o *InvitationEmailAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetCompositeID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.CompositeID
+	return i.CompositeID
 }
 
-func (o *InvitationEmailAttributeSchemas) GetConstraints() *SchemasInvitationEmailAttributeConstraints {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetConstraints() *SchemasInvitationEmailAttributeConstraints {
+	if i == nil {
 		return nil
 	}
-	return o.Constraints
+	return i.Constraints
 }
 
-func (o *InvitationEmailAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetDefaultValue() any {
+	if i == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return i.DefaultValue
 }
 
-func (o *InvitationEmailAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetDeprecated() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Deprecated
+	return i.Deprecated
 }
 
-func (o *InvitationEmailAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return i.EntityBuilderDisableEdit
 }
 
-func (o *InvitationEmailAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetFeatureFlag() *string {
+	if i == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return i.FeatureFlag
 }
 
-func (o *InvitationEmailAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetGroup() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Group
+	return i.Group
 }
 
-func (o *InvitationEmailAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetHasPrimary() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return i.HasPrimary
 }
 
-func (o *InvitationEmailAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetHidden() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Hidden
+	return i.Hidden
 }
 
-func (o *InvitationEmailAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetHideLabel() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HideLabel
+	return i.HideLabel
 }
 
-func (o *InvitationEmailAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetIcon() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Icon
+	return i.Icon
 }
 
-func (o *InvitationEmailAttributeSchemas) GetID() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ID
+	return i.ID
 }
 
-func (o *InvitationEmailAttributeSchemas) GetInfoHelpers() *SchemasInvitationEmailAttributeInfoHelpers {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetInfoHelpers() *SchemasInvitationEmailAttributeInfoHelpers {
+	if i == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return i.InfoHelpers
 }
 
-func (o *InvitationEmailAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetLabel() string {
+	if i == nil {
 		return ""
 	}
-	return o.Label
+	return i.Label
 }
 
-func (o *InvitationEmailAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetLayout() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Layout
+	return i.Layout
 }
 
-func (o *InvitationEmailAttributeSchemas) GetName() string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetName() string {
+	if i == nil {
 		return ""
 	}
-	return o.Name
+	return i.Name
 }
 
-func (o *InvitationEmailAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetOrder() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.Order
+	return i.Order
 }
 
-func (o *InvitationEmailAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetPlaceholder() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Placeholder
+	return i.Placeholder
 }
 
-func (o *InvitationEmailAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetPreviewValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return i.PreviewValueFormatter
 }
 
-func (o *InvitationEmailAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetProtected() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Protected
+	return i.Protected
 }
 
-func (o *InvitationEmailAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetReadonly() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Readonly
+	return i.Readonly
 }
 
-func (o *InvitationEmailAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetRenderCondition() *string {
+	if i == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return i.RenderCondition
 }
 
-func (o *InvitationEmailAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetRepeatable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Repeatable
+	return i.Repeatable
 }
 
-func (o *InvitationEmailAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetRequired() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Required
+	return i.Required
 }
 
-func (o *InvitationEmailAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetSchema() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Schema
+	return i.Schema
 }
 
-func (o *InvitationEmailAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if i == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return i.SettingsFlag
 }
 
-func (o *InvitationEmailAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetShowInTable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return i.ShowInTable
 }
 
-func (o *InvitationEmailAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetSortable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Sortable
+	return i.Sortable
 }
 
-func (o *InvitationEmailAttributeSchemas) GetType() SchemasInvitationEmailAttributeType {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetType() SchemasInvitationEmailAttributeType {
+	if i == nil {
 		return SchemasInvitationEmailAttributeType("")
 	}
-	return o.Type
+	return i.Type
 }
 
-func (o *InvitationEmailAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemas) GetValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return i.ValueFormatter
 }
 
 // SchemasPartnerStatusAttributeConstraints - A set of constraints applicable to the attribute.
@@ -4007,32 +4007,32 @@ func (s *SchemasPartnerStatusAttributeInfoHelpers) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (o *SchemasPartnerStatusAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasPartnerStatusAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasPartnerStatusAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasPartnerStatusAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasPartnerStatusAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasPartnerStatusAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasPartnerStatusAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasPartnerStatusAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasPartnerStatusAttributeType string
@@ -4130,228 +4130,228 @@ func (p *PartnerStatusAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartnerStatusAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PartnerStatusAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PartnerStatusAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetCompositeID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.CompositeID
+	return p.CompositeID
 }
 
-func (o *PartnerStatusAttributeSchemas) GetConstraints() *SchemasPartnerStatusAttributeConstraints {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetConstraints() *SchemasPartnerStatusAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PartnerStatusAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PartnerStatusAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PartnerStatusAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PartnerStatusAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PartnerStatusAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PartnerStatusAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PartnerStatusAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PartnerStatusAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PartnerStatusAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PartnerStatusAttributeSchemas) GetID() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PartnerStatusAttributeSchemas) GetInfoHelpers() *SchemasPartnerStatusAttributeInfoHelpers {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetInfoHelpers() *SchemasPartnerStatusAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PartnerStatusAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PartnerStatusAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PartnerStatusAttributeSchemas) GetName() string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PartnerStatusAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PartnerStatusAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PartnerStatusAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PartnerStatusAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PartnerStatusAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PartnerStatusAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PartnerStatusAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PartnerStatusAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PartnerStatusAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PartnerStatusAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PartnerStatusAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PartnerStatusAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PartnerStatusAttributeSchemas) GetType() SchemasPartnerStatusAttributeType {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetType() SchemasPartnerStatusAttributeType {
+	if p == nil {
 		return SchemasPartnerStatusAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PartnerStatusAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemas) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // SchemasComputedAttributeConstraints - A set of constraints applicable to the attribute.
@@ -4402,32 +4402,32 @@ func (s *SchemasComputedAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasComputedAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasComputedAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasComputedAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasComputedAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasComputedAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasComputedAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasComputedAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasComputedAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasComputedAttributeType string
@@ -4532,249 +4532,249 @@ func (c *ComputedAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ComputedAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetManifest() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Manifest
+	return c.Manifest
 }
 
-func (o *ComputedAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetPurpose() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Purpose
+	return c.Purpose
 }
 
-func (o *ComputedAttributeSchemas) GetAmountField() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetAmountField() *string {
+	if c == nil {
 		return nil
 	}
-	return o.AmountField
+	return c.AmountField
 }
 
-func (o *ComputedAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetCompositeID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CompositeID
+	return c.CompositeID
 }
 
-func (o *ComputedAttributeSchemas) GetComputed() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetComputed() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Computed
+	return c.Computed
 }
 
-func (o *ComputedAttributeSchemas) GetConstraints() *SchemasComputedAttributeConstraints {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetConstraints() *SchemasComputedAttributeConstraints {
+	if c == nil {
 		return nil
 	}
-	return o.Constraints
+	return c.Constraints
 }
 
-func (o *ComputedAttributeSchemas) GetCurrencyField() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetCurrencyField() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CurrencyField
+	return c.CurrencyField
 }
 
-func (o *ComputedAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetDefaultValue() any {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return c.DefaultValue
 }
 
-func (o *ComputedAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetDeprecated() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Deprecated
+	return c.Deprecated
 }
 
-func (o *ComputedAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return c.EntityBuilderDisableEdit
 }
 
-func (o *ComputedAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetFeatureFlag() *string {
+	if c == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return c.FeatureFlag
 }
 
-func (o *ComputedAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetGroup() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Group
+	return c.Group
 }
 
-func (o *ComputedAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetHasPrimary() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return c.HasPrimary
 }
 
-func (o *ComputedAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetHidden() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Hidden
+	return c.Hidden
 }
 
-func (o *ComputedAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetHideLabel() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HideLabel
+	return c.HideLabel
 }
 
-func (o *ComputedAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetIcon() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Icon
+	return c.Icon
 }
 
-func (o *ComputedAttributeSchemas) GetID() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *ComputedAttributeSchemas) GetInfoHelpers() *SchemasComputedAttributeInfoHelpers {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetInfoHelpers() *SchemasComputedAttributeInfoHelpers {
+	if c == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return c.InfoHelpers
 }
 
-func (o *ComputedAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetLabel() string {
+	if c == nil {
 		return ""
 	}
-	return o.Label
+	return c.Label
 }
 
-func (o *ComputedAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetLayout() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Layout
+	return c.Layout
 }
 
-func (o *ComputedAttributeSchemas) GetName() string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *ComputedAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetOrder() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Order
+	return c.Order
 }
 
-func (o *ComputedAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetPlaceholder() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Placeholder
+	return c.Placeholder
 }
 
-func (o *ComputedAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetPreviewValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return c.PreviewValueFormatter
 }
 
-func (o *ComputedAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetProtected() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Protected
+	return c.Protected
 }
 
-func (o *ComputedAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetReadonly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Readonly
+	return c.Readonly
 }
 
-func (o *ComputedAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetRenderCondition() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return c.RenderCondition
 }
 
-func (o *ComputedAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetRepeatable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Repeatable
+	return c.Repeatable
 }
 
-func (o *ComputedAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetRequired() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Required
+	return c.Required
 }
 
-func (o *ComputedAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetSchema() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Schema
+	return c.Schema
 }
 
-func (o *ComputedAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if c == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return c.SettingsFlag
 }
 
-func (o *ComputedAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetShowInTable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return c.ShowInTable
 }
 
-func (o *ComputedAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetSortable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Sortable
+	return c.Sortable
 }
 
-func (o *ComputedAttributeSchemas) GetType() SchemasComputedAttributeType {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetType() SchemasComputedAttributeType {
+	if c == nil {
 		return SchemasComputedAttributeType("")
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *ComputedAttributeSchemas) GetValueFormatter() string {
-	if o == nil {
+func (c *ComputedAttributeSchemas) GetValueFormatter() string {
+	if c == nil {
 		return ""
 	}
-	return o.ValueFormatter
+	return c.ValueFormatter
 }
 
 // SchemasFileAttributeConstraints - A set of constraints applicable to the attribute.
@@ -4851,32 +4851,32 @@ func (s *SchemasFileAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasFileAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasFileAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasFileAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasFileAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasFileAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasFileAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasFileAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasFileAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasFileAttributeType string
@@ -4987,263 +4987,263 @@ func (f *FileAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FileAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetManifest() []string {
+	if f == nil {
 		return nil
 	}
-	return o.Manifest
+	return f.Manifest
 }
 
-func (o *FileAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetPurpose() []string {
+	if f == nil {
 		return nil
 	}
-	return o.Purpose
+	return f.Purpose
 }
 
-func (o *FileAttributeSchemas) GetAllowedExtensions() []string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetAllowedExtensions() []string {
+	if f == nil {
 		return nil
 	}
-	return o.AllowedExtensions
+	return f.AllowedExtensions
 }
 
-func (o *FileAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetCompositeID() *string {
+	if f == nil {
 		return nil
 	}
-	return o.CompositeID
+	return f.CompositeID
 }
 
-func (o *FileAttributeSchemas) GetConstraints() *SchemasFileAttributeConstraints {
-	if o == nil {
+func (f *FileAttributeSchemas) GetConstraints() *SchemasFileAttributeConstraints {
+	if f == nil {
 		return nil
 	}
-	return o.Constraints
+	return f.Constraints
 }
 
-func (o *FileAttributeSchemas) GetDefaultAccessControl() *DefaultAccessControl {
-	if o == nil {
+func (f *FileAttributeSchemas) GetDefaultAccessControl() *DefaultAccessControl {
+	if f == nil {
 		return nil
 	}
-	return o.DefaultAccessControl
+	return f.DefaultAccessControl
 }
 
-func (o *FileAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (f *FileAttributeSchemas) GetDefaultValue() any {
+	if f == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return f.DefaultValue
 }
 
-func (o *FileAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetDeprecated() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Deprecated
+	return f.Deprecated
 }
 
-func (o *FileAttributeSchemas) GetDisplayImagesLandscaped() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetDisplayImagesLandscaped() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.DisplayImagesLandscaped
+	return f.DisplayImagesLandscaped
 }
 
-func (o *FileAttributeSchemas) GetEnableDescription() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetEnableDescription() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.EnableDescription
+	return f.EnableDescription
 }
 
-func (o *FileAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return f.EntityBuilderDisableEdit
 }
 
-func (o *FileAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetFeatureFlag() *string {
+	if f == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return f.FeatureFlag
 }
 
-func (o *FileAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetGroup() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Group
+	return f.Group
 }
 
-func (o *FileAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetHasPrimary() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return f.HasPrimary
 }
 
-func (o *FileAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetHidden() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Hidden
+	return f.Hidden
 }
 
-func (o *FileAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetHideLabel() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.HideLabel
+	return f.HideLabel
 }
 
-func (o *FileAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetIcon() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Icon
+	return f.Icon
 }
 
-func (o *FileAttributeSchemas) GetID() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetID() *string {
+	if f == nil {
 		return nil
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FileAttributeSchemas) GetInfoHelpers() *SchemasFileAttributeInfoHelpers {
-	if o == nil {
+func (f *FileAttributeSchemas) GetInfoHelpers() *SchemasFileAttributeInfoHelpers {
+	if f == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return f.InfoHelpers
 }
 
-func (o *FileAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetLabel() string {
+	if f == nil {
 		return ""
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FileAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetLayout() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Layout
+	return f.Layout
 }
 
-func (o *FileAttributeSchemas) GetMultiple() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetMultiple() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Multiple
+	return f.Multiple
 }
 
-func (o *FileAttributeSchemas) GetName() string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetName() string {
+	if f == nil {
 		return ""
 	}
-	return o.Name
+	return f.Name
 }
 
-func (o *FileAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (f *FileAttributeSchemas) GetOrder() *int64 {
+	if f == nil {
 		return nil
 	}
-	return o.Order
+	return f.Order
 }
 
-func (o *FileAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FileAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetPreviewValueFormatter() *string {
+	if f == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return f.PreviewValueFormatter
 }
 
-func (o *FileAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetProtected() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Protected
+	return f.Protected
 }
 
-func (o *FileAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetReadonly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Readonly
+	return f.Readonly
 }
 
-func (o *FileAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetRenderCondition() *string {
+	if f == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return f.RenderCondition
 }
 
-func (o *FileAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetRepeatable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Repeatable
+	return f.Repeatable
 }
 
-func (o *FileAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FileAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetSchema() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Schema
+	return f.Schema
 }
 
-func (o *FileAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (f *FileAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if f == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return f.SettingsFlag
 }
 
-func (o *FileAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetShowInTable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return f.ShowInTable
 }
 
-func (o *FileAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (f *FileAttributeSchemas) GetSortable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Sortable
+	return f.Sortable
 }
 
-func (o *FileAttributeSchemas) GetType() SchemasFileAttributeType {
-	if o == nil {
+func (f *FileAttributeSchemas) GetType() SchemasFileAttributeType {
+	if f == nil {
 		return SchemasFileAttributeType("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FileAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (f *FileAttributeSchemas) GetValueFormatter() *string {
+	if f == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return f.ValueFormatter
 }
 
 // SchemasOrderedListAttributeConstraints - A set of constraints applicable to the attribute.
@@ -5294,32 +5294,32 @@ func (s *SchemasOrderedListAttributeInfoHelpers) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *SchemasOrderedListAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasOrderedListAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasOrderedListAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasOrderedListAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasOrderedListAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasOrderedListAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasOrderedListAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasOrderedListAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasOrderedListAttributeType string
@@ -5689,32 +5689,32 @@ func (s *SchemasInternalAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasInternalAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasInternalAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasInternalAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasInternalAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasInternalAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasInternalAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasInternalAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasInternalAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasInternalAttributeType string
@@ -5812,228 +5812,228 @@ func (i *InternalAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *InternalAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetManifest() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Manifest
+	return i.Manifest
 }
 
-func (o *InternalAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetPurpose() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Purpose
+	return i.Purpose
 }
 
-func (o *InternalAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetCompositeID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.CompositeID
+	return i.CompositeID
 }
 
-func (o *InternalAttributeSchemas) GetConstraints() *SchemasInternalAttributeConstraints {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetConstraints() *SchemasInternalAttributeConstraints {
+	if i == nil {
 		return nil
 	}
-	return o.Constraints
+	return i.Constraints
 }
 
-func (o *InternalAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetDefaultValue() any {
+	if i == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return i.DefaultValue
 }
 
-func (o *InternalAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetDeprecated() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Deprecated
+	return i.Deprecated
 }
 
-func (o *InternalAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return i.EntityBuilderDisableEdit
 }
 
-func (o *InternalAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetFeatureFlag() *string {
+	if i == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return i.FeatureFlag
 }
 
-func (o *InternalAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetGroup() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Group
+	return i.Group
 }
 
-func (o *InternalAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetHasPrimary() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return i.HasPrimary
 }
 
-func (o *InternalAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetHidden() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Hidden
+	return i.Hidden
 }
 
-func (o *InternalAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetHideLabel() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HideLabel
+	return i.HideLabel
 }
 
-func (o *InternalAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetIcon() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Icon
+	return i.Icon
 }
 
-func (o *InternalAttributeSchemas) GetID() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ID
+	return i.ID
 }
 
-func (o *InternalAttributeSchemas) GetInfoHelpers() *SchemasInternalAttributeInfoHelpers {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetInfoHelpers() *SchemasInternalAttributeInfoHelpers {
+	if i == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return i.InfoHelpers
 }
 
-func (o *InternalAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetLabel() string {
+	if i == nil {
 		return ""
 	}
-	return o.Label
+	return i.Label
 }
 
-func (o *InternalAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetLayout() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Layout
+	return i.Layout
 }
 
-func (o *InternalAttributeSchemas) GetName() string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetName() string {
+	if i == nil {
 		return ""
 	}
-	return o.Name
+	return i.Name
 }
 
-func (o *InternalAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetOrder() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.Order
+	return i.Order
 }
 
-func (o *InternalAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetPlaceholder() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Placeholder
+	return i.Placeholder
 }
 
-func (o *InternalAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetPreviewValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return i.PreviewValueFormatter
 }
 
-func (o *InternalAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetProtected() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Protected
+	return i.Protected
 }
 
-func (o *InternalAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetReadonly() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Readonly
+	return i.Readonly
 }
 
-func (o *InternalAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetRenderCondition() *string {
+	if i == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return i.RenderCondition
 }
 
-func (o *InternalAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetRepeatable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Repeatable
+	return i.Repeatable
 }
 
-func (o *InternalAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetRequired() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Required
+	return i.Required
 }
 
-func (o *InternalAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetSchema() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Schema
+	return i.Schema
 }
 
-func (o *InternalAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if i == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return i.SettingsFlag
 }
 
-func (o *InternalAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetShowInTable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return i.ShowInTable
 }
 
-func (o *InternalAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetSortable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Sortable
+	return i.Sortable
 }
 
-func (o *InternalAttributeSchemas) GetType() SchemasInternalAttributeType {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetType() SchemasInternalAttributeType {
+	if i == nil {
 		return SchemasInternalAttributeType("")
 	}
-	return o.Type
+	return i.Type
 }
 
-func (o *InternalAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (i *InternalAttributeSchemas) GetValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return i.ValueFormatter
 }
 
 // SchemasConsentAttributeConstraints - A set of constraints applicable to the attribute.
@@ -6084,32 +6084,32 @@ func (s *SchemasConsentAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasConsentAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasConsentAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasConsentAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasConsentAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasConsentAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasConsentAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasConsentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasConsentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasConsentAttributeType string
@@ -6209,242 +6209,242 @@ func (c *ConsentAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ConsentAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetManifest() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Manifest
+	return c.Manifest
 }
 
-func (o *ConsentAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetPurpose() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Purpose
+	return c.Purpose
 }
 
-func (o *ConsentAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetCompositeID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CompositeID
+	return c.CompositeID
 }
 
-func (o *ConsentAttributeSchemas) GetConstraints() *SchemasConsentAttributeConstraints {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetConstraints() *SchemasConsentAttributeConstraints {
+	if c == nil {
 		return nil
 	}
-	return o.Constraints
+	return c.Constraints
 }
 
-func (o *ConsentAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetDefaultValue() any {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return c.DefaultValue
 }
 
-func (o *ConsentAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetDeprecated() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Deprecated
+	return c.Deprecated
 }
 
-func (o *ConsentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return c.EntityBuilderDisableEdit
 }
 
-func (o *ConsentAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetFeatureFlag() *string {
+	if c == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return c.FeatureFlag
 }
 
-func (o *ConsentAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetGroup() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Group
+	return c.Group
 }
 
-func (o *ConsentAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetHasPrimary() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return c.HasPrimary
 }
 
-func (o *ConsentAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetHidden() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Hidden
+	return c.Hidden
 }
 
-func (o *ConsentAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetHideLabel() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HideLabel
+	return c.HideLabel
 }
 
-func (o *ConsentAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetIcon() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Icon
+	return c.Icon
 }
 
-func (o *ConsentAttributeSchemas) GetID() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *ConsentAttributeSchemas) GetIdentifiers() []string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetIdentifiers() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Identifiers
+	return c.Identifiers
 }
 
-func (o *ConsentAttributeSchemas) GetInfoHelpers() *SchemasConsentAttributeInfoHelpers {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetInfoHelpers() *SchemasConsentAttributeInfoHelpers {
+	if c == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return c.InfoHelpers
 }
 
-func (o *ConsentAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetLabel() string {
+	if c == nil {
 		return ""
 	}
-	return o.Label
+	return c.Label
 }
 
-func (o *ConsentAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetLayout() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Layout
+	return c.Layout
 }
 
-func (o *ConsentAttributeSchemas) GetName() string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *ConsentAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetOrder() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Order
+	return c.Order
 }
 
-func (o *ConsentAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetPlaceholder() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Placeholder
+	return c.Placeholder
 }
 
-func (o *ConsentAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetPreviewValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return c.PreviewValueFormatter
 }
 
-func (o *ConsentAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetProtected() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Protected
+	return c.Protected
 }
 
-func (o *ConsentAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetReadonly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Readonly
+	return c.Readonly
 }
 
-func (o *ConsentAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetRenderCondition() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return c.RenderCondition
 }
 
-func (o *ConsentAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetRepeatable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Repeatable
+	return c.Repeatable
 }
 
-func (o *ConsentAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetRequired() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Required
+	return c.Required
 }
 
-func (o *ConsentAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetSchema() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Schema
+	return c.Schema
 }
 
-func (o *ConsentAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if c == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return c.SettingsFlag
 }
 
-func (o *ConsentAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetShowInTable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return c.ShowInTable
 }
 
-func (o *ConsentAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetSortable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Sortable
+	return c.Sortable
 }
 
-func (o *ConsentAttributeSchemas) GetTopic() string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetTopic() string {
+	if c == nil {
 		return ""
 	}
-	return o.Topic
+	return c.Topic
 }
 
-func (o *ConsentAttributeSchemas) GetType() SchemasConsentAttributeType {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetType() SchemasConsentAttributeType {
+	if c == nil {
 		return SchemasConsentAttributeType("")
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *ConsentAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemas) GetValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return c.ValueFormatter
 }
 
 // SchemasNumberAttributeConstraints - A set of constraints applicable to the attribute.
@@ -6495,32 +6495,32 @@ func (s *SchemasNumberAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasNumberAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasNumberAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasNumberAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasNumberAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasNumberAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasNumberAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasNumberAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasNumberAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasNumberAttributeType string
@@ -6621,242 +6621,242 @@ func (n *NumberAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *NumberAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetManifest() []string {
+	if n == nil {
 		return nil
 	}
-	return o.Manifest
+	return n.Manifest
 }
 
-func (o *NumberAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetPurpose() []string {
+	if n == nil {
 		return nil
 	}
-	return o.Purpose
+	return n.Purpose
 }
 
-func (o *NumberAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetCompositeID() *string {
+	if n == nil {
 		return nil
 	}
-	return o.CompositeID
+	return n.CompositeID
 }
 
-func (o *NumberAttributeSchemas) GetConstraints() *SchemasNumberAttributeConstraints {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetConstraints() *SchemasNumberAttributeConstraints {
+	if n == nil {
 		return nil
 	}
-	return o.Constraints
+	return n.Constraints
 }
 
-func (o *NumberAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetDefaultValue() any {
+	if n == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return n.DefaultValue
 }
 
-func (o *NumberAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetDeprecated() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Deprecated
+	return n.Deprecated
 }
 
-func (o *NumberAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return n.EntityBuilderDisableEdit
 }
 
-func (o *NumberAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetFeatureFlag() *string {
+	if n == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return n.FeatureFlag
 }
 
-func (o *NumberAttributeSchemas) GetFormat() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetFormat() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Format
+	return n.Format
 }
 
-func (o *NumberAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetGroup() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Group
+	return n.Group
 }
 
-func (o *NumberAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetHasPrimary() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return n.HasPrimary
 }
 
-func (o *NumberAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetHidden() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Hidden
+	return n.Hidden
 }
 
-func (o *NumberAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetHideLabel() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.HideLabel
+	return n.HideLabel
 }
 
-func (o *NumberAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetIcon() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Icon
+	return n.Icon
 }
 
-func (o *NumberAttributeSchemas) GetID() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetID() *string {
+	if n == nil {
 		return nil
 	}
-	return o.ID
+	return n.ID
 }
 
-func (o *NumberAttributeSchemas) GetInfoHelpers() *SchemasNumberAttributeInfoHelpers {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetInfoHelpers() *SchemasNumberAttributeInfoHelpers {
+	if n == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return n.InfoHelpers
 }
 
-func (o *NumberAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetLabel() string {
+	if n == nil {
 		return ""
 	}
-	return o.Label
+	return n.Label
 }
 
-func (o *NumberAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetLayout() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Layout
+	return n.Layout
 }
 
-func (o *NumberAttributeSchemas) GetName() string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetName() string {
+	if n == nil {
 		return ""
 	}
-	return o.Name
+	return n.Name
 }
 
-func (o *NumberAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetOrder() *int64 {
+	if n == nil {
 		return nil
 	}
-	return o.Order
+	return n.Order
 }
 
-func (o *NumberAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetPlaceholder() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Placeholder
+	return n.Placeholder
 }
 
-func (o *NumberAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetPreviewValueFormatter() *string {
+	if n == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return n.PreviewValueFormatter
 }
 
-func (o *NumberAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetProtected() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Protected
+	return n.Protected
 }
 
-func (o *NumberAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetReadonly() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Readonly
+	return n.Readonly
 }
 
-func (o *NumberAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetRenderCondition() *string {
+	if n == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return n.RenderCondition
 }
 
-func (o *NumberAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetRepeatable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Repeatable
+	return n.Repeatable
 }
 
-func (o *NumberAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetRequired() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Required
+	return n.Required
 }
 
-func (o *NumberAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetSchema() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Schema
+	return n.Schema
 }
 
-func (o *NumberAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if n == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return n.SettingsFlag
 }
 
-func (o *NumberAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetShowInTable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return n.ShowInTable
 }
 
-func (o *NumberAttributeSchemas) GetShowSeparator() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetShowSeparator() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.ShowSeparator
+	return n.ShowSeparator
 }
 
-func (o *NumberAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetSortable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Sortable
+	return n.Sortable
 }
 
-func (o *NumberAttributeSchemas) GetType() SchemasNumberAttributeType {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetType() SchemasNumberAttributeType {
+	if n == nil {
 		return SchemasNumberAttributeType("")
 	}
-	return o.Type
+	return n.Type
 }
 
-func (o *NumberAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (n *NumberAttributeSchemas) GetValueFormatter() *string {
+	if n == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return n.ValueFormatter
 }
 
 // SchemasMessageEmailAddressAttributeConstraints - A set of constraints applicable to the attribute.
@@ -6907,32 +6907,32 @@ func (s *SchemasMessageEmailAddressAttributeInfoHelpers) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasMessageEmailAddressAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasMessageEmailAddressAttributeType string
@@ -7033,249 +7033,249 @@ func (m *MessageEmailAddressAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetManifest() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Manifest
+	return m.Manifest
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetPurpose() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Purpose
+	return m.Purpose
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetAddress() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetAddress() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Address
+	return m.Address
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetCompositeID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.CompositeID
+	return m.CompositeID
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetConstraints() *SchemasMessageEmailAddressAttributeConstraints {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetConstraints() *SchemasMessageEmailAddressAttributeConstraints {
+	if m == nil {
 		return nil
 	}
-	return o.Constraints
+	return m.Constraints
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetDefaultValue() any {
+	if m == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return m.DefaultValue
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetDeprecated() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Deprecated
+	return m.Deprecated
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetEmailType() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetEmailType() *string {
+	if m == nil {
 		return nil
 	}
-	return o.EmailType
+	return m.EmailType
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return m.EntityBuilderDisableEdit
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetFeatureFlag() *string {
+	if m == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return m.FeatureFlag
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetGroup() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Group
+	return m.Group
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetHasPrimary() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return m.HasPrimary
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetHidden() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Hidden
+	return m.Hidden
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetHideLabel() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.HideLabel
+	return m.HideLabel
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetIcon() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Icon
+	return m.Icon
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetID() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ID
+	return m.ID
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetInfoHelpers() *SchemasMessageEmailAddressAttributeInfoHelpers {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetInfoHelpers() *SchemasMessageEmailAddressAttributeInfoHelpers {
+	if m == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return m.InfoHelpers
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetLabel() string {
+	if m == nil {
 		return ""
 	}
-	return o.Label
+	return m.Label
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetLayout() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Layout
+	return m.Layout
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetName() string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetName() string {
+	if m == nil {
 		return ""
 	}
-	return o.Name
+	return m.Name
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetOrder() *int64 {
+	if m == nil {
 		return nil
 	}
-	return o.Order
+	return m.Order
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetPlaceholder() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Placeholder
+	return m.Placeholder
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetPreviewValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return m.PreviewValueFormatter
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetProtected() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Protected
+	return m.Protected
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetReadonly() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Readonly
+	return m.Readonly
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetRenderCondition() *string {
+	if m == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return m.RenderCondition
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetRepeatable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Repeatable
+	return m.Repeatable
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetRequired() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Required
+	return m.Required
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetSchema() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Schema
+	return m.Schema
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetSendStatus() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetSendStatus() *string {
+	if m == nil {
 		return nil
 	}
-	return o.SendStatus
+	return m.SendStatus
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if m == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return m.SettingsFlag
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetShowInTable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return m.ShowInTable
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetSortable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Sortable
+	return m.Sortable
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetType() SchemasMessageEmailAddressAttributeType {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetType() SchemasMessageEmailAddressAttributeType {
+	if m == nil {
 		return SchemasMessageEmailAddressAttributeType("")
 	}
-	return o.Type
+	return m.Type
 }
 
-func (o *MessageEmailAddressAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemas) GetValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return m.ValueFormatter
 }
 
 // SchemasTagsAttributeConstraints - A set of constraints applicable to the attribute.
@@ -7326,32 +7326,32 @@ func (s *SchemasTagsAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasTagsAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasTagsAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasTagsAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasTagsAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasTagsAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasTagsAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasTagsAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasTagsAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasTagsAttributeType string
@@ -7451,242 +7451,242 @@ func (t *TagsAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TagsAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetManifest() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Manifest
+	return t.Manifest
 }
 
-func (o *TagsAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetPurpose() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Purpose
+	return t.Purpose
 }
 
-func (o *TagsAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetCompositeID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.CompositeID
+	return t.CompositeID
 }
 
-func (o *TagsAttributeSchemas) GetConstraints() *SchemasTagsAttributeConstraints {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetConstraints() *SchemasTagsAttributeConstraints {
+	if t == nil {
 		return nil
 	}
-	return o.Constraints
+	return t.Constraints
 }
 
-func (o *TagsAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetDefaultValue() any {
+	if t == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return t.DefaultValue
 }
 
-func (o *TagsAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetDeprecated() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Deprecated
+	return t.Deprecated
 }
 
-func (o *TagsAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return t.EntityBuilderDisableEdit
 }
 
-func (o *TagsAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetFeatureFlag() *string {
+	if t == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return t.FeatureFlag
 }
 
-func (o *TagsAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetGroup() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Group
+	return t.Group
 }
 
-func (o *TagsAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetHasPrimary() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return t.HasPrimary
 }
 
-func (o *TagsAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetHidden() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Hidden
+	return t.Hidden
 }
 
-func (o *TagsAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetHideLabel() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HideLabel
+	return t.HideLabel
 }
 
-func (o *TagsAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetIcon() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Icon
+	return t.Icon
 }
 
-func (o *TagsAttributeSchemas) GetID() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TagsAttributeSchemas) GetInfoHelpers() *SchemasTagsAttributeInfoHelpers {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetInfoHelpers() *SchemasTagsAttributeInfoHelpers {
+	if t == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return t.InfoHelpers
 }
 
-func (o *TagsAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetLabel() string {
+	if t == nil {
 		return ""
 	}
-	return o.Label
+	return t.Label
 }
 
-func (o *TagsAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetLayout() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Layout
+	return t.Layout
 }
 
-func (o *TagsAttributeSchemas) GetName() string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TagsAttributeSchemas) GetOptions() []string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetOptions() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Options
+	return t.Options
 }
 
-func (o *TagsAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetOrder() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Order
+	return t.Order
 }
 
-func (o *TagsAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetPlaceholder() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Placeholder
+	return t.Placeholder
 }
 
-func (o *TagsAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetPreviewValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return t.PreviewValueFormatter
 }
 
-func (o *TagsAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetProtected() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Protected
+	return t.Protected
 }
 
-func (o *TagsAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetReadonly() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Readonly
+	return t.Readonly
 }
 
-func (o *TagsAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetRenderCondition() *string {
+	if t == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return t.RenderCondition
 }
 
-func (o *TagsAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetRepeatable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Repeatable
+	return t.Repeatable
 }
 
-func (o *TagsAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetRequired() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Required
+	return t.Required
 }
 
-func (o *TagsAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetSchema() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Schema
+	return t.Schema
 }
 
-func (o *TagsAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if t == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return t.SettingsFlag
 }
 
-func (o *TagsAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetShowInTable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return t.ShowInTable
 }
 
-func (o *TagsAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetSortable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Sortable
+	return t.Sortable
 }
 
-func (o *TagsAttributeSchemas) GetSuggestions() []string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetSuggestions() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Suggestions
+	return t.Suggestions
 }
 
-func (o *TagsAttributeSchemas) GetType() SchemasTagsAttributeType {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetType() SchemasTagsAttributeType {
+	if t == nil {
 		return SchemasTagsAttributeType("")
 	}
-	return o.Type
+	return t.Type
 }
 
-func (o *TagsAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (t *TagsAttributeSchemas) GetValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return t.ValueFormatter
 }
 
 // SchemasCurrencyAttributeConstraints - A set of constraints applicable to the attribute.
@@ -7759,7 +7759,7 @@ const (
 )
 
 type Currency struct {
-	One *One `queryParam:"inline" name:"currency"`
+	One *One `queryParam:"inline,name=currency"`
 
 	Type CurrencyType
 }
@@ -7825,32 +7825,32 @@ func (s *SchemasCurrencyAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasCurrencyAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasCurrencyAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasCurrencyAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasCurrencyAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasCurrencyAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasCurrencyAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasCurrencyAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasCurrencyAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasCurrencyAttributeType string
@@ -7951,242 +7951,242 @@ func (c *CurrencyAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CurrencyAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetManifest() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Manifest
+	return c.Manifest
 }
 
-func (o *CurrencyAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetPurpose() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Purpose
+	return c.Purpose
 }
 
-func (o *CurrencyAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetCompositeID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CompositeID
+	return c.CompositeID
 }
 
-func (o *CurrencyAttributeSchemas) GetConstraints() *SchemasCurrencyAttributeConstraints {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetConstraints() *SchemasCurrencyAttributeConstraints {
+	if c == nil {
 		return nil
 	}
-	return o.Constraints
+	return c.Constraints
 }
 
-func (o *CurrencyAttributeSchemas) GetCurrency() []Currency {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetCurrency() []Currency {
+	if c == nil {
 		return []Currency{}
 	}
-	return o.Currency
+	return c.Currency
 }
 
-func (o *CurrencyAttributeSchemas) GetCurrencySelectorOnly() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetCurrencySelectorOnly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.CurrencySelectorOnly
+	return c.CurrencySelectorOnly
 }
 
-func (o *CurrencyAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetDefaultValue() any {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return c.DefaultValue
 }
 
-func (o *CurrencyAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetDeprecated() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Deprecated
+	return c.Deprecated
 }
 
-func (o *CurrencyAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return c.EntityBuilderDisableEdit
 }
 
-func (o *CurrencyAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetFeatureFlag() *string {
+	if c == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return c.FeatureFlag
 }
 
-func (o *CurrencyAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetGroup() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Group
+	return c.Group
 }
 
-func (o *CurrencyAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetHasPrimary() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return c.HasPrimary
 }
 
-func (o *CurrencyAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetHidden() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Hidden
+	return c.Hidden
 }
 
-func (o *CurrencyAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetHideLabel() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HideLabel
+	return c.HideLabel
 }
 
-func (o *CurrencyAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetIcon() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Icon
+	return c.Icon
 }
 
-func (o *CurrencyAttributeSchemas) GetID() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CurrencyAttributeSchemas) GetInfoHelpers() *SchemasCurrencyAttributeInfoHelpers {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetInfoHelpers() *SchemasCurrencyAttributeInfoHelpers {
+	if c == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return c.InfoHelpers
 }
 
-func (o *CurrencyAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetLabel() string {
+	if c == nil {
 		return ""
 	}
-	return o.Label
+	return c.Label
 }
 
-func (o *CurrencyAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetLayout() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Layout
+	return c.Layout
 }
 
-func (o *CurrencyAttributeSchemas) GetName() string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CurrencyAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetOrder() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Order
+	return c.Order
 }
 
-func (o *CurrencyAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetPlaceholder() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Placeholder
+	return c.Placeholder
 }
 
-func (o *CurrencyAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetPreviewValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return c.PreviewValueFormatter
 }
 
-func (o *CurrencyAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetProtected() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Protected
+	return c.Protected
 }
 
-func (o *CurrencyAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetReadonly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Readonly
+	return c.Readonly
 }
 
-func (o *CurrencyAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetRenderCondition() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return c.RenderCondition
 }
 
-func (o *CurrencyAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetRepeatable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Repeatable
+	return c.Repeatable
 }
 
-func (o *CurrencyAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetRequired() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Required
+	return c.Required
 }
 
-func (o *CurrencyAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetSchema() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Schema
+	return c.Schema
 }
 
-func (o *CurrencyAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if c == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return c.SettingsFlag
 }
 
-func (o *CurrencyAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetShowInTable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return c.ShowInTable
 }
 
-func (o *CurrencyAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetSortable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Sortable
+	return c.Sortable
 }
 
-func (o *CurrencyAttributeSchemas) GetType() SchemasCurrencyAttributeType {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetType() SchemasCurrencyAttributeType {
+	if c == nil {
 		return SchemasCurrencyAttributeType("")
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *CurrencyAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemas) GetValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return c.ValueFormatter
 }
 
 // SchemasPaymentMethodRelationAttributeConstraints - A set of constraints applicable to the attribute.
@@ -8237,32 +8237,32 @@ func (s *SchemasPaymentMethodRelationAttributeInfoHelpers) UnmarshalJSON(data []
 	return nil
 }
 
-func (o *SchemasPaymentMethodRelationAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasPaymentMethodRelationAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasPaymentMethodRelationAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasPaymentMethodRelationAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasPaymentMethodRelationAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasPaymentMethodRelationAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasPaymentMethodRelationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasPaymentMethodRelationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasPaymentMethodRelationAttributeType string
@@ -8360,228 +8360,228 @@ func (p *PaymentMethodRelationAttributeSchemas) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetCompositeID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.CompositeID
+	return p.CompositeID
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetConstraints() *SchemasPaymentMethodRelationAttributeConstraints {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetConstraints() *SchemasPaymentMethodRelationAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetID() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetInfoHelpers() *SchemasPaymentMethodRelationAttributeInfoHelpers {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetInfoHelpers() *SchemasPaymentMethodRelationAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetName() string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetType() SchemasPaymentMethodRelationAttributeType {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetType() SchemasPaymentMethodRelationAttributeType {
+	if p == nil {
 		return SchemasPaymentMethodRelationAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PaymentMethodRelationAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemas) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // SchemasConstraints - A set of constraints applicable to the attribute.
@@ -8632,32 +8632,32 @@ func (s *SchemasInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasType string
@@ -8777,235 +8777,235 @@ func (a *AddressRelationAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AddressRelationAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetManifest() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Manifest
+	return a.Manifest
 }
 
-func (o *AddressRelationAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetPurpose() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Purpose
+	return a.Purpose
 }
 
-func (o *AddressRelationAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetCompositeID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.CompositeID
+	return a.CompositeID
 }
 
-func (o *AddressRelationAttributeSchemas) GetConstraints() *SchemasConstraints {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetConstraints() *SchemasConstraints {
+	if a == nil {
 		return nil
 	}
-	return o.Constraints
+	return a.Constraints
 }
 
-func (o *AddressRelationAttributeSchemas) GetDefaultAddressFields() []string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetDefaultAddressFields() []string {
+	if a == nil {
 		return nil
 	}
-	return o.DefaultAddressFields
+	return a.DefaultAddressFields
 }
 
-func (o *AddressRelationAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetDefaultValue() any {
+	if a == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return a.DefaultValue
 }
 
-func (o *AddressRelationAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetDeprecated() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Deprecated
+	return a.Deprecated
 }
 
-func (o *AddressRelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return a.EntityBuilderDisableEdit
 }
 
-func (o *AddressRelationAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetFeatureFlag() *string {
+	if a == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return a.FeatureFlag
 }
 
-func (o *AddressRelationAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetGroup() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Group
+	return a.Group
 }
 
-func (o *AddressRelationAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetHasPrimary() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return a.HasPrimary
 }
 
-func (o *AddressRelationAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetHidden() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Hidden
+	return a.Hidden
 }
 
-func (o *AddressRelationAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetHideLabel() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HideLabel
+	return a.HideLabel
 }
 
-func (o *AddressRelationAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetIcon() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Icon
+	return a.Icon
 }
 
-func (o *AddressRelationAttributeSchemas) GetID() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AddressRelationAttributeSchemas) GetInfoHelpers() *SchemasInfoHelpers {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetInfoHelpers() *SchemasInfoHelpers {
+	if a == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return a.InfoHelpers
 }
 
-func (o *AddressRelationAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetLabel() string {
+	if a == nil {
 		return ""
 	}
-	return o.Label
+	return a.Label
 }
 
-func (o *AddressRelationAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetLayout() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Layout
+	return a.Layout
 }
 
-func (o *AddressRelationAttributeSchemas) GetName() string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AddressRelationAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetOrder() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.Order
+	return a.Order
 }
 
-func (o *AddressRelationAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetPlaceholder() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Placeholder
+	return a.Placeholder
 }
 
-func (o *AddressRelationAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetPreviewValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return a.PreviewValueFormatter
 }
 
-func (o *AddressRelationAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetProtected() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Protected
+	return a.Protected
 }
 
-func (o *AddressRelationAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetReadonly() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Readonly
+	return a.Readonly
 }
 
-func (o *AddressRelationAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetRenderCondition() *string {
+	if a == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return a.RenderCondition
 }
 
-func (o *AddressRelationAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetRepeatable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Repeatable
+	return a.Repeatable
 }
 
-func (o *AddressRelationAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetRequired() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Required
+	return a.Required
 }
 
-func (o *AddressRelationAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetSchema() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Schema
+	return a.Schema
 }
 
-func (o *AddressRelationAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if a == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return a.SettingsFlag
 }
 
-func (o *AddressRelationAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetShowInTable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return a.ShowInTable
 }
 
-func (o *AddressRelationAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetSortable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Sortable
+	return a.Sortable
 }
 
-func (o *AddressRelationAttributeSchemas) GetType() SchemasType {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetType() SchemasType {
+	if a == nil {
 		return SchemasType("")
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *AddressRelationAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemas) GetValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return a.ValueFormatter
 }
 
 // Constraints - A set of constraints applicable to the attribute.
@@ -9056,32 +9056,32 @@ func (i *InfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *InfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (i *InfoHelpers) GetHintCustomComponent() *string {
+	if i == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return i.HintCustomComponent
 }
 
-func (o *InfoHelpers) GetHintText() *string {
-	if o == nil {
+func (i *InfoHelpers) GetHintText() *string {
+	if i == nil {
 		return nil
 	}
-	return o.HintText
+	return i.HintText
 }
 
-func (o *InfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (i *InfoHelpers) GetHintTextKey() *string {
+	if i == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return i.HintTextKey
 }
 
-func (o *InfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (i *InfoHelpers) GetHintTooltipPlacement() *string {
+	if i == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return i.HintTooltipPlacement
 }
 
 type Type string
@@ -9201,235 +9201,235 @@ func (s *Schemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Schemas) GetManifest() []string {
-	if o == nil {
+func (s *Schemas) GetManifest() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Manifest
+	return s.Manifest
 }
 
-func (o *Schemas) GetPurpose() []string {
-	if o == nil {
+func (s *Schemas) GetPurpose() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Purpose
+	return s.Purpose
 }
 
-func (o *Schemas) GetCompositeID() *string {
-	if o == nil {
+func (s *Schemas) GetCompositeID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.CompositeID
+	return s.CompositeID
 }
 
-func (o *Schemas) GetConstraints() *Constraints {
-	if o == nil {
+func (s *Schemas) GetConstraints() *Constraints {
+	if s == nil {
 		return nil
 	}
-	return o.Constraints
+	return s.Constraints
 }
 
-func (o *Schemas) GetDefaultAddressFields() []string {
-	if o == nil {
+func (s *Schemas) GetDefaultAddressFields() []string {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultAddressFields
+	return s.DefaultAddressFields
 }
 
-func (o *Schemas) GetDefaultValue() any {
-	if o == nil {
+func (s *Schemas) GetDefaultValue() any {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return s.DefaultValue
 }
 
-func (o *Schemas) GetDeprecated() *bool {
-	if o == nil {
+func (s *Schemas) GetDeprecated() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Deprecated
+	return s.Deprecated
 }
 
-func (o *Schemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (s *Schemas) GetEntityBuilderDisableEdit() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return s.EntityBuilderDisableEdit
 }
 
-func (o *Schemas) GetFeatureFlag() *string {
-	if o == nil {
+func (s *Schemas) GetFeatureFlag() *string {
+	if s == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return s.FeatureFlag
 }
 
-func (o *Schemas) GetGroup() *string {
-	if o == nil {
+func (s *Schemas) GetGroup() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Group
+	return s.Group
 }
 
-func (o *Schemas) GetHasPrimary() *bool {
-	if o == nil {
+func (s *Schemas) GetHasPrimary() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return s.HasPrimary
 }
 
-func (o *Schemas) GetHidden() *bool {
-	if o == nil {
+func (s *Schemas) GetHidden() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Hidden
+	return s.Hidden
 }
 
-func (o *Schemas) GetHideLabel() *bool {
-	if o == nil {
+func (s *Schemas) GetHideLabel() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HideLabel
+	return s.HideLabel
 }
 
-func (o *Schemas) GetIcon() *string {
-	if o == nil {
+func (s *Schemas) GetIcon() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Icon
+	return s.Icon
 }
 
-func (o *Schemas) GetID() *string {
-	if o == nil {
+func (s *Schemas) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *Schemas) GetInfoHelpers() *InfoHelpers {
-	if o == nil {
+func (s *Schemas) GetInfoHelpers() *InfoHelpers {
+	if s == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return s.InfoHelpers
 }
 
-func (o *Schemas) GetLabel() string {
-	if o == nil {
+func (s *Schemas) GetLabel() string {
+	if s == nil {
 		return ""
 	}
-	return o.Label
+	return s.Label
 }
 
-func (o *Schemas) GetLayout() *string {
-	if o == nil {
+func (s *Schemas) GetLayout() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Layout
+	return s.Layout
 }
 
-func (o *Schemas) GetName() string {
-	if o == nil {
+func (s *Schemas) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *Schemas) GetOrder() *int64 {
-	if o == nil {
+func (s *Schemas) GetOrder() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Order
+	return s.Order
 }
 
-func (o *Schemas) GetPlaceholder() *string {
-	if o == nil {
+func (s *Schemas) GetPlaceholder() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Placeholder
+	return s.Placeholder
 }
 
-func (o *Schemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (s *Schemas) GetPreviewValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return s.PreviewValueFormatter
 }
 
-func (o *Schemas) GetProtected() *bool {
-	if o == nil {
+func (s *Schemas) GetProtected() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Protected
+	return s.Protected
 }
 
-func (o *Schemas) GetReadonly() *bool {
-	if o == nil {
+func (s *Schemas) GetReadonly() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Readonly
+	return s.Readonly
 }
 
-func (o *Schemas) GetRenderCondition() *string {
-	if o == nil {
+func (s *Schemas) GetRenderCondition() *string {
+	if s == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return s.RenderCondition
 }
 
-func (o *Schemas) GetRepeatable() *bool {
-	if o == nil {
+func (s *Schemas) GetRepeatable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Repeatable
+	return s.Repeatable
 }
 
-func (o *Schemas) GetRequired() *bool {
-	if o == nil {
+func (s *Schemas) GetRequired() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Required
+	return s.Required
 }
 
-func (o *Schemas) GetSchema() *string {
-	if o == nil {
+func (s *Schemas) GetSchema() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *Schemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (s *Schemas) GetSettingsFlag() []SettingFlag {
+	if s == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return s.SettingsFlag
 }
 
-func (o *Schemas) GetShowInTable() *bool {
-	if o == nil {
+func (s *Schemas) GetShowInTable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return s.ShowInTable
 }
 
-func (o *Schemas) GetSortable() *bool {
-	if o == nil {
+func (s *Schemas) GetSortable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Sortable
+	return s.Sortable
 }
 
-func (o *Schemas) GetType() Type {
-	if o == nil {
+func (s *Schemas) GetType() Type {
+	if s == nil {
 		return Type("")
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *Schemas) GetValueFormatter() *string {
-	if o == nil {
+func (s *Schemas) GetValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return s.ValueFormatter
 }
 
 // SchemasUserRelationAttributeConstraints - A set of constraints applicable to the attribute.
@@ -9480,32 +9480,32 @@ func (s *SchemasUserRelationAttributeInfoHelpers) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (o *SchemasUserRelationAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasUserRelationAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasUserRelationAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasUserRelationAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasUserRelationAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasUserRelationAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasUserRelationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasUserRelationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasUserRelationAttributeType string
@@ -9604,235 +9604,235 @@ func (u *UserRelationAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UserRelationAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetManifest() []string {
+	if u == nil {
 		return nil
 	}
-	return o.Manifest
+	return u.Manifest
 }
 
-func (o *UserRelationAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetPurpose() []string {
+	if u == nil {
 		return nil
 	}
-	return o.Purpose
+	return u.Purpose
 }
 
-func (o *UserRelationAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetCompositeID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.CompositeID
+	return u.CompositeID
 }
 
-func (o *UserRelationAttributeSchemas) GetConstraints() *SchemasUserRelationAttributeConstraints {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetConstraints() *SchemasUserRelationAttributeConstraints {
+	if u == nil {
 		return nil
 	}
-	return o.Constraints
+	return u.Constraints
 }
 
-func (o *UserRelationAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetDefaultValue() any {
+	if u == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return u.DefaultValue
 }
 
-func (o *UserRelationAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetDeprecated() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Deprecated
+	return u.Deprecated
 }
 
-func (o *UserRelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return u.EntityBuilderDisableEdit
 }
 
-func (o *UserRelationAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetFeatureFlag() *string {
+	if u == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return u.FeatureFlag
 }
 
-func (o *UserRelationAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetGroup() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Group
+	return u.Group
 }
 
-func (o *UserRelationAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetHasPrimary() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return u.HasPrimary
 }
 
-func (o *UserRelationAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetHidden() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Hidden
+	return u.Hidden
 }
 
-func (o *UserRelationAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetHideLabel() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.HideLabel
+	return u.HideLabel
 }
 
-func (o *UserRelationAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetIcon() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Icon
+	return u.Icon
 }
 
-func (o *UserRelationAttributeSchemas) GetID() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UserRelationAttributeSchemas) GetInfoHelpers() *SchemasUserRelationAttributeInfoHelpers {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetInfoHelpers() *SchemasUserRelationAttributeInfoHelpers {
+	if u == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return u.InfoHelpers
 }
 
-func (o *UserRelationAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetLabel() string {
+	if u == nil {
 		return ""
 	}
-	return o.Label
+	return u.Label
 }
 
-func (o *UserRelationAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetLayout() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Layout
+	return u.Layout
 }
 
-func (o *UserRelationAttributeSchemas) GetMultiple() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetMultiple() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Multiple
+	return u.Multiple
 }
 
-func (o *UserRelationAttributeSchemas) GetName() string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UserRelationAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetOrder() *int64 {
+	if u == nil {
 		return nil
 	}
-	return o.Order
+	return u.Order
 }
 
-func (o *UserRelationAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetPlaceholder() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Placeholder
+	return u.Placeholder
 }
 
-func (o *UserRelationAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetPreviewValueFormatter() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return u.PreviewValueFormatter
 }
 
-func (o *UserRelationAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetProtected() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Protected
+	return u.Protected
 }
 
-func (o *UserRelationAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetReadonly() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Readonly
+	return u.Readonly
 }
 
-func (o *UserRelationAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetRenderCondition() *string {
+	if u == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return u.RenderCondition
 }
 
-func (o *UserRelationAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetRepeatable() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Repeatable
+	return u.Repeatable
 }
 
-func (o *UserRelationAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetRequired() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Required
+	return u.Required
 }
 
-func (o *UserRelationAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetSchema() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Schema
+	return u.Schema
 }
 
-func (o *UserRelationAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if u == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return u.SettingsFlag
 }
 
-func (o *UserRelationAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetShowInTable() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return u.ShowInTable
 }
 
-func (o *UserRelationAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetSortable() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Sortable
+	return u.Sortable
 }
 
-func (o *UserRelationAttributeSchemas) GetType() SchemasUserRelationAttributeType {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetType() SchemasUserRelationAttributeType {
+	if u == nil {
 		return SchemasUserRelationAttributeType("")
 	}
-	return o.Type
+	return u.Type
 }
 
-func (o *UserRelationAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemas) GetValueFormatter() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return u.ValueFormatter
 }
 
 // ActionType - The action type. Currently supported actions:
@@ -9904,46 +9904,46 @@ func (a *Actions) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Actions) GetActionType() *ActionType {
-	if o == nil {
+func (a *Actions) GetActionType() *ActionType {
+	if a == nil {
 		return nil
 	}
-	return o.ActionType
+	return a.ActionType
 }
 
-func (o *Actions) GetDefault() *bool {
-	if o == nil {
+func (a *Actions) GetDefault() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Default
+	return a.Default
 }
 
-func (o *Actions) GetFeatureFlag() *string {
-	if o == nil {
+func (a *Actions) GetFeatureFlag() *string {
+	if a == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return a.FeatureFlag
 }
 
-func (o *Actions) GetLabel() *string {
-	if o == nil {
+func (a *Actions) GetLabel() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Label
+	return a.Label
 }
 
-func (o *Actions) GetNewEntityItem() map[string]any {
-	if o == nil {
+func (a *Actions) GetNewEntityItem() map[string]any {
+	if a == nil {
 		return nil
 	}
-	return o.NewEntityItem
+	return a.NewEntityItem
 }
 
-func (o *Actions) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (a *Actions) GetSettingsFlag() []SettingFlag {
+	if a == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return a.SettingsFlag
 }
 
 // SchemasRelationAttributeConstraints - A set of constraints applicable to the attribute.
@@ -10046,32 +10046,32 @@ func (s *SchemasRelationAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasRelationAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasRelationAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasRelationAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasRelationAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasRelationAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasRelationAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasRelationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasRelationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 // RelationAffinityMode - Weak relation attributes are kept when duplicating an entity. Strong relation attributes are discarded when duplicating an entity.
@@ -10117,11 +10117,11 @@ func (r *RelationPickerFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RelationPickerFilter) GetQ() string {
-	if o == nil {
+func (r *RelationPickerFilter) GetQ() string {
+	if r == nil {
 		return ""
 	}
-	return o.Q
+	return r.Q
 }
 
 type RelationType string
@@ -10158,8 +10158,8 @@ const (
 )
 
 type SummaryFields struct {
-	Str          *string       `queryParam:"inline" name:"summary_fields"`
-	SummaryField *SummaryField `queryParam:"inline" name:"summary_fields"`
+	Str          *string       `queryParam:"inline,name=summary_fields"`
+	SummaryField *SummaryField `queryParam:"inline,name=summary_fields"`
 
 	Type SummaryFieldsType
 }
@@ -10184,17 +10184,17 @@ func CreateSummaryFieldsSummaryField(summaryField SummaryField) SummaryFields {
 
 func (u *SummaryFields) UnmarshalJSON(data []byte) error {
 
-	var summaryField SummaryField = SummaryField{}
-	if err := utils.UnmarshalJSON(data, &summaryField, "", true, nil); err == nil {
-		u.SummaryField = &summaryField
-		u.Type = SummaryFieldsTypeSummaryField
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = SummaryFieldsTypeStr
+		return nil
+	}
+
+	var summaryField SummaryField = SummaryField{}
+	if err := utils.UnmarshalJSON(data, &summaryField, "", true, nil); err == nil {
+		u.SummaryField = &summaryField
+		u.Type = SummaryFieldsTypeSummaryField
 		return nil
 	}
 
@@ -10327,326 +10327,326 @@ func (r *RelationAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RelationAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetManifest() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Manifest
+	return r.Manifest
 }
 
-func (o *RelationAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetPurpose() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Purpose
+	return r.Purpose
 }
 
-func (o *RelationAttributeSchemas) GetActions() []Actions {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetActions() []Actions {
+	if r == nil {
 		return nil
 	}
-	return o.Actions
+	return r.Actions
 }
 
-func (o *RelationAttributeSchemas) GetAddButtonLabel() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetAddButtonLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.AddButtonLabel
+	return r.AddButtonLabel
 }
 
-func (o *RelationAttributeSchemas) GetAllowedSchemas() []string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetAllowedSchemas() []string {
+	if r == nil {
 		return nil
 	}
-	return o.AllowedSchemas
+	return r.AllowedSchemas
 }
 
-func (o *RelationAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetCompositeID() *string {
+	if r == nil {
 		return nil
 	}
-	return o.CompositeID
+	return r.CompositeID
 }
 
-func (o *RelationAttributeSchemas) GetConstraints() *SchemasRelationAttributeConstraints {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetConstraints() *SchemasRelationAttributeConstraints {
+	if r == nil {
 		return nil
 	}
-	return o.Constraints
+	return r.Constraints
 }
 
-func (o *RelationAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetDefaultValue() any {
+	if r == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return r.DefaultValue
 }
 
-func (o *RelationAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetDeprecated() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Deprecated
+	return r.Deprecated
 }
 
-func (o *RelationAttributeSchemas) GetDetailsViewModeEnabled() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetDetailsViewModeEnabled() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.DetailsViewModeEnabled
+	return r.DetailsViewModeEnabled
 }
 
-func (o *RelationAttributeSchemas) GetDrawerSize() *DrawerSize {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetDrawerSize() *DrawerSize {
+	if r == nil {
 		return nil
 	}
-	return o.DrawerSize
+	return r.DrawerSize
 }
 
-func (o *RelationAttributeSchemas) GetEditMode() *EditMode {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetEditMode() *EditMode {
+	if r == nil {
 		return nil
 	}
-	return o.EditMode
+	return r.EditMode
 }
 
-func (o *RelationAttributeSchemas) GetEnableRelationPicker() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetEnableRelationPicker() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.EnableRelationPicker
+	return r.EnableRelationPicker
 }
 
-func (o *RelationAttributeSchemas) GetEnableRelationTags() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetEnableRelationTags() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.EnableRelationTags
+	return r.EnableRelationTags
 }
 
-func (o *RelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return r.EntityBuilderDisableEdit
 }
 
-func (o *RelationAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetFeatureFlag() *string {
+	if r == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return r.FeatureFlag
 }
 
-func (o *RelationAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetGroup() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Group
+	return r.Group
 }
 
-func (o *RelationAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetHasPrimary() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return r.HasPrimary
 }
 
-func (o *RelationAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetHidden() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Hidden
+	return r.Hidden
 }
 
-func (o *RelationAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetHideLabel() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.HideLabel
+	return r.HideLabel
 }
 
-func (o *RelationAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetIcon() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Icon
+	return r.Icon
 }
 
-func (o *RelationAttributeSchemas) GetID() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetID() *string {
+	if r == nil {
 		return nil
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RelationAttributeSchemas) GetInfoHelpers() *SchemasRelationAttributeInfoHelpers {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetInfoHelpers() *SchemasRelationAttributeInfoHelpers {
+	if r == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return r.InfoHelpers
 }
 
-func (o *RelationAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetLabel() string {
+	if r == nil {
 		return ""
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RelationAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetLayout() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Layout
+	return r.Layout
 }
 
-func (o *RelationAttributeSchemas) GetName() string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RelationAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetOrder() *int64 {
+	if r == nil {
 		return nil
 	}
-	return o.Order
+	return r.Order
 }
 
-func (o *RelationAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RelationAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetPreviewValueFormatter() *string {
+	if r == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return r.PreviewValueFormatter
 }
 
-func (o *RelationAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetProtected() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Protected
+	return r.Protected
 }
 
-func (o *RelationAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetReadonly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Readonly
+	return r.Readonly
 }
 
-func (o *RelationAttributeSchemas) GetRelationAffinityMode() *RelationAffinityMode {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetRelationAffinityMode() *RelationAffinityMode {
+	if r == nil {
 		return nil
 	}
-	return o.RelationAffinityMode
+	return r.RelationAffinityMode
 }
 
-func (o *RelationAttributeSchemas) GetRelationPickerFilter() *RelationPickerFilter {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetRelationPickerFilter() *RelationPickerFilter {
+	if r == nil {
 		return nil
 	}
-	return o.RelationPickerFilter
+	return r.RelationPickerFilter
 }
 
-func (o *RelationAttributeSchemas) GetRelationType() *RelationType {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetRelationType() *RelationType {
+	if r == nil {
 		return nil
 	}
-	return o.RelationType
+	return r.RelationType
 }
 
-func (o *RelationAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetRenderCondition() *string {
+	if r == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return r.RenderCondition
 }
 
-func (o *RelationAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetRepeatable() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Repeatable
+	return r.Repeatable
 }
 
-func (o *RelationAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RelationAttributeSchemas) GetReverseAttributes() map[string]string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetReverseAttributes() map[string]string {
+	if r == nil {
 		return nil
 	}
-	return o.ReverseAttributes
+	return r.ReverseAttributes
 }
 
-func (o *RelationAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetSchema() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Schema
+	return r.Schema
 }
 
-func (o *RelationAttributeSchemas) GetSearchPlaceholder() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetSearchPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.SearchPlaceholder
+	return r.SearchPlaceholder
 }
 
-func (o *RelationAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if r == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return r.SettingsFlag
 }
 
-func (o *RelationAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetShowInTable() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return r.ShowInTable
 }
 
-func (o *RelationAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetSortable() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Sortable
+	return r.Sortable
 }
 
-func (o *RelationAttributeSchemas) GetSummaryFields() []SummaryFields {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetSummaryFields() []SummaryFields {
+	if r == nil {
 		return nil
 	}
-	return o.SummaryFields
+	return r.SummaryFields
 }
 
-func (o *RelationAttributeSchemas) GetType() SchemasRelationAttributeType {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetType() SchemasRelationAttributeType {
+	if r == nil {
 		return SchemasRelationAttributeType("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RelationAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (r *RelationAttributeSchemas) GetValueFormatter() *string {
+	if r == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return r.ValueFormatter
 }
 
 // SchemasSequenceAttributeConstraints - A set of constraints applicable to the attribute.
@@ -10697,32 +10697,32 @@ func (s *SchemasSequenceAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasSequenceAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasSequenceAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasSequenceAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasSequenceAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasSequenceAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasSequenceAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasSequenceAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasSequenceAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasSequenceAttributeType string
@@ -10823,242 +10823,242 @@ func (s *SequenceAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SequenceAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetManifest() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Manifest
+	return s.Manifest
 }
 
-func (o *SequenceAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetPurpose() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Purpose
+	return s.Purpose
 }
 
-func (o *SequenceAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetCompositeID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.CompositeID
+	return s.CompositeID
 }
 
-func (o *SequenceAttributeSchemas) GetConstraints() *SchemasSequenceAttributeConstraints {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetConstraints() *SchemasSequenceAttributeConstraints {
+	if s == nil {
 		return nil
 	}
-	return o.Constraints
+	return s.Constraints
 }
 
-func (o *SequenceAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetDefaultValue() any {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return s.DefaultValue
 }
 
-func (o *SequenceAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetDeprecated() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Deprecated
+	return s.Deprecated
 }
 
-func (o *SequenceAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return s.EntityBuilderDisableEdit
 }
 
-func (o *SequenceAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetFeatureFlag() *string {
+	if s == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return s.FeatureFlag
 }
 
-func (o *SequenceAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetGroup() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Group
+	return s.Group
 }
 
-func (o *SequenceAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetHasPrimary() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return s.HasPrimary
 }
 
-func (o *SequenceAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetHidden() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Hidden
+	return s.Hidden
 }
 
-func (o *SequenceAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetHideLabel() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HideLabel
+	return s.HideLabel
 }
 
-func (o *SequenceAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetIcon() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Icon
+	return s.Icon
 }
 
-func (o *SequenceAttributeSchemas) GetID() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SequenceAttributeSchemas) GetInfoHelpers() *SchemasSequenceAttributeInfoHelpers {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetInfoHelpers() *SchemasSequenceAttributeInfoHelpers {
+	if s == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return s.InfoHelpers
 }
 
-func (o *SequenceAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetLabel() string {
+	if s == nil {
 		return ""
 	}
-	return o.Label
+	return s.Label
 }
 
-func (o *SequenceAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetLayout() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Layout
+	return s.Layout
 }
 
-func (o *SequenceAttributeSchemas) GetName() string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SequenceAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetOrder() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Order
+	return s.Order
 }
 
-func (o *SequenceAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetPlaceholder() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Placeholder
+	return s.Placeholder
 }
 
-func (o *SequenceAttributeSchemas) GetPrefix() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetPrefix() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Prefix
+	return s.Prefix
 }
 
-func (o *SequenceAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetPreviewValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return s.PreviewValueFormatter
 }
 
-func (o *SequenceAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetProtected() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Protected
+	return s.Protected
 }
 
-func (o *SequenceAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetReadonly() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Readonly
+	return s.Readonly
 }
 
-func (o *SequenceAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetRenderCondition() *string {
+	if s == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return s.RenderCondition
 }
 
-func (o *SequenceAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetRepeatable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Repeatable
+	return s.Repeatable
 }
 
-func (o *SequenceAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetRequired() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Required
+	return s.Required
 }
 
-func (o *SequenceAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetSchema() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *SequenceAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if s == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return s.SettingsFlag
 }
 
-func (o *SequenceAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetShowInTable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return s.ShowInTable
 }
 
-func (o *SequenceAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetSortable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Sortable
+	return s.Sortable
 }
 
-func (o *SequenceAttributeSchemas) GetStartNumber() *int64 {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetStartNumber() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.StartNumber
+	return s.StartNumber
 }
 
-func (o *SequenceAttributeSchemas) GetType() SchemasSequenceAttributeType {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetType() SchemasSequenceAttributeType {
+	if s == nil {
 		return SchemasSequenceAttributeType("")
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *SequenceAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemas) GetValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return s.ValueFormatter
 }
 
 // SchemasStatusAttributeConstraints - A set of constraints applicable to the attribute.
@@ -11109,32 +11109,32 @@ func (s *SchemasStatusAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasStatusAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasStatusAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasStatusAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasStatusAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasStatusAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasStatusAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasStatusAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasStatusAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type Schemas2 struct {
@@ -11155,18 +11155,18 @@ func (s *Schemas2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Schemas2) GetTitle() *string {
-	if o == nil {
+func (s *Schemas2) GetTitle() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Title
+	return s.Title
 }
 
-func (o *Schemas2) GetValue() string {
-	if o == nil {
+func (s *Schemas2) GetValue() string {
+	if s == nil {
 		return ""
 	}
-	return o.Value
+	return s.Value
 }
 
 type SchemasStatusAttributeOptionsType string
@@ -11177,8 +11177,8 @@ const (
 )
 
 type SchemasStatusAttributeOptions struct {
-	Str      *string   `queryParam:"inline" name:"options"`
-	Schemas2 *Schemas2 `queryParam:"inline" name:"options"`
+	Str      *string   `queryParam:"inline,name=options"`
+	Schemas2 *Schemas2 `queryParam:"inline,name=options"`
 
 	Type SchemasStatusAttributeOptionsType
 }
@@ -11328,235 +11328,235 @@ func (s *StatusAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *StatusAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetManifest() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Manifest
+	return s.Manifest
 }
 
-func (o *StatusAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetPurpose() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Purpose
+	return s.Purpose
 }
 
-func (o *StatusAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetCompositeID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.CompositeID
+	return s.CompositeID
 }
 
-func (o *StatusAttributeSchemas) GetConstraints() *SchemasStatusAttributeConstraints {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetConstraints() *SchemasStatusAttributeConstraints {
+	if s == nil {
 		return nil
 	}
-	return o.Constraints
+	return s.Constraints
 }
 
-func (o *StatusAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetDefaultValue() any {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return s.DefaultValue
 }
 
-func (o *StatusAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetDeprecated() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Deprecated
+	return s.Deprecated
 }
 
-func (o *StatusAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return s.EntityBuilderDisableEdit
 }
 
-func (o *StatusAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetFeatureFlag() *string {
+	if s == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return s.FeatureFlag
 }
 
-func (o *StatusAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetGroup() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Group
+	return s.Group
 }
 
-func (o *StatusAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetHasPrimary() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return s.HasPrimary
 }
 
-func (o *StatusAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetHidden() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Hidden
+	return s.Hidden
 }
 
-func (o *StatusAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetHideLabel() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HideLabel
+	return s.HideLabel
 }
 
-func (o *StatusAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetIcon() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Icon
+	return s.Icon
 }
 
-func (o *StatusAttributeSchemas) GetID() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StatusAttributeSchemas) GetInfoHelpers() *SchemasStatusAttributeInfoHelpers {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetInfoHelpers() *SchemasStatusAttributeInfoHelpers {
+	if s == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return s.InfoHelpers
 }
 
-func (o *StatusAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetLabel() string {
+	if s == nil {
 		return ""
 	}
-	return o.Label
+	return s.Label
 }
 
-func (o *StatusAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetLayout() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Layout
+	return s.Layout
 }
 
-func (o *StatusAttributeSchemas) GetName() string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *StatusAttributeSchemas) GetOptions() []*SchemasStatusAttributeOptions {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetOptions() []*SchemasStatusAttributeOptions {
+	if s == nil {
 		return nil
 	}
-	return o.Options
+	return s.Options
 }
 
-func (o *StatusAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetOrder() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Order
+	return s.Order
 }
 
-func (o *StatusAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetPlaceholder() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Placeholder
+	return s.Placeholder
 }
 
-func (o *StatusAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetPreviewValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return s.PreviewValueFormatter
 }
 
-func (o *StatusAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetProtected() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Protected
+	return s.Protected
 }
 
-func (o *StatusAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetReadonly() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Readonly
+	return s.Readonly
 }
 
-func (o *StatusAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetRenderCondition() *string {
+	if s == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return s.RenderCondition
 }
 
-func (o *StatusAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetRepeatable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Repeatable
+	return s.Repeatable
 }
 
-func (o *StatusAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetRequired() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Required
+	return s.Required
 }
 
-func (o *StatusAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetSchema() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *StatusAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if s == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return s.SettingsFlag
 }
 
-func (o *StatusAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetShowInTable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return s.ShowInTable
 }
 
-func (o *StatusAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetSortable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Sortable
+	return s.Sortable
 }
 
-func (o *StatusAttributeSchemas) GetType() SchemasStatusAttributeType {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetType() SchemasStatusAttributeType {
+	if s == nil {
 		return SchemasStatusAttributeType("")
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *StatusAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (s *StatusAttributeSchemas) GetValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return s.ValueFormatter
 }
 
 // SchemasMultiSelectAttributeConstraints - A set of constraints applicable to the attribute.
@@ -11607,32 +11607,32 @@ func (s *SchemasMultiSelectAttributeInfoHelpers) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *SchemasMultiSelectAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasMultiSelectAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasMultiSelectAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasMultiSelectAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasMultiSelectAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasMultiSelectAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasMultiSelectAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasMultiSelectAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type Two struct {
@@ -11651,18 +11651,18 @@ func (t *Two) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Two) GetTitle() *string {
-	if o == nil {
+func (t *Two) GetTitle() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Title
+	return t.Title
 }
 
-func (o *Two) GetValue() string {
-	if o == nil {
+func (t *Two) GetValue() string {
+	if t == nil {
 		return ""
 	}
-	return o.Value
+	return t.Value
 }
 
 type OptionsObjType string
@@ -11673,8 +11673,8 @@ const (
 )
 
 type OptionsObj struct {
-	Str *string `queryParam:"inline" name:"options"`
-	Two *Two    `queryParam:"inline" name:"options"`
+	Str *string `queryParam:"inline,name=options"`
+	Two *Two    `queryParam:"inline,name=options"`
 
 	Type OptionsObjType
 }
@@ -11833,256 +11833,256 @@ func (m *MultiSelectAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *MultiSelectAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetManifest() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Manifest
+	return m.Manifest
 }
 
-func (o *MultiSelectAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetPurpose() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Purpose
+	return m.Purpose
 }
 
-func (o *MultiSelectAttributeSchemas) GetAllowAny() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetAllowAny() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.AllowAny
+	return m.AllowAny
 }
 
-func (o *MultiSelectAttributeSchemas) GetAllowExtraOptions() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetAllowExtraOptions() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.AllowExtraOptions
+	return m.AllowExtraOptions
 }
 
-func (o *MultiSelectAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetCompositeID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.CompositeID
+	return m.CompositeID
 }
 
-func (o *MultiSelectAttributeSchemas) GetConstraints() *SchemasMultiSelectAttributeConstraints {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetConstraints() *SchemasMultiSelectAttributeConstraints {
+	if m == nil {
 		return nil
 	}
-	return o.Constraints
+	return m.Constraints
 }
 
-func (o *MultiSelectAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetDefaultValue() any {
+	if m == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return m.DefaultValue
 }
 
-func (o *MultiSelectAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetDeprecated() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Deprecated
+	return m.Deprecated
 }
 
-func (o *MultiSelectAttributeSchemas) GetDisableCaseSensitive() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetDisableCaseSensitive() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.DisableCaseSensitive
+	return m.DisableCaseSensitive
 }
 
-func (o *MultiSelectAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return m.EntityBuilderDisableEdit
 }
 
-func (o *MultiSelectAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetFeatureFlag() *string {
+	if m == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return m.FeatureFlag
 }
 
-func (o *MultiSelectAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetGroup() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Group
+	return m.Group
 }
 
-func (o *MultiSelectAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetHasPrimary() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return m.HasPrimary
 }
 
-func (o *MultiSelectAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetHidden() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Hidden
+	return m.Hidden
 }
 
-func (o *MultiSelectAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetHideLabel() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.HideLabel
+	return m.HideLabel
 }
 
-func (o *MultiSelectAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetIcon() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Icon
+	return m.Icon
 }
 
-func (o *MultiSelectAttributeSchemas) GetID() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ID
+	return m.ID
 }
 
-func (o *MultiSelectAttributeSchemas) GetInfoHelpers() *SchemasMultiSelectAttributeInfoHelpers {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetInfoHelpers() *SchemasMultiSelectAttributeInfoHelpers {
+	if m == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return m.InfoHelpers
 }
 
-func (o *MultiSelectAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetLabel() string {
+	if m == nil {
 		return ""
 	}
-	return o.Label
+	return m.Label
 }
 
-func (o *MultiSelectAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetLayout() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Layout
+	return m.Layout
 }
 
-func (o *MultiSelectAttributeSchemas) GetName() string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetName() string {
+	if m == nil {
 		return ""
 	}
-	return o.Name
+	return m.Name
 }
 
-func (o *MultiSelectAttributeSchemas) GetOptions() []*OptionsObj {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetOptions() []*OptionsObj {
+	if m == nil {
 		return nil
 	}
-	return o.Options
+	return m.Options
 }
 
-func (o *MultiSelectAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetOrder() *int64 {
+	if m == nil {
 		return nil
 	}
-	return o.Order
+	return m.Order
 }
 
-func (o *MultiSelectAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetPlaceholder() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Placeholder
+	return m.Placeholder
 }
 
-func (o *MultiSelectAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetPreviewValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return m.PreviewValueFormatter
 }
 
-func (o *MultiSelectAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetProtected() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Protected
+	return m.Protected
 }
 
-func (o *MultiSelectAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetReadonly() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Readonly
+	return m.Readonly
 }
 
-func (o *MultiSelectAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetRenderCondition() *string {
+	if m == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return m.RenderCondition
 }
 
-func (o *MultiSelectAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetRepeatable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Repeatable
+	return m.Repeatable
 }
 
-func (o *MultiSelectAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetRequired() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Required
+	return m.Required
 }
 
-func (o *MultiSelectAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetSchema() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Schema
+	return m.Schema
 }
 
-func (o *MultiSelectAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if m == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return m.SettingsFlag
 }
 
-func (o *MultiSelectAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetShowInTable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return m.ShowInTable
 }
 
-func (o *MultiSelectAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetSortable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Sortable
+	return m.Sortable
 }
 
-func (o *MultiSelectAttributeSchemas) GetType() SchemasMultiSelectAttributeType {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetType() SchemasMultiSelectAttributeType {
+	if m == nil {
 		return SchemasMultiSelectAttributeType("")
 	}
-	return o.Type
+	return m.Type
 }
 
-func (o *MultiSelectAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemas) GetValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return m.ValueFormatter
 }
 
 // SchemasSelectAttributeConstraints - A set of constraints applicable to the attribute.
@@ -12133,32 +12133,32 @@ func (s *SchemasSelectAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasSelectAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasSelectAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasSelectAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasSelectAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasSelectAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasSelectAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasSelectAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasSelectAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type Schemas1 struct {
@@ -12177,18 +12177,18 @@ func (s *Schemas1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Schemas1) GetTitle() *string {
-	if o == nil {
+func (s *Schemas1) GetTitle() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Title
+	return s.Title
 }
 
-func (o *Schemas1) GetValue() string {
-	if o == nil {
+func (s *Schemas1) GetValue() string {
+	if s == nil {
 		return ""
 	}
-	return o.Value
+	return s.Value
 }
 
 type SchemasOptionsType string
@@ -12199,8 +12199,8 @@ const (
 )
 
 type SchemasOptions struct {
-	Schemas1 *Schemas1 `queryParam:"inline" name:"options"`
-	Str      *string   `queryParam:"inline" name:"options"`
+	Schemas1 *Schemas1 `queryParam:"inline,name=options"`
+	Str      *string   `queryParam:"inline,name=options"`
 
 	Type SchemasOptionsType
 }
@@ -12355,242 +12355,242 @@ func (s *SelectAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SelectAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetManifest() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Manifest
+	return s.Manifest
 }
 
-func (o *SelectAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetPurpose() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Purpose
+	return s.Purpose
 }
 
-func (o *SelectAttributeSchemas) GetAllowAny() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetAllowAny() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.AllowAny
+	return s.AllowAny
 }
 
-func (o *SelectAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetCompositeID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.CompositeID
+	return s.CompositeID
 }
 
-func (o *SelectAttributeSchemas) GetConstraints() *SchemasSelectAttributeConstraints {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetConstraints() *SchemasSelectAttributeConstraints {
+	if s == nil {
 		return nil
 	}
-	return o.Constraints
+	return s.Constraints
 }
 
-func (o *SelectAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetDefaultValue() any {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return s.DefaultValue
 }
 
-func (o *SelectAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetDeprecated() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Deprecated
+	return s.Deprecated
 }
 
-func (o *SelectAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return s.EntityBuilderDisableEdit
 }
 
-func (o *SelectAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetFeatureFlag() *string {
+	if s == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return s.FeatureFlag
 }
 
-func (o *SelectAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetGroup() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Group
+	return s.Group
 }
 
-func (o *SelectAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetHasPrimary() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return s.HasPrimary
 }
 
-func (o *SelectAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetHidden() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Hidden
+	return s.Hidden
 }
 
-func (o *SelectAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetHideLabel() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HideLabel
+	return s.HideLabel
 }
 
-func (o *SelectAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetIcon() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Icon
+	return s.Icon
 }
 
-func (o *SelectAttributeSchemas) GetID() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SelectAttributeSchemas) GetInfoHelpers() *SchemasSelectAttributeInfoHelpers {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetInfoHelpers() *SchemasSelectAttributeInfoHelpers {
+	if s == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return s.InfoHelpers
 }
 
-func (o *SelectAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetLabel() string {
+	if s == nil {
 		return ""
 	}
-	return o.Label
+	return s.Label
 }
 
-func (o *SelectAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetLayout() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Layout
+	return s.Layout
 }
 
-func (o *SelectAttributeSchemas) GetName() string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SelectAttributeSchemas) GetOptions() []*SchemasOptions {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetOptions() []*SchemasOptions {
+	if s == nil {
 		return nil
 	}
-	return o.Options
+	return s.Options
 }
 
-func (o *SelectAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetOrder() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Order
+	return s.Order
 }
 
-func (o *SelectAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetPlaceholder() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Placeholder
+	return s.Placeholder
 }
 
-func (o *SelectAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetPreviewValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return s.PreviewValueFormatter
 }
 
-func (o *SelectAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetProtected() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Protected
+	return s.Protected
 }
 
-func (o *SelectAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetReadonly() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Readonly
+	return s.Readonly
 }
 
-func (o *SelectAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetRenderCondition() *string {
+	if s == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return s.RenderCondition
 }
 
-func (o *SelectAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetRepeatable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Repeatable
+	return s.Repeatable
 }
 
-func (o *SelectAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetRequired() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Required
+	return s.Required
 }
 
-func (o *SelectAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetSchema() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *SelectAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if s == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return s.SettingsFlag
 }
 
-func (o *SelectAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetShowInTable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return s.ShowInTable
 }
 
-func (o *SelectAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetSortable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Sortable
+	return s.Sortable
 }
 
-func (o *SelectAttributeSchemas) GetType() SchemasSelectAttributeType {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetType() SchemasSelectAttributeType {
+	if s == nil {
 		return SchemasSelectAttributeType("")
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *SelectAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (s *SelectAttributeSchemas) GetValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return s.ValueFormatter
 }
 
 // SchemasBooleanAttributeConstraints - A set of constraints applicable to the attribute.
@@ -12667,32 +12667,32 @@ func (s *SchemasBooleanAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasBooleanAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasBooleanAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasBooleanAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasBooleanAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasBooleanAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasBooleanAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasBooleanAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasBooleanAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasBooleanAttributeType string
@@ -12791,235 +12791,235 @@ func (b *BooleanAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *BooleanAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetManifest() []string {
+	if b == nil {
 		return nil
 	}
-	return o.Manifest
+	return b.Manifest
 }
 
-func (o *BooleanAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetPurpose() []string {
+	if b == nil {
 		return nil
 	}
-	return o.Purpose
+	return b.Purpose
 }
 
-func (o *BooleanAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetCompositeID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.CompositeID
+	return b.CompositeID
 }
 
-func (o *BooleanAttributeSchemas) GetConstraints() *SchemasBooleanAttributeConstraints {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetConstraints() *SchemasBooleanAttributeConstraints {
+	if b == nil {
 		return nil
 	}
-	return o.Constraints
+	return b.Constraints
 }
 
-func (o *BooleanAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetDefaultValue() any {
+	if b == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return b.DefaultValue
 }
 
-func (o *BooleanAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetDeprecated() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Deprecated
+	return b.Deprecated
 }
 
-func (o *BooleanAttributeSchemas) GetDisplayType() *DisplayType {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetDisplayType() *DisplayType {
+	if b == nil {
 		return nil
 	}
-	return o.DisplayType
+	return b.DisplayType
 }
 
-func (o *BooleanAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return b.EntityBuilderDisableEdit
 }
 
-func (o *BooleanAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetFeatureFlag() *string {
+	if b == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return b.FeatureFlag
 }
 
-func (o *BooleanAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetGroup() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Group
+	return b.Group
 }
 
-func (o *BooleanAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetHasPrimary() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return b.HasPrimary
 }
 
-func (o *BooleanAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetHidden() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Hidden
+	return b.Hidden
 }
 
-func (o *BooleanAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetHideLabel() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.HideLabel
+	return b.HideLabel
 }
 
-func (o *BooleanAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetIcon() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Icon
+	return b.Icon
 }
 
-func (o *BooleanAttributeSchemas) GetID() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ID
+	return b.ID
 }
 
-func (o *BooleanAttributeSchemas) GetInfoHelpers() *SchemasBooleanAttributeInfoHelpers {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetInfoHelpers() *SchemasBooleanAttributeInfoHelpers {
+	if b == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return b.InfoHelpers
 }
 
-func (o *BooleanAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetLabel() string {
+	if b == nil {
 		return ""
 	}
-	return o.Label
+	return b.Label
 }
 
-func (o *BooleanAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetLayout() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Layout
+	return b.Layout
 }
 
-func (o *BooleanAttributeSchemas) GetName() string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetName() string {
+	if b == nil {
 		return ""
 	}
-	return o.Name
+	return b.Name
 }
 
-func (o *BooleanAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetOrder() *int64 {
+	if b == nil {
 		return nil
 	}
-	return o.Order
+	return b.Order
 }
 
-func (o *BooleanAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetPlaceholder() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Placeholder
+	return b.Placeholder
 }
 
-func (o *BooleanAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetPreviewValueFormatter() *string {
+	if b == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return b.PreviewValueFormatter
 }
 
-func (o *BooleanAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetProtected() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Protected
+	return b.Protected
 }
 
-func (o *BooleanAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetReadonly() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Readonly
+	return b.Readonly
 }
 
-func (o *BooleanAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetRenderCondition() *string {
+	if b == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return b.RenderCondition
 }
 
-func (o *BooleanAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetRepeatable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Repeatable
+	return b.Repeatable
 }
 
-func (o *BooleanAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetRequired() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Required
+	return b.Required
 }
 
-func (o *BooleanAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetSchema() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Schema
+	return b.Schema
 }
 
-func (o *BooleanAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if b == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return b.SettingsFlag
 }
 
-func (o *BooleanAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetShowInTable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return b.ShowInTable
 }
 
-func (o *BooleanAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetSortable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Sortable
+	return b.Sortable
 }
 
-func (o *BooleanAttributeSchemas) GetType() SchemasBooleanAttributeType {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetType() SchemasBooleanAttributeType {
+	if b == nil {
 		return SchemasBooleanAttributeType("")
 	}
-	return o.Type
+	return b.Type
 }
 
-func (o *BooleanAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemas) GetValueFormatter() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return b.ValueFormatter
 }
 
 // SchemasCountryAttributeConstraints - A set of constraints applicable to the attribute.
@@ -13070,32 +13070,32 @@ func (s *SchemasCountryAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasCountryAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasCountryAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasCountryAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasCountryAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasCountryAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasCountryAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasCountryAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasCountryAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasCountryAttributeType string
@@ -13193,228 +13193,228 @@ func (c *CountryAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CountryAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetManifest() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Manifest
+	return c.Manifest
 }
 
-func (o *CountryAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetPurpose() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Purpose
+	return c.Purpose
 }
 
-func (o *CountryAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetCompositeID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CompositeID
+	return c.CompositeID
 }
 
-func (o *CountryAttributeSchemas) GetConstraints() *SchemasCountryAttributeConstraints {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetConstraints() *SchemasCountryAttributeConstraints {
+	if c == nil {
 		return nil
 	}
-	return o.Constraints
+	return c.Constraints
 }
 
-func (o *CountryAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetDefaultValue() any {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return c.DefaultValue
 }
 
-func (o *CountryAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetDeprecated() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Deprecated
+	return c.Deprecated
 }
 
-func (o *CountryAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return c.EntityBuilderDisableEdit
 }
 
-func (o *CountryAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetFeatureFlag() *string {
+	if c == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return c.FeatureFlag
 }
 
-func (o *CountryAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetGroup() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Group
+	return c.Group
 }
 
-func (o *CountryAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetHasPrimary() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return c.HasPrimary
 }
 
-func (o *CountryAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetHidden() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Hidden
+	return c.Hidden
 }
 
-func (o *CountryAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetHideLabel() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HideLabel
+	return c.HideLabel
 }
 
-func (o *CountryAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetIcon() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Icon
+	return c.Icon
 }
 
-func (o *CountryAttributeSchemas) GetID() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CountryAttributeSchemas) GetInfoHelpers() *SchemasCountryAttributeInfoHelpers {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetInfoHelpers() *SchemasCountryAttributeInfoHelpers {
+	if c == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return c.InfoHelpers
 }
 
-func (o *CountryAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetLabel() string {
+	if c == nil {
 		return ""
 	}
-	return o.Label
+	return c.Label
 }
 
-func (o *CountryAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetLayout() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Layout
+	return c.Layout
 }
 
-func (o *CountryAttributeSchemas) GetName() string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CountryAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetOrder() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Order
+	return c.Order
 }
 
-func (o *CountryAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetPlaceholder() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Placeholder
+	return c.Placeholder
 }
 
-func (o *CountryAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetPreviewValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return c.PreviewValueFormatter
 }
 
-func (o *CountryAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetProtected() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Protected
+	return c.Protected
 }
 
-func (o *CountryAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetReadonly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Readonly
+	return c.Readonly
 }
 
-func (o *CountryAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetRenderCondition() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return c.RenderCondition
 }
 
-func (o *CountryAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetRepeatable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Repeatable
+	return c.Repeatable
 }
 
-func (o *CountryAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetRequired() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Required
+	return c.Required
 }
 
-func (o *CountryAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetSchema() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Schema
+	return c.Schema
 }
 
-func (o *CountryAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if c == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return c.SettingsFlag
 }
 
-func (o *CountryAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetShowInTable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return c.ShowInTable
 }
 
-func (o *CountryAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetSortable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Sortable
+	return c.Sortable
 }
 
-func (o *CountryAttributeSchemas) GetType() SchemasCountryAttributeType {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetType() SchemasCountryAttributeType {
+	if c == nil {
 		return SchemasCountryAttributeType("")
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *CountryAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (c *CountryAttributeSchemas) GetValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return c.ValueFormatter
 }
 
 // SchemasDateAttributeConstraints - A set of constraints applicable to the attribute.
@@ -13465,32 +13465,32 @@ func (s *SchemasDateAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasDateAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasDateAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasDateAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasDateAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasDateAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasDateAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasDateAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasDateAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasDateAttributeType string
@@ -13591,228 +13591,228 @@ func (d *DateAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DateAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetManifest() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Manifest
+	return d.Manifest
 }
 
-func (o *DateAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetPurpose() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Purpose
+	return d.Purpose
 }
 
-func (o *DateAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetCompositeID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.CompositeID
+	return d.CompositeID
 }
 
-func (o *DateAttributeSchemas) GetConstraints() *SchemasDateAttributeConstraints {
-	if o == nil {
+func (d *DateAttributeSchemas) GetConstraints() *SchemasDateAttributeConstraints {
+	if d == nil {
 		return nil
 	}
-	return o.Constraints
+	return d.Constraints
 }
 
-func (o *DateAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (d *DateAttributeSchemas) GetDefaultValue() any {
+	if d == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return d.DefaultValue
 }
 
-func (o *DateAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetDeprecated() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Deprecated
+	return d.Deprecated
 }
 
-func (o *DateAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return d.EntityBuilderDisableEdit
 }
 
-func (o *DateAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetFeatureFlag() *string {
+	if d == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return d.FeatureFlag
 }
 
-func (o *DateAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetGroup() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Group
+	return d.Group
 }
 
-func (o *DateAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetHasPrimary() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return d.HasPrimary
 }
 
-func (o *DateAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetHidden() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Hidden
+	return d.Hidden
 }
 
-func (o *DateAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetHideLabel() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.HideLabel
+	return d.HideLabel
 }
 
-func (o *DateAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetIcon() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Icon
+	return d.Icon
 }
 
-func (o *DateAttributeSchemas) GetID() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DateAttributeSchemas) GetInfoHelpers() *SchemasDateAttributeInfoHelpers {
-	if o == nil {
+func (d *DateAttributeSchemas) GetInfoHelpers() *SchemasDateAttributeInfoHelpers {
+	if d == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return d.InfoHelpers
 }
 
-func (o *DateAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetLabel() string {
+	if d == nil {
 		return ""
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DateAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetLayout() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Layout
+	return d.Layout
 }
 
-func (o *DateAttributeSchemas) GetName() string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DateAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (d *DateAttributeSchemas) GetOrder() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.Order
+	return d.Order
 }
 
-func (o *DateAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DateAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetPreviewValueFormatter() *string {
+	if d == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return d.PreviewValueFormatter
 }
 
-func (o *DateAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetProtected() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Protected
+	return d.Protected
 }
 
-func (o *DateAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetReadonly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Readonly
+	return d.Readonly
 }
 
-func (o *DateAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetRenderCondition() *string {
+	if d == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return d.RenderCondition
 }
 
-func (o *DateAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetRepeatable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Repeatable
+	return d.Repeatable
 }
 
-func (o *DateAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DateAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetSchema() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Schema
+	return d.Schema
 }
 
-func (o *DateAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (d *DateAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if d == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return d.SettingsFlag
 }
 
-func (o *DateAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetShowInTable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return d.ShowInTable
 }
 
-func (o *DateAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (d *DateAttributeSchemas) GetSortable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Sortable
+	return d.Sortable
 }
 
-func (o *DateAttributeSchemas) GetType() SchemasDateAttributeType {
-	if o == nil {
+func (d *DateAttributeSchemas) GetType() SchemasDateAttributeType {
+	if d == nil {
 		return SchemasDateAttributeType("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DateAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (d *DateAttributeSchemas) GetValueFormatter() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return d.ValueFormatter
 }
 
 // SchemasLinkAttributeConstraints - A set of constraints applicable to the attribute.
@@ -13863,32 +13863,32 @@ func (s *SchemasLinkAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasLinkAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasLinkAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasLinkAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasLinkAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasLinkAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasLinkAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasLinkAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasLinkAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasLinkAttributeType string
@@ -13986,228 +13986,228 @@ func (l *LinkAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *LinkAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetManifest() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Manifest
+	return l.Manifest
 }
 
-func (o *LinkAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetPurpose() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Purpose
+	return l.Purpose
 }
 
-func (o *LinkAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetCompositeID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.CompositeID
+	return l.CompositeID
 }
 
-func (o *LinkAttributeSchemas) GetConstraints() *SchemasLinkAttributeConstraints {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetConstraints() *SchemasLinkAttributeConstraints {
+	if l == nil {
 		return nil
 	}
-	return o.Constraints
+	return l.Constraints
 }
 
-func (o *LinkAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetDefaultValue() any {
+	if l == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return l.DefaultValue
 }
 
-func (o *LinkAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetDeprecated() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Deprecated
+	return l.Deprecated
 }
 
-func (o *LinkAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return l.EntityBuilderDisableEdit
 }
 
-func (o *LinkAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetFeatureFlag() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return l.FeatureFlag
 }
 
-func (o *LinkAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetGroup() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Group
+	return l.Group
 }
 
-func (o *LinkAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetHasPrimary() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return l.HasPrimary
 }
 
-func (o *LinkAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetHidden() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Hidden
+	return l.Hidden
 }
 
-func (o *LinkAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetHideLabel() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.HideLabel
+	return l.HideLabel
 }
 
-func (o *LinkAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetIcon() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Icon
+	return l.Icon
 }
 
-func (o *LinkAttributeSchemas) GetID() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *LinkAttributeSchemas) GetInfoHelpers() *SchemasLinkAttributeInfoHelpers {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetInfoHelpers() *SchemasLinkAttributeInfoHelpers {
+	if l == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return l.InfoHelpers
 }
 
-func (o *LinkAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetLabel() string {
+	if l == nil {
 		return ""
 	}
-	return o.Label
+	return l.Label
 }
 
-func (o *LinkAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetLayout() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Layout
+	return l.Layout
 }
 
-func (o *LinkAttributeSchemas) GetName() string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
-func (o *LinkAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetOrder() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Order
+	return l.Order
 }
 
-func (o *LinkAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetPlaceholder() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Placeholder
+	return l.Placeholder
 }
 
-func (o *LinkAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetPreviewValueFormatter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return l.PreviewValueFormatter
 }
 
-func (o *LinkAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetProtected() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Protected
+	return l.Protected
 }
 
-func (o *LinkAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetReadonly() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Readonly
+	return l.Readonly
 }
 
-func (o *LinkAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetRenderCondition() *string {
+	if l == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return l.RenderCondition
 }
 
-func (o *LinkAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetRepeatable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Repeatable
+	return l.Repeatable
 }
 
-func (o *LinkAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetRequired() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Required
+	return l.Required
 }
 
-func (o *LinkAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetSchema() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Schema
+	return l.Schema
 }
 
-func (o *LinkAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if l == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return l.SettingsFlag
 }
 
-func (o *LinkAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetShowInTable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return l.ShowInTable
 }
 
-func (o *LinkAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetSortable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Sortable
+	return l.Sortable
 }
 
-func (o *LinkAttributeSchemas) GetType() SchemasLinkAttributeType {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetType() SchemasLinkAttributeType {
+	if l == nil {
 		return SchemasLinkAttributeType("")
 	}
-	return o.Type
+	return l.Type
 }
 
-func (o *LinkAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (l *LinkAttributeSchemas) GetValueFormatter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return l.ValueFormatter
 }
 
 // SchemasTextAttributeConstraints - A set of constraints applicable to the attribute.
@@ -14258,32 +14258,32 @@ func (s *SchemasTextAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasTextAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (s *SchemasTextAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return s.HintCustomComponent
 }
 
-func (o *SchemasTextAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (s *SchemasTextAttributeInfoHelpers) GetHintText() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintText
+	return s.HintText
 }
 
-func (o *SchemasTextAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (s *SchemasTextAttributeInfoHelpers) GetHintTextKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return s.HintTextKey
 }
 
-func (o *SchemasTextAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (s *SchemasTextAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if s == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return s.HintTooltipPlacement
 }
 
 type SchemasRowsType string
@@ -14295,8 +14295,8 @@ const (
 
 // SchemasRows - Number of rows for rich_text textarea
 type SchemasRows struct {
-	Integer *int64  `queryParam:"inline" name:"rows"`
-	Str     *string `queryParam:"inline" name:"rows"`
+	Integer *int64  `queryParam:"inline,name=rows"`
+	Str     *string `queryParam:"inline,name=rows"`
 
 	Type SchemasRowsType
 }
@@ -14449,249 +14449,249 @@ func (t *TextAttributeSchemas) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TextAttributeSchemas) GetManifest() []string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetManifest() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Manifest
+	return t.Manifest
 }
 
-func (o *TextAttributeSchemas) GetPurpose() []string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetPurpose() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Purpose
+	return t.Purpose
 }
 
-func (o *TextAttributeSchemas) GetCompositeID() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetCompositeID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.CompositeID
+	return t.CompositeID
 }
 
-func (o *TextAttributeSchemas) GetConstraints() *SchemasTextAttributeConstraints {
-	if o == nil {
+func (t *TextAttributeSchemas) GetConstraints() *SchemasTextAttributeConstraints {
+	if t == nil {
 		return nil
 	}
-	return o.Constraints
+	return t.Constraints
 }
 
-func (o *TextAttributeSchemas) GetDefaultValue() any {
-	if o == nil {
+func (t *TextAttributeSchemas) GetDefaultValue() any {
+	if t == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return t.DefaultValue
 }
 
-func (o *TextAttributeSchemas) GetDeprecated() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetDeprecated() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Deprecated
+	return t.Deprecated
 }
 
-func (o *TextAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return t.EntityBuilderDisableEdit
 }
 
-func (o *TextAttributeSchemas) GetFeatureFlag() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetFeatureFlag() *string {
+	if t == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return t.FeatureFlag
 }
 
-func (o *TextAttributeSchemas) GetGroup() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetGroup() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Group
+	return t.Group
 }
 
-func (o *TextAttributeSchemas) GetHasPrimary() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetHasPrimary() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return t.HasPrimary
 }
 
-func (o *TextAttributeSchemas) GetHidden() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetHidden() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Hidden
+	return t.Hidden
 }
 
-func (o *TextAttributeSchemas) GetHideLabel() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetHideLabel() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HideLabel
+	return t.HideLabel
 }
 
-func (o *TextAttributeSchemas) GetIcon() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetIcon() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Icon
+	return t.Icon
 }
 
-func (o *TextAttributeSchemas) GetID() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TextAttributeSchemas) GetInfoHelpers() *SchemasTextAttributeInfoHelpers {
-	if o == nil {
+func (t *TextAttributeSchemas) GetInfoHelpers() *SchemasTextAttributeInfoHelpers {
+	if t == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return t.InfoHelpers
 }
 
-func (o *TextAttributeSchemas) GetLabel() string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetLabel() string {
+	if t == nil {
 		return ""
 	}
-	return o.Label
+	return t.Label
 }
 
-func (o *TextAttributeSchemas) GetLayout() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetLayout() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Layout
+	return t.Layout
 }
 
-func (o *TextAttributeSchemas) GetMultiline() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetMultiline() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Multiline
+	return t.Multiline
 }
 
-func (o *TextAttributeSchemas) GetName() string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TextAttributeSchemas) GetOrder() *int64 {
-	if o == nil {
+func (t *TextAttributeSchemas) GetOrder() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Order
+	return t.Order
 }
 
-func (o *TextAttributeSchemas) GetPlaceholder() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetPlaceholder() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Placeholder
+	return t.Placeholder
 }
 
-func (o *TextAttributeSchemas) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetPreviewValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return t.PreviewValueFormatter
 }
 
-func (o *TextAttributeSchemas) GetProtected() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetProtected() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Protected
+	return t.Protected
 }
 
-func (o *TextAttributeSchemas) GetReadonly() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetReadonly() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Readonly
+	return t.Readonly
 }
 
-func (o *TextAttributeSchemas) GetRenderCondition() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetRenderCondition() *string {
+	if t == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return t.RenderCondition
 }
 
-func (o *TextAttributeSchemas) GetRepeatable() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetRepeatable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Repeatable
+	return t.Repeatable
 }
 
-func (o *TextAttributeSchemas) GetRequired() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetRequired() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Required
+	return t.Required
 }
 
-func (o *TextAttributeSchemas) GetRichText() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetRichText() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.RichText
+	return t.RichText
 }
 
-func (o *TextAttributeSchemas) GetRows() *SchemasRows {
-	if o == nil {
+func (t *TextAttributeSchemas) GetRows() *SchemasRows {
+	if t == nil {
 		return nil
 	}
-	return o.Rows
+	return t.Rows
 }
 
-func (o *TextAttributeSchemas) GetSchema() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetSchema() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Schema
+	return t.Schema
 }
 
-func (o *TextAttributeSchemas) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (t *TextAttributeSchemas) GetSettingsFlag() []SettingFlag {
+	if t == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return t.SettingsFlag
 }
 
-func (o *TextAttributeSchemas) GetShowInTable() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetShowInTable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return t.ShowInTable
 }
 
-func (o *TextAttributeSchemas) GetSortable() *bool {
-	if o == nil {
+func (t *TextAttributeSchemas) GetSortable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Sortable
+	return t.Sortable
 }
 
-func (o *TextAttributeSchemas) GetType() SchemasTextAttributeType {
-	if o == nil {
+func (t *TextAttributeSchemas) GetType() SchemasTextAttributeType {
+	if t == nil {
 		return SchemasTextAttributeType("")
 	}
-	return o.Type
+	return t.Type
 }
 
-func (o *TextAttributeSchemas) GetValueFormatter() *string {
-	if o == nil {
+func (t *TextAttributeSchemas) GetValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return t.ValueFormatter
 }
 
 type AttributeWithCompositeIDType string
@@ -14735,40 +14735,40 @@ const (
 
 // AttributeWithCompositeID - a readonly computed ID for the attribute including schema slug and the attribute ID
 type AttributeWithCompositeID struct {
-	TextAttributeSchemas                  *TextAttributeSchemas                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	LinkAttributeSchemas                  *LinkAttributeSchemas                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	DateAttributeSchemas                  *DateAttributeSchemas                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	CountryAttributeSchemas               *CountryAttributeSchemas               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	BooleanAttributeSchemas               *BooleanAttributeSchemas               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	SelectAttributeSchemas                *SelectAttributeSchemas                `queryParam:"inline" name:"AttributeWithCompositeID"`
-	MultiSelectAttributeSchemas           *MultiSelectAttributeSchemas           `queryParam:"inline" name:"AttributeWithCompositeID"`
-	StatusAttributeSchemas                *StatusAttributeSchemas                `queryParam:"inline" name:"AttributeWithCompositeID"`
-	SequenceAttributeSchemas              *SequenceAttributeSchemas              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	RelationAttributeSchemas              *RelationAttributeSchemas              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	UserRelationAttributeSchemas          *UserRelationAttributeSchemas          `queryParam:"inline" name:"AttributeWithCompositeID"`
-	Schemas                               *Schemas                               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	AddressRelationAttributeSchemas       *AddressRelationAttributeSchemas       `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PaymentMethodRelationAttributeSchemas *PaymentMethodRelationAttributeSchemas `queryParam:"inline" name:"AttributeWithCompositeID"`
-	CurrencyAttributeSchemas              *CurrencyAttributeSchemas              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	TagsAttributeSchemas                  *TagsAttributeSchemas                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	MessageEmailAddressAttributeSchemas   *MessageEmailAddressAttributeSchemas   `queryParam:"inline" name:"AttributeWithCompositeID"`
-	NumberAttributeSchemas                *NumberAttributeSchemas                `queryParam:"inline" name:"AttributeWithCompositeID"`
-	ConsentAttributeSchemas               *ConsentAttributeSchemas               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	InternalAttributeSchemas              *InternalAttributeSchemas              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	OrderedListAttributeSchemas           *OrderedListAttributeSchemas           `queryParam:"inline" name:"AttributeWithCompositeID"`
-	FileAttributeSchemas                  *FileAttributeSchemas                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	ComputedAttributeSchemas              *ComputedAttributeSchemas              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PartnerStatusAttributeSchemas         *PartnerStatusAttributeSchemas         `queryParam:"inline" name:"AttributeWithCompositeID"`
-	InvitationEmailAttributeSchemas       *InvitationEmailAttributeSchemas       `queryParam:"inline" name:"AttributeWithCompositeID"`
-	AutomationAttributeSchemas            *AutomationAttributeSchemas            `queryParam:"inline" name:"AttributeWithCompositeID"`
-	InternalUserAttributeSchemas          *InternalUserAttributeSchemas          `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PurposeAttributeSchemas               *PurposeAttributeSchemas               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PartnerOrganisationAttributeSchemas   *PartnerOrganisationAttributeSchemas   `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PortalAccessAttributeSchemas          *PortalAccessAttributeSchemas          `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PhoneAttributeSchemas                 *PhoneAttributeSchemas                 `queryParam:"inline" name:"AttributeWithCompositeID"`
-	EmailAttributeSchemas                 *EmailAttributeSchemas                 `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PaymentAttributeSchemas               *PaymentAttributeSchemas               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PriceComponentAttributeSchemas        *PriceComponentAttributeSchemas        `queryParam:"inline" name:"AttributeWithCompositeID"`
+	TextAttributeSchemas                  *TextAttributeSchemas                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	LinkAttributeSchemas                  *LinkAttributeSchemas                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	DateAttributeSchemas                  *DateAttributeSchemas                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	CountryAttributeSchemas               *CountryAttributeSchemas               `queryParam:"inline,name=AttributeWithCompositeID"`
+	BooleanAttributeSchemas               *BooleanAttributeSchemas               `queryParam:"inline,name=AttributeWithCompositeID"`
+	SelectAttributeSchemas                *SelectAttributeSchemas                `queryParam:"inline,name=AttributeWithCompositeID"`
+	MultiSelectAttributeSchemas           *MultiSelectAttributeSchemas           `queryParam:"inline,name=AttributeWithCompositeID"`
+	StatusAttributeSchemas                *StatusAttributeSchemas                `queryParam:"inline,name=AttributeWithCompositeID"`
+	SequenceAttributeSchemas              *SequenceAttributeSchemas              `queryParam:"inline,name=AttributeWithCompositeID"`
+	RelationAttributeSchemas              *RelationAttributeSchemas              `queryParam:"inline,name=AttributeWithCompositeID"`
+	UserRelationAttributeSchemas          *UserRelationAttributeSchemas          `queryParam:"inline,name=AttributeWithCompositeID"`
+	Schemas                               *Schemas                               `queryParam:"inline,name=AttributeWithCompositeID"`
+	AddressRelationAttributeSchemas       *AddressRelationAttributeSchemas       `queryParam:"inline,name=AttributeWithCompositeID"`
+	PaymentMethodRelationAttributeSchemas *PaymentMethodRelationAttributeSchemas `queryParam:"inline,name=AttributeWithCompositeID"`
+	CurrencyAttributeSchemas              *CurrencyAttributeSchemas              `queryParam:"inline,name=AttributeWithCompositeID"`
+	TagsAttributeSchemas                  *TagsAttributeSchemas                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	MessageEmailAddressAttributeSchemas   *MessageEmailAddressAttributeSchemas   `queryParam:"inline,name=AttributeWithCompositeID"`
+	NumberAttributeSchemas                *NumberAttributeSchemas                `queryParam:"inline,name=AttributeWithCompositeID"`
+	ConsentAttributeSchemas               *ConsentAttributeSchemas               `queryParam:"inline,name=AttributeWithCompositeID"`
+	InternalAttributeSchemas              *InternalAttributeSchemas              `queryParam:"inline,name=AttributeWithCompositeID"`
+	OrderedListAttributeSchemas           *OrderedListAttributeSchemas           `queryParam:"inline,name=AttributeWithCompositeID"`
+	FileAttributeSchemas                  *FileAttributeSchemas                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	ComputedAttributeSchemas              *ComputedAttributeSchemas              `queryParam:"inline,name=AttributeWithCompositeID"`
+	PartnerStatusAttributeSchemas         *PartnerStatusAttributeSchemas         `queryParam:"inline,name=AttributeWithCompositeID"`
+	InvitationEmailAttributeSchemas       *InvitationEmailAttributeSchemas       `queryParam:"inline,name=AttributeWithCompositeID"`
+	AutomationAttributeSchemas            *AutomationAttributeSchemas            `queryParam:"inline,name=AttributeWithCompositeID"`
+	InternalUserAttributeSchemas          *InternalUserAttributeSchemas          `queryParam:"inline,name=AttributeWithCompositeID"`
+	PurposeAttributeSchemas               *PurposeAttributeSchemas               `queryParam:"inline,name=AttributeWithCompositeID"`
+	PartnerOrganisationAttributeSchemas   *PartnerOrganisationAttributeSchemas   `queryParam:"inline,name=AttributeWithCompositeID"`
+	PortalAccessAttributeSchemas          *PortalAccessAttributeSchemas          `queryParam:"inline,name=AttributeWithCompositeID"`
+	PhoneAttributeSchemas                 *PhoneAttributeSchemas                 `queryParam:"inline,name=AttributeWithCompositeID"`
+	EmailAttributeSchemas                 *EmailAttributeSchemas                 `queryParam:"inline,name=AttributeWithCompositeID"`
+	PaymentAttributeSchemas               *PaymentAttributeSchemas               `queryParam:"inline,name=AttributeWithCompositeID"`
+	PriceComponentAttributeSchemas        *PriceComponentAttributeSchemas        `queryParam:"inline,name=AttributeWithCompositeID"`
 
 	Type AttributeWithCompositeIDType
 }
@@ -15533,221 +15533,221 @@ func (p *PriceComponentAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetConstraints() *SchemasPriceComponentAttributeConstraints {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetConstraints() *SchemasPriceComponentAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetInfoHelpers() *SchemasPriceComponentAttributeInfoHelpers {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetInfoHelpers() *SchemasPriceComponentAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetType() SchemasPriceComponentAttributeType {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetType() SchemasPriceComponentAttributeType {
+	if p == nil {
 		return SchemasPriceComponentAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PriceComponentAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (p *PriceComponentAttributeSchemasInput) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // PaymentAttributeSchemasInput - Payment method
@@ -15821,221 +15821,221 @@ func (p *PaymentAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PaymentAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PaymentAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PaymentAttributeSchemasInput) GetConstraints() *SchemasPaymentAttributeConstraints {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetConstraints() *SchemasPaymentAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PaymentAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PaymentAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PaymentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PaymentAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PaymentAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PaymentAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PaymentAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PaymentAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PaymentAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PaymentAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PaymentAttributeSchemasInput) GetInfoHelpers() *SchemasPaymentAttributeInfoHelpers {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetInfoHelpers() *SchemasPaymentAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PaymentAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PaymentAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PaymentAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PaymentAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PaymentAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PaymentAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PaymentAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PaymentAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PaymentAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PaymentAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PaymentAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PaymentAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PaymentAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PaymentAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PaymentAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PaymentAttributeSchemasInput) GetType() SchemasPaymentAttributeType {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetType() SchemasPaymentAttributeType {
+	if p == nil {
 		return SchemasPaymentAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PaymentAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (p *PaymentAttributeSchemasInput) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // EmailAttributeSchemasInput - Email address
@@ -16109,221 +16109,221 @@ func (e *EmailAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EmailAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetManifest() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Manifest
+	return e.Manifest
 }
 
-func (o *EmailAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Purpose
 }
 
-func (o *EmailAttributeSchemasInput) GetConstraints() *SchemasEmailAttributeConstraints {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetConstraints() *SchemasEmailAttributeConstraints {
+	if e == nil {
 		return nil
 	}
-	return o.Constraints
+	return e.Constraints
 }
 
-func (o *EmailAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetDefaultValue() any {
+	if e == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return e.DefaultValue
 }
 
-func (o *EmailAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetDeprecated() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Deprecated
+	return e.Deprecated
 }
 
-func (o *EmailAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return e.EntityBuilderDisableEdit
 }
 
-func (o *EmailAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetFeatureFlag() *string {
+	if e == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return e.FeatureFlag
 }
 
-func (o *EmailAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetGroup() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Group
+	return e.Group
 }
 
-func (o *EmailAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetHasPrimary() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return e.HasPrimary
 }
 
-func (o *EmailAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetHidden() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Hidden
+	return e.Hidden
 }
 
-func (o *EmailAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetHideLabel() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.HideLabel
+	return e.HideLabel
 }
 
-func (o *EmailAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetIcon() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Icon
+	return e.Icon
 }
 
-func (o *EmailAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ID
+	return e.ID
 }
 
-func (o *EmailAttributeSchemasInput) GetInfoHelpers() *SchemasEmailAttributeInfoHelpers {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetInfoHelpers() *SchemasEmailAttributeInfoHelpers {
+	if e == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return e.InfoHelpers
 }
 
-func (o *EmailAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetLabel() string {
+	if e == nil {
 		return ""
 	}
-	return o.Label
+	return e.Label
 }
 
-func (o *EmailAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetLayout() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Layout
+	return e.Layout
 }
 
-func (o *EmailAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetName() string {
+	if e == nil {
 		return ""
 	}
-	return o.Name
+	return e.Name
 }
 
-func (o *EmailAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetOrder() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.Order
+	return e.Order
 }
 
-func (o *EmailAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetPlaceholder() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Placeholder
+	return e.Placeholder
 }
 
-func (o *EmailAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if e == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return e.PreviewValueFormatter
 }
 
-func (o *EmailAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetProtected() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Protected
+	return e.Protected
 }
 
-func (o *EmailAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetReadonly() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Readonly
+	return e.Readonly
 }
 
-func (o *EmailAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetRenderCondition() *string {
+	if e == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return e.RenderCondition
 }
 
-func (o *EmailAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetRepeatable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Repeatable
+	return e.Repeatable
 }
 
-func (o *EmailAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetRequired() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Required
+	return e.Required
 }
 
-func (o *EmailAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetSchema() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Schema
+	return e.Schema
 }
 
-func (o *EmailAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if e == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return e.SettingsFlag
 }
 
-func (o *EmailAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetShowInTable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return e.ShowInTable
 }
 
-func (o *EmailAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetSortable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Sortable
+	return e.Sortable
 }
 
-func (o *EmailAttributeSchemasInput) GetType() SchemasEmailAttributeType {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetType() SchemasEmailAttributeType {
+	if e == nil {
 		return SchemasEmailAttributeType("")
 	}
-	return o.Type
+	return e.Type
 }
 
-func (o *EmailAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (e *EmailAttributeSchemasInput) GetValueFormatter() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return e.ValueFormatter
 }
 
 // PhoneAttributeSchemasInput - Phone number
@@ -16397,221 +16397,221 @@ func (p *PhoneAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PhoneAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PhoneAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PhoneAttributeSchemasInput) GetConstraints() *SchemasPhoneAttributeConstraints {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetConstraints() *SchemasPhoneAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PhoneAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PhoneAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PhoneAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PhoneAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PhoneAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PhoneAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PhoneAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PhoneAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PhoneAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PhoneAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PhoneAttributeSchemasInput) GetInfoHelpers() *SchemasPhoneAttributeInfoHelpers {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetInfoHelpers() *SchemasPhoneAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PhoneAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PhoneAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PhoneAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PhoneAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PhoneAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PhoneAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PhoneAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PhoneAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PhoneAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PhoneAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PhoneAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PhoneAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PhoneAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PhoneAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PhoneAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PhoneAttributeSchemasInput) GetType() SchemasPhoneAttributeType {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetType() SchemasPhoneAttributeType {
+	if p == nil {
 		return SchemasPhoneAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PhoneAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (p *PhoneAttributeSchemasInput) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // PortalAccessAttributeSchemasInput - Portal access configuration
@@ -16685,221 +16685,221 @@ func (p *PortalAccessAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetConstraints() *SchemasPortalAccessAttributeConstraints {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetConstraints() *SchemasPortalAccessAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetInfoHelpers() *SchemasPortalAccessAttributeInfoHelpers {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetInfoHelpers() *SchemasPortalAccessAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetType() SchemasPortalAccessAttributeType {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetType() SchemasPortalAccessAttributeType {
+	if p == nil {
 		return SchemasPortalAccessAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PortalAccessAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (p *PortalAccessAttributeSchemasInput) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // PartnerOrganisationAttributeSchemasInput - Shared Partner Organisations
@@ -16973,221 +16973,221 @@ func (p *PartnerOrganisationAttributeSchemasInput) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetConstraints() *SchemasPartnerOrganisationAttributeConstraints {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetConstraints() *SchemasPartnerOrganisationAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetInfoHelpers() *SchemasPartnerOrganisationAttributeInfoHelpers {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetInfoHelpers() *SchemasPartnerOrganisationAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetType() SchemasPartnerOrganisationAttributeType {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetType() SchemasPartnerOrganisationAttributeType {
+	if p == nil {
 		return SchemasPartnerOrganisationAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PartnerOrganisationAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeSchemasInput) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // PurposeAttributeSchemasInput - Entity Taxonomy
@@ -17261,221 +17261,221 @@ func (p *PurposeAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PurposeAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PurposeAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PurposeAttributeSchemasInput) GetConstraints() *SchemasPurposeAttributeConstraints {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetConstraints() *SchemasPurposeAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PurposeAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PurposeAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PurposeAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PurposeAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PurposeAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PurposeAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PurposeAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PurposeAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PurposeAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PurposeAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PurposeAttributeSchemasInput) GetInfoHelpers() *SchemasPurposeAttributeInfoHelpers {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetInfoHelpers() *SchemasPurposeAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PurposeAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PurposeAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PurposeAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PurposeAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PurposeAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PurposeAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PurposeAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PurposeAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PurposeAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PurposeAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PurposeAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PurposeAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PurposeAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PurposeAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PurposeAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PurposeAttributeSchemasInput) GetType() SchemasPurposeAttributeType {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetType() SchemasPurposeAttributeType {
+	if p == nil {
 		return SchemasPurposeAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PurposeAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (p *PurposeAttributeSchemasInput) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // InternalUserAttributeSchemasInput - Epilot internal user info
@@ -17549,221 +17549,221 @@ func (i *InternalUserAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *InternalUserAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetManifest() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Manifest
+	return i.Manifest
 }
 
-func (o *InternalUserAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetPurpose() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Purpose
+	return i.Purpose
 }
 
-func (o *InternalUserAttributeSchemasInput) GetConstraints() *SchemasInternalUserAttributeConstraints {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetConstraints() *SchemasInternalUserAttributeConstraints {
+	if i == nil {
 		return nil
 	}
-	return o.Constraints
+	return i.Constraints
 }
 
-func (o *InternalUserAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetDefaultValue() any {
+	if i == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return i.DefaultValue
 }
 
-func (o *InternalUserAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetDeprecated() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Deprecated
+	return i.Deprecated
 }
 
-func (o *InternalUserAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return i.EntityBuilderDisableEdit
 }
 
-func (o *InternalUserAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetFeatureFlag() *string {
+	if i == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return i.FeatureFlag
 }
 
-func (o *InternalUserAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetGroup() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Group
+	return i.Group
 }
 
-func (o *InternalUserAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetHasPrimary() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return i.HasPrimary
 }
 
-func (o *InternalUserAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetHidden() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Hidden
+	return i.Hidden
 }
 
-func (o *InternalUserAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetHideLabel() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HideLabel
+	return i.HideLabel
 }
 
-func (o *InternalUserAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetIcon() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Icon
+	return i.Icon
 }
 
-func (o *InternalUserAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ID
+	return i.ID
 }
 
-func (o *InternalUserAttributeSchemasInput) GetInfoHelpers() *SchemasInternalUserAttributeInfoHelpers {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetInfoHelpers() *SchemasInternalUserAttributeInfoHelpers {
+	if i == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return i.InfoHelpers
 }
 
-func (o *InternalUserAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetLabel() string {
+	if i == nil {
 		return ""
 	}
-	return o.Label
+	return i.Label
 }
 
-func (o *InternalUserAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetLayout() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Layout
+	return i.Layout
 }
 
-func (o *InternalUserAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetName() string {
+	if i == nil {
 		return ""
 	}
-	return o.Name
+	return i.Name
 }
 
-func (o *InternalUserAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetOrder() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.Order
+	return i.Order
 }
 
-func (o *InternalUserAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetPlaceholder() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Placeholder
+	return i.Placeholder
 }
 
-func (o *InternalUserAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return i.PreviewValueFormatter
 }
 
-func (o *InternalUserAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetProtected() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Protected
+	return i.Protected
 }
 
-func (o *InternalUserAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetReadonly() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Readonly
+	return i.Readonly
 }
 
-func (o *InternalUserAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetRenderCondition() *string {
+	if i == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return i.RenderCondition
 }
 
-func (o *InternalUserAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetRepeatable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Repeatable
+	return i.Repeatable
 }
 
-func (o *InternalUserAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetRequired() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Required
+	return i.Required
 }
 
-func (o *InternalUserAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetSchema() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Schema
+	return i.Schema
 }
 
-func (o *InternalUserAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if i == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return i.SettingsFlag
 }
 
-func (o *InternalUserAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetShowInTable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return i.ShowInTable
 }
 
-func (o *InternalUserAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetSortable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Sortable
+	return i.Sortable
 }
 
-func (o *InternalUserAttributeSchemasInput) GetType() SchemasInternalUserAttributeType {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetType() SchemasInternalUserAttributeType {
+	if i == nil {
 		return SchemasInternalUserAttributeType("")
 	}
-	return o.Type
+	return i.Type
 }
 
-func (o *InternalUserAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (i *InternalUserAttributeSchemasInput) GetValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return i.ValueFormatter
 }
 
 // AutomationAttributeSchemasInput - Automation entity
@@ -17837,221 +17837,221 @@ func (a *AutomationAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AutomationAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetManifest() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Manifest
+	return a.Manifest
 }
 
-func (o *AutomationAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetPurpose() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Purpose
+	return a.Purpose
 }
 
-func (o *AutomationAttributeSchemasInput) GetConstraints() *SchemasAutomationAttributeConstraints {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetConstraints() *SchemasAutomationAttributeConstraints {
+	if a == nil {
 		return nil
 	}
-	return o.Constraints
+	return a.Constraints
 }
 
-func (o *AutomationAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetDefaultValue() any {
+	if a == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return a.DefaultValue
 }
 
-func (o *AutomationAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetDeprecated() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Deprecated
+	return a.Deprecated
 }
 
-func (o *AutomationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return a.EntityBuilderDisableEdit
 }
 
-func (o *AutomationAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetFeatureFlag() *string {
+	if a == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return a.FeatureFlag
 }
 
-func (o *AutomationAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetGroup() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Group
+	return a.Group
 }
 
-func (o *AutomationAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetHasPrimary() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return a.HasPrimary
 }
 
-func (o *AutomationAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetHidden() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Hidden
+	return a.Hidden
 }
 
-func (o *AutomationAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetHideLabel() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HideLabel
+	return a.HideLabel
 }
 
-func (o *AutomationAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetIcon() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Icon
+	return a.Icon
 }
 
-func (o *AutomationAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AutomationAttributeSchemasInput) GetInfoHelpers() *SchemasAutomationAttributeInfoHelpers {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetInfoHelpers() *SchemasAutomationAttributeInfoHelpers {
+	if a == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return a.InfoHelpers
 }
 
-func (o *AutomationAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetLabel() string {
+	if a == nil {
 		return ""
 	}
-	return o.Label
+	return a.Label
 }
 
-func (o *AutomationAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetLayout() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Layout
+	return a.Layout
 }
 
-func (o *AutomationAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AutomationAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetOrder() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.Order
+	return a.Order
 }
 
-func (o *AutomationAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetPlaceholder() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Placeholder
+	return a.Placeholder
 }
 
-func (o *AutomationAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return a.PreviewValueFormatter
 }
 
-func (o *AutomationAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetProtected() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Protected
+	return a.Protected
 }
 
-func (o *AutomationAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetReadonly() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Readonly
+	return a.Readonly
 }
 
-func (o *AutomationAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetRenderCondition() *string {
+	if a == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return a.RenderCondition
 }
 
-func (o *AutomationAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetRepeatable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Repeatable
+	return a.Repeatable
 }
 
-func (o *AutomationAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetRequired() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Required
+	return a.Required
 }
 
-func (o *AutomationAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetSchema() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Schema
+	return a.Schema
 }
 
-func (o *AutomationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if a == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return a.SettingsFlag
 }
 
-func (o *AutomationAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetShowInTable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return a.ShowInTable
 }
 
-func (o *AutomationAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetSortable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Sortable
+	return a.Sortable
 }
 
-func (o *AutomationAttributeSchemasInput) GetType() SchemasAutomationAttributeType {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetType() SchemasAutomationAttributeType {
+	if a == nil {
 		return SchemasAutomationAttributeType("")
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *AutomationAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (a *AutomationAttributeSchemasInput) GetValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return a.ValueFormatter
 }
 
 // InvitationEmailAttributeSchemasInput - Email address for send invitation
@@ -18125,221 +18125,221 @@ func (i *InvitationEmailAttributeSchemasInput) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetManifest() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Manifest
+	return i.Manifest
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetPurpose() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Purpose
+	return i.Purpose
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetConstraints() *SchemasInvitationEmailAttributeConstraints {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetConstraints() *SchemasInvitationEmailAttributeConstraints {
+	if i == nil {
 		return nil
 	}
-	return o.Constraints
+	return i.Constraints
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetDefaultValue() any {
+	if i == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return i.DefaultValue
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetDeprecated() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Deprecated
+	return i.Deprecated
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return i.EntityBuilderDisableEdit
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetFeatureFlag() *string {
+	if i == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return i.FeatureFlag
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetGroup() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Group
+	return i.Group
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetHasPrimary() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return i.HasPrimary
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetHidden() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Hidden
+	return i.Hidden
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetHideLabel() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HideLabel
+	return i.HideLabel
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetIcon() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Icon
+	return i.Icon
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ID
+	return i.ID
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetInfoHelpers() *SchemasInvitationEmailAttributeInfoHelpers {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetInfoHelpers() *SchemasInvitationEmailAttributeInfoHelpers {
+	if i == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return i.InfoHelpers
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetLabel() string {
+	if i == nil {
 		return ""
 	}
-	return o.Label
+	return i.Label
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetLayout() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Layout
+	return i.Layout
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetName() string {
+	if i == nil {
 		return ""
 	}
-	return o.Name
+	return i.Name
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetOrder() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.Order
+	return i.Order
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetPlaceholder() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Placeholder
+	return i.Placeholder
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return i.PreviewValueFormatter
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetProtected() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Protected
+	return i.Protected
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetReadonly() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Readonly
+	return i.Readonly
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetRenderCondition() *string {
+	if i == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return i.RenderCondition
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetRepeatable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Repeatable
+	return i.Repeatable
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetRequired() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Required
+	return i.Required
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetSchema() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Schema
+	return i.Schema
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if i == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return i.SettingsFlag
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetShowInTable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return i.ShowInTable
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetSortable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Sortable
+	return i.Sortable
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetType() SchemasInvitationEmailAttributeType {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetType() SchemasInvitationEmailAttributeType {
+	if i == nil {
 		return SchemasInvitationEmailAttributeType("")
 	}
-	return o.Type
+	return i.Type
 }
 
-func (o *InvitationEmailAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (i *InvitationEmailAttributeSchemasInput) GetValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return i.ValueFormatter
 }
 
 // PartnerStatusAttributeSchemasInput - Partner Status
@@ -18413,221 +18413,221 @@ func (p *PartnerStatusAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetConstraints() *SchemasPartnerStatusAttributeConstraints {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetConstraints() *SchemasPartnerStatusAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetInfoHelpers() *SchemasPartnerStatusAttributeInfoHelpers {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetInfoHelpers() *SchemasPartnerStatusAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetType() SchemasPartnerStatusAttributeType {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetType() SchemasPartnerStatusAttributeType {
+	if p == nil {
 		return SchemasPartnerStatusAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PartnerStatusAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (p *PartnerStatusAttributeSchemasInput) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // ComputedAttributeSchemasInput - An attribute that is computed from the entity data. For more details on how to use them, check the docs [here](https://e-pilot.atlassian.net/wiki/spaces/EO/pages/5642977476/How+To+Computed+Schema+Attributes)
@@ -18708,242 +18708,242 @@ func (c *ComputedAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ComputedAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetManifest() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Manifest
+	return c.Manifest
 }
 
-func (o *ComputedAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetPurpose() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Purpose
+	return c.Purpose
 }
 
-func (o *ComputedAttributeSchemasInput) GetAmountField() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetAmountField() *string {
+	if c == nil {
 		return nil
 	}
-	return o.AmountField
+	return c.AmountField
 }
 
-func (o *ComputedAttributeSchemasInput) GetComputed() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetComputed() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Computed
+	return c.Computed
 }
 
-func (o *ComputedAttributeSchemasInput) GetConstraints() *SchemasComputedAttributeConstraints {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetConstraints() *SchemasComputedAttributeConstraints {
+	if c == nil {
 		return nil
 	}
-	return o.Constraints
+	return c.Constraints
 }
 
-func (o *ComputedAttributeSchemasInput) GetCurrencyField() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetCurrencyField() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CurrencyField
+	return c.CurrencyField
 }
 
-func (o *ComputedAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetDefaultValue() any {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return c.DefaultValue
 }
 
-func (o *ComputedAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetDeprecated() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Deprecated
+	return c.Deprecated
 }
 
-func (o *ComputedAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return c.EntityBuilderDisableEdit
 }
 
-func (o *ComputedAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetFeatureFlag() *string {
+	if c == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return c.FeatureFlag
 }
 
-func (o *ComputedAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetGroup() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Group
+	return c.Group
 }
 
-func (o *ComputedAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetHasPrimary() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return c.HasPrimary
 }
 
-func (o *ComputedAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetHidden() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Hidden
+	return c.Hidden
 }
 
-func (o *ComputedAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetHideLabel() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HideLabel
+	return c.HideLabel
 }
 
-func (o *ComputedAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetIcon() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Icon
+	return c.Icon
 }
 
-func (o *ComputedAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *ComputedAttributeSchemasInput) GetInfoHelpers() *SchemasComputedAttributeInfoHelpers {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetInfoHelpers() *SchemasComputedAttributeInfoHelpers {
+	if c == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return c.InfoHelpers
 }
 
-func (o *ComputedAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetLabel() string {
+	if c == nil {
 		return ""
 	}
-	return o.Label
+	return c.Label
 }
 
-func (o *ComputedAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetLayout() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Layout
+	return c.Layout
 }
 
-func (o *ComputedAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *ComputedAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetOrder() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Order
+	return c.Order
 }
 
-func (o *ComputedAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetPlaceholder() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Placeholder
+	return c.Placeholder
 }
 
-func (o *ComputedAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return c.PreviewValueFormatter
 }
 
-func (o *ComputedAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetProtected() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Protected
+	return c.Protected
 }
 
-func (o *ComputedAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetReadonly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Readonly
+	return c.Readonly
 }
 
-func (o *ComputedAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetRenderCondition() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return c.RenderCondition
 }
 
-func (o *ComputedAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetRepeatable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Repeatable
+	return c.Repeatable
 }
 
-func (o *ComputedAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetRequired() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Required
+	return c.Required
 }
 
-func (o *ComputedAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetSchema() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Schema
+	return c.Schema
 }
 
-func (o *ComputedAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if c == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return c.SettingsFlag
 }
 
-func (o *ComputedAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetShowInTable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return c.ShowInTable
 }
 
-func (o *ComputedAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetSortable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Sortable
+	return c.Sortable
 }
 
-func (o *ComputedAttributeSchemasInput) GetType() SchemasComputedAttributeType {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetType() SchemasComputedAttributeType {
+	if c == nil {
 		return SchemasComputedAttributeType("")
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *ComputedAttributeSchemasInput) GetValueFormatter() string {
-	if o == nil {
+func (c *ComputedAttributeSchemasInput) GetValueFormatter() string {
+	if c == nil {
 		return ""
 	}
-	return o.ValueFormatter
+	return c.ValueFormatter
 }
 
 // FileAttributeSchemasInput - File or Image Attachment
@@ -19027,256 +19027,256 @@ func (f *FileAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FileAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetManifest() []string {
+	if f == nil {
 		return nil
 	}
-	return o.Manifest
+	return f.Manifest
 }
 
-func (o *FileAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetPurpose() []string {
+	if f == nil {
 		return nil
 	}
-	return o.Purpose
+	return f.Purpose
 }
 
-func (o *FileAttributeSchemasInput) GetAllowedExtensions() []string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetAllowedExtensions() []string {
+	if f == nil {
 		return nil
 	}
-	return o.AllowedExtensions
+	return f.AllowedExtensions
 }
 
-func (o *FileAttributeSchemasInput) GetConstraints() *SchemasFileAttributeConstraints {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetConstraints() *SchemasFileAttributeConstraints {
+	if f == nil {
 		return nil
 	}
-	return o.Constraints
+	return f.Constraints
 }
 
-func (o *FileAttributeSchemasInput) GetDefaultAccessControl() *DefaultAccessControl {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetDefaultAccessControl() *DefaultAccessControl {
+	if f == nil {
 		return nil
 	}
-	return o.DefaultAccessControl
+	return f.DefaultAccessControl
 }
 
-func (o *FileAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetDefaultValue() any {
+	if f == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return f.DefaultValue
 }
 
-func (o *FileAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetDeprecated() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Deprecated
+	return f.Deprecated
 }
 
-func (o *FileAttributeSchemasInput) GetDisplayImagesLandscaped() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetDisplayImagesLandscaped() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.DisplayImagesLandscaped
+	return f.DisplayImagesLandscaped
 }
 
-func (o *FileAttributeSchemasInput) GetEnableDescription() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetEnableDescription() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.EnableDescription
+	return f.EnableDescription
 }
 
-func (o *FileAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return f.EntityBuilderDisableEdit
 }
 
-func (o *FileAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetFeatureFlag() *string {
+	if f == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return f.FeatureFlag
 }
 
-func (o *FileAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetGroup() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Group
+	return f.Group
 }
 
-func (o *FileAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetHasPrimary() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return f.HasPrimary
 }
 
-func (o *FileAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetHidden() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Hidden
+	return f.Hidden
 }
 
-func (o *FileAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetHideLabel() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.HideLabel
+	return f.HideLabel
 }
 
-func (o *FileAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetIcon() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Icon
+	return f.Icon
 }
 
-func (o *FileAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetID() *string {
+	if f == nil {
 		return nil
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FileAttributeSchemasInput) GetInfoHelpers() *SchemasFileAttributeInfoHelpers {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetInfoHelpers() *SchemasFileAttributeInfoHelpers {
+	if f == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return f.InfoHelpers
 }
 
-func (o *FileAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetLabel() string {
+	if f == nil {
 		return ""
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FileAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetLayout() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Layout
+	return f.Layout
 }
 
-func (o *FileAttributeSchemasInput) GetMultiple() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetMultiple() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Multiple
+	return f.Multiple
 }
 
-func (o *FileAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetName() string {
+	if f == nil {
 		return ""
 	}
-	return o.Name
+	return f.Name
 }
 
-func (o *FileAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetOrder() *int64 {
+	if f == nil {
 		return nil
 	}
-	return o.Order
+	return f.Order
 }
 
-func (o *FileAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FileAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if f == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return f.PreviewValueFormatter
 }
 
-func (o *FileAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetProtected() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Protected
+	return f.Protected
 }
 
-func (o *FileAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetReadonly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Readonly
+	return f.Readonly
 }
 
-func (o *FileAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetRenderCondition() *string {
+	if f == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return f.RenderCondition
 }
 
-func (o *FileAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetRepeatable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Repeatable
+	return f.Repeatable
 }
 
-func (o *FileAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FileAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetSchema() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Schema
+	return f.Schema
 }
 
-func (o *FileAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if f == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return f.SettingsFlag
 }
 
-func (o *FileAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetShowInTable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return f.ShowInTable
 }
 
-func (o *FileAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetSortable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Sortable
+	return f.Sortable
 }
 
-func (o *FileAttributeSchemasInput) GetType() SchemasFileAttributeType {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetType() SchemasFileAttributeType {
+	if f == nil {
 		return SchemasFileAttributeType("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FileAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (f *FileAttributeSchemasInput) GetValueFormatter() *string {
+	if f == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return f.ValueFormatter
 }
 
 // OrderedListAttributeSchemasInput - Type of attribute to render N number of ordered fields
@@ -19638,221 +19638,221 @@ func (i *InternalAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *InternalAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetManifest() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Manifest
+	return i.Manifest
 }
 
-func (o *InternalAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetPurpose() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Purpose
+	return i.Purpose
 }
 
-func (o *InternalAttributeSchemasInput) GetConstraints() *SchemasInternalAttributeConstraints {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetConstraints() *SchemasInternalAttributeConstraints {
+	if i == nil {
 		return nil
 	}
-	return o.Constraints
+	return i.Constraints
 }
 
-func (o *InternalAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetDefaultValue() any {
+	if i == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return i.DefaultValue
 }
 
-func (o *InternalAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetDeprecated() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Deprecated
+	return i.Deprecated
 }
 
-func (o *InternalAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return i.EntityBuilderDisableEdit
 }
 
-func (o *InternalAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetFeatureFlag() *string {
+	if i == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return i.FeatureFlag
 }
 
-func (o *InternalAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetGroup() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Group
+	return i.Group
 }
 
-func (o *InternalAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetHasPrimary() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return i.HasPrimary
 }
 
-func (o *InternalAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetHidden() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Hidden
+	return i.Hidden
 }
 
-func (o *InternalAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetHideLabel() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.HideLabel
+	return i.HideLabel
 }
 
-func (o *InternalAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetIcon() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Icon
+	return i.Icon
 }
 
-func (o *InternalAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ID
+	return i.ID
 }
 
-func (o *InternalAttributeSchemasInput) GetInfoHelpers() *SchemasInternalAttributeInfoHelpers {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetInfoHelpers() *SchemasInternalAttributeInfoHelpers {
+	if i == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return i.InfoHelpers
 }
 
-func (o *InternalAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetLabel() string {
+	if i == nil {
 		return ""
 	}
-	return o.Label
+	return i.Label
 }
 
-func (o *InternalAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetLayout() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Layout
+	return i.Layout
 }
 
-func (o *InternalAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetName() string {
+	if i == nil {
 		return ""
 	}
-	return o.Name
+	return i.Name
 }
 
-func (o *InternalAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetOrder() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.Order
+	return i.Order
 }
 
-func (o *InternalAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetPlaceholder() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Placeholder
+	return i.Placeholder
 }
 
-func (o *InternalAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return i.PreviewValueFormatter
 }
 
-func (o *InternalAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetProtected() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Protected
+	return i.Protected
 }
 
-func (o *InternalAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetReadonly() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Readonly
+	return i.Readonly
 }
 
-func (o *InternalAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetRenderCondition() *string {
+	if i == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return i.RenderCondition
 }
 
-func (o *InternalAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetRepeatable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Repeatable
+	return i.Repeatable
 }
 
-func (o *InternalAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetRequired() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Required
+	return i.Required
 }
 
-func (o *InternalAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetSchema() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Schema
+	return i.Schema
 }
 
-func (o *InternalAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if i == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return i.SettingsFlag
 }
 
-func (o *InternalAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetShowInTable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return i.ShowInTable
 }
 
-func (o *InternalAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetSortable() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Sortable
+	return i.Sortable
 }
 
-func (o *InternalAttributeSchemasInput) GetType() SchemasInternalAttributeType {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetType() SchemasInternalAttributeType {
+	if i == nil {
 		return SchemasInternalAttributeType("")
 	}
-	return o.Type
+	return i.Type
 }
 
-func (o *InternalAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (i *InternalAttributeSchemasInput) GetValueFormatter() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return i.ValueFormatter
 }
 
 // ConsentAttributeSchemasInput - Consent Management
@@ -19928,235 +19928,235 @@ func (c *ConsentAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ConsentAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetManifest() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Manifest
+	return c.Manifest
 }
 
-func (o *ConsentAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetPurpose() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Purpose
+	return c.Purpose
 }
 
-func (o *ConsentAttributeSchemasInput) GetConstraints() *SchemasConsentAttributeConstraints {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetConstraints() *SchemasConsentAttributeConstraints {
+	if c == nil {
 		return nil
 	}
-	return o.Constraints
+	return c.Constraints
 }
 
-func (o *ConsentAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetDefaultValue() any {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return c.DefaultValue
 }
 
-func (o *ConsentAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetDeprecated() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Deprecated
+	return c.Deprecated
 }
 
-func (o *ConsentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return c.EntityBuilderDisableEdit
 }
 
-func (o *ConsentAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetFeatureFlag() *string {
+	if c == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return c.FeatureFlag
 }
 
-func (o *ConsentAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetGroup() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Group
+	return c.Group
 }
 
-func (o *ConsentAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetHasPrimary() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return c.HasPrimary
 }
 
-func (o *ConsentAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetHidden() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Hidden
+	return c.Hidden
 }
 
-func (o *ConsentAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetHideLabel() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HideLabel
+	return c.HideLabel
 }
 
-func (o *ConsentAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetIcon() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Icon
+	return c.Icon
 }
 
-func (o *ConsentAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *ConsentAttributeSchemasInput) GetIdentifiers() []string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetIdentifiers() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Identifiers
+	return c.Identifiers
 }
 
-func (o *ConsentAttributeSchemasInput) GetInfoHelpers() *SchemasConsentAttributeInfoHelpers {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetInfoHelpers() *SchemasConsentAttributeInfoHelpers {
+	if c == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return c.InfoHelpers
 }
 
-func (o *ConsentAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetLabel() string {
+	if c == nil {
 		return ""
 	}
-	return o.Label
+	return c.Label
 }
 
-func (o *ConsentAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetLayout() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Layout
+	return c.Layout
 }
 
-func (o *ConsentAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *ConsentAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetOrder() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Order
+	return c.Order
 }
 
-func (o *ConsentAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetPlaceholder() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Placeholder
+	return c.Placeholder
 }
 
-func (o *ConsentAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return c.PreviewValueFormatter
 }
 
-func (o *ConsentAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetProtected() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Protected
+	return c.Protected
 }
 
-func (o *ConsentAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetReadonly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Readonly
+	return c.Readonly
 }
 
-func (o *ConsentAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetRenderCondition() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return c.RenderCondition
 }
 
-func (o *ConsentAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetRepeatable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Repeatable
+	return c.Repeatable
 }
 
-func (o *ConsentAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetRequired() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Required
+	return c.Required
 }
 
-func (o *ConsentAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetSchema() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Schema
+	return c.Schema
 }
 
-func (o *ConsentAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if c == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return c.SettingsFlag
 }
 
-func (o *ConsentAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetShowInTable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return c.ShowInTable
 }
 
-func (o *ConsentAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetSortable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Sortable
+	return c.Sortable
 }
 
-func (o *ConsentAttributeSchemasInput) GetTopic() string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetTopic() string {
+	if c == nil {
 		return ""
 	}
-	return o.Topic
+	return c.Topic
 }
 
-func (o *ConsentAttributeSchemasInput) GetType() SchemasConsentAttributeType {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetType() SchemasConsentAttributeType {
+	if c == nil {
 		return SchemasConsentAttributeType("")
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *ConsentAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (c *ConsentAttributeSchemasInput) GetValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return c.ValueFormatter
 }
 
 // NumberAttributeSchemasInput - Numeric input
@@ -20233,235 +20233,235 @@ func (n *NumberAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *NumberAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetManifest() []string {
+	if n == nil {
 		return nil
 	}
-	return o.Manifest
+	return n.Manifest
 }
 
-func (o *NumberAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetPurpose() []string {
+	if n == nil {
 		return nil
 	}
-	return o.Purpose
+	return n.Purpose
 }
 
-func (o *NumberAttributeSchemasInput) GetConstraints() *SchemasNumberAttributeConstraints {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetConstraints() *SchemasNumberAttributeConstraints {
+	if n == nil {
 		return nil
 	}
-	return o.Constraints
+	return n.Constraints
 }
 
-func (o *NumberAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetDefaultValue() any {
+	if n == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return n.DefaultValue
 }
 
-func (o *NumberAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetDeprecated() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Deprecated
+	return n.Deprecated
 }
 
-func (o *NumberAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return n.EntityBuilderDisableEdit
 }
 
-func (o *NumberAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetFeatureFlag() *string {
+	if n == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return n.FeatureFlag
 }
 
-func (o *NumberAttributeSchemasInput) GetFormat() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetFormat() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Format
+	return n.Format
 }
 
-func (o *NumberAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetGroup() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Group
+	return n.Group
 }
 
-func (o *NumberAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetHasPrimary() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return n.HasPrimary
 }
 
-func (o *NumberAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetHidden() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Hidden
+	return n.Hidden
 }
 
-func (o *NumberAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetHideLabel() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.HideLabel
+	return n.HideLabel
 }
 
-func (o *NumberAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetIcon() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Icon
+	return n.Icon
 }
 
-func (o *NumberAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetID() *string {
+	if n == nil {
 		return nil
 	}
-	return o.ID
+	return n.ID
 }
 
-func (o *NumberAttributeSchemasInput) GetInfoHelpers() *SchemasNumberAttributeInfoHelpers {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetInfoHelpers() *SchemasNumberAttributeInfoHelpers {
+	if n == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return n.InfoHelpers
 }
 
-func (o *NumberAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetLabel() string {
+	if n == nil {
 		return ""
 	}
-	return o.Label
+	return n.Label
 }
 
-func (o *NumberAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetLayout() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Layout
+	return n.Layout
 }
 
-func (o *NumberAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetName() string {
+	if n == nil {
 		return ""
 	}
-	return o.Name
+	return n.Name
 }
 
-func (o *NumberAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetOrder() *int64 {
+	if n == nil {
 		return nil
 	}
-	return o.Order
+	return n.Order
 }
 
-func (o *NumberAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetPlaceholder() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Placeholder
+	return n.Placeholder
 }
 
-func (o *NumberAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if n == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return n.PreviewValueFormatter
 }
 
-func (o *NumberAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetProtected() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Protected
+	return n.Protected
 }
 
-func (o *NumberAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetReadonly() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Readonly
+	return n.Readonly
 }
 
-func (o *NumberAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetRenderCondition() *string {
+	if n == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return n.RenderCondition
 }
 
-func (o *NumberAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetRepeatable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Repeatable
+	return n.Repeatable
 }
 
-func (o *NumberAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetRequired() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Required
+	return n.Required
 }
 
-func (o *NumberAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetSchema() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Schema
+	return n.Schema
 }
 
-func (o *NumberAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if n == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return n.SettingsFlag
 }
 
-func (o *NumberAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetShowInTable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return n.ShowInTable
 }
 
-func (o *NumberAttributeSchemasInput) GetShowSeparator() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetShowSeparator() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.ShowSeparator
+	return n.ShowSeparator
 }
 
-func (o *NumberAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetSortable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Sortable
+	return n.Sortable
 }
 
-func (o *NumberAttributeSchemasInput) GetType() SchemasNumberAttributeType {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetType() SchemasNumberAttributeType {
+	if n == nil {
 		return SchemasNumberAttributeType("")
 	}
-	return o.Type
+	return n.Type
 }
 
-func (o *NumberAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (n *NumberAttributeSchemasInput) GetValueFormatter() *string {
+	if n == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return n.ValueFormatter
 }
 
 // MessageEmailAddressAttributeSchemasInput - Message emil address
@@ -20538,242 +20538,242 @@ func (m *MessageEmailAddressAttributeSchemasInput) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetManifest() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Manifest
+	return m.Manifest
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetPurpose() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Purpose
+	return m.Purpose
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetAddress() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetAddress() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Address
+	return m.Address
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetConstraints() *SchemasMessageEmailAddressAttributeConstraints {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetConstraints() *SchemasMessageEmailAddressAttributeConstraints {
+	if m == nil {
 		return nil
 	}
-	return o.Constraints
+	return m.Constraints
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetDefaultValue() any {
+	if m == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return m.DefaultValue
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetDeprecated() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Deprecated
+	return m.Deprecated
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetEmailType() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetEmailType() *string {
+	if m == nil {
 		return nil
 	}
-	return o.EmailType
+	return m.EmailType
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return m.EntityBuilderDisableEdit
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetFeatureFlag() *string {
+	if m == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return m.FeatureFlag
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetGroup() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Group
+	return m.Group
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetHasPrimary() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return m.HasPrimary
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetHidden() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Hidden
+	return m.Hidden
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetHideLabel() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.HideLabel
+	return m.HideLabel
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetIcon() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Icon
+	return m.Icon
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ID
+	return m.ID
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetInfoHelpers() *SchemasMessageEmailAddressAttributeInfoHelpers {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetInfoHelpers() *SchemasMessageEmailAddressAttributeInfoHelpers {
+	if m == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return m.InfoHelpers
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetLabel() string {
+	if m == nil {
 		return ""
 	}
-	return o.Label
+	return m.Label
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetLayout() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Layout
+	return m.Layout
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetName() string {
+	if m == nil {
 		return ""
 	}
-	return o.Name
+	return m.Name
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetOrder() *int64 {
+	if m == nil {
 		return nil
 	}
-	return o.Order
+	return m.Order
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetPlaceholder() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Placeholder
+	return m.Placeholder
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return m.PreviewValueFormatter
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetProtected() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Protected
+	return m.Protected
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetReadonly() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Readonly
+	return m.Readonly
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetRenderCondition() *string {
+	if m == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return m.RenderCondition
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetRepeatable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Repeatable
+	return m.Repeatable
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetRequired() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Required
+	return m.Required
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetSchema() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Schema
+	return m.Schema
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetSendStatus() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetSendStatus() *string {
+	if m == nil {
 		return nil
 	}
-	return o.SendStatus
+	return m.SendStatus
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if m == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return m.SettingsFlag
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetShowInTable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return m.ShowInTable
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetSortable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Sortable
+	return m.Sortable
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetType() SchemasMessageEmailAddressAttributeType {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetType() SchemasMessageEmailAddressAttributeType {
+	if m == nil {
 		return SchemasMessageEmailAddressAttributeType("")
 	}
-	return o.Type
+	return m.Type
 }
 
-func (o *MessageEmailAddressAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeSchemasInput) GetValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return m.ValueFormatter
 }
 
 // TagsAttributeSchemasInput - Tags
@@ -20849,235 +20849,235 @@ func (t *TagsAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TagsAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetManifest() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Manifest
+	return t.Manifest
 }
 
-func (o *TagsAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetPurpose() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Purpose
+	return t.Purpose
 }
 
-func (o *TagsAttributeSchemasInput) GetConstraints() *SchemasTagsAttributeConstraints {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetConstraints() *SchemasTagsAttributeConstraints {
+	if t == nil {
 		return nil
 	}
-	return o.Constraints
+	return t.Constraints
 }
 
-func (o *TagsAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetDefaultValue() any {
+	if t == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return t.DefaultValue
 }
 
-func (o *TagsAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetDeprecated() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Deprecated
+	return t.Deprecated
 }
 
-func (o *TagsAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return t.EntityBuilderDisableEdit
 }
 
-func (o *TagsAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetFeatureFlag() *string {
+	if t == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return t.FeatureFlag
 }
 
-func (o *TagsAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetGroup() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Group
+	return t.Group
 }
 
-func (o *TagsAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetHasPrimary() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return t.HasPrimary
 }
 
-func (o *TagsAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetHidden() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Hidden
+	return t.Hidden
 }
 
-func (o *TagsAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetHideLabel() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HideLabel
+	return t.HideLabel
 }
 
-func (o *TagsAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetIcon() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Icon
+	return t.Icon
 }
 
-func (o *TagsAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TagsAttributeSchemasInput) GetInfoHelpers() *SchemasTagsAttributeInfoHelpers {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetInfoHelpers() *SchemasTagsAttributeInfoHelpers {
+	if t == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return t.InfoHelpers
 }
 
-func (o *TagsAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetLabel() string {
+	if t == nil {
 		return ""
 	}
-	return o.Label
+	return t.Label
 }
 
-func (o *TagsAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetLayout() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Layout
+	return t.Layout
 }
 
-func (o *TagsAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TagsAttributeSchemasInput) GetOptions() []string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetOptions() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Options
+	return t.Options
 }
 
-func (o *TagsAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetOrder() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Order
+	return t.Order
 }
 
-func (o *TagsAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetPlaceholder() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Placeholder
+	return t.Placeholder
 }
 
-func (o *TagsAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return t.PreviewValueFormatter
 }
 
-func (o *TagsAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetProtected() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Protected
+	return t.Protected
 }
 
-func (o *TagsAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetReadonly() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Readonly
+	return t.Readonly
 }
 
-func (o *TagsAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetRenderCondition() *string {
+	if t == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return t.RenderCondition
 }
 
-func (o *TagsAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetRepeatable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Repeatable
+	return t.Repeatable
 }
 
-func (o *TagsAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetRequired() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Required
+	return t.Required
 }
 
-func (o *TagsAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetSchema() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Schema
+	return t.Schema
 }
 
-func (o *TagsAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if t == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return t.SettingsFlag
 }
 
-func (o *TagsAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetShowInTable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return t.ShowInTable
 }
 
-func (o *TagsAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetSortable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Sortable
+	return t.Sortable
 }
 
-func (o *TagsAttributeSchemasInput) GetSuggestions() []string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetSuggestions() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Suggestions
+	return t.Suggestions
 }
 
-func (o *TagsAttributeSchemasInput) GetType() SchemasTagsAttributeType {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetType() SchemasTagsAttributeType {
+	if t == nil {
 		return SchemasTagsAttributeType("")
 	}
-	return o.Type
+	return t.Type
 }
 
-func (o *TagsAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (t *TagsAttributeSchemasInput) GetValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return t.ValueFormatter
 }
 
 // CurrencyAttributeSchemasInput - Currency input
@@ -21154,235 +21154,235 @@ func (c *CurrencyAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CurrencyAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetManifest() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Manifest
+	return c.Manifest
 }
 
-func (o *CurrencyAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetPurpose() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Purpose
+	return c.Purpose
 }
 
-func (o *CurrencyAttributeSchemasInput) GetConstraints() *SchemasCurrencyAttributeConstraints {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetConstraints() *SchemasCurrencyAttributeConstraints {
+	if c == nil {
 		return nil
 	}
-	return o.Constraints
+	return c.Constraints
 }
 
-func (o *CurrencyAttributeSchemasInput) GetCurrency() []Currency {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetCurrency() []Currency {
+	if c == nil {
 		return []Currency{}
 	}
-	return o.Currency
+	return c.Currency
 }
 
-func (o *CurrencyAttributeSchemasInput) GetCurrencySelectorOnly() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetCurrencySelectorOnly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.CurrencySelectorOnly
+	return c.CurrencySelectorOnly
 }
 
-func (o *CurrencyAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetDefaultValue() any {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return c.DefaultValue
 }
 
-func (o *CurrencyAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetDeprecated() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Deprecated
+	return c.Deprecated
 }
 
-func (o *CurrencyAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return c.EntityBuilderDisableEdit
 }
 
-func (o *CurrencyAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetFeatureFlag() *string {
+	if c == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return c.FeatureFlag
 }
 
-func (o *CurrencyAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetGroup() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Group
+	return c.Group
 }
 
-func (o *CurrencyAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetHasPrimary() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return c.HasPrimary
 }
 
-func (o *CurrencyAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetHidden() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Hidden
+	return c.Hidden
 }
 
-func (o *CurrencyAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetHideLabel() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HideLabel
+	return c.HideLabel
 }
 
-func (o *CurrencyAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetIcon() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Icon
+	return c.Icon
 }
 
-func (o *CurrencyAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CurrencyAttributeSchemasInput) GetInfoHelpers() *SchemasCurrencyAttributeInfoHelpers {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetInfoHelpers() *SchemasCurrencyAttributeInfoHelpers {
+	if c == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return c.InfoHelpers
 }
 
-func (o *CurrencyAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetLabel() string {
+	if c == nil {
 		return ""
 	}
-	return o.Label
+	return c.Label
 }
 
-func (o *CurrencyAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetLayout() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Layout
+	return c.Layout
 }
 
-func (o *CurrencyAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CurrencyAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetOrder() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Order
+	return c.Order
 }
 
-func (o *CurrencyAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetPlaceholder() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Placeholder
+	return c.Placeholder
 }
 
-func (o *CurrencyAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return c.PreviewValueFormatter
 }
 
-func (o *CurrencyAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetProtected() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Protected
+	return c.Protected
 }
 
-func (o *CurrencyAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetReadonly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Readonly
+	return c.Readonly
 }
 
-func (o *CurrencyAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetRenderCondition() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return c.RenderCondition
 }
 
-func (o *CurrencyAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetRepeatable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Repeatable
+	return c.Repeatable
 }
 
-func (o *CurrencyAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetRequired() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Required
+	return c.Required
 }
 
-func (o *CurrencyAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetSchema() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Schema
+	return c.Schema
 }
 
-func (o *CurrencyAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if c == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return c.SettingsFlag
 }
 
-func (o *CurrencyAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetShowInTable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return c.ShowInTable
 }
 
-func (o *CurrencyAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetSortable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Sortable
+	return c.Sortable
 }
 
-func (o *CurrencyAttributeSchemasInput) GetType() SchemasCurrencyAttributeType {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetType() SchemasCurrencyAttributeType {
+	if c == nil {
 		return SchemasCurrencyAttributeType("")
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *CurrencyAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (c *CurrencyAttributeSchemasInput) GetValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return c.ValueFormatter
 }
 
 // PaymentMethodRelationAttributeSchemasInput - Reference to a payment method attribute of another entity
@@ -21456,221 +21456,221 @@ func (p *PaymentMethodRelationAttributeSchemasInput) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetConstraints() *SchemasPaymentMethodRelationAttributeConstraints {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetConstraints() *SchemasPaymentMethodRelationAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.FeatureFlag
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.Group
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.HasPrimary
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Hidden
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HideLabel
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Icon
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetInfoHelpers() *SchemasPaymentMethodRelationAttributeInfoHelpers {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetInfoHelpers() *SchemasPaymentMethodRelationAttributeInfoHelpers {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.InfoHelpers
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Schema
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetType() SchemasPaymentMethodRelationAttributeType {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetType() SchemasPaymentMethodRelationAttributeType {
+	if p == nil {
 		return SchemasPaymentMethodRelationAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PaymentMethodRelationAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (p *PaymentMethodRelationAttributeSchemasInput) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }
 
 // AddressRelationAttributeSchemasInput - Reference to an address attribute of another entity
@@ -21766,228 +21766,228 @@ func (a *AddressRelationAttributeSchemasInput) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetManifest() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Manifest
+	return a.Manifest
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetPurpose() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Purpose
+	return a.Purpose
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetConstraints() *SchemasConstraints {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetConstraints() *SchemasConstraints {
+	if a == nil {
 		return nil
 	}
-	return o.Constraints
+	return a.Constraints
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetDefaultAddressFields() []string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetDefaultAddressFields() []string {
+	if a == nil {
 		return nil
 	}
-	return o.DefaultAddressFields
+	return a.DefaultAddressFields
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetDefaultValue() any {
+	if a == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return a.DefaultValue
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetDeprecated() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Deprecated
+	return a.Deprecated
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return a.EntityBuilderDisableEdit
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetFeatureFlag() *string {
+	if a == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return a.FeatureFlag
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetGroup() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Group
+	return a.Group
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetHasPrimary() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return a.HasPrimary
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetHidden() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Hidden
+	return a.Hidden
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetHideLabel() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HideLabel
+	return a.HideLabel
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetIcon() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Icon
+	return a.Icon
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetInfoHelpers() *SchemasInfoHelpers {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetInfoHelpers() *SchemasInfoHelpers {
+	if a == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return a.InfoHelpers
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetLabel() string {
+	if a == nil {
 		return ""
 	}
-	return o.Label
+	return a.Label
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetLayout() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Layout
+	return a.Layout
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetOrder() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.Order
+	return a.Order
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetPlaceholder() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Placeholder
+	return a.Placeholder
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return a.PreviewValueFormatter
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetProtected() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Protected
+	return a.Protected
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetReadonly() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Readonly
+	return a.Readonly
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetRenderCondition() *string {
+	if a == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return a.RenderCondition
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetRepeatable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Repeatable
+	return a.Repeatable
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetRequired() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Required
+	return a.Required
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetSchema() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Schema
+	return a.Schema
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if a == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return a.SettingsFlag
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetShowInTable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return a.ShowInTable
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetSortable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Sortable
+	return a.Sortable
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetType() SchemasType {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetType() SchemasType {
+	if a == nil {
 		return SchemasType("")
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *AddressRelationAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (a *AddressRelationAttributeSchemasInput) GetValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return a.ValueFormatter
 }
 
 // SchemasInput - Address attribute
@@ -22083,228 +22083,228 @@ func (s *SchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SchemasInput) GetManifest() []string {
-	if o == nil {
+func (s *SchemasInput) GetManifest() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Manifest
+	return s.Manifest
 }
 
-func (o *SchemasInput) GetPurpose() []string {
-	if o == nil {
+func (s *SchemasInput) GetPurpose() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Purpose
+	return s.Purpose
 }
 
-func (o *SchemasInput) GetConstraints() *Constraints {
-	if o == nil {
+func (s *SchemasInput) GetConstraints() *Constraints {
+	if s == nil {
 		return nil
 	}
-	return o.Constraints
+	return s.Constraints
 }
 
-func (o *SchemasInput) GetDefaultAddressFields() []string {
-	if o == nil {
+func (s *SchemasInput) GetDefaultAddressFields() []string {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultAddressFields
+	return s.DefaultAddressFields
 }
 
-func (o *SchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (s *SchemasInput) GetDefaultValue() any {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return s.DefaultValue
 }
 
-func (o *SchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (s *SchemasInput) GetDeprecated() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Deprecated
+	return s.Deprecated
 }
 
-func (o *SchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (s *SchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return s.EntityBuilderDisableEdit
 }
 
-func (o *SchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (s *SchemasInput) GetFeatureFlag() *string {
+	if s == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return s.FeatureFlag
 }
 
-func (o *SchemasInput) GetGroup() *string {
-	if o == nil {
+func (s *SchemasInput) GetGroup() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Group
+	return s.Group
 }
 
-func (o *SchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (s *SchemasInput) GetHasPrimary() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return s.HasPrimary
 }
 
-func (o *SchemasInput) GetHidden() *bool {
-	if o == nil {
+func (s *SchemasInput) GetHidden() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Hidden
+	return s.Hidden
 }
 
-func (o *SchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (s *SchemasInput) GetHideLabel() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HideLabel
+	return s.HideLabel
 }
 
-func (o *SchemasInput) GetIcon() *string {
-	if o == nil {
+func (s *SchemasInput) GetIcon() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Icon
+	return s.Icon
 }
 
-func (o *SchemasInput) GetID() *string {
-	if o == nil {
+func (s *SchemasInput) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SchemasInput) GetInfoHelpers() *InfoHelpers {
-	if o == nil {
+func (s *SchemasInput) GetInfoHelpers() *InfoHelpers {
+	if s == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return s.InfoHelpers
 }
 
-func (o *SchemasInput) GetLabel() string {
-	if o == nil {
+func (s *SchemasInput) GetLabel() string {
+	if s == nil {
 		return ""
 	}
-	return o.Label
+	return s.Label
 }
 
-func (o *SchemasInput) GetLayout() *string {
-	if o == nil {
+func (s *SchemasInput) GetLayout() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Layout
+	return s.Layout
 }
 
-func (o *SchemasInput) GetName() string {
-	if o == nil {
+func (s *SchemasInput) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (s *SchemasInput) GetOrder() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Order
+	return s.Order
 }
 
-func (o *SchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (s *SchemasInput) GetPlaceholder() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Placeholder
+	return s.Placeholder
 }
 
-func (o *SchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (s *SchemasInput) GetPreviewValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return s.PreviewValueFormatter
 }
 
-func (o *SchemasInput) GetProtected() *bool {
-	if o == nil {
+func (s *SchemasInput) GetProtected() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Protected
+	return s.Protected
 }
 
-func (o *SchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (s *SchemasInput) GetReadonly() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Readonly
+	return s.Readonly
 }
 
-func (o *SchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (s *SchemasInput) GetRenderCondition() *string {
+	if s == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return s.RenderCondition
 }
 
-func (o *SchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (s *SchemasInput) GetRepeatable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Repeatable
+	return s.Repeatable
 }
 
-func (o *SchemasInput) GetRequired() *bool {
-	if o == nil {
+func (s *SchemasInput) GetRequired() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Required
+	return s.Required
 }
 
-func (o *SchemasInput) GetSchema() *string {
-	if o == nil {
+func (s *SchemasInput) GetSchema() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *SchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (s *SchemasInput) GetSettingsFlag() []SettingFlag {
+	if s == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return s.SettingsFlag
 }
 
-func (o *SchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (s *SchemasInput) GetShowInTable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return s.ShowInTable
 }
 
-func (o *SchemasInput) GetSortable() *bool {
-	if o == nil {
+func (s *SchemasInput) GetSortable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Sortable
+	return s.Sortable
 }
 
-func (o *SchemasInput) GetType() Type {
-	if o == nil {
+func (s *SchemasInput) GetType() Type {
+	if s == nil {
 		return Type("")
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *SchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (s *SchemasInput) GetValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return s.ValueFormatter
 }
 
 // UserRelationAttributeSchemasInput - User Relationship
@@ -22379,228 +22379,228 @@ func (u *UserRelationAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UserRelationAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetManifest() []string {
+	if u == nil {
 		return nil
 	}
-	return o.Manifest
+	return u.Manifest
 }
 
-func (o *UserRelationAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetPurpose() []string {
+	if u == nil {
 		return nil
 	}
-	return o.Purpose
+	return u.Purpose
 }
 
-func (o *UserRelationAttributeSchemasInput) GetConstraints() *SchemasUserRelationAttributeConstraints {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetConstraints() *SchemasUserRelationAttributeConstraints {
+	if u == nil {
 		return nil
 	}
-	return o.Constraints
+	return u.Constraints
 }
 
-func (o *UserRelationAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetDefaultValue() any {
+	if u == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return u.DefaultValue
 }
 
-func (o *UserRelationAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetDeprecated() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Deprecated
+	return u.Deprecated
 }
 
-func (o *UserRelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return u.EntityBuilderDisableEdit
 }
 
-func (o *UserRelationAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetFeatureFlag() *string {
+	if u == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return u.FeatureFlag
 }
 
-func (o *UserRelationAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetGroup() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Group
+	return u.Group
 }
 
-func (o *UserRelationAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetHasPrimary() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return u.HasPrimary
 }
 
-func (o *UserRelationAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetHidden() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Hidden
+	return u.Hidden
 }
 
-func (o *UserRelationAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetHideLabel() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.HideLabel
+	return u.HideLabel
 }
 
-func (o *UserRelationAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetIcon() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Icon
+	return u.Icon
 }
 
-func (o *UserRelationAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UserRelationAttributeSchemasInput) GetInfoHelpers() *SchemasUserRelationAttributeInfoHelpers {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetInfoHelpers() *SchemasUserRelationAttributeInfoHelpers {
+	if u == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return u.InfoHelpers
 }
 
-func (o *UserRelationAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetLabel() string {
+	if u == nil {
 		return ""
 	}
-	return o.Label
+	return u.Label
 }
 
-func (o *UserRelationAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetLayout() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Layout
+	return u.Layout
 }
 
-func (o *UserRelationAttributeSchemasInput) GetMultiple() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetMultiple() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Multiple
+	return u.Multiple
 }
 
-func (o *UserRelationAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UserRelationAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetOrder() *int64 {
+	if u == nil {
 		return nil
 	}
-	return o.Order
+	return u.Order
 }
 
-func (o *UserRelationAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetPlaceholder() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Placeholder
+	return u.Placeholder
 }
 
-func (o *UserRelationAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return u.PreviewValueFormatter
 }
 
-func (o *UserRelationAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetProtected() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Protected
+	return u.Protected
 }
 
-func (o *UserRelationAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetReadonly() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Readonly
+	return u.Readonly
 }
 
-func (o *UserRelationAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetRenderCondition() *string {
+	if u == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return u.RenderCondition
 }
 
-func (o *UserRelationAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetRepeatable() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Repeatable
+	return u.Repeatable
 }
 
-func (o *UserRelationAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetRequired() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Required
+	return u.Required
 }
 
-func (o *UserRelationAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetSchema() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Schema
+	return u.Schema
 }
 
-func (o *UserRelationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if u == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return u.SettingsFlag
 }
 
-func (o *UserRelationAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetShowInTable() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return u.ShowInTable
 }
 
-func (o *UserRelationAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetSortable() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Sortable
+	return u.Sortable
 }
 
-func (o *UserRelationAttributeSchemasInput) GetType() SchemasUserRelationAttributeType {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetType() SchemasUserRelationAttributeType {
+	if u == nil {
 		return SchemasUserRelationAttributeType("")
 	}
-	return o.Type
+	return u.Type
 }
 
-func (o *UserRelationAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (u *UserRelationAttributeSchemasInput) GetValueFormatter() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return u.ValueFormatter
 }
 
 // RelationAttributeSchemasInput - Entity Relationship
@@ -22693,319 +22693,319 @@ func (r *RelationAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RelationAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetManifest() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Manifest
+	return r.Manifest
 }
 
-func (o *RelationAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetPurpose() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Purpose
+	return r.Purpose
 }
 
-func (o *RelationAttributeSchemasInput) GetActions() []Actions {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetActions() []Actions {
+	if r == nil {
 		return nil
 	}
-	return o.Actions
+	return r.Actions
 }
 
-func (o *RelationAttributeSchemasInput) GetAddButtonLabel() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetAddButtonLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.AddButtonLabel
+	return r.AddButtonLabel
 }
 
-func (o *RelationAttributeSchemasInput) GetAllowedSchemas() []string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetAllowedSchemas() []string {
+	if r == nil {
 		return nil
 	}
-	return o.AllowedSchemas
+	return r.AllowedSchemas
 }
 
-func (o *RelationAttributeSchemasInput) GetConstraints() *SchemasRelationAttributeConstraints {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetConstraints() *SchemasRelationAttributeConstraints {
+	if r == nil {
 		return nil
 	}
-	return o.Constraints
+	return r.Constraints
 }
 
-func (o *RelationAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetDefaultValue() any {
+	if r == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return r.DefaultValue
 }
 
-func (o *RelationAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetDeprecated() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Deprecated
+	return r.Deprecated
 }
 
-func (o *RelationAttributeSchemasInput) GetDetailsViewModeEnabled() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetDetailsViewModeEnabled() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.DetailsViewModeEnabled
+	return r.DetailsViewModeEnabled
 }
 
-func (o *RelationAttributeSchemasInput) GetDrawerSize() *DrawerSize {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetDrawerSize() *DrawerSize {
+	if r == nil {
 		return nil
 	}
-	return o.DrawerSize
+	return r.DrawerSize
 }
 
-func (o *RelationAttributeSchemasInput) GetEditMode() *EditMode {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetEditMode() *EditMode {
+	if r == nil {
 		return nil
 	}
-	return o.EditMode
+	return r.EditMode
 }
 
-func (o *RelationAttributeSchemasInput) GetEnableRelationPicker() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetEnableRelationPicker() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.EnableRelationPicker
+	return r.EnableRelationPicker
 }
 
-func (o *RelationAttributeSchemasInput) GetEnableRelationTags() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetEnableRelationTags() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.EnableRelationTags
+	return r.EnableRelationTags
 }
 
-func (o *RelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return r.EntityBuilderDisableEdit
 }
 
-func (o *RelationAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetFeatureFlag() *string {
+	if r == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return r.FeatureFlag
 }
 
-func (o *RelationAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetGroup() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Group
+	return r.Group
 }
 
-func (o *RelationAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetHasPrimary() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return r.HasPrimary
 }
 
-func (o *RelationAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetHidden() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Hidden
+	return r.Hidden
 }
 
-func (o *RelationAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetHideLabel() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.HideLabel
+	return r.HideLabel
 }
 
-func (o *RelationAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetIcon() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Icon
+	return r.Icon
 }
 
-func (o *RelationAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetID() *string {
+	if r == nil {
 		return nil
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RelationAttributeSchemasInput) GetInfoHelpers() *SchemasRelationAttributeInfoHelpers {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetInfoHelpers() *SchemasRelationAttributeInfoHelpers {
+	if r == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return r.InfoHelpers
 }
 
-func (o *RelationAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetLabel() string {
+	if r == nil {
 		return ""
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RelationAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetLayout() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Layout
+	return r.Layout
 }
 
-func (o *RelationAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RelationAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetOrder() *int64 {
+	if r == nil {
 		return nil
 	}
-	return o.Order
+	return r.Order
 }
 
-func (o *RelationAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RelationAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if r == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return r.PreviewValueFormatter
 }
 
-func (o *RelationAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetProtected() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Protected
+	return r.Protected
 }
 
-func (o *RelationAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetReadonly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Readonly
+	return r.Readonly
 }
 
-func (o *RelationAttributeSchemasInput) GetRelationAffinityMode() *RelationAffinityMode {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetRelationAffinityMode() *RelationAffinityMode {
+	if r == nil {
 		return nil
 	}
-	return o.RelationAffinityMode
+	return r.RelationAffinityMode
 }
 
-func (o *RelationAttributeSchemasInput) GetRelationPickerFilter() *RelationPickerFilter {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetRelationPickerFilter() *RelationPickerFilter {
+	if r == nil {
 		return nil
 	}
-	return o.RelationPickerFilter
+	return r.RelationPickerFilter
 }
 
-func (o *RelationAttributeSchemasInput) GetRelationType() *RelationType {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetRelationType() *RelationType {
+	if r == nil {
 		return nil
 	}
-	return o.RelationType
+	return r.RelationType
 }
 
-func (o *RelationAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetRenderCondition() *string {
+	if r == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return r.RenderCondition
 }
 
-func (o *RelationAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetRepeatable() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Repeatable
+	return r.Repeatable
 }
 
-func (o *RelationAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RelationAttributeSchemasInput) GetReverseAttributes() map[string]string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetReverseAttributes() map[string]string {
+	if r == nil {
 		return nil
 	}
-	return o.ReverseAttributes
+	return r.ReverseAttributes
 }
 
-func (o *RelationAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetSchema() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Schema
+	return r.Schema
 }
 
-func (o *RelationAttributeSchemasInput) GetSearchPlaceholder() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetSearchPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.SearchPlaceholder
+	return r.SearchPlaceholder
 }
 
-func (o *RelationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if r == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return r.SettingsFlag
 }
 
-func (o *RelationAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetShowInTable() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return r.ShowInTable
 }
 
-func (o *RelationAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetSortable() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Sortable
+	return r.Sortable
 }
 
-func (o *RelationAttributeSchemasInput) GetSummaryFields() []SummaryFields {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetSummaryFields() []SummaryFields {
+	if r == nil {
 		return nil
 	}
-	return o.SummaryFields
+	return r.SummaryFields
 }
 
-func (o *RelationAttributeSchemasInput) GetType() SchemasRelationAttributeType {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetType() SchemasRelationAttributeType {
+	if r == nil {
 		return SchemasRelationAttributeType("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RelationAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (r *RelationAttributeSchemasInput) GetValueFormatter() *string {
+	if r == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return r.ValueFormatter
 }
 
 // SequenceAttributeSchemasInput - Sequence of unique identifiers
@@ -23082,235 +23082,235 @@ func (s *SequenceAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SequenceAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetManifest() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Manifest
+	return s.Manifest
 }
 
-func (o *SequenceAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetPurpose() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Purpose
+	return s.Purpose
 }
 
-func (o *SequenceAttributeSchemasInput) GetConstraints() *SchemasSequenceAttributeConstraints {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetConstraints() *SchemasSequenceAttributeConstraints {
+	if s == nil {
 		return nil
 	}
-	return o.Constraints
+	return s.Constraints
 }
 
-func (o *SequenceAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetDefaultValue() any {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return s.DefaultValue
 }
 
-func (o *SequenceAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetDeprecated() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Deprecated
+	return s.Deprecated
 }
 
-func (o *SequenceAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return s.EntityBuilderDisableEdit
 }
 
-func (o *SequenceAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetFeatureFlag() *string {
+	if s == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return s.FeatureFlag
 }
 
-func (o *SequenceAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetGroup() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Group
+	return s.Group
 }
 
-func (o *SequenceAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetHasPrimary() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return s.HasPrimary
 }
 
-func (o *SequenceAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetHidden() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Hidden
+	return s.Hidden
 }
 
-func (o *SequenceAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetHideLabel() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HideLabel
+	return s.HideLabel
 }
 
-func (o *SequenceAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetIcon() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Icon
+	return s.Icon
 }
 
-func (o *SequenceAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SequenceAttributeSchemasInput) GetInfoHelpers() *SchemasSequenceAttributeInfoHelpers {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetInfoHelpers() *SchemasSequenceAttributeInfoHelpers {
+	if s == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return s.InfoHelpers
 }
 
-func (o *SequenceAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetLabel() string {
+	if s == nil {
 		return ""
 	}
-	return o.Label
+	return s.Label
 }
 
-func (o *SequenceAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetLayout() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Layout
+	return s.Layout
 }
 
-func (o *SequenceAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SequenceAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetOrder() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Order
+	return s.Order
 }
 
-func (o *SequenceAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetPlaceholder() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Placeholder
+	return s.Placeholder
 }
 
-func (o *SequenceAttributeSchemasInput) GetPrefix() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetPrefix() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Prefix
+	return s.Prefix
 }
 
-func (o *SequenceAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return s.PreviewValueFormatter
 }
 
-func (o *SequenceAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetProtected() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Protected
+	return s.Protected
 }
 
-func (o *SequenceAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetReadonly() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Readonly
+	return s.Readonly
 }
 
-func (o *SequenceAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetRenderCondition() *string {
+	if s == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return s.RenderCondition
 }
 
-func (o *SequenceAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetRepeatable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Repeatable
+	return s.Repeatable
 }
 
-func (o *SequenceAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetRequired() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Required
+	return s.Required
 }
 
-func (o *SequenceAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetSchema() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *SequenceAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if s == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return s.SettingsFlag
 }
 
-func (o *SequenceAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetShowInTable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return s.ShowInTable
 }
 
-func (o *SequenceAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetSortable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Sortable
+	return s.Sortable
 }
 
-func (o *SequenceAttributeSchemasInput) GetStartNumber() *int64 {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetStartNumber() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.StartNumber
+	return s.StartNumber
 }
 
-func (o *SequenceAttributeSchemasInput) GetType() SchemasSequenceAttributeType {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetType() SchemasSequenceAttributeType {
+	if s == nil {
 		return SchemasSequenceAttributeType("")
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *SequenceAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (s *SequenceAttributeSchemasInput) GetValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return s.ValueFormatter
 }
 
 // StatusAttributeSchemasInput - Status select
@@ -23385,228 +23385,228 @@ func (s *StatusAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *StatusAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetManifest() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Manifest
+	return s.Manifest
 }
 
-func (o *StatusAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetPurpose() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Purpose
+	return s.Purpose
 }
 
-func (o *StatusAttributeSchemasInput) GetConstraints() *SchemasStatusAttributeConstraints {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetConstraints() *SchemasStatusAttributeConstraints {
+	if s == nil {
 		return nil
 	}
-	return o.Constraints
+	return s.Constraints
 }
 
-func (o *StatusAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetDefaultValue() any {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return s.DefaultValue
 }
 
-func (o *StatusAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetDeprecated() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Deprecated
+	return s.Deprecated
 }
 
-func (o *StatusAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return s.EntityBuilderDisableEdit
 }
 
-func (o *StatusAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetFeatureFlag() *string {
+	if s == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return s.FeatureFlag
 }
 
-func (o *StatusAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetGroup() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Group
+	return s.Group
 }
 
-func (o *StatusAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetHasPrimary() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return s.HasPrimary
 }
 
-func (o *StatusAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetHidden() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Hidden
+	return s.Hidden
 }
 
-func (o *StatusAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetHideLabel() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HideLabel
+	return s.HideLabel
 }
 
-func (o *StatusAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetIcon() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Icon
+	return s.Icon
 }
 
-func (o *StatusAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StatusAttributeSchemasInput) GetInfoHelpers() *SchemasStatusAttributeInfoHelpers {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetInfoHelpers() *SchemasStatusAttributeInfoHelpers {
+	if s == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return s.InfoHelpers
 }
 
-func (o *StatusAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetLabel() string {
+	if s == nil {
 		return ""
 	}
-	return o.Label
+	return s.Label
 }
 
-func (o *StatusAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetLayout() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Layout
+	return s.Layout
 }
 
-func (o *StatusAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *StatusAttributeSchemasInput) GetOptions() []*SchemasStatusAttributeOptions {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetOptions() []*SchemasStatusAttributeOptions {
+	if s == nil {
 		return nil
 	}
-	return o.Options
+	return s.Options
 }
 
-func (o *StatusAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetOrder() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Order
+	return s.Order
 }
 
-func (o *StatusAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetPlaceholder() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Placeholder
+	return s.Placeholder
 }
 
-func (o *StatusAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return s.PreviewValueFormatter
 }
 
-func (o *StatusAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetProtected() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Protected
+	return s.Protected
 }
 
-func (o *StatusAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetReadonly() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Readonly
+	return s.Readonly
 }
 
-func (o *StatusAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetRenderCondition() *string {
+	if s == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return s.RenderCondition
 }
 
-func (o *StatusAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetRepeatable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Repeatable
+	return s.Repeatable
 }
 
-func (o *StatusAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetRequired() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Required
+	return s.Required
 }
 
-func (o *StatusAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetSchema() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *StatusAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if s == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return s.SettingsFlag
 }
 
-func (o *StatusAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetShowInTable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return s.ShowInTable
 }
 
-func (o *StatusAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetSortable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Sortable
+	return s.Sortable
 }
 
-func (o *StatusAttributeSchemasInput) GetType() SchemasStatusAttributeType {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetType() SchemasStatusAttributeType {
+	if s == nil {
 		return SchemasStatusAttributeType("")
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *StatusAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (s *StatusAttributeSchemasInput) GetValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return s.ValueFormatter
 }
 
 // MultiSelectAttributeSchemasInput - Multi Choice Selection
@@ -23687,249 +23687,249 @@ func (m *MultiSelectAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetManifest() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Manifest
+	return m.Manifest
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetPurpose() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Purpose
+	return m.Purpose
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetAllowAny() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetAllowAny() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.AllowAny
+	return m.AllowAny
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetAllowExtraOptions() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetAllowExtraOptions() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.AllowExtraOptions
+	return m.AllowExtraOptions
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetConstraints() *SchemasMultiSelectAttributeConstraints {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetConstraints() *SchemasMultiSelectAttributeConstraints {
+	if m == nil {
 		return nil
 	}
-	return o.Constraints
+	return m.Constraints
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetDefaultValue() any {
+	if m == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return m.DefaultValue
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetDeprecated() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Deprecated
+	return m.Deprecated
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetDisableCaseSensitive() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetDisableCaseSensitive() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.DisableCaseSensitive
+	return m.DisableCaseSensitive
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return m.EntityBuilderDisableEdit
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetFeatureFlag() *string {
+	if m == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return m.FeatureFlag
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetGroup() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Group
+	return m.Group
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetHasPrimary() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return m.HasPrimary
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetHidden() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Hidden
+	return m.Hidden
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetHideLabel() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.HideLabel
+	return m.HideLabel
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetIcon() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Icon
+	return m.Icon
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ID
+	return m.ID
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetInfoHelpers() *SchemasMultiSelectAttributeInfoHelpers {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetInfoHelpers() *SchemasMultiSelectAttributeInfoHelpers {
+	if m == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return m.InfoHelpers
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetLabel() string {
+	if m == nil {
 		return ""
 	}
-	return o.Label
+	return m.Label
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetLayout() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Layout
+	return m.Layout
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetName() string {
+	if m == nil {
 		return ""
 	}
-	return o.Name
+	return m.Name
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetOptions() []*OptionsObj {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetOptions() []*OptionsObj {
+	if m == nil {
 		return nil
 	}
-	return o.Options
+	return m.Options
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetOrder() *int64 {
+	if m == nil {
 		return nil
 	}
-	return o.Order
+	return m.Order
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetPlaceholder() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Placeholder
+	return m.Placeholder
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return m.PreviewValueFormatter
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetProtected() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Protected
+	return m.Protected
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetReadonly() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Readonly
+	return m.Readonly
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetRenderCondition() *string {
+	if m == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return m.RenderCondition
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetRepeatable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Repeatable
+	return m.Repeatable
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetRequired() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Required
+	return m.Required
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetSchema() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Schema
+	return m.Schema
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if m == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return m.SettingsFlag
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetShowInTable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return m.ShowInTable
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetSortable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Sortable
+	return m.Sortable
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetType() SchemasMultiSelectAttributeType {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetType() SchemasMultiSelectAttributeType {
+	if m == nil {
 		return SchemasMultiSelectAttributeType("")
 	}
-	return o.Type
+	return m.Type
 }
 
-func (o *MultiSelectAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (m *MultiSelectAttributeSchemasInput) GetValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return m.ValueFormatter
 }
 
 // SelectAttributeSchemasInput - Dropdown select
@@ -24006,235 +24006,235 @@ func (s *SelectAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SelectAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetManifest() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Manifest
+	return s.Manifest
 }
 
-func (o *SelectAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetPurpose() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Purpose
+	return s.Purpose
 }
 
-func (o *SelectAttributeSchemasInput) GetAllowAny() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetAllowAny() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.AllowAny
+	return s.AllowAny
 }
 
-func (o *SelectAttributeSchemasInput) GetConstraints() *SchemasSelectAttributeConstraints {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetConstraints() *SchemasSelectAttributeConstraints {
+	if s == nil {
 		return nil
 	}
-	return o.Constraints
+	return s.Constraints
 }
 
-func (o *SelectAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetDefaultValue() any {
+	if s == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return s.DefaultValue
 }
 
-func (o *SelectAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetDeprecated() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Deprecated
+	return s.Deprecated
 }
 
-func (o *SelectAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return s.EntityBuilderDisableEdit
 }
 
-func (o *SelectAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetFeatureFlag() *string {
+	if s == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return s.FeatureFlag
 }
 
-func (o *SelectAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetGroup() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Group
+	return s.Group
 }
 
-func (o *SelectAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetHasPrimary() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return s.HasPrimary
 }
 
-func (o *SelectAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetHidden() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Hidden
+	return s.Hidden
 }
 
-func (o *SelectAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetHideLabel() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.HideLabel
+	return s.HideLabel
 }
 
-func (o *SelectAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetIcon() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Icon
+	return s.Icon
 }
 
-func (o *SelectAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SelectAttributeSchemasInput) GetInfoHelpers() *SchemasSelectAttributeInfoHelpers {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetInfoHelpers() *SchemasSelectAttributeInfoHelpers {
+	if s == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return s.InfoHelpers
 }
 
-func (o *SelectAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetLabel() string {
+	if s == nil {
 		return ""
 	}
-	return o.Label
+	return s.Label
 }
 
-func (o *SelectAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetLayout() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Layout
+	return s.Layout
 }
 
-func (o *SelectAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SelectAttributeSchemasInput) GetOptions() []*SchemasOptions {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetOptions() []*SchemasOptions {
+	if s == nil {
 		return nil
 	}
-	return o.Options
+	return s.Options
 }
 
-func (o *SelectAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetOrder() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Order
+	return s.Order
 }
 
-func (o *SelectAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetPlaceholder() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Placeholder
+	return s.Placeholder
 }
 
-func (o *SelectAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return s.PreviewValueFormatter
 }
 
-func (o *SelectAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetProtected() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Protected
+	return s.Protected
 }
 
-func (o *SelectAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetReadonly() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Readonly
+	return s.Readonly
 }
 
-func (o *SelectAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetRenderCondition() *string {
+	if s == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return s.RenderCondition
 }
 
-func (o *SelectAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetRepeatable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Repeatable
+	return s.Repeatable
 }
 
-func (o *SelectAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetRequired() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Required
+	return s.Required
 }
 
-func (o *SelectAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetSchema() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *SelectAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if s == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return s.SettingsFlag
 }
 
-func (o *SelectAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetShowInTable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return s.ShowInTable
 }
 
-func (o *SelectAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetSortable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Sortable
+	return s.Sortable
 }
 
-func (o *SelectAttributeSchemasInput) GetType() SchemasSelectAttributeType {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetType() SchemasSelectAttributeType {
+	if s == nil {
 		return SchemasSelectAttributeType("")
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *SelectAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (s *SelectAttributeSchemasInput) GetValueFormatter() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return s.ValueFormatter
 }
 
 // BooleanAttributeSchemasInput - Yes / No Toggle
@@ -24309,228 +24309,228 @@ func (b *BooleanAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *BooleanAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetManifest() []string {
+	if b == nil {
 		return nil
 	}
-	return o.Manifest
+	return b.Manifest
 }
 
-func (o *BooleanAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetPurpose() []string {
+	if b == nil {
 		return nil
 	}
-	return o.Purpose
+	return b.Purpose
 }
 
-func (o *BooleanAttributeSchemasInput) GetConstraints() *SchemasBooleanAttributeConstraints {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetConstraints() *SchemasBooleanAttributeConstraints {
+	if b == nil {
 		return nil
 	}
-	return o.Constraints
+	return b.Constraints
 }
 
-func (o *BooleanAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetDefaultValue() any {
+	if b == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return b.DefaultValue
 }
 
-func (o *BooleanAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetDeprecated() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Deprecated
+	return b.Deprecated
 }
 
-func (o *BooleanAttributeSchemasInput) GetDisplayType() *DisplayType {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetDisplayType() *DisplayType {
+	if b == nil {
 		return nil
 	}
-	return o.DisplayType
+	return b.DisplayType
 }
 
-func (o *BooleanAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return b.EntityBuilderDisableEdit
 }
 
-func (o *BooleanAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetFeatureFlag() *string {
+	if b == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return b.FeatureFlag
 }
 
-func (o *BooleanAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetGroup() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Group
+	return b.Group
 }
 
-func (o *BooleanAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetHasPrimary() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return b.HasPrimary
 }
 
-func (o *BooleanAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetHidden() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Hidden
+	return b.Hidden
 }
 
-func (o *BooleanAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetHideLabel() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.HideLabel
+	return b.HideLabel
 }
 
-func (o *BooleanAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetIcon() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Icon
+	return b.Icon
 }
 
-func (o *BooleanAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ID
+	return b.ID
 }
 
-func (o *BooleanAttributeSchemasInput) GetInfoHelpers() *SchemasBooleanAttributeInfoHelpers {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetInfoHelpers() *SchemasBooleanAttributeInfoHelpers {
+	if b == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return b.InfoHelpers
 }
 
-func (o *BooleanAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetLabel() string {
+	if b == nil {
 		return ""
 	}
-	return o.Label
+	return b.Label
 }
 
-func (o *BooleanAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetLayout() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Layout
+	return b.Layout
 }
 
-func (o *BooleanAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetName() string {
+	if b == nil {
 		return ""
 	}
-	return o.Name
+	return b.Name
 }
 
-func (o *BooleanAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetOrder() *int64 {
+	if b == nil {
 		return nil
 	}
-	return o.Order
+	return b.Order
 }
 
-func (o *BooleanAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetPlaceholder() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Placeholder
+	return b.Placeholder
 }
 
-func (o *BooleanAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if b == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return b.PreviewValueFormatter
 }
 
-func (o *BooleanAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetProtected() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Protected
+	return b.Protected
 }
 
-func (o *BooleanAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetReadonly() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Readonly
+	return b.Readonly
 }
 
-func (o *BooleanAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetRenderCondition() *string {
+	if b == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return b.RenderCondition
 }
 
-func (o *BooleanAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetRepeatable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Repeatable
+	return b.Repeatable
 }
 
-func (o *BooleanAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetRequired() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Required
+	return b.Required
 }
 
-func (o *BooleanAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetSchema() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Schema
+	return b.Schema
 }
 
-func (o *BooleanAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if b == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return b.SettingsFlag
 }
 
-func (o *BooleanAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetShowInTable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return b.ShowInTable
 }
 
-func (o *BooleanAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetSortable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Sortable
+	return b.Sortable
 }
 
-func (o *BooleanAttributeSchemasInput) GetType() SchemasBooleanAttributeType {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetType() SchemasBooleanAttributeType {
+	if b == nil {
 		return SchemasBooleanAttributeType("")
 	}
-	return o.Type
+	return b.Type
 }
 
-func (o *BooleanAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (b *BooleanAttributeSchemasInput) GetValueFormatter() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return b.ValueFormatter
 }
 
 // CountryAttributeSchemasInput - Country picker
@@ -24604,221 +24604,221 @@ func (c *CountryAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CountryAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetManifest() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Manifest
+	return c.Manifest
 }
 
-func (o *CountryAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetPurpose() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Purpose
+	return c.Purpose
 }
 
-func (o *CountryAttributeSchemasInput) GetConstraints() *SchemasCountryAttributeConstraints {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetConstraints() *SchemasCountryAttributeConstraints {
+	if c == nil {
 		return nil
 	}
-	return o.Constraints
+	return c.Constraints
 }
 
-func (o *CountryAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetDefaultValue() any {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return c.DefaultValue
 }
 
-func (o *CountryAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetDeprecated() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Deprecated
+	return c.Deprecated
 }
 
-func (o *CountryAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return c.EntityBuilderDisableEdit
 }
 
-func (o *CountryAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetFeatureFlag() *string {
+	if c == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return c.FeatureFlag
 }
 
-func (o *CountryAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetGroup() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Group
+	return c.Group
 }
 
-func (o *CountryAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetHasPrimary() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return c.HasPrimary
 }
 
-func (o *CountryAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetHidden() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Hidden
+	return c.Hidden
 }
 
-func (o *CountryAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetHideLabel() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HideLabel
+	return c.HideLabel
 }
 
-func (o *CountryAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetIcon() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Icon
+	return c.Icon
 }
 
-func (o *CountryAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CountryAttributeSchemasInput) GetInfoHelpers() *SchemasCountryAttributeInfoHelpers {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetInfoHelpers() *SchemasCountryAttributeInfoHelpers {
+	if c == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return c.InfoHelpers
 }
 
-func (o *CountryAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetLabel() string {
+	if c == nil {
 		return ""
 	}
-	return o.Label
+	return c.Label
 }
 
-func (o *CountryAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetLayout() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Layout
+	return c.Layout
 }
 
-func (o *CountryAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CountryAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetOrder() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Order
+	return c.Order
 }
 
-func (o *CountryAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetPlaceholder() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Placeholder
+	return c.Placeholder
 }
 
-func (o *CountryAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return c.PreviewValueFormatter
 }
 
-func (o *CountryAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetProtected() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Protected
+	return c.Protected
 }
 
-func (o *CountryAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetReadonly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Readonly
+	return c.Readonly
 }
 
-func (o *CountryAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetRenderCondition() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return c.RenderCondition
 }
 
-func (o *CountryAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetRepeatable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Repeatable
+	return c.Repeatable
 }
 
-func (o *CountryAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetRequired() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Required
+	return c.Required
 }
 
-func (o *CountryAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetSchema() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Schema
+	return c.Schema
 }
 
-func (o *CountryAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if c == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return c.SettingsFlag
 }
 
-func (o *CountryAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetShowInTable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return c.ShowInTable
 }
 
-func (o *CountryAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetSortable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Sortable
+	return c.Sortable
 }
 
-func (o *CountryAttributeSchemasInput) GetType() SchemasCountryAttributeType {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetType() SchemasCountryAttributeType {
+	if c == nil {
 		return SchemasCountryAttributeType("")
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *CountryAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (c *CountryAttributeSchemasInput) GetValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return c.ValueFormatter
 }
 
 // DateAttributeSchemasInput - Date or Datetime picker
@@ -24892,221 +24892,221 @@ func (d *DateAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DateAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetManifest() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Manifest
+	return d.Manifest
 }
 
-func (o *DateAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetPurpose() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Purpose
+	return d.Purpose
 }
 
-func (o *DateAttributeSchemasInput) GetConstraints() *SchemasDateAttributeConstraints {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetConstraints() *SchemasDateAttributeConstraints {
+	if d == nil {
 		return nil
 	}
-	return o.Constraints
+	return d.Constraints
 }
 
-func (o *DateAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetDefaultValue() any {
+	if d == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return d.DefaultValue
 }
 
-func (o *DateAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetDeprecated() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Deprecated
+	return d.Deprecated
 }
 
-func (o *DateAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return d.EntityBuilderDisableEdit
 }
 
-func (o *DateAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetFeatureFlag() *string {
+	if d == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return d.FeatureFlag
 }
 
-func (o *DateAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetGroup() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Group
+	return d.Group
 }
 
-func (o *DateAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetHasPrimary() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return d.HasPrimary
 }
 
-func (o *DateAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetHidden() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Hidden
+	return d.Hidden
 }
 
-func (o *DateAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetHideLabel() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.HideLabel
+	return d.HideLabel
 }
 
-func (o *DateAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetIcon() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Icon
+	return d.Icon
 }
 
-func (o *DateAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DateAttributeSchemasInput) GetInfoHelpers() *SchemasDateAttributeInfoHelpers {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetInfoHelpers() *SchemasDateAttributeInfoHelpers {
+	if d == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return d.InfoHelpers
 }
 
-func (o *DateAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetLabel() string {
+	if d == nil {
 		return ""
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DateAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetLayout() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Layout
+	return d.Layout
 }
 
-func (o *DateAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DateAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetOrder() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.Order
+	return d.Order
 }
 
-func (o *DateAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DateAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if d == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return d.PreviewValueFormatter
 }
 
-func (o *DateAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetProtected() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Protected
+	return d.Protected
 }
 
-func (o *DateAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetReadonly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Readonly
+	return d.Readonly
 }
 
-func (o *DateAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetRenderCondition() *string {
+	if d == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return d.RenderCondition
 }
 
-func (o *DateAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetRepeatable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Repeatable
+	return d.Repeatable
 }
 
-func (o *DateAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DateAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetSchema() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Schema
+	return d.Schema
 }
 
-func (o *DateAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if d == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return d.SettingsFlag
 }
 
-func (o *DateAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetShowInTable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return d.ShowInTable
 }
 
-func (o *DateAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetSortable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Sortable
+	return d.Sortable
 }
 
-func (o *DateAttributeSchemasInput) GetType() SchemasDateAttributeType {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetType() SchemasDateAttributeType {
+	if d == nil {
 		return SchemasDateAttributeType("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DateAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (d *DateAttributeSchemasInput) GetValueFormatter() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return d.ValueFormatter
 }
 
 // LinkAttributeSchemasInput - Link with title and href
@@ -25180,221 +25180,221 @@ func (l *LinkAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *LinkAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetManifest() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Manifest
+	return l.Manifest
 }
 
-func (o *LinkAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetPurpose() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Purpose
+	return l.Purpose
 }
 
-func (o *LinkAttributeSchemasInput) GetConstraints() *SchemasLinkAttributeConstraints {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetConstraints() *SchemasLinkAttributeConstraints {
+	if l == nil {
 		return nil
 	}
-	return o.Constraints
+	return l.Constraints
 }
 
-func (o *LinkAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetDefaultValue() any {
+	if l == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return l.DefaultValue
 }
 
-func (o *LinkAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetDeprecated() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Deprecated
+	return l.Deprecated
 }
 
-func (o *LinkAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return l.EntityBuilderDisableEdit
 }
 
-func (o *LinkAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetFeatureFlag() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return l.FeatureFlag
 }
 
-func (o *LinkAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetGroup() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Group
+	return l.Group
 }
 
-func (o *LinkAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetHasPrimary() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return l.HasPrimary
 }
 
-func (o *LinkAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetHidden() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Hidden
+	return l.Hidden
 }
 
-func (o *LinkAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetHideLabel() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.HideLabel
+	return l.HideLabel
 }
 
-func (o *LinkAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetIcon() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Icon
+	return l.Icon
 }
 
-func (o *LinkAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *LinkAttributeSchemasInput) GetInfoHelpers() *SchemasLinkAttributeInfoHelpers {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetInfoHelpers() *SchemasLinkAttributeInfoHelpers {
+	if l == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return l.InfoHelpers
 }
 
-func (o *LinkAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetLabel() string {
+	if l == nil {
 		return ""
 	}
-	return o.Label
+	return l.Label
 }
 
-func (o *LinkAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetLayout() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Layout
+	return l.Layout
 }
 
-func (o *LinkAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
-func (o *LinkAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetOrder() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Order
+	return l.Order
 }
 
-func (o *LinkAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetPlaceholder() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Placeholder
+	return l.Placeholder
 }
 
-func (o *LinkAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return l.PreviewValueFormatter
 }
 
-func (o *LinkAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetProtected() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Protected
+	return l.Protected
 }
 
-func (o *LinkAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetReadonly() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Readonly
+	return l.Readonly
 }
 
-func (o *LinkAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetRenderCondition() *string {
+	if l == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return l.RenderCondition
 }
 
-func (o *LinkAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetRepeatable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Repeatable
+	return l.Repeatable
 }
 
-func (o *LinkAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetRequired() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Required
+	return l.Required
 }
 
-func (o *LinkAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetSchema() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Schema
+	return l.Schema
 }
 
-func (o *LinkAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if l == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return l.SettingsFlag
 }
 
-func (o *LinkAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetShowInTable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return l.ShowInTable
 }
 
-func (o *LinkAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetSortable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Sortable
+	return l.Sortable
 }
 
-func (o *LinkAttributeSchemasInput) GetType() SchemasLinkAttributeType {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetType() SchemasLinkAttributeType {
+	if l == nil {
 		return SchemasLinkAttributeType("")
 	}
-	return o.Type
+	return l.Type
 }
 
-func (o *LinkAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (l *LinkAttributeSchemasInput) GetValueFormatter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return l.ValueFormatter
 }
 
 // TextAttributeSchemasInput - Textarea or text input
@@ -25472,242 +25472,242 @@ func (t *TextAttributeSchemasInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TextAttributeSchemasInput) GetManifest() []string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetManifest() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Manifest
+	return t.Manifest
 }
 
-func (o *TextAttributeSchemasInput) GetPurpose() []string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetPurpose() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Purpose
+	return t.Purpose
 }
 
-func (o *TextAttributeSchemasInput) GetConstraints() *SchemasTextAttributeConstraints {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetConstraints() *SchemasTextAttributeConstraints {
+	if t == nil {
 		return nil
 	}
-	return o.Constraints
+	return t.Constraints
 }
 
-func (o *TextAttributeSchemasInput) GetDefaultValue() any {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetDefaultValue() any {
+	if t == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return t.DefaultValue
 }
 
-func (o *TextAttributeSchemasInput) GetDeprecated() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetDeprecated() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Deprecated
+	return t.Deprecated
 }
 
-func (o *TextAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return t.EntityBuilderDisableEdit
 }
 
-func (o *TextAttributeSchemasInput) GetFeatureFlag() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetFeatureFlag() *string {
+	if t == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return t.FeatureFlag
 }
 
-func (o *TextAttributeSchemasInput) GetGroup() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetGroup() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Group
+	return t.Group
 }
 
-func (o *TextAttributeSchemasInput) GetHasPrimary() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetHasPrimary() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return t.HasPrimary
 }
 
-func (o *TextAttributeSchemasInput) GetHidden() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetHidden() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Hidden
+	return t.Hidden
 }
 
-func (o *TextAttributeSchemasInput) GetHideLabel() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetHideLabel() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.HideLabel
+	return t.HideLabel
 }
 
-func (o *TextAttributeSchemasInput) GetIcon() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetIcon() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Icon
+	return t.Icon
 }
 
-func (o *TextAttributeSchemasInput) GetID() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TextAttributeSchemasInput) GetInfoHelpers() *SchemasTextAttributeInfoHelpers {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetInfoHelpers() *SchemasTextAttributeInfoHelpers {
+	if t == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return t.InfoHelpers
 }
 
-func (o *TextAttributeSchemasInput) GetLabel() string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetLabel() string {
+	if t == nil {
 		return ""
 	}
-	return o.Label
+	return t.Label
 }
 
-func (o *TextAttributeSchemasInput) GetLayout() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetLayout() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Layout
+	return t.Layout
 }
 
-func (o *TextAttributeSchemasInput) GetMultiline() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetMultiline() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Multiline
+	return t.Multiline
 }
 
-func (o *TextAttributeSchemasInput) GetName() string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TextAttributeSchemasInput) GetOrder() *int64 {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetOrder() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Order
+	return t.Order
 }
 
-func (o *TextAttributeSchemasInput) GetPlaceholder() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetPlaceholder() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Placeholder
+	return t.Placeholder
 }
 
-func (o *TextAttributeSchemasInput) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetPreviewValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return t.PreviewValueFormatter
 }
 
-func (o *TextAttributeSchemasInput) GetProtected() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetProtected() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Protected
+	return t.Protected
 }
 
-func (o *TextAttributeSchemasInput) GetReadonly() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetReadonly() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Readonly
+	return t.Readonly
 }
 
-func (o *TextAttributeSchemasInput) GetRenderCondition() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetRenderCondition() *string {
+	if t == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return t.RenderCondition
 }
 
-func (o *TextAttributeSchemasInput) GetRepeatable() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetRepeatable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Repeatable
+	return t.Repeatable
 }
 
-func (o *TextAttributeSchemasInput) GetRequired() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetRequired() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Required
+	return t.Required
 }
 
-func (o *TextAttributeSchemasInput) GetRichText() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetRichText() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.RichText
+	return t.RichText
 }
 
-func (o *TextAttributeSchemasInput) GetRows() *SchemasRows {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetRows() *SchemasRows {
+	if t == nil {
 		return nil
 	}
-	return o.Rows
+	return t.Rows
 }
 
-func (o *TextAttributeSchemasInput) GetSchema() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetSchema() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Schema
+	return t.Schema
 }
 
-func (o *TextAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetSettingsFlag() []SettingFlag {
+	if t == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return t.SettingsFlag
 }
 
-func (o *TextAttributeSchemasInput) GetShowInTable() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetShowInTable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return t.ShowInTable
 }
 
-func (o *TextAttributeSchemasInput) GetSortable() *bool {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetSortable() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Sortable
+	return t.Sortable
 }
 
-func (o *TextAttributeSchemasInput) GetType() SchemasTextAttributeType {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetType() SchemasTextAttributeType {
+	if t == nil {
 		return SchemasTextAttributeType("")
 	}
-	return o.Type
+	return t.Type
 }
 
-func (o *TextAttributeSchemasInput) GetValueFormatter() *string {
-	if o == nil {
+func (t *TextAttributeSchemasInput) GetValueFormatter() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return t.ValueFormatter
 }
 
 type AttributeWithCompositeIDInputType string
@@ -25751,40 +25751,40 @@ const (
 
 // AttributeWithCompositeIDInput - a readonly computed ID for the attribute including schema slug and the attribute ID
 type AttributeWithCompositeIDInput struct {
-	TextAttributeSchemasInput                  *TextAttributeSchemasInput                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	LinkAttributeSchemasInput                  *LinkAttributeSchemasInput                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	DateAttributeSchemasInput                  *DateAttributeSchemasInput                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	CountryAttributeSchemasInput               *CountryAttributeSchemasInput               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	BooleanAttributeSchemasInput               *BooleanAttributeSchemasInput               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	SelectAttributeSchemasInput                *SelectAttributeSchemasInput                `queryParam:"inline" name:"AttributeWithCompositeID"`
-	MultiSelectAttributeSchemasInput           *MultiSelectAttributeSchemasInput           `queryParam:"inline" name:"AttributeWithCompositeID"`
-	StatusAttributeSchemasInput                *StatusAttributeSchemasInput                `queryParam:"inline" name:"AttributeWithCompositeID"`
-	SequenceAttributeSchemasInput              *SequenceAttributeSchemasInput              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	RelationAttributeSchemasInput              *RelationAttributeSchemasInput              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	UserRelationAttributeSchemasInput          *UserRelationAttributeSchemasInput          `queryParam:"inline" name:"AttributeWithCompositeID"`
-	SchemasInput                               *SchemasInput                               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	AddressRelationAttributeSchemasInput       *AddressRelationAttributeSchemasInput       `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PaymentMethodRelationAttributeSchemasInput *PaymentMethodRelationAttributeSchemasInput `queryParam:"inline" name:"AttributeWithCompositeID"`
-	CurrencyAttributeSchemasInput              *CurrencyAttributeSchemasInput              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	TagsAttributeSchemasInput                  *TagsAttributeSchemasInput                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	MessageEmailAddressAttributeSchemasInput   *MessageEmailAddressAttributeSchemasInput   `queryParam:"inline" name:"AttributeWithCompositeID"`
-	NumberAttributeSchemasInput                *NumberAttributeSchemasInput                `queryParam:"inline" name:"AttributeWithCompositeID"`
-	ConsentAttributeSchemasInput               *ConsentAttributeSchemasInput               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	InternalAttributeSchemasInput              *InternalAttributeSchemasInput              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	OrderedListAttributeSchemasInput           *OrderedListAttributeSchemasInput           `queryParam:"inline" name:"AttributeWithCompositeID"`
-	FileAttributeSchemasInput                  *FileAttributeSchemasInput                  `queryParam:"inline" name:"AttributeWithCompositeID"`
-	ComputedAttributeSchemasInput              *ComputedAttributeSchemasInput              `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PartnerStatusAttributeSchemasInput         *PartnerStatusAttributeSchemasInput         `queryParam:"inline" name:"AttributeWithCompositeID"`
-	InvitationEmailAttributeSchemasInput       *InvitationEmailAttributeSchemasInput       `queryParam:"inline" name:"AttributeWithCompositeID"`
-	AutomationAttributeSchemasInput            *AutomationAttributeSchemasInput            `queryParam:"inline" name:"AttributeWithCompositeID"`
-	InternalUserAttributeSchemasInput          *InternalUserAttributeSchemasInput          `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PurposeAttributeSchemasInput               *PurposeAttributeSchemasInput               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PartnerOrganisationAttributeSchemasInput   *PartnerOrganisationAttributeSchemasInput   `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PortalAccessAttributeSchemasInput          *PortalAccessAttributeSchemasInput          `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PhoneAttributeSchemasInput                 *PhoneAttributeSchemasInput                 `queryParam:"inline" name:"AttributeWithCompositeID"`
-	EmailAttributeSchemasInput                 *EmailAttributeSchemasInput                 `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PaymentAttributeSchemasInput               *PaymentAttributeSchemasInput               `queryParam:"inline" name:"AttributeWithCompositeID"`
-	PriceComponentAttributeSchemasInput        *PriceComponentAttributeSchemasInput        `queryParam:"inline" name:"AttributeWithCompositeID"`
+	TextAttributeSchemasInput                  *TextAttributeSchemasInput                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	LinkAttributeSchemasInput                  *LinkAttributeSchemasInput                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	DateAttributeSchemasInput                  *DateAttributeSchemasInput                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	CountryAttributeSchemasInput               *CountryAttributeSchemasInput               `queryParam:"inline,name=AttributeWithCompositeID"`
+	BooleanAttributeSchemasInput               *BooleanAttributeSchemasInput               `queryParam:"inline,name=AttributeWithCompositeID"`
+	SelectAttributeSchemasInput                *SelectAttributeSchemasInput                `queryParam:"inline,name=AttributeWithCompositeID"`
+	MultiSelectAttributeSchemasInput           *MultiSelectAttributeSchemasInput           `queryParam:"inline,name=AttributeWithCompositeID"`
+	StatusAttributeSchemasInput                *StatusAttributeSchemasInput                `queryParam:"inline,name=AttributeWithCompositeID"`
+	SequenceAttributeSchemasInput              *SequenceAttributeSchemasInput              `queryParam:"inline,name=AttributeWithCompositeID"`
+	RelationAttributeSchemasInput              *RelationAttributeSchemasInput              `queryParam:"inline,name=AttributeWithCompositeID"`
+	UserRelationAttributeSchemasInput          *UserRelationAttributeSchemasInput          `queryParam:"inline,name=AttributeWithCompositeID"`
+	SchemasInput                               *SchemasInput                               `queryParam:"inline,name=AttributeWithCompositeID"`
+	AddressRelationAttributeSchemasInput       *AddressRelationAttributeSchemasInput       `queryParam:"inline,name=AttributeWithCompositeID"`
+	PaymentMethodRelationAttributeSchemasInput *PaymentMethodRelationAttributeSchemasInput `queryParam:"inline,name=AttributeWithCompositeID"`
+	CurrencyAttributeSchemasInput              *CurrencyAttributeSchemasInput              `queryParam:"inline,name=AttributeWithCompositeID"`
+	TagsAttributeSchemasInput                  *TagsAttributeSchemasInput                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	MessageEmailAddressAttributeSchemasInput   *MessageEmailAddressAttributeSchemasInput   `queryParam:"inline,name=AttributeWithCompositeID"`
+	NumberAttributeSchemasInput                *NumberAttributeSchemasInput                `queryParam:"inline,name=AttributeWithCompositeID"`
+	ConsentAttributeSchemasInput               *ConsentAttributeSchemasInput               `queryParam:"inline,name=AttributeWithCompositeID"`
+	InternalAttributeSchemasInput              *InternalAttributeSchemasInput              `queryParam:"inline,name=AttributeWithCompositeID"`
+	OrderedListAttributeSchemasInput           *OrderedListAttributeSchemasInput           `queryParam:"inline,name=AttributeWithCompositeID"`
+	FileAttributeSchemasInput                  *FileAttributeSchemasInput                  `queryParam:"inline,name=AttributeWithCompositeID"`
+	ComputedAttributeSchemasInput              *ComputedAttributeSchemasInput              `queryParam:"inline,name=AttributeWithCompositeID"`
+	PartnerStatusAttributeSchemasInput         *PartnerStatusAttributeSchemasInput         `queryParam:"inline,name=AttributeWithCompositeID"`
+	InvitationEmailAttributeSchemasInput       *InvitationEmailAttributeSchemasInput       `queryParam:"inline,name=AttributeWithCompositeID"`
+	AutomationAttributeSchemasInput            *AutomationAttributeSchemasInput            `queryParam:"inline,name=AttributeWithCompositeID"`
+	InternalUserAttributeSchemasInput          *InternalUserAttributeSchemasInput          `queryParam:"inline,name=AttributeWithCompositeID"`
+	PurposeAttributeSchemasInput               *PurposeAttributeSchemasInput               `queryParam:"inline,name=AttributeWithCompositeID"`
+	PartnerOrganisationAttributeSchemasInput   *PartnerOrganisationAttributeSchemasInput   `queryParam:"inline,name=AttributeWithCompositeID"`
+	PortalAccessAttributeSchemasInput          *PortalAccessAttributeSchemasInput          `queryParam:"inline,name=AttributeWithCompositeID"`
+	PhoneAttributeSchemasInput                 *PhoneAttributeSchemasInput                 `queryParam:"inline,name=AttributeWithCompositeID"`
+	EmailAttributeSchemasInput                 *EmailAttributeSchemasInput                 `queryParam:"inline,name=AttributeWithCompositeID"`
+	PaymentAttributeSchemasInput               *PaymentAttributeSchemasInput               `queryParam:"inline,name=AttributeWithCompositeID"`
+	PriceComponentAttributeSchemasInput        *PriceComponentAttributeSchemasInput        `queryParam:"inline,name=AttributeWithCompositeID"`
 
 	Type AttributeWithCompositeIDInputType
 }

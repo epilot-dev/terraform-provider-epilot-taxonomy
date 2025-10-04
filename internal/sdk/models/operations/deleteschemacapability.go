@@ -12,11 +12,11 @@ type DeleteSchemaCapabilityRequest struct {
 	CompositeID string `pathParam:"style=simple,explode=false,name=composite_id"`
 }
 
-func (o *DeleteSchemaCapabilityRequest) GetCompositeID() string {
-	if o == nil {
+func (d *DeleteSchemaCapabilityRequest) GetCompositeID() string {
+	if d == nil {
 		return ""
 	}
-	return o.CompositeID
+	return d.CompositeID
 }
 
 // DeleteSchemaCapabilityResponseBody - A generic error returned by the API
@@ -27,18 +27,18 @@ type DeleteSchemaCapabilityResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *DeleteSchemaCapabilityResponseBody) GetError() *string {
-	if o == nil {
+func (d *DeleteSchemaCapabilityResponseBody) GetError() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Error
+	return d.Error
 }
 
-func (o *DeleteSchemaCapabilityResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (d *DeleteSchemaCapabilityResponseBody) GetStatus() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.Status
+	return d.Status
 }
 
 type DeleteSchemaCapabilityResponse struct {
@@ -55,44 +55,44 @@ type DeleteSchemaCapabilityResponse struct {
 	Object *DeleteSchemaCapabilityResponseBody
 }
 
-func (o *DeleteSchemaCapabilityResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteSchemaCapabilityResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteSchemaCapabilityResponse) GetEntityCapabilityWithCompositeID() *shared.EntityCapabilityWithCompositeID {
-	if o == nil {
+func (d *DeleteSchemaCapabilityResponse) GetEntityCapabilityWithCompositeID() *shared.EntityCapabilityWithCompositeID {
+	if d == nil {
 		return nil
 	}
-	return o.EntityCapabilityWithCompositeID
+	return d.EntityCapabilityWithCompositeID
 }
 
-func (o *DeleteSchemaCapabilityResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (d *DeleteSchemaCapabilityResponse) GetHeaders() map[string][]string {
+	if d == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return d.Headers
 }
 
-func (o *DeleteSchemaCapabilityResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteSchemaCapabilityResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteSchemaCapabilityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteSchemaCapabilityResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }
 
-func (o *DeleteSchemaCapabilityResponse) GetObject() *DeleteSchemaCapabilityResponseBody {
-	if o == nil {
+func (d *DeleteSchemaCapabilityResponse) GetObject() *DeleteSchemaCapabilityResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

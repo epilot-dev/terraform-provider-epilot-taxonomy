@@ -15,18 +15,18 @@ type CreateSchemaAttributeResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *CreateSchemaAttributeResponseBody) GetError() *string {
-	if o == nil {
+func (c *CreateSchemaAttributeResponseBody) GetError() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Error
+	return c.Error
 }
 
-func (o *CreateSchemaAttributeResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (c *CreateSchemaAttributeResponseBody) GetStatus() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Status
+	return c.Status
 }
 
 type CreateSchemaAttributeResponse struct {
@@ -43,44 +43,44 @@ type CreateSchemaAttributeResponse struct {
 	Object *CreateSchemaAttributeResponseBody
 }
 
-func (o *CreateSchemaAttributeResponse) GetAttributeWithCompositeID() *shared.AttributeWithCompositeID {
-	if o == nil {
+func (c *CreateSchemaAttributeResponse) GetAttributeWithCompositeID() *shared.AttributeWithCompositeID {
+	if c == nil {
 		return nil
 	}
-	return o.AttributeWithCompositeID
+	return c.AttributeWithCompositeID
 }
 
-func (o *CreateSchemaAttributeResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateSchemaAttributeResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateSchemaAttributeResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (c *CreateSchemaAttributeResponse) GetHeaders() map[string][]string {
+	if c == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return c.Headers
 }
 
-func (o *CreateSchemaAttributeResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateSchemaAttributeResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateSchemaAttributeResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateSchemaAttributeResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateSchemaAttributeResponse) GetObject() *CreateSchemaAttributeResponseBody {
-	if o == nil {
+func (c *CreateSchemaAttributeResponse) GetObject() *CreateSchemaAttributeResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }
