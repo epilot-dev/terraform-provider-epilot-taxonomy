@@ -52,74 +52,74 @@ func (g *GetRelationsV3Request) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetRelationsV3Request) GetExcludeSchemas() []string {
-	if o == nil {
+func (g *GetRelationsV3Request) GetExcludeSchemas() []string {
+	if g == nil {
 		return nil
 	}
-	return o.ExcludeSchemas
+	return g.ExcludeSchemas
 }
 
-func (o *GetRelationsV3Request) GetFields() []string {
-	if o == nil {
+func (g *GetRelationsV3Request) GetFields() []string {
+	if g == nil {
 		return nil
 	}
-	return o.Fields
+	return g.Fields
 }
 
-func (o *GetRelationsV3Request) GetFrom() *int64 {
-	if o == nil {
+func (g *GetRelationsV3Request) GetFrom() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.From
+	return g.From
 }
 
-func (o *GetRelationsV3Request) GetHydrate() *bool {
-	if o == nil {
+func (g *GetRelationsV3Request) GetHydrate() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Hydrate
+	return g.Hydrate
 }
 
-func (o *GetRelationsV3Request) GetID() string {
-	if o == nil {
+func (g *GetRelationsV3Request) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetRelationsV3Request) GetIncludeReverse() *bool {
-	if o == nil {
+func (g *GetRelationsV3Request) GetIncludeReverse() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.IncludeReverse
+	return g.IncludeReverse
 }
 
-func (o *GetRelationsV3Request) GetIncludeSchemas() []string {
-	if o == nil {
+func (g *GetRelationsV3Request) GetIncludeSchemas() []string {
+	if g == nil {
 		return nil
 	}
-	return o.IncludeSchemas
+	return g.IncludeSchemas
 }
 
-func (o *GetRelationsV3Request) GetMode() *shared.EntityRelationsModeQueryParam {
-	if o == nil {
+func (g *GetRelationsV3Request) GetMode() *shared.EntityRelationsModeQueryParam {
+	if g == nil {
 		return nil
 	}
-	return o.Mode
+	return g.Mode
 }
 
-func (o *GetRelationsV3Request) GetSize() *int64 {
-	if o == nil {
+func (g *GetRelationsV3Request) GetSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Size
+	return g.Size
 }
 
-func (o *GetRelationsV3Request) GetSlug() string {
-	if o == nil {
+func (g *GetRelationsV3Request) GetSlug() string {
+	if g == nil {
 		return ""
 	}
-	return o.Slug
+	return g.Slug
 }
 
 // GetRelationsV3ResponseBody - A generic error returned by the API
@@ -130,18 +130,18 @@ type GetRelationsV3ResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetRelationsV3ResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetRelationsV3ResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetRelationsV3ResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetRelationsV3ResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetRelationsV3Response struct {
@@ -157,37 +157,37 @@ type GetRelationsV3Response struct {
 	Object *GetRelationsV3ResponseBody
 }
 
-func (o *GetRelationsV3Response) GetContentType() string {
-	if o == nil {
+func (g *GetRelationsV3Response) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetRelationsV3Response) GetGetRelationsRespWithPagination() *shared.GetRelationsRespWithPagination {
-	if o == nil {
+func (g *GetRelationsV3Response) GetGetRelationsRespWithPagination() *shared.GetRelationsRespWithPagination {
+	if g == nil {
 		return nil
 	}
-	return o.GetRelationsRespWithPagination
+	return g.GetRelationsRespWithPagination
 }
 
-func (o *GetRelationsV3Response) GetStatusCode() int {
-	if o == nil {
+func (g *GetRelationsV3Response) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetRelationsV3Response) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetRelationsV3Response) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetRelationsV3Response) GetObject() *GetRelationsV3ResponseBody {
-	if o == nil {
+func (g *GetRelationsV3Response) GetObject() *GetRelationsV3ResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

@@ -30,4 +30,5 @@ data "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
 - `name` (String)
 - `parents` (List of String)
 - `slug` (String) URL-friendly identifier for the classification
+- `starred` (Boolean) Starred taxonomy classifications can represent "favorites" or commonly used classifications
 - `updated_at` (String)

@@ -13,18 +13,18 @@ type DeleteTaxonomyRequest struct {
 	TaxonomySlug string `pathParam:"style=simple,explode=false,name=taxonomySlug"`
 }
 
-func (o *DeleteTaxonomyRequest) GetPermanent() *bool {
-	if o == nil {
+func (d *DeleteTaxonomyRequest) GetPermanent() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Permanent
+	return d.Permanent
 }
 
-func (o *DeleteTaxonomyRequest) GetTaxonomySlug() string {
-	if o == nil {
+func (d *DeleteTaxonomyRequest) GetTaxonomySlug() string {
+	if d == nil {
 		return ""
 	}
-	return o.TaxonomySlug
+	return d.TaxonomySlug
 }
 
 // DeleteTaxonomyResponseBody - A generic error returned by the API
@@ -35,18 +35,18 @@ type DeleteTaxonomyResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *DeleteTaxonomyResponseBody) GetError() *string {
-	if o == nil {
+func (d *DeleteTaxonomyResponseBody) GetError() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Error
+	return d.Error
 }
 
-func (o *DeleteTaxonomyResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (d *DeleteTaxonomyResponseBody) GetStatus() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.Status
+	return d.Status
 }
 
 type DeleteTaxonomyResponse struct {
@@ -61,37 +61,37 @@ type DeleteTaxonomyResponse struct {
 	Object *DeleteTaxonomyResponseBody
 }
 
-func (o *DeleteTaxonomyResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteTaxonomyResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteTaxonomyResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (d *DeleteTaxonomyResponse) GetHeaders() map[string][]string {
+	if d == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return d.Headers
 }
 
-func (o *DeleteTaxonomyResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteTaxonomyResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteTaxonomyResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteTaxonomyResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }
 
-func (o *DeleteTaxonomyResponse) GetObject() *DeleteTaxonomyResponseBody {
-	if o == nil {
+func (d *DeleteTaxonomyResponse) GetObject() *DeleteTaxonomyResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

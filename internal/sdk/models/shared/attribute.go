@@ -48,40 +48,40 @@ const (
 )
 
 type Attribute struct {
-	TextAttribute                  *TextAttribute                  `queryParam:"inline" name:"Attribute"`
-	LinkAttribute                  *LinkAttribute                  `queryParam:"inline" name:"Attribute"`
-	DateAttribute                  *DateAttribute                  `queryParam:"inline" name:"Attribute"`
-	CountryAttribute               *CountryAttribute               `queryParam:"inline" name:"Attribute"`
-	BooleanAttribute               *BooleanAttribute               `queryParam:"inline" name:"Attribute"`
-	SelectAttribute                *SelectAttribute                `queryParam:"inline" name:"Attribute"`
-	MultiSelectAttribute           *MultiSelectAttribute           `queryParam:"inline" name:"Attribute"`
-	StatusAttribute                *StatusAttribute                `queryParam:"inline" name:"Attribute"`
-	SequenceAttribute              *SequenceAttribute              `queryParam:"inline" name:"Attribute"`
-	RelationAttribute              *RelationAttribute              `queryParam:"inline" name:"Attribute"`
-	UserRelationAttribute          *UserRelationAttribute          `queryParam:"inline" name:"Attribute"`
-	AddressAttribute               *AddressAttribute               `queryParam:"inline" name:"Attribute"`
-	AddressRelationAttribute       *AddressRelationAttribute       `queryParam:"inline" name:"Attribute"`
-	PaymentMethodRelationAttribute *PaymentMethodRelationAttribute `queryParam:"inline" name:"Attribute"`
-	CurrencyAttribute              *CurrencyAttribute              `queryParam:"inline" name:"Attribute"`
-	TagsAttribute                  *TagsAttribute                  `queryParam:"inline" name:"Attribute"`
-	MessageEmailAddressAttribute   *MessageEmailAddressAttribute   `queryParam:"inline" name:"Attribute"`
-	NumberAttribute                *NumberAttribute                `queryParam:"inline" name:"Attribute"`
-	ConsentAttribute               *ConsentAttribute               `queryParam:"inline" name:"Attribute"`
-	InternalAttribute              *InternalAttribute              `queryParam:"inline" name:"Attribute"`
-	OrderedListAttribute           *OrderedListAttribute           `queryParam:"inline" name:"Attribute"`
-	FileAttribute                  *FileAttribute                  `queryParam:"inline" name:"Attribute"`
-	ComputedAttribute              *ComputedAttribute              `queryParam:"inline" name:"Attribute"`
-	PartnerStatusAttribute         *PartnerStatusAttribute         `queryParam:"inline" name:"Attribute"`
-	InvitationEmailAttribute       *InvitationEmailAttribute       `queryParam:"inline" name:"Attribute"`
-	AutomationAttribute            *AutomationAttribute            `queryParam:"inline" name:"Attribute"`
-	InternalUserAttribute          *InternalUserAttribute          `queryParam:"inline" name:"Attribute"`
-	PurposeAttribute               *PurposeAttribute               `queryParam:"inline" name:"Attribute"`
-	PartnerOrganisationAttribute   *PartnerOrganisationAttribute   `queryParam:"inline" name:"Attribute"`
-	PortalAccessAttribute          *PortalAccessAttribute          `queryParam:"inline" name:"Attribute"`
-	PhoneAttribute                 *PhoneAttribute                 `queryParam:"inline" name:"Attribute"`
-	EmailAttribute                 *EmailAttribute                 `queryParam:"inline" name:"Attribute"`
-	PaymentAttribute               *PaymentAttribute               `queryParam:"inline" name:"Attribute"`
-	PriceComponentAttribute        *PriceComponentAttribute        `queryParam:"inline" name:"Attribute"`
+	TextAttribute                  *TextAttribute                  `queryParam:"inline,name=Attribute"`
+	LinkAttribute                  *LinkAttribute                  `queryParam:"inline,name=Attribute"`
+	DateAttribute                  *DateAttribute                  `queryParam:"inline,name=Attribute"`
+	CountryAttribute               *CountryAttribute               `queryParam:"inline,name=Attribute"`
+	BooleanAttribute               *BooleanAttribute               `queryParam:"inline,name=Attribute"`
+	SelectAttribute                *SelectAttribute                `queryParam:"inline,name=Attribute"`
+	MultiSelectAttribute           *MultiSelectAttribute           `queryParam:"inline,name=Attribute"`
+	StatusAttribute                *StatusAttribute                `queryParam:"inline,name=Attribute"`
+	SequenceAttribute              *SequenceAttribute              `queryParam:"inline,name=Attribute"`
+	RelationAttribute              *RelationAttribute              `queryParam:"inline,name=Attribute"`
+	UserRelationAttribute          *UserRelationAttribute          `queryParam:"inline,name=Attribute"`
+	AddressAttribute               *AddressAttribute               `queryParam:"inline,name=Attribute"`
+	AddressRelationAttribute       *AddressRelationAttribute       `queryParam:"inline,name=Attribute"`
+	PaymentMethodRelationAttribute *PaymentMethodRelationAttribute `queryParam:"inline,name=Attribute"`
+	CurrencyAttribute              *CurrencyAttribute              `queryParam:"inline,name=Attribute"`
+	TagsAttribute                  *TagsAttribute                  `queryParam:"inline,name=Attribute"`
+	MessageEmailAddressAttribute   *MessageEmailAddressAttribute   `queryParam:"inline,name=Attribute"`
+	NumberAttribute                *NumberAttribute                `queryParam:"inline,name=Attribute"`
+	ConsentAttribute               *ConsentAttribute               `queryParam:"inline,name=Attribute"`
+	InternalAttribute              *InternalAttribute              `queryParam:"inline,name=Attribute"`
+	OrderedListAttribute           *OrderedListAttribute           `queryParam:"inline,name=Attribute"`
+	FileAttribute                  *FileAttribute                  `queryParam:"inline,name=Attribute"`
+	ComputedAttribute              *ComputedAttribute              `queryParam:"inline,name=Attribute"`
+	PartnerStatusAttribute         *PartnerStatusAttribute         `queryParam:"inline,name=Attribute"`
+	InvitationEmailAttribute       *InvitationEmailAttribute       `queryParam:"inline,name=Attribute"`
+	AutomationAttribute            *AutomationAttribute            `queryParam:"inline,name=Attribute"`
+	InternalUserAttribute          *InternalUserAttribute          `queryParam:"inline,name=Attribute"`
+	PurposeAttribute               *PurposeAttribute               `queryParam:"inline,name=Attribute"`
+	PartnerOrganisationAttribute   *PartnerOrganisationAttribute   `queryParam:"inline,name=Attribute"`
+	PortalAccessAttribute          *PortalAccessAttribute          `queryParam:"inline,name=Attribute"`
+	PhoneAttribute                 *PhoneAttribute                 `queryParam:"inline,name=Attribute"`
+	EmailAttribute                 *EmailAttribute                 `queryParam:"inline,name=Attribute"`
+	PaymentAttribute               *PaymentAttribute               `queryParam:"inline,name=Attribute"`
+	PriceComponentAttribute        *PriceComponentAttribute        `queryParam:"inline,name=Attribute"`
 
 	Type AttributeType
 }

@@ -30,25 +30,25 @@ func (g *GetActivityRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetActivityRequest) GetID() string {
-	if o == nil {
+func (g *GetActivityRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetActivityRequest) GetOperationsFrom() *int64 {
-	if o == nil {
+func (g *GetActivityRequest) GetOperationsFrom() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.OperationsFrom
+	return g.OperationsFrom
 }
 
-func (o *GetActivityRequest) GetOperationsSize() *int64 {
-	if o == nil {
+func (g *GetActivityRequest) GetOperationsSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.OperationsSize
+	return g.OperationsSize
 }
 
 // GetActivityResponseBody - A generic error returned by the API
@@ -59,18 +59,18 @@ type GetActivityResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetActivityResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetActivityResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetActivityResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetActivityResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetActivityResponse struct {
@@ -86,37 +86,37 @@ type GetActivityResponse struct {
 	Object *GetActivityResponseBody
 }
 
-func (o *GetActivityResponse) GetActivityItem() *shared.ActivityItem {
-	if o == nil {
+func (g *GetActivityResponse) GetActivityItem() *shared.ActivityItem {
+	if g == nil {
 		return nil
 	}
-	return o.ActivityItem
+	return g.ActivityItem
 }
 
-func (o *GetActivityResponse) GetContentType() string {
-	if o == nil {
+func (g *GetActivityResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetActivityResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetActivityResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetActivityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetActivityResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetActivityResponse) GetObject() *GetActivityResponseBody {
-	if o == nil {
+func (g *GetActivityResponse) GetObject() *GetActivityResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

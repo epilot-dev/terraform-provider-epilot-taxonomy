@@ -15,18 +15,18 @@ type CreateSchemaGroupResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *CreateSchemaGroupResponseBody) GetError() *string {
-	if o == nil {
+func (c *CreateSchemaGroupResponseBody) GetError() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Error
+	return c.Error
 }
 
-func (o *CreateSchemaGroupResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (c *CreateSchemaGroupResponseBody) GetStatus() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Status
+	return c.Status
 }
 
 type CreateSchemaGroupResponse struct {
@@ -43,44 +43,44 @@ type CreateSchemaGroupResponse struct {
 	Object *CreateSchemaGroupResponseBody
 }
 
-func (o *CreateSchemaGroupResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateSchemaGroupResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateSchemaGroupResponse) GetEntitySchemaGroupWithCompositeID() *shared.EntitySchemaGroupWithCompositeID {
-	if o == nil {
+func (c *CreateSchemaGroupResponse) GetEntitySchemaGroupWithCompositeID() *shared.EntitySchemaGroupWithCompositeID {
+	if c == nil {
 		return nil
 	}
-	return o.EntitySchemaGroupWithCompositeID
+	return c.EntitySchemaGroupWithCompositeID
 }
 
-func (o *CreateSchemaGroupResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (c *CreateSchemaGroupResponse) GetHeaders() map[string][]string {
+	if c == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return c.Headers
 }
 
-func (o *CreateSchemaGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateSchemaGroupResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateSchemaGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateSchemaGroupResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateSchemaGroupResponse) GetObject() *CreateSchemaGroupResponseBody {
-	if o == nil {
+func (c *CreateSchemaGroupResponse) GetObject() *CreateSchemaGroupResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }

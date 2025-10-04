@@ -35,58 +35,58 @@ func (b *BaseActivityItem) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *BaseActivityItem) GetID() *string {
-	if o == nil {
+func (b *BaseActivityItem) GetID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ID
+	return b.ID
 }
 
-func (o *BaseActivityItem) GetCaller() *ActivityCallerContext {
-	if o == nil {
+func (b *BaseActivityItem) GetCaller() *ActivityCallerContext {
+	if b == nil {
 		return nil
 	}
-	return o.Caller
+	return b.Caller
 }
 
-func (o *BaseActivityItem) GetMessage() string {
-	if o == nil {
+func (b *BaseActivityItem) GetMessage() string {
+	if b == nil {
 		return ""
 	}
-	return o.Message
+	return b.Message
 }
 
-func (o *BaseActivityItem) GetPayload() map[string]any {
-	if o == nil {
+func (b *BaseActivityItem) GetPayload() map[string]any {
+	if b == nil {
 		return nil
 	}
-	return o.Payload
+	return b.Payload
 }
 
-func (o *BaseActivityItem) GetPending() *bool {
-	if o == nil {
+func (b *BaseActivityItem) GetPending() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Pending
+	return b.Pending
 }
 
-func (o *BaseActivityItem) GetTimestamp() *time.Time {
-	if o == nil {
+func (b *BaseActivityItem) GetTimestamp() *time.Time {
+	if b == nil {
 		return nil
 	}
-	return o.Timestamp
+	return b.Timestamp
 }
 
-func (o *BaseActivityItem) GetTitle() string {
-	if o == nil {
+func (b *BaseActivityItem) GetTitle() string {
+	if b == nil {
 		return ""
 	}
-	return o.Title
+	return b.Title
 }
 
-func (o *BaseActivityItem) GetType() string {
-	if o == nil {
+func (b *BaseActivityItem) GetType() string {
+	if b == nil {
 		return ""
 	}
-	return o.Type
+	return b.Type
 }

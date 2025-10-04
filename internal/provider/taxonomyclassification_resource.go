@@ -40,6 +40,7 @@ type TaxonomyClassificationResourceModel struct {
 	Name      types.String   `tfsdk:"name"`
 	Parents   []types.String `tfsdk:"parents"`
 	Slug      types.String   `tfsdk:"slug"`
+	Starred   types.Bool     `tfsdk:"starred"`
 	UpdatedAt types.String   `tfsdk:"updated_at"`
 }
 
@@ -89,6 +90,12 @@ func (r *TaxonomyClassificationResource) Schema(ctx context.Context, req resourc
 			"slug": schema.StringAttribute{
 				Required:    true,
 				Description: `URL-friendly identifier for the classification`,
+			},
+			"starred": schema.BoolAttribute{
+				Computed:    true,
+				Optional:    true,
+				Default:     booldefault.StaticBool(false),
+				Description: `Starred taxonomy classifications can represent "favorites" or commonly used classifications. Default: false`,
 			},
 			"updated_at": schema.StringAttribute{
 				Computed: true,

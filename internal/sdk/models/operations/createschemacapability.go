@@ -15,18 +15,18 @@ type CreateSchemaCapabilityResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *CreateSchemaCapabilityResponseBody) GetError() *string {
-	if o == nil {
+func (c *CreateSchemaCapabilityResponseBody) GetError() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Error
+	return c.Error
 }
 
-func (o *CreateSchemaCapabilityResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (c *CreateSchemaCapabilityResponseBody) GetStatus() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Status
+	return c.Status
 }
 
 type CreateSchemaCapabilityResponse struct {
@@ -43,44 +43,44 @@ type CreateSchemaCapabilityResponse struct {
 	Object *CreateSchemaCapabilityResponseBody
 }
 
-func (o *CreateSchemaCapabilityResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateSchemaCapabilityResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateSchemaCapabilityResponse) GetEntityCapabilityWithCompositeID() *shared.EntityCapabilityWithCompositeID {
-	if o == nil {
+func (c *CreateSchemaCapabilityResponse) GetEntityCapabilityWithCompositeID() *shared.EntityCapabilityWithCompositeID {
+	if c == nil {
 		return nil
 	}
-	return o.EntityCapabilityWithCompositeID
+	return c.EntityCapabilityWithCompositeID
 }
 
-func (o *CreateSchemaCapabilityResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (c *CreateSchemaCapabilityResponse) GetHeaders() map[string][]string {
+	if c == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return c.Headers
 }
 
-func (o *CreateSchemaCapabilityResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateSchemaCapabilityResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateSchemaCapabilityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateSchemaCapabilityResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateSchemaCapabilityResponse) GetObject() *CreateSchemaCapabilityResponseBody {
-	if o == nil {
+func (c *CreateSchemaCapabilityResponse) GetObject() *CreateSchemaCapabilityResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }
