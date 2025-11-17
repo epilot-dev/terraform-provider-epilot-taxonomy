@@ -13,18 +13,18 @@ type InfoTooltipTitle struct {
 	Key *string `json:"key,omitempty"`
 }
 
-func (o *InfoTooltipTitle) GetDefault() *string {
-	if o == nil {
+func (i *InfoTooltipTitle) GetDefault() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Default
+	return i.Default
 }
 
-func (o *InfoTooltipTitle) GetKey() *string {
-	if o == nil {
+func (i *InfoTooltipTitle) GetKey() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Key
+	return i.Key
 }
 
 type EntitySchemaGroup struct {
@@ -58,72 +58,72 @@ func (e *EntitySchemaGroup) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntitySchemaGroup) GetManifest() []string {
-	if o == nil {
+func (e *EntitySchemaGroup) GetManifest() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Manifest
+	return e.Manifest
 }
 
-func (o *EntitySchemaGroup) GetPurpose() []string {
-	if o == nil {
+func (e *EntitySchemaGroup) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Purpose
 }
 
-func (o *EntitySchemaGroup) GetExpanded() *bool {
-	if o == nil {
+func (e *EntitySchemaGroup) GetExpanded() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Expanded
+	return e.Expanded
 }
 
-func (o *EntitySchemaGroup) GetFeatureFlag() *string {
-	if o == nil {
+func (e *EntitySchemaGroup) GetFeatureFlag() *string {
+	if e == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return e.FeatureFlag
 }
 
-func (o *EntitySchemaGroup) GetID() *string {
-	if o == nil {
+func (e *EntitySchemaGroup) GetID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ID
+	return e.ID
 }
 
-func (o *EntitySchemaGroup) GetInfoTooltipTitle() *InfoTooltipTitle {
-	if o == nil {
+func (e *EntitySchemaGroup) GetInfoTooltipTitle() *InfoTooltipTitle {
+	if e == nil {
 		return nil
 	}
-	return o.InfoTooltipTitle
+	return e.InfoTooltipTitle
 }
 
-func (o *EntitySchemaGroup) GetLabel() string {
-	if o == nil {
+func (e *EntitySchemaGroup) GetLabel() string {
+	if e == nil {
 		return ""
 	}
-	return o.Label
+	return e.Label
 }
 
-func (o *EntitySchemaGroup) GetOrder() *int64 {
-	if o == nil {
+func (e *EntitySchemaGroup) GetOrder() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.Order
+	return e.Order
 }
 
-func (o *EntitySchemaGroup) GetRenderCondition() *string {
-	if o == nil {
+func (e *EntitySchemaGroup) GetRenderCondition() *string {
+	if e == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return e.RenderCondition
 }
 
-func (o *EntitySchemaGroup) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (e *EntitySchemaGroup) GetSettingsFlag() []SettingFlag {
+	if e == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return e.SettingsFlag
 }

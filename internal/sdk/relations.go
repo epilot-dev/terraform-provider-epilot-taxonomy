@@ -63,7 +63,7 @@ func (s *Relations) AddRelations(ctx context.Context, request operations.AddRela
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "addRelations",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -294,7 +294,7 @@ func (s *Relations) DeleteRelation(ctx context.Context, request operations.Delet
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteRelation",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -521,7 +521,7 @@ func (s *Relations) GetRelatedEntitiesCount(ctx context.Context, request operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getRelatedEntitiesCount",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -749,7 +749,7 @@ func (s *Relations) GetRelations(ctx context.Context, request operations.GetRela
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getRelations",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -977,7 +977,7 @@ func (s *Relations) GetRelationsV2(ctx context.Context, request operations.GetRe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getRelationsV2",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1205,7 +1205,7 @@ func (s *Relations) GetRelationsV3(ctx context.Context, request operations.GetRe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getRelationsV3",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1429,7 +1429,7 @@ func (s *Relations) RemoveRelations(ctx context.Context, request operations.Remo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "removeRelations",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -1663,7 +1663,7 @@ func (s *Relations) UpdateRelation(ctx context.Context, request operations.Updat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "updateRelation",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)

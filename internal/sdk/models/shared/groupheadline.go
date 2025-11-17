@@ -85,79 +85,79 @@ func (g *GroupHeadline) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GroupHeadline) GetManifest() []string {
-	if o == nil {
+func (g *GroupHeadline) GetManifest() []string {
+	if g == nil {
 		return nil
 	}
-	return o.Manifest
+	return g.Manifest
 }
 
-func (o *GroupHeadline) GetPurpose() []string {
-	if o == nil {
+func (g *GroupHeadline) GetPurpose() []string {
+	if g == nil {
 		return nil
 	}
-	return o.Purpose
+	return g.Purpose
 }
 
-func (o *GroupHeadline) GetDivider() *Divider {
-	if o == nil {
+func (g *GroupHeadline) GetDivider() *Divider {
+	if g == nil {
 		return nil
 	}
-	return o.Divider
+	return g.Divider
 }
 
-func (o *GroupHeadline) GetEnableDivider() *bool {
-	if o == nil {
+func (g *GroupHeadline) GetEnableDivider() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.EnableDivider
+	return g.EnableDivider
 }
 
-func (o *GroupHeadline) GetGroup() string {
-	if o == nil {
+func (g *GroupHeadline) GetGroup() string {
+	if g == nil {
 		return ""
 	}
-	return o.Group
+	return g.Group
 }
 
-func (o *GroupHeadline) GetID() *string {
-	if o == nil {
+func (g *GroupHeadline) GetID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GroupHeadline) GetLabel() string {
-	if o == nil {
+func (g *GroupHeadline) GetLabel() string {
+	if g == nil {
 		return ""
 	}
-	return o.Label
+	return g.Label
 }
 
-func (o *GroupHeadline) GetLayout() *string {
-	if o == nil {
+func (g *GroupHeadline) GetLayout() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Layout
+	return g.Layout
 }
 
-func (o *GroupHeadline) GetName() string {
-	if o == nil {
+func (g *GroupHeadline) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GroupHeadline) GetOrder() *int64 {
-	if o == nil {
+func (g *GroupHeadline) GetOrder() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Order
+	return g.Order
 }
 
-func (o *GroupHeadline) GetType() GroupHeadlineType {
-	if o == nil {
+func (g *GroupHeadline) GetType() GroupHeadlineType {
+	if g == nil {
 		return GroupHeadlineType("")
 	}
-	return o.Type
+	return g.Type
 }

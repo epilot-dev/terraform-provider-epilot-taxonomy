@@ -52,18 +52,18 @@ func (s *SavedView2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SavedView2) GetAdditionalProperties() any {
-	if o == nil {
+func (s *SavedView2) GetAdditionalProperties() any {
+	if s == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return s.AdditionalProperties
 }
 
-func (o *SavedView2) GetSource() *SavedViewSource {
-	if o == nil {
+func (s *SavedView2) GetSource() *SavedViewSource {
+	if s == nil {
 		return nil
 	}
-	return o.Source
+	return s.Source
 }
 
 // SavedView1 - A user that created the view
@@ -82,11 +82,11 @@ func (s *SavedView1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SavedView1) GetUserID() *string {
-	if o == nil {
+func (s *SavedView1) GetUserID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.UserID
+	return s.UserID
 }
 
 type CreatedByType string
@@ -97,8 +97,8 @@ const (
 )
 
 type CreatedBy struct {
-	SavedView1 *SavedView1 `queryParam:"inline" name:"created_by"`
-	SavedView2 *SavedView2 `queryParam:"inline" name:"created_by"`
+	SavedView1 *SavedView1 `queryParam:"inline,name=created_by"`
+	SavedView2 *SavedView2 `queryParam:"inline,name=created_by"`
 
 	Type CreatedByType
 }
@@ -123,17 +123,43 @@ func CreateCreatedBySavedView2(savedView2 SavedView2) CreatedBy {
 
 func (u *CreatedBy) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var savedView1 SavedView1 = SavedView1{}
 	if err := utils.UnmarshalJSON(data, &savedView1, "", true, nil); err == nil {
-		u.SavedView1 = &savedView1
-		u.Type = CreatedByTypeSavedView1
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  CreatedByTypeSavedView1,
+			Value: &savedView1,
+		})
 	}
 
 	var savedView2 SavedView2 = SavedView2{}
 	if err := utils.UnmarshalJSON(data, &savedView2, "", true, nil); err == nil {
-		u.SavedView2 = &savedView2
-		u.Type = CreatedByTypeSavedView2
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  CreatedByTypeSavedView2,
+			Value: &savedView2,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreatedBy", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestCandidate(candidates)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreatedBy", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(CreatedByType)
+	switch best.Type {
+	case CreatedByTypeSavedView1:
+		u.SavedView1 = best.Value.(*SavedView1)
+		return nil
+	case CreatedByTypeSavedView2:
+		u.SavedView2 = best.Value.(*SavedView2)
 		return nil
 	}
 
@@ -170,58 +196,58 @@ type SavedView struct {
 	UIConfig map[string]any `json:"ui_config"`
 }
 
-func (o *SavedView) GetCreatedBy() *CreatedBy {
-	if o == nil {
+func (s *SavedView) GetCreatedBy() *CreatedBy {
+	if s == nil {
 		return nil
 	}
-	return o.CreatedBy
+	return s.CreatedBy
 }
 
-func (o *SavedView) GetIsFavoritedBy() []string {
-	if o == nil {
+func (s *SavedView) GetIsFavoritedBy() []string {
+	if s == nil {
 		return nil
 	}
-	return o.IsFavoritedBy
+	return s.IsFavoritedBy
 }
 
-func (o *SavedView) GetName() string {
-	if o == nil {
+func (s *SavedView) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SavedView) GetOrg() *string {
-	if o == nil {
+func (s *SavedView) GetOrg() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Org
+	return s.Org
 }
 
-func (o *SavedView) GetShared() *bool {
-	if o == nil {
+func (s *SavedView) GetShared() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Shared
+	return s.Shared
 }
 
-func (o *SavedView) GetSharedWith() []string {
-	if o == nil {
+func (s *SavedView) GetSharedWith() []string {
+	if s == nil {
 		return nil
 	}
-	return o.SharedWith
+	return s.SharedWith
 }
 
-func (o *SavedView) GetSlug() []string {
-	if o == nil {
+func (s *SavedView) GetSlug() []string {
+	if s == nil {
 		return []string{}
 	}
-	return o.Slug
+	return s.Slug
 }
 
-func (o *SavedView) GetUIConfig() map[string]any {
-	if o == nil {
+func (s *SavedView) GetUIConfig() map[string]any {
+	if s == nil {
 		return map[string]any{}
 	}
-	return o.UIConfig
+	return s.UIConfig
 }

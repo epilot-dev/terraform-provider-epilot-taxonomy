@@ -40,6 +40,7 @@ type TaxonomyClassificationResourceModel struct {
 	Name      types.String   `tfsdk:"name"`
 	Parents   []types.String `tfsdk:"parents"`
 	Slug      types.String   `tfsdk:"slug"`
+	Starred   types.Bool     `tfsdk:"starred"`
 	UpdatedAt types.String   `tfsdk:"updated_at"`
 }
 
@@ -89,6 +90,12 @@ func (r *TaxonomyClassificationResource) Schema(ctx context.Context, req resourc
 			"slug": schema.StringAttribute{
 				Required:    true,
 				Description: `URL-friendly identifier for the classification`,
+			},
+			"starred": schema.BoolAttribute{
+				Computed:    true,
+				Optional:    true,
+				Default:     booldefault.StaticBool(false),
+				Description: `Starred taxonomy classifications can represent "favorites" or commonly used classifications. Default: false`,
 			},
 			"updated_at": schema.StringAttribute{
 				Computed: true,
@@ -155,6 +162,13 @@ func (r *TaxonomyClassificationResource) Create(ctx context.Context, req resourc
 	}
 	if res == nil {
 		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res))
+		return
+	}
+	if res.StatusCode == 409 {
+		resp.Diagnostics.AddError(
+			"Resource Already Exists",
+			"When creating this resource, the API indicated that this resource already exists. You can bring the existing resource under management using Terraform import functionality or retry with a unique configuration.",
+		)
 		return
 	}
 	if res.StatusCode != 201 {

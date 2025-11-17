@@ -66,7 +66,7 @@ func (s *Taxonomy) BulkDeleteClassifications(ctx context.Context, request *opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "bulkDeleteClassifications",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -297,7 +297,7 @@ func (s *Taxonomy) BulkMergeClassifications(ctx context.Context, request *operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "bulkMergeClassifications",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -528,7 +528,7 @@ func (s *Taxonomy) BulkMoveClassifications(ctx context.Context, request *operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "bulkMoveClassifications",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -759,7 +759,7 @@ func (s *Taxonomy) CancelBulkAction(ctx context.Context, request operations.Canc
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "cancelBulkAction",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -987,7 +987,7 @@ func (s *Taxonomy) CreateTaxonomy(ctx context.Context, request *shared.TaxonomyI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -1217,7 +1217,7 @@ func (s *Taxonomy) CreateTaxonomyClassification(ctx context.Context, request *sh
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createTaxonomyClassification",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -1447,7 +1447,7 @@ func (s *Taxonomy) DeleteTaxonomy(ctx context.Context, request operations.Delete
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1653,7 +1653,7 @@ func (s *Taxonomy) DeleteTaxonomyClassification(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteTaxonomyClassification",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1876,7 +1876,7 @@ func (s *Taxonomy) GetTaxonomy(ctx context.Context, request operations.GetTaxono
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2096,7 +2096,7 @@ func (s *Taxonomy) GetTaxonomyBulkActionJobByID(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getTaxonomyBulkActionJobById",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2299,7 +2299,7 @@ func (s *Taxonomy) GetTaxonomyBulkActionJobs(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getTaxonomyBulkActionJobs",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2504,7 +2504,7 @@ func (s *Taxonomy) GetTaxonomyClassification(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getTaxonomyClassification",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2724,7 +2724,7 @@ func (s *Taxonomy) ListTaxonomies(ctx context.Context, request operations.ListTa
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "listTaxonomies",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2927,7 +2927,7 @@ func (s *Taxonomy) TaxonomiesClassificationsSearch(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "taxonomiesClassificationsSearch",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -3160,7 +3160,7 @@ func (s *Taxonomy) TaxonomyAutocomplete(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "taxonomyAutocomplete",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3363,7 +3363,7 @@ func (s *Taxonomy) UpdateClassificationsForTaxonomy(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "updateClassificationsForTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "ClassificationsUpdate", "json", `request:"mediaType=application/json"`)
@@ -3613,7 +3613,7 @@ func (s *Taxonomy) UpdateTaxonomy(ctx context.Context, request operations.Update
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "updateTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Taxonomy", "json", `request:"mediaType=application/json"`)
@@ -3819,7 +3819,7 @@ func (s *Taxonomy) UpdateTaxonomyClassification(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "updateTaxonomyClassification",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "TaxonomyClassification", "json", `request:"mediaType=application/json"`)

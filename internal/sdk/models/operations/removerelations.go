@@ -31,39 +31,39 @@ func (r *RemoveRelationsRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RemoveRelationsRequest) GetRequestBody() []shared.RelationItem {
-	if o == nil {
+func (r *RemoveRelationsRequest) GetRequestBody() []shared.RelationItem {
+	if r == nil {
 		return nil
 	}
-	return o.RequestBody
+	return r.RequestBody
 }
 
-func (o *RemoveRelationsRequest) GetActivityID() *shared.ActivityIDQueryParam {
-	if o == nil {
+func (r *RemoveRelationsRequest) GetActivityID() *shared.ActivityIDQueryParam {
+	if r == nil {
 		return nil
 	}
-	return o.ActivityID
+	return r.ActivityID
 }
 
-func (o *RemoveRelationsRequest) GetAsync() *bool {
-	if o == nil {
+func (r *RemoveRelationsRequest) GetAsync() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Async
+	return r.Async
 }
 
-func (o *RemoveRelationsRequest) GetID() string {
-	if o == nil {
+func (r *RemoveRelationsRequest) GetID() string {
+	if r == nil {
 		return ""
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RemoveRelationsRequest) GetSlug() string {
-	if o == nil {
+func (r *RemoveRelationsRequest) GetSlug() string {
+	if r == nil {
 		return ""
 	}
-	return o.Slug
+	return r.Slug
 }
 
 // RemoveRelationsResponseBody - A generic error returned by the API
@@ -74,18 +74,18 @@ type RemoveRelationsResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *RemoveRelationsResponseBody) GetError() *string {
-	if o == nil {
+func (r *RemoveRelationsResponseBody) GetError() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Error
+	return r.Error
 }
 
-func (o *RemoveRelationsResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (r *RemoveRelationsResponseBody) GetStatus() *int64 {
+	if r == nil {
 		return nil
 	}
-	return o.Status
+	return r.Status
 }
 
 type RemoveRelationsResponse struct {
@@ -100,37 +100,37 @@ type RemoveRelationsResponse struct {
 	Object *RemoveRelationsResponseBody
 }
 
-func (o *RemoveRelationsResponse) GetContentType() string {
-	if o == nil {
+func (r *RemoveRelationsResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *RemoveRelationsResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (r *RemoveRelationsResponse) GetHeaders() map[string][]string {
+	if r == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return r.Headers
 }
 
-func (o *RemoveRelationsResponse) GetStatusCode() int {
-	if o == nil {
+func (r *RemoveRelationsResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *RemoveRelationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *RemoveRelationsResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }
 
-func (o *RemoveRelationsResponse) GetObject() *RemoveRelationsResponseBody {
-	if o == nil {
+func (r *RemoveRelationsResponse) GetObject() *RemoveRelationsResponseBody {
+	if r == nil {
 		return nil
 	}
-	return o.Object
+	return r.Object
 }

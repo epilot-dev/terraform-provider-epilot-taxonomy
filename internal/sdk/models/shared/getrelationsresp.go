@@ -16,8 +16,8 @@ const (
 )
 
 type GetRelationsResp struct {
-	RelationItem   *RelationItem   `queryParam:"inline" name:"GetRelationsResp"`
-	RelationEntity *RelationEntity `queryParam:"inline" name:"GetRelationsResp"`
+	RelationItem   *RelationItem   `queryParam:"inline,name=GetRelationsResp"`
+	RelationEntity *RelationEntity `queryParam:"inline,name=GetRelationsResp"`
 
 	Type GetRelationsRespType
 }
@@ -42,17 +42,43 @@ func CreateGetRelationsRespRelationEntity(relationEntity RelationEntity) GetRela
 
 func (u *GetRelationsResp) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var relationEntity RelationEntity = RelationEntity{}
 	if err := utils.UnmarshalJSON(data, &relationEntity, "", true, nil); err == nil {
-		u.RelationEntity = &relationEntity
-		u.Type = GetRelationsRespTypeRelationEntity
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  GetRelationsRespTypeRelationEntity,
+			Value: &relationEntity,
+		})
 	}
 
 	var relationItem RelationItem = RelationItem{}
 	if err := utils.UnmarshalJSON(data, &relationItem, "", true, nil); err == nil {
-		u.RelationItem = &relationItem
-		u.Type = GetRelationsRespTypeRelationItem
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  GetRelationsRespTypeRelationItem,
+			Value: &relationItem,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetRelationsResp", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestCandidate(candidates)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetRelationsResp", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(GetRelationsRespType)
+	switch best.Type {
+	case GetRelationsRespTypeRelationEntity:
+		u.RelationEntity = best.Value.(*RelationEntity)
+		return nil
+	case GetRelationsRespTypeRelationItem:
+		u.RelationItem = best.Value.(*RelationItem)
 		return nil
 	}
 

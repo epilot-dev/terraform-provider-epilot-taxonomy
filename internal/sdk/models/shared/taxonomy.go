@@ -18,8 +18,8 @@ const (
 )
 
 type EnabledLocations struct {
-	TaxonomyLocationID *TaxonomyLocationID `queryParam:"inline" name:"enabled_locations"`
-	Str                *string             `queryParam:"inline" name:"enabled_locations"`
+	TaxonomyLocationID *TaxonomyLocationID `queryParam:"inline,name=enabled_locations"`
+	Str                *string             `queryParam:"inline,name=enabled_locations"`
 
 	Type EnabledLocationsType
 }
@@ -44,17 +44,43 @@ func CreateEnabledLocationsStr(str string) EnabledLocations {
 
 func (u *EnabledLocations) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var taxonomyLocationID TaxonomyLocationID = TaxonomyLocationID("")
 	if err := utils.UnmarshalJSON(data, &taxonomyLocationID, "", true, nil); err == nil {
-		u.TaxonomyLocationID = &taxonomyLocationID
-		u.Type = EnabledLocationsTypeTaxonomyLocationID
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  EnabledLocationsTypeTaxonomyLocationID,
+			Value: &taxonomyLocationID,
+		})
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = EnabledLocationsTypeStr
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  EnabledLocationsTypeStr,
+			Value: &str,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnabledLocations", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestCandidate(candidates)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnabledLocations", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(EnabledLocationsType)
+	switch best.Type {
+	case EnabledLocationsTypeTaxonomyLocationID:
+		u.TaxonomyLocationID = best.Value.(*TaxonomyLocationID)
+		return nil
+	case EnabledLocationsTypeStr:
+		u.Str = best.Value.(*string)
 		return nil
 	}
 
@@ -167,102 +193,102 @@ func (t *Taxonomy) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Taxonomy) GetColor() *string {
-	if o == nil {
+func (t *Taxonomy) GetColor() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Color
+	return t.Color
 }
 
-func (o *Taxonomy) GetCreatedAt() *time.Time {
-	if o == nil {
+func (t *Taxonomy) GetCreatedAt() *time.Time {
+	if t == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return t.CreatedAt
 }
 
-func (o *Taxonomy) GetCreatedBy() *string {
-	if o == nil {
+func (t *Taxonomy) GetCreatedBy() *string {
+	if t == nil {
 		return nil
 	}
-	return o.CreatedBy
+	return t.CreatedBy
 }
 
-func (o *Taxonomy) GetDeletedAt() *time.Time {
-	if o == nil {
+func (t *Taxonomy) GetDeletedAt() *time.Time {
+	if t == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return t.DeletedAt
 }
 
-func (o *Taxonomy) GetEnabled() *bool {
-	if o == nil {
+func (t *Taxonomy) GetEnabled() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Enabled
+	return t.Enabled
 }
 
-func (o *Taxonomy) GetEnabledLocations() []EnabledLocations {
-	if o == nil {
+func (t *Taxonomy) GetEnabledLocations() []EnabledLocations {
+	if t == nil {
 		return nil
 	}
-	return o.EnabledLocations
+	return t.EnabledLocations
 }
 
-func (o *Taxonomy) GetIcon() *string {
-	if o == nil {
+func (t *Taxonomy) GetIcon() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Icon
+	return t.Icon
 }
 
-func (o *Taxonomy) GetKind() *Kind {
-	if o == nil {
+func (t *Taxonomy) GetKind() *Kind {
+	if t == nil {
 		return nil
 	}
-	return o.Kind
+	return t.Kind
 }
 
-func (o *Taxonomy) GetName() *string {
-	if o == nil {
+func (t *Taxonomy) GetName() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *Taxonomy) GetOrder() *float64 {
-	if o == nil {
+func (t *Taxonomy) GetOrder() *float64 {
+	if t == nil {
 		return nil
 	}
-	return o.Order
+	return t.Order
 }
 
-func (o *Taxonomy) GetPlural() *string {
-	if o == nil {
+func (t *Taxonomy) GetPlural() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Plural
+	return t.Plural
 }
 
-func (o *Taxonomy) GetSlug() *string {
-	if o == nil {
+func (t *Taxonomy) GetSlug() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Slug
+	return t.Slug
 }
 
-func (o *Taxonomy) GetType() *TaxonomyType {
-	if o == nil {
+func (t *Taxonomy) GetType() *TaxonomyType {
+	if t == nil {
 		return nil
 	}
-	return o.Type
+	return t.Type
 }
 
-func (o *Taxonomy) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (t *Taxonomy) GetUpdatedAt() *time.Time {
+	if t == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return t.UpdatedAt
 }
 
 type TaxonomyInput struct {
@@ -297,65 +323,65 @@ func (t *TaxonomyInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TaxonomyInput) GetColor() *string {
-	if o == nil {
+func (t *TaxonomyInput) GetColor() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Color
+	return t.Color
 }
 
-func (o *TaxonomyInput) GetEnabled() *bool {
-	if o == nil {
+func (t *TaxonomyInput) GetEnabled() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Enabled
+	return t.Enabled
 }
 
-func (o *TaxonomyInput) GetEnabledLocations() []EnabledLocations {
-	if o == nil {
+func (t *TaxonomyInput) GetEnabledLocations() []EnabledLocations {
+	if t == nil {
 		return nil
 	}
-	return o.EnabledLocations
+	return t.EnabledLocations
 }
 
-func (o *TaxonomyInput) GetIcon() *string {
-	if o == nil {
+func (t *TaxonomyInput) GetIcon() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Icon
+	return t.Icon
 }
 
-func (o *TaxonomyInput) GetName() *string {
-	if o == nil {
+func (t *TaxonomyInput) GetName() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TaxonomyInput) GetOrder() *float64 {
-	if o == nil {
+func (t *TaxonomyInput) GetOrder() *float64 {
+	if t == nil {
 		return nil
 	}
-	return o.Order
+	return t.Order
 }
 
-func (o *TaxonomyInput) GetPlural() *string {
-	if o == nil {
+func (t *TaxonomyInput) GetPlural() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Plural
+	return t.Plural
 }
 
-func (o *TaxonomyInput) GetSlug() *string {
-	if o == nil {
+func (t *TaxonomyInput) GetSlug() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Slug
+	return t.Slug
 }
 
-func (o *TaxonomyInput) GetType() *TaxonomyType {
-	if o == nil {
+func (t *TaxonomyInput) GetType() *TaxonomyType {
+	if t == nil {
 		return nil
 	}
-	return o.Type
+	return t.Type
 }

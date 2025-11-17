@@ -64,7 +64,7 @@ func (s *Activity) AttachActivity(ctx context.Context, request operations.Attach
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "attachActivity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -314,7 +314,7 @@ func (s *Activity) CreateActivity(ctx context.Context, request operations.Create
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createActivity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Activity", "json", `request:"mediaType=application/json"`)
@@ -547,7 +547,7 @@ func (s *Activity) GetActivity(ctx context.Context, request operations.GetActivi
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getActivity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -771,7 +771,7 @@ func (s *Activity) GetEntityActivityFeed(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getEntityActivityFeed",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

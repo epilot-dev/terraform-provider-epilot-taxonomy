@@ -13,18 +13,18 @@ type GetSchemaRequest struct {
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
 }
 
-func (o *GetSchemaRequest) GetID() *string {
-	if o == nil {
+func (g *GetSchemaRequest) GetID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetSchemaRequest) GetSlug() string {
-	if o == nil {
+func (g *GetSchemaRequest) GetSlug() string {
+	if g == nil {
 		return ""
 	}
-	return o.Slug
+	return g.Slug
 }
 
 // GetSchemaResponseBody - A generic error returned by the API
@@ -35,18 +35,18 @@ type GetSchemaResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetSchemaResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetSchemaResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetSchemaResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetSchemaResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetSchemaResponse struct {
@@ -62,37 +62,37 @@ type GetSchemaResponse struct {
 	Object *GetSchemaResponseBody
 }
 
-func (o *GetSchemaResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSchemaResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSchemaResponse) GetEntitySchemaItem() *shared.EntitySchemaItem {
-	if o == nil {
+func (g *GetSchemaResponse) GetEntitySchemaItem() *shared.EntitySchemaItem {
+	if g == nil {
 		return nil
 	}
-	return o.EntitySchemaItem
+	return g.EntitySchemaItem
 }
 
-func (o *GetSchemaResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSchemaResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSchemaResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSchemaResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSchemaResponse) GetObject() *GetSchemaResponseBody {
-	if o == nil {
+func (g *GetSchemaResponse) GetObject() *GetSchemaResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

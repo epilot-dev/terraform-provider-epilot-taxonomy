@@ -13,18 +13,18 @@ type UpsertEntityRequestBody struct {
 	UniqueKey []string           `json:"unique_key"`
 }
 
-func (o *UpsertEntityRequestBody) GetEntity() shared.EntityInput {
-	if o == nil {
+func (u *UpsertEntityRequestBody) GetEntity() shared.EntityInput {
+	if u == nil {
 		return shared.EntityInput{}
 	}
-	return o.Entity
+	return u.Entity
 }
 
-func (o *UpsertEntityRequestBody) GetUniqueKey() []string {
-	if o == nil {
+func (u *UpsertEntityRequestBody) GetUniqueKey() []string {
+	if u == nil {
 		return []string{}
 	}
-	return o.UniqueKey
+	return u.UniqueKey
 }
 
 type UpsertEntityRequest struct {
@@ -58,60 +58,60 @@ func (u *UpsertEntityRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpsertEntityRequest) GetRequestBody() *UpsertEntityRequestBody {
-	if o == nil {
+func (u *UpsertEntityRequest) GetRequestBody() *UpsertEntityRequestBody {
+	if u == nil {
 		return nil
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
-func (o *UpsertEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {
-	if o == nil {
+func (u *UpsertEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {
+	if u == nil {
 		return nil
 	}
-	return o.ActivityID
+	return u.ActivityID
 }
 
-func (o *UpsertEntityRequest) GetAsync() *bool {
-	if o == nil {
+func (u *UpsertEntityRequest) GetAsync() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Async
+	return u.Async
 }
 
-func (o *UpsertEntityRequest) GetDryRun() *bool {
-	if o == nil {
+func (u *UpsertEntityRequest) GetDryRun() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.DryRun
+	return u.DryRun
 }
 
-func (o *UpsertEntityRequest) GetFillActivity() *bool {
-	if o == nil {
+func (u *UpsertEntityRequest) GetFillActivity() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.FillActivity
+	return u.FillActivity
 }
 
-func (o *UpsertEntityRequest) GetSlug() string {
-	if o == nil {
+func (u *UpsertEntityRequest) GetSlug() string {
+	if u == nil {
 		return ""
 	}
-	return o.Slug
+	return u.Slug
 }
 
-func (o *UpsertEntityRequest) GetStrict() *bool {
-	if o == nil {
+func (u *UpsertEntityRequest) GetStrict() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Strict
+	return u.Strict
 }
 
-func (o *UpsertEntityRequest) GetValidate() *bool {
-	if o == nil {
+func (u *UpsertEntityRequest) GetValidate() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Validate
+	return u.Validate
 }
 
 // UpsertEntityResponseBody - A generic error returned by the API
@@ -122,18 +122,18 @@ type UpsertEntityResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *UpsertEntityResponseBody) GetError() *string {
-	if o == nil {
+func (u *UpsertEntityResponseBody) GetError() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Error
+	return u.Error
 }
 
-func (o *UpsertEntityResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (u *UpsertEntityResponseBody) GetStatus() *int64 {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
 type UpsertEntityResponse struct {
@@ -152,51 +152,51 @@ type UpsertEntityResponse struct {
 	Object *UpsertEntityResponseBody
 }
 
-func (o *UpsertEntityResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertEntityResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertEntityResponse) GetEntityItem() *shared.EntityItem {
-	if o == nil {
+func (u *UpsertEntityResponse) GetEntityItem() *shared.EntityItem {
+	if u == nil {
 		return nil
 	}
-	return o.EntityItem
+	return u.EntityItem
 }
 
-func (o *UpsertEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
-	if o == nil {
+func (u *UpsertEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
+	if u == nil {
 		return nil
 	}
-	return o.EntityValidationV2ResultError
+	return u.EntityValidationV2ResultError
 }
 
-func (o *UpsertEntityResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (u *UpsertEntityResponse) GetHeaders() map[string][]string {
+	if u == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return u.Headers
 }
 
-func (o *UpsertEntityResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertEntityResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertEntityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertEntityResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertEntityResponse) GetObject() *UpsertEntityResponseBody {
-	if o == nil {
+func (u *UpsertEntityResponse) GetObject() *UpsertEntityResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object
+	return u.Object
 }

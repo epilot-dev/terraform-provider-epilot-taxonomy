@@ -29,30 +29,30 @@ func (e *EntityAction) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityAction) GetAction() string {
-	if o == nil {
+func (e *EntityAction) GetAction() string {
+	if e == nil {
 		return ""
 	}
-	return o.Action
+	return e.Action
 }
 
-func (o *EntityAction) GetIcon() *string {
-	if o == nil {
+func (e *EntityAction) GetIcon() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Icon
+	return e.Icon
 }
 
-func (o *EntityAction) GetLabel() string {
-	if o == nil {
+func (e *EntityAction) GetLabel() string {
+	if e == nil {
 		return ""
 	}
-	return o.Label
+	return e.Label
 }
 
-func (o *EntityAction) GetPermission() *string {
-	if o == nil {
+func (e *EntityAction) GetPermission() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Permission
+	return e.Permission
 }

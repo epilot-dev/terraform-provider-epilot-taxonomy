@@ -36,6 +36,7 @@ type TaxonomyClassificationDataSourceModel struct {
 	Name      types.String   `tfsdk:"name"`
 	Parents   []types.String `tfsdk:"parents"`
 	Slug      types.String   `tfsdk:"slug"`
+	Starred   types.Bool     `tfsdk:"starred"`
 	UpdatedAt types.String   `tfsdk:"updated_at"`
 }
 
@@ -79,6 +80,10 @@ func (r *TaxonomyClassificationDataSource) Schema(ctx context.Context, req datas
 			"slug": schema.StringAttribute{
 				Computed:    true,
 				Description: `URL-friendly identifier for the classification`,
+			},
+			"starred": schema.BoolAttribute{
+				Computed:    true,
+				Description: `Starred taxonomy classifications can represent "favorites" or commonly used classifications`,
 			},
 			"updated_at": schema.StringAttribute{
 				Computed: true,

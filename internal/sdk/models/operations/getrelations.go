@@ -38,60 +38,60 @@ func (g *GetRelationsRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetRelationsRequest) GetExcludeSchemas() []string {
-	if o == nil {
+func (g *GetRelationsRequest) GetExcludeSchemas() []string {
+	if g == nil {
 		return nil
 	}
-	return o.ExcludeSchemas
+	return g.ExcludeSchemas
 }
 
-func (o *GetRelationsRequest) GetFrom() *int64 {
-	if o == nil {
+func (g *GetRelationsRequest) GetFrom() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.From
+	return g.From
 }
 
-func (o *GetRelationsRequest) GetHydrate() *bool {
-	if o == nil {
+func (g *GetRelationsRequest) GetHydrate() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Hydrate
+	return g.Hydrate
 }
 
-func (o *GetRelationsRequest) GetID() string {
-	if o == nil {
+func (g *GetRelationsRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetRelationsRequest) GetIncludeReverse() *bool {
-	if o == nil {
+func (g *GetRelationsRequest) GetIncludeReverse() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.IncludeReverse
+	return g.IncludeReverse
 }
 
-func (o *GetRelationsRequest) GetIncludeSchemas() []string {
-	if o == nil {
+func (g *GetRelationsRequest) GetIncludeSchemas() []string {
+	if g == nil {
 		return nil
 	}
-	return o.IncludeSchemas
+	return g.IncludeSchemas
 }
 
-func (o *GetRelationsRequest) GetSize() *int64 {
-	if o == nil {
+func (g *GetRelationsRequest) GetSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Size
+	return g.Size
 }
 
-func (o *GetRelationsRequest) GetSlug() string {
-	if o == nil {
+func (g *GetRelationsRequest) GetSlug() string {
+	if g == nil {
 		return ""
 	}
-	return o.Slug
+	return g.Slug
 }
 
 // GetRelationsResponseBody - A generic error returned by the API
@@ -102,18 +102,18 @@ type GetRelationsResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetRelationsResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetRelationsResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetRelationsResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetRelationsResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetRelationsResponse struct {
@@ -129,37 +129,37 @@ type GetRelationsResponse struct {
 	Object *GetRelationsResponseBody
 }
 
-func (o *GetRelationsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetRelationsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetRelationsResponse) GetGetRelationsResp() []shared.GetRelationsResp {
-	if o == nil {
+func (g *GetRelationsResponse) GetGetRelationsResp() []shared.GetRelationsResp {
+	if g == nil {
 		return nil
 	}
-	return o.GetRelationsResp
+	return g.GetRelationsResp
 }
 
-func (o *GetRelationsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetRelationsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetRelationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetRelationsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetRelationsResponse) GetObject() *GetRelationsResponseBody {
-	if o == nil {
+func (g *GetRelationsResponse) GetObject() *GetRelationsResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

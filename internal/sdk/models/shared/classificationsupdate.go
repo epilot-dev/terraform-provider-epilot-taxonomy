@@ -8,23 +8,23 @@ type ClassificationsUpdate struct {
 	Update []TaxonomyClassificationInput `json:"update,omitempty"`
 }
 
-func (o *ClassificationsUpdate) GetCreate() []TaxonomyClassificationInput {
-	if o == nil {
+func (c *ClassificationsUpdate) GetCreate() []TaxonomyClassificationInput {
+	if c == nil {
 		return nil
 	}
-	return o.Create
+	return c.Create
 }
 
-func (o *ClassificationsUpdate) GetDelete() []string {
-	if o == nil {
+func (c *ClassificationsUpdate) GetDelete() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Delete
+	return c.Delete
 }
 
-func (o *ClassificationsUpdate) GetUpdate() []TaxonomyClassificationInput {
-	if o == nil {
+func (c *ClassificationsUpdate) GetUpdate() []TaxonomyClassificationInput {
+	if c == nil {
 		return nil
 	}
-	return o.Update
+	return c.Update
 }

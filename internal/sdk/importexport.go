@@ -66,7 +66,7 @@ func (s *ImportExport) ExportEntities(ctx context.Context, request operations.Ex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "exportEntities",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EntitySearchParams", "json", `request:"mediaType=application/json"`)
@@ -281,7 +281,7 @@ func (s *ImportExport) ImportEntities(ctx context.Context, request operations.Im
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "importEntities",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EntityImportParams", "json", `request:"mediaType=application/json"`)

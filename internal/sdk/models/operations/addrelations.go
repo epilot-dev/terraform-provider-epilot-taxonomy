@@ -31,39 +31,39 @@ func (a *AddRelationsRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AddRelationsRequest) GetRequestBody() []shared.RelationItem {
-	if o == nil {
+func (a *AddRelationsRequest) GetRequestBody() []shared.RelationItem {
+	if a == nil {
 		return nil
 	}
-	return o.RequestBody
+	return a.RequestBody
 }
 
-func (o *AddRelationsRequest) GetActivityID() *shared.ActivityIDQueryParam {
-	if o == nil {
+func (a *AddRelationsRequest) GetActivityID() *shared.ActivityIDQueryParam {
+	if a == nil {
 		return nil
 	}
-	return o.ActivityID
+	return a.ActivityID
 }
 
-func (o *AddRelationsRequest) GetAsync() *bool {
-	if o == nil {
+func (a *AddRelationsRequest) GetAsync() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Async
+	return a.Async
 }
 
-func (o *AddRelationsRequest) GetID() string {
-	if o == nil {
+func (a *AddRelationsRequest) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AddRelationsRequest) GetSlug() string {
-	if o == nil {
+func (a *AddRelationsRequest) GetSlug() string {
+	if a == nil {
 		return ""
 	}
-	return o.Slug
+	return a.Slug
 }
 
 // AddRelationsResponseBody - A generic error returned by the API
@@ -74,18 +74,18 @@ type AddRelationsResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *AddRelationsResponseBody) GetError() *string {
-	if o == nil {
+func (a *AddRelationsResponseBody) GetError() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Error
+	return a.Error
 }
 
-func (o *AddRelationsResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (a *AddRelationsResponseBody) GetStatus() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.Status
+	return a.Status
 }
 
 type AddRelationsResponse struct {
@@ -101,37 +101,37 @@ type AddRelationsResponse struct {
 	Object *AddRelationsResponseBody
 }
 
-func (o *AddRelationsResponse) GetContentType() string {
-	if o == nil {
+func (a *AddRelationsResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *AddRelationsResponse) GetRelationItem() *shared.RelationItem {
-	if o == nil {
+func (a *AddRelationsResponse) GetRelationItem() *shared.RelationItem {
+	if a == nil {
 		return nil
 	}
-	return o.RelationItem
+	return a.RelationItem
 }
 
-func (o *AddRelationsResponse) GetStatusCode() int {
-	if o == nil {
+func (a *AddRelationsResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *AddRelationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *AddRelationsResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }
 
-func (o *AddRelationsResponse) GetObject() *AddRelationsResponseBody {
-	if o == nil {
+func (a *AddRelationsResponse) GetObject() *AddRelationsResponseBody {
+	if a == nil {
 		return nil
 	}
-	return o.Object
+	return a.Object
 }
