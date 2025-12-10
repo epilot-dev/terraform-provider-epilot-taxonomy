@@ -56,32 +56,32 @@ func (c *CountryAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CountryAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (c *CountryAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if c == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return c.HintCustomComponent
 }
 
-func (o *CountryAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (c *CountryAttributeInfoHelpers) GetHintText() *string {
+	if c == nil {
 		return nil
 	}
-	return o.HintText
+	return c.HintText
 }
 
-func (o *CountryAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (c *CountryAttributeInfoHelpers) GetHintTextKey() *string {
+	if c == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return c.HintTextKey
 }
 
-func (o *CountryAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (c *CountryAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if c == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return c.HintTooltipPlacement
 }
 
 type CountryAttributeType string
@@ -120,6 +120,11 @@ type CountryAttribute struct {
 	Deprecated   *bool                        `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -170,218 +175,225 @@ func (c CountryAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CountryAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CountryAttribute) GetManifest() []string {
-	if o == nil {
+func (c *CountryAttribute) GetManifest() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Manifest
+	return c.Manifest
 }
 
-func (o *CountryAttribute) GetPurpose() []string {
-	if o == nil {
+func (c *CountryAttribute) GetPurpose() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Purpose
+	return c.Purpose
 }
 
-func (o *CountryAttribute) GetConstraints() *CountryAttributeConstraints {
-	if o == nil {
+func (c *CountryAttribute) GetConstraints() *CountryAttributeConstraints {
+	if c == nil {
 		return nil
 	}
-	return o.Constraints
+	return c.Constraints
 }
 
-func (o *CountryAttribute) GetDefaultValue() any {
-	if o == nil {
+func (c *CountryAttribute) GetDefaultValue() any {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return c.DefaultValue
 }
 
-func (o *CountryAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetDeprecated() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Deprecated
+	return c.Deprecated
 }
 
-func (o *CountryAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetEntityBuilderDisableEdit() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return c.EntityBuilderDisableEdit
 }
 
-func (o *CountryAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (c *CountryAttribute) GetExplicitSearchable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return c.ExplicitSearchable
 }
 
-func (o *CountryAttribute) GetGroup() *string {
-	if o == nil {
+func (c *CountryAttribute) GetFeatureFlag() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Group
+	return c.FeatureFlag
 }
 
-func (o *CountryAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetGroup() *string {
+	if c == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return c.Group
 }
 
-func (o *CountryAttribute) GetHidden() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetHasPrimary() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Hidden
+	return c.HasPrimary
 }
 
-func (o *CountryAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetHidden() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.HideLabel
+	return c.Hidden
 }
 
-func (o *CountryAttribute) GetIcon() *string {
-	if o == nil {
+func (c *CountryAttribute) GetHideLabel() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Icon
+	return c.HideLabel
 }
 
-func (o *CountryAttribute) GetID() *string {
-	if o == nil {
+func (c *CountryAttribute) GetIcon() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.Icon
 }
 
-func (o *CountryAttribute) GetInfoHelpers() *CountryAttributeInfoHelpers {
-	if o == nil {
+func (c *CountryAttribute) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return c.ID
 }
 
-func (o *CountryAttribute) GetLabel() string {
-	if o == nil {
+func (c *CountryAttribute) GetInfoHelpers() *CountryAttributeInfoHelpers {
+	if c == nil {
+		return nil
+	}
+	return c.InfoHelpers
+}
+
+func (c *CountryAttribute) GetLabel() string {
+	if c == nil {
 		return ""
 	}
-	return o.Label
+	return c.Label
 }
 
-func (o *CountryAttribute) GetLayout() *string {
-	if o == nil {
+func (c *CountryAttribute) GetLayout() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Layout
+	return c.Layout
 }
 
-func (o *CountryAttribute) GetName() string {
-	if o == nil {
+func (c *CountryAttribute) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CountryAttribute) GetOrder() *int64 {
-	if o == nil {
+func (c *CountryAttribute) GetOrder() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Order
+	return c.Order
 }
 
-func (o *CountryAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (c *CountryAttribute) GetPlaceholder() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Placeholder
+	return c.Placeholder
 }
 
-func (o *CountryAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (c *CountryAttribute) GetPreviewValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return c.PreviewValueFormatter
 }
 
-func (o *CountryAttribute) GetProtected() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetProtected() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Protected
+	return c.Protected
 }
 
-func (o *CountryAttribute) GetReadonly() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetReadonly() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Readonly
+	return c.Readonly
 }
 
-func (o *CountryAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (c *CountryAttribute) GetRenderCondition() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return c.RenderCondition
 }
 
-func (o *CountryAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetRepeatable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Repeatable
+	return c.Repeatable
 }
 
-func (o *CountryAttribute) GetRequired() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetRequired() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Required
+	return c.Required
 }
 
-func (o *CountryAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (c *CountryAttribute) GetSettingsFlag() []SettingFlag {
+	if c == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return c.SettingsFlag
 }
 
-func (o *CountryAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetShowInTable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return c.ShowInTable
 }
 
-func (o *CountryAttribute) GetSortable() *bool {
-	if o == nil {
+func (c *CountryAttribute) GetSortable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Sortable
+	return c.Sortable
 }
 
-func (o *CountryAttribute) GetType() CountryAttributeType {
-	if o == nil {
+func (c *CountryAttribute) GetType() CountryAttributeType {
+	if c == nil {
 		return CountryAttributeType("")
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *CountryAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (c *CountryAttribute) GetValueFormatter() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return c.ValueFormatter
 }

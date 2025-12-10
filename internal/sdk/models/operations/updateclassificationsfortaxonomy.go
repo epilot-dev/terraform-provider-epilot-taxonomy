@@ -13,18 +13,18 @@ type UpdateClassificationsForTaxonomyRequest struct {
 	TaxonomySlug string `pathParam:"style=simple,explode=false,name=taxonomySlug"`
 }
 
-func (o *UpdateClassificationsForTaxonomyRequest) GetClassificationsUpdate() *shared.ClassificationsUpdate {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyRequest) GetClassificationsUpdate() *shared.ClassificationsUpdate {
+	if u == nil {
 		return nil
 	}
-	return o.ClassificationsUpdate
+	return u.ClassificationsUpdate
 }
 
-func (o *UpdateClassificationsForTaxonomyRequest) GetTaxonomySlug() string {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyRequest) GetTaxonomySlug() string {
+	if u == nil {
 		return ""
 	}
-	return o.TaxonomySlug
+	return u.TaxonomySlug
 }
 
 // UpdateClassificationsForTaxonomyTaxonomyResponseBody - A generic error returned by the API
@@ -35,18 +35,18 @@ type UpdateClassificationsForTaxonomyTaxonomyResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *UpdateClassificationsForTaxonomyTaxonomyResponseBody) GetError() *string {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyTaxonomyResponseBody) GetError() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Error
+	return u.Error
 }
 
-func (o *UpdateClassificationsForTaxonomyTaxonomyResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyTaxonomyResponseBody) GetStatus() *int64 {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
 type Deleted struct {
@@ -59,25 +59,25 @@ type UpdateClassificationsForTaxonomyResponseBody struct {
 	Updated []shared.TaxonomyClassification `json:"updated,omitempty"`
 }
 
-func (o *UpdateClassificationsForTaxonomyResponseBody) GetCreated() []shared.TaxonomyClassification {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyResponseBody) GetCreated() []shared.TaxonomyClassification {
+	if u == nil {
 		return nil
 	}
-	return o.Created
+	return u.Created
 }
 
-func (o *UpdateClassificationsForTaxonomyResponseBody) GetDeleted() *Deleted {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyResponseBody) GetDeleted() *Deleted {
+	if u == nil {
 		return nil
 	}
-	return o.Deleted
+	return u.Deleted
 }
 
-func (o *UpdateClassificationsForTaxonomyResponseBody) GetUpdated() []shared.TaxonomyClassification {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyResponseBody) GetUpdated() []shared.TaxonomyClassification {
+	if u == nil {
 		return nil
 	}
-	return o.Updated
+	return u.Updated
 }
 
 type UpdateClassificationsForTaxonomyResponse struct {
@@ -94,44 +94,44 @@ type UpdateClassificationsForTaxonomyResponse struct {
 	Object1 *UpdateClassificationsForTaxonomyTaxonomyResponseBody
 }
 
-func (o *UpdateClassificationsForTaxonomyResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateClassificationsForTaxonomyResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyResponse) GetHeaders() map[string][]string {
+	if u == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return u.Headers
 }
 
-func (o *UpdateClassificationsForTaxonomyResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateClassificationsForTaxonomyResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateClassificationsForTaxonomyResponse) GetObject() *UpdateClassificationsForTaxonomyResponseBody {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyResponse) GetObject() *UpdateClassificationsForTaxonomyResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object
+	return u.Object
 }
 
-func (o *UpdateClassificationsForTaxonomyResponse) GetObject1() *UpdateClassificationsForTaxonomyTaxonomyResponseBody {
-	if o == nil {
+func (u *UpdateClassificationsForTaxonomyResponse) GetObject1() *UpdateClassificationsForTaxonomyTaxonomyResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object1
+	return u.Object1
 }

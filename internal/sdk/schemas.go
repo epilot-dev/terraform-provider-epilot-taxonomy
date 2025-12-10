@@ -64,7 +64,7 @@ func (s *Schemas) CreateSchemaAttribute(ctx context.Context, request *shared.Att
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createSchemaAttribute",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -293,7 +293,7 @@ func (s *Schemas) CreateSchemaCapability(ctx context.Context, request *shared.En
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createSchemaCapability",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -522,7 +522,7 @@ func (s *Schemas) CreateSchemaGroup(ctx context.Context, request *shared.EntityS
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createSchemaGroup",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -751,7 +751,7 @@ func (s *Schemas) CreateSchemaGroupHeadline(ctx context.Context, request *shared
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createSchemaGroupHeadline",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -980,7 +980,7 @@ func (s *Schemas) DeleteSchema(ctx context.Context, request operations.DeleteSch
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteSchema",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1182,7 +1182,7 @@ func (s *Schemas) DeleteSchemaAttribute(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteSchemaAttribute",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1404,7 +1404,7 @@ func (s *Schemas) DeleteSchemaCapability(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteSchemaCapability",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1626,7 +1626,7 @@ func (s *Schemas) DeleteSchemaGroup(ctx context.Context, request operations.Dele
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteSchemaGroup",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1848,7 +1848,7 @@ func (s *Schemas) DeleteSchemaGroupHeadline(ctx context.Context, request operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteSchemaGroupHeadline",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2070,7 +2070,7 @@ func (s *Schemas) GetJSONSchema(ctx context.Context, request operations.GetJSONS
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getJsonSchema",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2092,7 +2092,7 @@ func (s *Schemas) GetJSONSchema(ctx context.Context, request operations.GetJSONS
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -2273,7 +2273,7 @@ func (s *Schemas) GetSchema(ctx context.Context, request operations.GetSchemaReq
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getSchema",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2295,7 +2295,7 @@ func (s *Schemas) GetSchema(ctx context.Context, request operations.GetSchemaReq
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -2497,7 +2497,7 @@ func (s *Schemas) GetSchemaAttribute(ctx context.Context, request operations.Get
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getSchemaAttribute",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2717,7 +2717,7 @@ func (s *Schemas) GetSchemaCapability(ctx context.Context, request operations.Ge
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getSchemaCapability",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2937,7 +2937,7 @@ func (s *Schemas) GetSchemaExample(ctx context.Context, request operations.GetSc
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getSchemaExample",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3159,7 +3159,7 @@ func (s *Schemas) GetSchemaGroup(ctx context.Context, request operations.GetSche
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getSchemaGroup",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3379,7 +3379,7 @@ func (s *Schemas) GetSchemaGroupHeadline(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getSchemaGroupHeadline",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3599,7 +3599,7 @@ func (s *Schemas) GetSchemaVersions(ctx context.Context, request operations.GetS
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getSchemaVersions",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3621,7 +3621,7 @@ func (s *Schemas) GetSchemaVersions(ctx context.Context, request operations.GetS
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -3802,7 +3802,7 @@ func (s *Schemas) ListAvailableCapabilities(ctx context.Context, request operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "listAvailableCapabilities",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4001,7 +4001,7 @@ func (s *Schemas) ListSchemaBlueprints(ctx context.Context, opts ...operations.O
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "listSchemaBlueprints",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4200,7 +4200,7 @@ func (s *Schemas) ListSchemas(ctx context.Context, request operations.ListSchema
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "listSchemas",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4222,7 +4222,7 @@ func (s *Schemas) ListSchemas(ctx context.Context, request operations.ListSchema
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -4403,7 +4403,7 @@ func (s *Schemas) ListTaxonomyClassificationsForSchema(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "listTaxonomyClassificationsForSchema",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4425,7 +4425,7 @@ func (s *Schemas) ListTaxonomyClassificationsForSchema(ctx context.Context, requ
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -4606,7 +4606,7 @@ func (s *Schemas) PutSchema(ctx context.Context, request operations.PutSchemaReq
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "putSchema",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EntitySchema", "json", `request:"mediaType=application/json"`)
@@ -4635,7 +4635,7 @@ func (s *Schemas) PutSchema(ctx context.Context, request operations.PutSchemaReq
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -4839,7 +4839,7 @@ func (s *Schemas) PutSchemaAttribute(ctx context.Context, request operations.Put
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "putSchemaAttribute",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AttributeWithCompositeID", "json", `request:"mediaType=application/json"`)
@@ -5045,7 +5045,7 @@ func (s *Schemas) PutSchemaCapability(ctx context.Context, request operations.Pu
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "putSchemaCapability",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EntityCapabilityWithCompositeID", "json", `request:"mediaType=application/json"`)
@@ -5251,7 +5251,7 @@ func (s *Schemas) PutSchemaGroup(ctx context.Context, request operations.PutSche
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "putSchemaGroup",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EntitySchemaGroupWithCompositeID", "json", `request:"mediaType=application/json"`)
@@ -5457,7 +5457,7 @@ func (s *Schemas) PutSchemaGroupHeadline(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "putSchemaGroupHeadline",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "GroupHeadlineWithCompositeID", "json", `request:"mediaType=application/json"`)

@@ -25,6 +25,7 @@ resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
     "taxonomy-slug:classification-slug"
   ]
   slug       = "wallbox-pv"
+  starred    = false
   updated_at = "2022-01-28T11:08:25.332Z"
 }
 ```
@@ -44,6 +45,7 @@ resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
 - `created_at` (String)
 - `manifest` (List of String) Manifest ID used to create/update the taxonomy classification
 - `parents` (List of String)
+- `starred` (Boolean) Starred taxonomy classifications can represent "favorites" or commonly used classifications. Default: false
 - `updated_at` (String)
 
 ### Read-Only

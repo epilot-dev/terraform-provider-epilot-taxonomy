@@ -14,18 +14,18 @@ type AttachActivityRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *AttachActivityRequest) GetEntities() []string {
-	if o == nil {
+func (a *AttachActivityRequest) GetEntities() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Entities
+	return a.Entities
 }
 
-func (o *AttachActivityRequest) GetID() string {
-	if o == nil {
+func (a *AttachActivityRequest) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
 // AttachActivityResponseBody - A generic error returned by the API
@@ -36,18 +36,18 @@ type AttachActivityResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *AttachActivityResponseBody) GetError() *string {
-	if o == nil {
+func (a *AttachActivityResponseBody) GetError() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Error
+	return a.Error
 }
 
-func (o *AttachActivityResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (a *AttachActivityResponseBody) GetStatus() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.Status
+	return a.Status
 }
 
 type AttachActivityResponse struct {
@@ -64,44 +64,44 @@ type AttachActivityResponse struct {
 	Object *AttachActivityResponseBody
 }
 
-func (o *AttachActivityResponse) GetBaseActivityItem() *shared.BaseActivityItem {
-	if o == nil {
+func (a *AttachActivityResponse) GetBaseActivityItem() *shared.BaseActivityItem {
+	if a == nil {
 		return nil
 	}
-	return o.BaseActivityItem
+	return a.BaseActivityItem
 }
 
-func (o *AttachActivityResponse) GetContentType() string {
-	if o == nil {
+func (a *AttachActivityResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *AttachActivityResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (a *AttachActivityResponse) GetHeaders() map[string][]string {
+	if a == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return a.Headers
 }
 
-func (o *AttachActivityResponse) GetStatusCode() int {
-	if o == nil {
+func (a *AttachActivityResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *AttachActivityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *AttachActivityResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }
 
-func (o *AttachActivityResponse) GetObject() *AttachActivityResponseBody {
-	if o == nil {
+func (a *AttachActivityResponse) GetObject() *AttachActivityResponseBody {
+	if a == nil {
 		return nil
 	}
-	return o.Object
+	return a.Object
 }

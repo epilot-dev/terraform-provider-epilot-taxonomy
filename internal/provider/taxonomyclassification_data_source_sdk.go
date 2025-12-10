@@ -31,6 +31,7 @@ func (r *TaxonomyClassificationDataSourceModel) RefreshFromSharedTaxonomyClassif
 			r.Parents = append(r.Parents, types.StringValue(v))
 		}
 		r.Slug = types.StringValue(resp.Slug)
+		r.Starred = types.BoolPointerValue(resp.Starred)
 		r.UpdatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.UpdatedAt))
 	}
 

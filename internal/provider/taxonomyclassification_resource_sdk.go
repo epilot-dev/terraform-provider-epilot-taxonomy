@@ -32,6 +32,7 @@ func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassific
 			r.Parents = append(r.Parents, types.StringValue(v))
 		}
 		r.Slug = types.StringValue(resp.Slug)
+		r.Starred = types.BoolPointerValue(resp.Starred)
 		r.UpdatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.UpdatedAt))
 	}
 
@@ -91,8 +92,8 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 	var manifest []string
 	if r.Manifest != nil {
 		manifest = make([]string, 0, len(r.Manifest))
-		for _, manifestItem := range r.Manifest {
-			manifest = append(manifest, manifestItem.ValueString())
+		for manifestIndex := range r.Manifest {
+			manifest = append(manifest, r.Manifest[manifestIndex].ValueString())
 		}
 	}
 	archived := new(bool)
@@ -117,12 +118,18 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 	name = r.Name.ValueString()
 
 	parents := make([]string, 0, len(r.Parents))
-	for _, parentsItem := range r.Parents {
-		parents = append(parents, parentsItem.ValueString())
+	for parentsIndex := range r.Parents {
+		parents = append(parents, r.Parents[parentsIndex].ValueString())
 	}
 	var slug string
 	slug = r.Slug.ValueString()
 
+	starred := new(bool)
+	if !r.Starred.IsUnknown() && !r.Starred.IsNull() {
+		*starred = r.Starred.ValueBool()
+	} else {
+		starred = nil
+	}
 	updatedAt := new(time.Time)
 	if !r.UpdatedAt.IsUnknown() && !r.UpdatedAt.IsNull() {
 		*updatedAt, _ = time.Parse(time.RFC3339Nano, r.UpdatedAt.ValueString())
@@ -137,6 +144,7 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 		Name:      name,
 		Parents:   parents,
 		Slug:      slug,
+		Starred:   starred,
 		UpdatedAt: updatedAt,
 	}
 
