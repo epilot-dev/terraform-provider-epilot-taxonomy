@@ -11,10 +11,10 @@ import (
 )
 
 type TaxonomiesClassificationsSearchRequestBody struct {
-	ClassificationIds []string `json:"classificationIds,omitempty"`
+	ClassificationIds []shared.ClassificationIDOrPattern `json:"classificationIds,omitempty"`
 }
 
-func (o *TaxonomiesClassificationsSearchRequestBody) GetClassificationIds() []string {
+func (o *TaxonomiesClassificationsSearchRequestBody) GetClassificationIds() []shared.ClassificationIDOrPattern {
 	if o == nil {
 		return nil
 	}

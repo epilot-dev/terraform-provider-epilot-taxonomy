@@ -5,6 +5,7 @@ package provider
 import (
 	"context"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/typeconvert"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -25,6 +26,24 @@ func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassific
 		r.Archived = types.BoolPointerValue(resp.Archived)
 		r.Color = types.StringPointerValue(resp.Color)
 		r.CreatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.CreatedAt))
+		r.EnabledLocations = []tfTypes.EnabledLocations{}
+
+		for _, enabledLocationsItem := range resp.EnabledLocations {
+			var enabledLocations tfTypes.EnabledLocations
+
+			if enabledLocationsItem.Str != nil {
+				enabledLocations.Str = types.StringPointerValue(enabledLocationsItem.Str)
+			}
+			if enabledLocationsItem.TaxonomyLocationID != nil {
+				if enabledLocationsItem.TaxonomyLocationID != nil {
+					enabledLocations.TaxonomyLocationID = types.StringValue(string(*enabledLocationsItem.TaxonomyLocationID))
+				} else {
+					enabledLocations.TaxonomyLocationID = types.StringNull()
+				}
+			}
+
+			r.EnabledLocations = append(r.EnabledLocations, enabledLocations)
+		}
 		r.ID = types.StringPointerValue(resp.ID)
 		r.Name = types.StringValue(resp.Name)
 		r.Parents = make([]types.String, 0, len(resp.Parents))
@@ -32,6 +51,7 @@ func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassific
 			r.Parents = append(r.Parents, types.StringValue(v))
 		}
 		r.Slug = types.StringValue(resp.Slug)
+		r.Starred = types.BoolPointerValue(resp.Starred)
 		r.UpdatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.UpdatedAt))
 	}
 
@@ -113,6 +133,23 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 	} else {
 		createdAt = nil
 	}
+	enabledLocations := make([]shared.TaxonomyClassificationEnabledLocations, 0, len(r.EnabledLocations))
+	for _, enabledLocationsItem := range r.EnabledLocations {
+		if !enabledLocationsItem.TaxonomyLocationID.IsUnknown() && !enabledLocationsItem.TaxonomyLocationID.IsNull() {
+			taxonomyLocationID := shared.TaxonomyLocationID(enabledLocationsItem.TaxonomyLocationID.ValueString())
+			enabledLocations = append(enabledLocations, shared.TaxonomyClassificationEnabledLocations{
+				TaxonomyLocationID: &taxonomyLocationID,
+			})
+		}
+		if !enabledLocationsItem.Str.IsUnknown() && !enabledLocationsItem.Str.IsNull() {
+			var str string
+			str = enabledLocationsItem.Str.ValueString()
+
+			enabledLocations = append(enabledLocations, shared.TaxonomyClassificationEnabledLocations{
+				Str: &str,
+			})
+		}
+	}
 	var name string
 	name = r.Name.ValueString()
 
@@ -123,6 +160,12 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 	var slug string
 	slug = r.Slug.ValueString()
 
+	starred := new(bool)
+	if !r.Starred.IsUnknown() && !r.Starred.IsNull() {
+		*starred = r.Starred.ValueBool()
+	} else {
+		starred = nil
+	}
 	updatedAt := new(time.Time)
 	if !r.UpdatedAt.IsUnknown() && !r.UpdatedAt.IsNull() {
 		*updatedAt, _ = time.Parse(time.RFC3339Nano, r.UpdatedAt.ValueString())
@@ -130,14 +173,16 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 		updatedAt = nil
 	}
 	out := shared.TaxonomyClassificationInput{
-		Manifest:  manifest,
-		Archived:  archived,
-		Color:     color,
-		CreatedAt: createdAt,
-		Name:      name,
-		Parents:   parents,
-		Slug:      slug,
-		UpdatedAt: updatedAt,
+		Manifest:         manifest,
+		Archived:         archived,
+		Color:            color,
+		CreatedAt:        createdAt,
+		EnabledLocations: enabledLocations,
+		Name:             name,
+		Parents:          parents,
+		Slug:             slug,
+		Starred:          starred,
+		UpdatedAt:        updatedAt,
 	}
 
 	return &out, diags

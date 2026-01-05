@@ -19,6 +19,12 @@ type GetRelationsV3Request struct {
 	Hydrate *bool `default:"false" queryParam:"style=form,explode=true,name=hydrate"`
 	// Entity id
 	ID string `pathParam:"style=simple,explode=false,name=id"`
+	// Whether to include relations to/from deleted entities
+	// - `true`: include relations to/from deleted entities
+	// - `false`: exclude relations to/from deleted entities (default)
+	// - `only`: include only relations to/from deleted entities
+	//
+	IncludeDeleted *shared.EntitySearchIncludeDeletedParam `default:"false" queryParam:"style=form,explode=true,name=include_deleted"`
 	// When true, includes reverse relations in response (other entities pointing to this entity)
 	// *It gets overriden by mode query parameter.*
 	//
@@ -85,6 +91,13 @@ func (o *GetRelationsV3Request) GetID() string {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *GetRelationsV3Request) GetIncludeDeleted() *shared.EntitySearchIncludeDeletedParam {
+	if o == nil {
+		return nil
+	}
+	return o.IncludeDeleted
 }
 
 func (o *GetRelationsV3Request) GetIncludeReverse() *bool {

@@ -24,6 +24,33 @@ func (n *NumberAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// NumberAttributeDataType - Optional data type override. When set to 'number', the value is stored as a number instead of a string. Defaults to 'string'.
+type NumberAttributeDataType string
+
+const (
+	NumberAttributeDataTypeNumber NumberAttributeDataType = "number"
+	NumberAttributeDataTypeString NumberAttributeDataType = "string"
+)
+
+func (e NumberAttributeDataType) ToPointer() *NumberAttributeDataType {
+	return &e
+}
+func (e *NumberAttributeDataType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "number":
+		fallthrough
+	case "string":
+		*e = NumberAttributeDataType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for NumberAttributeDataType: %v", v)
+	}
+}
+
 // NumberAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type NumberAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -115,11 +142,23 @@ type NumberAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *NumberAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                         `json:"default_value,omitempty"`
-	Deprecated   *bool                       `default:"false" json:"deprecated"`
+	Constraints *NumberAttributeConstraints `json:"constraints,omitempty"`
+	// Optional data type override. When set to 'number', the value is stored as a number instead of a string. Defaults to 'string'.
+	DataType     *NumberAttributeDataType `default:"string" json:"data_type"`
+	DefaultValue any                      `json:"default_value,omitempty"`
+	Deprecated   *bool                    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	Format      *string `json:"format,omitempty"`
@@ -200,6 +239,13 @@ func (o *NumberAttribute) GetConstraints() *NumberAttributeConstraints {
 	return o.Constraints
 }
 
+func (o *NumberAttribute) GetDataType() *NumberAttributeDataType {
+	if o == nil {
+		return nil
+	}
+	return o.DataType
+}
+
 func (o *NumberAttribute) GetDefaultValue() any {
 	if o == nil {
 		return nil
@@ -219,6 +265,20 @@ func (o *NumberAttribute) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *NumberAttribute) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *NumberAttribute) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *NumberAttribute) GetFeatureFlag() *string {

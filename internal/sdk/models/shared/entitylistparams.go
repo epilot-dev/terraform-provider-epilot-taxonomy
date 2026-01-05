@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
@@ -10,6 +11,97 @@ import (
 
 // Aggs - Aggregation supported by ElasticSearch allows summarizing data as metrics, statistics, or other analytics.
 type Aggs struct {
+}
+
+// DefaultOperator - The default boolean operator used if no explicit operator is specified
+type DefaultOperator string
+
+const (
+	DefaultOperatorAnd DefaultOperator = "AND"
+	DefaultOperatorOr  DefaultOperator = "OR"
+)
+
+func (e DefaultOperator) ToPointer() *DefaultOperator {
+	return &e
+}
+func (e *DefaultOperator) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "AND":
+		fallthrough
+	case "OR":
+		*e = DefaultOperator(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DefaultOperator: %v", v)
+	}
+}
+
+// QueryString - Query string configuration based on Elasticsearch query_string query
+type QueryString struct {
+	// The default boolean operator used if no explicit operator is specified
+	DefaultOperator *DefaultOperator `default:"OR" json:"default_operator"`
+	// List of fields to search in. If not provided, searches in default fields
+	Fields []string `json:"fields,omitempty"`
+	// If true, format-based errors are ignored
+	Lenient *bool `default:"true" json:"lenient"`
+	// The actual query string using Lucene query syntax
+	Query string `json:"query"`
+}
+
+func (q QueryString) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(q, "", false)
+}
+
+func (q *QueryString) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &q, "", false, []string{"query"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *QueryString) GetDefaultOperator() *DefaultOperator {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultOperator
+}
+
+func (o *QueryString) GetFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Fields
+}
+
+func (o *QueryString) GetLenient() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Lenient
+}
+
+func (o *QueryString) GetQuery() string {
+	if o == nil {
+		return ""
+	}
+	return o.Query
+}
+
+// Query configuration object for searching entities
+type Query struct {
+	// Query string configuration based on Elasticsearch query_string query
+	QueryString QueryString `json:"query_string"`
+}
+
+func (o *Query) GetQueryString() QueryString {
+	if o == nil {
+		return QueryString{}
+	}
+	return o.QueryString
 }
 
 type SearchAfterType string
@@ -168,6 +260,10 @@ type EntityListParams struct {
 	// By default, no deleted entities are included in the search results.
 	//
 	IncludeDeleted *EntitySearchIncludeDeletedParam `default:"false" json:"include_deleted"`
+	// Adds a `_score` number field to results that can be used to rank by match score
+	IncludeScores *bool `default:"false" json:"include_scores"`
+	// Query configuration object for searching entities
+	Query *Query `json:"query,omitempty"`
 	// The sort values from which to start the search results.
 	// Only one of `from` or `search_after` should be used.
 	// It is strongly recommended to always use the `sort_end` field from the last search result.
@@ -257,6 +353,20 @@ func (o *EntityListParams) GetIncludeDeleted() *EntitySearchIncludeDeletedParam 
 		return nil
 	}
 	return o.IncludeDeleted
+}
+
+func (o *EntityListParams) GetIncludeScores() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IncludeScores
+}
+
+func (o *EntityListParams) GetQuery() *Query {
+	if o == nil {
+		return nil
+	}
+	return o.Query
 }
 
 func (o *EntityListParams) GetSearchAfter() []*SearchAfter {

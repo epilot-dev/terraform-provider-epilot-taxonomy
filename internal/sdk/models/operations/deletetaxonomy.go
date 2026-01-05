@@ -3,14 +3,26 @@
 package operations
 
 import (
+	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
 	"net/http"
 )
 
 type DeleteTaxonomyRequest struct {
-	// If true, the taxonomy will be permanently deleted
-	Permanent *bool `queryParam:"style=form,explode=true,name=permanent"`
+	// ⚠️ NOT IMPLEMENTED - If true, the taxonomy will be permanently deleted
+	Permanent *bool `default:"false" queryParam:"style=form,explode=true,name=permanent"`
 	// Taxonomy slug
 	TaxonomySlug string `pathParam:"style=simple,explode=false,name=taxonomySlug"`
+}
+
+func (d DeleteTaxonomyRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteTaxonomyRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"taxonomySlug"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DeleteTaxonomyRequest) GetPermanent() *bool {

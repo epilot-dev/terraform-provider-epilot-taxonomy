@@ -122,6 +122,16 @@ type PriceComponentAttributeSchemas struct {
 	Deprecated   *bool                                      `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -227,6 +237,20 @@ func (o *PriceComponentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PriceComponentAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PriceComponentAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PriceComponentAttributeSchemas) GetFeatureFlag() *string {
@@ -517,6 +541,16 @@ type PaymentAttributeSchemas struct {
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -622,6 +656,20 @@ func (o *PaymentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PaymentAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PaymentAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PaymentAttributeSchemas) GetFeatureFlag() *string {
@@ -912,6 +960,16 @@ type EmailAttributeSchemas struct {
 	Deprecated   *bool                             `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -1017,6 +1075,20 @@ func (o *EmailAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *EmailAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *EmailAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *EmailAttributeSchemas) GetFeatureFlag() *string {
@@ -1307,6 +1379,16 @@ type PhoneAttributeSchemas struct {
 	Deprecated   *bool                             `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -1412,6 +1494,20 @@ func (o *PhoneAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PhoneAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PhoneAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PhoneAttributeSchemas) GetFeatureFlag() *string {
@@ -1702,6 +1798,16 @@ type PortalAccessAttributeSchemas struct {
 	Deprecated   *bool                                    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -1807,6 +1913,20 @@ func (o *PortalAccessAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PortalAccessAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PortalAccessAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PortalAccessAttributeSchemas) GetFeatureFlag() *string {
@@ -2097,6 +2217,16 @@ type PartnerOrganisationAttributeSchemas struct {
 	Deprecated   *bool                                           `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -2202,6 +2332,20 @@ func (o *PartnerOrganisationAttributeSchemas) GetEntityBuilderDisableEdit() *boo
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PartnerOrganisationAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PartnerOrganisationAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PartnerOrganisationAttributeSchemas) GetFeatureFlag() *string {
@@ -2492,6 +2636,16 @@ type PurposeAttributeSchemas struct {
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -2597,6 +2751,20 @@ func (o *PurposeAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PurposeAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PurposeAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PurposeAttributeSchemas) GetFeatureFlag() *string {
@@ -2887,6 +3055,16 @@ type InternalUserAttributeSchemas struct {
 	Deprecated   *bool                                    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -2992,6 +3170,20 @@ func (o *InternalUserAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *InternalUserAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *InternalUserAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *InternalUserAttributeSchemas) GetFeatureFlag() *string {
@@ -3282,6 +3474,16 @@ type AutomationAttributeSchemas struct {
 	Deprecated   *bool                                  `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -3387,6 +3589,20 @@ func (o *AutomationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *AutomationAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *AutomationAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *AutomationAttributeSchemas) GetFeatureFlag() *string {
@@ -3677,6 +3893,16 @@ type InvitationEmailAttributeSchemas struct {
 	Deprecated   *bool                                       `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -3782,6 +4008,20 @@ func (o *InvitationEmailAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *InvitationEmailAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *InvitationEmailAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *InvitationEmailAttributeSchemas) GetFeatureFlag() *string {
@@ -4072,6 +4312,16 @@ type PartnerStatusAttributeSchemas struct {
 	Deprecated   *bool                                     `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -4177,6 +4427,20 @@ func (o *PartnerStatusAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PartnerStatusAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PartnerStatusAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PartnerStatusAttributeSchemas) GetFeatureFlag() *string {
@@ -4472,6 +4736,16 @@ type ComputedAttributeSchemas struct {
 	Deprecated    *bool   `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -4600,6 +4874,20 @@ func (o *ComputedAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *ComputedAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *ComputedAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *ComputedAttributeSchemas) GetFeatureFlag() *string {
@@ -4928,6 +5216,16 @@ type FileAttributeSchemas struct {
 	EnableDescription *bool `json:"enable_description,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -5062,6 +5360,20 @@ func (o *FileAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *FileAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *FileAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *FileAttributeSchemas) GetFeatureFlag() *string {
@@ -5359,6 +5671,16 @@ type OrderedListAttributeSchemas struct {
 	Deprecated   *bool                                   `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -5464,6 +5786,20 @@ func (o *OrderedListAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *OrderedListAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *OrderedListAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *OrderedListAttributeSchemas) GetFeatureFlag() *string {
@@ -5754,6 +6090,16 @@ type InternalAttributeSchemas struct {
 	Deprecated   *bool                                `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -5859,6 +6205,20 @@ func (o *InternalAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *InternalAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *InternalAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *InternalAttributeSchemas) GetFeatureFlag() *string {
@@ -6149,6 +6509,16 @@ type ConsentAttributeSchemas struct {
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -6256,6 +6626,20 @@ func (o *ConsentAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *ConsentAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *ConsentAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *ConsentAttributeSchemas) GetFeatureFlag() *string {
@@ -6463,6 +6847,33 @@ func (s *SchemasNumberAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// DataType - Optional data type override. When set to 'number', the value is stored as a number instead of a string. Defaults to 'string'.
+type DataType string
+
+const (
+	DataTypeNumber DataType = "number"
+	DataTypeString DataType = "string"
+)
+
+func (e DataType) ToPointer() *DataType {
+	return &e
+}
+func (e *DataType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "number":
+		fallthrough
+	case "string":
+		*e = DataType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DataType: %v", v)
+	}
+}
+
 // SchemasNumberAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type SchemasNumberAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -6555,11 +6966,23 @@ type NumberAttributeSchemas struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *SchemasNumberAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                                `json:"default_value,omitempty"`
-	Deprecated   *bool                              `default:"false" json:"deprecated"`
+	Constraints *SchemasNumberAttributeConstraints `json:"constraints,omitempty"`
+	// Optional data type override. When set to 'number', the value is stored as a number instead of a string. Defaults to 'string'.
+	DataType     *DataType `default:"string" json:"data_type"`
+	DefaultValue any       `json:"default_value,omitempty"`
+	Deprecated   *bool     `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	Format      *string `json:"format,omitempty"`
@@ -6649,6 +7072,13 @@ func (o *NumberAttributeSchemas) GetConstraints() *SchemasNumberAttributeConstra
 	return o.Constraints
 }
 
+func (o *NumberAttributeSchemas) GetDataType() *DataType {
+	if o == nil {
+		return nil
+	}
+	return o.DataType
+}
+
 func (o *NumberAttributeSchemas) GetDefaultValue() any {
 	if o == nil {
 		return nil
@@ -6668,6 +7098,20 @@ func (o *NumberAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *NumberAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *NumberAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *NumberAttributeSchemas) GetFeatureFlag() *string {
@@ -6974,6 +7418,16 @@ type MessageEmailAddressAttributeSchemas struct {
 	EmailType    *string                                         `json:"email_type,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -7094,6 +7548,20 @@ func (o *MessageEmailAddressAttributeSchemas) GetEntityBuilderDisableEdit() *boo
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *MessageEmailAddressAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *MessageEmailAddressAttributeSchemas) GetFeatureFlag() *string {
@@ -7391,6 +7859,16 @@ type TagsAttributeSchemas struct {
 	Deprecated   *bool                            `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -7498,6 +7976,20 @@ func (o *TagsAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *TagsAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *TagsAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *TagsAttributeSchemas) GetFeatureFlag() *string {
@@ -7893,6 +8385,16 @@ type CurrencyAttributeSchemas struct {
 	Deprecated           *bool      `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -8012,6 +8514,20 @@ func (o *CurrencyAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *CurrencyAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *CurrencyAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *CurrencyAttributeSchemas) GetFeatureFlag() *string {
@@ -8302,6 +8818,16 @@ type PaymentMethodRelationAttributeSchemas struct {
 	Deprecated   *bool                                             `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -8407,6 +8933,20 @@ func (o *PaymentMethodRelationAttributeSchemas) GetEntityBuilderDisableEdit() *b
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PaymentMethodRelationAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PaymentMethodRelationAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PaymentMethodRelationAttributeSchemas) GetFeatureFlag() *string {
@@ -8704,6 +9244,7 @@ type AddressRelationAttributeSchemas struct {
 	//   - plot_of_land
 	//   - suburb
 	//   - country
+	//   - postbox
 	//   - additional_info
 	//   - coordinates
 	//   - start_date
@@ -8712,6 +9253,7 @@ type AddressRelationAttributeSchemas struct {
 	//   - title
 	//   - first_name
 	//   - last_name
+	//   - name_suffix
 	//   - company_name
 	//
 	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
@@ -8719,6 +9261,16 @@ type AddressRelationAttributeSchemas struct {
 	Deprecated           *bool    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -8831,6 +9383,20 @@ func (o *AddressRelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *AddressRelationAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *AddressRelationAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *AddressRelationAttributeSchemas) GetFeatureFlag() *string {
@@ -9128,6 +9694,7 @@ type Schemas struct {
 	//   - plot_of_land
 	//   - suburb
 	//   - country
+	//   - postbox
 	//   - additional_info
 	//   - coordinates
 	//   - start_date
@@ -9136,6 +9703,7 @@ type Schemas struct {
 	//   - title
 	//   - first_name
 	//   - last_name
+	//   - name_suffix
 	//   - company_name
 	//
 	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
@@ -9143,6 +9711,16 @@ type Schemas struct {
 	Deprecated           *bool    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -9255,6 +9833,20 @@ func (o *Schemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *Schemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *Schemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *Schemas) GetFeatureFlag() *string {
@@ -9545,6 +10137,16 @@ type UserRelationAttributeSchemas struct {
 	Deprecated   *bool                                    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -9651,6 +10253,20 @@ func (o *UserRelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *UserRelationAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *UserRelationAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *UserRelationAttributeSchemas) GetFeatureFlag() *string {
@@ -10103,7 +10719,7 @@ func (e *RelationAffinityMode) UnmarshalJSON(data []byte) error {
 
 // RelationPickerFilter - Additional entity search filter for relation picker
 type RelationPickerFilter struct {
-	Q string `json:"q"`
+	Q *string `json:"q"`
 }
 
 func (r RelationPickerFilter) MarshalJSON() ([]byte, error) {
@@ -10117,9 +10733,9 @@ func (r *RelationPickerFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RelationPickerFilter) GetQ() string {
+func (o *RelationPickerFilter) GetQ() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Q
 }
@@ -10262,6 +10878,16 @@ type RelationAttributeSchemas struct {
 	EnableRelationTags *bool `default:"true" json:"enable_relation_tags"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -10430,6 +11056,20 @@ func (o *RelationAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *RelationAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *RelationAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *RelationAttributeSchemas) GetFeatureFlag() *string {
@@ -10762,6 +11402,16 @@ type SequenceAttributeSchemas struct {
 	Deprecated   *bool                                `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -10870,6 +11520,20 @@ func (o *SequenceAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *SequenceAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *SequenceAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *SequenceAttributeSchemas) GetFeatureFlag() *string {
@@ -11269,6 +11933,16 @@ type StatusAttributeSchemas struct {
 	Deprecated   *bool                              `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -11375,6 +12049,20 @@ func (o *StatusAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *StatusAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *StatusAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *StatusAttributeSchemas) GetFeatureFlag() *string {
@@ -11774,6 +12462,16 @@ type MultiSelectAttributeSchemas struct {
 	DisableCaseSensitive *bool `json:"disable_case_sensitive,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -11901,6 +12599,20 @@ func (o *MultiSelectAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *MultiSelectAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *MultiSelectAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *MultiSelectAttributeSchemas) GetFeatureFlag() *string {
@@ -12296,6 +13008,16 @@ type SelectAttributeSchemas struct {
 	Deprecated   *bool                              `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -12409,6 +13131,20 @@ func (o *SelectAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *SelectAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *SelectAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *SelectAttributeSchemas) GetFeatureFlag() *string {
@@ -12733,6 +13469,16 @@ type BooleanAttributeSchemas struct {
 	DisplayType  *DisplayType                        `default:"switch" json:"display_type"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -12845,6 +13591,20 @@ func (o *BooleanAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *BooleanAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *BooleanAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *BooleanAttributeSchemas) GetFeatureFlag() *string {
@@ -13135,6 +13895,16 @@ type CountryAttributeSchemas struct {
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -13240,6 +14010,20 @@ func (o *CountryAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *CountryAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *CountryAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *CountryAttributeSchemas) GetFeatureFlag() *string {
@@ -13533,6 +14317,16 @@ type DateAttributeSchemas struct {
 	Deprecated   *bool                            `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -13638,6 +14432,20 @@ func (o *DateAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *DateAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *DateAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *DateAttributeSchemas) GetFeatureFlag() *string {
@@ -13928,6 +14736,16 @@ type LinkAttributeSchemas struct {
 	Deprecated   *bool                            `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -14033,6 +14851,20 @@ func (o *LinkAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *LinkAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *LinkAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *LinkAttributeSchemas) GetFeatureFlag() *string {
@@ -14387,6 +15219,16 @@ type TextAttributeSchemas struct {
 	Deprecated   *bool                            `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -14496,6 +15338,20 @@ func (o *TextAttributeSchemas) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *TextAttributeSchemas) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *TextAttributeSchemas) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *TextAttributeSchemas) GetFeatureFlag() *string {
@@ -15475,6 +16331,16 @@ type PriceComponentAttributeSchemasInput struct {
 	Deprecated   *bool                                      `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -15573,6 +16439,20 @@ func (o *PriceComponentAttributeSchemasInput) GetEntityBuilderDisableEdit() *boo
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PriceComponentAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PriceComponentAttributeSchemasInput) GetFeatureFlag() *string {
@@ -15763,6 +16643,16 @@ type PaymentAttributeSchemasInput struct {
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -15861,6 +16751,20 @@ func (o *PaymentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PaymentAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PaymentAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PaymentAttributeSchemasInput) GetFeatureFlag() *string {
@@ -16051,6 +16955,16 @@ type EmailAttributeSchemasInput struct {
 	Deprecated   *bool                             `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -16149,6 +17063,20 @@ func (o *EmailAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *EmailAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *EmailAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *EmailAttributeSchemasInput) GetFeatureFlag() *string {
@@ -16339,6 +17267,16 @@ type PhoneAttributeSchemasInput struct {
 	Deprecated   *bool                             `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -16437,6 +17375,20 @@ func (o *PhoneAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PhoneAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PhoneAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PhoneAttributeSchemasInput) GetFeatureFlag() *string {
@@ -16627,6 +17579,16 @@ type PortalAccessAttributeSchemasInput struct {
 	Deprecated   *bool                                    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -16725,6 +17687,20 @@ func (o *PortalAccessAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool 
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PortalAccessAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PortalAccessAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PortalAccessAttributeSchemasInput) GetFeatureFlag() *string {
@@ -16915,6 +17891,16 @@ type PartnerOrganisationAttributeSchemasInput struct {
 	Deprecated   *bool                                           `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -17013,6 +17999,20 @@ func (o *PartnerOrganisationAttributeSchemasInput) GetEntityBuilderDisableEdit()
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PartnerOrganisationAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PartnerOrganisationAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PartnerOrganisationAttributeSchemasInput) GetFeatureFlag() *string {
@@ -17203,6 +18203,16 @@ type PurposeAttributeSchemasInput struct {
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -17301,6 +18311,20 @@ func (o *PurposeAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PurposeAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PurposeAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PurposeAttributeSchemasInput) GetFeatureFlag() *string {
@@ -17491,6 +18515,16 @@ type InternalUserAttributeSchemasInput struct {
 	Deprecated   *bool                                    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -17589,6 +18623,20 @@ func (o *InternalUserAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool 
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *InternalUserAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *InternalUserAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *InternalUserAttributeSchemasInput) GetFeatureFlag() *string {
@@ -17779,6 +18827,16 @@ type AutomationAttributeSchemasInput struct {
 	Deprecated   *bool                                  `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -17877,6 +18935,20 @@ func (o *AutomationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *AutomationAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *AutomationAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *AutomationAttributeSchemasInput) GetFeatureFlag() *string {
@@ -18067,6 +19139,16 @@ type InvitationEmailAttributeSchemasInput struct {
 	Deprecated   *bool                                       `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -18165,6 +19247,20 @@ func (o *InvitationEmailAttributeSchemasInput) GetEntityBuilderDisableEdit() *bo
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *InvitationEmailAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *InvitationEmailAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *InvitationEmailAttributeSchemasInput) GetFeatureFlag() *string {
@@ -18355,6 +19451,16 @@ type PartnerStatusAttributeSchemasInput struct {
 	Deprecated   *bool                                     `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -18453,6 +19559,20 @@ func (o *PartnerStatusAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PartnerStatusAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PartnerStatusAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PartnerStatusAttributeSchemasInput) GetFeatureFlag() *string {
@@ -18648,6 +19768,16 @@ type ComputedAttributeSchemasInput struct {
 	Deprecated    *bool   `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -18769,6 +19899,20 @@ func (o *ComputedAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *ComputedAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *ComputedAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *ComputedAttributeSchemasInput) GetFeatureFlag() *string {
@@ -18968,6 +20112,16 @@ type FileAttributeSchemasInput struct {
 	EnableDescription *bool `json:"enable_description,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -19095,6 +20249,20 @@ func (o *FileAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *FileAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *FileAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *FileAttributeSchemasInput) GetFeatureFlag() *string {
@@ -19292,6 +20460,16 @@ type OrderedListAttributeSchemasInput struct {
 	Deprecated   *bool                                   `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -19390,6 +20568,20 @@ func (o *OrderedListAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *OrderedListAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *OrderedListAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *OrderedListAttributeSchemasInput) GetFeatureFlag() *string {
@@ -19580,6 +20772,16 @@ type InternalAttributeSchemasInput struct {
 	Deprecated   *bool                                `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -19678,6 +20880,20 @@ func (o *InternalAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *InternalAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *InternalAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *InternalAttributeSchemasInput) GetFeatureFlag() *string {
@@ -19868,6 +21084,16 @@ type ConsentAttributeSchemasInput struct {
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -19968,6 +21194,20 @@ func (o *ConsentAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *ConsentAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *ConsentAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *ConsentAttributeSchemasInput) GetFeatureFlag() *string {
@@ -20167,11 +21407,23 @@ type NumberAttributeSchemasInput struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *SchemasNumberAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                                `json:"default_value,omitempty"`
-	Deprecated   *bool                              `default:"false" json:"deprecated"`
+	Constraints *SchemasNumberAttributeConstraints `json:"constraints,omitempty"`
+	// Optional data type override. When set to 'number', the value is stored as a number instead of a string. Defaults to 'string'.
+	DataType     *DataType `default:"string" json:"data_type"`
+	DefaultValue any       `json:"default_value,omitempty"`
+	Deprecated   *bool     `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	Format      *string `json:"format,omitempty"`
@@ -20254,6 +21506,13 @@ func (o *NumberAttributeSchemasInput) GetConstraints() *SchemasNumberAttributeCo
 	return o.Constraints
 }
 
+func (o *NumberAttributeSchemasInput) GetDataType() *DataType {
+	if o == nil {
+		return nil
+	}
+	return o.DataType
+}
+
 func (o *NumberAttributeSchemasInput) GetDefaultValue() any {
 	if o == nil {
 		return nil
@@ -20273,6 +21532,20 @@ func (o *NumberAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *NumberAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *NumberAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *NumberAttributeSchemasInput) GetFeatureFlag() *string {
@@ -20479,6 +21752,16 @@ type MessageEmailAddressAttributeSchemasInput struct {
 	EmailType    *string                                         `json:"email_type,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -20592,6 +21875,20 @@ func (o *MessageEmailAddressAttributeSchemasInput) GetEntityBuilderDisableEdit()
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *MessageEmailAddressAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *MessageEmailAddressAttributeSchemasInput) GetFeatureFlag() *string {
@@ -20789,6 +22086,16 @@ type TagsAttributeSchemasInput struct {
 	Deprecated   *bool                            `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -20889,6 +22196,20 @@ func (o *TagsAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *TagsAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *TagsAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *TagsAttributeSchemasInput) GetFeatureFlag() *string {
@@ -21096,6 +22417,16 @@ type CurrencyAttributeSchemasInput struct {
 	Deprecated           *bool      `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -21208,6 +22539,20 @@ func (o *CurrencyAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *CurrencyAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *CurrencyAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *CurrencyAttributeSchemasInput) GetFeatureFlag() *string {
@@ -21398,6 +22743,16 @@ type PaymentMethodRelationAttributeSchemasInput struct {
 	Deprecated   *bool                                             `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -21496,6 +22851,20 @@ func (o *PaymentMethodRelationAttributeSchemasInput) GetEntityBuilderDisableEdit
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *PaymentMethodRelationAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *PaymentMethodRelationAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *PaymentMethodRelationAttributeSchemasInput) GetFeatureFlag() *string {
@@ -21693,6 +23062,7 @@ type AddressRelationAttributeSchemasInput struct {
 	//   - plot_of_land
 	//   - suburb
 	//   - country
+	//   - postbox
 	//   - additional_info
 	//   - coordinates
 	//   - start_date
@@ -21701,6 +23071,7 @@ type AddressRelationAttributeSchemasInput struct {
 	//   - title
 	//   - first_name
 	//   - last_name
+	//   - name_suffix
 	//   - company_name
 	//
 	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
@@ -21708,6 +23079,16 @@ type AddressRelationAttributeSchemasInput struct {
 	Deprecated           *bool    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -21813,6 +23194,20 @@ func (o *AddressRelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bo
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *AddressRelationAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *AddressRelationAttributeSchemasInput) GetFeatureFlag() *string {
@@ -22010,6 +23405,7 @@ type SchemasInput struct {
 	//   - plot_of_land
 	//   - suburb
 	//   - country
+	//   - postbox
 	//   - additional_info
 	//   - coordinates
 	//   - start_date
@@ -22018,6 +23414,7 @@ type SchemasInput struct {
 	//   - title
 	//   - first_name
 	//   - last_name
+	//   - name_suffix
 	//   - company_name
 	//
 	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
@@ -22025,6 +23422,16 @@ type SchemasInput struct {
 	Deprecated           *bool    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -22130,6 +23537,20 @@ func (o *SchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *SchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *SchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *SchemasInput) GetFeatureFlag() *string {
@@ -22320,6 +23741,16 @@ type UserRelationAttributeSchemasInput struct {
 	Deprecated   *bool                                    `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -22419,6 +23850,20 @@ func (o *UserRelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool 
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *UserRelationAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *UserRelationAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *UserRelationAttributeSchemasInput) GetFeatureFlag() *string {
@@ -22628,6 +24073,16 @@ type RelationAttributeSchemasInput struct {
 	EnableRelationTags *bool `default:"true" json:"enable_relation_tags"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -22789,6 +24244,20 @@ func (o *RelationAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *RelationAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *RelationAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *RelationAttributeSchemasInput) GetFeatureFlag() *string {
@@ -23021,6 +24490,16 @@ type SequenceAttributeSchemasInput struct {
 	Deprecated   *bool                                `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -23122,6 +24601,20 @@ func (o *SequenceAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *SequenceAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *SequenceAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *SequenceAttributeSchemasInput) GetFeatureFlag() *string {
@@ -23326,6 +24819,16 @@ type StatusAttributeSchemasInput struct {
 	Deprecated   *bool                              `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -23425,6 +24928,20 @@ func (o *StatusAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *StatusAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *StatusAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *StatusAttributeSchemasInput) GetFeatureFlag() *string {
@@ -23628,6 +25145,16 @@ type MultiSelectAttributeSchemasInput struct {
 	DisableCaseSensitive *bool `json:"disable_case_sensitive,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -23748,6 +25275,20 @@ func (o *MultiSelectAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *MultiSelectAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *MultiSelectAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *MultiSelectAttributeSchemasInput) GetFeatureFlag() *string {
@@ -23947,6 +25488,16 @@ type SelectAttributeSchemasInput struct {
 	Deprecated   *bool                              `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -24053,6 +25604,20 @@ func (o *SelectAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *SelectAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *SelectAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *SelectAttributeSchemasInput) GetFeatureFlag() *string {
@@ -24251,6 +25816,16 @@ type BooleanAttributeSchemasInput struct {
 	DisplayType  *DisplayType                        `default:"switch" json:"display_type"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -24356,6 +25931,20 @@ func (o *BooleanAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *BooleanAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *BooleanAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *BooleanAttributeSchemasInput) GetFeatureFlag() *string {
@@ -24546,6 +26135,16 @@ type CountryAttributeSchemasInput struct {
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -24644,6 +26243,20 @@ func (o *CountryAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *CountryAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *CountryAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *CountryAttributeSchemasInput) GetFeatureFlag() *string {
@@ -24834,6 +26447,16 @@ type DateAttributeSchemasInput struct {
 	Deprecated   *bool                            `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -24932,6 +26555,20 @@ func (o *DateAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *DateAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *DateAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *DateAttributeSchemasInput) GetFeatureFlag() *string {
@@ -25122,6 +26759,16 @@ type LinkAttributeSchemasInput struct {
 	Deprecated   *bool                            `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -25220,6 +26867,20 @@ func (o *LinkAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *LinkAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *LinkAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *LinkAttributeSchemasInput) GetFeatureFlag() *string {
@@ -25410,6 +27071,16 @@ type TextAttributeSchemasInput struct {
 	Deprecated   *bool                            `default:"false" json:"deprecated"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
+	// When set to true, this attribute will be excluded from search fields.
+	// Use this for fields that should not be matched during entity search operations,
+	// such as internal hashes or identifiers that might accidentally match search terms.
+	//
+	ExcludeFromSearch *bool `default:"false" json:"exclude_from_search"`
+	// When set to true, this attribute will always be searchable regardless of
+	// the ELASTIC_MAX_SEARCH_FIELDS limit. Use this for critical search fields
+	// that must always be included in search operations.
+	//
+	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
@@ -25512,6 +27183,20 @@ func (o *TextAttributeSchemasInput) GetEntityBuilderDisableEdit() *bool {
 		return nil
 	}
 	return o.EntityBuilderDisableEdit
+}
+
+func (o *TextAttributeSchemasInput) GetExcludeFromSearch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFromSearch
+}
+
+func (o *TextAttributeSchemasInput) GetExplicitSearchable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExplicitSearchable
 }
 
 func (o *TextAttributeSchemasInput) GetFeatureFlag() *string {

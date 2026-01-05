@@ -7,6 +7,8 @@ import (
 )
 
 type RelationItem struct {
+	// URL-friendly identifier for the entity schema
+	Schema    *string  `json:"_schema,omitempty"`
 	Tags      []string `json:"_tags,omitempty"`
 	Attribute string   `json:"attribute"`
 	EntityID  string   `json:"entity_id"`
@@ -25,6 +27,13 @@ func (r *RelationItem) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *RelationItem) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
 }
 
 func (o *RelationItem) GetTags() []string {

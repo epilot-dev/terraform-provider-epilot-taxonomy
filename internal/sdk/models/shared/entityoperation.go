@@ -9,27 +9,537 @@ import (
 	"time"
 )
 
-type Diff struct {
-	Added   *Entity `json:"added,omitempty"`
-	Deleted *Entity `json:"deleted,omitempty"`
-	Updated *Entity `json:"updated,omitempty"`
+// EntityOperationSchemasDiffAddedACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
+type EntityOperationSchemasDiffAddedACL struct {
+	AdditionalProperties any      `additionalProperties:"true" json:"-"`
+	Delete               []string `json:"delete,omitempty"`
+	Edit                 []string `json:"edit,omitempty"`
+	View                 []string `json:"view,omitempty"`
 }
 
-func (o *Diff) GetAdded() *Entity {
+func (e EntityOperationSchemasDiffAddedACL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EntityOperationSchemasDiffAddedACL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EntityOperationSchemasDiffAddedACL) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *EntityOperationSchemasDiffAddedACL) GetDelete() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Delete
+}
+
+func (o *EntityOperationSchemasDiffAddedACL) GetEdit() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Edit
+}
+
+func (o *EntityOperationSchemasDiffAddedACL) GetView() []string {
+	if o == nil {
+		return nil
+	}
+	return o.View
+}
+
+// Added - New attributes added to the entity as part of the operation
+type Added struct {
+	AdditionalProperties any                                 `additionalProperties:"true" json:"-"`
+	ACL                  *EntityOperationSchemasDiffAddedACL `json:"_acl,omitempty"`
+	CreatedAt            *time.Time                          `json:"_created_at,omitempty"`
+	DeletedAt            *time.Time                          `json:"_deleted_at,omitempty"`
+	ID                   *string                             `json:"_id,omitempty"`
+	// Manifest ID used to create/update the entity
+	Manifest []string `json:"_manifest,omitempty"`
+	// Organization Id the entity belongs to
+	Org     *string       `json:"_org,omitempty"`
+	Owners  []EntityOwner `json:"_owners,omitempty"`
+	Purpose []string      `json:"_purpose,omitempty"`
+	// URL-friendly identifier for the entity schema
+	Schema *string  `json:"_schema,omitempty"`
+	Tags   []string `json:"_tags,omitempty"`
+	// Title of entity
+	Title     *string    `json:"_title,omitempty"`
+	UpdatedAt *time.Time `json:"_updated_at,omitempty"`
+}
+
+func (a Added) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *Added) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Added) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *Added) GetACL() *EntityOperationSchemasDiffAddedACL {
+	if o == nil {
+		return nil
+	}
+	return o.ACL
+}
+
+func (o *Added) GetCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *Added) GetDeletedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *Added) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Added) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *Added) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *Added) GetOwners() []EntityOwner {
+	if o == nil {
+		return nil
+	}
+	return o.Owners
+}
+
+func (o *Added) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *Added) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *Added) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *Added) GetTitle() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Title
+}
+
+func (o *Added) GetUpdatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+// EntityOperationSchemasACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
+type EntityOperationSchemasACL struct {
+	AdditionalProperties any      `additionalProperties:"true" json:"-"`
+	Delete               []string `json:"delete,omitempty"`
+	Edit                 []string `json:"edit,omitempty"`
+	View                 []string `json:"view,omitempty"`
+}
+
+func (e EntityOperationSchemasACL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EntityOperationSchemasACL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EntityOperationSchemasACL) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *EntityOperationSchemasACL) GetDelete() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Delete
+}
+
+func (o *EntityOperationSchemasACL) GetEdit() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Edit
+}
+
+func (o *EntityOperationSchemasACL) GetView() []string {
+	if o == nil {
+		return nil
+	}
+	return o.View
+}
+
+// Deleted - Attributes removed from the entity as part of the operation
+type Deleted struct {
+	AdditionalProperties any                        `additionalProperties:"true" json:"-"`
+	ACL                  *EntityOperationSchemasACL `json:"_acl,omitempty"`
+	CreatedAt            *time.Time                 `json:"_created_at,omitempty"`
+	DeletedAt            *time.Time                 `json:"_deleted_at,omitempty"`
+	ID                   *string                    `json:"_id,omitempty"`
+	// Manifest ID used to create/update the entity
+	Manifest []string `json:"_manifest,omitempty"`
+	// Organization Id the entity belongs to
+	Org     *string       `json:"_org,omitempty"`
+	Owners  []EntityOwner `json:"_owners,omitempty"`
+	Purpose []string      `json:"_purpose,omitempty"`
+	// URL-friendly identifier for the entity schema
+	Schema *string  `json:"_schema,omitempty"`
+	Tags   []string `json:"_tags,omitempty"`
+	// Title of entity
+	Title     *string    `json:"_title,omitempty"`
+	UpdatedAt *time.Time `json:"_updated_at,omitempty"`
+}
+
+func (d Deleted) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Deleted) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Deleted) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *Deleted) GetACL() *EntityOperationSchemasACL {
+	if o == nil {
+		return nil
+	}
+	return o.ACL
+}
+
+func (o *Deleted) GetCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *Deleted) GetDeletedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *Deleted) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Deleted) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *Deleted) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *Deleted) GetOwners() []EntityOwner {
+	if o == nil {
+		return nil
+	}
+	return o.Owners
+}
+
+func (o *Deleted) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *Deleted) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *Deleted) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *Deleted) GetTitle() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Title
+}
+
+func (o *Deleted) GetUpdatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+// EntityOperationSchemasDiffACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
+type EntityOperationSchemasDiffACL struct {
+	AdditionalProperties any      `additionalProperties:"true" json:"-"`
+	Delete               []string `json:"delete,omitempty"`
+	Edit                 []string `json:"edit,omitempty"`
+	View                 []string `json:"view,omitempty"`
+}
+
+func (e EntityOperationSchemasDiffACL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EntityOperationSchemasDiffACL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EntityOperationSchemasDiffACL) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *EntityOperationSchemasDiffACL) GetDelete() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Delete
+}
+
+func (o *EntityOperationSchemasDiffACL) GetEdit() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Edit
+}
+
+func (o *EntityOperationSchemasDiffACL) GetView() []string {
+	if o == nil {
+		return nil
+	}
+	return o.View
+}
+
+// Updated - Attributes updated in the entity. Note: These values contain the previous values before the update!
+type Updated struct {
+	AdditionalProperties any                            `additionalProperties:"true" json:"-"`
+	ACL                  *EntityOperationSchemasDiffACL `json:"_acl,omitempty"`
+	CreatedAt            *time.Time                     `json:"_created_at,omitempty"`
+	DeletedAt            *time.Time                     `json:"_deleted_at,omitempty"`
+	ID                   *string                        `json:"_id,omitempty"`
+	// Manifest ID used to create/update the entity
+	Manifest []string `json:"_manifest,omitempty"`
+	// Organization Id the entity belongs to
+	Org     *string       `json:"_org,omitempty"`
+	Owners  []EntityOwner `json:"_owners,omitempty"`
+	Purpose []string      `json:"_purpose,omitempty"`
+	// URL-friendly identifier for the entity schema
+	Schema *string  `json:"_schema,omitempty"`
+	Tags   []string `json:"_tags,omitempty"`
+	// Title of entity
+	Title     *string    `json:"_title,omitempty"`
+	UpdatedAt *time.Time `json:"_updated_at,omitempty"`
+}
+
+func (u Updated) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *Updated) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Updated) GetAdditionalProperties() any {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *Updated) GetACL() *EntityOperationSchemasDiffACL {
+	if o == nil {
+		return nil
+	}
+	return o.ACL
+}
+
+func (o *Updated) GetCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *Updated) GetDeletedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *Updated) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Updated) GetManifest() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *Updated) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *Updated) GetOwners() []EntityOwner {
+	if o == nil {
+		return nil
+	}
+	return o.Owners
+}
+
+func (o *Updated) GetPurpose() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
+}
+
+func (o *Updated) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *Updated) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *Updated) GetTitle() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Title
+}
+
+func (o *Updated) GetUpdatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+type Diff struct {
+	Added   *Added   `json:"added,omitempty"`
+	Deleted *Deleted `json:"deleted,omitempty"`
+	Updated *Updated `json:"updated,omitempty"`
+}
+
+func (o *Diff) GetAdded() *Added {
 	if o == nil {
 		return nil
 	}
 	return o.Added
 }
 
-func (o *Diff) GetDeleted() *Entity {
+func (o *Diff) GetDeleted() *Deleted {
 	if o == nil {
 		return nil
 	}
 	return o.Deleted
 }
 
-func (o *Diff) GetUpdated() *Entity {
+func (o *Diff) GetUpdated() *Updated {
 	if o == nil {
 		return nil
 	}
@@ -277,13 +787,28 @@ func (o *Payload) GetUpdatedAt() *time.Time {
 
 type EntityOperation struct {
 	// See https://github.com/ulid/spec
-	ActivityID *string   `json:"activity_id,omitempty"`
-	Diff       *Diff     `json:"diff,omitempty"`
-	Entity     string    `json:"entity"`
-	Operation  Operation `json:"operation"`
-	Org        string    `json:"org"`
-	Params     *Params   `json:"params,omitempty"`
-	Payload    *Payload  `json:"payload,omitempty"`
+	ActivityID *string `json:"activity_id,omitempty"`
+	// A type for the activity. Used to categorize activities in the activity feed and for event subscriptions.
+	//
+	// Built-in entity activity types (custom activities can be defined as well):
+	// - EntityCreated
+	// - EntityUpdated
+	// - EntityDeleted
+	// - EntitySoftDeleted
+	// - EntityRestored
+	// - RelationsAdded
+	// - RelationsRemoved
+	// - RelationsSoftDeleted
+	// - RelationsRestored
+	// - RelationsDeleted
+	//
+	ActivityType *string   `json:"activity_type,omitempty"`
+	Diff         *Diff     `json:"diff,omitempty"`
+	Entity       string    `json:"entity"`
+	Operation    Operation `json:"operation"`
+	Org          string    `json:"org"`
+	Params       *Params   `json:"params,omitempty"`
+	Payload      *Payload  `json:"payload,omitempty"`
 }
 
 func (o *EntityOperation) GetActivityID() *string {
@@ -291,6 +816,13 @@ func (o *EntityOperation) GetActivityID() *string {
 		return nil
 	}
 	return o.ActivityID
+}
+
+func (o *EntityOperation) GetActivityType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ActivityType
 }
 
 func (o *EntityOperation) GetDiff() *Diff {

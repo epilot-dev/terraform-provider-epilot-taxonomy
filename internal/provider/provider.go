@@ -110,12 +110,14 @@ func (p *EpilotTaxonomyProvider) Configure(ctx context.Context, req provider.Con
 
 func (p *EpilotTaxonomyProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
+		NewTaxonomyResource,
 		NewTaxonomyClassificationResource,
 	}
 }
 
 func (p *EpilotTaxonomyProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
+		NewTaxonomyDataSource,
 		NewTaxonomyClassificationDataSource,
 	}
 }

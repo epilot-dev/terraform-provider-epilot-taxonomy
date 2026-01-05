@@ -40,6 +40,24 @@ actions:
   - target: $["components"]["schemas"]["TaxonomyClassification"]
     update:
       x-speakeasy-entity: TaxonomyClassification
-  - target: $["components"]["schemas"]["TaxonomyClassification"]
+
+
+  # Taxonomy - family
+  - target: $["paths"]["/v1/entity/taxonomies/{taxonomySlug}"]["get"]
     update:
-      x-speakeasy-entity: TaxonomyClassification
+      x-speakeasy-entity-operation: Taxonomy#get
+  - target: $["paths"]["/v1/entity/taxonomies"]["post"]
+    update:
+      x-speakeasy-entity-operation: Taxonomy#create
+  - target: $["paths"]["/v1/entity/taxonomies/{taxonomySlug}"]["put"]
+    update:
+      x-speakeasy-entity-operation: Taxonomy#update
+  - target: $["paths"]["/v1/entity/taxonomies/{taxonomySlug}"]["delete"]
+    update:
+      x-speakeasy-entity-operation: Taxonomy#delete
+  - target: $["components"]["parameters"]["TaxonomySlugPathParam"]
+    update:
+      x-speakeasy-match: slug
+  - target: $["components"]["schemas"]["Taxonomy"]
+    update:
+      x-speakeasy-entity: Taxonomy

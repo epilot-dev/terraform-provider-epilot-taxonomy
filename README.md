@@ -18,7 +18,7 @@ terraform {
   required_providers {
     epilot-taxonomy = {
       source  = "epilot-dev/epilot-taxonomy"
-      version = "0.10.0"
+      version = "0.11.2"
     }
   }
 }
@@ -89,9 +89,11 @@ Available configuration:
 
 ### Resources
 
+* [epilot-taxonomy_taxonomy](docs/resources/taxonomy.md)
 * [epilot-taxonomy_taxonomy_classification](docs/resources/taxonomy_classification.md)
 ### Data Sources
 
+* [epilot-taxonomy_taxonomy](docs/data-sources/taxonomy.md)
 * [epilot-taxonomy_taxonomy_classification](docs/data-sources/taxonomy_classification.md)
 <!-- End Available Resources and Data Sources [operations] -->
 

@@ -17,6 +17,11 @@ resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
   archived   = false
   color      = "#FF5733"
   created_at = "2022-06-05T18:41:54.651Z"
+  enabled_locations = [
+    {
+      # ...
+    }
+  ]
   manifest = [
     "123e4567-e89b-12d3-a456-426614174000"
   ]
@@ -25,6 +30,7 @@ resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
     "taxonomy-slug:classification-slug"
   ]
   slug       = "wallbox-pv"
+  starred    = false
   updated_at = "2022-01-28T11:08:25.332Z"
 }
 ```
@@ -42,13 +48,23 @@ resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
 - `archived` (Boolean) Archived classification are not visible in the UI. Default: false
 - `color` (String) Color of the classification
 - `created_at` (String)
+- `enabled_locations` (Attributes List) List of locations where the classification is enabled to be used. If empty, it's enabled for all locations. (see [below for nested schema](#nestedatt--enabled_locations))
 - `manifest` (List of String) Manifest ID used to create/update the taxonomy classification
 - `parents` (List of String)
+- `starred` (Boolean) Starred taxonomy classifications can represent "favorites" or commonly used classifications. Default: false
 - `updated_at` (String)
 
 ### Read-Only
 
 - `id` (String) The ID of this resource.
+
+<a id="nestedatt--enabled_locations"></a>
+### Nested Schema for `enabled_locations`
+
+Optional:
+
+- `str` (String)
+- `taxonomy_location_id` (String) must be one of ["account", "contact", "contract", "email_template", "file", "journey", "meter_counter", "meter", "opportunity", "order", "partner", "price", "product", "submission", "tax", "message", "portal_user", "request", "comment"]
 
 ## Import
 

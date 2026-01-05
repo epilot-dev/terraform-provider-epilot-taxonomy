@@ -100,12 +100,18 @@ func (e *Kind) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// TaxonomyType - Type of taxonomy. Whether it classifies entities or relations.
+// TaxonomyType - Type of taxonomy. Whether it classifies:
+// - entity (default)
+// - relation (for relations)
+// - system (for system taxonomies - default for all slugs starting with _system_)
+// - file_collection (for file collections)
 type TaxonomyType string
 
 const (
-	TaxonomyTypeEntity   TaxonomyType = "entity"
-	TaxonomyTypeRelation TaxonomyType = "relation"
+	TaxonomyTypeEntity         TaxonomyType = "entity"
+	TaxonomyTypeRelation       TaxonomyType = "relation"
+	TaxonomyTypeSystem         TaxonomyType = "system"
+	TaxonomyTypeFileCollection TaxonomyType = "file_collection"
 )
 
 func (e TaxonomyType) ToPointer() *TaxonomyType {
@@ -120,6 +126,10 @@ func (e *TaxonomyType) UnmarshalJSON(data []byte) error {
 	case "entity":
 		fallthrough
 	case "relation":
+		fallthrough
+	case "system":
+		fallthrough
+	case "file_collection":
 		*e = TaxonomyType(v)
 		return nil
 	default:
@@ -151,7 +161,12 @@ type Taxonomy struct {
 	Plural *string `json:"plural,omitempty"`
 	// URL-friendly name for taxonomy
 	Slug *string `json:"slug,omitempty"`
-	// Type of taxonomy. Whether it classifies entities or relations.
+	// Type of taxonomy. Whether it classifies:
+	// - entity (default)
+	// - relation (for relations)
+	// - system (for system taxonomies - default for all slugs starting with _system_)
+	// - file_collection (for file collections)
+	//
 	Type      *TaxonomyType `default:"entity" json:"type"`
 	UpdatedAt *time.Time    `json:"updated_at,omitempty"`
 }
@@ -282,7 +297,12 @@ type TaxonomyInput struct {
 	Plural *string `json:"plural,omitempty"`
 	// URL-friendly name for taxonomy
 	Slug *string `json:"slug,omitempty"`
-	// Type of taxonomy. Whether it classifies entities or relations.
+	// Type of taxonomy. Whether it classifies:
+	// - entity (default)
+	// - relation (for relations)
+	// - system (for system taxonomies - default for all slugs starting with _system_)
+	// - file_collection (for file collections)
+	//
 	Type *TaxonomyType `default:"entity" json:"type"`
 }
 

@@ -16,7 +16,21 @@ type Activity struct {
 	Pending *bool `default:"false" json:"pending"`
 	// Title for activity. Supports handlebars syntax.
 	Title string `json:"title"`
-	Type  string `json:"type"`
+	// A type for the activity. Used to categorize activities in the activity feed and for event subscriptions.
+	//
+	// Built-in entity activity types (custom activities can be defined as well):
+	// - EntityCreated
+	// - EntityUpdated
+	// - EntityDeleted
+	// - EntitySoftDeleted
+	// - EntityRestored
+	// - RelationsAdded
+	// - RelationsRemoved
+	// - RelationsSoftDeleted
+	// - RelationsRestored
+	// - RelationsDeleted
+	//
+	Type string `json:"type"`
 }
 
 func (a Activity) MarshalJSON() ([]byte, error) {

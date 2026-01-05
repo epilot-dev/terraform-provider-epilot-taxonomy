@@ -5,6 +5,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
@@ -28,15 +29,17 @@ type TaxonomyClassificationDataSource struct {
 
 // TaxonomyClassificationDataSourceModel describes the data model.
 type TaxonomyClassificationDataSourceModel struct {
-	Archived  types.Bool     `tfsdk:"archived"`
-	Color     types.String   `tfsdk:"color"`
-	CreatedAt types.String   `tfsdk:"created_at"`
-	ID        types.String   `tfsdk:"id"`
-	Manifest  []types.String `tfsdk:"manifest"`
-	Name      types.String   `tfsdk:"name"`
-	Parents   []types.String `tfsdk:"parents"`
-	Slug      types.String   `tfsdk:"slug"`
-	UpdatedAt types.String   `tfsdk:"updated_at"`
+	Archived         types.Bool                 `tfsdk:"archived"`
+	Color            types.String               `tfsdk:"color"`
+	CreatedAt        types.String               `tfsdk:"created_at"`
+	EnabledLocations []tfTypes.EnabledLocations `tfsdk:"enabled_locations"`
+	ID               types.String               `tfsdk:"id"`
+	Manifest         []types.String             `tfsdk:"manifest"`
+	Name             types.String               `tfsdk:"name"`
+	Parents          []types.String             `tfsdk:"parents"`
+	Slug             types.String               `tfsdk:"slug"`
+	Starred          types.Bool                 `tfsdk:"starred"`
+	UpdatedAt        types.String               `tfsdk:"updated_at"`
 }
 
 // Metadata returns the data source type name.
@@ -61,6 +64,20 @@ func (r *TaxonomyClassificationDataSource) Schema(ctx context.Context, req datas
 			"created_at": schema.StringAttribute{
 				Computed: true,
 			},
+			"enabled_locations": schema.ListNestedAttribute{
+				Computed: true,
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"str": schema.StringAttribute{
+							Computed: true,
+						},
+						"taxonomy_location_id": schema.StringAttribute{
+							Computed: true,
+						},
+					},
+				},
+				Description: `List of locations where the classification is enabled to be used. If empty, it's enabled for all locations.`,
+			},
 			"id": schema.StringAttribute{
 				Computed: true,
 			},
@@ -79,6 +96,10 @@ func (r *TaxonomyClassificationDataSource) Schema(ctx context.Context, req datas
 			"slug": schema.StringAttribute{
 				Computed:    true,
 				Description: `URL-friendly identifier for the classification`,
+			},
+			"starred": schema.BoolAttribute{
+				Computed:    true,
+				Description: `Starred taxonomy classifications can represent "favorites" or commonly used classifications`,
 			},
 			"updated_at": schema.StringAttribute{
 				Computed: true,
