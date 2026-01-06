@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1afd37bc-cea9-4679-ac40-35ad5de414fc
 management:
-  docChecksum: 97ad0e7bd9a6d6659df05dfdfc66f6b3
+  docChecksum: cb399b301f5ef7e481d255deefe2c4bc
   docVersion: 2.5.0
   speakeasyVersion: 1.611.0
   generationVersion: 2.694.1
-  releaseVersion: 0.11.2
-  configChecksum: cb9190c6441aae2293c8af21cda7c621
+  releaseVersion: 0.11.5
+  configChecksum: a20fb2c7829f0955c4c53729d26c896a
   repoURL: https://github.com/epilot-dev/terraform-provider-epilot-journey.git
   repoSubDirectory: .
   published: true
@@ -76,7 +76,6 @@ generatedFiles:
   - internal/provider/typeconvert/date.go
   - internal/provider/typeconvert/datetime.go
   - internal/provider/typeconvert/int.go
-  - internal/provider/types/enabled_locations.go
   - internal/provider/utils.go
   - internal/sdk/.gitattributes
   - internal/sdk/activity.go
@@ -277,7 +276,7 @@ generatedFiles:
   - internal/sdk/models/shared/taxonomybulkjobstatus.go
   - internal/sdk/models/shared/taxonomybulkjobtriggerresponse.go
   - internal/sdk/models/shared/taxonomyclassification.go
-  - internal/sdk/models/shared/taxonomylocationid.go
+  - internal/sdk/models/shared/taxonomyclassificationinput.go
   - internal/sdk/models/shared/taxonomysearchincludearchivedparam.go
   - internal/sdk/models/shared/textattribute.go
   - internal/sdk/models/shared/userrelationattribute.go

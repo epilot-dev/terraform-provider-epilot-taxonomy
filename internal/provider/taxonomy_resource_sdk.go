@@ -5,7 +5,6 @@ package provider
 import (
 	"context"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/typeconvert"
-	tfTypes "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/models/shared"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -21,23 +20,9 @@ func (r *TaxonomyResourceModel) RefreshFromSharedTaxonomy(ctx context.Context, r
 		r.CreatedBy = types.StringPointerValue(resp.CreatedBy)
 		r.DeletedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.DeletedAt))
 		r.Enabled = types.BoolPointerValue(resp.Enabled)
-		r.EnabledLocations = []tfTypes.EnabledLocations{}
-
-		for _, enabledLocationsItem := range resp.EnabledLocations {
-			var enabledLocations tfTypes.EnabledLocations
-
-			if enabledLocationsItem.Str != nil {
-				enabledLocations.Str = types.StringPointerValue(enabledLocationsItem.Str)
-			}
-			if enabledLocationsItem.TaxonomyLocationID != nil {
-				if enabledLocationsItem.TaxonomyLocationID != nil {
-					enabledLocations.TaxonomyLocationID = types.StringValue(string(*enabledLocationsItem.TaxonomyLocationID))
-				} else {
-					enabledLocations.TaxonomyLocationID = types.StringNull()
-				}
-			}
-
-			r.EnabledLocations = append(r.EnabledLocations, enabledLocations)
+		r.EnabledLocations = make([]types.String, 0, len(resp.EnabledLocations))
+		for _, v := range resp.EnabledLocations {
+			r.EnabledLocations = append(r.EnabledLocations, types.StringValue(v))
 		}
 		r.Icon = types.StringPointerValue(resp.Icon)
 		if resp.Kind != nil {
@@ -129,22 +114,9 @@ func (r *TaxonomyResourceModel) ToSharedTaxonomyInput(ctx context.Context) (*sha
 	} else {
 		enabled = nil
 	}
-	enabledLocations := make([]shared.EnabledLocations, 0, len(r.EnabledLocations))
+	enabledLocations := make([]string, 0, len(r.EnabledLocations))
 	for _, enabledLocationsItem := range r.EnabledLocations {
-		if !enabledLocationsItem.TaxonomyLocationID.IsUnknown() && !enabledLocationsItem.TaxonomyLocationID.IsNull() {
-			taxonomyLocationID := shared.TaxonomyLocationID(enabledLocationsItem.TaxonomyLocationID.ValueString())
-			enabledLocations = append(enabledLocations, shared.EnabledLocations{
-				TaxonomyLocationID: &taxonomyLocationID,
-			})
-		}
-		if !enabledLocationsItem.Str.IsUnknown() && !enabledLocationsItem.Str.IsNull() {
-			var str string
-			str = enabledLocationsItem.Str.ValueString()
-
-			enabledLocations = append(enabledLocations, shared.EnabledLocations{
-				Str: &str,
-			})
-		}
+		enabledLocations = append(enabledLocations, enabledLocationsItem.ValueString())
 	}
 	icon := new(string)
 	if !r.Icon.IsUnknown() && !r.Icon.IsNull() {

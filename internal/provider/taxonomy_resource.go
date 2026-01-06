@@ -5,10 +5,8 @@ package provider
 import (
 	"context"
 	"fmt"
-	tfTypes "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/validators"
-	speakeasy_objectvalidators "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/validators/objectvalidators"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -36,21 +34,21 @@ type TaxonomyResource struct {
 
 // TaxonomyResourceModel describes the resource data model.
 type TaxonomyResourceModel struct {
-	Color            types.String               `tfsdk:"color"`
-	CreatedAt        types.String               `tfsdk:"created_at"`
-	CreatedBy        types.String               `tfsdk:"created_by"`
-	DeletedAt        types.String               `tfsdk:"deleted_at"`
-	Enabled          types.Bool                 `tfsdk:"enabled"`
-	EnabledLocations []tfTypes.EnabledLocations `tfsdk:"enabled_locations"`
-	Icon             types.String               `tfsdk:"icon"`
-	Kind             types.String               `tfsdk:"kind"`
-	Name             types.String               `tfsdk:"name"`
-	Order            types.Float64              `tfsdk:"order"`
-	Permanent        types.Bool                 `queryParam:"style=form,explode=true,name=permanent" tfsdk:"permanent"`
-	Plural           types.String               `tfsdk:"plural"`
-	Slug             types.String               `tfsdk:"slug"`
-	Type             types.String               `tfsdk:"type"`
-	UpdatedAt        types.String               `tfsdk:"updated_at"`
+	Color            types.String   `tfsdk:"color"`
+	CreatedAt        types.String   `tfsdk:"created_at"`
+	CreatedBy        types.String   `tfsdk:"created_by"`
+	DeletedAt        types.String   `tfsdk:"deleted_at"`
+	Enabled          types.Bool     `tfsdk:"enabled"`
+	EnabledLocations []types.String `tfsdk:"enabled_locations"`
+	Icon             types.String   `tfsdk:"icon"`
+	Kind             types.String   `tfsdk:"kind"`
+	Name             types.String   `tfsdk:"name"`
+	Order            types.Float64  `tfsdk:"order"`
+	Permanent        types.Bool     `queryParam:"style=form,explode=true,name=permanent" tfsdk:"permanent"`
+	Plural           types.String   `tfsdk:"plural"`
+	Slug             types.String   `tfsdk:"slug"`
+	Type             types.String   `tfsdk:"type"`
+	UpdatedAt        types.String   `tfsdk:"updated_at"`
 }
 
 func (r *TaxonomyResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -88,56 +86,10 @@ func (r *TaxonomyResource) Schema(ctx context.Context, req resource.SchemaReques
 				Optional:    true,
 				Description: `Whether the taxonomy is enabled or not`,
 			},
-			"enabled_locations": schema.ListNestedAttribute{
-				Computed: true,
-				Optional: true,
-				NestedObject: schema.NestedAttributeObject{
-					Validators: []validator.Object{
-						speakeasy_objectvalidators.NotNull(),
-					},
-					Attributes: map[string]schema.Attribute{
-						"str": schema.StringAttribute{
-							Computed: true,
-							Optional: true,
-							Validators: []validator.String{
-								stringvalidator.ConflictsWith(path.Expressions{
-									path.MatchRelative().AtParent().AtName("taxonomy_location_id"),
-								}...),
-							},
-						},
-						"taxonomy_location_id": schema.StringAttribute{
-							Computed:    true,
-							Optional:    true,
-							Description: `must be one of ["account", "contact", "contract", "email_template", "file", "journey", "meter_counter", "meter", "opportunity", "order", "partner", "price", "product", "submission", "tax", "message", "portal_user", "request", "comment"]`,
-							Validators: []validator.String{
-								stringvalidator.ConflictsWith(path.Expressions{
-									path.MatchRelative().AtParent().AtName("str"),
-								}...),
-								stringvalidator.OneOf(
-									"account",
-									"contact",
-									"contract",
-									"email_template",
-									"file",
-									"journey",
-									"meter_counter",
-									"meter",
-									"opportunity",
-									"order",
-									"partner",
-									"price",
-									"product",
-									"submission",
-									"tax",
-									"message",
-									"portal_user",
-									"request",
-									"comment",
-								),
-							},
-						},
-					},
-				},
+			"enabled_locations": schema.ListAttribute{
+				Computed:    true,
+				Optional:    true,
+				ElementType: types.StringType,
 				Description: `List of locations where the taxonomy is enabled to be used. If empty, it's enabled for all locations.`,
 			},
 			"icon": schema.StringAttribute{

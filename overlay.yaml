@@ -41,7 +41,6 @@ actions:
     update:
       x-speakeasy-entity: TaxonomyClassification
 
-
   # Taxonomy - family
   - target: $["paths"]["/v1/entity/taxonomies/{taxonomySlug}"]["get"]
     update:
@@ -61,3 +60,20 @@ actions:
   - target: $["components"]["schemas"]["Taxonomy"]
     update:
       x-speakeasy-entity: Taxonomy
+
+  # Simplify enabled_locations to a plain string array (instead of anyOf union type)
+  - target: $["components"]["schemas"]["Taxonomy"]["properties"]["enabled_locations"]["items"]
+    remove: true
+  - target: $["components"]["schemas"]["TaxonomyClassification"]["properties"]["enabled_locations"]["items"]
+    remove: true
+
+
+  # Simplify enabled_locations to a plain string array (instead of anyOf union type)
+  - target: $["components"]["schemas"]["Taxonomy"]["properties"]["enabled_locations"]
+    update:
+      items:
+        type: string
+  - target: $["components"]["schemas"]["TaxonomyClassification"]["properties"]["enabled_locations"]
+    update:
+      items:
+        type: string

@@ -25,7 +25,7 @@ data "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
 - `archived` (Boolean) Archived classification are not visible in the UI
 - `color` (String) Color of the classification
 - `created_at` (String)
-- `enabled_locations` (Attributes List) List of locations where the classification is enabled to be used. If empty, it's enabled for all locations. (see [below for nested schema](#nestedatt--enabled_locations))
+- `enabled_locations` (List of String) List of locations where the classification is enabled to be used. If empty, it's enabled for all locations.
 - `id` (String) The ID of this resource.
 - `manifest` (List of String) Manifest ID used to create/update the taxonomy classification
 - `name` (String)
@@ -33,11 +33,3 @@ data "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
 - `slug` (String) URL-friendly identifier for the classification
 - `starred` (Boolean) Starred taxonomy classifications can represent "favorites" or commonly used classifications
 - `updated_at` (String)
-
-<a id="nestedatt--enabled_locations"></a>
-### Nested Schema for `enabled_locations`
-
-Read-Only:
-
-- `str` (String)
-- `taxonomy_location_id` (String)

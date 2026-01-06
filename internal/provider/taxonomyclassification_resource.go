@@ -5,11 +5,8 @@ package provider
 import (
 	"context"
 	"fmt"
-	tfTypes "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/validators"
-	speakeasy_objectvalidators "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/validators/objectvalidators"
-	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
@@ -35,17 +32,17 @@ type TaxonomyClassificationResource struct {
 
 // TaxonomyClassificationResourceModel describes the resource data model.
 type TaxonomyClassificationResourceModel struct {
-	Archived         types.Bool                 `tfsdk:"archived"`
-	Color            types.String               `tfsdk:"color"`
-	CreatedAt        types.String               `tfsdk:"created_at"`
-	EnabledLocations []tfTypes.EnabledLocations `tfsdk:"enabled_locations"`
-	ID               types.String               `tfsdk:"id"`
-	Manifest         []types.String             `tfsdk:"manifest"`
-	Name             types.String               `tfsdk:"name"`
-	Parents          []types.String             `tfsdk:"parents"`
-	Slug             types.String               `tfsdk:"slug"`
-	Starred          types.Bool                 `tfsdk:"starred"`
-	UpdatedAt        types.String               `tfsdk:"updated_at"`
+	Archived         types.Bool     `tfsdk:"archived"`
+	Color            types.String   `tfsdk:"color"`
+	CreatedAt        types.String   `tfsdk:"created_at"`
+	EnabledLocations []types.String `tfsdk:"enabled_locations"`
+	ID               types.String   `tfsdk:"id"`
+	Manifest         []types.String `tfsdk:"manifest"`
+	Name             types.String   `tfsdk:"name"`
+	Parents          []types.String `tfsdk:"parents"`
+	Slug             types.String   `tfsdk:"slug"`
+	Starred          types.Bool     `tfsdk:"starred"`
+	UpdatedAt        types.String   `tfsdk:"updated_at"`
 }
 
 func (r *TaxonomyClassificationResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -74,56 +71,10 @@ func (r *TaxonomyClassificationResource) Schema(ctx context.Context, req resourc
 					validators.IsRFC3339(),
 				},
 			},
-			"enabled_locations": schema.ListNestedAttribute{
-				Computed: true,
-				Optional: true,
-				NestedObject: schema.NestedAttributeObject{
-					Validators: []validator.Object{
-						speakeasy_objectvalidators.NotNull(),
-					},
-					Attributes: map[string]schema.Attribute{
-						"str": schema.StringAttribute{
-							Computed: true,
-							Optional: true,
-							Validators: []validator.String{
-								stringvalidator.ConflictsWith(path.Expressions{
-									path.MatchRelative().AtParent().AtName("taxonomy_location_id"),
-								}...),
-							},
-						},
-						"taxonomy_location_id": schema.StringAttribute{
-							Computed:    true,
-							Optional:    true,
-							Description: `must be one of ["account", "contact", "contract", "email_template", "file", "journey", "meter_counter", "meter", "opportunity", "order", "partner", "price", "product", "submission", "tax", "message", "portal_user", "request", "comment"]`,
-							Validators: []validator.String{
-								stringvalidator.ConflictsWith(path.Expressions{
-									path.MatchRelative().AtParent().AtName("str"),
-								}...),
-								stringvalidator.OneOf(
-									"account",
-									"contact",
-									"contract",
-									"email_template",
-									"file",
-									"journey",
-									"meter_counter",
-									"meter",
-									"opportunity",
-									"order",
-									"partner",
-									"price",
-									"product",
-									"submission",
-									"tax",
-									"message",
-									"portal_user",
-									"request",
-									"comment",
-								),
-							},
-						},
-					},
-				},
+			"enabled_locations": schema.ListAttribute{
+				Computed:    true,
+				Optional:    true,
+				ElementType: types.StringType,
 				Description: `List of locations where the classification is enabled to be used. If empty, it's enabled for all locations.`,
 			},
 			"id": schema.StringAttribute{

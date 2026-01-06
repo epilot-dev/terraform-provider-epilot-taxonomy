@@ -5,7 +5,6 @@ package provider
 import (
 	"context"
 	"fmt"
-	tfTypes "github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
@@ -29,20 +28,20 @@ type TaxonomyDataSource struct {
 
 // TaxonomyDataSourceModel describes the data model.
 type TaxonomyDataSourceModel struct {
-	Color            types.String               `tfsdk:"color"`
-	CreatedAt        types.String               `tfsdk:"created_at"`
-	CreatedBy        types.String               `tfsdk:"created_by"`
-	DeletedAt        types.String               `tfsdk:"deleted_at"`
-	Enabled          types.Bool                 `tfsdk:"enabled"`
-	EnabledLocations []tfTypes.EnabledLocations `tfsdk:"enabled_locations"`
-	Icon             types.String               `tfsdk:"icon"`
-	Kind             types.String               `tfsdk:"kind"`
-	Name             types.String               `tfsdk:"name"`
-	Order            types.Float64              `tfsdk:"order"`
-	Plural           types.String               `tfsdk:"plural"`
-	Slug             types.String               `tfsdk:"slug"`
-	Type             types.String               `tfsdk:"type"`
-	UpdatedAt        types.String               `tfsdk:"updated_at"`
+	Color            types.String   `tfsdk:"color"`
+	CreatedAt        types.String   `tfsdk:"created_at"`
+	CreatedBy        types.String   `tfsdk:"created_by"`
+	DeletedAt        types.String   `tfsdk:"deleted_at"`
+	Enabled          types.Bool     `tfsdk:"enabled"`
+	EnabledLocations []types.String `tfsdk:"enabled_locations"`
+	Icon             types.String   `tfsdk:"icon"`
+	Kind             types.String   `tfsdk:"kind"`
+	Name             types.String   `tfsdk:"name"`
+	Order            types.Float64  `tfsdk:"order"`
+	Plural           types.String   `tfsdk:"plural"`
+	Slug             types.String   `tfsdk:"slug"`
+	Type             types.String   `tfsdk:"type"`
+	UpdatedAt        types.String   `tfsdk:"updated_at"`
 }
 
 // Metadata returns the data source type name.
@@ -75,18 +74,9 @@ func (r *TaxonomyDataSource) Schema(ctx context.Context, req datasource.SchemaRe
 				Computed:    true,
 				Description: `Whether the taxonomy is enabled or not`,
 			},
-			"enabled_locations": schema.ListNestedAttribute{
-				Computed: true,
-				NestedObject: schema.NestedAttributeObject{
-					Attributes: map[string]schema.Attribute{
-						"str": schema.StringAttribute{
-							Computed: true,
-						},
-						"taxonomy_location_id": schema.StringAttribute{
-							Computed: true,
-						},
-					},
-				},
+			"enabled_locations": schema.ListAttribute{
+				Computed:    true,
+				ElementType: types.StringType,
 				Description: `List of locations where the taxonomy is enabled to be used. If empty, it's enabled for all locations.`,
 			},
 			"icon": schema.StringAttribute{

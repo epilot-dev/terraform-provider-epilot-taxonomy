@@ -17,10 +17,7 @@ resource "epilot-taxonomy_taxonomy" "my_taxonomy" {
   color   = "#FF5733"
   enabled = true
   enabled_locations = [
-    {
-      str                  = "...my_str..."
-      taxonomy_location_id = "account"
-    }
+    "..."
   ]
   icon      = "purpose"
   name      = "Purpose"
@@ -39,7 +36,7 @@ resource "epilot-taxonomy_taxonomy" "my_taxonomy" {
 
 - `color` (String) HEX Color code for the taxonomy
 - `enabled` (Boolean) Whether the taxonomy is enabled or not
-- `enabled_locations` (Attributes List) List of locations where the taxonomy is enabled to be used. If empty, it's enabled for all locations. (see [below for nested schema](#nestedatt--enabled_locations))
+- `enabled_locations` (List of String) List of locations where the taxonomy is enabled to be used. If empty, it's enabled for all locations.
 - `icon` (String) Icon name for the taxonomy (from epilot360/icons icon set)
 - `name` (String) A human friendly name of a Taxonomy e.g. Purpose, Product Category, Folder, Tag
 - `order` (Number) Position of the taxonomy
@@ -60,14 +57,6 @@ Default: "entity"; must be one of ["entity", "relation", "system", "file_collect
 - `deleted_at` (String) Date when the taxonomy was soft-deleted (enabled: false)
 - `kind` (String) Kind of taxonomy e.g. system or user_defined. By default, it's empty, which means 'user_defined'. must be one of ["system", "user_defined"]
 - `updated_at` (String)
-
-<a id="nestedatt--enabled_locations"></a>
-### Nested Schema for `enabled_locations`
-
-Optional:
-
-- `str` (String)
-- `taxonomy_location_id` (String) must be one of ["account", "contact", "contract", "email_template", "file", "journey", "meter_counter", "meter", "opportunity", "order", "partner", "price", "product", "submission", "tax", "message", "portal_user", "request", "comment"]
 
 ## Import
 

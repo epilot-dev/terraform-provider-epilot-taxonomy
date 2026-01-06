@@ -27,7 +27,7 @@ data "epilot-taxonomy_taxonomy" "my_taxonomy" {
 - `created_by` (String) User ID of the creator
 - `deleted_at` (String) Date when the taxonomy was soft-deleted (enabled: false)
 - `enabled` (Boolean) Whether the taxonomy is enabled or not
-- `enabled_locations` (Attributes List) List of locations where the taxonomy is enabled to be used. If empty, it's enabled for all locations. (see [below for nested schema](#nestedatt--enabled_locations))
+- `enabled_locations` (List of String) List of locations where the taxonomy is enabled to be used. If empty, it's enabled for all locations.
 - `icon` (String) Icon name for the taxonomy (from epilot360/icons icon set)
 - `kind` (String) Kind of taxonomy e.g. system or user_defined. By default, it's empty, which means 'user_defined'
 - `name` (String) A human friendly name of a Taxonomy e.g. Purpose, Product Category, Folder, Tag
@@ -40,11 +40,3 @@ data "epilot-taxonomy_taxonomy" "my_taxonomy" {
 - system (for system taxonomies - default for all slugs starting with _system_)
 - file_collection (for file collections)
 - `updated_at` (String)
-
-<a id="nestedatt--enabled_locations"></a>
-### Nested Schema for `enabled_locations`
-
-Read-Only:
-
-- `str` (String)
-- `taxonomy_location_id` (String)

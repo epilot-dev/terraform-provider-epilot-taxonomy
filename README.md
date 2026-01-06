@@ -18,7 +18,7 @@ terraform {
   required_providers {
     epilot-taxonomy = {
       source  = "epilot-dev/epilot-taxonomy"
-      version = "0.11.2"
+      version = "0.11.5"
     }
   }
 }

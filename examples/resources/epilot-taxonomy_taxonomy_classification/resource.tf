@@ -3,9 +3,7 @@ resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
   color      = "#FF5733"
   created_at = "2022-06-05T18:41:54.651Z"
   enabled_locations = [
-    {
-      # ...
-    }
+    "..."
   ]
   manifest = [
     "123e4567-e89b-12d3-a456-426614174000"

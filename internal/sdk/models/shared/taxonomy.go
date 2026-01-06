@@ -4,74 +4,10 @@ package shared
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
 	"time"
 )
-
-type EnabledLocationsType string
-
-const (
-	EnabledLocationsTypeTaxonomyLocationID EnabledLocationsType = "TaxonomyLocationId"
-	EnabledLocationsTypeStr                EnabledLocationsType = "str"
-)
-
-type EnabledLocations struct {
-	TaxonomyLocationID *TaxonomyLocationID `queryParam:"inline" name:"enabled_locations"`
-	Str                *string             `queryParam:"inline" name:"enabled_locations"`
-
-	Type EnabledLocationsType
-}
-
-func CreateEnabledLocationsTaxonomyLocationID(taxonomyLocationID TaxonomyLocationID) EnabledLocations {
-	typ := EnabledLocationsTypeTaxonomyLocationID
-
-	return EnabledLocations{
-		TaxonomyLocationID: &taxonomyLocationID,
-		Type:               typ,
-	}
-}
-
-func CreateEnabledLocationsStr(str string) EnabledLocations {
-	typ := EnabledLocationsTypeStr
-
-	return EnabledLocations{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func (u *EnabledLocations) UnmarshalJSON(data []byte) error {
-
-	var taxonomyLocationID TaxonomyLocationID = TaxonomyLocationID("")
-	if err := utils.UnmarshalJSON(data, &taxonomyLocationID, "", true, nil); err == nil {
-		u.TaxonomyLocationID = &taxonomyLocationID
-		u.Type = EnabledLocationsTypeTaxonomyLocationID
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = EnabledLocationsTypeStr
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnabledLocations", string(data))
-}
-
-func (u EnabledLocations) MarshalJSON() ([]byte, error) {
-	if u.TaxonomyLocationID != nil {
-		return utils.MarshalJSON(u.TaxonomyLocationID, "", true)
-	}
-
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type EnabledLocations: all fields are null")
-}
 
 // Kind of taxonomy e.g. system or user_defined. By default, it's empty, which means 'user_defined'
 type Kind string
@@ -148,7 +84,7 @@ type Taxonomy struct {
 	// Whether the taxonomy is enabled or not
 	Enabled *bool `json:"enabled,omitempty"`
 	// List of locations where the taxonomy is enabled to be used. If empty, it's enabled for all locations.
-	EnabledLocations []EnabledLocations `json:"enabled_locations,omitempty"`
+	EnabledLocations []string `json:"enabled_locations,omitempty"`
 	// Icon name for the taxonomy (from epilot360/icons icon set)
 	Icon *string `json:"icon,omitempty"`
 	// Kind of taxonomy e.g. system or user_defined. By default, it's empty, which means 'user_defined'
@@ -217,7 +153,7 @@ func (o *Taxonomy) GetEnabled() *bool {
 	return o.Enabled
 }
 
-func (o *Taxonomy) GetEnabledLocations() []EnabledLocations {
+func (o *Taxonomy) GetEnabledLocations() []string {
 	if o == nil {
 		return nil
 	}
@@ -286,7 +222,7 @@ type TaxonomyInput struct {
 	// Whether the taxonomy is enabled or not
 	Enabled *bool `json:"enabled,omitempty"`
 	// List of locations where the taxonomy is enabled to be used. If empty, it's enabled for all locations.
-	EnabledLocations []EnabledLocations `json:"enabled_locations,omitempty"`
+	EnabledLocations []string `json:"enabled_locations,omitempty"`
 	// Icon name for the taxonomy (from epilot360/icons icon set)
 	Icon *string `json:"icon,omitempty"`
 	// A human friendly name of a Taxonomy e.g. Purpose, Product Category, Folder, Tag
@@ -331,7 +267,7 @@ func (o *TaxonomyInput) GetEnabled() *bool {
 	return o.Enabled
 }
 
-func (o *TaxonomyInput) GetEnabledLocations() []EnabledLocations {
+func (o *TaxonomyInput) GetEnabledLocations() []string {
 	if o == nil {
 		return nil
 	}
