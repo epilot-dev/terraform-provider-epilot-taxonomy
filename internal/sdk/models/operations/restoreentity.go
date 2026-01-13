@@ -21,32 +21,32 @@ type RestoreEntityRequest struct {
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
 }
 
-func (o *RestoreEntityRequest) GetRequestBody() *RestoreEntityRequestBody {
-	if o == nil {
+func (r *RestoreEntityRequest) GetRequestBody() *RestoreEntityRequestBody {
+	if r == nil {
 		return nil
 	}
-	return o.RequestBody
+	return r.RequestBody
 }
 
-func (o *RestoreEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {
-	if o == nil {
+func (r *RestoreEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {
+	if r == nil {
 		return nil
 	}
-	return o.ActivityID
+	return r.ActivityID
 }
 
-func (o *RestoreEntityRequest) GetID() string {
-	if o == nil {
+func (r *RestoreEntityRequest) GetID() string {
+	if r == nil {
 		return ""
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RestoreEntityRequest) GetSlug() string {
-	if o == nil {
+func (r *RestoreEntityRequest) GetSlug() string {
+	if r == nil {
 		return ""
 	}
-	return o.Slug
+	return r.Slug
 }
 
 // RestoreEntityResponseBody - A generic error returned by the API
@@ -57,18 +57,18 @@ type RestoreEntityResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *RestoreEntityResponseBody) GetError() *string {
-	if o == nil {
+func (r *RestoreEntityResponseBody) GetError() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Error
+	return r.Error
 }
 
-func (o *RestoreEntityResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (r *RestoreEntityResponseBody) GetStatus() *int64 {
+	if r == nil {
 		return nil
 	}
-	return o.Status
+	return r.Status
 }
 
 type RestoreEntityResponse struct {
@@ -85,44 +85,44 @@ type RestoreEntityResponse struct {
 	Object *RestoreEntityResponseBody
 }
 
-func (o *RestoreEntityResponse) GetContentType() string {
-	if o == nil {
+func (r *RestoreEntityResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *RestoreEntityResponse) GetEntityItem() *shared.EntityItem {
-	if o == nil {
+func (r *RestoreEntityResponse) GetEntityItem() *shared.EntityItem {
+	if r == nil {
 		return nil
 	}
-	return o.EntityItem
+	return r.EntityItem
 }
 
-func (o *RestoreEntityResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (r *RestoreEntityResponse) GetHeaders() map[string][]string {
+	if r == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return r.Headers
 }
 
-func (o *RestoreEntityResponse) GetStatusCode() int {
-	if o == nil {
+func (r *RestoreEntityResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *RestoreEntityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *RestoreEntityResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }
 
-func (o *RestoreEntityResponse) GetObject() *RestoreEntityResponseBody {
-	if o == nil {
+func (r *RestoreEntityResponse) GetObject() *RestoreEntityResponseBody {
+	if r == nil {
 		return nil
 	}
-	return o.Object
+	return r.Object
 }

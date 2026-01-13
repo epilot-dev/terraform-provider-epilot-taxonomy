@@ -66,7 +66,7 @@ func (s *ImportExport) ExportEntities(ctx context.Context, request operations.Ex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "exportEntities",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EntitySearchParams", "json", `request:"mediaType=application/json"`)
@@ -95,7 +95,7 @@ func (s *ImportExport) ExportEntities(ctx context.Context, request operations.Ex
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -281,7 +281,7 @@ func (s *ImportExport) ImportEntities(ctx context.Context, request operations.Im
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "importEntities",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EntityImportParams", "json", `request:"mediaType=application/json"`)
@@ -310,7 +310,7 @@ func (s *ImportExport) ImportEntities(ctx context.Context, request operations.Im
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 

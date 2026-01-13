@@ -13,18 +13,18 @@ type BulkDeleteClassificationsRequestBody struct {
 	JobID *string `json:"job_id,omitempty"`
 }
 
-func (o *BulkDeleteClassificationsRequestBody) GetClassificationIds() []string {
-	if o == nil {
+func (b *BulkDeleteClassificationsRequestBody) GetClassificationIds() []string {
+	if b == nil {
 		return nil
 	}
-	return o.ClassificationIds
+	return b.ClassificationIds
 }
 
-func (o *BulkDeleteClassificationsRequestBody) GetJobID() *string {
-	if o == nil {
+func (b *BulkDeleteClassificationsRequestBody) GetJobID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.JobID
+	return b.JobID
 }
 
 // BulkDeleteClassificationsResponseBody - A generic error returned by the API
@@ -35,18 +35,18 @@ type BulkDeleteClassificationsResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *BulkDeleteClassificationsResponseBody) GetError() *string {
-	if o == nil {
+func (b *BulkDeleteClassificationsResponseBody) GetError() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Error
+	return b.Error
 }
 
-func (o *BulkDeleteClassificationsResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (b *BulkDeleteClassificationsResponseBody) GetStatus() *int64 {
+	if b == nil {
 		return nil
 	}
-	return o.Status
+	return b.Status
 }
 
 type BulkDeleteClassificationsResponse struct {
@@ -63,44 +63,44 @@ type BulkDeleteClassificationsResponse struct {
 	Object *BulkDeleteClassificationsResponseBody
 }
 
-func (o *BulkDeleteClassificationsResponse) GetContentType() string {
-	if o == nil {
+func (b *BulkDeleteClassificationsResponse) GetContentType() string {
+	if b == nil {
 		return ""
 	}
-	return o.ContentType
+	return b.ContentType
 }
 
-func (o *BulkDeleteClassificationsResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (b *BulkDeleteClassificationsResponse) GetHeaders() map[string][]string {
+	if b == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return b.Headers
 }
 
-func (o *BulkDeleteClassificationsResponse) GetStatusCode() int {
-	if o == nil {
+func (b *BulkDeleteClassificationsResponse) GetStatusCode() int {
+	if b == nil {
 		return 0
 	}
-	return o.StatusCode
+	return b.StatusCode
 }
 
-func (o *BulkDeleteClassificationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (b *BulkDeleteClassificationsResponse) GetRawResponse() *http.Response {
+	if b == nil {
 		return nil
 	}
-	return o.RawResponse
+	return b.RawResponse
 }
 
-func (o *BulkDeleteClassificationsResponse) GetTaxonomyBulkJobTriggerResponse() *shared.TaxonomyBulkJobTriggerResponse {
-	if o == nil {
+func (b *BulkDeleteClassificationsResponse) GetTaxonomyBulkJobTriggerResponse() *shared.TaxonomyBulkJobTriggerResponse {
+	if b == nil {
 		return nil
 	}
-	return o.TaxonomyBulkJobTriggerResponse
+	return b.TaxonomyBulkJobTriggerResponse
 }
 
-func (o *BulkDeleteClassificationsResponse) GetObject() *BulkDeleteClassificationsResponseBody {
-	if o == nil {
+func (b *BulkDeleteClassificationsResponse) GetObject() *BulkDeleteClassificationsResponseBody {
+	if b == nil {
 		return nil
 	}
-	return o.Object
+	return b.Object
 }

@@ -15,18 +15,18 @@ type QueryEntityGraphResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *QueryEntityGraphResponseBody) GetError() *string {
-	if o == nil {
+func (q *QueryEntityGraphResponseBody) GetError() *string {
+	if q == nil {
 		return nil
 	}
-	return o.Error
+	return q.Error
 }
 
-func (o *QueryEntityGraphResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (q *QueryEntityGraphResponseBody) GetStatus() *int64 {
+	if q == nil {
 		return nil
 	}
-	return o.Status
+	return q.Status
 }
 
 type QueryEntityGraphResponse struct {
@@ -42,37 +42,37 @@ type QueryEntityGraphResponse struct {
 	Object *QueryEntityGraphResponseBody
 }
 
-func (o *QueryEntityGraphResponse) GetContentType() string {
-	if o == nil {
+func (q *QueryEntityGraphResponse) GetContentType() string {
+	if q == nil {
 		return ""
 	}
-	return o.ContentType
+	return q.ContentType
 }
 
-func (o *QueryEntityGraphResponse) GetGraphQueryResponse() *shared.GraphQueryResponse {
-	if o == nil {
+func (q *QueryEntityGraphResponse) GetGraphQueryResponse() *shared.GraphQueryResponse {
+	if q == nil {
 		return nil
 	}
-	return o.GraphQueryResponse
+	return q.GraphQueryResponse
 }
 
-func (o *QueryEntityGraphResponse) GetStatusCode() int {
-	if o == nil {
+func (q *QueryEntityGraphResponse) GetStatusCode() int {
+	if q == nil {
 		return 0
 	}
-	return o.StatusCode
+	return q.StatusCode
 }
 
-func (o *QueryEntityGraphResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (q *QueryEntityGraphResponse) GetRawResponse() *http.Response {
+	if q == nil {
 		return nil
 	}
-	return o.RawResponse
+	return q.RawResponse
 }
 
-func (o *QueryEntityGraphResponse) GetObject() *QueryEntityGraphResponseBody {
-	if o == nil {
+func (q *QueryEntityGraphResponse) GetObject() *QueryEntityGraphResponseBody {
+	if q == nil {
 		return nil
 	}
-	return o.Object
+	return q.Object
 }

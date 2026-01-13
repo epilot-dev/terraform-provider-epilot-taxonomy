@@ -31,25 +31,25 @@ func (l *LayoutSettings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *LayoutSettings) GetAdditionalProperties() any {
-	if o == nil {
+func (l *LayoutSettings) GetAdditionalProperties() any {
+	if l == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return l.AdditionalProperties
 }
 
-func (o *LayoutSettings) GetGridGap() *string {
-	if o == nil {
+func (l *LayoutSettings) GetGridGap() *string {
+	if l == nil {
 		return nil
 	}
-	return o.GridGap
+	return l.GridGap
 }
 
-func (o *LayoutSettings) GetGridTemplateColumns() *string {
-	if o == nil {
+func (l *LayoutSettings) GetGridTemplateColumns() *string {
+	if l == nil {
 		return nil
 	}
-	return o.GridTemplateColumns
+	return l.GridTemplateColumns
 }
 
 type CreateViewType string
@@ -61,9 +61,9 @@ const (
 )
 
 type CreateView struct {
-	EntityDefaultCreate *EntityDefaultCreate `queryParam:"inline" name:"create_view"`
-	RedirectEntityView  *RedirectEntityView  `queryParam:"inline" name:"create_view"`
-	EntityViewDisabled  *EntityViewDisabled  `queryParam:"inline" name:"create_view"`
+	EntityDefaultCreate *EntityDefaultCreate `queryParam:"inline" union:"member"`
+	RedirectEntityView  *RedirectEntityView  `queryParam:"inline" union:"member"`
+	EntityViewDisabled  *EntityViewDisabled  `queryParam:"inline" union:"member"`
 
 	Type CreateViewType
 }
@@ -97,24 +97,54 @@ func CreateCreateViewEntityViewDisabled(entityViewDisabled EntityViewDisabled) C
 
 func (u *CreateView) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var entityDefaultCreate EntityDefaultCreate = EntityDefaultCreate{}
 	if err := utils.UnmarshalJSON(data, &entityDefaultCreate, "", true, nil); err == nil {
-		u.EntityDefaultCreate = &entityDefaultCreate
-		u.Type = CreateViewTypeEntityDefaultCreate
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  CreateViewTypeEntityDefaultCreate,
+			Value: &entityDefaultCreate,
+		})
 	}
 
 	var redirectEntityView RedirectEntityView = RedirectEntityView{}
 	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, nil); err == nil {
-		u.RedirectEntityView = &redirectEntityView
-		u.Type = CreateViewTypeRedirectEntityView
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  CreateViewTypeRedirectEntityView,
+			Value: &redirectEntityView,
+		})
 	}
 
 	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
 	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, nil); err == nil {
-		u.EntityViewDisabled = &entityViewDisabled
-		u.Type = CreateViewTypeEntityViewDisabled
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  CreateViewTypeEntityViewDisabled,
+			Value: &entityViewDisabled,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateView", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestUnionCandidate(candidates, data)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateView", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(CreateViewType)
+	switch best.Type {
+	case CreateViewTypeEntityDefaultCreate:
+		u.EntityDefaultCreate = best.Value.(*EntityDefaultCreate)
+		return nil
+	case CreateViewTypeRedirectEntityView:
+		u.RedirectEntityView = best.Value.(*RedirectEntityView)
+		return nil
+	case CreateViewTypeEntityViewDisabled:
+		u.EntityViewDisabled = best.Value.(*EntityViewDisabled)
 		return nil
 	}
 
@@ -146,9 +176,9 @@ const (
 )
 
 type EditView struct {
-	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline" name:"edit_view"`
-	RedirectEntityView *RedirectEntityView `queryParam:"inline" name:"edit_view"`
-	EntityViewDisabled *EntityViewDisabled `queryParam:"inline" name:"edit_view"`
+	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline" union:"member"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline" union:"member"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline" union:"member"`
 
 	Type EditViewType
 }
@@ -182,24 +212,54 @@ func CreateEditViewEntityViewDisabled(entityViewDisabled EntityViewDisabled) Edi
 
 func (u *EditView) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var entityDefaultEdit EntityDefaultEdit = EntityDefaultEdit{}
 	if err := utils.UnmarshalJSON(data, &entityDefaultEdit, "", true, nil); err == nil {
-		u.EntityDefaultEdit = &entityDefaultEdit
-		u.Type = EditViewTypeEntityDefaultEdit
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  EditViewTypeEntityDefaultEdit,
+			Value: &entityDefaultEdit,
+		})
 	}
 
 	var redirectEntityView RedirectEntityView = RedirectEntityView{}
 	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, nil); err == nil {
-		u.RedirectEntityView = &redirectEntityView
-		u.Type = EditViewTypeRedirectEntityView
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  EditViewTypeRedirectEntityView,
+			Value: &redirectEntityView,
+		})
 	}
 
 	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
 	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, nil); err == nil {
-		u.EntityViewDisabled = &entityViewDisabled
-		u.Type = EditViewTypeEntityViewDisabled
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  EditViewTypeEntityViewDisabled,
+			Value: &entityViewDisabled,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for EditView", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestUnionCandidate(candidates, data)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for EditView", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(EditViewType)
+	switch best.Type {
+	case EditViewTypeEntityDefaultEdit:
+		u.EntityDefaultEdit = best.Value.(*EntityDefaultEdit)
+		return nil
+	case EditViewTypeRedirectEntityView:
+		u.RedirectEntityView = best.Value.(*RedirectEntityView)
+		return nil
+	case EditViewTypeEntityViewDisabled:
+		u.EntityViewDisabled = best.Value.(*EntityViewDisabled)
 		return nil
 	}
 
@@ -230,8 +290,8 @@ const (
 )
 
 type SummaryAttributes struct {
-	SummaryAttribute *SummaryAttribute `queryParam:"inline" name:"summary_attributes"`
-	Str              *string           `queryParam:"inline" name:"summary_attributes"`
+	SummaryAttribute *SummaryAttribute `queryParam:"inline" union:"member"`
+	Str              *string           `queryParam:"inline" union:"member"`
 
 	Type SummaryAttributesType
 }
@@ -256,17 +316,43 @@ func CreateSummaryAttributesStr(str string) SummaryAttributes {
 
 func (u *SummaryAttributes) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var summaryAttribute SummaryAttribute = SummaryAttribute{}
 	if err := utils.UnmarshalJSON(data, &summaryAttribute, "", true, nil); err == nil {
-		u.SummaryAttribute = &summaryAttribute
-		u.Type = SummaryAttributesTypeSummaryAttribute
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  SummaryAttributesTypeSummaryAttribute,
+			Value: &summaryAttribute,
+		})
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = SummaryAttributesTypeStr
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  SummaryAttributesTypeStr,
+			Value: &str,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for SummaryAttributes", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestUnionCandidate(candidates, data)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for SummaryAttributes", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(SummaryAttributesType)
+	switch best.Type {
+	case SummaryAttributesTypeSummaryAttribute:
+		u.SummaryAttribute = best.Value.(*SummaryAttribute)
+		return nil
+	case SummaryAttributesTypeStr:
+		u.Str = best.Value.(*string)
 		return nil
 	}
 
@@ -317,11 +403,11 @@ type EntitySchemaSchemasUIConfig struct {
 	ContentDirection *ContentDirection `json:"content_direction,omitempty"`
 }
 
-func (o *EntitySchemaSchemasUIConfig) GetContentDirection() *ContentDirection {
-	if o == nil {
+func (e *EntitySchemaSchemasUIConfig) GetContentDirection() *ContentDirection {
+	if e == nil {
 		return nil
 	}
-	return o.ContentDirection
+	return e.ContentDirection
 }
 
 type ListItem struct {
@@ -330,25 +416,25 @@ type ListItem struct {
 	UIConfig          *EntitySchemaSchemasUIConfig `json:"ui_config,omitempty"`
 }
 
-func (o *ListItem) GetQuickActions() []EntityAction {
-	if o == nil {
+func (l *ListItem) GetQuickActions() []EntityAction {
+	if l == nil {
 		return nil
 	}
-	return o.QuickActions
+	return l.QuickActions
 }
 
-func (o *ListItem) GetSummaryAttributes() []SummaryAttributes {
-	if o == nil {
+func (l *ListItem) GetSummaryAttributes() []SummaryAttributes {
+	if l == nil {
 		return nil
 	}
-	return o.SummaryAttributes
+	return l.SummaryAttributes
 }
 
-func (o *ListItem) GetUIConfig() *EntitySchemaSchemasUIConfig {
-	if o == nil {
+func (l *ListItem) GetUIConfig() *EntitySchemaSchemasUIConfig {
+	if l == nil {
 		return nil
 	}
-	return o.UIConfig
+	return l.UIConfig
 }
 
 type Sharing struct {
@@ -356,11 +442,11 @@ type Sharing struct {
 	ShowSharingButton *bool `json:"show_sharing_button,omitempty"`
 }
 
-func (o *Sharing) GetShowSharingButton() *bool {
-	if o == nil {
+func (s *Sharing) GetShowSharingButton() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.ShowSharingButton
+	return s.ShowSharingButton
 }
 
 type SingleViewType string
@@ -372,9 +458,9 @@ const (
 )
 
 type SingleView struct {
-	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline" name:"single_view"`
-	RedirectEntityView *RedirectEntityView `queryParam:"inline" name:"single_view"`
-	EntityViewDisabled *EntityViewDisabled `queryParam:"inline" name:"single_view"`
+	EntityDefaultEdit  *EntityDefaultEdit  `queryParam:"inline" union:"member"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline" union:"member"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline" union:"member"`
 
 	Type SingleViewType
 }
@@ -408,24 +494,54 @@ func CreateSingleViewEntityViewDisabled(entityViewDisabled EntityViewDisabled) S
 
 func (u *SingleView) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var entityDefaultEdit EntityDefaultEdit = EntityDefaultEdit{}
 	if err := utils.UnmarshalJSON(data, &entityDefaultEdit, "", true, nil); err == nil {
-		u.EntityDefaultEdit = &entityDefaultEdit
-		u.Type = SingleViewTypeEntityDefaultEdit
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  SingleViewTypeEntityDefaultEdit,
+			Value: &entityDefaultEdit,
+		})
 	}
 
 	var redirectEntityView RedirectEntityView = RedirectEntityView{}
 	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, nil); err == nil {
-		u.RedirectEntityView = &redirectEntityView
-		u.Type = SingleViewTypeRedirectEntityView
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  SingleViewTypeRedirectEntityView,
+			Value: &redirectEntityView,
+		})
 	}
 
 	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
 	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, nil); err == nil {
-		u.EntityViewDisabled = &entityViewDisabled
-		u.Type = SingleViewTypeEntityViewDisabled
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  SingleViewTypeEntityViewDisabled,
+			Value: &entityViewDisabled,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for SingleView", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestUnionCandidate(candidates, data)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for SingleView", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(SingleViewType)
+	switch best.Type {
+	case SingleViewTypeEntityDefaultEdit:
+		u.EntityDefaultEdit = best.Value.(*EntityDefaultEdit)
+		return nil
+	case SingleViewTypeRedirectEntityView:
+		u.RedirectEntityView = best.Value.(*RedirectEntityView)
+		return nil
+	case SingleViewTypeEntityViewDisabled:
+		u.EntityViewDisabled = best.Value.(*EntityViewDisabled)
 		return nil
 	}
 
@@ -457,9 +573,9 @@ const (
 )
 
 type TableView struct {
-	EntityDefaultTable *EntityDefaultTable `queryParam:"inline" name:"table_view"`
-	RedirectEntityView *RedirectEntityView `queryParam:"inline" name:"table_view"`
-	EntityViewDisabled *EntityViewDisabled `queryParam:"inline" name:"table_view"`
+	EntityDefaultTable *EntityDefaultTable `queryParam:"inline" union:"member"`
+	RedirectEntityView *RedirectEntityView `queryParam:"inline" union:"member"`
+	EntityViewDisabled *EntityViewDisabled `queryParam:"inline" union:"member"`
 
 	Type TableViewType
 }
@@ -493,24 +609,54 @@ func CreateTableViewEntityViewDisabled(entityViewDisabled EntityViewDisabled) Ta
 
 func (u *TableView) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var entityDefaultTable EntityDefaultTable = EntityDefaultTable{}
 	if err := utils.UnmarshalJSON(data, &entityDefaultTable, "", true, nil); err == nil {
-		u.EntityDefaultTable = &entityDefaultTable
-		u.Type = TableViewTypeEntityDefaultTable
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  TableViewTypeEntityDefaultTable,
+			Value: &entityDefaultTable,
+		})
 	}
 
 	var redirectEntityView RedirectEntityView = RedirectEntityView{}
 	if err := utils.UnmarshalJSON(data, &redirectEntityView, "", true, nil); err == nil {
-		u.RedirectEntityView = &redirectEntityView
-		u.Type = TableViewTypeRedirectEntityView
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  TableViewTypeRedirectEntityView,
+			Value: &redirectEntityView,
+		})
 	}
 
 	var entityViewDisabled EntityViewDisabled = EntityViewDisabled{}
 	if err := utils.UnmarshalJSON(data, &entityViewDisabled, "", true, nil); err == nil {
-		u.EntityViewDisabled = &entityViewDisabled
-		u.Type = TableViewTypeEntityViewDisabled
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  TableViewTypeEntityViewDisabled,
+			Value: &entityViewDisabled,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for TableView", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestUnionCandidate(candidates, data)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for TableView", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(TableViewType)
+	switch best.Type {
+	case TableViewTypeEntityDefaultTable:
+		u.EntityDefaultTable = best.Value.(*EntityDefaultTable)
+		return nil
+	case TableViewTypeRedirectEntityView:
+		u.RedirectEntityView = best.Value.(*RedirectEntityView)
+		return nil
+	case TableViewTypeEntityViewDisabled:
+		u.EntityViewDisabled = best.Value.(*EntityViewDisabled)
 		return nil
 	}
 
@@ -542,46 +688,46 @@ type EntitySchemaUIConfig struct {
 	TableView  *TableView  `json:"table_view,omitempty"`
 }
 
-func (o *EntitySchemaUIConfig) GetCreateView() *CreateView {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetCreateView() *CreateView {
+	if e == nil {
 		return nil
 	}
-	return o.CreateView
+	return e.CreateView
 }
 
-func (o *EntitySchemaUIConfig) GetEditView() *EditView {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetEditView() *EditView {
+	if e == nil {
 		return nil
 	}
-	return o.EditView
+	return e.EditView
 }
 
-func (o *EntitySchemaUIConfig) GetListItem() *ListItem {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetListItem() *ListItem {
+	if e == nil {
 		return nil
 	}
-	return o.ListItem
+	return e.ListItem
 }
 
-func (o *EntitySchemaUIConfig) GetSharing() *Sharing {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetSharing() *Sharing {
+	if e == nil {
 		return nil
 	}
-	return o.Sharing
+	return e.Sharing
 }
 
-func (o *EntitySchemaUIConfig) GetSingleView() *SingleView {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetSingleView() *SingleView {
+	if e == nil {
 		return nil
 	}
-	return o.SingleView
+	return e.SingleView
 }
 
-func (o *EntitySchemaUIConfig) GetTableView() *TableView {
-	if o == nil {
+func (e *EntitySchemaUIConfig) GetTableView() *TableView {
+	if e == nil {
 		return nil
 	}
-	return o.TableView
+	return e.TableView
 }
 
 // EntitySchema - The "type" of an Entity. Describes the shape. Includes Entity Attributes, Relations and Capabilities.
@@ -625,163 +771,163 @@ type EntitySchema struct {
 	Version       *int64                `json:"version,omitempty"`
 }
 
-func (o *EntitySchema) GetPurpose() []string {
-	if o == nil {
+func (e *EntitySchema) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Purpose
 }
 
-func (o *EntitySchema) GetAttributes() []Attribute {
-	if o == nil {
+func (e *EntitySchema) GetAttributes() []Attribute {
+	if e == nil {
 		return []Attribute{}
 	}
-	return o.Attributes
+	return e.Attributes
 }
 
-func (o *EntitySchema) GetBlueprint() *string {
-	if o == nil {
+func (e *EntitySchema) GetBlueprint() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Blueprint
+	return e.Blueprint
 }
 
-func (o *EntitySchema) GetCapabilities() []EntityCapability {
-	if o == nil {
+func (e *EntitySchema) GetCapabilities() []EntityCapability {
+	if e == nil {
 		return []EntityCapability{}
 	}
-	return o.Capabilities
+	return e.Capabilities
 }
 
-func (o *EntitySchema) GetCategory() *string {
-	if o == nil {
+func (e *EntitySchema) GetCategory() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Category
+	return e.Category
 }
 
-func (o *EntitySchema) GetDescription() *string {
-	if o == nil {
+func (e *EntitySchema) GetDescription() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Description
+	return e.Description
 }
 
-func (o *EntitySchema) GetDialogConfig() map[string]any {
-	if o == nil {
+func (e *EntitySchema) GetDialogConfig() map[string]any {
+	if e == nil {
 		return nil
 	}
-	return o.DialogConfig
+	return e.DialogConfig
 }
 
-func (o *EntitySchema) GetDocsURL() *string {
-	if o == nil {
+func (e *EntitySchema) GetDocsURL() *string {
+	if e == nil {
 		return nil
 	}
-	return o.DocsURL
+	return e.DocsURL
 }
 
-func (o *EntitySchema) GetDraft() *bool {
-	if o == nil {
+func (e *EntitySchema) GetDraft() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Draft
+	return e.Draft
 }
 
-func (o *EntitySchema) GetEnableSetting() []string {
-	if o == nil {
+func (e *EntitySchema) GetEnableSetting() []string {
+	if e == nil {
 		return nil
 	}
-	return o.EnableSetting
+	return e.EnableSetting
 }
 
-func (o *EntitySchema) GetExplicitSearchMappings() map[string]SearchMappings {
-	if o == nil {
+func (e *EntitySchema) GetExplicitSearchMappings() map[string]SearchMappings {
+	if e == nil {
 		return nil
 	}
-	return o.ExplicitSearchMappings
+	return e.ExplicitSearchMappings
 }
 
-func (o *EntitySchema) GetFeatureFlag() *string {
-	if o == nil {
+func (e *EntitySchema) GetFeatureFlag() *string {
+	if e == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return e.FeatureFlag
 }
 
-func (o *EntitySchema) GetGroupHeadlines() []GroupHeadline {
-	if o == nil {
+func (e *EntitySchema) GetGroupHeadlines() []GroupHeadline {
+	if e == nil {
 		return nil
 	}
-	return o.GroupHeadlines
+	return e.GroupHeadlines
 }
 
-func (o *EntitySchema) GetGroupSettings() []EntitySchemaGroup {
-	if o == nil {
+func (e *EntitySchema) GetGroupSettings() []EntitySchemaGroup {
+	if e == nil {
 		return nil
 	}
-	return o.GroupSettings
+	return e.GroupSettings
 }
 
-func (o *EntitySchema) GetIcon() *string {
-	if o == nil {
+func (e *EntitySchema) GetIcon() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Icon
+	return e.Icon
 }
 
-func (o *EntitySchema) GetLayoutSettings() *LayoutSettings {
-	if o == nil {
+func (e *EntitySchema) GetLayoutSettings() *LayoutSettings {
+	if e == nil {
 		return nil
 	}
-	return o.LayoutSettings
+	return e.LayoutSettings
 }
 
-func (o *EntitySchema) GetName() string {
-	if o == nil {
+func (e *EntitySchema) GetName() string {
+	if e == nil {
 		return ""
 	}
-	return o.Name
+	return e.Name
 }
 
-func (o *EntitySchema) GetPlural() string {
-	if o == nil {
+func (e *EntitySchema) GetPlural() string {
+	if e == nil {
 		return ""
 	}
-	return o.Plural
+	return e.Plural
 }
 
-func (o *EntitySchema) GetPublished() *bool {
-	if o == nil {
+func (e *EntitySchema) GetPublished() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Published
+	return e.Published
 }
 
-func (o *EntitySchema) GetSlug() string {
-	if o == nil {
+func (e *EntitySchema) GetSlug() string {
+	if e == nil {
 		return ""
 	}
-	return o.Slug
+	return e.Slug
 }
 
-func (o *EntitySchema) GetTitleTemplate() *string {
-	if o == nil {
+func (e *EntitySchema) GetTitleTemplate() *string {
+	if e == nil {
 		return nil
 	}
-	return o.TitleTemplate
+	return e.TitleTemplate
 }
 
-func (o *EntitySchema) GetUIConfig() *EntitySchemaUIConfig {
-	if o == nil {
+func (e *EntitySchema) GetUIConfig() *EntitySchemaUIConfig {
+	if e == nil {
 		return nil
 	}
-	return o.UIConfig
+	return e.UIConfig
 }
 
-func (o *EntitySchema) GetVersion() *int64 {
-	if o == nil {
+func (e *EntitySchema) GetVersion() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.Version
+	return e.Version
 }

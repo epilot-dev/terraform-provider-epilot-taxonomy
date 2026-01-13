@@ -16,8 +16,8 @@ const (
 )
 
 type EntityNodes struct {
-	Entity        *Entity  `queryParam:"inline" name:"entityNodes"`
-	ArrayOfEntity []Entity `queryParam:"inline" name:"entityNodes"`
+	Entity        *Entity  `queryParam:"inline" union:"member"`
+	ArrayOfEntity []Entity `queryParam:"inline" union:"member"`
 
 	Type EntityNodesType
 }
@@ -42,17 +42,43 @@ func CreateEntityNodesArrayOfEntity(arrayOfEntity []Entity) EntityNodes {
 
 func (u *EntityNodes) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var entity Entity = Entity{}
 	if err := utils.UnmarshalJSON(data, &entity, "", true, nil); err == nil {
-		u.Entity = &entity
-		u.Type = EntityNodesTypeEntity
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  EntityNodesTypeEntity,
+			Value: &entity,
+		})
 	}
 
 	var arrayOfEntity []Entity = []Entity{}
 	if err := utils.UnmarshalJSON(data, &arrayOfEntity, "", true, nil); err == nil {
-		u.ArrayOfEntity = arrayOfEntity
-		u.Type = EntityNodesTypeArrayOfEntity
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  EntityNodesTypeArrayOfEntity,
+			Value: arrayOfEntity,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for EntityNodes", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestUnionCandidate(candidates, data)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for EntityNodes", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(EntityNodesType)
+	switch best.Type {
+	case EntityNodesTypeEntity:
+		u.Entity = best.Value.(*Entity)
+		return nil
+	case EntityNodesTypeArrayOfEntity:
+		u.ArrayOfEntity = best.Value.([]Entity)
 		return nil
 	}
 
@@ -83,23 +109,23 @@ type GraphQueryResponse struct {
 	Nodes map[string][]string `json:"nodes,omitempty"`
 }
 
-func (o *GraphQueryResponse) GetEdges() []GraphEdge {
-	if o == nil {
+func (g *GraphQueryResponse) GetEdges() []GraphEdge {
+	if g == nil {
 		return []GraphEdge{}
 	}
-	return o.Edges
+	return g.Edges
 }
 
-func (o *GraphQueryResponse) GetEntityNodes() map[string]EntityNodes {
-	if o == nil {
+func (g *GraphQueryResponse) GetEntityNodes() map[string]EntityNodes {
+	if g == nil {
 		return nil
 	}
-	return o.EntityNodes
+	return g.EntityNodes
 }
 
-func (o *GraphQueryResponse) GetNodes() map[string][]string {
-	if o == nil {
+func (g *GraphQueryResponse) GetNodes() map[string][]string {
+	if g == nil {
 		return nil
 	}
-	return o.Nodes
+	return g.Nodes
 }

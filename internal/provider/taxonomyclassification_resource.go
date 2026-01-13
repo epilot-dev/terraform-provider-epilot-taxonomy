@@ -36,6 +36,7 @@ type TaxonomyClassificationResourceModel struct {
 	Color            types.String   `tfsdk:"color"`
 	CreatedAt        types.String   `tfsdk:"created_at"`
 	EnabledLocations []types.String `tfsdk:"enabled_locations"`
+	EnabledPurposes  []types.String `tfsdk:"enabled_purposes"`
 	ID               types.String   `tfsdk:"id"`
 	Manifest         []types.String `tfsdk:"manifest"`
 	Name             types.String   `tfsdk:"name"`
@@ -76,6 +77,12 @@ func (r *TaxonomyClassificationResource) Schema(ctx context.Context, req resourc
 				Optional:    true,
 				ElementType: types.StringType,
 				Description: `List of locations where the classification is enabled to be used. If empty, it's enabled for all locations.`,
+			},
+			"enabled_purposes": schema.ListAttribute{
+				Computed:    true,
+				Optional:    true,
+				ElementType: types.StringType,
+				Description: `List of purpose slugs where the classification is enabled to be used. If empty, it's enabled for all purposes.`,
 			},
 			"id": schema.StringAttribute{
 				Computed: true,
@@ -169,6 +176,13 @@ func (r *TaxonomyClassificationResource) Create(ctx context.Context, req resourc
 	}
 	if res == nil {
 		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res))
+		return
+	}
+	if res.StatusCode == 409 {
+		resp.Diagnostics.AddError(
+			"Resource Already Exists",
+			"When creating this resource, the API indicated that this resource already exists. You can bring the existing resource under management using Terraform import functionality or retry with a unique configuration.",
+		)
 		return
 	}
 	if res.StatusCode != 201 {
@@ -345,7 +359,10 @@ func (r *TaxonomyClassificationResource) Delete(ctx context.Context, req resourc
 		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res))
 		return
 	}
-	if res.StatusCode != 200 {
+	switch res.StatusCode {
+	case 200, 404:
+		break
+	default:
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res.StatusCode), debugResponse(res.RawResponse))
 		return
 	}

@@ -55,7 +55,7 @@ Default: "entity"; must be one of ["entity", "relation", "system", "file_collect
 - `created_at` (String)
 - `created_by` (String) User ID of the creator
 - `deleted_at` (String) Date when the taxonomy was soft-deleted (enabled: false)
-- `kind` (String) Kind of taxonomy e.g. system or user_defined. By default, it's empty, which means 'user_defined'. must be one of ["system", "user_defined"]
+- `kind` (String) Kind of taxonomy e.g. system or user_defined. By default, it's empty, which means 'user_defined'
 - `updated_at` (String)
 
 ## Import

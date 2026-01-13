@@ -15,18 +15,18 @@ type CreateTaxonomyResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *CreateTaxonomyResponseBody) GetError() *string {
-	if o == nil {
+func (c *CreateTaxonomyResponseBody) GetError() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Error
+	return c.Error
 }
 
-func (o *CreateTaxonomyResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (c *CreateTaxonomyResponseBody) GetStatus() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Status
+	return c.Status
 }
 
 type CreateTaxonomyResponse struct {
@@ -43,44 +43,44 @@ type CreateTaxonomyResponse struct {
 	Object *CreateTaxonomyResponseBody
 }
 
-func (o *CreateTaxonomyResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateTaxonomyResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateTaxonomyResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (c *CreateTaxonomyResponse) GetHeaders() map[string][]string {
+	if c == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return c.Headers
 }
 
-func (o *CreateTaxonomyResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateTaxonomyResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateTaxonomyResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateTaxonomyResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateTaxonomyResponse) GetTaxonomy() *shared.Taxonomy {
-	if o == nil {
+func (c *CreateTaxonomyResponse) GetTaxonomy() *shared.Taxonomy {
+	if c == nil {
 		return nil
 	}
-	return o.Taxonomy
+	return c.Taxonomy
 }
 
-func (o *CreateTaxonomyResponse) GetObject() *CreateTaxonomyResponseBody {
-	if o == nil {
+func (c *CreateTaxonomyResponse) GetObject() *CreateTaxonomyResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }

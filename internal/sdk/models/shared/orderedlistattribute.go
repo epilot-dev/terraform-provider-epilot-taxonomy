@@ -180,7 +180,7 @@ func (o OrderedListAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (o *OrderedListAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &o, "", false, nil); err != nil {
 		return err
 	}
 	return nil

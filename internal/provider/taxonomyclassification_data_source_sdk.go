@@ -28,6 +28,10 @@ func (r *TaxonomyClassificationDataSourceModel) RefreshFromSharedTaxonomyClassif
 		for _, v := range resp.EnabledLocations {
 			r.EnabledLocations = append(r.EnabledLocations, types.StringValue(v))
 		}
+		r.EnabledPurposes = make([]types.String, 0, len(resp.EnabledPurposes))
+		for _, v := range resp.EnabledPurposes {
+			r.EnabledPurposes = append(r.EnabledPurposes, types.StringValue(v))
+		}
 		r.ID = types.StringPointerValue(resp.ID)
 		r.Name = types.StringValue(resp.Name)
 		r.Parents = make([]types.String, 0, len(resp.Parents))
