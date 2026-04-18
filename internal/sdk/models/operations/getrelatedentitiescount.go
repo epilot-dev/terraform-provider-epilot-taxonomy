@@ -16,25 +16,25 @@ type GetRelatedEntitiesCountRequest struct {
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
 }
 
-func (o *GetRelatedEntitiesCountRequest) GetExcludeSchemas() []string {
-	if o == nil {
+func (g *GetRelatedEntitiesCountRequest) GetExcludeSchemas() []string {
+	if g == nil {
 		return nil
 	}
-	return o.ExcludeSchemas
+	return g.ExcludeSchemas
 }
 
-func (o *GetRelatedEntitiesCountRequest) GetID() string {
-	if o == nil {
+func (g *GetRelatedEntitiesCountRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetRelatedEntitiesCountRequest) GetSlug() string {
-	if o == nil {
+func (g *GetRelatedEntitiesCountRequest) GetSlug() string {
+	if g == nil {
 		return ""
 	}
-	return o.Slug
+	return g.Slug
 }
 
 // GetRelatedEntitiesCountResponseBody - A generic error returned by the API
@@ -45,18 +45,18 @@ type GetRelatedEntitiesCountResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetRelatedEntitiesCountResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetRelatedEntitiesCountResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetRelatedEntitiesCountResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetRelatedEntitiesCountResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetRelatedEntitiesCountResponse struct {
@@ -72,37 +72,37 @@ type GetRelatedEntitiesCountResponse struct {
 	Object *GetRelatedEntitiesCountResponseBody
 }
 
-func (o *GetRelatedEntitiesCountResponse) GetContentType() string {
-	if o == nil {
+func (g *GetRelatedEntitiesCountResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetRelatedEntitiesCountResponse) GetGetRelatedEntitiesCount() *shared.GetRelatedEntitiesCount {
-	if o == nil {
+func (g *GetRelatedEntitiesCountResponse) GetGetRelatedEntitiesCount() *shared.GetRelatedEntitiesCount {
+	if g == nil {
 		return nil
 	}
-	return o.GetRelatedEntitiesCount
+	return g.GetRelatedEntitiesCount
 }
 
-func (o *GetRelatedEntitiesCountResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetRelatedEntitiesCountResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetRelatedEntitiesCountResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetRelatedEntitiesCountResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetRelatedEntitiesCountResponse) GetObject() *GetRelatedEntitiesCountResponseBody {
-	if o == nil {
+func (g *GetRelatedEntitiesCountResponse) GetObject() *GetRelatedEntitiesCountResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

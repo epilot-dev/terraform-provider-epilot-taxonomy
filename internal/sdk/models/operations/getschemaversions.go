@@ -23,90 +23,102 @@ func (g GetSchemaVersionsRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetSchemaVersionsRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"slug"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetSchemaVersionsRequest) GetDraftsFrom() *float64 {
-	if o == nil {
+func (g *GetSchemaVersionsRequest) GetDraftsFrom() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.DraftsFrom
+	return g.DraftsFrom
 }
 
-func (o *GetSchemaVersionsRequest) GetDraftsSize() *float64 {
-	if o == nil {
+func (g *GetSchemaVersionsRequest) GetDraftsSize() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.DraftsSize
+	return g.DraftsSize
 }
 
-func (o *GetSchemaVersionsRequest) GetFields() []string {
-	if o == nil {
+func (g *GetSchemaVersionsRequest) GetFields() []string {
+	if g == nil {
 		return nil
 	}
-	return o.Fields
+	return g.Fields
 }
 
-func (o *GetSchemaVersionsRequest) GetSlug() string {
-	if o == nil {
+func (g *GetSchemaVersionsRequest) GetSlug() string {
+	if g == nil {
 		return ""
 	}
-	return o.Slug
+	return g.Slug
 }
 
-func (o *GetSchemaVersionsRequest) GetVersionsFrom() *float64 {
-	if o == nil {
+func (g *GetSchemaVersionsRequest) GetVersionsFrom() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.VersionsFrom
+	return g.VersionsFrom
 }
 
-func (o *GetSchemaVersionsRequest) GetVersionsSize() *float64 {
-	if o == nil {
+func (g *GetSchemaVersionsRequest) GetVersionsSize() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.VersionsSize
+	return g.VersionsSize
 }
 
 // GetSchemaVersionsResponseBody - Success
 type GetSchemaVersionsResponseBody struct {
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Drafts []shared.EntitySchemaItem `json:"drafts,omitempty"`
 	// Pagination: Whether more drafts are available
-	DraftsMore *bool                     `json:"drafts_more,omitempty"`
-	Versions   []shared.EntitySchemaItem `json:"versions"`
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	DraftsMore *bool `json:"drafts_more,omitempty"`
+	// The version ID that is currently frozen, if any
+	FrozenVersion *string                   `json:"frozen_version,omitempty"`
+	Versions      []shared.EntitySchemaItem `json:"versions"`
 	// Pagination: Whether more versions are available
 	VersionsMore bool `json:"versions_more"`
 }
 
-func (o *GetSchemaVersionsResponseBody) GetDrafts() []shared.EntitySchemaItem {
-	if o == nil {
+func (g *GetSchemaVersionsResponseBody) GetDrafts() []shared.EntitySchemaItem {
+	if g == nil {
 		return nil
 	}
-	return o.Drafts
+	return g.Drafts
 }
 
-func (o *GetSchemaVersionsResponseBody) GetDraftsMore() *bool {
-	if o == nil {
+func (g *GetSchemaVersionsResponseBody) GetDraftsMore() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.DraftsMore
+	return g.DraftsMore
 }
 
-func (o *GetSchemaVersionsResponseBody) GetVersions() []shared.EntitySchemaItem {
-	if o == nil {
+func (g *GetSchemaVersionsResponseBody) GetFrozenVersion() *string {
+	if g == nil {
+		return nil
+	}
+	return g.FrozenVersion
+}
+
+func (g *GetSchemaVersionsResponseBody) GetVersions() []shared.EntitySchemaItem {
+	if g == nil {
 		return []shared.EntitySchemaItem{}
 	}
-	return o.Versions
+	return g.Versions
 }
 
-func (o *GetSchemaVersionsResponseBody) GetVersionsMore() bool {
-	if o == nil {
+func (g *GetSchemaVersionsResponseBody) GetVersionsMore() bool {
+	if g == nil {
 		return false
 	}
-	return o.VersionsMore
+	return g.VersionsMore
 }
 
 type GetSchemaVersionsResponse struct {
@@ -120,30 +132,30 @@ type GetSchemaVersionsResponse struct {
 	Object *GetSchemaVersionsResponseBody
 }
 
-func (o *GetSchemaVersionsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSchemaVersionsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSchemaVersionsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSchemaVersionsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSchemaVersionsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSchemaVersionsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSchemaVersionsResponse) GetObject() *GetSchemaVersionsResponseBody {
-	if o == nil {
+func (g *GetSchemaVersionsResponse) GetObject() *GetSchemaVersionsResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

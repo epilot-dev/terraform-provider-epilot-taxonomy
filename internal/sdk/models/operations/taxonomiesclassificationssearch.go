@@ -3,6 +3,7 @@
 package operations
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk/internal/utils"
@@ -14,11 +15,159 @@ type TaxonomiesClassificationsSearchRequestBody struct {
 	ClassificationIds []shared.ClassificationIDOrPattern `json:"classificationIds,omitempty"`
 }
 
-func (o *TaxonomiesClassificationsSearchRequestBody) GetClassificationIds() []shared.ClassificationIDOrPattern {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchRequestBody) GetClassificationIds() []shared.ClassificationIDOrPattern {
+	if t == nil {
 		return nil
 	}
-	return o.ClassificationIds
+	return t.ClassificationIds
+}
+
+type Two string
+
+const (
+	TwoRelation Two = "relation"
+	TwoSchema   Two = "schema"
+	TwoSystem   Two = "system"
+)
+
+func (e Two) ToPointer() *Two {
+	return &e
+}
+func (e *Two) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "relation":
+		fallthrough
+	case "schema":
+		fallthrough
+	case "system":
+		*e = Two(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Two: %v", v)
+	}
+}
+
+type One string
+
+const (
+	OneRelation One = "relation"
+	OneSchema   One = "schema"
+	OneSystem   One = "system"
+)
+
+func (e One) ToPointer() *One {
+	return &e
+}
+func (e *One) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "relation":
+		fallthrough
+	case "schema":
+		fallthrough
+	case "system":
+		*e = One(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for One: %v", v)
+	}
+}
+
+type ExcludeTypesType string
+
+const (
+	ExcludeTypesTypeOne      ExcludeTypesType = "1"
+	ExcludeTypesTypeArrayOf2 ExcludeTypesType = "arrayOf2"
+)
+
+// ExcludeTypes - Taxonomy type(s) to exclude from the results. Useful to filter out relation labels, schema labels, and system labels.
+type ExcludeTypes struct {
+	One      *One  `queryParam:"inline" union:"member"`
+	ArrayOf2 []Two `queryParam:"inline" union:"member"`
+
+	Type ExcludeTypesType
+}
+
+func CreateExcludeTypesOne(one One) ExcludeTypes {
+	typ := ExcludeTypesTypeOne
+
+	return ExcludeTypes{
+		One:  &one,
+		Type: typ,
+	}
+}
+
+func CreateExcludeTypesArrayOf2(arrayOf2 []Two) ExcludeTypes {
+	typ := ExcludeTypesTypeArrayOf2
+
+	return ExcludeTypes{
+		ArrayOf2: arrayOf2,
+		Type:     typ,
+	}
+}
+
+func (u *ExcludeTypes) UnmarshalJSON(data []byte) error {
+
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
+	var one One = One("")
+	if err := utils.UnmarshalJSON(data, &one, "", true, nil); err == nil {
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  ExcludeTypesTypeOne,
+			Value: &one,
+		})
+	}
+
+	var arrayOf2 []Two = []Two{}
+	if err := utils.UnmarshalJSON(data, &arrayOf2, "", true, nil); err == nil {
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  ExcludeTypesTypeArrayOf2,
+			Value: arrayOf2,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for ExcludeTypes", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestUnionCandidate(candidates, data)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for ExcludeTypes", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(ExcludeTypesType)
+	switch best.Type {
+	case ExcludeTypesTypeOne:
+		u.One = best.Value.(*One)
+		return nil
+	case ExcludeTypesTypeArrayOf2:
+		u.ArrayOf2 = best.Value.([]Two)
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ExcludeTypes", string(data))
+}
+
+func (u ExcludeTypes) MarshalJSON() ([]byte, error) {
+	if u.One != nil {
+		return utils.MarshalJSON(u.One, "", true)
+	}
+
+	if u.ArrayOf2 != nil {
+		return utils.MarshalJSON(u.ArrayOf2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ExcludeTypes: all fields are null")
 }
 
 type TaxonomySlugType string
@@ -30,8 +179,8 @@ const (
 
 // TaxonomySlug - The taxonomy slug(s) to search within. When provided with multiple taxonomy slugs, the search will be performed across all the provided taxonomies.
 type TaxonomySlug struct {
-	Str        *string  `queryParam:"inline" name:"taxonomySlug"`
-	ArrayOfStr []string `queryParam:"inline" name:"taxonomySlug"`
+	Str        *string  `queryParam:"inline" union:"member"`
+	ArrayOfStr []string `queryParam:"inline" union:"member"`
 
 	Type TaxonomySlugType
 }
@@ -56,17 +205,43 @@ func CreateTaxonomySlugArrayOfStr(arrayOfStr []string) TaxonomySlug {
 
 func (u *TaxonomySlug) UnmarshalJSON(data []byte) error {
 
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = TaxonomySlugTypeStr
-		return nil
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  TaxonomySlugTypeStr,
+			Value: &str,
+		})
 	}
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
-		u.ArrayOfStr = arrayOfStr
-		u.Type = TaxonomySlugTypeArrayOfStr
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  TaxonomySlugTypeArrayOfStr,
+			Value: arrayOfStr,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for TaxonomySlug", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestUnionCandidate(candidates, data)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for TaxonomySlug", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(TaxonomySlugType)
+	switch best.Type {
+	case TaxonomySlugTypeStr:
+		u.Str = best.Value.(*string)
+		return nil
+	case TaxonomySlugTypeArrayOfStr:
+		u.ArrayOfStr = best.Value.([]string)
 		return nil
 	}
 
@@ -91,6 +266,9 @@ type TaxonomiesClassificationsSearchRequest struct {
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Archived *bool `queryParam:"style=form,explode=true,name=archived"`
+	// Taxonomy type(s) to exclude from the results. Useful to filter out relation labels, schema labels, and system labels.
+	//
+	ExcludeTypes *ExcludeTypes `queryParam:"style=form,explode=true,name=exclude_types"`
 	// Whether to include archived labels in the search results
 	// - `true`: include archived labels
 	// - `false`: exclude archived labels
@@ -117,39 +295,46 @@ func (t *TaxonomiesClassificationsSearchRequest) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *TaxonomiesClassificationsSearchRequest) GetRequestBody() *TaxonomiesClassificationsSearchRequestBody {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchRequest) GetRequestBody() *TaxonomiesClassificationsSearchRequestBody {
+	if t == nil {
 		return nil
 	}
-	return o.RequestBody
+	return t.RequestBody
 }
 
-func (o *TaxonomiesClassificationsSearchRequest) GetArchived() *bool {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchRequest) GetArchived() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Archived
+	return t.Archived
 }
 
-func (o *TaxonomiesClassificationsSearchRequest) GetIncludeArchived() *shared.TaxonomySearchIncludeArchivedParam {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchRequest) GetExcludeTypes() *ExcludeTypes {
+	if t == nil {
 		return nil
 	}
-	return o.IncludeArchived
+	return t.ExcludeTypes
 }
 
-func (o *TaxonomiesClassificationsSearchRequest) GetQuery() *string {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchRequest) GetIncludeArchived() *shared.TaxonomySearchIncludeArchivedParam {
+	if t == nil {
 		return nil
 	}
-	return o.Query
+	return t.IncludeArchived
 }
 
-func (o *TaxonomiesClassificationsSearchRequest) GetTaxonomySlug() *TaxonomySlug {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchRequest) GetQuery() *string {
+	if t == nil {
 		return nil
 	}
-	return o.TaxonomySlug
+	return t.Query
+}
+
+func (t *TaxonomiesClassificationsSearchRequest) GetTaxonomySlug() *TaxonomySlug {
+	if t == nil {
+		return nil
+	}
+	return t.TaxonomySlug
 }
 
 // TaxonomiesClassificationsSearchTaxonomyResponseBody - A generic error returned by the API
@@ -160,18 +345,18 @@ type TaxonomiesClassificationsSearchTaxonomyResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *TaxonomiesClassificationsSearchTaxonomyResponseBody) GetError() *string {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchTaxonomyResponseBody) GetError() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Error
+	return t.Error
 }
 
-func (o *TaxonomiesClassificationsSearchTaxonomyResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchTaxonomyResponseBody) GetStatus() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Status
+	return t.Status
 }
 
 // TaxonomiesClassificationsSearchResponseBody - Returns the classifications for the taxonomy slug provided
@@ -180,18 +365,18 @@ type TaxonomiesClassificationsSearchResponseBody struct {
 	Results []shared.TaxonomyClassification `json:"results,omitempty"`
 }
 
-func (o *TaxonomiesClassificationsSearchResponseBody) GetHits() *int64 {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchResponseBody) GetHits() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Hits
+	return t.Hits
 }
 
-func (o *TaxonomiesClassificationsSearchResponseBody) GetResults() []shared.TaxonomyClassification {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchResponseBody) GetResults() []shared.TaxonomyClassification {
+	if t == nil {
 		return nil
 	}
-	return o.Results
+	return t.Results
 }
 
 type TaxonomiesClassificationsSearchResponse struct {
@@ -208,44 +393,44 @@ type TaxonomiesClassificationsSearchResponse struct {
 	Object1 *TaxonomiesClassificationsSearchTaxonomyResponseBody
 }
 
-func (o *TaxonomiesClassificationsSearchResponse) GetContentType() string {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchResponse) GetContentType() string {
+	if t == nil {
 		return ""
 	}
-	return o.ContentType
+	return t.ContentType
 }
 
-func (o *TaxonomiesClassificationsSearchResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchResponse) GetHeaders() map[string][]string {
+	if t == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return t.Headers
 }
 
-func (o *TaxonomiesClassificationsSearchResponse) GetStatusCode() int {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchResponse) GetStatusCode() int {
+	if t == nil {
 		return 0
 	}
-	return o.StatusCode
+	return t.StatusCode
 }
 
-func (o *TaxonomiesClassificationsSearchResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchResponse) GetRawResponse() *http.Response {
+	if t == nil {
 		return nil
 	}
-	return o.RawResponse
+	return t.RawResponse
 }
 
-func (o *TaxonomiesClassificationsSearchResponse) GetObject() *TaxonomiesClassificationsSearchResponseBody {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchResponse) GetObject() *TaxonomiesClassificationsSearchResponseBody {
+	if t == nil {
 		return nil
 	}
-	return o.Object
+	return t.Object
 }
 
-func (o *TaxonomiesClassificationsSearchResponse) GetObject1() *TaxonomiesClassificationsSearchTaxonomyResponseBody {
-	if o == nil {
+func (t *TaxonomiesClassificationsSearchResponse) GetObject1() *TaxonomiesClassificationsSearchTaxonomyResponseBody {
+	if t == nil {
 		return nil
 	}
-	return o.Object1
+	return t.Object1
 }

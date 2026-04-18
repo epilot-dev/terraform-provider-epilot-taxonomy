@@ -23,50 +23,50 @@ func (r RelationItem) MarshalJSON() ([]byte, error) {
 }
 
 func (r *RelationItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"attribute", "entity_id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *RelationItem) GetSchema() *string {
-	if o == nil {
+func (r *RelationItem) GetSchema() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Schema
+	return r.Schema
 }
 
-func (o *RelationItem) GetTags() []string {
-	if o == nil {
+func (r *RelationItem) GetTags() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Tags
+	return r.Tags
 }
 
-func (o *RelationItem) GetAttribute() string {
-	if o == nil {
+func (r *RelationItem) GetAttribute() string {
+	if r == nil {
 		return ""
 	}
-	return o.Attribute
+	return r.Attribute
 }
 
-func (o *RelationItem) GetEntityID() string {
-	if o == nil {
+func (r *RelationItem) GetEntityID() string {
+	if r == nil {
 		return ""
 	}
-	return o.EntityID
+	return r.EntityID
 }
 
-func (o *RelationItem) GetOrgID() *string {
-	if o == nil {
+func (r *RelationItem) GetOrgID() *string {
+	if r == nil {
 		return nil
 	}
-	return o.OrgID
+	return r.OrgID
 }
 
-func (o *RelationItem) GetReverse() *bool {
-	if o == nil {
+func (r *RelationItem) GetReverse() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Reverse
+	return r.Reverse
 }

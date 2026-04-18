@@ -12,11 +12,11 @@ type GetSchemaGroupRequest struct {
 	CompositeID string `pathParam:"style=simple,explode=false,name=composite_id"`
 }
 
-func (o *GetSchemaGroupRequest) GetCompositeID() string {
-	if o == nil {
+func (g *GetSchemaGroupRequest) GetCompositeID() string {
+	if g == nil {
 		return ""
 	}
-	return o.CompositeID
+	return g.CompositeID
 }
 
 // GetSchemaGroupResponseBody - A generic error returned by the API
@@ -27,18 +27,18 @@ type GetSchemaGroupResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetSchemaGroupResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetSchemaGroupResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetSchemaGroupResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetSchemaGroupResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetSchemaGroupResponse struct {
@@ -54,37 +54,37 @@ type GetSchemaGroupResponse struct {
 	Object *GetSchemaGroupResponseBody
 }
 
-func (o *GetSchemaGroupResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSchemaGroupResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSchemaGroupResponse) GetEntitySchemaGroupWithCompositeID() *shared.EntitySchemaGroupWithCompositeID {
-	if o == nil {
+func (g *GetSchemaGroupResponse) GetEntitySchemaGroupWithCompositeID() *shared.EntitySchemaGroupWithCompositeID {
+	if g == nil {
 		return nil
 	}
-	return o.EntitySchemaGroupWithCompositeID
+	return g.EntitySchemaGroupWithCompositeID
 }
 
-func (o *GetSchemaGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSchemaGroupResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSchemaGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSchemaGroupResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSchemaGroupResponse) GetObject() *GetSchemaGroupResponseBody {
-	if o == nil {
+func (g *GetSchemaGroupResponse) GetObject() *GetSchemaGroupResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

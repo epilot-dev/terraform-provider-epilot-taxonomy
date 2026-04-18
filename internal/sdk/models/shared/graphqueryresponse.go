@@ -11,23 +11,23 @@ import (
 type EntityNodesType string
 
 const (
-	EntityNodesTypeEntity        EntityNodesType = "Entity"
-	EntityNodesTypeArrayOfEntity EntityNodesType = "arrayOfEntity"
+	EntityNodesTypeNullableEntity EntityNodesType = "NullableEntity"
+	EntityNodesTypeArrayOfEntity  EntityNodesType = "arrayOfEntity"
 )
 
 type EntityNodes struct {
-	Entity        *Entity  `queryParam:"inline" name:"entityNodes"`
-	ArrayOfEntity []Entity `queryParam:"inline" name:"entityNodes"`
+	NullableEntity *NullableEntity `queryParam:"inline" union:"member"`
+	ArrayOfEntity  []Entity        `queryParam:"inline" union:"member"`
 
 	Type EntityNodesType
 }
 
-func CreateEntityNodesEntity(entity Entity) EntityNodes {
-	typ := EntityNodesTypeEntity
+func CreateEntityNodesNullableEntity(nullableEntity NullableEntity) EntityNodes {
+	typ := EntityNodesTypeNullableEntity
 
 	return EntityNodes{
-		Entity: &entity,
-		Type:   typ,
+		NullableEntity: &nullableEntity,
+		Type:           typ,
 	}
 }
 
@@ -42,17 +42,43 @@ func CreateEntityNodesArrayOfEntity(arrayOfEntity []Entity) EntityNodes {
 
 func (u *EntityNodes) UnmarshalJSON(data []byte) error {
 
-	var entity Entity = Entity{}
-	if err := utils.UnmarshalJSON(data, &entity, "", true, nil); err == nil {
-		u.Entity = &entity
-		u.Type = EntityNodesTypeEntity
-		return nil
+	var candidates []utils.UnionCandidate
+
+	// Collect all valid candidates
+	var nullableEntity NullableEntity = NullableEntity{}
+	if err := utils.UnmarshalJSON(data, &nullableEntity, "", true, nil); err == nil {
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  EntityNodesTypeNullableEntity,
+			Value: &nullableEntity,
+		})
 	}
 
 	var arrayOfEntity []Entity = []Entity{}
 	if err := utils.UnmarshalJSON(data, &arrayOfEntity, "", true, nil); err == nil {
-		u.ArrayOfEntity = arrayOfEntity
-		u.Type = EntityNodesTypeArrayOfEntity
+		candidates = append(candidates, utils.UnionCandidate{
+			Type:  EntityNodesTypeArrayOfEntity,
+			Value: arrayOfEntity,
+		})
+	}
+
+	if len(candidates) == 0 {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for EntityNodes", string(data))
+	}
+
+	// Pick the best candidate using multi-stage filtering
+	best := utils.PickBestUnionCandidate(candidates, data)
+	if best == nil {
+		return fmt.Errorf("could not unmarshal `%s` into any supported union types for EntityNodes", string(data))
+	}
+
+	// Set the union type and value based on the best candidate
+	u.Type = best.Type.(EntityNodesType)
+	switch best.Type {
+	case EntityNodesTypeNullableEntity:
+		u.NullableEntity = best.Value.(*NullableEntity)
+		return nil
+	case EntityNodesTypeArrayOfEntity:
+		u.ArrayOfEntity = best.Value.([]Entity)
 		return nil
 	}
 
@@ -60,8 +86,8 @@ func (u *EntityNodes) UnmarshalJSON(data []byte) error {
 }
 
 func (u EntityNodes) MarshalJSON() ([]byte, error) {
-	if u.Entity != nil {
-		return utils.MarshalJSON(u.Entity, "", true)
+	if u.NullableEntity != nil {
+		return utils.MarshalJSON(u.NullableEntity, "", true)
 	}
 
 	if u.ArrayOfEntity != nil {
@@ -75,31 +101,31 @@ type GraphQueryResponse struct {
 	// List of edges as defined in the request
 	Edges []GraphEdge `json:"edges"`
 	// Map of node IDs to entity objects or arrays of entity objects (present when hydrate=true).
-	// The seed node always returns a single Entity object.
-	// Other nodes return a single Entity object if they contain exactly one entity, or an array of Entity objects if they contain multiple entities.
+	// The seed node and nodes with cardinality="one" return a single Entity object, or null if no entity was found.
+	// Nodes with cardinality="many" return an array of Entity objects.
 	//
 	EntityNodes map[string]EntityNodes `json:"entityNodes,omitempty"`
 	// Map of node IDs to arrays of entity IDs found for that node (present when hydrate=false)
 	Nodes map[string][]string `json:"nodes,omitempty"`
 }
 
-func (o *GraphQueryResponse) GetEdges() []GraphEdge {
-	if o == nil {
+func (g *GraphQueryResponse) GetEdges() []GraphEdge {
+	if g == nil {
 		return []GraphEdge{}
 	}
-	return o.Edges
+	return g.Edges
 }
 
-func (o *GraphQueryResponse) GetEntityNodes() map[string]EntityNodes {
-	if o == nil {
+func (g *GraphQueryResponse) GetEntityNodes() map[string]EntityNodes {
+	if g == nil {
 		return nil
 	}
-	return o.EntityNodes
+	return g.EntityNodes
 }
 
-func (o *GraphQueryResponse) GetNodes() map[string][]string {
-	if o == nil {
+func (g *GraphQueryResponse) GetNodes() map[string][]string {
+	if g == nil {
 		return nil
 	}
-	return o.Nodes
+	return g.Nodes
 }

@@ -18,29 +18,29 @@ func (g GraphQueryRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GraphQueryRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"graph", "seed"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GraphQueryRequest) GetGraph() GraphDefinition {
-	if o == nil {
+func (g *GraphQueryRequest) GetGraph() GraphDefinition {
+	if g == nil {
 		return GraphDefinition{}
 	}
-	return o.Graph
+	return g.Graph
 }
 
-func (o *GraphQueryRequest) GetHydrate() *bool {
-	if o == nil {
+func (g *GraphQueryRequest) GetHydrate() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Hydrate
+	return g.Hydrate
 }
 
-func (o *GraphQueryRequest) GetSeed() GraphSeed {
-	if o == nil {
+func (g *GraphQueryRequest) GetSeed() GraphSeed {
+	if g == nil {
 		return GraphSeed{}
 	}
-	return o.Seed
+	return g.Seed
 }

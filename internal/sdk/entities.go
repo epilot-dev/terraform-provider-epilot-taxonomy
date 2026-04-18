@@ -64,7 +64,7 @@ func (s *Entities) Autocomplete(ctx context.Context, request operations.Autocomp
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "autocomplete",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -86,7 +86,7 @@ func (s *Entities) Autocomplete(ctx context.Context, request operations.Autocomp
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -293,7 +293,7 @@ func (s *Entities) CreateEntity(ctx context.Context, request operations.CreateEn
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createEntity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Entity", "json", `request:"mediaType=application/json"`)
@@ -322,7 +322,7 @@ func (s *Entities) CreateEntity(ctx context.Context, request operations.CreateEn
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -555,7 +555,7 @@ func (s *Entities) DeleteEntity(ctx context.Context, request operations.DeleteEn
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteEntity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -577,7 +577,7 @@ func (s *Entities) DeleteEntity(ctx context.Context, request operations.DeleteEn
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -694,6 +694,7 @@ func (s *Entities) DeleteEntity(ctx context.Context, request operations.DeleteEn
 
 	switch {
 	case httpRes.StatusCode == 200:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -827,7 +828,7 @@ func (s *Entities) GetEntity(ctx context.Context, request operations.GetEntityRe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getEntity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -849,7 +850,7 @@ func (s *Entities) GetEntity(ctx context.Context, request operations.GetEntityRe
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -1053,7 +1054,7 @@ func (s *Entities) GetEntityV2(ctx context.Context, request operations.GetEntity
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getEntityV2",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1075,7 +1076,7 @@ func (s *Entities) GetEntityV2(ctx context.Context, request operations.GetEntity
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -1280,7 +1281,7 @@ func (s *Entities) ListEntities(ctx context.Context, request *shared.EntityListP
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "listEntities",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -1550,7 +1551,7 @@ func (s *Entities) PatchEntity(ctx context.Context, request operations.PatchEnti
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "patchEntity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Entity", "json", `request:"mediaType=application/json"`)
@@ -1579,7 +1580,7 @@ func (s *Entities) PatchEntity(ctx context.Context, request operations.PatchEnti
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -1717,6 +1718,7 @@ func (s *Entities) PatchEntity(ctx context.Context, request operations.PatchEnti
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 409:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 422:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
@@ -1787,7 +1789,7 @@ func (s *Entities) QueryEntityGraph(ctx context.Context, request shared.GraphQue
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "queryEntityGraph",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -2016,7 +2018,7 @@ func (s *Entities) ReindexEntity(ctx context.Context, request operations.Reindex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "reindexEntity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -2179,6 +2181,7 @@ func (s *Entities) ReindexEntity(ctx context.Context, request operations.Reindex
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -2203,6 +2206,7 @@ func (s *Entities) ReindexEntity(ctx context.Context, request operations.Reindex
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 500:
+		utils.DrainBody(httpRes)
 	default:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -2251,7 +2255,7 @@ func (s *Entities) RestoreEntity(ctx context.Context, request operations.Restore
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "restoreEntity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -2280,7 +2284,7 @@ func (s *Entities) RestoreEntity(ctx context.Context, request operations.Restore
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -2420,6 +2424,7 @@ func (s *Entities) RestoreEntity(ctx context.Context, request operations.Restore
 	case httpRes.StatusCode == 400:
 		fallthrough
 	case httpRes.StatusCode == 404:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -2556,7 +2561,7 @@ func (s *Entities) SearchEntities(ctx context.Context, request *shared.EntitySea
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "searchEntities",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -2824,7 +2829,7 @@ func (s *Entities) UpdateEntity(ctx context.Context, request operations.UpdateEn
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "updateEntity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Entity", "json", `request:"mediaType=application/json"`)
@@ -2853,7 +2858,7 @@ func (s *Entities) UpdateEntity(ctx context.Context, request operations.UpdateEn
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -3062,7 +3067,7 @@ func (s *Entities) UpsertEntity(ctx context.Context, request operations.UpsertEn
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsertEntity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -3091,7 +3096,7 @@ func (s *Entities) UpsertEntity(ctx context.Context, request operations.UpsertEn
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -3233,6 +3238,7 @@ func (s *Entities) UpsertEntity(ctx context.Context, request operations.UpsertEn
 	case httpRes.StatusCode == 405:
 		fallthrough
 	case httpRes.StatusCode == 409:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 422:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
@@ -3321,7 +3327,7 @@ func (s *Entities) ValidateEntity(ctx context.Context, request operations.Valida
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "validateEntity",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Entity", "json", `request:"mediaType=application/json"`)
@@ -3571,7 +3577,7 @@ func (s *Entities) ValidateEntityV2(ctx context.Context, request operations.Vali
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "validateEntityV2",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Entity", "json", `request:"mediaType=application/json"`)
@@ -3821,7 +3827,7 @@ func (s *Entities) WipeAllEntities(ctx context.Context, request *operations.Wipe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "wipeAllEntities",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -3963,6 +3969,7 @@ func (s *Entities) WipeAllEntities(ctx context.Context, request *operations.Wipe
 
 	switch {
 	case httpRes.StatusCode == 201:
+		utils.DrainBody(httpRes)
 	default:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

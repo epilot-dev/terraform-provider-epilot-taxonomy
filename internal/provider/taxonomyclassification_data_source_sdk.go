@@ -20,6 +20,8 @@ func (r *TaxonomyClassificationDataSourceModel) RefreshFromSharedTaxonomyClassif
 			for _, v := range resp.Manifest {
 				r.Manifest = append(r.Manifest, types.StringValue(v))
 			}
+		} else {
+			r.Manifest = nil
 		}
 		r.Archived = types.BoolPointerValue(resp.Archived)
 		r.Color = types.StringPointerValue(resp.Color)
@@ -27,6 +29,10 @@ func (r *TaxonomyClassificationDataSourceModel) RefreshFromSharedTaxonomyClassif
 		r.EnabledLocations = make([]types.String, 0, len(resp.EnabledLocations))
 		for _, v := range resp.EnabledLocations {
 			r.EnabledLocations = append(r.EnabledLocations, types.StringValue(v))
+		}
+		r.EnabledPurposes = make([]types.String, 0, len(resp.EnabledPurposes))
+		for _, v := range resp.EnabledPurposes {
+			r.EnabledPurposes = append(r.EnabledPurposes, types.StringValue(v))
 		}
 		r.ID = types.StringPointerValue(resp.ID)
 		r.Name = types.StringValue(resp.Name)

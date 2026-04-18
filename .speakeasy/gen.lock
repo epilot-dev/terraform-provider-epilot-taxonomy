@@ -1,314 +1,1290 @@
 lockVersion: 2.0.0
 id: 1afd37bc-cea9-4679-ac40-35ad5de414fc
 management:
-  docChecksum: cb399b301f5ef7e481d255deefe2c4bc
-  docVersion: 2.5.0
-  speakeasyVersion: 1.611.0
-  generationVersion: 2.694.1
-  releaseVersion: 0.11.5
-  configChecksum: a20fb2c7829f0955c4c53729d26c896a
-  repoURL: https://github.com/epilot-dev/terraform-provider-epilot-journey.git
+  docChecksum: 176d59b3f8eac297e184aacb97446762
+  docVersion: 2.8.0
+  speakeasyVersion: 1.761.8
+  generationVersion: 2.881.2
+  releaseVersion: 0.12.0
+  configChecksum: 5107290c0451d893503e588101e13d50
+  repoURL: https://github.com/epilot-dev/terraform-provider-epilot-taxonomy.git
   repoSubDirectory: .
+  installationURL: https://github.com/epilot-dev/terraform-provider-epilot-taxonomy
   published: true
+persistentEdits:
+  generation_id: 0c9e24c3-dfb6-4e67-a880-99ae5aebef06
+  pristine_commit_hash: 77044adb06dd72345bd642233a92ce63420ccc00
+  pristine_tree_hash: 5ebc74d07829789c0c19fa057ce6290ac5697e28
 features:
   terraform:
     additionalDependencies: 0.1.0
-    additionalProperties: 0.1.2
-    constsAndDefaults: 0.2.1
-    core: 3.44.1
+    additionalProperties: 0.1.4
+    constsAndDefaults: 0.3.2
+    core: 3.47.3
     deprecations: 2.82.0
-    globalSecurity: 2.82.0
-    globalServerURLs: 2.83.0
+    globalSecurity: 2.82.3
+    globalServerURLs: 2.83.2
     inputOutputModels: 2.83.0
     nullables: 0.0.0
     retries: 2.81.4
-    unions: 2.81.17
-generatedFiles:
-  - .gitattributes
-  - USAGE.md
-  - examples/README.md
-  - examples/data-sources/epilot-taxonomy_taxonomy/data-source.tf
-  - examples/data-sources/epilot-taxonomy_taxonomy_classification/data-source.tf
-  - examples/provider/provider.tf
-  - examples/resources/epilot-taxonomy_taxonomy/import-by-string-id.tf
-  - examples/resources/epilot-taxonomy_taxonomy/import.sh
-  - examples/resources/epilot-taxonomy_taxonomy/resource.tf
-  - examples/resources/epilot-taxonomy_taxonomy_classification/import-by-string-id.tf
-  - examples/resources/epilot-taxonomy_taxonomy_classification/import.sh
-  - examples/resources/epilot-taxonomy_taxonomy_classification/resource.tf
-  - go.mod
-  - go.sum
-  - internal/planmodifiers/boolplanmodifier/suppress_diff.go
-  - internal/planmodifiers/float32planmodifier/suppress_diff.go
-  - internal/planmodifiers/float64planmodifier/suppress_diff.go
-  - internal/planmodifiers/int32planmodifier/suppress_diff.go
-  - internal/planmodifiers/int64planmodifier/suppress_diff.go
-  - internal/planmodifiers/listplanmodifier/suppress_diff.go
-  - internal/planmodifiers/mapplanmodifier/suppress_diff.go
-  - internal/planmodifiers/numberplanmodifier/suppress_diff.go
-  - internal/planmodifiers/objectplanmodifier/suppress_diff.go
-  - internal/planmodifiers/setplanmodifier/suppress_diff.go
-  - internal/planmodifiers/stringplanmodifier/suppress_diff.go
-  - internal/planmodifiers/utils/state_check.go
-  - internal/provider/provider.go
-  - internal/provider/reflect/diags.go
-  - internal/provider/reflect/doc.go
-  - internal/provider/reflect/generic_attr_value.go
-  - internal/provider/reflect/helpers.go
-  - internal/provider/reflect/interfaces.go
-  - internal/provider/reflect/into.go
-  - internal/provider/reflect/map.go
-  - internal/provider/reflect/number.go
-  - internal/provider/reflect/options.go
-  - internal/provider/reflect/outof.go
-  - internal/provider/reflect/pointer.go
-  - internal/provider/reflect/primitive.go
-  - internal/provider/reflect/slice.go
-  - internal/provider/reflect/struct.go
-  - internal/provider/taxonomy_data_source.go
-  - internal/provider/taxonomy_data_source_sdk.go
-  - internal/provider/taxonomy_resource.go
-  - internal/provider/taxonomy_resource_sdk.go
-  - internal/provider/taxonomyclassification_data_source.go
-  - internal/provider/taxonomyclassification_data_source_sdk.go
-  - internal/provider/taxonomyclassification_resource.go
-  - internal/provider/taxonomyclassification_resource_sdk.go
-  - internal/provider/typeconvert/date.go
-  - internal/provider/typeconvert/datetime.go
-  - internal/provider/typeconvert/int.go
-  - internal/provider/utils.go
-  - internal/sdk/.gitattributes
-  - internal/sdk/activity.go
-  - internal/sdk/docs/models/operations/option.md
-  - internal/sdk/entities.go
-  - internal/sdk/importexport.go
-  - internal/sdk/internal/config/sdkconfiguration.go
-  - internal/sdk/internal/hooks/hooks.go
-  - internal/sdk/internal/utils/contenttype.go
-  - internal/sdk/internal/utils/env.go
-  - internal/sdk/internal/utils/form.go
-  - internal/sdk/internal/utils/headers.go
-  - internal/sdk/internal/utils/json.go
-  - internal/sdk/internal/utils/pathparams.go
-  - internal/sdk/internal/utils/queryparams.go
-  - internal/sdk/internal/utils/requestbody.go
-  - internal/sdk/internal/utils/retries.go
-  - internal/sdk/internal/utils/security.go
-  - internal/sdk/internal/utils/utils.go
-  - internal/sdk/models/errors/sdkerror.go
-  - internal/sdk/models/operations/addrelations.go
-  - internal/sdk/models/operations/attachactivity.go
-  - internal/sdk/models/operations/autocomplete.go
-  - internal/sdk/models/operations/bulkdeleteclassifications.go
-  - internal/sdk/models/operations/bulkmergeclassifications.go
-  - internal/sdk/models/operations/bulkmoveclassifications.go
-  - internal/sdk/models/operations/cancelbulkaction.go
-  - internal/sdk/models/operations/createactivity.go
-  - internal/sdk/models/operations/createentity.go
-  - internal/sdk/models/operations/createsavedview.go
-  - internal/sdk/models/operations/createschemaattribute.go
-  - internal/sdk/models/operations/createschemacapability.go
-  - internal/sdk/models/operations/createschemagroup.go
-  - internal/sdk/models/operations/createschemagroupheadline.go
-  - internal/sdk/models/operations/createtaxonomy.go
-  - internal/sdk/models/operations/createtaxonomyclassification.go
-  - internal/sdk/models/operations/deleteentity.go
-  - internal/sdk/models/operations/deleterelation.go
-  - internal/sdk/models/operations/deletesavedview.go
-  - internal/sdk/models/operations/deleteschema.go
-  - internal/sdk/models/operations/deleteschemaattribute.go
-  - internal/sdk/models/operations/deleteschemacapability.go
-  - internal/sdk/models/operations/deleteschemagroup.go
-  - internal/sdk/models/operations/deleteschemagroupheadline.go
-  - internal/sdk/models/operations/deletetaxonomy.go
-  - internal/sdk/models/operations/deletetaxonomyclassification.go
-  - internal/sdk/models/operations/exportentities.go
-  - internal/sdk/models/operations/getactivity.go
-  - internal/sdk/models/operations/getentity.go
-  - internal/sdk/models/operations/getentityactivityfeed.go
-  - internal/sdk/models/operations/getentityv2.go
-  - internal/sdk/models/operations/getjsonschema.go
-  - internal/sdk/models/operations/getrelatedentitiescount.go
-  - internal/sdk/models/operations/getrelations.go
-  - internal/sdk/models/operations/getrelationsv2.go
-  - internal/sdk/models/operations/getrelationsv3.go
-  - internal/sdk/models/operations/getsavedview.go
-  - internal/sdk/models/operations/getschema.go
-  - internal/sdk/models/operations/getschemaattribute.go
-  - internal/sdk/models/operations/getschemacapability.go
-  - internal/sdk/models/operations/getschemaexample.go
-  - internal/sdk/models/operations/getschemagroup.go
-  - internal/sdk/models/operations/getschemagroupheadline.go
-  - internal/sdk/models/operations/getschemaversions.go
-  - internal/sdk/models/operations/gettaxonomy.go
-  - internal/sdk/models/operations/gettaxonomybulkactionjobbyid.go
-  - internal/sdk/models/operations/gettaxonomybulkactionjobs.go
-  - internal/sdk/models/operations/gettaxonomyclassification.go
-  - internal/sdk/models/operations/importentities.go
-  - internal/sdk/models/operations/listavailablecapabilities.go
-  - internal/sdk/models/operations/listentities.go
-  - internal/sdk/models/operations/listfavoriteviewsforuser.go
-  - internal/sdk/models/operations/listsavedviews.go
-  - internal/sdk/models/operations/listschemablueprints.go
-  - internal/sdk/models/operations/listschemas.go
-  - internal/sdk/models/operations/listtaxonomies.go
-  - internal/sdk/models/operations/listtaxonomyclassificationsforschema.go
-  - internal/sdk/models/operations/options.go
-  - internal/sdk/models/operations/patchentity.go
-  - internal/sdk/models/operations/patchsavedview.go
-  - internal/sdk/models/operations/putschema.go
-  - internal/sdk/models/operations/putschemaattribute.go
-  - internal/sdk/models/operations/putschemacapability.go
-  - internal/sdk/models/operations/putschemagroup.go
-  - internal/sdk/models/operations/putschemagroupheadline.go
-  - internal/sdk/models/operations/queryentitygraph.go
-  - internal/sdk/models/operations/reindexentity.go
-  - internal/sdk/models/operations/removerelations.go
-  - internal/sdk/models/operations/restoreentity.go
-  - internal/sdk/models/operations/searchentities.go
-  - internal/sdk/models/operations/taxonomiesclassificationssearch.go
-  - internal/sdk/models/operations/taxonomyautocomplete.go
-  - internal/sdk/models/operations/updateclassificationsfortaxonomy.go
-  - internal/sdk/models/operations/updateentity.go
-  - internal/sdk/models/operations/updaterelation.go
-  - internal/sdk/models/operations/updatesavedview.go
-  - internal/sdk/models/operations/updatetaxonomy.go
-  - internal/sdk/models/operations/updatetaxonomyclassification.go
-  - internal/sdk/models/operations/upsertentity.go
-  - internal/sdk/models/operations/validateentity.go
-  - internal/sdk/models/operations/validateentityv2.go
-  - internal/sdk/models/operations/wipeallentities.go
-  - internal/sdk/models/shared/activity.go
-  - internal/sdk/models/shared/activitycallercontext.go
-  - internal/sdk/models/shared/activityidqueryparam.go
-  - internal/sdk/models/shared/activityitem.go
-  - internal/sdk/models/shared/addressattribute.go
-  - internal/sdk/models/shared/addressrelationattribute.go
-  - internal/sdk/models/shared/attribute.go
-  - internal/sdk/models/shared/attributewithcompositeid.go
-  - internal/sdk/models/shared/automationattribute.go
-  - internal/sdk/models/shared/baseactivityitem.go
-  - internal/sdk/models/shared/booleanattribute.go
-  - internal/sdk/models/shared/classificationidorpattern.go
-  - internal/sdk/models/shared/classificationsupdate.go
-  - internal/sdk/models/shared/computedattribute.go
-  - internal/sdk/models/shared/consentattribute.go
-  - internal/sdk/models/shared/countryattribute.go
-  - internal/sdk/models/shared/currencyattribute.go
-  - internal/sdk/models/shared/dateattribute.go
-  - internal/sdk/models/shared/emailattribute.go
-  - internal/sdk/models/shared/entityaction.go
-  - internal/sdk/models/shared/entitycapability.go
-  - internal/sdk/models/shared/entitycapabilitywithcompositeid.go
-  - internal/sdk/models/shared/entitydefaultcreate.go
-  - internal/sdk/models/shared/entitydefaultedit.go
-  - internal/sdk/models/shared/entitydefaulttable.go
-  - internal/sdk/models/shared/entityimportparams.go
-  - internal/sdk/models/shared/entityinput.go
-  - internal/sdk/models/shared/entityitem.go
-  - internal/sdk/models/shared/entitylistparams.go
-  - internal/sdk/models/shared/entityoperation.go
-  - internal/sdk/models/shared/entityowner.go
-  - internal/sdk/models/shared/entityrelationsmodequeryparam.go
-  - internal/sdk/models/shared/entityschema.go
-  - internal/sdk/models/shared/entityschemagroup.go
-  - internal/sdk/models/shared/entityschemagroupwithcompositeid.go
-  - internal/sdk/models/shared/entityschemaitem.go
-  - internal/sdk/models/shared/entitysearchincludedeletedparam.go
-  - internal/sdk/models/shared/entitysearchparams.go
-  - internal/sdk/models/shared/entitysearchresults.go
-  - internal/sdk/models/shared/entityvalidationerror.go
-  - internal/sdk/models/shared/entityvalidationresulterror.go
-  - internal/sdk/models/shared/entityvalidationresultsuccess.go
-  - internal/sdk/models/shared/entityvalidationv2error.go
-  - internal/sdk/models/shared/entityvalidationv2resulterror.go
-  - internal/sdk/models/shared/entityvalidationv2resultsuccess.go
-  - internal/sdk/models/shared/entityviewdisabled.go
-  - internal/sdk/models/shared/fileattribute.go
-  - internal/sdk/models/shared/getrelatedentitiescount.go
-  - internal/sdk/models/shared/getrelationsresp.go
-  - internal/sdk/models/shared/getrelationsrespwithpagination.go
-  - internal/sdk/models/shared/graphdefinition.go
-  - internal/sdk/models/shared/graphedge.go
-  - internal/sdk/models/shared/graphnode.go
-  - internal/sdk/models/shared/graphqueryrequest.go
-  - internal/sdk/models/shared/graphqueryresponse.go
-  - internal/sdk/models/shared/graphseed.go
-  - internal/sdk/models/shared/groupheadline.go
-  - internal/sdk/models/shared/groupheadlinewithcompositeid.go
-  - internal/sdk/models/shared/internalattribute.go
-  - internal/sdk/models/shared/internaluserattribute.go
-  - internal/sdk/models/shared/invitationemailattribute.go
-  - internal/sdk/models/shared/linkattribute.go
-  - internal/sdk/models/shared/listsavedviewsresults.go
-  - internal/sdk/models/shared/messageemailaddressattribute.go
-  - internal/sdk/models/shared/multiselectattribute.go
-  - internal/sdk/models/shared/numberattribute.go
-  - internal/sdk/models/shared/orderedlistattribute.go
-  - internal/sdk/models/shared/partnerorganisationattribute.go
-  - internal/sdk/models/shared/partnerstatusattribute.go
-  - internal/sdk/models/shared/paymentattribute.go
-  - internal/sdk/models/shared/paymentmethodrelationattribute.go
-  - internal/sdk/models/shared/phoneattribute.go
-  - internal/sdk/models/shared/portalaccessattribute.go
-  - internal/sdk/models/shared/pricecomponentattribute.go
-  - internal/sdk/models/shared/purposeattribute.go
-  - internal/sdk/models/shared/redirectentityview.go
-  - internal/sdk/models/shared/relationattribute.go
-  - internal/sdk/models/shared/relationentity.go
-  - internal/sdk/models/shared/relationitem.go
-  - internal/sdk/models/shared/savedview.go
-  - internal/sdk/models/shared/savedviewpartial.go
-  - internal/sdk/models/shared/searchfilter.go
-  - internal/sdk/models/shared/searchfiltervalue.go
-  - internal/sdk/models/shared/searchmappings.go
-  - internal/sdk/models/shared/security.go
-  - internal/sdk/models/shared/selectattribute.go
-  - internal/sdk/models/shared/sequenceattribute.go
-  - internal/sdk/models/shared/settingflag.go
-  - internal/sdk/models/shared/statusattribute.go
-  - internal/sdk/models/shared/summaryattribute.go
-  - internal/sdk/models/shared/summaryfield.go
-  - internal/sdk/models/shared/tagsattribute.go
-  - internal/sdk/models/shared/taxonomy.go
-  - internal/sdk/models/shared/taxonomybulkjob.go
-  - internal/sdk/models/shared/taxonomybulkjobactiontype.go
-  - internal/sdk/models/shared/taxonomybulkjobstatus.go
-  - internal/sdk/models/shared/taxonomybulkjobtriggerresponse.go
-  - internal/sdk/models/shared/taxonomyclassification.go
-  - internal/sdk/models/shared/taxonomyclassificationinput.go
-  - internal/sdk/models/shared/taxonomysearchincludearchivedparam.go
-  - internal/sdk/models/shared/textattribute.go
-  - internal/sdk/models/shared/userrelationattribute.go
-  - internal/sdk/relations.go
-  - internal/sdk/retry/config.go
-  - internal/sdk/savedviews.go
-  - internal/sdk/schemas.go
-  - internal/sdk/sdk.go
-  - internal/sdk/taxonomy.go
-  - internal/sdk/types/bigint.go
-  - internal/sdk/types/date.go
-  - internal/sdk/types/datetime.go
-  - internal/sdk/types/decimal.go
-  - internal/sdk/types/pointers.go
-  - internal/validators/DateValidator.go
-  - internal/validators/ExactlyOneChild.go
-  - internal/validators/JSONParseValidator.go
-  - internal/validators/RFC3339Validator.go
-  - internal/validators/boolvalidators/not_null.go
-  - internal/validators/float32validators/not_null.go
-  - internal/validators/float64validators/not_null.go
-  - internal/validators/int32validators/not_null.go
-  - internal/validators/int64validators/not_null.go
-  - internal/validators/listvalidators/not_null.go
-  - internal/validators/mapvalidators/not_null.go
-  - internal/validators/numbervalidators/not_null.go
-  - internal/validators/objectvalidators/not_null.go
-  - internal/validators/setvalidators/not_null.go
-  - internal/validators/stringvalidators/not_null.go
-  - main.go
-  - terraform-registry-manifest.json
-  - tools/tools.go
+    unions: 2.82.15
+trackedFiles:
+  .gitattributes:
+    id: 24139dae6567
+    last_write_checksum: sha1:84b0115789fc3ea52e31df701d8a27f76077e29f
+    pristine_git_object: e6a994416d0f527912d2d272e2583458f4fc9bcb
+  USAGE.md:
+    id: 3aed33ce6e6f
+    last_write_checksum: sha1:02c32c9430f37507b3eacd41cdc36f080809e92d
+    pristine_git_object: 8e707bb129af1da185ba30b4c289b0160819c437
+  examples/data-sources/epilot-taxonomy_taxonomy/data-source.tf:
+    id: d2373bd9b46a
+    last_write_checksum: sha1:2b7b7accdd090737380957d8a0b5eb61ab03ca1f
+    pristine_git_object: 10cb137af650b5e01e6da42c41ed1f05c9df3604
+  examples/data-sources/epilot-taxonomy_taxonomy_classification/data-source.tf:
+    id: 2ba33eef3c86
+    last_write_checksum: sha1:9a3e810f4bbc4ff4f2d619bb2883b2f60ff58d2d
+    pristine_git_object: ede890679cbf842d56c4a6645787a3570d0b46b8
+  examples/provider/provider.tf:
+    id: 954e955c0240
+    last_write_checksum: sha1:f979c846005a0c1ce22590fb46fe06c0466ea086
+    pristine_git_object: 89b01024940c67d1aa2b38d063bea4fd408b5a24
+  examples/resources/epilot-taxonomy_taxonomy/import-by-string-id.tf:
+    id: 073433360d39
+    last_write_checksum: sha1:07e4d6a0016c946c66186d6cbe23b2a4e9cb5a4d
+    pristine_git_object: 5bbc500794b76f9080fe314135222ff9249dc9e4
+  examples/resources/epilot-taxonomy_taxonomy/import.sh:
+    id: 59d6292a9fbc
+    last_write_checksum: sha1:e685be9bba8a217b735950fc659eec93e1d2729e
+    pristine_git_object: 309733f467a723a6e39f708f6c3709534dce7a84
+  examples/resources/epilot-taxonomy_taxonomy/resource.tf:
+    id: 52ef07c55bdc
+    last_write_checksum: sha1:cc9c86867a55f9199750a9cd04b5e7cc3c922cff
+    pristine_git_object: 7c8fc6a07ecc2c210829060ff4c0c34051dc5b8e
+  examples/resources/epilot-taxonomy_taxonomy_classification/import-by-string-id.tf:
+    id: d89d2a9d3e2d
+    last_write_checksum: sha1:c5ff5e14f3e1d8b8adc57f2d9b3720fd0853d627
+    pristine_git_object: 97f0f004a61a856dbf9d67367a76959984c3941b
+  examples/resources/epilot-taxonomy_taxonomy_classification/import.sh:
+    id: 6f601125662c
+    last_write_checksum: sha1:98b2e250355bcb184f1eec18717ba5de0527ef92
+    pristine_git_object: 71d70425d68056fd98cdd37765be2629518cee55
+  examples/resources/epilot-taxonomy_taxonomy_classification/resource.tf:
+    id: 19e1e9a95f37
+    last_write_checksum: sha1:5e495c824ea936ccbb8d99a54dbff2708ddd73dc
+    pristine_git_object: e2bffe879dd6592db7bcddc51f3b146bc0d7bd3b
+  go.mod:
+    id: c47645c391ad
+    last_write_checksum: sha1:5ff8b42c9c40a1d8018b2dc401e28ce34d862626
+    pristine_git_object: 910a0d88814c02c306308d0d27238877461f4931
+  internal/planmodifiers/boolplanmodifier/suppress_diff.go:
+    id: 3cf85b98963e
+    last_write_checksum: sha1:a8b32bc9235a0f11ba676073b6b44b49c930c160
+    pristine_git_object: 01d5489047ac550095abae21f031d02b8ef15a8d
+  internal/planmodifiers/boolplanmodifier/use_config_value.go:
+    id: c0a10558e419
+    last_write_checksum: sha1:506e2cac3ec4075a8837403860ef0b07e19bc337
+    pristine_git_object: 210846ca24831a6bda811d3e8a42326716d7bf97
+  internal/planmodifiers/boolplanmodifier/use_hoisted_value.go:
+    id: e44067341c99
+    last_write_checksum: sha1:3ad74cb9c1f7acb1b18328cdccdcc06f31d057af
+    pristine_git_object: 849838c5636b40ceb5c0a0a530465a6fe053f4ad
+  internal/planmodifiers/float32planmodifier/suppress_diff.go:
+    id: b7f3f671e479
+    last_write_checksum: sha1:3d07c1fb1d6e31cccf1d520bfff5bfa7c6902e7d
+    pristine_git_object: e7d1187e7c4a7efab3494910a48d8753c0633122
+  internal/planmodifiers/float32planmodifier/use_config_value.go:
+    id: e75edfe23c08
+    last_write_checksum: sha1:2683d9de3605886cb01438a9015c8e8b02b4e069
+    pristine_git_object: 0aafffa779b10b01d1e9c831c3a4bda3e6d97789
+  internal/planmodifiers/float32planmodifier/use_hoisted_value.go:
+    id: 4a18d1d4a105
+    last_write_checksum: sha1:ac4496fac46683bf609af5a1376355e8b35782fe
+    pristine_git_object: 2a03eca25d96cbebd3f5dcf987f4d31237f80ff3
+  internal/planmodifiers/float64planmodifier/suppress_diff.go:
+    id: 7ae872c2243d
+    last_write_checksum: sha1:a1e221bc322a8a0dd9437168221fa262733ad3a6
+    pristine_git_object: 8911886783a94b35f1c65c2f96b8c967b917c9e3
+  internal/planmodifiers/float64planmodifier/use_config_value.go:
+    id: 8fd8670f7434
+    last_write_checksum: sha1:cc1f1cadfd17a0b9b1e729029dccc03f17d734a5
+    pristine_git_object: ecd655b8d658d84aa5cbcc3e1808b69674071325
+  internal/planmodifiers/float64planmodifier/use_hoisted_value.go:
+    id: 5762e9e310fc
+    last_write_checksum: sha1:14565d32e85c95deca28b7fabe2640b3fd4e6aba
+    pristine_git_object: d80ed50efa08516b270c1f590651ab454fd261ce
+  internal/planmodifiers/int32planmodifier/suppress_diff.go:
+    id: 3ee3ede7dc9d
+    last_write_checksum: sha1:b216623aa2d546ede7587140ed2ea00a8b4b8b2a
+    pristine_git_object: 9e0adac7d952871d5554710282af35847ca26e31
+  internal/planmodifiers/int32planmodifier/use_config_value.go:
+    id: 40be4e07e289
+    last_write_checksum: sha1:019ba1949b00493bf1a866821f9331d50c8a1f09
+    pristine_git_object: ebc98aae308008b2cda39d5f4cfa781982afa44f
+  internal/planmodifiers/int32planmodifier/use_hoisted_value.go:
+    id: 887f32d55316
+    last_write_checksum: sha1:fda5d550e6bac7cef260a7c22a4fa97329896a19
+    pristine_git_object: 2428c2055157b1eeb37cee60988db940012656bf
+  internal/planmodifiers/int64planmodifier/suppress_diff.go:
+    id: fade0cc85582
+    last_write_checksum: sha1:d13985b494272d95b49d47b10fab702a331a65e4
+    pristine_git_object: 79d7f320ba1ed8fcafa71c86953fec8491f686ac
+  internal/planmodifiers/int64planmodifier/use_config_value.go:
+    id: e38d6f43d093
+    last_write_checksum: sha1:b5a63f0c356cd72698e25e1b4f4fc3e29b35d482
+    pristine_git_object: 2ec2d53d3ac13f58f64feb32b7fb07ca37b8fe99
+  internal/planmodifiers/int64planmodifier/use_hoisted_value.go:
+    id: ae01f54b02fa
+    last_write_checksum: sha1:0ef5721eaed8d5ca9b69a8a9c943035001520230
+    pristine_git_object: 3a2b9a3a7f2c441519075e7207814f0947aa309f
+  internal/planmodifiers/listplanmodifier/suppress_diff.go:
+    id: 7b93ed9460b9
+    last_write_checksum: sha1:d93c37d7e84dc9d9d077c327f2690198d7cb9a78
+    pristine_git_object: c4a8d9425d0fe4c743bf65ed6d726351b5073ed5
+  internal/planmodifiers/listplanmodifier/use_config_value.go:
+    id: c9b31b246860
+    last_write_checksum: sha1:c56e2d23520ac7023f800328bb7599e7eba2f202
+    pristine_git_object: 7e851c7613c71921fd4ccf7ca1f95b8b22ce9745
+  internal/planmodifiers/listplanmodifier/use_hoisted_value.go:
+    id: 6232d2937a04
+    last_write_checksum: sha1:4ee7c33484cbdc81a3f516c06d166e0279936065
+    pristine_git_object: 0ce33ddb59df758e719e328a0ab2e4b25a9a093c
+  internal/planmodifiers/mapplanmodifier/suppress_diff.go:
+    id: 37bee37da583
+    last_write_checksum: sha1:13d63e696c67a4af4c4f357af0b05951647dbc04
+    pristine_git_object: 241248b6d7c1cd24c3340c32f753bd181edea698
+  internal/planmodifiers/mapplanmodifier/use_config_value.go:
+    id: 8fef370eccaa
+    last_write_checksum: sha1:7c2163c8fa4be8e8f7e7499cdb08cc5ed1924b39
+    pristine_git_object: 0f2a717f45ca60218f4b8d9e81a6a5cd01494905
+  internal/planmodifiers/mapplanmodifier/use_hoisted_value.go:
+    id: b22b13c6b864
+    last_write_checksum: sha1:6ec567a890cb10f48c70ff5ddca885677c6f4f43
+    pristine_git_object: b62675447d5a6a9529e360adeb986d5db063ed7f
+  internal/planmodifiers/numberplanmodifier/suppress_diff.go:
+    id: 0debe6a63221
+    last_write_checksum: sha1:3180bde599b579aa5ef79358815e9b42d6409aaf
+    pristine_git_object: ae793f82ff507985ec99de25e4c4b70f7a6496de
+  internal/planmodifiers/numberplanmodifier/use_config_value.go:
+    id: e6b779d30d26
+    last_write_checksum: sha1:9b92d53a4a5f57e211e6f41ebb6c36cb12357ae6
+    pristine_git_object: e93c117a0665121b4c43c4a0fd5faec999ad016e
+  internal/planmodifiers/numberplanmodifier/use_hoisted_value.go:
+    id: b52fbd8c6aed
+    last_write_checksum: sha1:55681df430793adbcf88779b8771d558f7066a34
+    pristine_git_object: 8d2b81f32f788905e9bac510b3b915dabce7c28a
+  internal/planmodifiers/objectplanmodifier/suppress_diff.go:
+    id: c5bc1c3980dd
+    last_write_checksum: sha1:951081aefd58b566a18e47c969d99e20241acaaa
+    pristine_git_object: e3376e8a047713d12cac6ac46d7c7b47f77026f2
+  internal/planmodifiers/objectplanmodifier/use_config_value.go:
+    id: 7f103d324869
+    last_write_checksum: sha1:1f2b6727605c0b56ff2212ab2e2528046f05b157
+    pristine_git_object: eaf24076aeaf233c342886079be38561b94d3856
+  internal/planmodifiers/objectplanmodifier/use_hoisted_value.go:
+    id: 9d64f475cc1d
+    last_write_checksum: sha1:b051250f9abf5bdee649dc7853d3f15edadc9360
+    pristine_git_object: 2c7aa40a5fac5bfaf09687b6feec85610f2ed879
+  internal/planmodifiers/setplanmodifier/suppress_diff.go:
+    id: 2db9381ea39f
+    last_write_checksum: sha1:d34ea17f2d166ed758997aab6c2ba6474fd5be01
+    pristine_git_object: 8629ffc96b7f8b4d97792e0ab55c2da366a9cbeb
+  internal/planmodifiers/setplanmodifier/use_config_value.go:
+    id: 62a591230001
+    last_write_checksum: sha1:fe02165f8fd260bbce09f34adfa378376363422f
+    pristine_git_object: a95de11e54a028586b41352c084de59fdc7af66c
+  internal/planmodifiers/setplanmodifier/use_hoisted_value.go:
+    id: f0486343f81b
+    last_write_checksum: sha1:3115f4b539462f830a466d8652eab86d12df7b0d
+    pristine_git_object: 8bcb3698dce29621df4dceb817ea00a7bc5bff8a
+  internal/planmodifiers/stringplanmodifier/suppress_diff.go:
+    id: 05379039a176
+    last_write_checksum: sha1:beaa559479362d70325a453ee076495596c3604e
+    pristine_git_object: a8d0ac51011687c79cef1ae935cbc6c5d583aee7
+  internal/planmodifiers/stringplanmodifier/use_config_value.go:
+    id: a783ed056524
+    last_write_checksum: sha1:250673402508661f9d12cfa026dc029d5e7855d9
+    pristine_git_object: 8b4457aeb6b22b7f2b581434762e71f3f782897b
+  internal/planmodifiers/stringplanmodifier/use_hoisted_value.go:
+    id: f9220e0f9187
+    last_write_checksum: sha1:cbad220f7e346068c3e7f2f262f9722d205a10b0
+    pristine_git_object: 85382aedd39d9099bb5f5b6c633166f552cfbf43
+  internal/planmodifiers/utils/hoisted_value.go:
+    id: 7c3741509670
+    last_write_checksum: sha1:04ccb3d58a019eb0e94efe207280974e85e5fccc
+    pristine_git_object: 628b67bbdb34036dc48d3791628383e6f26dd891
+  internal/planmodifiers/utils/state_check.go:
+    id: ead742412d0f
+    last_write_checksum: sha1:acc38ad698bf4fa8c51aa662076cf57b79024bd5
+    pristine_git_object: 0ea64fbeb1fd7709d7241a8e06d34bfe9d0323d3
+  internal/provider/provider.go:
+    id: 1e7e86841cf3
+    last_write_checksum: sha1:4b1bcd676207a5506464684733053b9afa5e1dd8
+    pristine_git_object: e464f5670d26e8e011e3a7869b433e39c536a60b
+  internal/provider/reflect/diags.go:
+    id: 35b6b44972e2
+    last_write_checksum: sha1:ace8bc53054bb1d8ee8689acf3e4323de75a6297
+    pristine_git_object: 50c50c8c2ee48a2e0bd9f7e01e9de02489c887d8
+  internal/provider/reflect/doc.go:
+    id: cbfb54ee320b
+    last_write_checksum: sha1:67814656717ff0d0ff38fd9db09872e28666642b
+    pristine_git_object: e384126d4201af70574ce3a9fb8102edaa3b932e
+  internal/provider/reflect/generic_attr_value.go:
+    id: e422f9e35e9e
+    last_write_checksum: sha1:33300f91738c9b79e41ea4d8f3581d6800ac06ef
+    pristine_git_object: 48824d543386df6c125ed86da32d85d24659454c
+  internal/provider/reflect/helpers.go:
+    id: 3c19b91a8408
+    last_write_checksum: sha1:3a2083aa9f84f5a54638803f2225daf86408d360
+    pristine_git_object: 8085789a770637a76b1728b0f89b30c564696ca6
+  internal/provider/reflect/interfaces.go:
+    id: d1096171c6f2
+    last_write_checksum: sha1:e03017ee98ee8d1bd64fde7a025975638bcfaed7
+    pristine_git_object: ff4416e40b7dd139a553979327b0dac70aff37c5
+  internal/provider/reflect/into.go:
+    id: 50e3644442fc
+    last_write_checksum: sha1:7a29c6e2fd31069faddc441132ff04a92a6198be
+    pristine_git_object: 29a437fe2bdb30a956b8c7668d11032962962472
+  internal/provider/reflect/map.go:
+    id: 0d8232fb373f
+    last_write_checksum: sha1:803a218b09d4d9de46d27a5c0227ed3fc6617f62
+    pristine_git_object: 91e27a6c1d51441d6091752a0e199c300c1f09dc
+  internal/provider/reflect/number.go:
+    id: f7e5eb196c35
+    last_write_checksum: sha1:ff756986a30b648c423b9af8996584ffc5983514
+    pristine_git_object: 53673b8476a3115f39f7ed03921221243bbe29a3
+  internal/provider/reflect/options.go:
+    id: ae46de5fdb32
+    last_write_checksum: sha1:735603671bc13388dca9edeb7fefc0b229196793
+    pristine_git_object: 002addd9ab508962b4dc80b0b1f788c738cb8382
+  internal/provider/reflect/outof.go:
+    id: 2b83f83dde82
+    last_write_checksum: sha1:46f09acf317888545161fc1cd288113bd3836ead
+    pristine_git_object: 215406a5867a4b5b6e0978a1664492049cc3738a
+  internal/provider/reflect/pointer.go:
+    id: b758e7c3bf1c
+    last_write_checksum: sha1:92cc23f30396e1a9204f70ac68ebfe7d58cbb967
+    pristine_git_object: 215653e7c5d5ba9863ef5053d9084c9d69eba5ca
+  internal/provider/reflect/primitive.go:
+    id: c302568a3411
+    last_write_checksum: sha1:8b7708414f8be915065952b31986869feaa2fae6
+    pristine_git_object: adf648e88b61a8234951db180e4c25bbb7c1b353
+  internal/provider/reflect/slice.go:
+    id: cd2dec5ab676
+    last_write_checksum: sha1:70ce36709e204b74e3ded36c4683df7e48df294f
+    pristine_git_object: 79ad6b80c2a9492522820c3060a89f2de1131e92
+  internal/provider/reflect/struct.go:
+    id: 973d7dbf96c1
+    last_write_checksum: sha1:504fa0ca7711df0887f8c265c7acb3774e89afe7
+    pristine_git_object: c588f768bd7b39be33962188f97d81e1c4c25f4b
+  internal/provider/taxonomy_data_source.go:
+    id: 09366a480375
+    last_write_checksum: sha1:c739fab30ccdad62c4f91470fa3adafac3732da7
+    pristine_git_object: 8fff9f7f3782cde3f6bc731acae81a1fabc724e6
+  internal/provider/taxonomy_data_source_sdk.go:
+    id: 7073fa2ba619
+    last_write_checksum: sha1:5cff88c96bd475b87435099bb9b591cd35fd5cad
+    pristine_git_object: 6a8fd5d8c3e6a62a9c72a1651f9153daa0f5ccad
+  internal/provider/taxonomy_resource.go:
+    id: bd64a7935b7a
+    last_write_checksum: sha1:bfd1792ef5838e8717bce9498a93e08ab0b95245
+    pristine_git_object: ceabb23c4c4819c0572a9b40514e9daccbdc9561
+  internal/provider/taxonomy_resource_sdk.go:
+    id: 8b99414bcbb3
+    last_write_checksum: sha1:0a21efdaee03b0f7bb75b8efb181baac40aca751
+    pristine_git_object: 4d840e75500c22651dcafe372e6a199c9db06f43
+  internal/provider/taxonomyclassification_data_source.go:
+    id: 8ba39736d43b
+    last_write_checksum: sha1:ae78dcb6be352372a9547f4b75056ece5f4be462
+    pristine_git_object: c7428022623ffb9c899eba50a09a7a42b825d4f3
+  internal/provider/taxonomyclassification_data_source_sdk.go:
+    id: 96ea5ed66892
+    last_write_checksum: sha1:7c9466dff2b8195b00fac015e24f12fd32213040
+    pristine_git_object: 47c1a6af73c9f5daf82bfff2bd40c273593223c0
+  internal/provider/taxonomyclassification_resource.go:
+    id: eee4a2ba0954
+    last_write_checksum: sha1:111fe063c766626fec4ab68a264e05ad3e0efc30
+    pristine_git_object: 19692ef3ee8210aae1dd8629ffe1ac7d5ebb6f83
+  internal/provider/taxonomyclassification_resource_sdk.go:
+    id: d5cc031fc113
+    last_write_checksum: sha1:b4f06adaf3c6c4dfa4778906bab715c0b042590c
+    pristine_git_object: 515d6be7b51250cd3fc8c3550992775f1ecc772f
+  internal/provider/typeconvert/date.go:
+    id: dfe2bc95ad1b
+    last_write_checksum: sha1:e4432af1e048516599800e38772df3b26d004828
+    pristine_git_object: 1e0f4227660b23f7faea9c329100fdc27b67f940
+  internal/provider/typeconvert/datetime.go:
+    id: d2fb73d4f01c
+    last_write_checksum: sha1:a2a20e6785f1e12c3f94c016cbc106e54942e981
+    pristine_git_object: 7bfdc553a393a1db69a25574998eb6cc5df79566
+  internal/provider/typeconvert/int.go:
+    id: c44fcd78fccc
+    last_write_checksum: sha1:c28123f17006dc96a233f916a17c38408e37b71f
+    pristine_git_object: 54763e7a7555fae6d8bf51c4590220ff610202aa
+  internal/provider/utils.go:
+    id: 312d50f148af
+    last_write_checksum: sha1:39e0b6dec013dee996c708ce6fe4622c6d804cfb
+    pristine_git_object: 65db0bb3b7e41f903945dfbb0cb9a701b326f2f4
+  internal/sdk/.gitattributes:
+    id: 1ea4c4e0a39d
+    last_write_checksum: sha1:84b0115789fc3ea52e31df701d8a27f76077e29f
+    pristine_git_object: e6a994416d0f527912d2d272e2583458f4fc9bcb
+  internal/sdk/activity.go:
+    id: 5b666f16581d
+    last_write_checksum: sha1:2230fb7b65e9e115f50fd726f05be2082e6bd1a7
+    pristine_git_object: 2edb55ef12582ef8584c86aa238637f3f7d4fd03
+  internal/sdk/docs/models/operations/option.md:
+    id: a35737eb2e35
+    last_write_checksum: sha1:f45321582662c187a12e797364a9b5c9f187311d
+    pristine_git_object: 3261dbe5d014a86e2db7a224f16a0f8d97389448
+  internal/sdk/entities.go:
+    id: 1184223af8b4
+    last_write_checksum: sha1:f1b02025558d9b39c240eac57ab28561515d1975
+    pristine_git_object: 528f9f8d1dc4d5fff9e947004111bf881031fb9b
+  internal/sdk/importexport.go:
+    id: debb068be5cb
+    last_write_checksum: sha1:33777f2b95194ed3d062ba3b255bbae7330e501b
+    pristine_git_object: 55a0da12d21bd226a1a26c9a2cf42d474d74c531
+  internal/sdk/internal/config/sdkconfiguration.go:
+    id: 6af0bc8635d9
+    last_write_checksum: sha1:0dd88b10dada35155b77790be4c155dd1a65f232
+    pristine_git_object: 9dcceb2bc2962d9107b35ea34895b2667337d4ad
+  internal/sdk/internal/hooks/hooks.go:
+    id: 4e88208e997f
+    last_write_checksum: sha1:4b45fb7cdfb629e4d2b82a60f8d11b903832b560
+    pristine_git_object: 4a7c9c9dde706f22959d0977c5a51a32fa9dc1df
+  internal/sdk/internal/utils/contenttype.go:
+    id: b767d5c02609
+    last_write_checksum: sha1:ab5cfd860d02c6e6a37f89e2b5649a9859947fb1
+    pristine_git_object: f6487e01eb987c0aa49e7aa50b5ff24830314c63
+  internal/sdk/internal/utils/env.go:
+    id: 4b4be1422b75
+    last_write_checksum: sha1:1e0bcb2d2caed9f3657f1dbc99b55811bed0298c
+    pristine_git_object: 110d464eacf2387b347bad1cb903666354a339e9
+  internal/sdk/internal/utils/form.go:
+    id: a29055426367
+    last_write_checksum: sha1:f8d77b2c130198f0b0302660c674274766eaa8ee
+    pristine_git_object: 47897caf520f5213233750f88c595c7fd4069d95
+  internal/sdk/internal/utils/headers.go:
+    id: f035883ac0ff
+    last_write_checksum: sha1:8b85765f54d3c678ded5bd48c7b1180dae2bdf9e
+    pristine_git_object: 138298a1f34a7627c819b0d5892ddb3917122471
+  internal/sdk/internal/utils/json.go:
+    id: 2231afac3add
+    last_write_checksum: sha1:89156ec90f0494ff27485843c579e778d4aa22e8
+    pristine_git_object: b0c6f77c3345acf7b1a0af058d850db087ebdc97
+  internal/sdk/internal/utils/pathparams.go:
+    id: e7fec2afe4a6
+    last_write_checksum: sha1:18cb2ee2a3840ac7617e899361e05e857e7d0668
+    pristine_git_object: b0e882cb17b5b84d4720fcc2defcc6e14b81ae98
+  internal/sdk/internal/utils/queryparams.go:
+    id: fb88ad971185
+    last_write_checksum: sha1:f5720c86f34e15ced6c70644d391e2e849918349
+    pristine_git_object: e8d57495e426673a8517e3c01daced5cdadfe8d1
+  internal/sdk/internal/utils/requestbody.go:
+    id: c971a8b3bbf5
+    last_write_checksum: sha1:92073ee280a52c241918777891e304b28d8bd3d0
+    pristine_git_object: ba2ae8f791d766ce2eff71ff2980aade33fef432
+  internal/sdk/internal/utils/retries.go:
+    id: 6832c2142453
+    last_write_checksum: sha1:1c973278ee13499019d59da3d1df9644061c9f56
+    pristine_git_object: 6aa790cb5250c58e0292bf4224ab16a1a942bd7d
+  internal/sdk/internal/utils/security.go:
+    id: 6ebe9eaeb99b
+    last_write_checksum: sha1:49fee4e9252239953611e6de36f4682851499ab5
+    pristine_git_object: a2332ee8de013a2121880e4b7be332d3385c6f41
+  internal/sdk/internal/utils/union.go:
+    id: 183142835cfe
+    last_write_checksum: sha1:6b03c1e7d7f8f96b013467e7e978b76863137f9c
+    pristine_git_object: fefa310edeb3a50afdd208b58ab551101b8d88a5
+  internal/sdk/internal/utils/union_test.go:
+    id: 4c885192f6f0
+    last_write_checksum: sha1:83ac73c1901de4c6db90f65cf5879163f3d47a00
+    pristine_git_object: f66814c73ace94d8e71d785fd6161fb405745754
+  internal/sdk/internal/utils/utils.go:
+    id: feefcdf75dbd
+    last_write_checksum: sha1:c03378176a107205b8938606faef3fd8fb8f91a0
+    pristine_git_object: a614e37673d3ea81eabc6139236edfb22a15dc55
+  internal/sdk/models/errors/sdkerror.go:
+    id: 19b5a8d3586b
+    last_write_checksum: sha1:5d65fce5049df7c5113e11c9ccb1e4c46b91901c
+    pristine_git_object: c633d568d96b5297c7d2edfc9d22fc717428edf1
+  internal/sdk/models/operations/addrelations.go:
+    id: a054c08f4b9b
+    last_write_checksum: sha1:b22223ae2814832ea46c6bab453e8863ee6ed198
+    pristine_git_object: 498019436c845c9e041a6120368d2ebca79df5d5
+  internal/sdk/models/operations/attachactivity.go:
+    id: cc321643fc92
+    last_write_checksum: sha1:49cc5727da33ab24e62973988f57eec3c626feb6
+    pristine_git_object: cabb257d8181ee289fd65552ec8aa42419650fc8
+  internal/sdk/models/operations/autocomplete.go:
+    id: 34c98acf361b
+    last_write_checksum: sha1:e9709648a475b6a655091841e3960ec71a7dc434
+    pristine_git_object: 44098c446b1e9be493721aaa3ad08aa79aec8ce0
+  internal/sdk/models/operations/bulkdeleteclassifications.go:
+    id: 237d2c7803c3
+    last_write_checksum: sha1:7497a5b607c51bd98a2c5f8e4a4fe8596528a062
+    pristine_git_object: db052d6bd6591855761acae2986ee2196db7eaa4
+  internal/sdk/models/operations/bulkmergeclassifications.go:
+    id: 6fe4de79b3a8
+    last_write_checksum: sha1:23cf1523d3ade28ce091a4413254f613325ae141
+    pristine_git_object: 54da2b7aad00726ad2825fce4d1aeb3f293ab8ec
+  internal/sdk/models/operations/bulkmoveclassifications.go:
+    id: 670ed2cd5c30
+    last_write_checksum: sha1:ff5c14e8413ce535938a903ff5c4321692a20197
+    pristine_git_object: 1186eacd85bfa8f81068eb974d0c4a067aa8e521
+  internal/sdk/models/operations/cancelbulkaction.go:
+    id: 3a65a2324bc4
+    last_write_checksum: sha1:3ac2bb801661f09300cb4d60d68a13bea1cd75af
+    pristine_git_object: ab7670beb79204544588dd15c2ea64c99ae79dc5
+  internal/sdk/models/operations/createactivity.go:
+    id: 39925ff43631
+    last_write_checksum: sha1:9feb0d7fe6791fe5309894b39c14c3da9129de04
+    pristine_git_object: 8accb3d288e1103bb53d014667905385d3116265
+  internal/sdk/models/operations/createentity.go:
+    id: c3b2555222f1
+    last_write_checksum: sha1:5be92f40a1e9ac1b634b9ec3de67c3455d820909
+    pristine_git_object: 98b5e34da69092fe813f03ccc6d359bd276aca1e
+  internal/sdk/models/operations/createsavedview.go:
+    id: 3acf7ca0d8a3
+    last_write_checksum: sha1:c579c01f9674a4be3abe82adee6aad98dcb40f59
+    pristine_git_object: a85eb389dd2c33f3169ac984a937ee81356ef96c
+  internal/sdk/models/operations/createschemaattribute.go:
+    id: e74fb24b020c
+    last_write_checksum: sha1:73668549d7533b03a00b4bef48522950a95be622
+    pristine_git_object: 4dfa891782e27b947db7e985f950819676e5284c
+  internal/sdk/models/operations/createschemacapability.go:
+    id: a7f58e624e18
+    last_write_checksum: sha1:6bceb300e521d1f2a7cee2710709c089f953a1de
+    pristine_git_object: 4d51aa3c9b979bd916625b7b0c6bd9ce055b2437
+  internal/sdk/models/operations/createschemagroup.go:
+    id: 54009b639ce5
+    last_write_checksum: sha1:64373ced16e044fdd7a5231527f0e2a569e85c12
+    pristine_git_object: 1a2710dfbc7cd8306f025c634b24a131a1edcc66
+  internal/sdk/models/operations/createschemagroupheadline.go:
+    id: 1f0a336a7c9c
+    last_write_checksum: sha1:1b267880e734b874bf71158150b6df6192de3a31
+    pristine_git_object: 98d88b2f1c5d0349ee5838b9d9100ec5037a544f
+  internal/sdk/models/operations/createtaxonomy.go:
+    id: e9d0a3ae98c5
+    last_write_checksum: sha1:18fb79fdbb18d8a32c9553ca8747327d60942e93
+    pristine_git_object: 506249a6d409570fa207a8ae551243d78f051243
+  internal/sdk/models/operations/createtaxonomyclassification.go:
+    id: 7d3ed6f44286
+    last_write_checksum: sha1:9888efecb6c31be1b62ff659010c470974c01d08
+    pristine_git_object: 0a164f46ae92f1ab3f71dc6b00694e1058187980
+  internal/sdk/models/operations/deleteentity.go:
+    id: d7bf604d3e10
+    last_write_checksum: sha1:9f92aeca403b33b582e52cb7a2e39af254e0f47c
+    pristine_git_object: 34678e80c298dd0c876e738ea721a76b0596f037
+  internal/sdk/models/operations/deleterelation.go:
+    id: 20b25100b4aa
+    last_write_checksum: sha1:32a306f2501d8339903849a2f677a4cdd43fe9b0
+    pristine_git_object: 51d6681b57773246df7f0aa58fba895f7b787824
+  internal/sdk/models/operations/deletesavedview.go:
+    id: 7631e6af00f7
+    last_write_checksum: sha1:536ee50160434094488dc6f032b42720386a06e2
+    pristine_git_object: 8611429827a3131b61523d373b5ff92335942cbd
+  internal/sdk/models/operations/deleteschema.go:
+    id: 8351a4f3a0e5
+    last_write_checksum: sha1:c85e81669f8c4a2801e3a19c041d2b3393a1c703
+    pristine_git_object: 0c19d77441e6d0f7539fbfc56de524e6fb911343
+  internal/sdk/models/operations/deleteschemaattribute.go:
+    id: 6406ccf995f7
+    last_write_checksum: sha1:4ef28bbd65fb244bfaf2cce5cf34fbd70766fa6c
+    pristine_git_object: 6464b75b1328ae3208034d6776560ad2f428c4ef
+  internal/sdk/models/operations/deleteschemacapability.go:
+    id: a4884099421f
+    last_write_checksum: sha1:f3fec5673bf158e092fd312a49456378b79ecc21
+    pristine_git_object: 2fd212b98836d6d4de1541ed66ecb883be22c774
+  internal/sdk/models/operations/deleteschemagroup.go:
+    id: ecad4868245c
+    last_write_checksum: sha1:bbc9d44f8d02e1095305f8d8367e29e6ee859960
+    pristine_git_object: 6bd20dc65d02f1fddf4271c5ca2ae823383da31c
+  internal/sdk/models/operations/deleteschemagroupheadline.go:
+    id: e6653ccb7f25
+    last_write_checksum: sha1:30376d811c51201626ea86751670afbfbfce3a7e
+    pristine_git_object: e065f01d6be0573f270be77399c534fa5786c997
+  internal/sdk/models/operations/deletetaxonomy.go:
+    id: d2072fb19da7
+    last_write_checksum: sha1:0744e4a7120bf2945bf48668555490512acf7e4e
+    pristine_git_object: 9d4012ffa62ee320403e0fdf2aa4e1a983f59514
+  internal/sdk/models/operations/deletetaxonomyclassification.go:
+    id: ba2410aa3651
+    last_write_checksum: sha1:d627a22be5a1cc6086964ff0022b453edee557c9
+    pristine_git_object: 6c86fe8bf3185395b8a2e46b1a5b0a9f6c331d2e
+  internal/sdk/models/operations/exportentities.go:
+    id: d8dc7d432931
+    last_write_checksum: sha1:0fc8d5b9a8cbcfa3116a5cc1fc7d0c71777925ba
+    pristine_git_object: 53631a1abca7e94a2576dbd27cdb135f5caf6ec1
+  internal/sdk/models/operations/freezeschema.go:
+    id: 9234dfceb65f
+    last_write_checksum: sha1:1434162c15984509578f2fb9f7b14d55f925044b
+    pristine_git_object: f041d3e22ec64a7cac7f9402131b0f394b96a91b
+  internal/sdk/models/operations/getactivity.go:
+    id: 626e756d3a06
+    last_write_checksum: sha1:552cf2b395c83f2393a2274a85df99d04b942f51
+    pristine_git_object: 44e2ed32fda3ff493ababb26f2610b6f0ac53eab
+  internal/sdk/models/operations/getentity.go:
+    id: 47b7f5a111a9
+    last_write_checksum: sha1:c20092cb1e254c8724c244a9e5fb9b4d1536bdbe
+    pristine_git_object: 08243ad7a15b9e3648c80a5f1da4c1f33f60d142
+  internal/sdk/models/operations/getentityactivityfeed.go:
+    id: 5a19128b83b4
+    last_write_checksum: sha1:dd8c86db851eebb09f5ab24788dcfe001578693e
+    pristine_git_object: c8bb4162c33006774046250b8f7a6686110e8c6a
+  internal/sdk/models/operations/getentityv2.go:
+    id: 5991feaa81b9
+    last_write_checksum: sha1:f9827f997a1fd5d5d5c936f5be10c8a16c1e9b5c
+    pristine_git_object: 36f31800bed9fe8ebe08e22e1fd4ea67dd5cb485
+  internal/sdk/models/operations/getjsonschema.go:
+    id: 0f447fc8ccd0
+    last_write_checksum: sha1:4fdb9ea78c28acb34ac23af957d4425d464ff6ad
+    pristine_git_object: 076384e665c86983294f1a6324ed4084aa06b88a
+  internal/sdk/models/operations/getrelatedentitiescount.go:
+    id: d06852ced562
+    last_write_checksum: sha1:855ba8b47db013db8046ea07f7b8cbe9a0cae0c6
+    pristine_git_object: aa04962d43a93de9a409f845f89fdd985a0803ef
+  internal/sdk/models/operations/getrelations.go:
+    id: ec429b715a09
+    last_write_checksum: sha1:952eb30491f4a363e99394a9119e6ba820f49e9b
+    pristine_git_object: e820078f72228bd0df87d3eaf6019b0dba9fc4ef
+  internal/sdk/models/operations/getrelationsv2.go:
+    id: 9e88d9be3ca4
+    last_write_checksum: sha1:0b0189c14dccaadee4656535cdd7b8a687a64d30
+    pristine_git_object: f83de34bee26efc583c27591d122efef0c931cbf
+  internal/sdk/models/operations/getrelationsv3.go:
+    id: bbdb05d7013c
+    last_write_checksum: sha1:414f49e8d167f21d1109dc0649b2e4dfe2f59887
+    pristine_git_object: 0bf733eebf6a1641cef49158ccbe67ac3dfdf9a9
+  internal/sdk/models/operations/getsavedview.go:
+    id: fc28ac1d7ffb
+    last_write_checksum: sha1:e30dc4d07f7110424f34033286bb5e054ac17858
+    pristine_git_object: 8940073f1774bafb3e10fafb26084c50b531eac0
+  internal/sdk/models/operations/getschema.go:
+    id: 4fc1c251a8eb
+    last_write_checksum: sha1:765a368d9b13389b38259aed04cee28e61ee10b1
+    pristine_git_object: 9d7293defc39dbd703da944a5084e918c0711310
+  internal/sdk/models/operations/getschemaattribute.go:
+    id: 80d365b58d4b
+    last_write_checksum: sha1:da943399a5b035825c6f1a09fe3f09d803361422
+    pristine_git_object: 26dbfc2cbeb4585fc6011593df3b644bf6e8f839
+  internal/sdk/models/operations/getschemacapability.go:
+    id: 95d50fb35045
+    last_write_checksum: sha1:7754d4acd058b13467f637dca5cacc38ea46b56f
+    pristine_git_object: 89836a70004910b4631d137c50b75e28d7745f9c
+  internal/sdk/models/operations/getschemaexample.go:
+    id: 80d600849201
+    last_write_checksum: sha1:fb81eedf36e4147ae5e38930a97dba526a9907e1
+    pristine_git_object: 43f772f00048282d485471c6618eec183c3677f2
+  internal/sdk/models/operations/getschemagroup.go:
+    id: 52eba5c1af49
+    last_write_checksum: sha1:f64e4b7c2dd99f5f50615c016715b795c8c6a59d
+    pristine_git_object: 7791ca06aab5d4b64acb611f500f0a8af778d90d
+  internal/sdk/models/operations/getschemagroupheadline.go:
+    id: 8cb53509ebad
+    last_write_checksum: sha1:8df1440df4d84d5a889ebd8e37106701553a4598
+    pristine_git_object: 1b42db992cf509d86503056bf1565413a0b30a39
+  internal/sdk/models/operations/getschemaversions.go:
+    id: 9a1a72be6adb
+    last_write_checksum: sha1:caed1c9439d4ea3874ea48afefa8d6c1cfae4493
+    pristine_git_object: a4a5d7f2122f0f240b2ce225eea36e5eedfa6f2e
+  internal/sdk/models/operations/gettaxonomy.go:
+    id: 8fca5d685516
+    last_write_checksum: sha1:c4b0741598cf97876d9b42fa3b1054b2dbd6134c
+    pristine_git_object: b8ef477c80ab3466ecf7a99ae1060e2415ea39f4
+  internal/sdk/models/operations/gettaxonomybulkactionjobbyid.go:
+    id: afeeb7193731
+    last_write_checksum: sha1:3361a02a86e79be77cd25af6dc7ee4dcdf1243b7
+    pristine_git_object: af9fae804ab349d079fcd225df20ff34948055df
+  internal/sdk/models/operations/gettaxonomybulkactionjobs.go:
+    id: 4bbb0ffabdb2
+    last_write_checksum: sha1:0fa960073918e7f9c3302bce66fc227d1459c275
+    pristine_git_object: 10c7c4c2ff8e5b67fdad8fba76d7b9217543f958
+  internal/sdk/models/operations/gettaxonomyclassification.go:
+    id: 46cd36c84097
+    last_write_checksum: sha1:6e9d1794f7b3061ce544e77cd835f4bd43b5cc78
+    pristine_git_object: c7f35fdae874bdba881793b9a94e04aef70421d0
+  internal/sdk/models/operations/importentities.go:
+    id: 04f1cd4eda7b
+    last_write_checksum: sha1:28e32004396b9760abc4eda301d7c92dff318bb4
+    pristine_git_object: d334e718e317f4440d3ecbc3cc86fd787f0c4793
+  internal/sdk/models/operations/listavailablecapabilities.go:
+    id: 1fbc886466c5
+    last_write_checksum: sha1:5cc6d1ecdf988c9dafe87202b026b06c7ec3bdac
+    pristine_git_object: 41d363c233b949211f4e5c1b42b48a9ce94f66b0
+  internal/sdk/models/operations/listentities.go:
+    id: 2a0fd88d620b
+    last_write_checksum: sha1:b324fc817091fe9212ddd605a25f8eb958d975cb
+    pristine_git_object: 84e5d3a390c58593b34b7e6766aff0b70e2e0050
+  internal/sdk/models/operations/listfavoriteviewsforuser.go:
+    id: 19e56fc9075f
+    last_write_checksum: sha1:bce7ddcf31f89368531f5d7f3113f7d7669d4d95
+    pristine_git_object: b3bcaa03f1909e690c5df4dac324efc18d41f146
+  internal/sdk/models/operations/listsavedviews.go:
+    id: ec89a05e4b8a
+    last_write_checksum: sha1:bd64376dd52c389d377e52c7fba0a38daf5d6d06
+    pristine_git_object: a91231da90c3cc0e25d348081dc62412f4f42f1c
+  internal/sdk/models/operations/listschemablueprints.go:
+    id: dc81168e77ef
+    last_write_checksum: sha1:abe409ef4db9049e9281629dfece54971833f567
+    pristine_git_object: 01710209b8a4dfca837358c7afef15085e0c2152
+  internal/sdk/models/operations/listschemas.go:
+    id: "339037289235"
+    last_write_checksum: sha1:005a88c7379afd6294ca9dabc0797b72b04bd7cd
+    pristine_git_object: 4ef6e8debf0f483e24220d965929dfac2c84088c
+  internal/sdk/models/operations/listschemasv2.go:
+    id: 2b5468096623
+    last_write_checksum: sha1:cc3be175c4f75d6ef33f4618465ffb7ab9ea8900
+    pristine_git_object: f3a832659a03d9813affa0fbb4a3c26109c6a56d
+  internal/sdk/models/operations/listtaxonomies.go:
+    id: 9cab4bda3629
+    last_write_checksum: sha1:f59bc29aa235dad2f6a59a1895951a105f36c404
+    pristine_git_object: 3fa5905b9ae5c33492861538fa07f6bb76da8999
+  internal/sdk/models/operations/listtaxonomyclassificationsforschema.go:
+    id: b6a9f1bac94f
+    last_write_checksum: sha1:b1eadd17ea2fb8ecf633d069c6d0730f8e6e66ed
+    pristine_git_object: 549a3d45636a7b33f29e3e222ac23d516a955e94
+  internal/sdk/models/operations/options.go:
+    id: 6d0d29414e00
+    last_write_checksum: sha1:e0f5f5582a8c91825c2625d4fd5de76c8a14df48
+    pristine_git_object: 2f8f4e13b6a5c1d886a812c68769341463629671
+  internal/sdk/models/operations/patchentity.go:
+    id: 80e86d014a48
+    last_write_checksum: sha1:2bdeab113ff8c9ec8c09ea73561ff6a552f98039
+    pristine_git_object: 439939492350e29a9004cfbae3071ce9865f847d
+  internal/sdk/models/operations/patchsavedview.go:
+    id: d5470d97eae7
+    last_write_checksum: sha1:659d863e5c2cfb6ee652c3f8117d5a424e6fb8f5
+    pristine_git_object: f2a7969f3b82c48be2e4c232cb0f41b6d5dbba05
+  internal/sdk/models/operations/putschema.go:
+    id: e910bec96c0a
+    last_write_checksum: sha1:3a5fa2e9844e96e7cd7a7ef2b813914b074ca038
+    pristine_git_object: 71aac84e98ee383bb7a65b2486bb7550aab8f157
+  internal/sdk/models/operations/putschemaattribute.go:
+    id: 6da0a1888f51
+    last_write_checksum: sha1:f3a0813aa3e7031d8a9e3ed9c61578fd452b4629
+    pristine_git_object: 32953f526f8159904bfd7a6c284125b6a7c6fd8e
+  internal/sdk/models/operations/putschemacapability.go:
+    id: 9e0ef3083ae5
+    last_write_checksum: sha1:9f1fa0fe22528be88e31dd5d87929b9f94e44f32
+    pristine_git_object: 5645bb3315205b6181869d9b2d4e43a090060e65
+  internal/sdk/models/operations/putschemagroup.go:
+    id: 5a2f93d77dc2
+    last_write_checksum: sha1:358cb614ab7485e82f0bdeef7baf27d7db06d656
+    pristine_git_object: d34fba08002d758008300813d9ebee9dd62c6570
+  internal/sdk/models/operations/putschemagroupheadline.go:
+    id: 65663821e395
+    last_write_checksum: sha1:0a7ee8d86a6400b0dd35fc075748861d439c8692
+    pristine_git_object: 6559ff5bb31583466c2914f7489d4e5e9aedfc84
+  internal/sdk/models/operations/queryentitygraph.go:
+    id: a6b6c449fd0a
+    last_write_checksum: sha1:99da2fd2d8b4caf24c4e40d4aa602c28b38b0b18
+    pristine_git_object: 18853e55f2ae95d31366d87f1664f2a611053c53
+  internal/sdk/models/operations/reindexentity.go:
+    id: b931c88fbbec
+    last_write_checksum: sha1:8b2fa0522eb6db6bc439b76ad176919576426f53
+    pristine_git_object: d264ca7aeb0b36f621273e4d3efde967bd25cf0d
+  internal/sdk/models/operations/removerelations.go:
+    id: 12f213c07c7e
+    last_write_checksum: sha1:53c020beca66a86d740877a4be490af9ab75975f
+    pristine_git_object: b070e93470349966569ceb60dbffaeb9ae0d75c9
+  internal/sdk/models/operations/restoreentity.go:
+    id: cf9afe797993
+    last_write_checksum: sha1:5c9c114c104453be7cec69054c65ac7ad9213a31
+    pristine_git_object: 04bebcc31fd90c9cdd0d711df927dbd61dd179fe
+  internal/sdk/models/operations/searchentities.go:
+    id: 39d72095c7b8
+    last_write_checksum: sha1:69dd31abb0f86697b05dafa3ffb7566c7c261edd
+    pristine_git_object: ce9e471e880cffc0b7afdcf77357e30682a627cf
+  internal/sdk/models/operations/taxonomiesclassificationssearch.go:
+    id: a8d76375d2bb
+    last_write_checksum: sha1:cf0b93726ff672a9c8be2d03a2f061a412727cf4
+    pristine_git_object: 512236c5dc499234e4c6ffd040cb5d5612bca5d3
+  internal/sdk/models/operations/taxonomyautocomplete.go:
+    id: 2cb5e2b72126
+    last_write_checksum: sha1:0668c5db1fa3f7279f977fe3127f22a938803a71
+    pristine_git_object: 4773073f4c9d5b367b136e636ed035fda92c84c6
+  internal/sdk/models/operations/unfreezeschema.go:
+    id: 3a263a749fcd
+    last_write_checksum: sha1:89a112afb3447807e9dad2315866c13ce8c1c54b
+    pristine_git_object: 6df07f39c2aae56a8183ef7d60cdbf50e9024bf9
+  internal/sdk/models/operations/updateclassificationsfortaxonomy.go:
+    id: fc616a17dc90
+    last_write_checksum: sha1:66c31ece82f9f6da90472dc255e901822384d065
+    pristine_git_object: 1884e2a4045ad5b1f45a6168852430101d5093ce
+  internal/sdk/models/operations/updateentity.go:
+    id: 0a1e29fb0702
+    last_write_checksum: sha1:af4b41ea8ae0336528125aa236fe932f7907eb96
+    pristine_git_object: 922ee23358ee7a5c11b8ffd586f4663920884dea
+  internal/sdk/models/operations/updaterelation.go:
+    id: e7540097204d
+    last_write_checksum: sha1:b38bc310da2707175fe74a330487dc8bc19620b3
+    pristine_git_object: 04c5ec744c76a903be24f845181b2248548b1faf
+  internal/sdk/models/operations/updatesavedview.go:
+    id: 2f7a3af89af7
+    last_write_checksum: sha1:7b1a3a8eb7ee5e5b10a3d75de2b7032d11aca79c
+    pristine_git_object: 257305ff5a7ee75009b3b86acab215bdf4a0681f
+  internal/sdk/models/operations/updatetaxonomy.go:
+    id: 5634d548e85a
+    last_write_checksum: sha1:166e4b09ba52f3954171a4c9085573e4a8286da0
+    pristine_git_object: fe2038e46adaa23c59b1962dd202a57ac9bb3feb
+  internal/sdk/models/operations/updatetaxonomyclassification.go:
+    id: f16ff02487a5
+    last_write_checksum: sha1:b540b67f60ed2736fb518719ba8e63bd4f4dfc1b
+    pristine_git_object: 1e1b93b5412cbe1664ba8d902d96f98836293122
+  internal/sdk/models/operations/upsertentity.go:
+    id: 742682127dcb
+    last_write_checksum: sha1:2f89415596658d891d5d0acf1df02061886706bd
+    pristine_git_object: d7de6764e748a3a5b49c22b28bd4bc630f51d388
+  internal/sdk/models/operations/validateentity.go:
+    id: 7b42730d639d
+    last_write_checksum: sha1:06b99623820f357984a1e02882b2624fd6bd796d
+    pristine_git_object: 7ef837addf97ee70b14e7094a721719c8643d8ce
+  internal/sdk/models/operations/validateentityv2.go:
+    id: fd7f99753599
+    last_write_checksum: sha1:c5904e611d5dbb9a52a0f5032257484516909968
+    pristine_git_object: 75fed38793e38e4e0f49c98ea2faad773bff349d
+  internal/sdk/models/operations/wipeallentities.go:
+    id: fbb010baeeea
+    last_write_checksum: sha1:faad64336a33732a762b2def7c01b8bbbc125e86
+    pristine_git_object: b66d206729dcde0f3f4676e0d21db003b193e947
+  internal/sdk/models/shared/activity.go:
+    id: 0402c7ec0de0
+    last_write_checksum: sha1:79ae1687d94bf3c5d4ef5627918cebbe7988a689
+    pristine_git_object: e6ae106439129e3694235a9bbd1c313d9ac5810f
+  internal/sdk/models/shared/activitycallercontext.go:
+    id: 900bdf6d373e
+    last_write_checksum: sha1:be923d5ccd9c7c7f3c3162820c96796d857f2a1b
+    pristine_git_object: af25619c6bf9e60a880f7402a962a5f66312a945
+  internal/sdk/models/shared/activityidqueryparam.go:
+    id: 439a29a04fad
+    last_write_checksum: sha1:f65a8018ef020c477779daf0cf5d35cfc055aabb
+    pristine_git_object: 966832694a5dd9d7fa9619eb0fae83de132d8e06
+  internal/sdk/models/shared/activityitem.go:
+    id: 354a3d6c137e
+    last_write_checksum: sha1:484ccd3f2bd145349d757f44ac09cb65c1765539
+    pristine_git_object: 31c1997a67c79ab146e682e5a6a6fe33f0e7046f
+  internal/sdk/models/shared/addressattribute.go:
+    id: a55b12425051
+    last_write_checksum: sha1:3bd9191a9c860e0636348fdd8cd29a3fd3386df6
+    pristine_git_object: ed9ed13d651fd8227b49060d612e08a7371b8e34
+  internal/sdk/models/shared/addressrelationattribute.go:
+    id: 1091d0b824b2
+    last_write_checksum: sha1:365ad947b2c1067efd1e33feb056b92e515f600f
+    pristine_git_object: 00fbf4f155b689e5261fa1032d190b05b394b8dd
+  internal/sdk/models/shared/attribute.go:
+    id: 13c4e66cab67
+    last_write_checksum: sha1:f09b2609735cd9b66e68d4824ed59d4d21c03d26
+    pristine_git_object: 28cfbaa764b3d863c6123c0b044faafe2d57dffe
+  internal/sdk/models/shared/attributewithcompositeid.go:
+    id: 2e331b7b9795
+    last_write_checksum: sha1:624c040e267463fcc3877ff5025cc74eb83050a4
+    pristine_git_object: 2714e13c1a69e71d8aa71141537c822d1d6eca70
+  internal/sdk/models/shared/automationattribute.go:
+    id: fd7b26f59852
+    last_write_checksum: sha1:34e4076f03ec8c8cf3588ada55bac4b70615dcf3
+    pristine_git_object: 61c579cb05daf717435d2334aadcbdcb1c8a7099
+  internal/sdk/models/shared/baseactivityitem.go:
+    id: 3f307474e8fb
+    last_write_checksum: sha1:b1ac6c690dbb637477c6819b1cc3ac1d50c40608
+    pristine_git_object: b45ae794f65706869a5b866e8f5830e523d56e81
+  internal/sdk/models/shared/booleanattribute.go:
+    id: 257071d1ce71
+    last_write_checksum: sha1:5dc14c85a52efa99f84ca7debc13dc20035c1a2e
+    pristine_git_object: 0000f05d625a4a698d9c9a08a6794e0e66417897
+  internal/sdk/models/shared/classificationidorpattern.go:
+    id: 1ac01b6dffa2
+    last_write_checksum: sha1:e41c1d751225d10320cf6e0507f93e63562bdbf6
+    pristine_git_object: c88d5b1164ed7732c69f3866e69d565822560d01
+  internal/sdk/models/shared/classificationsupdate.go:
+    id: 8c7493345ed8
+    last_write_checksum: sha1:dc2bac1e5cadd6fdb8eedfd993d8aeb2c5ebfa57
+    pristine_git_object: 6687a0a60d99c5de56031db90efe6ffff8ece041
+  internal/sdk/models/shared/computedattribute.go:
+    id: db77c654c9dd
+    last_write_checksum: sha1:18a58dc52a8360281f8c15c0e90f01699ac0b396
+    pristine_git_object: e4f5f09867a3baf9be4880b2d1bc74559cdfe593
+  internal/sdk/models/shared/consentattribute.go:
+    id: 7026589e6724
+    last_write_checksum: sha1:31fba5220d689c6bbe1c3cbf147a6bae573394ed
+    pristine_git_object: 3051ab8446453773e19538959253ef4799000541
+  internal/sdk/models/shared/countryattribute.go:
+    id: 5f10325b92ad
+    last_write_checksum: sha1:d2e1791fdf55ada329966cf16d9ee6f74d516728
+    pristine_git_object: 5f46c4d7e00f5f0f7b90e4ac02017e91fce95236
+  internal/sdk/models/shared/currencyattribute.go:
+    id: 4b77ab84ccfa
+    last_write_checksum: sha1:bc96cb8cdddbc17e9c4310949e57732a325b0695
+    pristine_git_object: 31f084b56ffaaf05a4758c0989c6fa4ab6ec63ee
+  internal/sdk/models/shared/dateattribute.go:
+    id: 7e852eb93d7e
+    last_write_checksum: sha1:bf1b517842b491088e58042c8654a8fb3e4856fd
+    pristine_git_object: b5b7417e797f65d5b81d8d5a9f71ea0aef3a3686
+  internal/sdk/models/shared/emailattribute.go:
+    id: 73b06caf4ed7
+    last_write_checksum: sha1:6d18cfdebc97fcfd7bacb1edafb4562ef25cffb8
+    pristine_git_object: 4eb6dcd27f9810b834519830c4e4816840610913
+  internal/sdk/models/shared/entityaction.go:
+    id: 08ee33cee588
+    last_write_checksum: sha1:86bc2f6928a6532ab0de84456e529b2a1962bec7
+    pristine_git_object: e27c162ddd09c04b75ef4c976b2fb0143200592b
+  internal/sdk/models/shared/entitycapability.go:
+    id: 57f1b9ccdcae
+    last_write_checksum: sha1:bc7a717e7bdc34339e9e95387e9cab565c9bb57d
+    pristine_git_object: 942eb3967c2165266e1469be35cf393a61d4f96a
+  internal/sdk/models/shared/entitycapabilitywithcompositeid.go:
+    id: 420e5527b028
+    last_write_checksum: sha1:747c7f6e53c9b33fe7645623503228353c9edaa0
+    pristine_git_object: 1cb8db8ea9d7140aa785513349a36e348dac2692
+  internal/sdk/models/shared/entitydefaultcreate.go:
+    id: 82b378a7acbf
+    last_write_checksum: sha1:14889a7919a7e6fdf9b6fd8f414bc1079ccebbfa
+    pristine_git_object: 56161021ce2c08d097aa89100a4e301782788f88
+  internal/sdk/models/shared/entitydefaultedit.go:
+    id: 56e0f92a30f1
+    last_write_checksum: sha1:1335afc0754a15aa7117648ee7970e97059a3342
+    pristine_git_object: 8da46b1b126e1bb009d64c8c88b6efad51bd6ac7
+  internal/sdk/models/shared/entitydefaulttable.go:
+    id: e453c2aaf041
+    last_write_checksum: sha1:b4bfe55c91108b5c6b081eafe87292ee04c18db4
+    pristine_git_object: 2c3c493f464603ee9c7c42515f7469a4dcbe8652
+  internal/sdk/models/shared/entityimportparams.go:
+    id: 7388831d308e
+    last_write_checksum: sha1:0d2a787d80cf4b85c42cbce57bd674a65c6fa333
+    pristine_git_object: 9436b0d9943e90f7820bba4f28af7cd8d8b72976
+  internal/sdk/models/shared/entityinput.go:
+    id: fd8b0eb3814c
+    last_write_checksum: sha1:878cae3eafd0baae35adc57ebec8ce12a7fd7c2f
+    pristine_git_object: fdf70816de886982bcf1ce312d6c936f7fc045ca
+  internal/sdk/models/shared/entityitem.go:
+    id: 4b864c30e1f3
+    last_write_checksum: sha1:df8180e9c588503e256f7249d41e69392433f48f
+    pristine_git_object: c9fac412eea847468b0633c8549f04f06d0e92d2
+  internal/sdk/models/shared/entitylistparams.go:
+    id: 2a4f3a59324a
+    last_write_checksum: sha1:0cccf70f5aee8cbe90cf709bbc28eed163dafd4d
+    pristine_git_object: 1b402d4a7c9b742b95a0d7423b4ec2250947e8b9
+  internal/sdk/models/shared/entityoperation.go:
+    id: 0f261658779b
+    last_write_checksum: sha1:904c5c3a1951d7e57206425167981e84ae59799e
+    pristine_git_object: 48788b757c977ea5e40946165d1eb062453a5aa9
+  internal/sdk/models/shared/entityowner.go:
+    id: c617e4434acc
+    last_write_checksum: sha1:b3e988c390a5597e8acd2161f31c96474d62dfc0
+    pristine_git_object: 274ce2a53db6069afdf2e4e24e0f90d4ea6260ea
+  internal/sdk/models/shared/entityrelationsmodequeryparam.go:
+    id: abba8485fe73
+    last_write_checksum: sha1:4c71a4bd25ab38a5c01c760d0c81dd613f5f5c08
+    pristine_git_object: 928cde161025b257d315ee983a92d6a9404ec4ef
+  internal/sdk/models/shared/entityschema.go:
+    id: b9259ba7156c
+    last_write_checksum: sha1:243571244b5a7e141f02e2aa30f5548539cee3c2
+    pristine_git_object: 32132a1d6d68e97ee006c54a6f4d6456d3389d23
+  internal/sdk/models/shared/entityschemagroup.go:
+    id: da8e81fb32db
+    last_write_checksum: sha1:385b2cb4f77f3806c5c26b28f6250a67c0d613dc
+    pristine_git_object: 439022c69a60a103ad7b5a62558a0873970bb4fa
+  internal/sdk/models/shared/entityschemagroupwithcompositeid.go:
+    id: 64e05ea156fc
+    last_write_checksum: sha1:fe8c97a6073c0c3521029ee71a1349a857188593
+    pristine_git_object: f736744888ad1f4e081b0abd3aecc5357392bc1b
+  internal/sdk/models/shared/entityschemaitem.go:
+    id: c28accffc199
+    last_write_checksum: sha1:b32e239eb346c9c8cbc72da449e8b7565b995a26
+    pristine_git_object: 040d1867a1d6ebf56bd54911c76c7fd254b730fe
+  internal/sdk/models/shared/entitysearchincludedeletedparam.go:
+    id: 1ab29bf7922d
+    last_write_checksum: sha1:dd248e7ca4da298eebb698e0fd6ba75a555bbd04
+    pristine_git_object: 0f806cf8e419b6c22f4ddfed267dd7384d1c9abb
+  internal/sdk/models/shared/entitysearchparams.go:
+    id: ed08a0940bbe
+    last_write_checksum: sha1:17d7c5dfd3d19d2e4823e8bbbd792dc33132bdf3
+    pristine_git_object: 772d1331f0cf45348e5c076c21cc9577cb9ee946
+  internal/sdk/models/shared/entitysearchresults.go:
+    id: 66ce30138015
+    last_write_checksum: sha1:627578f8ca5e4088066f2196c3d433daef1f96ad
+    pristine_git_object: 81d165e9c75e9363a2eeeb78479032d20deb1750
+  internal/sdk/models/shared/entityvalidationerror.go:
+    id: dc4e5eb5b4f1
+    last_write_checksum: sha1:be157291833695d58516ad5ad4a187d6acda3c9a
+    pristine_git_object: 1aa676ebb450ee62c49c64afd4a0a7511f2cbed6
+  internal/sdk/models/shared/entityvalidationresulterror.go:
+    id: 542a025add89
+    last_write_checksum: sha1:c674a4c6839137194fd7d0003949ff1a5eed3297
+    pristine_git_object: 424575f283197b87e7e36907a38312d2441c2f71
+  internal/sdk/models/shared/entityvalidationresultsuccess.go:
+    id: 12a2122a9e5a
+    last_write_checksum: sha1:7968fd1a36f3ac820eea8b3c12059b8f797a255f
+    pristine_git_object: a230f1281e5e2e89794e582d4d688d77001d0fc7
+  internal/sdk/models/shared/entityvalidationv2error.go:
+    id: a8419759edf1
+    last_write_checksum: sha1:5055eb9fa7f969bdf552f20b05e4fd7414a2e263
+    pristine_git_object: d4eb9cafc191fc590381f4227706c18d1ce4e32b
+  internal/sdk/models/shared/entityvalidationv2resulterror.go:
+    id: 2a2de4c35e52
+    last_write_checksum: sha1:91eb26392baf4db91b250fc87a7707661a75327f
+    pristine_git_object: 78ae2de1393ff3e8d393e5f56bd22eb1f90cf86f
+  internal/sdk/models/shared/entityvalidationv2resultsuccess.go:
+    id: a817eae6ffce
+    last_write_checksum: sha1:ed10a2cc757815eb6bb912c97f4830c68e5e0373
+    pristine_git_object: 14f7954cc84b38313ca4e5dda8de29d3ae1e0f87
+  internal/sdk/models/shared/entityviewdisabled.go:
+    id: 12113f540979
+    last_write_checksum: sha1:10bf2d31449b89cae498bda03df318001ed966eb
+    pristine_git_object: cc5c0a3dd4c1c7edc773bf087bc4993a739fbe99
+  internal/sdk/models/shared/fileattribute.go:
+    id: d2f92a4d60bd
+    last_write_checksum: sha1:f2b758919db14a2be564ce0b64043d7fbff292e4
+    pristine_git_object: faa6188e60b50bd95c9f1a667a0485921f3c749f
+  internal/sdk/models/shared/getrelatedentitiescount.go:
+    id: 4e933ef6e0fc
+    last_write_checksum: sha1:bb5e147a6cccb04052ef09cf5c9c64bbf9b0edc9
+    pristine_git_object: bbbb72ebd9bc704a3a44468fa5e7a19e457721ba
+  internal/sdk/models/shared/getrelationsresp.go:
+    id: a3a9cb907efe
+    last_write_checksum: sha1:ed4e09572f3862992700297b6ecd58b03ca31579
+    pristine_git_object: 09e05eafd810b83c1d565758847e9fc8f8521e7e
+  internal/sdk/models/shared/getrelationsrespwithpagination.go:
+    id: d2b846a6c4fa
+    last_write_checksum: sha1:cee864f8f466ef209f716cfeef8d36cca398bf4d
+    pristine_git_object: d6f61b35a7d3c874177eefe2b550620796877484
+  internal/sdk/models/shared/graphdefinition.go:
+    id: 70542784cfab
+    last_write_checksum: sha1:4f772a871bc26996b8177d11e3cc29c39ce35ff4
+    pristine_git_object: 69c1a5c6a0a44a9cd99763717db19157cf731856
+  internal/sdk/models/shared/graphedge.go:
+    id: 58b5e140a20f
+    last_write_checksum: sha1:c064d7f64f92eaae7f9d39edd831801898eda35b
+    pristine_git_object: 21043297caedc19bbafcbf5021671aa1b25563f5
+  internal/sdk/models/shared/graphnode.go:
+    id: 5d67b92fcbb6
+    last_write_checksum: sha1:e8852a36e4e8e685d237dc2801c66acec0a2f224
+    pristine_git_object: e780b0bff3fd8fa3fc22b707a66e44a2dedd868b
+  internal/sdk/models/shared/graphqueryrequest.go:
+    id: f526751e9902
+    last_write_checksum: sha1:be813510308ffd9a3bf87189cd95b060fec3e665
+    pristine_git_object: b9a2ed27c891f53a125967b25b2509e028a4c3bf
+  internal/sdk/models/shared/graphqueryresponse.go:
+    id: c43c87ee4c80
+    last_write_checksum: sha1:aa0ef25c33b2c3dff4990b24c80824a3b3c5e714
+    pristine_git_object: 4cc0fc44aaf34912bc7731171137e26faf7637a1
+  internal/sdk/models/shared/graphseed.go:
+    id: 3caa172e44c4
+    last_write_checksum: sha1:616c05a8fd1cd81a0913bf16b67608ecda3430be
+    pristine_git_object: ed8cc51085dd2e5a110a5bb63f34cb5c1e462a60
+  internal/sdk/models/shared/groupheadline.go:
+    id: e081c23be6d6
+    last_write_checksum: sha1:32ca205fcad08fd74d30cfc31bd208623968823d
+    pristine_git_object: 0730886f17cbd9a509e6eae31942a683c29cc7fa
+  internal/sdk/models/shared/groupheadlinewithcompositeid.go:
+    id: 56fd37802837
+    last_write_checksum: sha1:a10f95dce09e06ec9c960228f3863383a8cb69a4
+    pristine_git_object: dc3e34434fdf358580a2b3908d2de361f6c11a7b
+  internal/sdk/models/shared/internalattribute.go:
+    id: 1f19f2e1789f
+    last_write_checksum: sha1:50d0dc1bbb369c4a1d89bfb4e7d43a84ebf200c8
+    pristine_git_object: 38bdf4deb5d36926f332102ed6a6efeb92865836
+  internal/sdk/models/shared/internaluserattribute.go:
+    id: 6e6615a2206d
+    last_write_checksum: sha1:e52cfa9e27532ec68a047ea7363d8051f93590c9
+    pristine_git_object: 7fa5eb3eea3633d66cf5afed7d7c59ae8d105166
+  internal/sdk/models/shared/invitationemailattribute.go:
+    id: e2187c06ac91
+    last_write_checksum: sha1:1b42695ad2e33b4bb543e33b90dcadf31942ee4a
+    pristine_git_object: 6e1c046e048c56b0113719a0a2e897a8354147f4
+  internal/sdk/models/shared/linkattribute.go:
+    id: 6c40c650a0b7
+    last_write_checksum: sha1:a103b50d221ff31fc53dadbdb0be7f16803f8b08
+    pristine_git_object: 808b1174e5eae3f06c16564d275850df493b8a84
+  internal/sdk/models/shared/listsavedviewsresults.go:
+    id: b3f819d352b8
+    last_write_checksum: sha1:8e93cf48ccbfab3a30b8bfb0db92fc5576894045
+    pristine_git_object: 9352c358b82a1d7cf166e1b6e3590141b3f39a95
+  internal/sdk/models/shared/messageemailaddressattribute.go:
+    id: f6103456c2f1
+    last_write_checksum: sha1:291b095b8807cfd7cce7aae75477c4699df90e2a
+    pristine_git_object: 502d772698432260cd971c0c9f085a49a77cd8d3
+  internal/sdk/models/shared/multiselectattribute.go:
+    id: ef9c850d5414
+    last_write_checksum: sha1:bd941a532b8a703edc2a4b4ab55ae3b04d85cdc3
+    pristine_git_object: 68ce609faf41336c28f5e3e31a9bb9d0f8ceb3c7
+  internal/sdk/models/shared/nullableentity.go:
+    id: f44766b2f10b
+    last_write_checksum: sha1:1ce04c4e3a636791120a702faa25796871fde911
+    pristine_git_object: 7eccd9d18f24f2b57700e9292206d23162c9b181
+  internal/sdk/models/shared/numberattribute.go:
+    id: 85e309bc534a
+    last_write_checksum: sha1:b0572ff2cd8a9a742b41a71e3776da2513e20755
+    pristine_git_object: c7970387f49dee4868f774e2aebe24fd5341f1d9
+  internal/sdk/models/shared/orderedlistattribute.go:
+    id: eb01c8d197ae
+    last_write_checksum: sha1:1f1c5b4978d631fa4e44d047579e9f87626ec46a
+    pristine_git_object: d07d9d6bb987eb5db8f9b8af85277aba2ae3bcc6
+  internal/sdk/models/shared/partnerorganisationattribute.go:
+    id: 422f41c8de04
+    last_write_checksum: sha1:967176539e12091f3835821de43c63fceed9c94f
+    pristine_git_object: c852db304fe00990c4e551ce3d1e1d61743e5116
+  internal/sdk/models/shared/partnerstatusattribute.go:
+    id: 2114a039d312
+    last_write_checksum: sha1:edacfea2fc89084d8a56d8c09bb64997a1450595
+    pristine_git_object: bca54b22f43cb23517ebd42ea8ea6270de959646
+  internal/sdk/models/shared/paymentattribute.go:
+    id: daf66fa31d98
+    last_write_checksum: sha1:d57686d95ceb05b4a90b3ff1763eb3501e5912f7
+    pristine_git_object: d7172d633d1a935200229e0beb968dcdbe3bc99e
+  internal/sdk/models/shared/paymentmethodrelationattribute.go:
+    id: c72f5a8f1907
+    last_write_checksum: sha1:d84ced309b5636334cf455422cd61bedbb813b33
+    pristine_git_object: 64fb91eccac7122db9ceaedea902392372499860
+  internal/sdk/models/shared/phoneattribute.go:
+    id: 93f0f90772c8
+    last_write_checksum: sha1:302cd290e0fe398fe60ea88a98f013480675449a
+    pristine_git_object: 3bd5c68aa7892278bbb2f858a0718abf2f309613
+  internal/sdk/models/shared/portalaccessattribute.go:
+    id: 9f326173ec3a
+    last_write_checksum: sha1:6c906d9ac7c236dbff77deadc98b2b8ef7e37e01
+    pristine_git_object: 506f42046d23b37a8b991bbbd17c558e37c7f579
+  internal/sdk/models/shared/pricecomponentattribute.go:
+    id: d9a959eff6df
+    last_write_checksum: sha1:315b8ced6f8b54f9db1017eb15a639c50cc3577b
+    pristine_git_object: 61705b9fd60db0a73b3da892644323c5964cd4d4
+  internal/sdk/models/shared/purposeattribute.go:
+    id: 277b9fa8b9c4
+    last_write_checksum: sha1:b302c4d15e274ea6716a57bbde78e76b64b1d685
+    pristine_git_object: c8301df50cac0df418a56acaf3945eafa7b80695
+  internal/sdk/models/shared/redirectentityview.go:
+    id: b41d6bdc2b16
+    last_write_checksum: sha1:b796c543ab3a8d6bc053484dae420164691ce503
+    pristine_git_object: 47ea413c62d5cfd254bb228ae71f468a0035bb50
+  internal/sdk/models/shared/relationattribute.go:
+    id: 16dc5fcda3bc
+    last_write_checksum: sha1:48efd0b0cb863459bc9d25459a5007b2b6780f38
+    pristine_git_object: 4048469b5fc4f44c2ec9b2f00b6fca3eb37234cd
+  internal/sdk/models/shared/relationentity.go:
+    id: eb8952916457
+    last_write_checksum: sha1:55b40e31d918869d5a435ce9a97e57f215337201
+    pristine_git_object: dd62ab06a15dbcea3052f9c05a1a7661300d8dab
+  internal/sdk/models/shared/relationitem.go:
+    id: 4dad4635b539
+    last_write_checksum: sha1:0a3e9a761e42346c7b1fcd926e7ec759d1149214
+    pristine_git_object: 73e982d59d4bf1f11ee51918e25bd75206ad65b2
+  internal/sdk/models/shared/savedview.go:
+    id: bbf4874bbd56
+    last_write_checksum: sha1:7218c52278397a96d66de9da3dac3d2f5ee46088
+    pristine_git_object: 38c8c56d1556acb2f94600b8150ecadf7519f6ce
+  internal/sdk/models/shared/savedviewpartial.go:
+    id: a304ece8f0c8
+    last_write_checksum: sha1:6b7d2d511e3fb65cb4185fc8542fbe60f90815cf
+    pristine_git_object: ee716c837414819e0f50dc5b599177072e61db28
+  internal/sdk/models/shared/searchfilter.go:
+    id: 43db74f60b6b
+    last_write_checksum: sha1:5e143aa7135aa3797e0cb0844944c89163e0d913
+    pristine_git_object: ddf7e365ee2294cbe31c23b19e75af68d8e11744
+  internal/sdk/models/shared/searchfiltervalue.go:
+    id: 75c0fa7d5f19
+    last_write_checksum: sha1:f1cb00c8cd969eb29dd0c712acbb78cfaaa02a96
+    pristine_git_object: 6c7e9d149d9ef06967fe8c6b0d383635333686ca
+  internal/sdk/models/shared/searchmappings.go:
+    id: 0bd74f359f11
+    last_write_checksum: sha1:4a68fb6add3a7f3ca66f29dd689800a43f66c3c0
+    pristine_git_object: cfe4c2f27cf5c29678dc8256962b0cc6d612c920
+  internal/sdk/models/shared/security.go:
+    id: 9098af98367e
+    last_write_checksum: sha1:e8e31b606a77714313987210c34abcc8924489c8
+    pristine_git_object: d393ff12dbea8bb4babdc7dcb591ab9f4ec30bb0
+  internal/sdk/models/shared/selectattribute.go:
+    id: fbb86c5b4081
+    last_write_checksum: sha1:10d290455f6cba687d99abc3c0c3875ba95740ec
+    pristine_git_object: b76bb59e57d688b17eb3a784d35a8995bb54d2fa
+  internal/sdk/models/shared/sequenceattribute.go:
+    id: 035ff78c1289
+    last_write_checksum: sha1:c717ea57f7a8b7e989a0cba9b9a8bd55c2dad7bf
+    pristine_git_object: bebc1370b91f15a013871e58f84c17377e0d8a76
+  internal/sdk/models/shared/settingflag.go:
+    id: d62331e45601
+    last_write_checksum: sha1:b5abddca59b1b1d3478cd048eae548f92826dffd
+    pristine_git_object: 8b564efa0efa91dc3b50012d1244cef4b583a02a
+  internal/sdk/models/shared/statusattribute.go:
+    id: c0f44579de75
+    last_write_checksum: sha1:21752c16733e19439ba239bda6ed7c3b01ed5306
+    pristine_git_object: 4d0bafd8a65617824ea5630940bb3a623616d8b1
+  internal/sdk/models/shared/summaryattribute.go:
+    id: 0771e30cacc9
+    last_write_checksum: sha1:b3758b6711b9b7010fe2451abe028df534086ea6
+    pristine_git_object: bddcad2cb5941154c5add3443fc4d92696002973
+  internal/sdk/models/shared/summaryfield.go:
+    id: e570522ae1ab
+    last_write_checksum: sha1:6490df02e4afc4df5c11b32e4e67981c79145212
+    pristine_git_object: 2d1233ac84ec9f3fc546b0248963f17aea2d439a
+  internal/sdk/models/shared/tableattribute.go:
+    id: 2be5ee4c516e
+    last_write_checksum: sha1:088e9c56c81578a88c928469eed5444d539c4f98
+    pristine_git_object: ba98e7064ebc1911a162f55380db042590345dd6
+  internal/sdk/models/shared/tagsattribute.go:
+    id: b8458dde6834
+    last_write_checksum: sha1:d8e60ff692b5960ff8a08ba16f4f0e8366775c6c
+    pristine_git_object: 259cafdadb343050fc02c658c5e04fb9085ab824
+  internal/sdk/models/shared/taxonomy.go:
+    id: ebe75fc3062a
+    last_write_checksum: sha1:617d6ec6a839f6de36b6f997938c085c4cc44684
+    pristine_git_object: 697edb3dcb30dcdb04026be7f2cf1d502dabea71
+  internal/sdk/models/shared/taxonomybulkjob.go:
+    id: b6d4844c0c09
+    last_write_checksum: sha1:627bba0fcaa17a36adc269f1149fec6bd7a9ccb6
+    pristine_git_object: 563bd13f56d3e4567138da1519b680404a32fd39
+  internal/sdk/models/shared/taxonomybulkjobactiontype.go:
+    id: a4c6a634237e
+    last_write_checksum: sha1:e17afe2926c929f273672ed3e0bfc63123d8907d
+    pristine_git_object: ef7efc6b8ec2b9d8b50a07de3c610622a28b740d
+  internal/sdk/models/shared/taxonomybulkjobstatus.go:
+    id: 659a9acb5ec2
+    last_write_checksum: sha1:bde413c724e98303e4e694f15eced829f526738f
+    pristine_git_object: 4130f15751fca1233c81da0a8c9623223e7a09f8
+  internal/sdk/models/shared/taxonomybulkjobtriggerresponse.go:
+    id: 24451b3aaa2a
+    last_write_checksum: sha1:7b0bac56d94e48b0fe0fad8cb6bdbe43594ae0b8
+    pristine_git_object: c20a5873334f15e1fbe55214c1907d4bd7e3cbc6
+  internal/sdk/models/shared/taxonomyclassification.go:
+    id: f7d9f8ffe059
+    last_write_checksum: sha1:b9abecde0818b9f39a3d190e0efd67e8575cfb50
+    pristine_git_object: 1d466b6fe4341b99e28ecbe697245f57e0048463
+  internal/sdk/models/shared/taxonomyclassificationinput.go:
+    id: fcc53e74b380
+    last_write_checksum: sha1:547a7b97eb3ac7abb20d039404bbfa9d9f08a111
+    pristine_git_object: 55573cd3bf834422b493946bb535b5142156538e
+  internal/sdk/models/shared/taxonomysearchincludearchivedparam.go:
+    id: 77953a601a89
+    last_write_checksum: sha1:d1b59b6c596e239b9ca771b66a30b6405902464c
+    pristine_git_object: 127189f46b3f980954e19abad137dbe6e184ac4e
+  internal/sdk/models/shared/textattribute.go:
+    id: b48966794c40
+    last_write_checksum: sha1:cd1cb87c314342c94fa6b3f3452b8ada0f4f82c0
+    pristine_git_object: 4e81506a9d2123f8ca4e2a060ebf95b28e1d2bbc
+  internal/sdk/models/shared/userrelationattribute.go:
+    id: c6a1892f0add
+    last_write_checksum: sha1:a608c4df7873a59f5c4f5c6c8d4854268caf9140
+    pristine_git_object: 02e0da1094cbeb7f845ee4dc80d77da4d1681973
+  internal/sdk/optionalnullable/optionalnullable.go:
+    id: 4b83aa3f3df3
+    last_write_checksum: sha1:d6aff1a420c31e025ea21d46cf056e305ae76fe8
+    pristine_git_object: c6739be0619b6726565e0f11855ffe44b0e5607e
+  internal/sdk/optionalnullable/optionalnullable_test.go:
+    id: 3920a41dfc4c
+    last_write_checksum: sha1:2e9433eff1651ac77d6678ea76880d9a4980cbc2
+    pristine_git_object: e6e5a01c6e721e879e24a38a1f97e3e27d4686d4
+  internal/sdk/relations.go:
+    id: f502f1546e3e
+    last_write_checksum: sha1:b6482bc064a4cfb0756333b92a213156f7629c07
+    pristine_git_object: a49785877fc103459ab8c45951046d92f2e4cf11
+  internal/sdk/retry/config.go:
+    id: 7ea5fa9128b6
+    last_write_checksum: sha1:7f7d96b59a18e95bac847ae09c63bbd911ee8432
+    pristine_git_object: 5b3dc7c122d8ab08905485342d7474f8f163888d
+  internal/sdk/savedviews.go:
+    id: 6bfb634fadfe
+    last_write_checksum: sha1:0e698ca3d35843afb211942ac2c7ccd698c45422
+    pristine_git_object: 7f3564aca9d53ad90e2cbd4e453b00eed0a014b2
+  internal/sdk/schemas.go:
+    id: 8ad5b3b70222
+    last_write_checksum: sha1:d7514ab0cec2b6a3a6f9ca6d1ef7306816c4731d
+    pristine_git_object: 9e7123a38aee4d047edcd6c0bc77d60baec76606
+  internal/sdk/sdk.go:
+    id: 02d7190ee502
+    last_write_checksum: sha1:6c0b34fec3620dfa706e08e42fdbe84558556649
+    pristine_git_object: c5bc01ea813c584d9a8058c4c260ac1fbf04eeb0
+  internal/sdk/taxonomy.go:
+    id: 6295ebf2e026
+    last_write_checksum: sha1:4c95eb46c628eae967c1d61f5cf8312b7a918e31
+    pristine_git_object: 82b2d6d10a092de53b3f0cc2a09f7cfcee567e25
+  internal/sdk/types/bigint.go:
+    id: fc530b70337e
+    last_write_checksum: sha1:49b004005d0461fb04b846eca062b070b0360b31
+    pristine_git_object: 9c6a086d51595888a6ff787ebcb8693559afee95
+  internal/sdk/types/date.go:
+    id: c4bff082c66f
+    last_write_checksum: sha1:3036a2e1ed15a1d484c093367eba000c38f384d0
+    pristine_git_object: 5b2782f219efe6bfbce46fc2dec68998eb759438
+  internal/sdk/types/datetime.go:
+    id: a8109857c712
+    last_write_checksum: sha1:196d050af6450669214e9ae4fd28e56263ae2b5d
+    pristine_git_object: 3eff332daa04e34cec5ffb10add670bafd8ac454
+  internal/sdk/types/pointers.go:
+    id: 2f3f971639f6
+    last_write_checksum: sha1:fc2275ea006257ba9ba4ff6f2a2cdb6205371eef
+    pristine_git_object: 35c439d2661e08fcb6a854096fd7b9a8561b3938
+  internal/validators/DateValidator.go:
+    id: 4fdfa187ab97
+    last_write_checksum: sha1:1c25b754f57553e604afaba38fa5de20a56c8c42
+    pristine_git_object: 4ba7e1e160503a945ae8cf033d8c737b670ee8dd
+  internal/validators/ExactlyOneChild.go:
+    id: 66e7bd50b47d
+    last_write_checksum: sha1:ab8e18d1763fbd5b262c3e7d917c81ac40ba839f
+    pristine_git_object: 1765a3a0b83d38a6cc8f118ea2cfab67ab44c910
+  internal/validators/JSONParseValidator.go:
+    id: ce72f37482f5
+    last_write_checksum: sha1:77af551821798350f868410aab90352f7ec7b370
+    pristine_git_object: b8bb96b5e0930635eb754f169b3eaf285d48dd1c
+  internal/validators/RFC3339Validator.go:
+    id: 0cf126c9a956
+    last_write_checksum: sha1:8d9accfc3aa477a74b0f927652f5e2ae3d28061d
+    pristine_git_object: f5e61466b5c639cb17d0cb2cfe28611957297ce9
+  internal/validators/boolvalidators/not_null.go:
+    id: 865145e65396
+    last_write_checksum: sha1:89a7362be9d519ed7c9fb7c4989d273a3aa5f279
+    pristine_git_object: 6eca17e0cff87f7682f8baa2cd81cd33bc972f4c
+  internal/validators/float32validators/not_null.go:
+    id: 330748f4ff91
+    last_write_checksum: sha1:4f0a859aa9d7348056c6559bad9ca336104beaef
+    pristine_git_object: c9a8973c7dc830b9c5aac546ea7cbe6021f01629
+  internal/validators/float64validators/not_null.go:
+    id: 8f5e6362f0f5
+    last_write_checksum: sha1:f2436a4a1323d58ffcff3b153167c4e463325c12
+    pristine_git_object: 8f786d278597ffac3c525755e429c9a3caa60b20
+  internal/validators/int32validators/not_null.go:
+    id: ea876d1f8b07
+    last_write_checksum: sha1:d08335af46ab809d0076da8543b3455662fb66a0
+    pristine_git_object: ec9a3f10adfdd29c3cca40e53dc42db329cf37d7
+  internal/validators/int64validators/not_null.go:
+    id: d3f822eb4c69
+    last_write_checksum: sha1:b5bf5b539f2631813ee8771cf00d8ea9744c6dd3
+    pristine_git_object: 707ff9573f026b7b7ee3f59462c7a8ba10a1aba9
+  internal/validators/listvalidators/not_null.go:
+    id: b3ee156dafa7
+    last_write_checksum: sha1:11f33dfa3cb1b9eadc7e4a8287518135ddae191e
+    pristine_git_object: 9b88e520b7d58c14c6844d3dbc26ce4f96d39af1
+  internal/validators/mapvalidators/not_null.go:
+    id: 9cff80d0791c
+    last_write_checksum: sha1:64117afe6cdb1a0e1b57df970da8df0e18d10442
+    pristine_git_object: dc6959e9cdadb16e0e1ea90f98b2d27f2d357b64
+  internal/validators/numbervalidators/not_null.go:
+    id: b335c948bcf4
+    last_write_checksum: sha1:54d925f13a630f21e14709ce6181e5eaf96bd6e3
+    pristine_git_object: 57d4da0ae000f671698384abc550196744884871
+  internal/validators/objectvalidators/not_null.go:
+    id: dd14631b3a38
+    last_write_checksum: sha1:5f897f5dcd2686d43c9bd683900572a8d7ef6473
+    pristine_git_object: bf0189497acb3b1214f2480e9db071186d85ecad
+  internal/validators/setvalidators/not_null.go:
+    id: e612a6618fac
+    last_write_checksum: sha1:de772bcb14615735a8ebd2a9ffaae06f464a86d5
+    pristine_git_object: f859d64810168dd4ec7bfb1ea1c0186c551f8987
+  internal/validators/stringvalidators/not_null.go:
+    id: 80be7ffedf6c
+    last_write_checksum: sha1:df498b49dd87f9508f3eaec3a63ed0a08ae3c16e
+    pristine_git_object: 1e40ac1b6ce68540327e01910f0dc91a60b62607
+  main.go:
+    id: 0607f785dfa3
+    last_write_checksum: sha1:ec9c834cb1dbd3373aeed2ff81015c45f96c442a
+    pristine_git_object: ba7e68992723eb12c275bbd50e0ddb475eaa4300
+  terraform-registry-manifest.json:
+    id: fc3d63fd06e1
+    last_write_checksum: sha1:45b609f3f65164bc2f00b6e2b24faf64627e15b8
+    pristine_git_object: fec2a5691e493a1941bd79b312b3925403a91aa6
+  tools/tools.go:
+    id: 683390d33800
+    last_write_checksum: sha1:8239addbb5e66af0488adc7dc4aba098e4634d88
+    pristine_git_object: 36b25801b3a26b57ee042a610a3c35ca65b1376a
 examples:
   attachActivity:
     speakeasy-default-attach-activity:
@@ -353,7 +1329,7 @@ examples:
         query:
           from: 0
           size: 25
-          type: "SyncActivity"
+          type: ["SyncActivity"]
           include_relations: false
           preset_range: "last_week"
           exclude_activity_groups: "workflow"
@@ -384,10 +1360,10 @@ examples:
   createSchemaCapability:
     speakeasy-default-create-schema-capability:
       requestBody:
-        application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "message_email_address"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
+        application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "message_email_address"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "schemas": [{"schema": "contact"}], "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
       responses:
         "201":
-          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "relation_payment_method"}], "composite_id": "contact:97644baa-083f-4e49-9188-fcff2ecaad7d", "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
+          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "relation_payment_method"}], "composite_id": "contact:97644baa-083f-4e49-9188-fcff2ecaad7d", "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "schemas": [{"schema": "contact"}], "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
         "429":
           application/json: {"error": "Too many requests. Try again later.", "status": 429}
   createSchemaGroup:
@@ -433,7 +1409,7 @@ examples:
           composite_id: "contact:97644baa-083f-4e49-9188-fcff2ecaad7d"
       responses:
         "200":
-          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "email"}], "composite_id": "contact:97644baa-083f-4e49-9188-fcff2ecaad7d", "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
+          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "email"}], "composite_id": "contact:97644baa-083f-4e49-9188-fcff2ecaad7d", "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "schemas": [{"schema": "contact"}], "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
         "429":
           application/json: {"error": "Too many requests. Try again later.", "status": 429}
   deleteSchemaGroup:
@@ -471,9 +1447,11 @@ examples:
       parameters:
         path:
           slug: "contact"
+        query:
+          latest: false
       responses:
         "200":
-          application/json: {"attributes": [{"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Email", "name": "email", "readonly": false, "required": true, "sortable": true, "type": "email"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "email"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "title": "Messaging", "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "category": "customer_relations", "description": "Example description", "docs_url": "https://docs.epilot.io/docs/pricing/entities", "draft": false, "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {"route": "/app/pricing-hub/product/:entityId"}, "edit_view": {}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {}, "table_view": {"enable_thumbnails": false}}}
+          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "attributes": [{"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Email", "name": "email", "readonly": false, "required": true, "sortable": true, "type": "email"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "email"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "title": "Messaging", "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "category": "customer_relations", "description": "Example description", "docs_url": "https://docs.epilot.io/docs/pricing/entities", "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {"route": "/app/pricing-hub/product/:entityId"}, "edit_view": {}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {}, "table_view": {"enable_thumbnails": false}}}
         "404":
           application/json: {"error": "Not Found", "status": 404}
   getSchemaAttribute:
@@ -493,7 +1471,7 @@ examples:
           composite_id: "contact:97644baa-083f-4e49-9188-fcff2ecaad7d"
       responses:
         "200":
-          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "internal"}], "composite_id": "contact:97644baa-083f-4e49-9188-fcff2ecaad7d", "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
+          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "internal"}], "composite_id": "contact:97644baa-083f-4e49-9188-fcff2ecaad7d", "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "schemas": [{"schema": "contact"}], "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
         "404":
           application/json: {"error": "Not Found", "status": 404}
   getSchemaExample:
@@ -537,7 +1515,7 @@ examples:
           drafts_size: 0
       responses:
         "200":
-          application/json: {"drafts": [{"attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "topic": "<value>", "type": "consent"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "portal_access"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "title": "Messaging", "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "draft": false, "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {}, "edit_view": {}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {"summary_attributes": ["email"]}, "table_view": {"route": "/app/pricing-hub/product/:entityId"}}}], "versions": [{"attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "partner_status"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "payment"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "title": "Messaging", "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "draft": false, "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {}, "edit_view": {}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {"summary_attributes": ["email"]}, "table_view": {"route": "/app/pricing-hub/product/:entityId"}}}], "versions_more": false}
+          application/json: {"versions": [{"attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "partner_status"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "payment"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "title": "Messaging", "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "draft": false, "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {}, "edit_view": {}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {"summary_attributes": ["email"]}, "table_view": {"route": "/app/pricing-hub/product/:entityId"}}}], "versions_more": false}
   listSchemaBlueprints:
     speakeasy-default-list-schema-blueprints:
       responses:
@@ -548,6 +1526,7 @@ examples:
       parameters:
         query:
           unpublished: false
+          latest: false
       responses:
         "200":
           application/json: {"results": [{"attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "relation_payment_method"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [], "draft": false, "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {"route": "/app/pricing-hub/product/:entityId"}, "edit_view": {"route": "/app/pricing-hub/product/:entityId"}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {}, "table_view": {"enable_thumbnails": false}}}]}
@@ -568,10 +1547,10 @@ examples:
         query:
           draft: false
       requestBody:
-        application/json: {"attributes": [{"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Email", "name": "email", "readonly": false, "required": true, "sortable": true, "type": "email"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "automation"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "title": "Messaging", "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "category": "customer_relations", "description": "Example description", "docs_url": "https://docs.epilot.io/docs/pricing/entities", "draft": false, "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {}, "edit_view": {}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {"route": "/app/pricing-hub/product/:entityId"}, "table_view": {"bulk_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "enable_thumbnails": false, "row_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}]}}}
+        application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "attributes": [{"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Email", "name": "email", "readonly": false, "required": true, "sortable": true, "type": "email"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "automation"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "title": "Messaging", "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "category": "customer_relations", "description": "Example description", "docs_url": "https://docs.epilot.io/docs/pricing/entities", "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {}, "edit_view": {}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {"route": "/app/pricing-hub/product/:entityId"}, "table_view": {"bulk_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "enable_thumbnails": false, "row_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}]}}}
       responses:
         "200":
-          application/json: {"attributes": [{"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Email", "name": "email", "readonly": false, "required": true, "sortable": true, "type": "email"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "multiple": false, "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "relation_user"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "title": "Messaging", "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "category": "customer_relations", "description": "Example description", "docs_url": "https://docs.epilot.io/docs/pricing/entities", "draft": false, "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {}, "edit_view": {"summary_attributes": ["email"]}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {}, "table_view": {"enable_thumbnails": false}}}
+          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "attributes": [{"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Email", "name": "email", "readonly": false, "required": true, "sortable": true, "type": "email"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "multiple": false, "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "relation_user"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "title": "Messaging", "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "category": "customer_relations", "description": "Example description", "docs_url": "https://docs.epilot.io/docs/pricing/entities", "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {}, "edit_view": {"summary_attributes": ["email"]}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {}, "table_view": {"enable_thumbnails": false}}}
         "429":
           application/json: {"error": "Too many requests. Try again later.", "status": 429}
   putSchemaAttribute:
@@ -590,10 +1569,10 @@ examples:
         path:
           composite_id: "contact:97644baa-083f-4e49-9188-fcff2ecaad7d"
       requestBody:
-        application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": null, "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "select"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
+        application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": null, "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "select"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "schemas": [{"schema": "contact"}], "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
       responses:
         "200":
-          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "relation_payment_method"}], "composite_id": "contact:97644baa-083f-4e49-9188-fcff2ecaad7d", "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
+          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "relation_payment_method"}], "composite_id": "contact:97644baa-083f-4e49-9188-fcff2ecaad7d", "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schema": "contact", "schemas": [{"schema": "contact"}], "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}
   putSchemaGroup:
     speakeasy-default-put-schema-group:
       parameters:
@@ -711,7 +1690,7 @@ examples:
         application/json: {"create": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "archived": false, "name": "Wallbox PV", "parents": ["taxonomy-slug:classification-slug"], "slug": "wallbox-pv", "starred": false}], "delete": ["taxonomy-slug:classification-slug"], "update": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "archived": false, "name": "Wallbox PV", "parents": ["taxonomy-slug:classification-slug"], "slug": "wallbox-pv", "starred": false}]}
       responses:
         "200":
-          application/json: {"created": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "archived": false, "id": "taxonomy-slug:classification-slug", "name": "Wallbox PV", "parents": ["taxonomy-slug:classification-slug"], "slug": "wallbox-pv", "starred": false}], "updated": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "archived": false, "id": "taxonomy-slug:classification-slug", "name": "Wallbox PV", "parents": ["taxonomy-slug:classification-slug"], "slug": "wallbox-pv", "starred": false}]}
+          application/json: {"created": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "archived": false, "id": "taxonomy-slug:classification-slug", "name": "Wallbox PV", "parents": ["taxonomy-slug:classification-slug"], "slug": "wallbox-pv", "starred": false}], "deleted": ["taxonomy-slug:classification-slug"], "updated": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "archived": false, "id": "taxonomy-slug:classification-slug", "name": "Wallbox PV", "parents": ["taxonomy-slug:classification-slug"], "slug": "wallbox-pv", "starred": false}]}
         "404":
           application/json: {"error": "Not Found", "status": 404}
         "429":
@@ -999,6 +1978,24 @@ examples:
           application/json: {"errors": [{"instance_path": "<value>", "keyword": "<value>", "params": {"key": "<value>"}, "schema_path": "<value>"}], "status": "error"}
         "429":
           application/json: {"error": "Too many requests. Try again later.", "status": 429}
+    speakeasy-default-create-entity:
+      parameters:
+        path:
+          slug: "contact"
+        query:
+          activity_id: "01F130Q52Q6MWSNS8N2AVXV4JN"
+          fill_activity: false
+          async: false
+          validate: false
+      requestBody:
+        application/json: {"_acl": {"delete": ["org:456"], "edit": ["org:456"], "view": ["org:456", "org:789"]}, "_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_schema": "contact", "_tags": ["example", "mock"], "_org": "123", "_owners": [{"org_id": "123", "user_id": "123"}], "_created_at": "2021-02-09T12:41:43.662Z", "_updated_at": "2021-02-09T12:41:43.662Z"}
+      responses:
+        "201":
+          application/json: {"_acl": {"delete": ["org:456"], "edit": ["org:456"], "view": ["org:456", "org:789"]}, "_created_at": "2021-02-09T12:41:43.662Z", "_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_org": "123", "_owners": [{"org_id": "123", "user_id": "123"}], "_schema": "contact", "_tags": ["example", "mock"], "_title": "<value>", "_updated_at": "2021-02-09T12:41:43.662Z"}
+        "422":
+          application/json: {"errors": [{"instance_path": "<value>", "keyword": "<value>", "params": {"key": "<value>"}, "schema_path": "<value>"}], "status": "error"}
+        "429":
+          application/json: {"error": "Too many requests. Try again later.", "status": 429}
   deleteEntity:
     speakeasy-default-delete-entity:
       parameters:
@@ -1149,6 +2146,19 @@ examples:
           slug: "contact"
       requestBody:
         application/json: {}
+      responses:
+        "200":
+          application/json: {"errors": [], "status": "success"}
+        "422":
+          application/json: {"errors": [{"code": "custom", "message": "Invalid input", "params": {"type": "missing_field"}, "path": ["first_name"]}], "status": "error"}
+        "429":
+          application/json: {"error": "Too many requests. Try again later.", "status": 429}
+    speakeasy-default-validate-entity:
+      parameters:
+        path:
+          slug: "price"
+      requestBody:
+        application/json: {"_acl": {"delete": ["org:456"], "edit": ["org:456"], "view": ["org:456", "org:789"]}, "_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_schema": "contact", "_tags": ["example", "mock"], "_org": "123", "_owners": [{"org_id": "123", "user_id": "123"}], "_created_at": "2021-02-09T12:41:43.662Z", "_updated_at": "2021-02-09T12:41:43.662Z"}
       responses:
         "200":
           application/json: {"errors": [], "status": "success"}
@@ -1428,6 +2438,19 @@ examples:
           application/json: {"errors": [{"instance_path": "<value>", "keyword": "<value>", "params": {"key": "<value>", "key1": "<value>"}, "schema_path": "<value>"}], "status": "error"}
         "429":
           application/json: {"error": "Too many requests. Try again later.", "status": 429}
+    speakeasy-default-validate-entity-v2:
+      parameters:
+        path:
+          slug: "price"
+      requestBody:
+        application/json: {"_acl": {"delete": ["org:456"], "edit": ["org:456"], "view": ["org:456", "org:789"]}, "_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_schema": "contact", "_tags": ["example", "mock"], "_org": "123", "_owners": [{"org_id": "123", "user_id": "123"}], "_created_at": "2021-02-09T12:41:43.662Z", "_updated_at": "2021-02-09T12:41:43.662Z"}
+      responses:
+        "200":
+          application/json: {"errors": [{"instance_path": "<value>", "keyword": "<value>", "params": {"key": "<value>", "key1": "<value>"}, "schema_path": "<value>"}], "status": "success"}
+        "422":
+          application/json: {"errors": [{"instance_path": "<value>", "keyword": "<value>", "params": {"key": "<value>", "key1": "<value>"}, "schema_path": "<value>"}], "status": "error"}
+        "429":
+          application/json: {"error": "Too many requests. Try again later.", "status": 429}
   wipeAllEntities:
     speakeasy-default-wipe-all-entities:
       requestBody:
@@ -1441,5 +2464,321 @@ examples:
           application/json: {"edges": [{"from": "portal_user", "to": "contact"}, {"from": "contact", "to": "billing_accounts"}], "entityNodes": {"portal_user": {"_id": "550e8400-e29b-41d4-a716-446655440001", "_schema": "portal_user"}, "contact": {"_id": "550e8400-e29b-41d4-a716-446655440002", "_schema": "contact"}, "billing_accounts": [{"_id": "550e8400-e29b-41d4-a716-446655440003", "_schema": "billing_account"}, {"_id": "550e8400-e29b-41d4-a716-446655440004", "_schema": "billing_account"}]}, "nodes": {"portal_user": ["550e8400-e29b-41d4-a716-446655440001"], "contact": ["550e8400-e29b-41d4-a716-446655440002"], "billing_accounts": ["550e8400-e29b-41d4-a716-446655440003", "550e8400-e29b-41d4-a716-446655440004"]}}
         "400":
           application/json: {"error": "Bad Request", "status": 400}
+  freezeSchema:
+    speakeasy-default-freeze-schema:
+      parameters:
+        path:
+          slug: "contact"
+      responses:
+        "200":
+          application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "attributes": [{"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Email", "name": "email", "readonly": false, "required": true, "sortable": true, "type": "email"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "app_id": "123e4567-e89b-12d3-a456-426614174000", "attributes": [{"_manifest": null, "_purpose": ["taxonomy-slug:classification-slug"], "constraints": {}, "deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "feature_flag": "FF_MY_FEATURE_FLAG", "hidden": false, "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "info_helpers": {"hint_tooltip_placement": "top"}, "label": "<value>", "layout": "full_width", "name": "<value>", "order": 0, "readonly": false, "required": false, "sortable": true, "type": "partner_status"}], "feature_flag": "FF_MY_FEATURE_FLAG", "id": "d5839b94-ba20-4225-a78e-76951d352bd6", "name": "customer_messaging", "schemas": [{"schema": "contact"}], "title": "Messaging", "ui_config": {"is_filterable": true}, "ui_hooks": [{"component": "PricingItems", "hook": "EntityDetailsV2:Tab", "icon": "email", "import": "@epilot360/notes", "order": 10, "render_condition": "_is_composite_price = \"false\"", "requiredPermission": {"action": "note:view", "resource": "123"}, "route": "notes", "title": "Notes"}]}], "category": "customer_relations", "description": "Example description", "docs_url": "https://docs.epilot.io/docs/pricing/entities", "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {}, "edit_view": {"route": "/app/pricing-hub/product/:entityId"}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {}, "table_view": {}}}
+        "404":
+          application/json: {"error": "Not Found", "status": 404}
+  listSchemasV2:
+    speakeasy-default-list-schemas-v2:
+      parameters:
+        query:
+          full: false
+          unpublished: false
+          latest: false
+      responses:
+        "200":
+          application/json: {"results": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "attributes": [{"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Email", "name": "email", "readonly": false, "required": true, "sortable": true, "type": "email"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [], "category": "customer_relations", "description": "Example description", "docs_url": "https://docs.epilot.io/docs/pricing/entities", "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {"route": "/app/pricing-hub/product/:entityId"}, "edit_view": {"route": "/app/pricing-hub/product/:entityId"}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {"route": "/app/pricing-hub/product/:entityId"}, "table_view": {}}}]}
+  unfreezeSchema:
+    speakeasy-default-unfreeze-schema:
+      parameters:
+        path:
+          slug: "contact"
+      responses:
+        "200":
+          application/json: {"_manifest": null, "attributes": [{"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Email", "name": "email", "readonly": false, "required": true, "sortable": true, "type": "email"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "First Name", "name": "first_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Last Name", "name": "last_name", "readonly": false, "required": false, "sortable": true, "type": "string"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Birthdate", "name": "birthdate", "readonly": false, "required": false, "sortable": true, "type": "date"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Salutation", "name": "salutation", "options": ["Mr.", "Ms. / Mrs.", "Other"], "readonly": false, "required": false, "sortable": true, "type": "select"}, {"deprecated": false, "display_type": "switch", "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Marketing permission", "name": "marketing_permission", "readonly": false, "required": false, "sortable": true, "type": "boolean"}, {"deprecated": false, "entity_builder_disable_edit": false, "exclude_from_search": false, "explicit_searchable": false, "hidden": false, "label": "Image", "name": "image", "readonly": false, "required": false, "sortable": true, "type": "file"}], "capabilities": [], "category": "customer_relations", "description": "Example description", "docs_url": "https://docs.epilot.io/docs/pricing/entities", "enable_setting": ["360_features"], "explicit_search_mappings": {"image": {"index": false, "type": "keyword"}}, "feature_flag": "FF_MY_FEATURE_FLAG", "group_headlines": [{"_manifest": ["123e4567-e89b-12d3-a456-426614174000"], "_purpose": ["taxonomy-slug:classification-slug"], "enable_divider": false, "group": "<value>", "label": "<value>", "name": "<value>", "type": "headline"}], "group_settings": [{"expanded": true, "id": "e18a532b-ae79-4d86-a6a5-e5dbfb579d14", "label": "Contact Details", "order": 1}, {"expanded": false, "id": "e9a1ae28-27ba-4fa0-a79c-e279cc5c4a6e", "info_tooltip_title": {"default": "These informations are provided by the partner company and cannot be edited.", "key": "partner.partner_information_group_tooltip"}, "label": "Address Details", "order": 2}], "icon": "person", "name": "Contact", "plural": "Contacts", "published": false, "slug": "contact", "title_template": "{{first_name}} {{last_name}}", "ui_config": {"create_view": {}, "edit_view": {}, "list_item": {"quick_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "summary_attributes": ["email"]}, "sharing": {"show_sharing_button": true}, "single_view": {"route": "/app/pricing-hub/product/:entityId"}, "table_view": {"bulk_actions": [{"action": "preview_file", "icon": "visibility", "label": "Preview File", "permission": "entity:edit"}], "enable_thumbnails": false, "row_actions": ["<value>"]}}}
+        "404":
+          application/json: {"error": "Not Found", "status": 404}
 examplesVersion: 1.0.2
 generatedTests: {}
+generatedFiles:
+  - .gitattributes
+  - USAGE.md
+  - examples/README.md
+  - examples/data-sources/epilot-taxonomy_taxonomy/data-source.tf
+  - examples/data-sources/epilot-taxonomy_taxonomy_classification/data-source.tf
+  - examples/provider/provider.tf
+  - examples/resources/epilot-taxonomy_taxonomy/import-by-string-id.tf
+  - examples/resources/epilot-taxonomy_taxonomy/import.sh
+  - examples/resources/epilot-taxonomy_taxonomy/resource.tf
+  - examples/resources/epilot-taxonomy_taxonomy_classification/import-by-string-id.tf
+  - examples/resources/epilot-taxonomy_taxonomy_classification/import.sh
+  - examples/resources/epilot-taxonomy_taxonomy_classification/resource.tf
+  - go.mod
+  - go.sum
+  - internal/planmodifiers/boolplanmodifier/suppress_diff.go
+  - internal/planmodifiers/float32planmodifier/suppress_diff.go
+  - internal/planmodifiers/float64planmodifier/suppress_diff.go
+  - internal/planmodifiers/int32planmodifier/suppress_diff.go
+  - internal/planmodifiers/int64planmodifier/suppress_diff.go
+  - internal/planmodifiers/listplanmodifier/suppress_diff.go
+  - internal/planmodifiers/mapplanmodifier/suppress_diff.go
+  - internal/planmodifiers/numberplanmodifier/suppress_diff.go
+  - internal/planmodifiers/objectplanmodifier/suppress_diff.go
+  - internal/planmodifiers/setplanmodifier/suppress_diff.go
+  - internal/planmodifiers/stringplanmodifier/suppress_diff.go
+  - internal/planmodifiers/utils/state_check.go
+  - internal/provider/provider.go
+  - internal/provider/reflect/diags.go
+  - internal/provider/reflect/doc.go
+  - internal/provider/reflect/generic_attr_value.go
+  - internal/provider/reflect/helpers.go
+  - internal/provider/reflect/interfaces.go
+  - internal/provider/reflect/into.go
+  - internal/provider/reflect/map.go
+  - internal/provider/reflect/number.go
+  - internal/provider/reflect/options.go
+  - internal/provider/reflect/outof.go
+  - internal/provider/reflect/pointer.go
+  - internal/provider/reflect/primitive.go
+  - internal/provider/reflect/slice.go
+  - internal/provider/reflect/struct.go
+  - internal/provider/taxonomy_data_source.go
+  - internal/provider/taxonomy_data_source_sdk.go
+  - internal/provider/taxonomy_resource.go
+  - internal/provider/taxonomy_resource_sdk.go
+  - internal/provider/taxonomyclassification_data_source.go
+  - internal/provider/taxonomyclassification_data_source_sdk.go
+  - internal/provider/taxonomyclassification_resource.go
+  - internal/provider/taxonomyclassification_resource_sdk.go
+  - internal/provider/typeconvert/date.go
+  - internal/provider/typeconvert/datetime.go
+  - internal/provider/typeconvert/int.go
+  - internal/provider/utils.go
+  - internal/sdk/.gitattributes
+  - internal/sdk/activity.go
+  - internal/sdk/docs/models/operations/option.md
+  - internal/sdk/entities.go
+  - internal/sdk/importexport.go
+  - internal/sdk/internal/config/sdkconfiguration.go
+  - internal/sdk/internal/hooks/hooks.go
+  - internal/sdk/internal/utils/contenttype.go
+  - internal/sdk/internal/utils/env.go
+  - internal/sdk/internal/utils/form.go
+  - internal/sdk/internal/utils/headers.go
+  - internal/sdk/internal/utils/json.go
+  - internal/sdk/internal/utils/pathparams.go
+  - internal/sdk/internal/utils/queryparams.go
+  - internal/sdk/internal/utils/requestbody.go
+  - internal/sdk/internal/utils/retries.go
+  - internal/sdk/internal/utils/security.go
+  - internal/sdk/internal/utils/utils.go
+  - internal/sdk/models/errors/sdkerror.go
+  - internal/sdk/models/operations/addrelations.go
+  - internal/sdk/models/operations/attachactivity.go
+  - internal/sdk/models/operations/autocomplete.go
+  - internal/sdk/models/operations/bulkdeleteclassifications.go
+  - internal/sdk/models/operations/bulkmergeclassifications.go
+  - internal/sdk/models/operations/bulkmoveclassifications.go
+  - internal/sdk/models/operations/cancelbulkaction.go
+  - internal/sdk/models/operations/createactivity.go
+  - internal/sdk/models/operations/createentity.go
+  - internal/sdk/models/operations/createsavedview.go
+  - internal/sdk/models/operations/createschemaattribute.go
+  - internal/sdk/models/operations/createschemacapability.go
+  - internal/sdk/models/operations/createschemagroup.go
+  - internal/sdk/models/operations/createschemagroupheadline.go
+  - internal/sdk/models/operations/createtaxonomy.go
+  - internal/sdk/models/operations/createtaxonomyclassification.go
+  - internal/sdk/models/operations/deleteentity.go
+  - internal/sdk/models/operations/deleterelation.go
+  - internal/sdk/models/operations/deletesavedview.go
+  - internal/sdk/models/operations/deleteschema.go
+  - internal/sdk/models/operations/deleteschemaattribute.go
+  - internal/sdk/models/operations/deleteschemacapability.go
+  - internal/sdk/models/operations/deleteschemagroup.go
+  - internal/sdk/models/operations/deleteschemagroupheadline.go
+  - internal/sdk/models/operations/deletetaxonomy.go
+  - internal/sdk/models/operations/deletetaxonomyclassification.go
+  - internal/sdk/models/operations/exportentities.go
+  - internal/sdk/models/operations/getactivity.go
+  - internal/sdk/models/operations/getentity.go
+  - internal/sdk/models/operations/getentityactivityfeed.go
+  - internal/sdk/models/operations/getentityv2.go
+  - internal/sdk/models/operations/getjsonschema.go
+  - internal/sdk/models/operations/getrelatedentitiescount.go
+  - internal/sdk/models/operations/getrelations.go
+  - internal/sdk/models/operations/getrelationsv2.go
+  - internal/sdk/models/operations/getrelationsv3.go
+  - internal/sdk/models/operations/getsavedview.go
+  - internal/sdk/models/operations/getschema.go
+  - internal/sdk/models/operations/getschemaattribute.go
+  - internal/sdk/models/operations/getschemacapability.go
+  - internal/sdk/models/operations/getschemaexample.go
+  - internal/sdk/models/operations/getschemagroup.go
+  - internal/sdk/models/operations/getschemagroupheadline.go
+  - internal/sdk/models/operations/getschemaversions.go
+  - internal/sdk/models/operations/gettaxonomy.go
+  - internal/sdk/models/operations/gettaxonomybulkactionjobbyid.go
+  - internal/sdk/models/operations/gettaxonomybulkactionjobs.go
+  - internal/sdk/models/operations/gettaxonomyclassification.go
+  - internal/sdk/models/operations/importentities.go
+  - internal/sdk/models/operations/listavailablecapabilities.go
+  - internal/sdk/models/operations/listentities.go
+  - internal/sdk/models/operations/listfavoriteviewsforuser.go
+  - internal/sdk/models/operations/listsavedviews.go
+  - internal/sdk/models/operations/listschemablueprints.go
+  - internal/sdk/models/operations/listschemas.go
+  - internal/sdk/models/operations/listtaxonomies.go
+  - internal/sdk/models/operations/listtaxonomyclassificationsforschema.go
+  - internal/sdk/models/operations/options.go
+  - internal/sdk/models/operations/patchentity.go
+  - internal/sdk/models/operations/patchsavedview.go
+  - internal/sdk/models/operations/putschema.go
+  - internal/sdk/models/operations/putschemaattribute.go
+  - internal/sdk/models/operations/putschemacapability.go
+  - internal/sdk/models/operations/putschemagroup.go
+  - internal/sdk/models/operations/putschemagroupheadline.go
+  - internal/sdk/models/operations/queryentitygraph.go
+  - internal/sdk/models/operations/reindexentity.go
+  - internal/sdk/models/operations/removerelations.go
+  - internal/sdk/models/operations/restoreentity.go
+  - internal/sdk/models/operations/searchentities.go
+  - internal/sdk/models/operations/taxonomiesclassificationssearch.go
+  - internal/sdk/models/operations/taxonomyautocomplete.go
+  - internal/sdk/models/operations/updateclassificationsfortaxonomy.go
+  - internal/sdk/models/operations/updateentity.go
+  - internal/sdk/models/operations/updaterelation.go
+  - internal/sdk/models/operations/updatesavedview.go
+  - internal/sdk/models/operations/updatetaxonomy.go
+  - internal/sdk/models/operations/updatetaxonomyclassification.go
+  - internal/sdk/models/operations/upsertentity.go
+  - internal/sdk/models/operations/validateentity.go
+  - internal/sdk/models/operations/validateentityv2.go
+  - internal/sdk/models/operations/wipeallentities.go
+  - internal/sdk/models/shared/activity.go
+  - internal/sdk/models/shared/activitycallercontext.go
+  - internal/sdk/models/shared/activityidqueryparam.go
+  - internal/sdk/models/shared/activityitem.go
+  - internal/sdk/models/shared/addressattribute.go
+  - internal/sdk/models/shared/addressrelationattribute.go
+  - internal/sdk/models/shared/attribute.go
+  - internal/sdk/models/shared/attributewithcompositeid.go
+  - internal/sdk/models/shared/automationattribute.go
+  - internal/sdk/models/shared/baseactivityitem.go
+  - internal/sdk/models/shared/booleanattribute.go
+  - internal/sdk/models/shared/classificationidorpattern.go
+  - internal/sdk/models/shared/classificationsupdate.go
+  - internal/sdk/models/shared/computedattribute.go
+  - internal/sdk/models/shared/consentattribute.go
+  - internal/sdk/models/shared/countryattribute.go
+  - internal/sdk/models/shared/currencyattribute.go
+  - internal/sdk/models/shared/dateattribute.go
+  - internal/sdk/models/shared/emailattribute.go
+  - internal/sdk/models/shared/entityaction.go
+  - internal/sdk/models/shared/entitycapability.go
+  - internal/sdk/models/shared/entitycapabilitywithcompositeid.go
+  - internal/sdk/models/shared/entitydefaultcreate.go
+  - internal/sdk/models/shared/entitydefaultedit.go
+  - internal/sdk/models/shared/entitydefaulttable.go
+  - internal/sdk/models/shared/entityimportparams.go
+  - internal/sdk/models/shared/entityinput.go
+  - internal/sdk/models/shared/entityitem.go
+  - internal/sdk/models/shared/entitylistparams.go
+  - internal/sdk/models/shared/entityoperation.go
+  - internal/sdk/models/shared/entityowner.go
+  - internal/sdk/models/shared/entityrelationsmodequeryparam.go
+  - internal/sdk/models/shared/entityschema.go
+  - internal/sdk/models/shared/entityschemagroup.go
+  - internal/sdk/models/shared/entityschemagroupwithcompositeid.go
+  - internal/sdk/models/shared/entityschemaitem.go
+  - internal/sdk/models/shared/entitysearchincludedeletedparam.go
+  - internal/sdk/models/shared/entitysearchparams.go
+  - internal/sdk/models/shared/entitysearchresults.go
+  - internal/sdk/models/shared/entityvalidationerror.go
+  - internal/sdk/models/shared/entityvalidationresulterror.go
+  - internal/sdk/models/shared/entityvalidationresultsuccess.go
+  - internal/sdk/models/shared/entityvalidationv2error.go
+  - internal/sdk/models/shared/entityvalidationv2resulterror.go
+  - internal/sdk/models/shared/entityvalidationv2resultsuccess.go
+  - internal/sdk/models/shared/entityviewdisabled.go
+  - internal/sdk/models/shared/fileattribute.go
+  - internal/sdk/models/shared/getrelatedentitiescount.go
+  - internal/sdk/models/shared/getrelationsresp.go
+  - internal/sdk/models/shared/getrelationsrespwithpagination.go
+  - internal/sdk/models/shared/graphdefinition.go
+  - internal/sdk/models/shared/graphedge.go
+  - internal/sdk/models/shared/graphnode.go
+  - internal/sdk/models/shared/graphqueryrequest.go
+  - internal/sdk/models/shared/graphqueryresponse.go
+  - internal/sdk/models/shared/graphseed.go
+  - internal/sdk/models/shared/groupheadline.go
+  - internal/sdk/models/shared/groupheadlinewithcompositeid.go
+  - internal/sdk/models/shared/internalattribute.go
+  - internal/sdk/models/shared/internaluserattribute.go
+  - internal/sdk/models/shared/invitationemailattribute.go
+  - internal/sdk/models/shared/linkattribute.go
+  - internal/sdk/models/shared/listsavedviewsresults.go
+  - internal/sdk/models/shared/messageemailaddressattribute.go
+  - internal/sdk/models/shared/multiselectattribute.go
+  - internal/sdk/models/shared/numberattribute.go
+  - internal/sdk/models/shared/orderedlistattribute.go
+  - internal/sdk/models/shared/partnerorganisationattribute.go
+  - internal/sdk/models/shared/partnerstatusattribute.go
+  - internal/sdk/models/shared/paymentattribute.go
+  - internal/sdk/models/shared/paymentmethodrelationattribute.go
+  - internal/sdk/models/shared/phoneattribute.go
+  - internal/sdk/models/shared/portalaccessattribute.go
+  - internal/sdk/models/shared/pricecomponentattribute.go
+  - internal/sdk/models/shared/purposeattribute.go
+  - internal/sdk/models/shared/redirectentityview.go
+  - internal/sdk/models/shared/relationattribute.go
+  - internal/sdk/models/shared/relationentity.go
+  - internal/sdk/models/shared/relationitem.go
+  - internal/sdk/models/shared/savedview.go
+  - internal/sdk/models/shared/savedviewpartial.go
+  - internal/sdk/models/shared/searchfilter.go
+  - internal/sdk/models/shared/searchfiltervalue.go
+  - internal/sdk/models/shared/searchmappings.go
+  - internal/sdk/models/shared/security.go
+  - internal/sdk/models/shared/selectattribute.go
+  - internal/sdk/models/shared/sequenceattribute.go
+  - internal/sdk/models/shared/settingflag.go
+  - internal/sdk/models/shared/statusattribute.go
+  - internal/sdk/models/shared/summaryattribute.go
+  - internal/sdk/models/shared/summaryfield.go
+  - internal/sdk/models/shared/tagsattribute.go
+  - internal/sdk/models/shared/taxonomy.go
+  - internal/sdk/models/shared/taxonomybulkjob.go
+  - internal/sdk/models/shared/taxonomybulkjobactiontype.go
+  - internal/sdk/models/shared/taxonomybulkjobstatus.go
+  - internal/sdk/models/shared/taxonomybulkjobtriggerresponse.go
+  - internal/sdk/models/shared/taxonomyclassification.go
+  - internal/sdk/models/shared/taxonomyclassificationinput.go
+  - internal/sdk/models/shared/taxonomysearchincludearchivedparam.go
+  - internal/sdk/models/shared/textattribute.go
+  - internal/sdk/models/shared/userrelationattribute.go
+  - internal/sdk/relations.go
+  - internal/sdk/retry/config.go
+  - internal/sdk/savedviews.go
+  - internal/sdk/schemas.go
+  - internal/sdk/sdk.go
+  - internal/sdk/taxonomy.go
+  - internal/sdk/types/bigint.go
+  - internal/sdk/types/date.go
+  - internal/sdk/types/datetime.go
+  - internal/sdk/types/decimal.go
+  - internal/sdk/types/pointers.go
+  - internal/validators/DateValidator.go
+  - internal/validators/ExactlyOneChild.go
+  - internal/validators/JSONParseValidator.go
+  - internal/validators/RFC3339Validator.go
+  - internal/validators/boolvalidators/not_null.go
+  - internal/validators/float32validators/not_null.go
+  - internal/validators/float64validators/not_null.go
+  - internal/validators/int32validators/not_null.go
+  - internal/validators/int64validators/not_null.go
+  - internal/validators/listvalidators/not_null.go
+  - internal/validators/mapvalidators/not_null.go
+  - internal/validators/numbervalidators/not_null.go
+  - internal/validators/objectvalidators/not_null.go
+  - internal/validators/setvalidators/not_null.go
+  - internal/validators/stringvalidators/not_null.go
+  - main.go
+  - terraform-registry-manifest.json
+  - tools/tools.go
