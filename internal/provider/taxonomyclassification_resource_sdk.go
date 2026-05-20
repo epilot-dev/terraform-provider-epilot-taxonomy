@@ -21,6 +21,8 @@ func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassific
 			for _, v := range resp.Manifest {
 				r.Manifest = append(r.Manifest, types.StringValue(v))
 			}
+		} else {
+			r.Manifest = nil
 		}
 		r.Archived = types.BoolPointerValue(resp.Archived)
 		r.Color = types.StringPointerValue(resp.Color)
@@ -28,6 +30,10 @@ func (r *TaxonomyClassificationResourceModel) RefreshFromSharedTaxonomyClassific
 		r.EnabledLocations = make([]types.String, 0, len(resp.EnabledLocations))
 		for _, v := range resp.EnabledLocations {
 			r.EnabledLocations = append(r.EnabledLocations, types.StringValue(v))
+		}
+		r.EnabledPurposes = make([]types.String, 0, len(resp.EnabledPurposes))
+		for _, v := range resp.EnabledPurposes {
+			r.EnabledPurposes = append(r.EnabledPurposes, types.StringValue(v))
 		}
 		r.ID = types.StringPointerValue(resp.ID)
 		r.Name = types.StringValue(resp.Name)
@@ -96,8 +102,8 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 	var manifest []string
 	if r.Manifest != nil {
 		manifest = make([]string, 0, len(r.Manifest))
-		for _, manifestItem := range r.Manifest {
-			manifest = append(manifest, manifestItem.ValueString())
+		for manifestIndex := range r.Manifest {
+			manifest = append(manifest, r.Manifest[manifestIndex].ValueString())
 		}
 	}
 	archived := new(bool)
@@ -119,15 +125,19 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 		createdAt = nil
 	}
 	enabledLocations := make([]string, 0, len(r.EnabledLocations))
-	for _, enabledLocationsItem := range r.EnabledLocations {
-		enabledLocations = append(enabledLocations, enabledLocationsItem.ValueString())
+	for enabledLocationsIndex := range r.EnabledLocations {
+		enabledLocations = append(enabledLocations, r.EnabledLocations[enabledLocationsIndex].ValueString())
+	}
+	enabledPurposes := make([]string, 0, len(r.EnabledPurposes))
+	for enabledPurposesIndex := range r.EnabledPurposes {
+		enabledPurposes = append(enabledPurposes, r.EnabledPurposes[enabledPurposesIndex].ValueString())
 	}
 	var name string
 	name = r.Name.ValueString()
 
 	parents := make([]string, 0, len(r.Parents))
-	for _, parentsItem := range r.Parents {
-		parents = append(parents, parentsItem.ValueString())
+	for parentsIndex := range r.Parents {
+		parents = append(parents, r.Parents[parentsIndex].ValueString())
 	}
 	var slug string
 	slug = r.Slug.ValueString()
@@ -150,6 +160,7 @@ func (r *TaxonomyClassificationResourceModel) ToSharedTaxonomyClassificationInpu
 		Color:            color,
 		CreatedAt:        createdAt,
 		EnabledLocations: enabledLocations,
+		EnabledPurposes:  enabledPurposes,
 		Name:             name,
 		Parents:          parents,
 		Slug:             slug,

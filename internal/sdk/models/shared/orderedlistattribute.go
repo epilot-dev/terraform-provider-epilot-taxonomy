@@ -118,6 +118,16 @@ type OrderedListAttribute struct {
 	Constraints  *OrderedListAttributeConstraints `json:"constraints,omitempty"`
 	DefaultValue any                              `json:"default_value,omitempty"`
 	Deprecated   *bool                            `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -180,7 +190,7 @@ func (o OrderedListAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (o *OrderedListAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &o, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -219,6 +229,20 @@ func (o *OrderedListAttribute) GetDeprecated() *bool {
 		return nil
 	}
 	return o.Deprecated
+}
+
+func (o *OrderedListAttribute) GetEditMode() *EditMode {
+	if o == nil {
+		return nil
+	}
+	return o.EditMode
+}
+
+func (o *OrderedListAttribute) GetEditModeConfig() *EditModeConfig {
+	if o == nil {
+		return nil
+	}
+	return o.EditModeConfig
 }
 
 func (o *OrderedListAttribute) GetEntityBuilderDisableEdit() *bool {

@@ -8,16 +8,16 @@ type GraphSeed struct {
 	NodeID string `json:"node_id"`
 }
 
-func (o *GraphSeed) GetEntityID() string {
-	if o == nil {
+func (g *GraphSeed) GetEntityID() string {
+	if g == nil {
 		return ""
 	}
-	return o.EntityID
+	return g.EntityID
 }
 
-func (o *GraphSeed) GetNodeID() string {
-	if o == nil {
+func (g *GraphSeed) GetNodeID() string {
+	if g == nil {
 		return ""
 	}
-	return o.NodeID
+	return g.NodeID
 }

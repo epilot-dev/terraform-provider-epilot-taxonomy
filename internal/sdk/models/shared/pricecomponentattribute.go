@@ -56,32 +56,32 @@ func (p *PriceComponentAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PriceComponentAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (p *PriceComponentAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return p.HintCustomComponent
 }
 
-func (o *PriceComponentAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (p *PriceComponentAttributeInfoHelpers) GetHintText() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintText
+	return p.HintText
 }
 
-func (o *PriceComponentAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (p *PriceComponentAttributeInfoHelpers) GetHintTextKey() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return p.HintTextKey
 }
 
-func (o *PriceComponentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (p *PriceComponentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return p.HintTooltipPlacement
 }
 
 type PriceComponentAttributeType string
@@ -118,6 +118,16 @@ type PriceComponentAttribute struct {
 	Constraints  *PriceComponentAttributeConstraints `json:"constraints,omitempty"`
 	DefaultValue any                                 `json:"default_value,omitempty"`
 	Deprecated   *bool                               `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -180,232 +190,246 @@ func (p PriceComponentAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PriceComponentAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *PriceComponentAttribute) GetManifest() []string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PriceComponentAttribute) GetPurpose() []string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PriceComponentAttribute) GetConstraints() *PriceComponentAttributeConstraints {
-	if o == nil {
+func (p *PriceComponentAttribute) GetConstraints() *PriceComponentAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PriceComponentAttribute) GetDefaultValue() any {
-	if o == nil {
+func (p *PriceComponentAttribute) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DefaultValue
 }
 
-func (o *PriceComponentAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.Deprecated
 }
 
-func (o *PriceComponentAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetEditMode() *EditMode {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.EditMode
 }
 
-func (o *PriceComponentAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetEditModeConfig() *EditModeConfig {
+	if p == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return p.EditModeConfig
 }
 
-func (o *PriceComponentAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PriceComponentAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetExcludeFromSearch() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.ExcludeFromSearch
 }
 
-func (o *PriceComponentAttribute) GetGroup() *string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetExplicitSearchable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.ExplicitSearchable
 }
 
-func (o *PriceComponentAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.FeatureFlag
 }
 
-func (o *PriceComponentAttribute) GetHidden() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.Group
 }
 
-func (o *PriceComponentAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.HasPrimary
 }
 
-func (o *PriceComponentAttribute) GetIcon() *string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.Hidden
 }
 
-func (o *PriceComponentAttribute) GetID() *string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.HideLabel
 }
 
-func (o *PriceComponentAttribute) GetInfoHelpers() *PriceComponentAttributeInfoHelpers {
-	if o == nil {
+func (p *PriceComponentAttribute) GetIcon() *string {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.Icon
 }
 
-func (o *PriceComponentAttribute) GetLabel() string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetID() *string {
+	if p == nil {
+		return nil
+	}
+	return p.ID
+}
+
+func (p *PriceComponentAttribute) GetInfoHelpers() *PriceComponentAttributeInfoHelpers {
+	if p == nil {
+		return nil
+	}
+	return p.InfoHelpers
+}
+
+func (p *PriceComponentAttribute) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PriceComponentAttribute) GetLayout() *string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PriceComponentAttribute) GetName() string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PriceComponentAttribute) GetOrder() *int64 {
-	if o == nil {
+func (p *PriceComponentAttribute) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PriceComponentAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PriceComponentAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PriceComponentAttribute) GetProtected() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PriceComponentAttribute) GetReadonly() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PriceComponentAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PriceComponentAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PriceComponentAttribute) GetRequired() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PriceComponentAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PriceComponentAttribute) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PriceComponentAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PriceComponentAttribute) GetSortable() *bool {
-	if o == nil {
+func (p *PriceComponentAttribute) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PriceComponentAttribute) GetType() PriceComponentAttributeType {
-	if o == nil {
+func (p *PriceComponentAttribute) GetType() PriceComponentAttributeType {
+	if p == nil {
 		return PriceComponentAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PriceComponentAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (p *PriceComponentAttribute) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }

@@ -51,30 +51,30 @@ type GraphNode struct {
 	Schema string `json:"schema"`
 }
 
-func (o *GraphNode) GetCardinality() *Cardinality {
-	if o == nil {
+func (g *GraphNode) GetCardinality() *Cardinality {
+	if g == nil {
 		return nil
 	}
-	return o.Cardinality
+	return g.Cardinality
 }
 
-func (o *GraphNode) GetFields() []string {
-	if o == nil {
+func (g *GraphNode) GetFields() []string {
+	if g == nil {
 		return nil
 	}
-	return o.Fields
+	return g.Fields
 }
 
-func (o *GraphNode) GetID() string {
-	if o == nil {
+func (g *GraphNode) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GraphNode) GetSchema() string {
-	if o == nil {
+func (g *GraphNode) GetSchema() string {
+	if g == nil {
 		return ""
 	}
-	return o.Schema
+	return g.Schema
 }

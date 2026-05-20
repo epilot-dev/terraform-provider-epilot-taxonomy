@@ -14,25 +14,25 @@ type BulkMoveClassificationsRequestBody struct {
 	TargetTaxonomy *string `json:"target_taxonomy,omitempty"`
 }
 
-func (o *BulkMoveClassificationsRequestBody) GetClassificationIds() []string {
-	if o == nil {
+func (b *BulkMoveClassificationsRequestBody) GetClassificationIds() []string {
+	if b == nil {
 		return nil
 	}
-	return o.ClassificationIds
+	return b.ClassificationIds
 }
 
-func (o *BulkMoveClassificationsRequestBody) GetJobID() *string {
-	if o == nil {
+func (b *BulkMoveClassificationsRequestBody) GetJobID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.JobID
+	return b.JobID
 }
 
-func (o *BulkMoveClassificationsRequestBody) GetTargetTaxonomy() *string {
-	if o == nil {
+func (b *BulkMoveClassificationsRequestBody) GetTargetTaxonomy() *string {
+	if b == nil {
 		return nil
 	}
-	return o.TargetTaxonomy
+	return b.TargetTaxonomy
 }
 
 // BulkMoveClassificationsResponseBody - A generic error returned by the API
@@ -43,18 +43,18 @@ type BulkMoveClassificationsResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *BulkMoveClassificationsResponseBody) GetError() *string {
-	if o == nil {
+func (b *BulkMoveClassificationsResponseBody) GetError() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Error
+	return b.Error
 }
 
-func (o *BulkMoveClassificationsResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (b *BulkMoveClassificationsResponseBody) GetStatus() *int64 {
+	if b == nil {
 		return nil
 	}
-	return o.Status
+	return b.Status
 }
 
 type BulkMoveClassificationsResponse struct {
@@ -71,44 +71,44 @@ type BulkMoveClassificationsResponse struct {
 	Object *BulkMoveClassificationsResponseBody
 }
 
-func (o *BulkMoveClassificationsResponse) GetContentType() string {
-	if o == nil {
+func (b *BulkMoveClassificationsResponse) GetContentType() string {
+	if b == nil {
 		return ""
 	}
-	return o.ContentType
+	return b.ContentType
 }
 
-func (o *BulkMoveClassificationsResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (b *BulkMoveClassificationsResponse) GetHeaders() map[string][]string {
+	if b == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return b.Headers
 }
 
-func (o *BulkMoveClassificationsResponse) GetStatusCode() int {
-	if o == nil {
+func (b *BulkMoveClassificationsResponse) GetStatusCode() int {
+	if b == nil {
 		return 0
 	}
-	return o.StatusCode
+	return b.StatusCode
 }
 
-func (o *BulkMoveClassificationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (b *BulkMoveClassificationsResponse) GetRawResponse() *http.Response {
+	if b == nil {
 		return nil
 	}
-	return o.RawResponse
+	return b.RawResponse
 }
 
-func (o *BulkMoveClassificationsResponse) GetTaxonomyBulkJobTriggerResponse() *shared.TaxonomyBulkJobTriggerResponse {
-	if o == nil {
+func (b *BulkMoveClassificationsResponse) GetTaxonomyBulkJobTriggerResponse() *shared.TaxonomyBulkJobTriggerResponse {
+	if b == nil {
 		return nil
 	}
-	return o.TaxonomyBulkJobTriggerResponse
+	return b.TaxonomyBulkJobTriggerResponse
 }
 
-func (o *BulkMoveClassificationsResponse) GetObject() *BulkMoveClassificationsResponseBody {
-	if o == nil {
+func (b *BulkMoveClassificationsResponse) GetObject() *BulkMoveClassificationsResponseBody {
+	if b == nil {
 		return nil
 	}
-	return o.Object
+	return b.Object
 }

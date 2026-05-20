@@ -9,16 +9,16 @@ type GraphDefinition struct {
 	Nodes []GraphNode `json:"nodes"`
 }
 
-func (o *GraphDefinition) GetEdges() []GraphEdge {
-	if o == nil {
+func (g *GraphDefinition) GetEdges() []GraphEdge {
+	if g == nil {
 		return []GraphEdge{}
 	}
-	return o.Edges
+	return g.Edges
 }
 
-func (o *GraphDefinition) GetNodes() []GraphNode {
-	if o == nil {
+func (g *GraphDefinition) GetNodes() []GraphNode {
+	if g == nil {
 		return []GraphNode{}
 	}
-	return o.Nodes
+	return g.Nodes
 }

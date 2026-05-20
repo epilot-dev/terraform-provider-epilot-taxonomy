@@ -14,25 +14,25 @@ type BulkMergeClassificationsRequestBody struct {
 	TargetClassification *string `json:"target_classification,omitempty"`
 }
 
-func (o *BulkMergeClassificationsRequestBody) GetClassificationIds() []string {
-	if o == nil {
+func (b *BulkMergeClassificationsRequestBody) GetClassificationIds() []string {
+	if b == nil {
 		return nil
 	}
-	return o.ClassificationIds
+	return b.ClassificationIds
 }
 
-func (o *BulkMergeClassificationsRequestBody) GetJobID() *string {
-	if o == nil {
+func (b *BulkMergeClassificationsRequestBody) GetJobID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.JobID
+	return b.JobID
 }
 
-func (o *BulkMergeClassificationsRequestBody) GetTargetClassification() *string {
-	if o == nil {
+func (b *BulkMergeClassificationsRequestBody) GetTargetClassification() *string {
+	if b == nil {
 		return nil
 	}
-	return o.TargetClassification
+	return b.TargetClassification
 }
 
 // BulkMergeClassificationsResponseBody - A generic error returned by the API
@@ -43,18 +43,18 @@ type BulkMergeClassificationsResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *BulkMergeClassificationsResponseBody) GetError() *string {
-	if o == nil {
+func (b *BulkMergeClassificationsResponseBody) GetError() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Error
+	return b.Error
 }
 
-func (o *BulkMergeClassificationsResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (b *BulkMergeClassificationsResponseBody) GetStatus() *int64 {
+	if b == nil {
 		return nil
 	}
-	return o.Status
+	return b.Status
 }
 
 type BulkMergeClassificationsResponse struct {
@@ -71,44 +71,44 @@ type BulkMergeClassificationsResponse struct {
 	Object *BulkMergeClassificationsResponseBody
 }
 
-func (o *BulkMergeClassificationsResponse) GetContentType() string {
-	if o == nil {
+func (b *BulkMergeClassificationsResponse) GetContentType() string {
+	if b == nil {
 		return ""
 	}
-	return o.ContentType
+	return b.ContentType
 }
 
-func (o *BulkMergeClassificationsResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (b *BulkMergeClassificationsResponse) GetHeaders() map[string][]string {
+	if b == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return b.Headers
 }
 
-func (o *BulkMergeClassificationsResponse) GetStatusCode() int {
-	if o == nil {
+func (b *BulkMergeClassificationsResponse) GetStatusCode() int {
+	if b == nil {
 		return 0
 	}
-	return o.StatusCode
+	return b.StatusCode
 }
 
-func (o *BulkMergeClassificationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (b *BulkMergeClassificationsResponse) GetRawResponse() *http.Response {
+	if b == nil {
 		return nil
 	}
-	return o.RawResponse
+	return b.RawResponse
 }
 
-func (o *BulkMergeClassificationsResponse) GetTaxonomyBulkJobTriggerResponse() *shared.TaxonomyBulkJobTriggerResponse {
-	if o == nil {
+func (b *BulkMergeClassificationsResponse) GetTaxonomyBulkJobTriggerResponse() *shared.TaxonomyBulkJobTriggerResponse {
+	if b == nil {
 		return nil
 	}
-	return o.TaxonomyBulkJobTriggerResponse
+	return b.TaxonomyBulkJobTriggerResponse
 }
 
-func (o *BulkMergeClassificationsResponse) GetObject() *BulkMergeClassificationsResponseBody {
-	if o == nil {
+func (b *BulkMergeClassificationsResponse) GetObject() *BulkMergeClassificationsResponseBody {
+	if b == nil {
 		return nil
 	}
-	return o.Object
+	return b.Object
 }

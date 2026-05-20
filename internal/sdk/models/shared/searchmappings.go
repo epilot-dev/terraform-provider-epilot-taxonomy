@@ -20,6 +20,7 @@ const (
 	SearchMappingsTypeDate      SearchMappingsType = "date"
 	SearchMappingsTypeFlattened SearchMappingsType = "flattened"
 	SearchMappingsTypeNested    SearchMappingsType = "nested"
+	SearchMappingsTypeObject    SearchMappingsType = "object"
 )
 
 func (e SearchMappingsType) ToPointer() *SearchMappingsType {
@@ -48,6 +49,8 @@ func (e *SearchMappingsType) UnmarshalJSON(data []byte) error {
 	case "flattened":
 		fallthrough
 	case "nested":
+		fallthrough
+	case "object":
 		*e = SearchMappingsType(v)
 		return nil
 	default:
@@ -56,9 +59,11 @@ func (e *SearchMappingsType) UnmarshalJSON(data []byte) error {
 }
 
 type SearchMappings struct {
-	Fields map[string]any      `json:"fields,omitempty"`
-	Index  *bool               `default:"true" json:"index"`
-	Type   *SearchMappingsType `json:"type,omitempty"`
+	// When false, prevents ES from inferring types for nested fields. Used for _changesets where values can be any type.
+	Dynamic *bool               `json:"dynamic,omitempty"`
+	Fields  map[string]any      `json:"fields,omitempty"`
+	Index   *bool               `default:"true" json:"index"`
+	Type    *SearchMappingsType `json:"type,omitempty"`
 }
 
 func (s SearchMappings) MarshalJSON() ([]byte, error) {
@@ -72,23 +77,30 @@ func (s *SearchMappings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SearchMappings) GetFields() map[string]any {
-	if o == nil {
+func (s *SearchMappings) GetDynamic() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Fields
+	return s.Dynamic
 }
 
-func (o *SearchMappings) GetIndex() *bool {
-	if o == nil {
+func (s *SearchMappings) GetFields() map[string]any {
+	if s == nil {
 		return nil
 	}
-	return o.Index
+	return s.Fields
 }
 
-func (o *SearchMappings) GetType() *SearchMappingsType {
-	if o == nil {
+func (s *SearchMappings) GetIndex() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Type
+	return s.Index
+}
+
+func (s *SearchMappings) GetType() *SearchMappingsType {
+	if s == nil {
+		return nil
+	}
+	return s.Type
 }

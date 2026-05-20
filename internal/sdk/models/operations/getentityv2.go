@@ -9,6 +9,11 @@ import (
 )
 
 type GetEntityV2Request struct {
+	// When true, applies pending changeset proposed values in-place on the response entity.
+	// The response includes both the hydrated values and the raw _changesets field.
+	// Does not mutate stored data — pure read-time transform.
+	//
+	ApplyChangesets *bool `default:"false" queryParam:"style=form,explode=true,name=apply_changesets"`
 	// List of entity fields to include in results
 	Fields []string `queryParam:"style=form,explode=false,name=fields"`
 	// When true, enables entity hydration to resolve nested $relation & $relation_ref references in-place.
@@ -24,39 +29,49 @@ func (g GetEntityV2Request) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEntityV2Request) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetEntityV2Request) GetFields() []string {
-	if o == nil {
+func (g *GetEntityV2Request) GetApplyChangesets() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Fields
+	return g.ApplyChangesets
 }
 
-func (o *GetEntityV2Request) GetHydrate() *bool {
-	if o == nil {
+func (g *GetEntityV2Request) GetFields() []string {
+	if g == nil {
 		return nil
 	}
-	return o.Hydrate
+	return g.Fields
 }
 
-func (o *GetEntityV2Request) GetID() string {
-	if o == nil {
-		return ""
+func (g *GetEntityV2Request) GetHydrate() *bool {
+	if g == nil {
+		return nil
 	}
-	return o.ID
+	return g.Hydrate
 }
 
-func (o *GetEntityV2Request) GetSlug() string {
-	if o == nil {
+func (g *GetEntityV2Request) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.Slug
+	return g.ID
 }
+
+func (g *GetEntityV2Request) GetSlug() string {
+	if g == nil {
+		return ""
+	}
+	return g.Slug
+}
+
+// #region class-body-getentityv2request
+// #endregion class-body-getentityv2request
 
 // GetEntityV2ResponseBody - A generic error returned by the API
 type GetEntityV2ResponseBody struct {
@@ -66,19 +81,22 @@ type GetEntityV2ResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetEntityV2ResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetEntityV2ResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetEntityV2ResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetEntityV2ResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
+
+// #region class-body-getentityv2responsebody
+// #endregion class-body-getentityv2responsebody
 
 type GetEntityV2Response struct {
 	// HTTP response content type for this operation
@@ -93,37 +111,40 @@ type GetEntityV2Response struct {
 	Object *GetEntityV2ResponseBody
 }
 
-func (o *GetEntityV2Response) GetContentType() string {
-	if o == nil {
+func (g *GetEntityV2Response) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetEntityV2Response) GetEntityItem() *shared.EntityItem {
-	if o == nil {
+func (g *GetEntityV2Response) GetEntityItem() *shared.EntityItem {
+	if g == nil {
 		return nil
 	}
-	return o.EntityItem
+	return g.EntityItem
 }
 
-func (o *GetEntityV2Response) GetStatusCode() int {
-	if o == nil {
+func (g *GetEntityV2Response) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetEntityV2Response) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetEntityV2Response) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetEntityV2Response) GetObject() *GetEntityV2ResponseBody {
-	if o == nil {
+func (g *GetEntityV2Response) GetObject() *GetEntityV2ResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }
+
+// #region class-body-getentityv2response
+// #endregion class-body-getentityv2response

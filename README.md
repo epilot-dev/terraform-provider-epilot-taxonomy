@@ -18,13 +18,13 @@ terraform {
   required_providers {
     epilot-taxonomy = {
       source  = "epilot-dev/epilot-taxonomy"
-      version = "0.11.5"
+      version = "0.12.0"
     }
   }
 }
 
 provider "epilot-taxonomy" {
-  # Configuration options
+  server_url = "..." # Optional
 }
 ```
 <!-- End Installation [installation] -->
@@ -87,10 +87,11 @@ Available configuration:
 <!-- Start Available Resources and Data Sources [operations] -->
 ## Available Resources and Data Sources
 
-### Resources
+### Managed Resources
 
 * [epilot-taxonomy_taxonomy](docs/resources/taxonomy.md)
 * [epilot-taxonomy_taxonomy_classification](docs/resources/taxonomy_classification.md)
+
 ### Data Sources
 
 * [epilot-taxonomy_taxonomy](docs/data-sources/taxonomy.md)

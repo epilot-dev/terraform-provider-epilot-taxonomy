@@ -56,32 +56,32 @@ func (e *EmailAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EmailAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (e *EmailAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if e == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return e.HintCustomComponent
 }
 
-func (o *EmailAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (e *EmailAttributeInfoHelpers) GetHintText() *string {
+	if e == nil {
 		return nil
 	}
-	return o.HintText
+	return e.HintText
 }
 
-func (o *EmailAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (e *EmailAttributeInfoHelpers) GetHintTextKey() *string {
+	if e == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return e.HintTextKey
 }
 
-func (o *EmailAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (e *EmailAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if e == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return e.HintTooltipPlacement
 }
 
 type EmailAttributeType string
@@ -118,6 +118,16 @@ type EmailAttribute struct {
 	Constraints  *EmailAttributeConstraints `json:"constraints,omitempty"`
 	DefaultValue any                        `json:"default_value,omitempty"`
 	Deprecated   *bool                      `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -180,232 +190,246 @@ func (e EmailAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EmailAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *EmailAttribute) GetManifest() []string {
-	if o == nil {
+func (e *EmailAttribute) GetManifest() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Manifest
+	return e.Manifest
 }
 
-func (o *EmailAttribute) GetPurpose() []string {
-	if o == nil {
+func (e *EmailAttribute) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Purpose
 }
 
-func (o *EmailAttribute) GetConstraints() *EmailAttributeConstraints {
-	if o == nil {
+func (e *EmailAttribute) GetConstraints() *EmailAttributeConstraints {
+	if e == nil {
 		return nil
 	}
-	return o.Constraints
+	return e.Constraints
 }
 
-func (o *EmailAttribute) GetDefaultValue() any {
-	if o == nil {
+func (e *EmailAttribute) GetDefaultValue() any {
+	if e == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return e.DefaultValue
 }
 
-func (o *EmailAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetDeprecated() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Deprecated
+	return e.Deprecated
 }
 
-func (o *EmailAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetEditMode() *EditMode {
+	if e == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return e.EditMode
 }
 
-func (o *EmailAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetEditModeConfig() *EditModeConfig {
+	if e == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return e.EditModeConfig
 }
 
-func (o *EmailAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetEntityBuilderDisableEdit() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return e.EntityBuilderDisableEdit
 }
 
-func (o *EmailAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (e *EmailAttribute) GetExcludeFromSearch() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return e.ExcludeFromSearch
 }
 
-func (o *EmailAttribute) GetGroup() *string {
-	if o == nil {
+func (e *EmailAttribute) GetExplicitSearchable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Group
+	return e.ExplicitSearchable
 }
 
-func (o *EmailAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetFeatureFlag() *string {
+	if e == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return e.FeatureFlag
 }
 
-func (o *EmailAttribute) GetHidden() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetGroup() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Hidden
+	return e.Group
 }
 
-func (o *EmailAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetHasPrimary() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.HideLabel
+	return e.HasPrimary
 }
 
-func (o *EmailAttribute) GetIcon() *string {
-	if o == nil {
+func (e *EmailAttribute) GetHidden() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Icon
+	return e.Hidden
 }
 
-func (o *EmailAttribute) GetID() *string {
-	if o == nil {
+func (e *EmailAttribute) GetHideLabel() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.ID
+	return e.HideLabel
 }
 
-func (o *EmailAttribute) GetInfoHelpers() *EmailAttributeInfoHelpers {
-	if o == nil {
+func (e *EmailAttribute) GetIcon() *string {
+	if e == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return e.Icon
 }
 
-func (o *EmailAttribute) GetLabel() string {
-	if o == nil {
+func (e *EmailAttribute) GetID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ID
+}
+
+func (e *EmailAttribute) GetInfoHelpers() *EmailAttributeInfoHelpers {
+	if e == nil {
+		return nil
+	}
+	return e.InfoHelpers
+}
+
+func (e *EmailAttribute) GetLabel() string {
+	if e == nil {
 		return ""
 	}
-	return o.Label
+	return e.Label
 }
 
-func (o *EmailAttribute) GetLayout() *string {
-	if o == nil {
+func (e *EmailAttribute) GetLayout() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Layout
+	return e.Layout
 }
 
-func (o *EmailAttribute) GetName() string {
-	if o == nil {
+func (e *EmailAttribute) GetName() string {
+	if e == nil {
 		return ""
 	}
-	return o.Name
+	return e.Name
 }
 
-func (o *EmailAttribute) GetOrder() *int64 {
-	if o == nil {
+func (e *EmailAttribute) GetOrder() *int64 {
+	if e == nil {
 		return nil
 	}
-	return o.Order
+	return e.Order
 }
 
-func (o *EmailAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (e *EmailAttribute) GetPlaceholder() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Placeholder
+	return e.Placeholder
 }
 
-func (o *EmailAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (e *EmailAttribute) GetPreviewValueFormatter() *string {
+	if e == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return e.PreviewValueFormatter
 }
 
-func (o *EmailAttribute) GetProtected() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetProtected() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Protected
+	return e.Protected
 }
 
-func (o *EmailAttribute) GetReadonly() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetReadonly() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Readonly
+	return e.Readonly
 }
 
-func (o *EmailAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (e *EmailAttribute) GetRenderCondition() *string {
+	if e == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return e.RenderCondition
 }
 
-func (o *EmailAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetRepeatable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Repeatable
+	return e.Repeatable
 }
 
-func (o *EmailAttribute) GetRequired() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetRequired() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Required
+	return e.Required
 }
 
-func (o *EmailAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (e *EmailAttribute) GetSettingsFlag() []SettingFlag {
+	if e == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return e.SettingsFlag
 }
 
-func (o *EmailAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetShowInTable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return e.ShowInTable
 }
 
-func (o *EmailAttribute) GetSortable() *bool {
-	if o == nil {
+func (e *EmailAttribute) GetSortable() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Sortable
+	return e.Sortable
 }
 
-func (o *EmailAttribute) GetType() EmailAttributeType {
-	if o == nil {
+func (e *EmailAttribute) GetType() EmailAttributeType {
+	if e == nil {
 		return EmailAttributeType("")
 	}
-	return o.Type
+	return e.Type
 }
 
-func (o *EmailAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (e *EmailAttribute) GetValueFormatter() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return e.ValueFormatter
 }

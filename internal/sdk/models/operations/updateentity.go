@@ -14,6 +14,30 @@ type UpdateEntityRequest struct {
 	ActivityID *shared.ActivityIDQueryParam `queryParam:"style=form,explode=true,name=activity_id"`
 	// Don't wait for updated entity to become available in Search API. Useful for large migrations
 	Async *bool `default:"false" queryParam:"style=form,explode=true,name=async"`
+	// When true, bypasses changeset interception: attribute values in the payload
+	// are written directly to the entity regardless of each attribute's `edit_mode`.
+	// The write always lands, independently of any auto-clear outcome below.
+	//
+	// After the direct write, for each attribute in the payload that also has a
+	// pending changeset:
+	// - `edit_mode: external` — the incoming value is checked against the
+	//   changeset's `match_strategy` (and `fuzzy_config` when `fuzzy`). On match,
+	//   `_changesets[attr]` is cleared. On no-match, the write still stands and
+	//   the changeset stays pending (signalling the ERP/trusted source applied a
+	//   different correction than originally proposed; resolve via a later
+	//   matching direct write, or via the `:apply` / `:dismiss` endpoints).
+	// - `edit_mode: approval` — never auto-cleared. The write lands but the
+	//   pending changeset remains until explicitly resolved via `:apply` or
+	//   `:dismiss`.
+	//
+	// Intended for trusted integrations (e.g. ERP inbound sync). ERP middleware
+	// must always use `?direct=true` — without it, an inbound sync on an
+	// `external` attribute would create a new changeset instead of confirming
+	// the pending one.
+	//
+	// Defaults to false — no breaking change for existing callers.
+	//
+	Direct *bool `default:"false" queryParam:"style=form,explode=true,name=direct"`
 	// Update the diff and entity for the custom activity included in the query.
 	// Pending state on activity is automatically ended when activity is filled.
 	//
@@ -31,59 +55,66 @@ func (u UpdateEntityRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateEntityRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "slug"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateEntityRequest) GetEntity() *shared.EntityInput {
-	if o == nil {
+func (u *UpdateEntityRequest) GetEntity() *shared.EntityInput {
+	if u == nil {
 		return nil
 	}
-	return o.Entity
+	return u.Entity
 }
 
-func (o *UpdateEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {
-	if o == nil {
+func (u *UpdateEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {
+	if u == nil {
 		return nil
 	}
-	return o.ActivityID
+	return u.ActivityID
 }
 
-func (o *UpdateEntityRequest) GetAsync() *bool {
-	if o == nil {
+func (u *UpdateEntityRequest) GetAsync() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Async
+	return u.Async
 }
 
-func (o *UpdateEntityRequest) GetFillActivity() *bool {
-	if o == nil {
+func (u *UpdateEntityRequest) GetDirect() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.FillActivity
+	return u.Direct
 }
 
-func (o *UpdateEntityRequest) GetID() string {
-	if o == nil {
+func (u *UpdateEntityRequest) GetFillActivity() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.FillActivity
+}
+
+func (u *UpdateEntityRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateEntityRequest) GetSlug() string {
-	if o == nil {
+func (u *UpdateEntityRequest) GetSlug() string {
+	if u == nil {
 		return ""
 	}
-	return o.Slug
+	return u.Slug
 }
 
-func (o *UpdateEntityRequest) GetValidate() *bool {
-	if o == nil {
+func (u *UpdateEntityRequest) GetValidate() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Validate
+	return u.Validate
 }
 
 type UpdateEntityResponse struct {
@@ -99,37 +130,37 @@ type UpdateEntityResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *UpdateEntityResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateEntityResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateEntityResponse) GetEntityItem() *shared.EntityItem {
-	if o == nil {
+func (u *UpdateEntityResponse) GetEntityItem() *shared.EntityItem {
+	if u == nil {
 		return nil
 	}
-	return o.EntityItem
+	return u.EntityItem
 }
 
-func (o *UpdateEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
-	if o == nil {
+func (u *UpdateEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
+	if u == nil {
 		return nil
 	}
-	return o.EntityValidationV2ResultError
+	return u.EntityValidationV2ResultError
 }
 
-func (o *UpdateEntityResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateEntityResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateEntityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateEntityResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }

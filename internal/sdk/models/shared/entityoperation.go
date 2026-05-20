@@ -9,6 +9,30 @@ import (
 	"time"
 )
 
+// WorkflowOrigin - Internal property for workflow origin tracking and infinite loop prevention.
+// Populated when an entity update originates from a workflow execution.
+// This allows downstream automation services to prevent circular triggering.
+type WorkflowOrigin struct {
+	// The flow template ID - used to detect and prevent circular triggering
+	FlowTemplateID *string `json:"flow_template_id,omitempty"`
+	// The ID of the workflow execution that triggered this entity update
+	WorkflowExecID *string `json:"workflow_exec_id,omitempty"`
+}
+
+func (w *WorkflowOrigin) GetFlowTemplateID() *string {
+	if w == nil {
+		return nil
+	}
+	return w.FlowTemplateID
+}
+
+func (w *WorkflowOrigin) GetWorkflowExecID() *string {
+	if w == nil {
+		return nil
+	}
+	return w.WorkflowExecID
+}
+
 // EntityOperationSchemasDiffAddedACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
 type EntityOperationSchemasDiffAddedACL struct {
 	AdditionalProperties any      `additionalProperties:"true" json:"-"`
@@ -28,47 +52,58 @@ func (e *EntityOperationSchemasDiffAddedACL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityOperationSchemasDiffAddedACL) GetAdditionalProperties() any {
-	if o == nil {
+func (e *EntityOperationSchemasDiffAddedACL) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *EntityOperationSchemasDiffAddedACL) GetDelete() []string {
-	if o == nil {
+func (e *EntityOperationSchemasDiffAddedACL) GetDelete() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Delete
+	return e.Delete
 }
 
-func (o *EntityOperationSchemasDiffAddedACL) GetEdit() []string {
-	if o == nil {
+func (e *EntityOperationSchemasDiffAddedACL) GetEdit() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Edit
+	return e.Edit
 }
 
-func (o *EntityOperationSchemasDiffAddedACL) GetView() []string {
-	if o == nil {
+func (e *EntityOperationSchemasDiffAddedACL) GetView() []string {
+	if e == nil {
 		return nil
 	}
-	return o.View
+	return e.View
 }
 
 // Added - New attributes added to the entity as part of the operation
 type Added struct {
 	AdditionalProperties any                                 `additionalProperties:"true" json:"-"`
 	ACL                  *EntityOperationSchemasDiffAddedACL `json:"_acl,omitempty"`
-	CreatedAt            *time.Time                          `json:"_created_at,omitempty"`
-	DeletedAt            *time.Time                          `json:"_deleted_at,omitempty"`
-	ID                   *string                             `json:"_id,omitempty"`
+	// Pending attribute changesets for attributes configured with external or approval edit mode.
+	//
+	// The value shape is `Changeset` (`proposed_value`, `created_at`, `edit_mode`, ...)
+	// and is what `:apply` / `:dismiss` operate on.
+	//
+	// Read-only via normal entity PATCH/PUT operations — those handlers strip `_changesets`
+	// from request bodies. Use the changeset management endpoints to mutate this field.
+	//
+	Changesets map[string]Changeset `json:"_changesets,omitempty"`
+	CreatedAt  *time.Time           `json:"_created_at,omitempty"`
+	DeletedAt  *time.Time           `json:"_deleted_at,omitempty"`
+	ID         *string              `json:"_id,omitempty"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
 	Org     *string       `json:"_org,omitempty"`
 	Owners  []EntityOwner `json:"_owners,omitempty"`
 	Purpose []string      `json:"_purpose,omitempty"`
+	// Automatically computed purpose names from _purpose attribute
+	PurposeName []string `json:"_purpose_name,omitempty"`
 	// URL-friendly identifier for the entity schema
 	Schema *string  `json:"_schema,omitempty"`
 	Tags   []string `json:"_tags,omitempty"`
@@ -88,95 +123,109 @@ func (a *Added) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Added) GetAdditionalProperties() any {
-	if o == nil {
+func (a *Added) GetAdditionalProperties() any {
+	if a == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return a.AdditionalProperties
 }
 
-func (o *Added) GetACL() *EntityOperationSchemasDiffAddedACL {
-	if o == nil {
+func (a *Added) GetACL() *EntityOperationSchemasDiffAddedACL {
+	if a == nil {
 		return nil
 	}
-	return o.ACL
+	return a.ACL
 }
 
-func (o *Added) GetCreatedAt() *time.Time {
-	if o == nil {
+func (a *Added) GetChangesets() map[string]Changeset {
+	if a == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return a.Changesets
 }
 
-func (o *Added) GetDeletedAt() *time.Time {
-	if o == nil {
+func (a *Added) GetCreatedAt() *time.Time {
+	if a == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return a.CreatedAt
 }
 
-func (o *Added) GetID() *string {
-	if o == nil {
+func (a *Added) GetDeletedAt() *time.Time {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.DeletedAt
 }
 
-func (o *Added) GetManifest() []string {
-	if o == nil {
+func (a *Added) GetID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Manifest
+	return a.ID
 }
 
-func (o *Added) GetOrg() *string {
-	if o == nil {
+func (a *Added) GetManifest() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Org
+	return a.Manifest
 }
 
-func (o *Added) GetOwners() []EntityOwner {
-	if o == nil {
+func (a *Added) GetOrg() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Owners
+	return a.Org
 }
 
-func (o *Added) GetPurpose() []string {
-	if o == nil {
+func (a *Added) GetOwners() []EntityOwner {
+	if a == nil {
 		return nil
 	}
-	return o.Purpose
+	return a.Owners
 }
 
-func (o *Added) GetSchema() *string {
-	if o == nil {
+func (a *Added) GetPurpose() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Schema
+	return a.Purpose
 }
 
-func (o *Added) GetTags() []string {
-	if o == nil {
+func (a *Added) GetPurposeName() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Tags
+	return a.PurposeName
 }
 
-func (o *Added) GetTitle() *string {
-	if o == nil {
+func (a *Added) GetSchema() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Title
+	return a.Schema
 }
 
-func (o *Added) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (a *Added) GetTags() []string {
+	if a == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return a.Tags
+}
+
+func (a *Added) GetTitle() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Title
+}
+
+func (a *Added) GetUpdatedAt() *time.Time {
+	if a == nil {
+		return nil
+	}
+	return a.UpdatedAt
 }
 
 // EntityOperationSchemasACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
@@ -198,47 +247,58 @@ func (e *EntityOperationSchemasACL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityOperationSchemasACL) GetAdditionalProperties() any {
-	if o == nil {
+func (e *EntityOperationSchemasACL) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *EntityOperationSchemasACL) GetDelete() []string {
-	if o == nil {
+func (e *EntityOperationSchemasACL) GetDelete() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Delete
+	return e.Delete
 }
 
-func (o *EntityOperationSchemasACL) GetEdit() []string {
-	if o == nil {
+func (e *EntityOperationSchemasACL) GetEdit() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Edit
+	return e.Edit
 }
 
-func (o *EntityOperationSchemasACL) GetView() []string {
-	if o == nil {
+func (e *EntityOperationSchemasACL) GetView() []string {
+	if e == nil {
 		return nil
 	}
-	return o.View
+	return e.View
 }
 
 // Deleted - Attributes removed from the entity as part of the operation
 type Deleted struct {
 	AdditionalProperties any                        `additionalProperties:"true" json:"-"`
 	ACL                  *EntityOperationSchemasACL `json:"_acl,omitempty"`
-	CreatedAt            *time.Time                 `json:"_created_at,omitempty"`
-	DeletedAt            *time.Time                 `json:"_deleted_at,omitempty"`
-	ID                   *string                    `json:"_id,omitempty"`
+	// Pending attribute changesets for attributes configured with external or approval edit mode.
+	//
+	// The value shape is `Changeset` (`proposed_value`, `created_at`, `edit_mode`, ...)
+	// and is what `:apply` / `:dismiss` operate on.
+	//
+	// Read-only via normal entity PATCH/PUT operations — those handlers strip `_changesets`
+	// from request bodies. Use the changeset management endpoints to mutate this field.
+	//
+	Changesets map[string]Changeset `json:"_changesets,omitempty"`
+	CreatedAt  *time.Time           `json:"_created_at,omitempty"`
+	DeletedAt  *time.Time           `json:"_deleted_at,omitempty"`
+	ID         *string              `json:"_id,omitempty"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
 	Org     *string       `json:"_org,omitempty"`
 	Owners  []EntityOwner `json:"_owners,omitempty"`
 	Purpose []string      `json:"_purpose,omitempty"`
+	// Automatically computed purpose names from _purpose attribute
+	PurposeName []string `json:"_purpose_name,omitempty"`
 	// URL-friendly identifier for the entity schema
 	Schema *string  `json:"_schema,omitempty"`
 	Tags   []string `json:"_tags,omitempty"`
@@ -258,95 +318,109 @@ func (d *Deleted) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Deleted) GetAdditionalProperties() any {
-	if o == nil {
+func (d *Deleted) GetAdditionalProperties() any {
+	if d == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return d.AdditionalProperties
 }
 
-func (o *Deleted) GetACL() *EntityOperationSchemasACL {
-	if o == nil {
+func (d *Deleted) GetACL() *EntityOperationSchemasACL {
+	if d == nil {
 		return nil
 	}
-	return o.ACL
+	return d.ACL
 }
 
-func (o *Deleted) GetCreatedAt() *time.Time {
-	if o == nil {
+func (d *Deleted) GetChangesets() map[string]Changeset {
+	if d == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return d.Changesets
 }
 
-func (o *Deleted) GetDeletedAt() *time.Time {
-	if o == nil {
+func (d *Deleted) GetCreatedAt() *time.Time {
+	if d == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return d.CreatedAt
 }
 
-func (o *Deleted) GetID() *string {
-	if o == nil {
+func (d *Deleted) GetDeletedAt() *time.Time {
+	if d == nil {
 		return nil
 	}
-	return o.ID
+	return d.DeletedAt
 }
 
-func (o *Deleted) GetManifest() []string {
-	if o == nil {
+func (d *Deleted) GetID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Manifest
+	return d.ID
 }
 
-func (o *Deleted) GetOrg() *string {
-	if o == nil {
+func (d *Deleted) GetManifest() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Org
+	return d.Manifest
 }
 
-func (o *Deleted) GetOwners() []EntityOwner {
-	if o == nil {
+func (d *Deleted) GetOrg() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Owners
+	return d.Org
 }
 
-func (o *Deleted) GetPurpose() []string {
-	if o == nil {
+func (d *Deleted) GetOwners() []EntityOwner {
+	if d == nil {
 		return nil
 	}
-	return o.Purpose
+	return d.Owners
 }
 
-func (o *Deleted) GetSchema() *string {
-	if o == nil {
+func (d *Deleted) GetPurpose() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Schema
+	return d.Purpose
 }
 
-func (o *Deleted) GetTags() []string {
-	if o == nil {
+func (d *Deleted) GetPurposeName() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Tags
+	return d.PurposeName
 }
 
-func (o *Deleted) GetTitle() *string {
-	if o == nil {
+func (d *Deleted) GetSchema() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Title
+	return d.Schema
 }
 
-func (o *Deleted) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (d *Deleted) GetTags() []string {
+	if d == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return d.Tags
+}
+
+func (d *Deleted) GetTitle() *string {
+	if d == nil {
+		return nil
+	}
+	return d.Title
+}
+
+func (d *Deleted) GetUpdatedAt() *time.Time {
+	if d == nil {
+		return nil
+	}
+	return d.UpdatedAt
 }
 
 // EntityOperationSchemasDiffACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
@@ -368,47 +442,58 @@ func (e *EntityOperationSchemasDiffACL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityOperationSchemasDiffACL) GetAdditionalProperties() any {
-	if o == nil {
+func (e *EntityOperationSchemasDiffACL) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *EntityOperationSchemasDiffACL) GetDelete() []string {
-	if o == nil {
+func (e *EntityOperationSchemasDiffACL) GetDelete() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Delete
+	return e.Delete
 }
 
-func (o *EntityOperationSchemasDiffACL) GetEdit() []string {
-	if o == nil {
+func (e *EntityOperationSchemasDiffACL) GetEdit() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Edit
+	return e.Edit
 }
 
-func (o *EntityOperationSchemasDiffACL) GetView() []string {
-	if o == nil {
+func (e *EntityOperationSchemasDiffACL) GetView() []string {
+	if e == nil {
 		return nil
 	}
-	return o.View
+	return e.View
 }
 
 // Updated - Attributes updated in the entity. Note: These values contain the previous values before the update!
 type Updated struct {
 	AdditionalProperties any                            `additionalProperties:"true" json:"-"`
 	ACL                  *EntityOperationSchemasDiffACL `json:"_acl,omitempty"`
-	CreatedAt            *time.Time                     `json:"_created_at,omitempty"`
-	DeletedAt            *time.Time                     `json:"_deleted_at,omitempty"`
-	ID                   *string                        `json:"_id,omitempty"`
+	// Pending attribute changesets for attributes configured with external or approval edit mode.
+	//
+	// The value shape is `Changeset` (`proposed_value`, `created_at`, `edit_mode`, ...)
+	// and is what `:apply` / `:dismiss` operate on.
+	//
+	// Read-only via normal entity PATCH/PUT operations — those handlers strip `_changesets`
+	// from request bodies. Use the changeset management endpoints to mutate this field.
+	//
+	Changesets map[string]Changeset `json:"_changesets,omitempty"`
+	CreatedAt  *time.Time           `json:"_created_at,omitempty"`
+	DeletedAt  *time.Time           `json:"_deleted_at,omitempty"`
+	ID         *string              `json:"_id,omitempty"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
 	Org     *string       `json:"_org,omitempty"`
 	Owners  []EntityOwner `json:"_owners,omitempty"`
 	Purpose []string      `json:"_purpose,omitempty"`
+	// Automatically computed purpose names from _purpose attribute
+	PurposeName []string `json:"_purpose_name,omitempty"`
 	// URL-friendly identifier for the entity schema
 	Schema *string  `json:"_schema,omitempty"`
 	Tags   []string `json:"_tags,omitempty"`
@@ -428,95 +513,109 @@ func (u *Updated) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Updated) GetAdditionalProperties() any {
-	if o == nil {
+func (u *Updated) GetAdditionalProperties() any {
+	if u == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return u.AdditionalProperties
 }
 
-func (o *Updated) GetACL() *EntityOperationSchemasDiffACL {
-	if o == nil {
+func (u *Updated) GetACL() *EntityOperationSchemasDiffACL {
+	if u == nil {
 		return nil
 	}
-	return o.ACL
+	return u.ACL
 }
 
-func (o *Updated) GetCreatedAt() *time.Time {
-	if o == nil {
+func (u *Updated) GetChangesets() map[string]Changeset {
+	if u == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return u.Changesets
 }
 
-func (o *Updated) GetDeletedAt() *time.Time {
-	if o == nil {
+func (u *Updated) GetCreatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return u.CreatedAt
 }
 
-func (o *Updated) GetID() *string {
-	if o == nil {
+func (u *Updated) GetDeletedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.ID
+	return u.DeletedAt
 }
 
-func (o *Updated) GetManifest() []string {
-	if o == nil {
+func (u *Updated) GetID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Manifest
+	return u.ID
 }
 
-func (o *Updated) GetOrg() *string {
-	if o == nil {
+func (u *Updated) GetManifest() []string {
+	if u == nil {
 		return nil
 	}
-	return o.Org
+	return u.Manifest
 }
 
-func (o *Updated) GetOwners() []EntityOwner {
-	if o == nil {
+func (u *Updated) GetOrg() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Owners
+	return u.Org
 }
 
-func (o *Updated) GetPurpose() []string {
-	if o == nil {
+func (u *Updated) GetOwners() []EntityOwner {
+	if u == nil {
 		return nil
 	}
-	return o.Purpose
+	return u.Owners
 }
 
-func (o *Updated) GetSchema() *string {
-	if o == nil {
+func (u *Updated) GetPurpose() []string {
+	if u == nil {
 		return nil
 	}
-	return o.Schema
+	return u.Purpose
 }
 
-func (o *Updated) GetTags() []string {
-	if o == nil {
+func (u *Updated) GetPurposeName() []string {
+	if u == nil {
 		return nil
 	}
-	return o.Tags
+	return u.PurposeName
 }
 
-func (o *Updated) GetTitle() *string {
-	if o == nil {
+func (u *Updated) GetSchema() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Title
+	return u.Schema
 }
 
-func (o *Updated) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (u *Updated) GetTags() []string {
+	if u == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return u.Tags
+}
+
+func (u *Updated) GetTitle() *string {
+	if u == nil {
+		return nil
+	}
+	return u.Title
+}
+
+func (u *Updated) GetUpdatedAt() *time.Time {
+	if u == nil {
+		return nil
+	}
+	return u.UpdatedAt
 }
 
 type Diff struct {
@@ -525,25 +624,25 @@ type Diff struct {
 	Updated *Updated `json:"updated,omitempty"`
 }
 
-func (o *Diff) GetAdded() *Added {
-	if o == nil {
+func (d *Diff) GetAdded() *Added {
+	if d == nil {
 		return nil
 	}
-	return o.Added
+	return d.Added
 }
 
-func (o *Diff) GetDeleted() *Deleted {
-	if o == nil {
+func (d *Diff) GetDeleted() *Deleted {
+	if d == nil {
 		return nil
 	}
-	return o.Deleted
+	return d.Deleted
 }
 
-func (o *Diff) GetUpdated() *Updated {
-	if o == nil {
+func (d *Diff) GetUpdated() *Updated {
+	if d == nil {
 		return nil
 	}
-	return o.Updated
+	return d.Updated
 }
 
 type Operation string
@@ -602,18 +701,18 @@ type Params struct {
 	Slug *string `json:"slug,omitempty"`
 }
 
-func (o *Params) GetID() *string {
-	if o == nil {
+func (p *Params) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *Params) GetSlug() *string {
-	if o == nil {
+func (p *Params) GetSlug() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Slug
+	return p.Slug
 }
 
 // EntityOperationACL - Access control list (ACL) for an entity. Defines sharing access to external orgs or users.
@@ -635,46 +734,57 @@ func (e *EntityOperationACL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityOperationACL) GetAdditionalProperties() any {
-	if o == nil {
+func (e *EntityOperationACL) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *EntityOperationACL) GetDelete() []string {
-	if o == nil {
+func (e *EntityOperationACL) GetDelete() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Delete
+	return e.Delete
 }
 
-func (o *EntityOperationACL) GetEdit() []string {
-	if o == nil {
+func (e *EntityOperationACL) GetEdit() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Edit
+	return e.Edit
 }
 
-func (o *EntityOperationACL) GetView() []string {
-	if o == nil {
+func (e *EntityOperationACL) GetView() []string {
+	if e == nil {
 		return nil
 	}
-	return o.View
+	return e.View
 }
 
 type Payload struct {
 	AdditionalProperties any                 `additionalProperties:"true" json:"-"`
 	ACL                  *EntityOperationACL `json:"_acl,omitempty"`
-	CreatedAt            *time.Time          `json:"_created_at,omitempty"`
-	DeletedAt            *time.Time          `json:"_deleted_at,omitempty"`
-	ID                   *string             `json:"_id,omitempty"`
+	// Pending attribute changesets for attributes configured with external or approval edit mode.
+	//
+	// The value shape is `Changeset` (`proposed_value`, `created_at`, `edit_mode`, ...)
+	// and is what `:apply` / `:dismiss` operate on.
+	//
+	// Read-only via normal entity PATCH/PUT operations — those handlers strip `_changesets`
+	// from request bodies. Use the changeset management endpoints to mutate this field.
+	//
+	Changesets map[string]Changeset `json:"_changesets,omitempty"`
+	CreatedAt  *time.Time           `json:"_created_at,omitempty"`
+	DeletedAt  *time.Time           `json:"_deleted_at,omitempty"`
+	ID         *string              `json:"_id,omitempty"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
 	Org     *string       `json:"_org,omitempty"`
 	Owners  []EntityOwner `json:"_owners,omitempty"`
 	Purpose []string      `json:"_purpose,omitempty"`
+	// Automatically computed purpose names from _purpose attribute
+	PurposeName []string `json:"_purpose_name,omitempty"`
 	// URL-friendly identifier for the entity schema
 	Schema *string  `json:"_schema,omitempty"`
 	Tags   []string `json:"_tags,omitempty"`
@@ -694,98 +804,117 @@ func (p *Payload) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Payload) GetAdditionalProperties() any {
-	if o == nil {
+func (p *Payload) GetAdditionalProperties() any {
+	if p == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return p.AdditionalProperties
 }
 
-func (o *Payload) GetACL() *EntityOperationACL {
-	if o == nil {
+func (p *Payload) GetACL() *EntityOperationACL {
+	if p == nil {
 		return nil
 	}
-	return o.ACL
+	return p.ACL
 }
 
-func (o *Payload) GetCreatedAt() *time.Time {
-	if o == nil {
+func (p *Payload) GetChangesets() map[string]Changeset {
+	if p == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return p.Changesets
 }
 
-func (o *Payload) GetDeletedAt() *time.Time {
-	if o == nil {
+func (p *Payload) GetCreatedAt() *time.Time {
+	if p == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return p.CreatedAt
 }
 
-func (o *Payload) GetID() *string {
-	if o == nil {
+func (p *Payload) GetDeletedAt() *time.Time {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.DeletedAt
 }
 
-func (o *Payload) GetManifest() []string {
-	if o == nil {
+func (p *Payload) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.ID
 }
 
-func (o *Payload) GetOrg() *string {
-	if o == nil {
+func (p *Payload) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Org
+	return p.Manifest
 }
 
-func (o *Payload) GetOwners() []EntityOwner {
-	if o == nil {
+func (p *Payload) GetOrg() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Owners
+	return p.Org
 }
 
-func (o *Payload) GetPurpose() []string {
-	if o == nil {
+func (p *Payload) GetOwners() []EntityOwner {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Owners
 }
 
-func (o *Payload) GetSchema() *string {
-	if o == nil {
+func (p *Payload) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Schema
+	return p.Purpose
 }
 
-func (o *Payload) GetTags() []string {
-	if o == nil {
+func (p *Payload) GetPurposeName() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Tags
+	return p.PurposeName
 }
 
-func (o *Payload) GetTitle() *string {
-	if o == nil {
+func (p *Payload) GetSchema() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Title
+	return p.Schema
 }
 
-func (o *Payload) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (p *Payload) GetTags() []string {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return p.Tags
+}
+
+func (p *Payload) GetTitle() *string {
+	if p == nil {
+		return nil
+	}
+	return p.Title
+}
+
+func (p *Payload) GetUpdatedAt() *time.Time {
+	if p == nil {
+		return nil
+	}
+	return p.UpdatedAt
 }
 
 type EntityOperation struct {
+	// Internal property for workflow origin tracking and infinite loop prevention.
+	// Populated when an entity update originates from a workflow execution.
+	// This allows downstream automation services to prevent circular triggering.
+	//
+	WorkflowOrigin *WorkflowOrigin `json:"_workflow_origin,omitempty"`
 	// See https://github.com/ulid/spec
 	ActivityID *string `json:"activity_id,omitempty"`
 	// A type for the activity. Used to categorize activities in the activity feed and for event subscriptions.
@@ -801,6 +930,10 @@ type EntityOperation struct {
 	// - RelationsSoftDeleted
 	// - RelationsRestored
 	// - RelationsDeleted
+	// - ChangesetCreated
+	// - ChangesetAutoCleared
+	// - ChangesetApplied
+	// - ChangesetDismissed
 	//
 	ActivityType *string   `json:"activity_type,omitempty"`
 	Diff         *Diff     `json:"diff,omitempty"`
@@ -811,58 +944,65 @@ type EntityOperation struct {
 	Payload      *Payload  `json:"payload,omitempty"`
 }
 
-func (o *EntityOperation) GetActivityID() *string {
-	if o == nil {
+func (e *EntityOperation) GetWorkflowOrigin() *WorkflowOrigin {
+	if e == nil {
 		return nil
 	}
-	return o.ActivityID
+	return e.WorkflowOrigin
 }
 
-func (o *EntityOperation) GetActivityType() *string {
-	if o == nil {
+func (e *EntityOperation) GetActivityID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ActivityType
+	return e.ActivityID
 }
 
-func (o *EntityOperation) GetDiff() *Diff {
-	if o == nil {
+func (e *EntityOperation) GetActivityType() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Diff
+	return e.ActivityType
 }
 
-func (o *EntityOperation) GetEntity() string {
-	if o == nil {
+func (e *EntityOperation) GetDiff() *Diff {
+	if e == nil {
+		return nil
+	}
+	return e.Diff
+}
+
+func (e *EntityOperation) GetEntity() string {
+	if e == nil {
 		return ""
 	}
-	return o.Entity
+	return e.Entity
 }
 
-func (o *EntityOperation) GetOperation() Operation {
-	if o == nil {
+func (e *EntityOperation) GetOperation() Operation {
+	if e == nil {
 		return Operation("")
 	}
-	return o.Operation
+	return e.Operation
 }
 
-func (o *EntityOperation) GetOrg() string {
-	if o == nil {
+func (e *EntityOperation) GetOrg() string {
+	if e == nil {
 		return ""
 	}
-	return o.Org
+	return e.Org
 }
 
-func (o *EntityOperation) GetParams() *Params {
-	if o == nil {
+func (e *EntityOperation) GetParams() *Params {
+	if e == nil {
 		return nil
 	}
-	return o.Params
+	return e.Params
 }
 
-func (o *EntityOperation) GetPayload() *Payload {
-	if o == nil {
+func (e *EntityOperation) GetPayload() *Payload {
+	if e == nil {
 		return nil
 	}
-	return o.Payload
+	return e.Payload
 }

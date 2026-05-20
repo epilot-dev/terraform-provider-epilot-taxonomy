@@ -101,6 +101,7 @@ func (r *TaxonomyDataSource) Schema(ctx context.Context, req datasource.SchemaRe
 			},
 			"slug": schema.StringAttribute{
 				Computed:    true,
+				Optional:    true,
 				Description: `URL-friendly name for taxonomy`,
 			},
 			"type": schema.StringAttribute{
