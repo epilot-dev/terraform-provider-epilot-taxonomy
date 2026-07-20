@@ -24,6 +24,38 @@ func (d *DateAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// DateAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type DateAttributeDataClassification string
+
+const (
+	DateAttributeDataClassificationPublic DateAttributeDataClassification = "public"
+	DateAttributeDataClassificationPii    DateAttributeDataClassification = "pii"
+)
+
+func (e DateAttributeDataClassification) ToPointer() *DateAttributeDataClassification {
+	return &e
+}
+func (e *DateAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = DateAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DateAttributeDataClassification: %v", v)
+	}
+}
+
 // DateAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type DateAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -56,32 +88,32 @@ func (d *DateAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DateAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (d *DateAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if d == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return d.HintCustomComponent
 }
 
-func (o *DateAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (d *DateAttributeInfoHelpers) GetHintText() *string {
+	if d == nil {
 		return nil
 	}
-	return o.HintText
+	return d.HintText
 }
 
-func (o *DateAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (d *DateAttributeInfoHelpers) GetHintTextKey() *string {
+	if d == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return d.HintTextKey
 }
 
-func (o *DateAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (d *DateAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if d == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return d.HintTooltipPlacement
 }
 
 type DateAttributeType string
@@ -118,9 +150,27 @@ type DateAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *DateAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                       `json:"default_value,omitempty"`
-	Deprecated   *bool                     `default:"false" json:"deprecated"`
+	Constraints *DateAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *DateAttributeDataClassification `json:"data_classification,omitempty"`
+	DefaultValue       any                              `json:"default_value,omitempty"`
+	Deprecated         *bool                            `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -183,232 +233,253 @@ func (d DateAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DateAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *DateAttribute) GetManifest() []string {
-	if o == nil {
+func (d *DateAttribute) GetManifest() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Manifest
+	return d.Manifest
 }
 
-func (o *DateAttribute) GetPurpose() []string {
-	if o == nil {
+func (d *DateAttribute) GetPurpose() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Purpose
+	return d.Purpose
 }
 
-func (o *DateAttribute) GetConstraints() *DateAttributeConstraints {
-	if o == nil {
+func (d *DateAttribute) GetConstraints() *DateAttributeConstraints {
+	if d == nil {
 		return nil
 	}
-	return o.Constraints
+	return d.Constraints
 }
 
-func (o *DateAttribute) GetDefaultValue() any {
-	if o == nil {
+func (d *DateAttribute) GetDataClassification() *DateAttributeDataClassification {
+	if d == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return d.DataClassification
 }
 
-func (o *DateAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (d *DateAttribute) GetDefaultValue() any {
+	if d == nil {
 		return nil
 	}
-	return o.Deprecated
+	return d.DefaultValue
 }
 
-func (o *DateAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (d *DateAttribute) GetDeprecated() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return d.Deprecated
 }
 
-func (o *DateAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (d *DateAttribute) GetEditMode() *EditMode {
+	if d == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return d.EditMode
 }
 
-func (o *DateAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (d *DateAttribute) GetEditModeConfig() *EditModeConfig {
+	if d == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return d.EditModeConfig
 }
 
-func (o *DateAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (d *DateAttribute) GetEntityBuilderDisableEdit() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return d.EntityBuilderDisableEdit
 }
 
-func (o *DateAttribute) GetGroup() *string {
-	if o == nil {
+func (d *DateAttribute) GetExcludeFromSearch() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Group
+	return d.ExcludeFromSearch
 }
 
-func (o *DateAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (d *DateAttribute) GetExplicitSearchable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return d.ExplicitSearchable
 }
 
-func (o *DateAttribute) GetHidden() *bool {
-	if o == nil {
+func (d *DateAttribute) GetFeatureFlag() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Hidden
+	return d.FeatureFlag
 }
 
-func (o *DateAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (d *DateAttribute) GetGroup() *string {
+	if d == nil {
 		return nil
 	}
-	return o.HideLabel
+	return d.Group
 }
 
-func (o *DateAttribute) GetIcon() *string {
-	if o == nil {
+func (d *DateAttribute) GetHasPrimary() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Icon
+	return d.HasPrimary
 }
 
-func (o *DateAttribute) GetID() *string {
-	if o == nil {
+func (d *DateAttribute) GetHidden() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ID
+	return d.Hidden
 }
 
-func (o *DateAttribute) GetInfoHelpers() *DateAttributeInfoHelpers {
-	if o == nil {
+func (d *DateAttribute) GetHideLabel() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return d.HideLabel
 }
 
-func (o *DateAttribute) GetLabel() string {
-	if o == nil {
+func (d *DateAttribute) GetIcon() *string {
+	if d == nil {
+		return nil
+	}
+	return d.Icon
+}
+
+func (d *DateAttribute) GetID() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ID
+}
+
+func (d *DateAttribute) GetInfoHelpers() *DateAttributeInfoHelpers {
+	if d == nil {
+		return nil
+	}
+	return d.InfoHelpers
+}
+
+func (d *DateAttribute) GetLabel() string {
+	if d == nil {
 		return ""
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DateAttribute) GetLayout() *string {
-	if o == nil {
+func (d *DateAttribute) GetLayout() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Layout
+	return d.Layout
 }
 
-func (o *DateAttribute) GetName() string {
-	if o == nil {
+func (d *DateAttribute) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DateAttribute) GetOrder() *int64 {
-	if o == nil {
+func (d *DateAttribute) GetOrder() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.Order
+	return d.Order
 }
 
-func (o *DateAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (d *DateAttribute) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DateAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (d *DateAttribute) GetPreviewValueFormatter() *string {
+	if d == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return d.PreviewValueFormatter
 }
 
-func (o *DateAttribute) GetProtected() *bool {
-	if o == nil {
+func (d *DateAttribute) GetProtected() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Protected
+	return d.Protected
 }
 
-func (o *DateAttribute) GetReadonly() *bool {
-	if o == nil {
+func (d *DateAttribute) GetReadonly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Readonly
+	return d.Readonly
 }
 
-func (o *DateAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (d *DateAttribute) GetRenderCondition() *string {
+	if d == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return d.RenderCondition
 }
 
-func (o *DateAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (d *DateAttribute) GetRepeatable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Repeatable
+	return d.Repeatable
 }
 
-func (o *DateAttribute) GetRequired() *bool {
-	if o == nil {
+func (d *DateAttribute) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DateAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (d *DateAttribute) GetSettingsFlag() []SettingFlag {
+	if d == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return d.SettingsFlag
 }
 
-func (o *DateAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (d *DateAttribute) GetShowInTable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return d.ShowInTable
 }
 
-func (o *DateAttribute) GetSortable() *bool {
-	if o == nil {
+func (d *DateAttribute) GetSortable() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Sortable
+	return d.Sortable
 }
 
-func (o *DateAttribute) GetType() DateAttributeType {
-	if o == nil {
+func (d *DateAttribute) GetType() DateAttributeType {
+	if d == nil {
 		return DateAttributeType("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DateAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (d *DateAttribute) GetValueFormatter() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return d.ValueFormatter
 }

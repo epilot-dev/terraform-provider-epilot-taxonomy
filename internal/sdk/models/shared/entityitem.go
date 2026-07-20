@@ -26,46 +26,57 @@ func (e *EntityItemACL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityItemACL) GetAdditionalProperties() any {
-	if o == nil {
+func (e *EntityItemACL) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *EntityItemACL) GetDelete() []string {
-	if o == nil {
+func (e *EntityItemACL) GetDelete() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Delete
+	return e.Delete
 }
 
-func (o *EntityItemACL) GetEdit() []string {
-	if o == nil {
+func (e *EntityItemACL) GetEdit() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Edit
+	return e.Edit
 }
 
-func (o *EntityItemACL) GetView() []string {
-	if o == nil {
+func (e *EntityItemACL) GetView() []string {
+	if e == nil {
 		return nil
 	}
-	return o.View
+	return e.View
 }
 
 type EntityItem struct {
 	AdditionalProperties any            `additionalProperties:"true" json:"-"`
 	ACL                  *EntityItemACL `json:"_acl,omitempty"`
-	CreatedAt            *time.Time     `json:"_created_at"`
-	DeletedAt            *time.Time     `json:"_deleted_at,omitempty"`
-	ID                   string         `json:"_id"`
+	// Pending attribute changesets for attributes configured with external or approval edit mode.
+	//
+	// The value shape is `Changeset` (`proposed_value`, `created_at`, `edit_mode`, ...)
+	// and is what `:apply` / `:dismiss` operate on.
+	//
+	// Read-only via normal entity PATCH/PUT operations — those handlers strip `_changesets`
+	// from request bodies. Use the changeset management endpoints to mutate this field.
+	//
+	Changesets map[string]Changeset `json:"_changesets,omitempty"`
+	CreatedAt  *time.Time           `json:"_created_at"`
+	DeletedAt  *time.Time           `json:"_deleted_at,omitempty"`
+	ID         string               `json:"_id"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
 	Org     string        `json:"_org"`
 	Owners  []EntityOwner `json:"_owners,omitempty"`
 	Purpose []string      `json:"_purpose,omitempty"`
+	// Automatically computed purpose names from _purpose attribute
+	PurposeName []string `json:"_purpose_name,omitempty"`
 	// URL-friendly identifier for the entity schema
 	Schema string   `json:"_schema"`
 	Tags   []string `json:"_tags,omitempty"`
@@ -79,99 +90,113 @@ func (e EntityItem) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EntityItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"_created_at", "_id", "_org", "_schema", "_title", "_updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *EntityItem) GetAdditionalProperties() any {
-	if o == nil {
+func (e *EntityItem) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *EntityItem) GetACL() *EntityItemACL {
-	if o == nil {
+func (e *EntityItem) GetACL() *EntityItemACL {
+	if e == nil {
 		return nil
 	}
-	return o.ACL
+	return e.ACL
 }
 
-func (o *EntityItem) GetCreatedAt() *time.Time {
-	if o == nil {
+func (e *EntityItem) GetChangesets() map[string]Changeset {
+	if e == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return e.Changesets
 }
 
-func (o *EntityItem) GetDeletedAt() *time.Time {
-	if o == nil {
+func (e *EntityItem) GetCreatedAt() *time.Time {
+	if e == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return e.CreatedAt
 }
 
-func (o *EntityItem) GetID() string {
-	if o == nil {
+func (e *EntityItem) GetDeletedAt() *time.Time {
+	if e == nil {
+		return nil
+	}
+	return e.DeletedAt
+}
+
+func (e *EntityItem) GetID() string {
+	if e == nil {
 		return ""
 	}
-	return o.ID
+	return e.ID
 }
 
-func (o *EntityItem) GetManifest() []string {
-	if o == nil {
+func (e *EntityItem) GetManifest() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Manifest
+	return e.Manifest
 }
 
-func (o *EntityItem) GetOrg() string {
-	if o == nil {
+func (e *EntityItem) GetOrg() string {
+	if e == nil {
 		return ""
 	}
-	return o.Org
+	return e.Org
 }
 
-func (o *EntityItem) GetOwners() []EntityOwner {
-	if o == nil {
+func (e *EntityItem) GetOwners() []EntityOwner {
+	if e == nil {
 		return nil
 	}
-	return o.Owners
+	return e.Owners
 }
 
-func (o *EntityItem) GetPurpose() []string {
-	if o == nil {
+func (e *EntityItem) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Purpose
 }
 
-func (o *EntityItem) GetSchema() string {
-	if o == nil {
+func (e *EntityItem) GetPurposeName() []string {
+	if e == nil {
+		return nil
+	}
+	return e.PurposeName
+}
+
+func (e *EntityItem) GetSchema() string {
+	if e == nil {
 		return ""
 	}
-	return o.Schema
+	return e.Schema
 }
 
-func (o *EntityItem) GetTags() []string {
-	if o == nil {
+func (e *EntityItem) GetTags() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Tags
+	return e.Tags
 }
 
-func (o *EntityItem) GetTitle() *string {
-	if o == nil {
+func (e *EntityItem) GetTitle() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Title
+	return e.Title
 }
 
-func (o *EntityItem) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (e *EntityItem) GetUpdatedAt() *time.Time {
+	if e == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return e.UpdatedAt
 }

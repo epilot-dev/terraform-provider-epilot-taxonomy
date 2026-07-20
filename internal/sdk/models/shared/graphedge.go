@@ -9,16 +9,16 @@ type GraphEdge struct {
 	To string `json:"to"`
 }
 
-func (o *GraphEdge) GetFrom() string {
-	if o == nil {
+func (g *GraphEdge) GetFrom() string {
+	if g == nil {
 		return ""
 	}
-	return o.From
+	return g.From
 }
 
-func (o *GraphEdge) GetTo() string {
-	if o == nil {
+func (g *GraphEdge) GetTo() string {
+	if g == nil {
 		return ""
 	}
-	return o.To
+	return g.To
 }

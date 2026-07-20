@@ -24,6 +24,38 @@ func (p *PartnerOrganisationAttributeConstraints) UnmarshalJSON(data []byte) err
 	return nil
 }
 
+// PartnerOrganisationAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type PartnerOrganisationAttributeDataClassification string
+
+const (
+	PartnerOrganisationAttributeDataClassificationPublic PartnerOrganisationAttributeDataClassification = "public"
+	PartnerOrganisationAttributeDataClassificationPii    PartnerOrganisationAttributeDataClassification = "pii"
+)
+
+func (e PartnerOrganisationAttributeDataClassification) ToPointer() *PartnerOrganisationAttributeDataClassification {
+	return &e
+}
+func (e *PartnerOrganisationAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = PartnerOrganisationAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PartnerOrganisationAttributeDataClassification: %v", v)
+	}
+}
+
 // PartnerOrganisationAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type PartnerOrganisationAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -56,32 +88,32 @@ func (p *PartnerOrganisationAttributeInfoHelpers) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (o *PartnerOrganisationAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return p.HintCustomComponent
 }
 
-func (o *PartnerOrganisationAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeInfoHelpers) GetHintText() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintText
+	return p.HintText
 }
 
-func (o *PartnerOrganisationAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeInfoHelpers) GetHintTextKey() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return p.HintTextKey
 }
 
-func (o *PartnerOrganisationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return p.HintTooltipPlacement
 }
 
 type PartnerOrganisationAttributeType string
@@ -115,9 +147,27 @@ type PartnerOrganisationAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *PartnerOrganisationAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                                      `json:"default_value,omitempty"`
-	Deprecated   *bool                                    `default:"false" json:"deprecated"`
+	Constraints *PartnerOrganisationAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *PartnerOrganisationAttributeDataClassification `json:"data_classification,omitempty"`
+	DefaultValue       any                                             `json:"default_value,omitempty"`
+	Deprecated         *bool                                           `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -180,232 +230,253 @@ func (p PartnerOrganisationAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PartnerOrganisationAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *PartnerOrganisationAttribute) GetManifest() []string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PartnerOrganisationAttribute) GetPurpose() []string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PartnerOrganisationAttribute) GetConstraints() *PartnerOrganisationAttributeConstraints {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetConstraints() *PartnerOrganisationAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PartnerOrganisationAttribute) GetDefaultValue() any {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetDataClassification() *PartnerOrganisationAttributeDataClassification {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DataClassification
 }
 
-func (o *PartnerOrganisationAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.DefaultValue
 }
 
-func (o *PartnerOrganisationAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.Deprecated
 }
 
-func (o *PartnerOrganisationAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetEditMode() *EditMode {
+	if p == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return p.EditMode
 }
 
-func (o *PartnerOrganisationAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetEditModeConfig() *EditModeConfig {
+	if p == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return p.EditModeConfig
 }
 
-func (o *PartnerOrganisationAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PartnerOrganisationAttribute) GetGroup() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetExcludeFromSearch() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.ExcludeFromSearch
 }
 
-func (o *PartnerOrganisationAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetExplicitSearchable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.ExplicitSearchable
 }
 
-func (o *PartnerOrganisationAttribute) GetHidden() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.FeatureFlag
 }
 
-func (o *PartnerOrganisationAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.Group
 }
 
-func (o *PartnerOrganisationAttribute) GetIcon() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.HasPrimary
 }
 
-func (o *PartnerOrganisationAttribute) GetID() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.Hidden
 }
 
-func (o *PartnerOrganisationAttribute) GetInfoHelpers() *PartnerOrganisationAttributeInfoHelpers {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.HideLabel
 }
 
-func (o *PartnerOrganisationAttribute) GetLabel() string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetIcon() *string {
+	if p == nil {
+		return nil
+	}
+	return p.Icon
+}
+
+func (p *PartnerOrganisationAttribute) GetID() *string {
+	if p == nil {
+		return nil
+	}
+	return p.ID
+}
+
+func (p *PartnerOrganisationAttribute) GetInfoHelpers() *PartnerOrganisationAttributeInfoHelpers {
+	if p == nil {
+		return nil
+	}
+	return p.InfoHelpers
+}
+
+func (p *PartnerOrganisationAttribute) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PartnerOrganisationAttribute) GetLayout() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PartnerOrganisationAttribute) GetName() string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PartnerOrganisationAttribute) GetOrder() *int64 {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PartnerOrganisationAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PartnerOrganisationAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PartnerOrganisationAttribute) GetProtected() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PartnerOrganisationAttribute) GetReadonly() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PartnerOrganisationAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PartnerOrganisationAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PartnerOrganisationAttribute) GetRequired() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PartnerOrganisationAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PartnerOrganisationAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PartnerOrganisationAttribute) GetSortable() *bool {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PartnerOrganisationAttribute) GetType() PartnerOrganisationAttributeType {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetType() PartnerOrganisationAttributeType {
+	if p == nil {
 		return PartnerOrganisationAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PartnerOrganisationAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (p *PartnerOrganisationAttribute) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }

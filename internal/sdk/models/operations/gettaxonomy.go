@@ -12,11 +12,11 @@ type GetTaxonomyRequest struct {
 	TaxonomySlug string `pathParam:"style=simple,explode=false,name=taxonomySlug"`
 }
 
-func (o *GetTaxonomyRequest) GetTaxonomySlug() string {
-	if o == nil {
+func (g *GetTaxonomyRequest) GetTaxonomySlug() string {
+	if g == nil {
 		return ""
 	}
-	return o.TaxonomySlug
+	return g.TaxonomySlug
 }
 
 // GetTaxonomyResponseBody - A generic error returned by the API
@@ -27,18 +27,18 @@ type GetTaxonomyResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetTaxonomyResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetTaxonomyResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetTaxonomyResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetTaxonomyResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetTaxonomyResponse struct {
@@ -54,37 +54,37 @@ type GetTaxonomyResponse struct {
 	Object *GetTaxonomyResponseBody
 }
 
-func (o *GetTaxonomyResponse) GetContentType() string {
-	if o == nil {
+func (g *GetTaxonomyResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetTaxonomyResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetTaxonomyResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetTaxonomyResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetTaxonomyResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetTaxonomyResponse) GetTaxonomy() *shared.Taxonomy {
-	if o == nil {
+func (g *GetTaxonomyResponse) GetTaxonomy() *shared.Taxonomy {
+	if g == nil {
 		return nil
 	}
-	return o.Taxonomy
+	return g.Taxonomy
 }
 
-func (o *GetTaxonomyResponse) GetObject() *GetTaxonomyResponseBody {
-	if o == nil {
+func (g *GetTaxonomyResponse) GetObject() *GetTaxonomyResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

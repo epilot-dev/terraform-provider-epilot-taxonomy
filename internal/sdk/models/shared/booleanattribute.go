@@ -24,6 +24,38 @@ func (b *BooleanAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// BooleanAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type BooleanAttributeDataClassification string
+
+const (
+	BooleanAttributeDataClassificationPublic BooleanAttributeDataClassification = "public"
+	BooleanAttributeDataClassificationPii    BooleanAttributeDataClassification = "pii"
+)
+
+func (e BooleanAttributeDataClassification) ToPointer() *BooleanAttributeDataClassification {
+	return &e
+}
+func (e *BooleanAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = BooleanAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BooleanAttributeDataClassification: %v", v)
+	}
+}
+
 type BooleanAttributeDisplayType string
 
 const (
@@ -82,32 +114,32 @@ func (b *BooleanAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *BooleanAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (b *BooleanAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if b == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return b.HintCustomComponent
 }
 
-func (o *BooleanAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (b *BooleanAttributeInfoHelpers) GetHintText() *string {
+	if b == nil {
 		return nil
 	}
-	return o.HintText
+	return b.HintText
 }
 
-func (o *BooleanAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (b *BooleanAttributeInfoHelpers) GetHintTextKey() *string {
+	if b == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return b.HintTextKey
 }
 
-func (o *BooleanAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (b *BooleanAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if b == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return b.HintTooltipPlacement
 }
 
 type BooleanAttributeType string
@@ -141,10 +173,28 @@ type BooleanAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *BooleanAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                          `json:"default_value,omitempty"`
-	Deprecated   *bool                        `default:"false" json:"deprecated"`
-	DisplayType  *BooleanAttributeDisplayType `default:"switch" json:"display_type"`
+	Constraints *BooleanAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *BooleanAttributeDataClassification `json:"data_classification,omitempty"`
+	DefaultValue       any                                 `json:"default_value,omitempty"`
+	Deprecated         *bool                               `default:"false" json:"deprecated"`
+	DisplayType        *BooleanAttributeDisplayType        `default:"switch" json:"display_type"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -207,239 +257,260 @@ func (b BooleanAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BooleanAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BooleanAttribute) GetManifest() []string {
-	if o == nil {
+func (b *BooleanAttribute) GetManifest() []string {
+	if b == nil {
 		return nil
 	}
-	return o.Manifest
+	return b.Manifest
 }
 
-func (o *BooleanAttribute) GetPurpose() []string {
-	if o == nil {
+func (b *BooleanAttribute) GetPurpose() []string {
+	if b == nil {
 		return nil
 	}
-	return o.Purpose
+	return b.Purpose
 }
 
-func (o *BooleanAttribute) GetConstraints() *BooleanAttributeConstraints {
-	if o == nil {
+func (b *BooleanAttribute) GetConstraints() *BooleanAttributeConstraints {
+	if b == nil {
 		return nil
 	}
-	return o.Constraints
+	return b.Constraints
 }
 
-func (o *BooleanAttribute) GetDefaultValue() any {
-	if o == nil {
+func (b *BooleanAttribute) GetDataClassification() *BooleanAttributeDataClassification {
+	if b == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return b.DataClassification
 }
 
-func (o *BooleanAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetDefaultValue() any {
+	if b == nil {
 		return nil
 	}
-	return o.Deprecated
+	return b.DefaultValue
 }
 
-func (o *BooleanAttribute) GetDisplayType() *BooleanAttributeDisplayType {
-	if o == nil {
+func (b *BooleanAttribute) GetDeprecated() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.DisplayType
+	return b.Deprecated
 }
 
-func (o *BooleanAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetDisplayType() *BooleanAttributeDisplayType {
+	if b == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return b.DisplayType
 }
 
-func (o *BooleanAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetEditMode() *EditMode {
+	if b == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return b.EditMode
 }
 
-func (o *BooleanAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetEditModeConfig() *EditModeConfig {
+	if b == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return b.EditModeConfig
 }
 
-func (o *BooleanAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (b *BooleanAttribute) GetEntityBuilderDisableEdit() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return b.EntityBuilderDisableEdit
 }
 
-func (o *BooleanAttribute) GetGroup() *string {
-	if o == nil {
+func (b *BooleanAttribute) GetExcludeFromSearch() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Group
+	return b.ExcludeFromSearch
 }
 
-func (o *BooleanAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetExplicitSearchable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return b.ExplicitSearchable
 }
 
-func (o *BooleanAttribute) GetHidden() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetFeatureFlag() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Hidden
+	return b.FeatureFlag
 }
 
-func (o *BooleanAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetGroup() *string {
+	if b == nil {
 		return nil
 	}
-	return o.HideLabel
+	return b.Group
 }
 
-func (o *BooleanAttribute) GetIcon() *string {
-	if o == nil {
+func (b *BooleanAttribute) GetHasPrimary() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Icon
+	return b.HasPrimary
 }
 
-func (o *BooleanAttribute) GetID() *string {
-	if o == nil {
+func (b *BooleanAttribute) GetHidden() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.ID
+	return b.Hidden
 }
 
-func (o *BooleanAttribute) GetInfoHelpers() *BooleanAttributeInfoHelpers {
-	if o == nil {
+func (b *BooleanAttribute) GetHideLabel() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return b.HideLabel
 }
 
-func (o *BooleanAttribute) GetLabel() string {
-	if o == nil {
+func (b *BooleanAttribute) GetIcon() *string {
+	if b == nil {
+		return nil
+	}
+	return b.Icon
+}
+
+func (b *BooleanAttribute) GetID() *string {
+	if b == nil {
+		return nil
+	}
+	return b.ID
+}
+
+func (b *BooleanAttribute) GetInfoHelpers() *BooleanAttributeInfoHelpers {
+	if b == nil {
+		return nil
+	}
+	return b.InfoHelpers
+}
+
+func (b *BooleanAttribute) GetLabel() string {
+	if b == nil {
 		return ""
 	}
-	return o.Label
+	return b.Label
 }
 
-func (o *BooleanAttribute) GetLayout() *string {
-	if o == nil {
+func (b *BooleanAttribute) GetLayout() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Layout
+	return b.Layout
 }
 
-func (o *BooleanAttribute) GetName() string {
-	if o == nil {
+func (b *BooleanAttribute) GetName() string {
+	if b == nil {
 		return ""
 	}
-	return o.Name
+	return b.Name
 }
 
-func (o *BooleanAttribute) GetOrder() *int64 {
-	if o == nil {
+func (b *BooleanAttribute) GetOrder() *int64 {
+	if b == nil {
 		return nil
 	}
-	return o.Order
+	return b.Order
 }
 
-func (o *BooleanAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (b *BooleanAttribute) GetPlaceholder() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Placeholder
+	return b.Placeholder
 }
 
-func (o *BooleanAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (b *BooleanAttribute) GetPreviewValueFormatter() *string {
+	if b == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return b.PreviewValueFormatter
 }
 
-func (o *BooleanAttribute) GetProtected() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetProtected() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Protected
+	return b.Protected
 }
 
-func (o *BooleanAttribute) GetReadonly() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetReadonly() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Readonly
+	return b.Readonly
 }
 
-func (o *BooleanAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (b *BooleanAttribute) GetRenderCondition() *string {
+	if b == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return b.RenderCondition
 }
 
-func (o *BooleanAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetRepeatable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Repeatable
+	return b.Repeatable
 }
 
-func (o *BooleanAttribute) GetRequired() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetRequired() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Required
+	return b.Required
 }
 
-func (o *BooleanAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (b *BooleanAttribute) GetSettingsFlag() []SettingFlag {
+	if b == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return b.SettingsFlag
 }
 
-func (o *BooleanAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetShowInTable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return b.ShowInTable
 }
 
-func (o *BooleanAttribute) GetSortable() *bool {
-	if o == nil {
+func (b *BooleanAttribute) GetSortable() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Sortable
+	return b.Sortable
 }
 
-func (o *BooleanAttribute) GetType() BooleanAttributeType {
-	if o == nil {
+func (b *BooleanAttribute) GetType() BooleanAttributeType {
+	if b == nil {
 		return BooleanAttributeType("")
 	}
-	return o.Type
+	return b.Type
 }
 
-func (o *BooleanAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (b *BooleanAttribute) GetValueFormatter() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return b.ValueFormatter
 }

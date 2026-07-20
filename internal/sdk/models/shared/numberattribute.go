@@ -24,6 +24,38 @@ func (n *NumberAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// NumberAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type NumberAttributeDataClassification string
+
+const (
+	NumberAttributeDataClassificationPublic NumberAttributeDataClassification = "public"
+	NumberAttributeDataClassificationPii    NumberAttributeDataClassification = "pii"
+)
+
+func (e NumberAttributeDataClassification) ToPointer() *NumberAttributeDataClassification {
+	return &e
+}
+func (e *NumberAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = NumberAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for NumberAttributeDataClassification: %v", v)
+	}
+}
+
 // NumberAttributeDataType - Optional data type override. When set to 'number', the value is stored as a number instead of a string. Defaults to 'string'.
 type NumberAttributeDataType string
 
@@ -83,32 +115,32 @@ func (n *NumberAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *NumberAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (n *NumberAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if n == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return n.HintCustomComponent
 }
 
-func (o *NumberAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (n *NumberAttributeInfoHelpers) GetHintText() *string {
+	if n == nil {
 		return nil
 	}
-	return o.HintText
+	return n.HintText
 }
 
-func (o *NumberAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (n *NumberAttributeInfoHelpers) GetHintTextKey() *string {
+	if n == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return n.HintTextKey
 }
 
-func (o *NumberAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (n *NumberAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if n == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return n.HintTooltipPlacement
 }
 
 type NumberAttributeType string
@@ -143,10 +175,28 @@ type NumberAttribute struct {
 	// These constraints should and will be enforced by the attribute renderer.
 	//
 	Constraints *NumberAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *NumberAttributeDataClassification `json:"data_classification,omitempty"`
 	// Optional data type override. When set to 'number', the value is stored as a number instead of a string. Defaults to 'string'.
 	DataType     *NumberAttributeDataType `default:"string" json:"data_type"`
 	DefaultValue any                      `json:"default_value,omitempty"`
 	Deprecated   *bool                    `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -212,253 +262,274 @@ func (n NumberAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (n *NumberAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *NumberAttribute) GetManifest() []string {
-	if o == nil {
+func (n *NumberAttribute) GetManifest() []string {
+	if n == nil {
 		return nil
 	}
-	return o.Manifest
+	return n.Manifest
 }
 
-func (o *NumberAttribute) GetPurpose() []string {
-	if o == nil {
+func (n *NumberAttribute) GetPurpose() []string {
+	if n == nil {
 		return nil
 	}
-	return o.Purpose
+	return n.Purpose
 }
 
-func (o *NumberAttribute) GetConstraints() *NumberAttributeConstraints {
-	if o == nil {
+func (n *NumberAttribute) GetConstraints() *NumberAttributeConstraints {
+	if n == nil {
 		return nil
 	}
-	return o.Constraints
+	return n.Constraints
 }
 
-func (o *NumberAttribute) GetDataType() *NumberAttributeDataType {
-	if o == nil {
+func (n *NumberAttribute) GetDataClassification() *NumberAttributeDataClassification {
+	if n == nil {
 		return nil
 	}
-	return o.DataType
+	return n.DataClassification
 }
 
-func (o *NumberAttribute) GetDefaultValue() any {
-	if o == nil {
+func (n *NumberAttribute) GetDataType() *NumberAttributeDataType {
+	if n == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return n.DataType
 }
 
-func (o *NumberAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetDefaultValue() any {
+	if n == nil {
 		return nil
 	}
-	return o.Deprecated
+	return n.DefaultValue
 }
 
-func (o *NumberAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetDeprecated() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return n.Deprecated
 }
 
-func (o *NumberAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetEditMode() *EditMode {
+	if n == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return n.EditMode
 }
 
-func (o *NumberAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetEditModeConfig() *EditModeConfig {
+	if n == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return n.EditModeConfig
 }
 
-func (o *NumberAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (n *NumberAttribute) GetEntityBuilderDisableEdit() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return n.EntityBuilderDisableEdit
 }
 
-func (o *NumberAttribute) GetFormat() *string {
-	if o == nil {
+func (n *NumberAttribute) GetExcludeFromSearch() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Format
+	return n.ExcludeFromSearch
 }
 
-func (o *NumberAttribute) GetGroup() *string {
-	if o == nil {
+func (n *NumberAttribute) GetExplicitSearchable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Group
+	return n.ExplicitSearchable
 }
 
-func (o *NumberAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetFeatureFlag() *string {
+	if n == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return n.FeatureFlag
 }
 
-func (o *NumberAttribute) GetHidden() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetFormat() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Hidden
+	return n.Format
 }
 
-func (o *NumberAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetGroup() *string {
+	if n == nil {
 		return nil
 	}
-	return o.HideLabel
+	return n.Group
 }
 
-func (o *NumberAttribute) GetIcon() *string {
-	if o == nil {
+func (n *NumberAttribute) GetHasPrimary() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Icon
+	return n.HasPrimary
 }
 
-func (o *NumberAttribute) GetID() *string {
-	if o == nil {
+func (n *NumberAttribute) GetHidden() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.ID
+	return n.Hidden
 }
 
-func (o *NumberAttribute) GetInfoHelpers() *NumberAttributeInfoHelpers {
-	if o == nil {
+func (n *NumberAttribute) GetHideLabel() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return n.HideLabel
 }
 
-func (o *NumberAttribute) GetLabel() string {
-	if o == nil {
+func (n *NumberAttribute) GetIcon() *string {
+	if n == nil {
+		return nil
+	}
+	return n.Icon
+}
+
+func (n *NumberAttribute) GetID() *string {
+	if n == nil {
+		return nil
+	}
+	return n.ID
+}
+
+func (n *NumberAttribute) GetInfoHelpers() *NumberAttributeInfoHelpers {
+	if n == nil {
+		return nil
+	}
+	return n.InfoHelpers
+}
+
+func (n *NumberAttribute) GetLabel() string {
+	if n == nil {
 		return ""
 	}
-	return o.Label
+	return n.Label
 }
 
-func (o *NumberAttribute) GetLayout() *string {
-	if o == nil {
+func (n *NumberAttribute) GetLayout() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Layout
+	return n.Layout
 }
 
-func (o *NumberAttribute) GetName() string {
-	if o == nil {
+func (n *NumberAttribute) GetName() string {
+	if n == nil {
 		return ""
 	}
-	return o.Name
+	return n.Name
 }
 
-func (o *NumberAttribute) GetOrder() *int64 {
-	if o == nil {
+func (n *NumberAttribute) GetOrder() *int64 {
+	if n == nil {
 		return nil
 	}
-	return o.Order
+	return n.Order
 }
 
-func (o *NumberAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (n *NumberAttribute) GetPlaceholder() *string {
+	if n == nil {
 		return nil
 	}
-	return o.Placeholder
+	return n.Placeholder
 }
 
-func (o *NumberAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (n *NumberAttribute) GetPreviewValueFormatter() *string {
+	if n == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return n.PreviewValueFormatter
 }
 
-func (o *NumberAttribute) GetProtected() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetProtected() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Protected
+	return n.Protected
 }
 
-func (o *NumberAttribute) GetReadonly() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetReadonly() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Readonly
+	return n.Readonly
 }
 
-func (o *NumberAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (n *NumberAttribute) GetRenderCondition() *string {
+	if n == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return n.RenderCondition
 }
 
-func (o *NumberAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetRepeatable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Repeatable
+	return n.Repeatable
 }
 
-func (o *NumberAttribute) GetRequired() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetRequired() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Required
+	return n.Required
 }
 
-func (o *NumberAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (n *NumberAttribute) GetSettingsFlag() []SettingFlag {
+	if n == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return n.SettingsFlag
 }
 
-func (o *NumberAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetShowInTable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return n.ShowInTable
 }
 
-func (o *NumberAttribute) GetShowSeparator() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetShowSeparator() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.ShowSeparator
+	return n.ShowSeparator
 }
 
-func (o *NumberAttribute) GetSortable() *bool {
-	if o == nil {
+func (n *NumberAttribute) GetSortable() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Sortable
+	return n.Sortable
 }
 
-func (o *NumberAttribute) GetType() NumberAttributeType {
-	if o == nil {
+func (n *NumberAttribute) GetType() NumberAttributeType {
+	if n == nil {
 		return NumberAttributeType("")
 	}
-	return o.Type
+	return n.Type
 }
 
-func (o *NumberAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (n *NumberAttribute) GetValueFormatter() *string {
+	if n == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return n.ValueFormatter
 }

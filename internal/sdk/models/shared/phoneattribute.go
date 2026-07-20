@@ -24,6 +24,38 @@ func (p *PhoneAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// PhoneAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type PhoneAttributeDataClassification string
+
+const (
+	PhoneAttributeDataClassificationPublic PhoneAttributeDataClassification = "public"
+	PhoneAttributeDataClassificationPii    PhoneAttributeDataClassification = "pii"
+)
+
+func (e PhoneAttributeDataClassification) ToPointer() *PhoneAttributeDataClassification {
+	return &e
+}
+func (e *PhoneAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = PhoneAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PhoneAttributeDataClassification: %v", v)
+	}
+}
+
 // PhoneAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type PhoneAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -56,32 +88,32 @@ func (p *PhoneAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PhoneAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (p *PhoneAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return p.HintCustomComponent
 }
 
-func (o *PhoneAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (p *PhoneAttributeInfoHelpers) GetHintText() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintText
+	return p.HintText
 }
 
-func (o *PhoneAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (p *PhoneAttributeInfoHelpers) GetHintTextKey() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return p.HintTextKey
 }
 
-func (o *PhoneAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (p *PhoneAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return p.HintTooltipPlacement
 }
 
 type PhoneAttributeType string
@@ -115,9 +147,27 @@ type PhoneAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *PhoneAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                        `json:"default_value,omitempty"`
-	Deprecated   *bool                      `default:"false" json:"deprecated"`
+	Constraints *PhoneAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *PhoneAttributeDataClassification `json:"data_classification,omitempty"`
+	DefaultValue       any                               `json:"default_value,omitempty"`
+	Deprecated         *bool                             `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -180,232 +230,253 @@ func (p PhoneAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PhoneAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *PhoneAttribute) GetManifest() []string {
-	if o == nil {
+func (p *PhoneAttribute) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PhoneAttribute) GetPurpose() []string {
-	if o == nil {
+func (p *PhoneAttribute) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PhoneAttribute) GetConstraints() *PhoneAttributeConstraints {
-	if o == nil {
+func (p *PhoneAttribute) GetConstraints() *PhoneAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PhoneAttribute) GetDefaultValue() any {
-	if o == nil {
+func (p *PhoneAttribute) GetDataClassification() *PhoneAttributeDataClassification {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DataClassification
 }
 
-func (o *PhoneAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.DefaultValue
 }
 
-func (o *PhoneAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.Deprecated
 }
 
-func (o *PhoneAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetEditMode() *EditMode {
+	if p == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return p.EditMode
 }
 
-func (o *PhoneAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetEditModeConfig() *EditModeConfig {
+	if p == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return p.EditModeConfig
 }
 
-func (o *PhoneAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PhoneAttribute) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PhoneAttribute) GetGroup() *string {
-	if o == nil {
+func (p *PhoneAttribute) GetExcludeFromSearch() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.ExcludeFromSearch
 }
 
-func (o *PhoneAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetExplicitSearchable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.ExplicitSearchable
 }
 
-func (o *PhoneAttribute) GetHidden() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.FeatureFlag
 }
 
-func (o *PhoneAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.Group
 }
 
-func (o *PhoneAttribute) GetIcon() *string {
-	if o == nil {
+func (p *PhoneAttribute) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.HasPrimary
 }
 
-func (o *PhoneAttribute) GetID() *string {
-	if o == nil {
+func (p *PhoneAttribute) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.Hidden
 }
 
-func (o *PhoneAttribute) GetInfoHelpers() *PhoneAttributeInfoHelpers {
-	if o == nil {
+func (p *PhoneAttribute) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.HideLabel
 }
 
-func (o *PhoneAttribute) GetLabel() string {
-	if o == nil {
+func (p *PhoneAttribute) GetIcon() *string {
+	if p == nil {
+		return nil
+	}
+	return p.Icon
+}
+
+func (p *PhoneAttribute) GetID() *string {
+	if p == nil {
+		return nil
+	}
+	return p.ID
+}
+
+func (p *PhoneAttribute) GetInfoHelpers() *PhoneAttributeInfoHelpers {
+	if p == nil {
+		return nil
+	}
+	return p.InfoHelpers
+}
+
+func (p *PhoneAttribute) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PhoneAttribute) GetLayout() *string {
-	if o == nil {
+func (p *PhoneAttribute) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PhoneAttribute) GetName() string {
-	if o == nil {
+func (p *PhoneAttribute) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PhoneAttribute) GetOrder() *int64 {
-	if o == nil {
+func (p *PhoneAttribute) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PhoneAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (p *PhoneAttribute) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PhoneAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PhoneAttribute) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PhoneAttribute) GetProtected() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PhoneAttribute) GetReadonly() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PhoneAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (p *PhoneAttribute) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PhoneAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PhoneAttribute) GetRequired() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PhoneAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PhoneAttribute) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PhoneAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PhoneAttribute) GetSortable() *bool {
-	if o == nil {
+func (p *PhoneAttribute) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PhoneAttribute) GetType() PhoneAttributeType {
-	if o == nil {
+func (p *PhoneAttribute) GetType() PhoneAttributeType {
+	if p == nil {
 		return PhoneAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PhoneAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (p *PhoneAttribute) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }

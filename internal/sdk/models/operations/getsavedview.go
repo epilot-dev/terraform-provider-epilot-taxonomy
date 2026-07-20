@@ -11,11 +11,11 @@ type GetSavedViewRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetSavedViewRequest) GetID() string {
-	if o == nil {
+func (g *GetSavedViewRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 // GetSavedViewSavedViewsResponseBody - A generic error returned by the API
@@ -26,18 +26,18 @@ type GetSavedViewSavedViewsResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetSavedViewSavedViewsResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetSavedViewSavedViewsResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetSavedViewSavedViewsResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetSavedViewSavedViewsResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 // GetSavedViewResponseBody - A saved entity view
@@ -48,25 +48,25 @@ type GetSavedViewResponseBody struct {
 	UpdatedAt *string `json:"updated_at,omitempty"`
 }
 
-func (o *GetSavedViewResponseBody) GetCreatedAt() *string {
-	if o == nil {
+func (g *GetSavedViewResponseBody) GetCreatedAt() *string {
+	if g == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GetSavedViewResponseBody) GetID() *string {
-	if o == nil {
+func (g *GetSavedViewResponseBody) GetID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetSavedViewResponseBody) GetUpdatedAt() *string {
-	if o == nil {
+func (g *GetSavedViewResponseBody) GetUpdatedAt() *string {
+	if g == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return g.UpdatedAt
 }
 
 type GetSavedViewResponse struct {
@@ -82,37 +82,37 @@ type GetSavedViewResponse struct {
 	Object1 *GetSavedViewSavedViewsResponseBody
 }
 
-func (o *GetSavedViewResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSavedViewResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSavedViewResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSavedViewResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSavedViewResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSavedViewResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSavedViewResponse) GetObject() *GetSavedViewResponseBody {
-	if o == nil {
+func (g *GetSavedViewResponse) GetObject() *GetSavedViewResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }
 
-func (o *GetSavedViewResponse) GetObject1() *GetSavedViewSavedViewsResponseBody {
-	if o == nil {
+func (g *GetSavedViewResponse) GetObject1() *GetSavedViewSavedViewsResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object1
+	return g.Object1
 }

@@ -12,11 +12,11 @@ type DeleteSchemaGroupRequest struct {
 	CompositeID string `pathParam:"style=simple,explode=false,name=composite_id"`
 }
 
-func (o *DeleteSchemaGroupRequest) GetCompositeID() string {
-	if o == nil {
+func (d *DeleteSchemaGroupRequest) GetCompositeID() string {
+	if d == nil {
 		return ""
 	}
-	return o.CompositeID
+	return d.CompositeID
 }
 
 // DeleteSchemaGroupResponseBody - A generic error returned by the API
@@ -27,18 +27,18 @@ type DeleteSchemaGroupResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *DeleteSchemaGroupResponseBody) GetError() *string {
-	if o == nil {
+func (d *DeleteSchemaGroupResponseBody) GetError() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Error
+	return d.Error
 }
 
-func (o *DeleteSchemaGroupResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (d *DeleteSchemaGroupResponseBody) GetStatus() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.Status
+	return d.Status
 }
 
 type DeleteSchemaGroupResponse struct {
@@ -55,44 +55,44 @@ type DeleteSchemaGroupResponse struct {
 	Object *DeleteSchemaGroupResponseBody
 }
 
-func (o *DeleteSchemaGroupResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteSchemaGroupResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteSchemaGroupResponse) GetEntitySchemaGroupWithCompositeID() *shared.EntitySchemaGroupWithCompositeID {
-	if o == nil {
+func (d *DeleteSchemaGroupResponse) GetEntitySchemaGroupWithCompositeID() *shared.EntitySchemaGroupWithCompositeID {
+	if d == nil {
 		return nil
 	}
-	return o.EntitySchemaGroupWithCompositeID
+	return d.EntitySchemaGroupWithCompositeID
 }
 
-func (o *DeleteSchemaGroupResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (d *DeleteSchemaGroupResponse) GetHeaders() map[string][]string {
+	if d == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return d.Headers
 }
 
-func (o *DeleteSchemaGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteSchemaGroupResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteSchemaGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteSchemaGroupResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }
 
-func (o *DeleteSchemaGroupResponse) GetObject() *DeleteSchemaGroupResponseBody {
-	if o == nil {
+func (d *DeleteSchemaGroupResponse) GetObject() *DeleteSchemaGroupResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

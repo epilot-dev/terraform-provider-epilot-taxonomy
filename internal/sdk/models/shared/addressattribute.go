@@ -24,6 +24,38 @@ func (a *AddressAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// AddressAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type AddressAttributeDataClassification string
+
+const (
+	AddressAttributeDataClassificationPublic AddressAttributeDataClassification = "public"
+	AddressAttributeDataClassificationPii    AddressAttributeDataClassification = "pii"
+)
+
+func (e AddressAttributeDataClassification) ToPointer() *AddressAttributeDataClassification {
+	return &e
+}
+func (e *AddressAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = AddressAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AddressAttributeDataClassification: %v", v)
+	}
+}
+
 // AddressAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type AddressAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -56,32 +88,32 @@ func (a *AddressAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AddressAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (a *AddressAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return a.HintCustomComponent
 }
 
-func (o *AddressAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (a *AddressAttributeInfoHelpers) GetHintText() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HintText
+	return a.HintText
 }
 
-func (o *AddressAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (a *AddressAttributeInfoHelpers) GetHintTextKey() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return a.HintTextKey
 }
 
-func (o *AddressAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (a *AddressAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return a.HintTooltipPlacement
 }
 
 type AddressAttributeType string
@@ -116,6 +148,14 @@ type AddressAttribute struct {
 	// These constraints should and will be enforced by the attribute renderer.
 	//
 	Constraints *AddressAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *AddressAttributeDataClassification `json:"data_classification,omitempty"`
 	// Default fields visible on addresses
 	//
 	// Valid values are:
@@ -142,6 +182,16 @@ type AddressAttribute struct {
 	DefaultAddressFields []string `json:"default_address_fields,omitempty"`
 	DefaultValue         any      `json:"default_value,omitempty"`
 	Deprecated           *bool    `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -204,239 +254,260 @@ func (a AddressAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AddressAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *AddressAttribute) GetManifest() []string {
-	if o == nil {
+func (a *AddressAttribute) GetManifest() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Manifest
+	return a.Manifest
 }
 
-func (o *AddressAttribute) GetPurpose() []string {
-	if o == nil {
+func (a *AddressAttribute) GetPurpose() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Purpose
+	return a.Purpose
 }
 
-func (o *AddressAttribute) GetConstraints() *AddressAttributeConstraints {
-	if o == nil {
+func (a *AddressAttribute) GetConstraints() *AddressAttributeConstraints {
+	if a == nil {
 		return nil
 	}
-	return o.Constraints
+	return a.Constraints
 }
 
-func (o *AddressAttribute) GetDefaultAddressFields() []string {
-	if o == nil {
+func (a *AddressAttribute) GetDataClassification() *AddressAttributeDataClassification {
+	if a == nil {
 		return nil
 	}
-	return o.DefaultAddressFields
+	return a.DataClassification
 }
 
-func (o *AddressAttribute) GetDefaultValue() any {
-	if o == nil {
+func (a *AddressAttribute) GetDefaultAddressFields() []string {
+	if a == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return a.DefaultAddressFields
 }
 
-func (o *AddressAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetDefaultValue() any {
+	if a == nil {
 		return nil
 	}
-	return o.Deprecated
+	return a.DefaultValue
 }
 
-func (o *AddressAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetDeprecated() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return a.Deprecated
 }
 
-func (o *AddressAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetEditMode() *EditMode {
+	if a == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return a.EditMode
 }
 
-func (o *AddressAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetEditModeConfig() *EditModeConfig {
+	if a == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return a.EditModeConfig
 }
 
-func (o *AddressAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (a *AddressAttribute) GetEntityBuilderDisableEdit() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return a.EntityBuilderDisableEdit
 }
 
-func (o *AddressAttribute) GetGroup() *string {
-	if o == nil {
+func (a *AddressAttribute) GetExcludeFromSearch() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Group
+	return a.ExcludeFromSearch
 }
 
-func (o *AddressAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetExplicitSearchable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return a.ExplicitSearchable
 }
 
-func (o *AddressAttribute) GetHidden() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetFeatureFlag() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Hidden
+	return a.FeatureFlag
 }
 
-func (o *AddressAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetGroup() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HideLabel
+	return a.Group
 }
 
-func (o *AddressAttribute) GetIcon() *string {
-	if o == nil {
+func (a *AddressAttribute) GetHasPrimary() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Icon
+	return a.HasPrimary
 }
 
-func (o *AddressAttribute) GetID() *string {
-	if o == nil {
+func (a *AddressAttribute) GetHidden() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.Hidden
 }
 
-func (o *AddressAttribute) GetInfoHelpers() *AddressAttributeInfoHelpers {
-	if o == nil {
+func (a *AddressAttribute) GetHideLabel() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return a.HideLabel
 }
 
-func (o *AddressAttribute) GetLabel() string {
-	if o == nil {
+func (a *AddressAttribute) GetIcon() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Icon
+}
+
+func (a *AddressAttribute) GetID() *string {
+	if a == nil {
+		return nil
+	}
+	return a.ID
+}
+
+func (a *AddressAttribute) GetInfoHelpers() *AddressAttributeInfoHelpers {
+	if a == nil {
+		return nil
+	}
+	return a.InfoHelpers
+}
+
+func (a *AddressAttribute) GetLabel() string {
+	if a == nil {
 		return ""
 	}
-	return o.Label
+	return a.Label
 }
 
-func (o *AddressAttribute) GetLayout() *string {
-	if o == nil {
+func (a *AddressAttribute) GetLayout() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Layout
+	return a.Layout
 }
 
-func (o *AddressAttribute) GetName() string {
-	if o == nil {
+func (a *AddressAttribute) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AddressAttribute) GetOrder() *int64 {
-	if o == nil {
+func (a *AddressAttribute) GetOrder() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.Order
+	return a.Order
 }
 
-func (o *AddressAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (a *AddressAttribute) GetPlaceholder() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Placeholder
+	return a.Placeholder
 }
 
-func (o *AddressAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (a *AddressAttribute) GetPreviewValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return a.PreviewValueFormatter
 }
 
-func (o *AddressAttribute) GetProtected() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetProtected() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Protected
+	return a.Protected
 }
 
-func (o *AddressAttribute) GetReadonly() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetReadonly() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Readonly
+	return a.Readonly
 }
 
-func (o *AddressAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (a *AddressAttribute) GetRenderCondition() *string {
+	if a == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return a.RenderCondition
 }
 
-func (o *AddressAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetRepeatable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Repeatable
+	return a.Repeatable
 }
 
-func (o *AddressAttribute) GetRequired() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetRequired() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Required
+	return a.Required
 }
 
-func (o *AddressAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (a *AddressAttribute) GetSettingsFlag() []SettingFlag {
+	if a == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return a.SettingsFlag
 }
 
-func (o *AddressAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetShowInTable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return a.ShowInTable
 }
 
-func (o *AddressAttribute) GetSortable() *bool {
-	if o == nil {
+func (a *AddressAttribute) GetSortable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Sortable
+	return a.Sortable
 }
 
-func (o *AddressAttribute) GetType() AddressAttributeType {
-	if o == nil {
+func (a *AddressAttribute) GetType() AddressAttributeType {
+	if a == nil {
 		return AddressAttributeType("")
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *AddressAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (a *AddressAttribute) GetValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return a.ValueFormatter
 }

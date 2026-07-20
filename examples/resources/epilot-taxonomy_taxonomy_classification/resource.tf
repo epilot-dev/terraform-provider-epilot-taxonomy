@@ -5,6 +5,9 @@ resource "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
   enabled_locations = [
     "..."
   ]
+  enabled_purposes = [
+    "..."
+  ]
   manifest = [
     "123e4567-e89b-12d3-a456-426614174000"
   ]

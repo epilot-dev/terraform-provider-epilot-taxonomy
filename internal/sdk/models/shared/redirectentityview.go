@@ -47,16 +47,16 @@ func (r *RedirectEntityView) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RedirectEntityView) GetRoute() *string {
-	if o == nil {
+func (r *RedirectEntityView) GetRoute() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Route
+	return r.Route
 }
 
-func (o *RedirectEntityView) GetViewType() *RedirectEntityViewViewType {
-	if o == nil {
+func (r *RedirectEntityView) GetViewType() *RedirectEntityViewViewType {
+	if r == nil {
 		return nil
 	}
-	return o.ViewType
+	return r.ViewType
 }

@@ -24,6 +24,38 @@ func (m *MessageEmailAddressAttributeConstraints) UnmarshalJSON(data []byte) err
 	return nil
 }
 
+// MessageEmailAddressAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type MessageEmailAddressAttributeDataClassification string
+
+const (
+	MessageEmailAddressAttributeDataClassificationPublic MessageEmailAddressAttributeDataClassification = "public"
+	MessageEmailAddressAttributeDataClassificationPii    MessageEmailAddressAttributeDataClassification = "pii"
+)
+
+func (e MessageEmailAddressAttributeDataClassification) ToPointer() *MessageEmailAddressAttributeDataClassification {
+	return &e
+}
+func (e *MessageEmailAddressAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = MessageEmailAddressAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MessageEmailAddressAttributeDataClassification: %v", v)
+	}
+}
+
 // MessageEmailAddressAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type MessageEmailAddressAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -56,32 +88,32 @@ func (m *MessageEmailAddressAttributeInfoHelpers) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (o *MessageEmailAddressAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if m == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return m.HintCustomComponent
 }
 
-func (o *MessageEmailAddressAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeInfoHelpers) GetHintText() *string {
+	if m == nil {
 		return nil
 	}
-	return o.HintText
+	return m.HintText
 }
 
-func (o *MessageEmailAddressAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeInfoHelpers) GetHintTextKey() *string {
+	if m == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return m.HintTextKey
 }
 
-func (o *MessageEmailAddressAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if m == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return m.HintTooltipPlacement
 }
 
 type MessageEmailAddressAttributeType string
@@ -116,10 +148,28 @@ type MessageEmailAddressAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *MessageEmailAddressAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                                      `json:"default_value,omitempty"`
-	Deprecated   *bool                                    `default:"false" json:"deprecated"`
-	EmailType    *string                                  `json:"email_type,omitempty"`
+	Constraints *MessageEmailAddressAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *MessageEmailAddressAttributeDataClassification `json:"data_classification,omitempty"`
+	DefaultValue       any                                             `json:"default_value,omitempty"`
+	Deprecated         *bool                                           `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
+	EmailType      *string         `json:"email_type,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -183,253 +233,274 @@ func (m MessageEmailAddressAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (m *MessageEmailAddressAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *MessageEmailAddressAttribute) GetManifest() []string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetManifest() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Manifest
+	return m.Manifest
 }
 
-func (o *MessageEmailAddressAttribute) GetPurpose() []string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetPurpose() []string {
+	if m == nil {
 		return nil
 	}
-	return o.Purpose
+	return m.Purpose
 }
 
-func (o *MessageEmailAddressAttribute) GetAddress() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetAddress() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Address
+	return m.Address
 }
 
-func (o *MessageEmailAddressAttribute) GetConstraints() *MessageEmailAddressAttributeConstraints {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetConstraints() *MessageEmailAddressAttributeConstraints {
+	if m == nil {
 		return nil
 	}
-	return o.Constraints
+	return m.Constraints
 }
 
-func (o *MessageEmailAddressAttribute) GetDefaultValue() any {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetDataClassification() *MessageEmailAddressAttributeDataClassification {
+	if m == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return m.DataClassification
 }
 
-func (o *MessageEmailAddressAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetDefaultValue() any {
+	if m == nil {
 		return nil
 	}
-	return o.Deprecated
+	return m.DefaultValue
 }
 
-func (o *MessageEmailAddressAttribute) GetEmailType() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetDeprecated() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.EmailType
+	return m.Deprecated
 }
 
-func (o *MessageEmailAddressAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetEditMode() *EditMode {
+	if m == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return m.EditMode
 }
 
-func (o *MessageEmailAddressAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetEditModeConfig() *EditModeConfig {
+	if m == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return m.EditModeConfig
 }
 
-func (o *MessageEmailAddressAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetEmailType() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return m.EmailType
 }
 
-func (o *MessageEmailAddressAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetEntityBuilderDisableEdit() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return m.EntityBuilderDisableEdit
 }
 
-func (o *MessageEmailAddressAttribute) GetGroup() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetExcludeFromSearch() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Group
+	return m.ExcludeFromSearch
 }
 
-func (o *MessageEmailAddressAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetExplicitSearchable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return m.ExplicitSearchable
 }
 
-func (o *MessageEmailAddressAttribute) GetHidden() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetFeatureFlag() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Hidden
+	return m.FeatureFlag
 }
 
-func (o *MessageEmailAddressAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetGroup() *string {
+	if m == nil {
 		return nil
 	}
-	return o.HideLabel
+	return m.Group
 }
 
-func (o *MessageEmailAddressAttribute) GetIcon() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetHasPrimary() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Icon
+	return m.HasPrimary
 }
 
-func (o *MessageEmailAddressAttribute) GetID() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetHidden() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.ID
+	return m.Hidden
 }
 
-func (o *MessageEmailAddressAttribute) GetInfoHelpers() *MessageEmailAddressAttributeInfoHelpers {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetHideLabel() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return m.HideLabel
 }
 
-func (o *MessageEmailAddressAttribute) GetLabel() string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetIcon() *string {
+	if m == nil {
+		return nil
+	}
+	return m.Icon
+}
+
+func (m *MessageEmailAddressAttribute) GetID() *string {
+	if m == nil {
+		return nil
+	}
+	return m.ID
+}
+
+func (m *MessageEmailAddressAttribute) GetInfoHelpers() *MessageEmailAddressAttributeInfoHelpers {
+	if m == nil {
+		return nil
+	}
+	return m.InfoHelpers
+}
+
+func (m *MessageEmailAddressAttribute) GetLabel() string {
+	if m == nil {
 		return ""
 	}
-	return o.Label
+	return m.Label
 }
 
-func (o *MessageEmailAddressAttribute) GetLayout() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetLayout() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Layout
+	return m.Layout
 }
 
-func (o *MessageEmailAddressAttribute) GetName() string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetName() string {
+	if m == nil {
 		return ""
 	}
-	return o.Name
+	return m.Name
 }
 
-func (o *MessageEmailAddressAttribute) GetOrder() *int64 {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetOrder() *int64 {
+	if m == nil {
 		return nil
 	}
-	return o.Order
+	return m.Order
 }
 
-func (o *MessageEmailAddressAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetPlaceholder() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Placeholder
+	return m.Placeholder
 }
 
-func (o *MessageEmailAddressAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetPreviewValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return m.PreviewValueFormatter
 }
 
-func (o *MessageEmailAddressAttribute) GetProtected() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetProtected() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Protected
+	return m.Protected
 }
 
-func (o *MessageEmailAddressAttribute) GetReadonly() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetReadonly() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Readonly
+	return m.Readonly
 }
 
-func (o *MessageEmailAddressAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetRenderCondition() *string {
+	if m == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return m.RenderCondition
 }
 
-func (o *MessageEmailAddressAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetRepeatable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Repeatable
+	return m.Repeatable
 }
 
-func (o *MessageEmailAddressAttribute) GetRequired() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetRequired() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Required
+	return m.Required
 }
 
-func (o *MessageEmailAddressAttribute) GetSendStatus() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetSendStatus() *string {
+	if m == nil {
 		return nil
 	}
-	return o.SendStatus
+	return m.SendStatus
 }
 
-func (o *MessageEmailAddressAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetSettingsFlag() []SettingFlag {
+	if m == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return m.SettingsFlag
 }
 
-func (o *MessageEmailAddressAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetShowInTable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return m.ShowInTable
 }
 
-func (o *MessageEmailAddressAttribute) GetSortable() *bool {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetSortable() *bool {
+	if m == nil {
 		return nil
 	}
-	return o.Sortable
+	return m.Sortable
 }
 
-func (o *MessageEmailAddressAttribute) GetType() MessageEmailAddressAttributeType {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetType() MessageEmailAddressAttributeType {
+	if m == nil {
 		return MessageEmailAddressAttributeType("")
 	}
-	return o.Type
+	return m.Type
 }
 
-func (o *MessageEmailAddressAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (m *MessageEmailAddressAttribute) GetValueFormatter() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return m.ValueFormatter
 }
