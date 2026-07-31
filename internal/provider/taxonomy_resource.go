@@ -6,7 +6,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk"
-	"github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/validators"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -66,9 +65,6 @@ func (r *TaxonomyResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"created_at": schema.StringAttribute{
 				Computed: true,
-				Validators: []validator.String{
-					validators.IsRFC3339(),
-				},
 			},
 			"created_by": schema.StringAttribute{
 				Computed:    true,
@@ -77,9 +73,6 @@ func (r *TaxonomyResource) Schema(ctx context.Context, req resource.SchemaReques
 			"deleted_at": schema.StringAttribute{
 				Computed:    true,
 				Description: `Date when the taxonomy was soft-deleted (enabled: false)`,
-				Validators: []validator.String{
-					validators.IsRFC3339(),
-				},
 			},
 			"enabled": schema.BoolAttribute{
 				Computed:    true,
@@ -99,13 +92,7 @@ func (r *TaxonomyResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"kind": schema.StringAttribute{
 				Computed:    true,
-				Description: `Kind of taxonomy e.g. system or user_defined. By default, it's empty, which means 'user_defined'. must be one of ["system", "user_defined"]`,
-				Validators: []validator.String{
-					stringvalidator.OneOf(
-						"system",
-						"user_defined",
-					),
-				},
+				Description: `Kind of taxonomy e.g. system or user_defined. By default, it's empty, which means 'user_defined'`,
 			},
 			"name": schema.StringAttribute{
 				Computed:    true,
@@ -154,9 +141,6 @@ func (r *TaxonomyResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"updated_at": schema.StringAttribute{
 				Computed: true,
-				Validators: []validator.String{
-					validators.IsRFC3339(),
-				},
 			},
 		},
 	}
@@ -216,6 +200,13 @@ func (r *TaxonomyResource) Create(ctx context.Context, req resource.CreateReques
 	}
 	if res == nil {
 		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res))
+		return
+	}
+	if res.StatusCode == 409 {
+		resp.Diagnostics.AddError(
+			"Resource Already Exists",
+			"When creating this resource, the API indicated that this resource already exists. You can bring the existing resource under management using Terraform import functionality or retry with a unique configuration.",
+		)
 		return
 	}
 	if res.StatusCode != 201 {
@@ -392,7 +383,10 @@ func (r *TaxonomyResource) Delete(ctx context.Context, req resource.DeleteReques
 		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res))
 		return
 	}
-	if res.StatusCode != 204 {
+	switch res.StatusCode {
+	case 204, 404:
+		break
+	default:
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res.StatusCode), debugResponse(res.RawResponse))
 		return
 	}

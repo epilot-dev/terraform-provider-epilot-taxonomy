@@ -44,6 +44,15 @@ func (e *PresetRange) UnmarshalJSON(data []byte) error {
 type GetEntityActivityFeedRequest struct {
 	// Get activities strictly after this timestamp. Cannot be used with 'before', 'start_date', 'end_date', or 'preset_range'.
 	After *time.Time `queryParam:"style=form,explode=true,name=after"`
+	// When true, anonymizes PII in the response: identifiers (names, emails, phone numbers, IBANs) are replaced
+	// with deterministic pseudonyms (stable within an org), addresses are generalized to postal code / city / country,
+	// and well-known free-text fields (e.g. note content) are redacted.
+	//
+	// Useful for AI agents and data analysis use cases that must not access personal data.
+	//
+	// Anonymization is forced (regardless of this parameter) when the access token was created with `anonymize: true`.
+	//
+	Anonymize *bool `default:"false" queryParam:"style=form,explode=true,name=anonymize"`
 	// Get activities strictly before this timestamp. Cannot be used with 'after', 'start_date', 'end_date', or 'preset_range'.
 	Before *time.Time `queryParam:"style=form,explode=true,name=before"`
 	// The inclusive end timestamp for a date range filter. Requires 'start_date' to also be provided. Cannot be used with 'before', 'after', or 'preset_range'.
@@ -64,8 +73,8 @@ type GetEntityActivityFeedRequest struct {
 	Slug string `pathParam:"style=simple,explode=false,name=slug"`
 	// The inclusive start timestamp for a date range filter. Requires 'end_date' to also be provided. Cannot be used with 'before', 'after', or 'preset_range'.
 	StartDate *time.Time `queryParam:"style=form,explode=true,name=start_date"`
-	// Filter by activity type
-	Type *string `queryParam:"style=form,explode=true,name=type"`
+	// Filter by activity type(s)
+	Type []string `queryParam:"style=form,explode=false,name=type"`
 }
 
 func (g GetEntityActivityFeedRequest) MarshalJSON() ([]byte, error) {
@@ -73,94 +82,101 @@ func (g GetEntityActivityFeedRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEntityActivityFeedRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetEntityActivityFeedRequest) GetAfter() *time.Time {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetAfter() *time.Time {
+	if g == nil {
 		return nil
 	}
-	return o.After
+	return g.After
 }
 
-func (o *GetEntityActivityFeedRequest) GetBefore() *time.Time {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetAnonymize() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Before
+	return g.Anonymize
 }
 
-func (o *GetEntityActivityFeedRequest) GetEndDate() *time.Time {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetBefore() *time.Time {
+	if g == nil {
 		return nil
 	}
-	return o.EndDate
+	return g.Before
 }
 
-func (o *GetEntityActivityFeedRequest) GetExcludeActivityGroups() *string {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetEndDate() *time.Time {
+	if g == nil {
 		return nil
 	}
-	return o.ExcludeActivityGroups
+	return g.EndDate
 }
 
-func (o *GetEntityActivityFeedRequest) GetFrom() *int64 {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetExcludeActivityGroups() *string {
+	if g == nil {
 		return nil
 	}
-	return o.From
+	return g.ExcludeActivityGroups
 }
 
-func (o *GetEntityActivityFeedRequest) GetID() string {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetFrom() *int64 {
+	if g == nil {
+		return nil
+	}
+	return g.From
+}
+
+func (g *GetEntityActivityFeedRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetEntityActivityFeedRequest) GetIncludeRelations() *bool {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetIncludeRelations() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.IncludeRelations
+	return g.IncludeRelations
 }
 
-func (o *GetEntityActivityFeedRequest) GetPresetRange() *PresetRange {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetPresetRange() *PresetRange {
+	if g == nil {
 		return nil
 	}
-	return o.PresetRange
+	return g.PresetRange
 }
 
-func (o *GetEntityActivityFeedRequest) GetSize() *int64 {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Size
+	return g.Size
 }
 
-func (o *GetEntityActivityFeedRequest) GetSlug() string {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetSlug() string {
+	if g == nil {
 		return ""
 	}
-	return o.Slug
+	return g.Slug
 }
 
-func (o *GetEntityActivityFeedRequest) GetStartDate() *time.Time {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetStartDate() *time.Time {
+	if g == nil {
 		return nil
 	}
-	return o.StartDate
+	return g.StartDate
 }
 
-func (o *GetEntityActivityFeedRequest) GetType() *string {
-	if o == nil {
+func (g *GetEntityActivityFeedRequest) GetType() []string {
+	if g == nil {
 		return nil
 	}
-	return o.Type
+	return g.Type
 }
 
 // GetEntityActivityFeedActivityResponseBody - A generic error returned by the API
@@ -171,18 +187,18 @@ type GetEntityActivityFeedActivityResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetEntityActivityFeedActivityResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetEntityActivityFeedActivityResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetEntityActivityFeedActivityResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetEntityActivityFeedActivityResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 // GetEntityActivityFeedResponseBody - Success
@@ -191,18 +207,18 @@ type GetEntityActivityFeedResponseBody struct {
 	Total   *int64                `json:"total,omitempty"`
 }
 
-func (o *GetEntityActivityFeedResponseBody) GetResults() []shared.ActivityItem {
-	if o == nil {
+func (g *GetEntityActivityFeedResponseBody) GetResults() []shared.ActivityItem {
+	if g == nil {
 		return nil
 	}
-	return o.Results
+	return g.Results
 }
 
-func (o *GetEntityActivityFeedResponseBody) GetTotal() *int64 {
-	if o == nil {
+func (g *GetEntityActivityFeedResponseBody) GetTotal() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Total
+	return g.Total
 }
 
 type GetEntityActivityFeedResponse struct {
@@ -218,37 +234,37 @@ type GetEntityActivityFeedResponse struct {
 	Object1 *GetEntityActivityFeedActivityResponseBody
 }
 
-func (o *GetEntityActivityFeedResponse) GetContentType() string {
-	if o == nil {
+func (g *GetEntityActivityFeedResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetEntityActivityFeedResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetEntityActivityFeedResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetEntityActivityFeedResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetEntityActivityFeedResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetEntityActivityFeedResponse) GetObject() *GetEntityActivityFeedResponseBody {
-	if o == nil {
+func (g *GetEntityActivityFeedResponse) GetObject() *GetEntityActivityFeedResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }
 
-func (o *GetEntityActivityFeedResponse) GetObject1() *GetEntityActivityFeedActivityResponseBody {
-	if o == nil {
+func (g *GetEntityActivityFeedResponse) GetObject1() *GetEntityActivityFeedActivityResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object1
+	return g.Object1
 }

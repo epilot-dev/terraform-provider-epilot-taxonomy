@@ -12,11 +12,11 @@ type GetSchemaCapabilityRequest struct {
 	CompositeID string `pathParam:"style=simple,explode=false,name=composite_id"`
 }
 
-func (o *GetSchemaCapabilityRequest) GetCompositeID() string {
-	if o == nil {
+func (g *GetSchemaCapabilityRequest) GetCompositeID() string {
+	if g == nil {
 		return ""
 	}
-	return o.CompositeID
+	return g.CompositeID
 }
 
 // GetSchemaCapabilityResponseBody - A generic error returned by the API
@@ -27,18 +27,18 @@ type GetSchemaCapabilityResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *GetSchemaCapabilityResponseBody) GetError() *string {
-	if o == nil {
+func (g *GetSchemaCapabilityResponseBody) GetError() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Error
+	return g.Error
 }
 
-func (o *GetSchemaCapabilityResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (g *GetSchemaCapabilityResponseBody) GetStatus() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetSchemaCapabilityResponse struct {
@@ -54,37 +54,37 @@ type GetSchemaCapabilityResponse struct {
 	Object *GetSchemaCapabilityResponseBody
 }
 
-func (o *GetSchemaCapabilityResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSchemaCapabilityResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSchemaCapabilityResponse) GetEntityCapabilityWithCompositeID() *shared.EntityCapabilityWithCompositeID {
-	if o == nil {
+func (g *GetSchemaCapabilityResponse) GetEntityCapabilityWithCompositeID() *shared.EntityCapabilityWithCompositeID {
+	if g == nil {
 		return nil
 	}
-	return o.EntityCapabilityWithCompositeID
+	return g.EntityCapabilityWithCompositeID
 }
 
-func (o *GetSchemaCapabilityResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSchemaCapabilityResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSchemaCapabilityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSchemaCapabilityResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSchemaCapabilityResponse) GetObject() *GetSchemaCapabilityResponseBody {
-	if o == nil {
+func (g *GetSchemaCapabilityResponse) GetObject() *GetSchemaCapabilityResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

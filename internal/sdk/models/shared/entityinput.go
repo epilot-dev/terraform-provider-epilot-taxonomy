@@ -26,32 +26,32 @@ func (a *ACL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ACL) GetAdditionalProperties() any {
-	if o == nil {
+func (a *ACL) GetAdditionalProperties() any {
+	if a == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return a.AdditionalProperties
 }
 
-func (o *ACL) GetDelete() []string {
-	if o == nil {
+func (a *ACL) GetDelete() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Delete
+	return a.Delete
 }
 
-func (o *ACL) GetEdit() []string {
-	if o == nil {
+func (a *ACL) GetEdit() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Edit
+	return a.Edit
 }
 
-func (o *ACL) GetView() []string {
-	if o == nil {
+func (a *ACL) GetView() []string {
+	if a == nil {
 		return nil
 	}
-	return o.View
+	return a.View
 }
 
 type EntityInput struct {
@@ -61,6 +61,8 @@ type EntityInput struct {
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	Purpose  []string `json:"_purpose,omitempty"`
+	// Automatically computed purpose names from _purpose attribute
+	PurposeName []string `json:"_purpose_name,omitempty"`
 	// URL-friendly identifier for the entity schema
 	Schema *string  `json:"_schema,omitempty"`
 	Tags   []string `json:"_tags,omitempty"`
@@ -79,74 +81,92 @@ func (e *EntityInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EntityInput) GetAdditionalProperties() any {
-	if o == nil {
+func (e *EntityInput) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *EntityInput) GetACL() *ACL {
-	if o == nil {
+func (e *EntityInput) GetACL() *ACL {
+	if e == nil {
 		return nil
 	}
-	return o.ACL
+	return e.ACL
 }
 
-func (o *EntityInput) GetID() *string {
-	if o == nil {
+func (e *EntityInput) GetID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ID
+	return e.ID
 }
 
-func (o *EntityInput) GetManifest() []string {
-	if o == nil {
+func (e *EntityInput) GetManifest() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Manifest
+	return e.Manifest
 }
 
-func (o *EntityInput) GetPurpose() []string {
-	if o == nil {
+func (e *EntityInput) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Purpose
 }
 
-func (o *EntityInput) GetSchema() *string {
-	if o == nil {
+func (e *EntityInput) GetPurposeName() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Schema
+	return e.PurposeName
 }
 
-func (o *EntityInput) GetTags() []string {
-	if o == nil {
+func (e *EntityInput) GetSchema() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Tags
+	return e.Schema
 }
 
-func (o *EntityInput) GetTitle() *string {
-	if o == nil {
+func (e *EntityInput) GetTags() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Title
+	return e.Tags
+}
+
+func (e *EntityInput) GetTitle() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Title
 }
 
 type Entity struct {
-	AdditionalProperties any        `additionalProperties:"true" json:"-"`
-	ACL                  *ACL       `json:"_acl,omitempty"`
-	CreatedAt            *time.Time `json:"_created_at,omitempty"`
-	DeletedAt            *time.Time `json:"_deleted_at,omitempty"`
-	ID                   *string    `json:"_id,omitempty"`
+	AdditionalProperties any  `additionalProperties:"true" json:"-"`
+	ACL                  *ACL `json:"_acl,omitempty"`
+	// Pending attribute changesets for attributes configured with external or approval edit mode.
+	//
+	// The value shape is `Changeset` (`proposed_value`, `created_at`, `edit_mode`, ...)
+	// and is what `:apply` / `:dismiss` operate on.
+	//
+	// Read-only via normal entity PATCH/PUT operations — those handlers strip `_changesets`
+	// from request bodies. Use the changeset management endpoints to mutate this field.
+	//
+	Changesets map[string]Changeset `json:"_changesets,omitempty"`
+	CreatedAt  *time.Time           `json:"_created_at,omitempty"`
+	DeletedAt  *time.Time           `json:"_deleted_at,omitempty"`
+	ID         *string              `json:"_id,omitempty"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
 	Org     *string       `json:"_org,omitempty"`
 	Owners  []EntityOwner `json:"_owners,omitempty"`
 	Purpose []string      `json:"_purpose,omitempty"`
+	// Automatically computed purpose names from _purpose attribute
+	PurposeName []string `json:"_purpose_name,omitempty"`
 	// URL-friendly identifier for the entity schema
 	Schema *string  `json:"_schema,omitempty"`
 	Tags   []string `json:"_tags,omitempty"`
@@ -166,93 +186,107 @@ func (e *Entity) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Entity) GetAdditionalProperties() any {
-	if o == nil {
+func (e *Entity) GetAdditionalProperties() any {
+	if e == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return e.AdditionalProperties
 }
 
-func (o *Entity) GetACL() *ACL {
-	if o == nil {
+func (e *Entity) GetACL() *ACL {
+	if e == nil {
 		return nil
 	}
-	return o.ACL
+	return e.ACL
 }
 
-func (o *Entity) GetCreatedAt() *time.Time {
-	if o == nil {
+func (e *Entity) GetChangesets() map[string]Changeset {
+	if e == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return e.Changesets
 }
 
-func (o *Entity) GetDeletedAt() *time.Time {
-	if o == nil {
+func (e *Entity) GetCreatedAt() *time.Time {
+	if e == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return e.CreatedAt
 }
 
-func (o *Entity) GetID() *string {
-	if o == nil {
+func (e *Entity) GetDeletedAt() *time.Time {
+	if e == nil {
 		return nil
 	}
-	return o.ID
+	return e.DeletedAt
 }
 
-func (o *Entity) GetManifest() []string {
-	if o == nil {
+func (e *Entity) GetID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Manifest
+	return e.ID
 }
 
-func (o *Entity) GetOrg() *string {
-	if o == nil {
+func (e *Entity) GetManifest() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Org
+	return e.Manifest
 }
 
-func (o *Entity) GetOwners() []EntityOwner {
-	if o == nil {
+func (e *Entity) GetOrg() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Owners
+	return e.Org
 }
 
-func (o *Entity) GetPurpose() []string {
-	if o == nil {
+func (e *Entity) GetOwners() []EntityOwner {
+	if e == nil {
 		return nil
 	}
-	return o.Purpose
+	return e.Owners
 }
 
-func (o *Entity) GetSchema() *string {
-	if o == nil {
+func (e *Entity) GetPurpose() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Schema
+	return e.Purpose
 }
 
-func (o *Entity) GetTags() []string {
-	if o == nil {
+func (e *Entity) GetPurposeName() []string {
+	if e == nil {
 		return nil
 	}
-	return o.Tags
+	return e.PurposeName
 }
 
-func (o *Entity) GetTitle() *string {
-	if o == nil {
+func (e *Entity) GetSchema() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Title
+	return e.Schema
 }
 
-func (o *Entity) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (e *Entity) GetTags() []string {
+	if e == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return e.Tags
+}
+
+func (e *Entity) GetTitle() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Title
+}
+
+func (e *Entity) GetUpdatedAt() *time.Time {
+	if e == nil {
+		return nil
+	}
+	return e.UpdatedAt
 }

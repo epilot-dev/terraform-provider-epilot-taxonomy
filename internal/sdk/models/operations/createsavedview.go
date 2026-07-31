@@ -14,18 +14,18 @@ type CreateSavedViewSavedViewsResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *CreateSavedViewSavedViewsResponseBody) GetError() *string {
-	if o == nil {
+func (c *CreateSavedViewSavedViewsResponseBody) GetError() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Error
+	return c.Error
 }
 
-func (o *CreateSavedViewSavedViewsResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (c *CreateSavedViewSavedViewsResponseBody) GetStatus() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Status
+	return c.Status
 }
 
 // CreateSavedViewResponseBody - A saved entity view
@@ -36,25 +36,25 @@ type CreateSavedViewResponseBody struct {
 	UpdatedAt *string `json:"updated_at,omitempty"`
 }
 
-func (o *CreateSavedViewResponseBody) GetCreatedAt() *string {
-	if o == nil {
+func (c *CreateSavedViewResponseBody) GetCreatedAt() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return c.CreatedAt
 }
 
-func (o *CreateSavedViewResponseBody) GetID() *string {
-	if o == nil {
+func (c *CreateSavedViewResponseBody) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateSavedViewResponseBody) GetUpdatedAt() *string {
-	if o == nil {
+func (c *CreateSavedViewResponseBody) GetUpdatedAt() *string {
+	if c == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return c.UpdatedAt
 }
 
 type CreateSavedViewResponse struct {
@@ -71,44 +71,44 @@ type CreateSavedViewResponse struct {
 	Object1 *CreateSavedViewSavedViewsResponseBody
 }
 
-func (o *CreateSavedViewResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateSavedViewResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateSavedViewResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (c *CreateSavedViewResponse) GetHeaders() map[string][]string {
+	if c == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return c.Headers
 }
 
-func (o *CreateSavedViewResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateSavedViewResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateSavedViewResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateSavedViewResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateSavedViewResponse) GetObject() *CreateSavedViewResponseBody {
-	if o == nil {
+func (c *CreateSavedViewResponse) GetObject() *CreateSavedViewResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }
 
-func (o *CreateSavedViewResponse) GetObject1() *CreateSavedViewSavedViewsResponseBody {
-	if o == nil {
+func (c *CreateSavedViewResponse) GetObject1() *CreateSavedViewSavedViewsResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object1
+	return c.Object1
 }

@@ -24,6 +24,38 @@ func (p *PaymentAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// PaymentAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type PaymentAttributeDataClassification string
+
+const (
+	PaymentAttributeDataClassificationPublic PaymentAttributeDataClassification = "public"
+	PaymentAttributeDataClassificationPii    PaymentAttributeDataClassification = "pii"
+)
+
+func (e PaymentAttributeDataClassification) ToPointer() *PaymentAttributeDataClassification {
+	return &e
+}
+func (e *PaymentAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = PaymentAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PaymentAttributeDataClassification: %v", v)
+	}
+}
+
 // PaymentAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type PaymentAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -56,32 +88,32 @@ func (p *PaymentAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PaymentAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (p *PaymentAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return p.HintCustomComponent
 }
 
-func (o *PaymentAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (p *PaymentAttributeInfoHelpers) GetHintText() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintText
+	return p.HintText
 }
 
-func (o *PaymentAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (p *PaymentAttributeInfoHelpers) GetHintTextKey() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return p.HintTextKey
 }
 
-func (o *PaymentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (p *PaymentAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return p.HintTooltipPlacement
 }
 
 type PaymentAttributeType string
@@ -115,9 +147,27 @@ type PaymentAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *PaymentAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                          `json:"default_value,omitempty"`
-	Deprecated   *bool                        `default:"false" json:"deprecated"`
+	Constraints *PaymentAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *PaymentAttributeDataClassification `json:"data_classification,omitempty"`
+	DefaultValue       any                                 `json:"default_value,omitempty"`
+	Deprecated         *bool                               `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -180,232 +230,253 @@ func (p PaymentAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PaymentAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *PaymentAttribute) GetManifest() []string {
-	if o == nil {
+func (p *PaymentAttribute) GetManifest() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Manifest
+	return p.Manifest
 }
 
-func (o *PaymentAttribute) GetPurpose() []string {
-	if o == nil {
+func (p *PaymentAttribute) GetPurpose() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Purpose
+	return p.Purpose
 }
 
-func (o *PaymentAttribute) GetConstraints() *PaymentAttributeConstraints {
-	if o == nil {
+func (p *PaymentAttribute) GetConstraints() *PaymentAttributeConstraints {
+	if p == nil {
 		return nil
 	}
-	return o.Constraints
+	return p.Constraints
 }
 
-func (o *PaymentAttribute) GetDefaultValue() any {
-	if o == nil {
+func (p *PaymentAttribute) GetDataClassification() *PaymentAttributeDataClassification {
+	if p == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return p.DataClassification
 }
 
-func (o *PaymentAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetDefaultValue() any {
+	if p == nil {
 		return nil
 	}
-	return o.Deprecated
+	return p.DefaultValue
 }
 
-func (o *PaymentAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return p.Deprecated
 }
 
-func (o *PaymentAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetEditMode() *EditMode {
+	if p == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return p.EditMode
 }
 
-func (o *PaymentAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetEditModeConfig() *EditModeConfig {
+	if p == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return p.EditModeConfig
 }
 
-func (o *PaymentAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (p *PaymentAttribute) GetEntityBuilderDisableEdit() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return p.EntityBuilderDisableEdit
 }
 
-func (o *PaymentAttribute) GetGroup() *string {
-	if o == nil {
+func (p *PaymentAttribute) GetExcludeFromSearch() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Group
+	return p.ExcludeFromSearch
 }
 
-func (o *PaymentAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetExplicitSearchable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return p.ExplicitSearchable
 }
 
-func (o *PaymentAttribute) GetHidden() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetFeatureFlag() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Hidden
+	return p.FeatureFlag
 }
 
-func (o *PaymentAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetGroup() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HideLabel
+	return p.Group
 }
 
-func (o *PaymentAttribute) GetIcon() *string {
-	if o == nil {
+func (p *PaymentAttribute) GetHasPrimary() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Icon
+	return p.HasPrimary
 }
 
-func (o *PaymentAttribute) GetID() *string {
-	if o == nil {
+func (p *PaymentAttribute) GetHidden() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.Hidden
 }
 
-func (o *PaymentAttribute) GetInfoHelpers() *PaymentAttributeInfoHelpers {
-	if o == nil {
+func (p *PaymentAttribute) GetHideLabel() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return p.HideLabel
 }
 
-func (o *PaymentAttribute) GetLabel() string {
-	if o == nil {
+func (p *PaymentAttribute) GetIcon() *string {
+	if p == nil {
+		return nil
+	}
+	return p.Icon
+}
+
+func (p *PaymentAttribute) GetID() *string {
+	if p == nil {
+		return nil
+	}
+	return p.ID
+}
+
+func (p *PaymentAttribute) GetInfoHelpers() *PaymentAttributeInfoHelpers {
+	if p == nil {
+		return nil
+	}
+	return p.InfoHelpers
+}
+
+func (p *PaymentAttribute) GetLabel() string {
+	if p == nil {
 		return ""
 	}
-	return o.Label
+	return p.Label
 }
 
-func (o *PaymentAttribute) GetLayout() *string {
-	if o == nil {
+func (p *PaymentAttribute) GetLayout() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Layout
+	return p.Layout
 }
 
-func (o *PaymentAttribute) GetName() string {
-	if o == nil {
+func (p *PaymentAttribute) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PaymentAttribute) GetOrder() *int64 {
-	if o == nil {
+func (p *PaymentAttribute) GetOrder() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Order
+	return p.Order
 }
 
-func (o *PaymentAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (p *PaymentAttribute) GetPlaceholder() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Placeholder
+	return p.Placeholder
 }
 
-func (o *PaymentAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (p *PaymentAttribute) GetPreviewValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return p.PreviewValueFormatter
 }
 
-func (o *PaymentAttribute) GetProtected() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetProtected() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Protected
+	return p.Protected
 }
 
-func (o *PaymentAttribute) GetReadonly() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetReadonly() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Readonly
+	return p.Readonly
 }
 
-func (o *PaymentAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (p *PaymentAttribute) GetRenderCondition() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return p.RenderCondition
 }
 
-func (o *PaymentAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetRepeatable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Repeatable
+	return p.Repeatable
 }
 
-func (o *PaymentAttribute) GetRequired() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetRequired() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Required
+	return p.Required
 }
 
-func (o *PaymentAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (p *PaymentAttribute) GetSettingsFlag() []SettingFlag {
+	if p == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return p.SettingsFlag
 }
 
-func (o *PaymentAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetShowInTable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return p.ShowInTable
 }
 
-func (o *PaymentAttribute) GetSortable() *bool {
-	if o == nil {
+func (p *PaymentAttribute) GetSortable() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Sortable
+	return p.Sortable
 }
 
-func (o *PaymentAttribute) GetType() PaymentAttributeType {
-	if o == nil {
+func (p *PaymentAttribute) GetType() PaymentAttributeType {
+	if p == nil {
 		return PaymentAttributeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PaymentAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (p *PaymentAttribute) GetValueFormatter() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return p.ValueFormatter
 }

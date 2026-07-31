@@ -7,7 +7,9 @@ import (
 )
 
 type GraphQueryRequest struct {
-	Graph GraphDefinition `json:"graph"`
+	// When true and hydrate is also true, entity objects in entityNodes have pending changeset proposed values applied in-place. The _changesets field is still included in the response.
+	ApplyChangesets *bool           `default:"false" json:"apply_changesets"`
+	Graph           GraphDefinition `json:"graph"`
 	// If true, return full entity objects in entityNodes instead of just entity IDs in nodes
 	Hydrate *bool     `default:"false" json:"hydrate"`
 	Seed    GraphSeed `json:"seed"`
@@ -18,29 +20,36 @@ func (g GraphQueryRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GraphQueryRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"graph", "seed"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GraphQueryRequest) GetGraph() GraphDefinition {
-	if o == nil {
-		return GraphDefinition{}
-	}
-	return o.Graph
-}
-
-func (o *GraphQueryRequest) GetHydrate() *bool {
-	if o == nil {
+func (g *GraphQueryRequest) GetApplyChangesets() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Hydrate
+	return g.ApplyChangesets
 }
 
-func (o *GraphQueryRequest) GetSeed() GraphSeed {
-	if o == nil {
+func (g *GraphQueryRequest) GetGraph() GraphDefinition {
+	if g == nil {
+		return GraphDefinition{}
+	}
+	return g.Graph
+}
+
+func (g *GraphQueryRequest) GetHydrate() *bool {
+	if g == nil {
+		return nil
+	}
+	return g.Hydrate
+}
+
+func (g *GraphQueryRequest) GetSeed() GraphSeed {
+	if g == nil {
 		return GraphSeed{}
 	}
-	return o.Seed
+	return g.Seed
 }

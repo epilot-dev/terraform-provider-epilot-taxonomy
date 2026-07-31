@@ -24,6 +24,38 @@ func (a *AutomationAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// AutomationAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type AutomationAttributeDataClassification string
+
+const (
+	AutomationAttributeDataClassificationPublic AutomationAttributeDataClassification = "public"
+	AutomationAttributeDataClassificationPii    AutomationAttributeDataClassification = "pii"
+)
+
+func (e AutomationAttributeDataClassification) ToPointer() *AutomationAttributeDataClassification {
+	return &e
+}
+func (e *AutomationAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = AutomationAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AutomationAttributeDataClassification: %v", v)
+	}
+}
+
 // AutomationAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type AutomationAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -56,32 +88,32 @@ func (a *AutomationAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AutomationAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (a *AutomationAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return a.HintCustomComponent
 }
 
-func (o *AutomationAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (a *AutomationAttributeInfoHelpers) GetHintText() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HintText
+	return a.HintText
 }
 
-func (o *AutomationAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (a *AutomationAttributeInfoHelpers) GetHintTextKey() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return a.HintTextKey
 }
 
-func (o *AutomationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (a *AutomationAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return a.HintTooltipPlacement
 }
 
 type AutomationAttributeType string
@@ -115,9 +147,27 @@ type AutomationAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *AutomationAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                             `json:"default_value,omitempty"`
-	Deprecated   *bool                           `default:"false" json:"deprecated"`
+	Constraints *AutomationAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *AutomationAttributeDataClassification `json:"data_classification,omitempty"`
+	DefaultValue       any                                    `json:"default_value,omitempty"`
+	Deprecated         *bool                                  `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -180,232 +230,253 @@ func (a AutomationAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AutomationAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *AutomationAttribute) GetManifest() []string {
-	if o == nil {
+func (a *AutomationAttribute) GetManifest() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Manifest
+	return a.Manifest
 }
 
-func (o *AutomationAttribute) GetPurpose() []string {
-	if o == nil {
+func (a *AutomationAttribute) GetPurpose() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Purpose
+	return a.Purpose
 }
 
-func (o *AutomationAttribute) GetConstraints() *AutomationAttributeConstraints {
-	if o == nil {
+func (a *AutomationAttribute) GetConstraints() *AutomationAttributeConstraints {
+	if a == nil {
 		return nil
 	}
-	return o.Constraints
+	return a.Constraints
 }
 
-func (o *AutomationAttribute) GetDefaultValue() any {
-	if o == nil {
+func (a *AutomationAttribute) GetDataClassification() *AutomationAttributeDataClassification {
+	if a == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return a.DataClassification
 }
 
-func (o *AutomationAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetDefaultValue() any {
+	if a == nil {
 		return nil
 	}
-	return o.Deprecated
+	return a.DefaultValue
 }
 
-func (o *AutomationAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetDeprecated() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return a.Deprecated
 }
 
-func (o *AutomationAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetEditMode() *EditMode {
+	if a == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return a.EditMode
 }
 
-func (o *AutomationAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetEditModeConfig() *EditModeConfig {
+	if a == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return a.EditModeConfig
 }
 
-func (o *AutomationAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (a *AutomationAttribute) GetEntityBuilderDisableEdit() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return a.EntityBuilderDisableEdit
 }
 
-func (o *AutomationAttribute) GetGroup() *string {
-	if o == nil {
+func (a *AutomationAttribute) GetExcludeFromSearch() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Group
+	return a.ExcludeFromSearch
 }
 
-func (o *AutomationAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetExplicitSearchable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return a.ExplicitSearchable
 }
 
-func (o *AutomationAttribute) GetHidden() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetFeatureFlag() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Hidden
+	return a.FeatureFlag
 }
 
-func (o *AutomationAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetGroup() *string {
+	if a == nil {
 		return nil
 	}
-	return o.HideLabel
+	return a.Group
 }
 
-func (o *AutomationAttribute) GetIcon() *string {
-	if o == nil {
+func (a *AutomationAttribute) GetHasPrimary() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Icon
+	return a.HasPrimary
 }
 
-func (o *AutomationAttribute) GetID() *string {
-	if o == nil {
+func (a *AutomationAttribute) GetHidden() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.Hidden
 }
 
-func (o *AutomationAttribute) GetInfoHelpers() *AutomationAttributeInfoHelpers {
-	if o == nil {
+func (a *AutomationAttribute) GetHideLabel() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return a.HideLabel
 }
 
-func (o *AutomationAttribute) GetLabel() string {
-	if o == nil {
+func (a *AutomationAttribute) GetIcon() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Icon
+}
+
+func (a *AutomationAttribute) GetID() *string {
+	if a == nil {
+		return nil
+	}
+	return a.ID
+}
+
+func (a *AutomationAttribute) GetInfoHelpers() *AutomationAttributeInfoHelpers {
+	if a == nil {
+		return nil
+	}
+	return a.InfoHelpers
+}
+
+func (a *AutomationAttribute) GetLabel() string {
+	if a == nil {
 		return ""
 	}
-	return o.Label
+	return a.Label
 }
 
-func (o *AutomationAttribute) GetLayout() *string {
-	if o == nil {
+func (a *AutomationAttribute) GetLayout() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Layout
+	return a.Layout
 }
 
-func (o *AutomationAttribute) GetName() string {
-	if o == nil {
+func (a *AutomationAttribute) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AutomationAttribute) GetOrder() *int64 {
-	if o == nil {
+func (a *AutomationAttribute) GetOrder() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.Order
+	return a.Order
 }
 
-func (o *AutomationAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (a *AutomationAttribute) GetPlaceholder() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Placeholder
+	return a.Placeholder
 }
 
-func (o *AutomationAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (a *AutomationAttribute) GetPreviewValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return a.PreviewValueFormatter
 }
 
-func (o *AutomationAttribute) GetProtected() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetProtected() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Protected
+	return a.Protected
 }
 
-func (o *AutomationAttribute) GetReadonly() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetReadonly() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Readonly
+	return a.Readonly
 }
 
-func (o *AutomationAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (a *AutomationAttribute) GetRenderCondition() *string {
+	if a == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return a.RenderCondition
 }
 
-func (o *AutomationAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetRepeatable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Repeatable
+	return a.Repeatable
 }
 
-func (o *AutomationAttribute) GetRequired() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetRequired() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Required
+	return a.Required
 }
 
-func (o *AutomationAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (a *AutomationAttribute) GetSettingsFlag() []SettingFlag {
+	if a == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return a.SettingsFlag
 }
 
-func (o *AutomationAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetShowInTable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return a.ShowInTable
 }
 
-func (o *AutomationAttribute) GetSortable() *bool {
-	if o == nil {
+func (a *AutomationAttribute) GetSortable() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Sortable
+	return a.Sortable
 }
 
-func (o *AutomationAttribute) GetType() AutomationAttributeType {
-	if o == nil {
+func (a *AutomationAttribute) GetType() AutomationAttributeType {
+	if a == nil {
 		return AutomationAttributeType("")
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *AutomationAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (a *AutomationAttribute) GetValueFormatter() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return a.ValueFormatter
 }

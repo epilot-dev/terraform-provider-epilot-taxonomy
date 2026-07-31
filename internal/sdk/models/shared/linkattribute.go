@@ -24,6 +24,38 @@ func (l *LinkAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// LinkAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type LinkAttributeDataClassification string
+
+const (
+	LinkAttributeDataClassificationPublic LinkAttributeDataClassification = "public"
+	LinkAttributeDataClassificationPii    LinkAttributeDataClassification = "pii"
+)
+
+func (e LinkAttributeDataClassification) ToPointer() *LinkAttributeDataClassification {
+	return &e
+}
+func (e *LinkAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = LinkAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LinkAttributeDataClassification: %v", v)
+	}
+}
+
 // LinkAttributeInfoHelpers - A set of configurations meant to document and assist the user in filling the attribute.
 type LinkAttributeInfoHelpers struct {
 	// The name of the custom component to be used as the hint helper.
@@ -56,32 +88,32 @@ func (l *LinkAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *LinkAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (l *LinkAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if l == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return l.HintCustomComponent
 }
 
-func (o *LinkAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (l *LinkAttributeInfoHelpers) GetHintText() *string {
+	if l == nil {
 		return nil
 	}
-	return o.HintText
+	return l.HintText
 }
 
-func (o *LinkAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (l *LinkAttributeInfoHelpers) GetHintTextKey() *string {
+	if l == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return l.HintTextKey
 }
 
-func (o *LinkAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (l *LinkAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if l == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return l.HintTooltipPlacement
 }
 
 type LinkAttributeType string
@@ -115,9 +147,27 @@ type LinkAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints  *LinkAttributeConstraints `json:"constraints,omitempty"`
-	DefaultValue any                       `json:"default_value,omitempty"`
-	Deprecated   *bool                     `default:"false" json:"deprecated"`
+	Constraints *LinkAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification *LinkAttributeDataClassification `json:"data_classification,omitempty"`
+	DefaultValue       any                              `json:"default_value,omitempty"`
+	Deprecated         *bool                            `default:"false" json:"deprecated"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// Setting to `true` disables editing the attribute on the entity builder UI
 	EntityBuilderDisableEdit *bool `default:"false" json:"entity_builder_disable_edit"`
 	// When set to true, this attribute will be excluded from search fields.
@@ -180,232 +230,253 @@ func (l LinkAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (l *LinkAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *LinkAttribute) GetManifest() []string {
-	if o == nil {
+func (l *LinkAttribute) GetManifest() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Manifest
+	return l.Manifest
 }
 
-func (o *LinkAttribute) GetPurpose() []string {
-	if o == nil {
+func (l *LinkAttribute) GetPurpose() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Purpose
+	return l.Purpose
 }
 
-func (o *LinkAttribute) GetConstraints() *LinkAttributeConstraints {
-	if o == nil {
+func (l *LinkAttribute) GetConstraints() *LinkAttributeConstraints {
+	if l == nil {
 		return nil
 	}
-	return o.Constraints
+	return l.Constraints
 }
 
-func (o *LinkAttribute) GetDefaultValue() any {
-	if o == nil {
+func (l *LinkAttribute) GetDataClassification() *LinkAttributeDataClassification {
+	if l == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return l.DataClassification
 }
 
-func (o *LinkAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetDefaultValue() any {
+	if l == nil {
 		return nil
 	}
-	return o.Deprecated
+	return l.DefaultValue
 }
 
-func (o *LinkAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetDeprecated() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return l.Deprecated
 }
 
-func (o *LinkAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetEditMode() *EditMode {
+	if l == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return l.EditMode
 }
 
-func (o *LinkAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetEditModeConfig() *EditModeConfig {
+	if l == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return l.EditModeConfig
 }
 
-func (o *LinkAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (l *LinkAttribute) GetEntityBuilderDisableEdit() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return l.EntityBuilderDisableEdit
 }
 
-func (o *LinkAttribute) GetGroup() *string {
-	if o == nil {
+func (l *LinkAttribute) GetExcludeFromSearch() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Group
+	return l.ExcludeFromSearch
 }
 
-func (o *LinkAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetExplicitSearchable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return l.ExplicitSearchable
 }
 
-func (o *LinkAttribute) GetHidden() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetFeatureFlag() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Hidden
+	return l.FeatureFlag
 }
 
-func (o *LinkAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetGroup() *string {
+	if l == nil {
 		return nil
 	}
-	return o.HideLabel
+	return l.Group
 }
 
-func (o *LinkAttribute) GetIcon() *string {
-	if o == nil {
+func (l *LinkAttribute) GetHasPrimary() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Icon
+	return l.HasPrimary
 }
 
-func (o *LinkAttribute) GetID() *string {
-	if o == nil {
+func (l *LinkAttribute) GetHidden() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.ID
+	return l.Hidden
 }
 
-func (o *LinkAttribute) GetInfoHelpers() *LinkAttributeInfoHelpers {
-	if o == nil {
+func (l *LinkAttribute) GetHideLabel() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return l.HideLabel
 }
 
-func (o *LinkAttribute) GetLabel() string {
-	if o == nil {
+func (l *LinkAttribute) GetIcon() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Icon
+}
+
+func (l *LinkAttribute) GetID() *string {
+	if l == nil {
+		return nil
+	}
+	return l.ID
+}
+
+func (l *LinkAttribute) GetInfoHelpers() *LinkAttributeInfoHelpers {
+	if l == nil {
+		return nil
+	}
+	return l.InfoHelpers
+}
+
+func (l *LinkAttribute) GetLabel() string {
+	if l == nil {
 		return ""
 	}
-	return o.Label
+	return l.Label
 }
 
-func (o *LinkAttribute) GetLayout() *string {
-	if o == nil {
+func (l *LinkAttribute) GetLayout() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Layout
+	return l.Layout
 }
 
-func (o *LinkAttribute) GetName() string {
-	if o == nil {
+func (l *LinkAttribute) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
-func (o *LinkAttribute) GetOrder() *int64 {
-	if o == nil {
+func (l *LinkAttribute) GetOrder() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Order
+	return l.Order
 }
 
-func (o *LinkAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (l *LinkAttribute) GetPlaceholder() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Placeholder
+	return l.Placeholder
 }
 
-func (o *LinkAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (l *LinkAttribute) GetPreviewValueFormatter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return l.PreviewValueFormatter
 }
 
-func (o *LinkAttribute) GetProtected() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetProtected() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Protected
+	return l.Protected
 }
 
-func (o *LinkAttribute) GetReadonly() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetReadonly() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Readonly
+	return l.Readonly
 }
 
-func (o *LinkAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (l *LinkAttribute) GetRenderCondition() *string {
+	if l == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return l.RenderCondition
 }
 
-func (o *LinkAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetRepeatable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Repeatable
+	return l.Repeatable
 }
 
-func (o *LinkAttribute) GetRequired() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetRequired() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Required
+	return l.Required
 }
 
-func (o *LinkAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (l *LinkAttribute) GetSettingsFlag() []SettingFlag {
+	if l == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return l.SettingsFlag
 }
 
-func (o *LinkAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetShowInTable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return l.ShowInTable
 }
 
-func (o *LinkAttribute) GetSortable() *bool {
-	if o == nil {
+func (l *LinkAttribute) GetSortable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Sortable
+	return l.Sortable
 }
 
-func (o *LinkAttribute) GetType() LinkAttributeType {
-	if o == nil {
+func (l *LinkAttribute) GetType() LinkAttributeType {
+	if l == nil {
 		return LinkAttributeType("")
 	}
-	return o.Type
+	return l.Type
 }
 
-func (o *LinkAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (l *LinkAttribute) GetValueFormatter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return l.ValueFormatter
 }

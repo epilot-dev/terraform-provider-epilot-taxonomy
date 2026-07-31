@@ -14,6 +14,30 @@ type PatchEntityRequest struct {
 	ActivityID *shared.ActivityIDQueryParam `queryParam:"style=form,explode=true,name=activity_id"`
 	// Don't wait for updated entity to become available in Search API. Useful for large migrations
 	Async *bool `default:"false" queryParam:"style=form,explode=true,name=async"`
+	// When true, bypasses changeset interception: attribute values in the payload
+	// are written directly to the entity regardless of each attribute's `edit_mode`.
+	// The write always lands, independently of any auto-clear outcome below.
+	//
+	// After the direct write, for each attribute in the payload that also has a
+	// pending changeset:
+	// - `edit_mode: external` — the incoming value is checked against the
+	//   changeset's `match_strategy` (and `fuzzy_config` when `fuzzy`). On match,
+	//   `_changesets[attr]` is cleared. On no-match, the write still stands and
+	//   the changeset stays pending (signalling the ERP/trusted source applied a
+	//   different correction than originally proposed; resolve via a later
+	//   matching direct write, or via the `:apply` / `:dismiss` endpoints).
+	// - `edit_mode: approval` — never auto-cleared. The write lands but the
+	//   pending changeset remains until explicitly resolved via `:apply` or
+	//   `:dismiss`.
+	//
+	// Intended for trusted integrations (e.g. ERP inbound sync). ERP middleware
+	// must always use `?direct=true` — without it, an inbound sync on an
+	// `external` attribute would create a new changeset instead of confirming
+	// the pending one.
+	//
+	// Defaults to false — no breaking change for existing callers.
+	//
+	Direct *bool `default:"false" queryParam:"style=form,explode=true,name=direct"`
 	// Dry Run mode = return results but does not perform the operation.
 	DryRun *bool `default:"false" queryParam:"style=form,explode=true,name=dry_run"`
 	// Update the diff and entity for the custom activity included in the query.
@@ -33,66 +57,73 @@ func (p PatchEntityRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PatchEntityRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"Entity", "id", "slug"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *PatchEntityRequest) GetEntity() shared.EntityInput {
-	if o == nil {
+func (p *PatchEntityRequest) GetEntity() shared.EntityInput {
+	if p == nil {
 		return shared.EntityInput{}
 	}
-	return o.Entity
+	return p.Entity
 }
 
-func (o *PatchEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {
-	if o == nil {
+func (p *PatchEntityRequest) GetActivityID() *shared.ActivityIDQueryParam {
+	if p == nil {
 		return nil
 	}
-	return o.ActivityID
+	return p.ActivityID
 }
 
-func (o *PatchEntityRequest) GetAsync() *bool {
-	if o == nil {
+func (p *PatchEntityRequest) GetAsync() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Async
+	return p.Async
 }
 
-func (o *PatchEntityRequest) GetDryRun() *bool {
-	if o == nil {
+func (p *PatchEntityRequest) GetDirect() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.DryRun
+	return p.Direct
 }
 
-func (o *PatchEntityRequest) GetFillActivity() *bool {
-	if o == nil {
+func (p *PatchEntityRequest) GetDryRun() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.FillActivity
+	return p.DryRun
 }
 
-func (o *PatchEntityRequest) GetID() string {
-	if o == nil {
+func (p *PatchEntityRequest) GetFillActivity() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.FillActivity
+}
+
+func (p *PatchEntityRequest) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PatchEntityRequest) GetSlug() string {
-	if o == nil {
+func (p *PatchEntityRequest) GetSlug() string {
+	if p == nil {
 		return ""
 	}
-	return o.Slug
+	return p.Slug
 }
 
-func (o *PatchEntityRequest) GetValidate() *bool {
-	if o == nil {
+func (p *PatchEntityRequest) GetValidate() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Validate
+	return p.Validate
 }
 
 type PatchEntityResponse struct {
@@ -108,37 +139,37 @@ type PatchEntityResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *PatchEntityResponse) GetContentType() string {
-	if o == nil {
+func (p *PatchEntityResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PatchEntityResponse) GetEntityItem() *shared.EntityItem {
-	if o == nil {
+func (p *PatchEntityResponse) GetEntityItem() *shared.EntityItem {
+	if p == nil {
 		return nil
 	}
-	return o.EntityItem
+	return p.EntityItem
 }
 
-func (o *PatchEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
-	if o == nil {
+func (p *PatchEntityResponse) GetEntityValidationV2ResultError() *shared.EntityValidationV2ResultError {
+	if p == nil {
 		return nil
 	}
-	return o.EntityValidationV2ResultError
+	return p.EntityValidationV2ResultError
 }
 
-func (o *PatchEntityResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PatchEntityResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PatchEntityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PatchEntityResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }

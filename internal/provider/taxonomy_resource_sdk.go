@@ -115,8 +115,8 @@ func (r *TaxonomyResourceModel) ToSharedTaxonomyInput(ctx context.Context) (*sha
 		enabled = nil
 	}
 	enabledLocations := make([]string, 0, len(r.EnabledLocations))
-	for _, enabledLocationsItem := range r.EnabledLocations {
-		enabledLocations = append(enabledLocations, enabledLocationsItem.ValueString())
+	for enabledLocationsIndex := range r.EnabledLocations {
+		enabledLocations = append(enabledLocations, r.EnabledLocations[enabledLocationsIndex].ValueString())
 	}
 	icon := new(string)
 	if !r.Icon.IsUnknown() && !r.Icon.IsNull() {

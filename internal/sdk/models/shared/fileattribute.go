@@ -24,6 +24,38 @@ func (f *FileAttributeConstraints) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// FileAttributeDataClassification - Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+//
+// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+//
+// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+type FileAttributeDataClassification string
+
+const (
+	FileAttributeDataClassificationPublic FileAttributeDataClassification = "public"
+	FileAttributeDataClassificationPii    FileAttributeDataClassification = "pii"
+)
+
+func (e FileAttributeDataClassification) ToPointer() *FileAttributeDataClassification {
+	return &e
+}
+func (e *FileAttributeDataClassification) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "public":
+		fallthrough
+	case "pii":
+		*e = FileAttributeDataClassification(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FileAttributeDataClassification: %v", v)
+	}
+}
+
 type FileAttributeDefaultAccessControl string
 
 const (
@@ -82,32 +114,32 @@ func (f *FileAttributeInfoHelpers) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FileAttributeInfoHelpers) GetHintCustomComponent() *string {
-	if o == nil {
+func (f *FileAttributeInfoHelpers) GetHintCustomComponent() *string {
+	if f == nil {
 		return nil
 	}
-	return o.HintCustomComponent
+	return f.HintCustomComponent
 }
 
-func (o *FileAttributeInfoHelpers) GetHintText() *string {
-	if o == nil {
+func (f *FileAttributeInfoHelpers) GetHintText() *string {
+	if f == nil {
 		return nil
 	}
-	return o.HintText
+	return f.HintText
 }
 
-func (o *FileAttributeInfoHelpers) GetHintTextKey() *string {
-	if o == nil {
+func (f *FileAttributeInfoHelpers) GetHintTextKey() *string {
+	if f == nil {
 		return nil
 	}
-	return o.HintTextKey
+	return f.HintTextKey
 }
 
-func (o *FileAttributeInfoHelpers) GetHintTooltipPlacement() *string {
-	if o == nil {
+func (f *FileAttributeInfoHelpers) GetHintTooltipPlacement() *string {
+	if f == nil {
 		return nil
 	}
-	return o.HintTooltipPlacement
+	return f.HintTooltipPlacement
 }
 
 type FileAttributeType string
@@ -146,12 +178,30 @@ type FileAttribute struct {
 	// A set of constraints applicable to the attribute.
 	// These constraints should and will be enforced by the attribute renderer.
 	//
-	Constraints          *FileAttributeConstraints          `json:"constraints,omitempty"`
+	Constraints *FileAttributeConstraints `json:"constraints,omitempty"`
+	// Data classification of the attribute, used by anonymized responses (`?anonymize=true` or tokens minted with `anonymize: true`).
+	//
+	// - `pii`: the attribute value is always anonymized in anonymized responses (use to opt in free-text fields containing personal data)
+	// - `public`: the attribute value is never anonymized (use to opt out fields matched by built-in defaults, e.g. non-personal identifiers)
+	//
+	// When unset, built-in defaults apply based on the attribute type (email, phone, address, payment) and a curated list of well-known PII fields.
+	//
+	DataClassification   *FileAttributeDataClassification   `json:"data_classification,omitempty"`
 	DefaultAccessControl *FileAttributeDefaultAccessControl `json:"default_access_control,omitempty"`
 	DefaultValue         any                                `json:"default_value,omitempty"`
 	Deprecated           *bool                              `default:"false" json:"deprecated"`
 	// Controls how the images are presented to the user during upload on the Entity Details view.
 	DisplayImagesLandscaped *bool `json:"display_images_landscaped,omitempty"`
+	// Controls how updates to this attribute are handled. See the `EditMode`
+	// schema for the per-mode semantics. Defaults to `direct`.
+	//
+	EditMode *EditMode `default:"direct" json:"edit_mode"`
+	// Configuration for auto-clear matching on `edit_mode: external` attributes.
+	// `match_strategy` and `fuzzy_config` are only consulted for `external` mode —
+	// they are ignored for `approval` mode, which resolves via explicit
+	// `:apply` / `:dismiss` endpoints and never auto-clears.
+	//
+	EditModeConfig *EditModeConfig `json:"edit_mode_config,omitempty"`
 	// When set to true, an i18n description will be used alongside the attribute label.
 	// This description should be set through the platform locales in the form: `file.{attribute_name}.description_text`.
 	//
@@ -170,6 +220,8 @@ type FileAttribute struct {
 	ExplicitSearchable *bool `default:"false" json:"explicit_searchable"`
 	// This attribute should only be active when the feature flag is enabled
 	FeatureFlag *string `json:"feature_flag,omitempty"`
+	// The maximum file size in bytes. Used to derive file_size and file_size_unit in the UI.
+	FileSizeBytes *int64 `json:"file_size_bytes,omitempty"`
 	// Which group the attribute should appear in. Accepts group ID or group name
 	Group      *string `json:"group,omitempty"`
 	HasPrimary *bool   `json:"has_primary,omitempty"`
@@ -219,267 +271,295 @@ func (f FileAttribute) MarshalJSON() ([]byte, error) {
 }
 
 func (f *FileAttribute) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"label", "name", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &f, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *FileAttribute) GetManifest() []string {
-	if o == nil {
+func (f *FileAttribute) GetManifest() []string {
+	if f == nil {
 		return nil
 	}
-	return o.Manifest
+	return f.Manifest
 }
 
-func (o *FileAttribute) GetPurpose() []string {
-	if o == nil {
+func (f *FileAttribute) GetPurpose() []string {
+	if f == nil {
 		return nil
 	}
-	return o.Purpose
+	return f.Purpose
 }
 
-func (o *FileAttribute) GetAllowedExtensions() []string {
-	if o == nil {
+func (f *FileAttribute) GetAllowedExtensions() []string {
+	if f == nil {
 		return nil
 	}
-	return o.AllowedExtensions
+	return f.AllowedExtensions
 }
 
-func (o *FileAttribute) GetConstraints() *FileAttributeConstraints {
-	if o == nil {
+func (f *FileAttribute) GetConstraints() *FileAttributeConstraints {
+	if f == nil {
 		return nil
 	}
-	return o.Constraints
+	return f.Constraints
 }
 
-func (o *FileAttribute) GetDefaultAccessControl() *FileAttributeDefaultAccessControl {
-	if o == nil {
+func (f *FileAttribute) GetDataClassification() *FileAttributeDataClassification {
+	if f == nil {
 		return nil
 	}
-	return o.DefaultAccessControl
+	return f.DataClassification
 }
 
-func (o *FileAttribute) GetDefaultValue() any {
-	if o == nil {
+func (f *FileAttribute) GetDefaultAccessControl() *FileAttributeDefaultAccessControl {
+	if f == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return f.DefaultAccessControl
 }
 
-func (o *FileAttribute) GetDeprecated() *bool {
-	if o == nil {
+func (f *FileAttribute) GetDefaultValue() any {
+	if f == nil {
 		return nil
 	}
-	return o.Deprecated
+	return f.DefaultValue
 }
 
-func (o *FileAttribute) GetDisplayImagesLandscaped() *bool {
-	if o == nil {
+func (f *FileAttribute) GetDeprecated() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.DisplayImagesLandscaped
+	return f.Deprecated
 }
 
-func (o *FileAttribute) GetEnableDescription() *bool {
-	if o == nil {
+func (f *FileAttribute) GetDisplayImagesLandscaped() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.EnableDescription
+	return f.DisplayImagesLandscaped
 }
 
-func (o *FileAttribute) GetEntityBuilderDisableEdit() *bool {
-	if o == nil {
+func (f *FileAttribute) GetEditMode() *EditMode {
+	if f == nil {
 		return nil
 	}
-	return o.EntityBuilderDisableEdit
+	return f.EditMode
 }
 
-func (o *FileAttribute) GetExcludeFromSearch() *bool {
-	if o == nil {
+func (f *FileAttribute) GetEditModeConfig() *EditModeConfig {
+	if f == nil {
 		return nil
 	}
-	return o.ExcludeFromSearch
+	return f.EditModeConfig
 }
 
-func (o *FileAttribute) GetExplicitSearchable() *bool {
-	if o == nil {
+func (f *FileAttribute) GetEnableDescription() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ExplicitSearchable
+	return f.EnableDescription
 }
 
-func (o *FileAttribute) GetFeatureFlag() *string {
-	if o == nil {
+func (f *FileAttribute) GetEntityBuilderDisableEdit() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.FeatureFlag
+	return f.EntityBuilderDisableEdit
 }
 
-func (o *FileAttribute) GetGroup() *string {
-	if o == nil {
+func (f *FileAttribute) GetExcludeFromSearch() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Group
+	return f.ExcludeFromSearch
 }
 
-func (o *FileAttribute) GetHasPrimary() *bool {
-	if o == nil {
+func (f *FileAttribute) GetExplicitSearchable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.HasPrimary
+	return f.ExplicitSearchable
 }
 
-func (o *FileAttribute) GetHidden() *bool {
-	if o == nil {
+func (f *FileAttribute) GetFeatureFlag() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Hidden
+	return f.FeatureFlag
 }
 
-func (o *FileAttribute) GetHideLabel() *bool {
-	if o == nil {
+func (f *FileAttribute) GetFileSizeBytes() *int64 {
+	if f == nil {
 		return nil
 	}
-	return o.HideLabel
+	return f.FileSizeBytes
 }
 
-func (o *FileAttribute) GetIcon() *string {
-	if o == nil {
+func (f *FileAttribute) GetGroup() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Icon
+	return f.Group
 }
 
-func (o *FileAttribute) GetID() *string {
-	if o == nil {
+func (f *FileAttribute) GetHasPrimary() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ID
+	return f.HasPrimary
 }
 
-func (o *FileAttribute) GetInfoHelpers() *FileAttributeInfoHelpers {
-	if o == nil {
+func (f *FileAttribute) GetHidden() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.InfoHelpers
+	return f.Hidden
 }
 
-func (o *FileAttribute) GetLabel() string {
-	if o == nil {
+func (f *FileAttribute) GetHideLabel() *bool {
+	if f == nil {
+		return nil
+	}
+	return f.HideLabel
+}
+
+func (f *FileAttribute) GetIcon() *string {
+	if f == nil {
+		return nil
+	}
+	return f.Icon
+}
+
+func (f *FileAttribute) GetID() *string {
+	if f == nil {
+		return nil
+	}
+	return f.ID
+}
+
+func (f *FileAttribute) GetInfoHelpers() *FileAttributeInfoHelpers {
+	if f == nil {
+		return nil
+	}
+	return f.InfoHelpers
+}
+
+func (f *FileAttribute) GetLabel() string {
+	if f == nil {
 		return ""
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FileAttribute) GetLayout() *string {
-	if o == nil {
+func (f *FileAttribute) GetLayout() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Layout
+	return f.Layout
 }
 
-func (o *FileAttribute) GetMultiple() *bool {
-	if o == nil {
+func (f *FileAttribute) GetMultiple() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Multiple
+	return f.Multiple
 }
 
-func (o *FileAttribute) GetName() string {
-	if o == nil {
+func (f *FileAttribute) GetName() string {
+	if f == nil {
 		return ""
 	}
-	return o.Name
+	return f.Name
 }
 
-func (o *FileAttribute) GetOrder() *int64 {
-	if o == nil {
+func (f *FileAttribute) GetOrder() *int64 {
+	if f == nil {
 		return nil
 	}
-	return o.Order
+	return f.Order
 }
 
-func (o *FileAttribute) GetPlaceholder() *string {
-	if o == nil {
+func (f *FileAttribute) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FileAttribute) GetPreviewValueFormatter() *string {
-	if o == nil {
+func (f *FileAttribute) GetPreviewValueFormatter() *string {
+	if f == nil {
 		return nil
 	}
-	return o.PreviewValueFormatter
+	return f.PreviewValueFormatter
 }
 
-func (o *FileAttribute) GetProtected() *bool {
-	if o == nil {
+func (f *FileAttribute) GetProtected() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Protected
+	return f.Protected
 }
 
-func (o *FileAttribute) GetReadonly() *bool {
-	if o == nil {
+func (f *FileAttribute) GetReadonly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Readonly
+	return f.Readonly
 }
 
-func (o *FileAttribute) GetRenderCondition() *string {
-	if o == nil {
+func (f *FileAttribute) GetRenderCondition() *string {
+	if f == nil {
 		return nil
 	}
-	return o.RenderCondition
+	return f.RenderCondition
 }
 
-func (o *FileAttribute) GetRepeatable() *bool {
-	if o == nil {
+func (f *FileAttribute) GetRepeatable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Repeatable
+	return f.Repeatable
 }
 
-func (o *FileAttribute) GetRequired() *bool {
-	if o == nil {
+func (f *FileAttribute) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FileAttribute) GetSettingsFlag() []SettingFlag {
-	if o == nil {
+func (f *FileAttribute) GetSettingsFlag() []SettingFlag {
+	if f == nil {
 		return nil
 	}
-	return o.SettingsFlag
+	return f.SettingsFlag
 }
 
-func (o *FileAttribute) GetShowInTable() *bool {
-	if o == nil {
+func (f *FileAttribute) GetShowInTable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ShowInTable
+	return f.ShowInTable
 }
 
-func (o *FileAttribute) GetSortable() *bool {
-	if o == nil {
+func (f *FileAttribute) GetSortable() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Sortable
+	return f.Sortable
 }
 
-func (o *FileAttribute) GetType() FileAttributeType {
-	if o == nil {
+func (f *FileAttribute) GetType() FileAttributeType {
+	if f == nil {
 		return FileAttributeType("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FileAttribute) GetValueFormatter() *string {
-	if o == nil {
+func (f *FileAttribute) GetValueFormatter() *string {
+	if f == nil {
 		return nil
 	}
-	return o.ValueFormatter
+	return f.ValueFormatter
 }

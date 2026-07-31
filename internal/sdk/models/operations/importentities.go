@@ -13,18 +13,18 @@ type ImportEntitiesRequest struct {
 	JobID *string `queryParam:"style=form,explode=true,name=job_id"`
 }
 
-func (o *ImportEntitiesRequest) GetEntityImportParams() *shared.EntityImportParams {
-	if o == nil {
+func (i *ImportEntitiesRequest) GetEntityImportParams() *shared.EntityImportParams {
+	if i == nil {
 		return nil
 	}
-	return o.EntityImportParams
+	return i.EntityImportParams
 }
 
-func (o *ImportEntitiesRequest) GetJobID() *string {
-	if o == nil {
+func (i *ImportEntitiesRequest) GetJobID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.JobID
+	return i.JobID
 }
 
 // ImportEntitiesResponseBody - A generic error returned by the API
@@ -35,18 +35,18 @@ type ImportEntitiesResponseBody struct {
 	Status *int64 `json:"status,omitempty"`
 }
 
-func (o *ImportEntitiesResponseBody) GetError() *string {
-	if o == nil {
+func (i *ImportEntitiesResponseBody) GetError() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Error
+	return i.Error
 }
 
-func (o *ImportEntitiesResponseBody) GetStatus() *int64 {
-	if o == nil {
+func (i *ImportEntitiesResponseBody) GetStatus() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.Status
+	return i.Status
 }
 
 type ImportEntitiesResponse struct {
@@ -61,37 +61,37 @@ type ImportEntitiesResponse struct {
 	Object *ImportEntitiesResponseBody
 }
 
-func (o *ImportEntitiesResponse) GetContentType() string {
-	if o == nil {
+func (i *ImportEntitiesResponse) GetContentType() string {
+	if i == nil {
 		return ""
 	}
-	return o.ContentType
+	return i.ContentType
 }
 
-func (o *ImportEntitiesResponse) GetHeaders() map[string][]string {
-	if o == nil {
+func (i *ImportEntitiesResponse) GetHeaders() map[string][]string {
+	if i == nil {
 		return map[string][]string{}
 	}
-	return o.Headers
+	return i.Headers
 }
 
-func (o *ImportEntitiesResponse) GetStatusCode() int {
-	if o == nil {
+func (i *ImportEntitiesResponse) GetStatusCode() int {
+	if i == nil {
 		return 0
 	}
-	return o.StatusCode
+	return i.StatusCode
 }
 
-func (o *ImportEntitiesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (i *ImportEntitiesResponse) GetRawResponse() *http.Response {
+	if i == nil {
 		return nil
 	}
-	return o.RawResponse
+	return i.RawResponse
 }
 
-func (o *ImportEntitiesResponse) GetObject() *ImportEntitiesResponseBody {
-	if o == nil {
+func (i *ImportEntitiesResponse) GetObject() *ImportEntitiesResponseBody {
+	if i == nil {
 		return nil
 	}
-	return o.Object
+	return i.Object
 }

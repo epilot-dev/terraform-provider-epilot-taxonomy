@@ -2,7 +2,7 @@
 
 package sdk
 
-// Generated from OpenAPI doc version 2.5.0 and generator version 2.694.1
+// Generated from OpenAPI doc version 2.9.0 and generator version 2.924.0
 
 import (
 	"context"
@@ -76,7 +76,7 @@ type SDK struct {
 
 type SDKOption func(*SDK)
 
-// WithServerURL allows the overriding of the default server URL
+// WithServerURL allows providing an alternative server URL
 func WithServerURL(serverURL string) SDKOption {
 	return func(sdk *SDK) {
 		sdk.sdkConfiguration.ServerURL = serverURL
@@ -144,9 +144,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.11.5",
+		SDKVersion: "0.12.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/terraform 0.11.5 2.694.1 2.5.0 github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk",
+			UserAgent:  "speakeasy-sdk/terraform 0.12.0 2.924.0 2.9.0 github.com/epilot-dev/terraform-provider-epilot-taxonomy/internal/sdk",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),

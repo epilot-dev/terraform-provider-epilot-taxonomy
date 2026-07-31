@@ -32,6 +32,7 @@ type TaxonomyClassificationDataSourceModel struct {
 	Color            types.String   `tfsdk:"color"`
 	CreatedAt        types.String   `tfsdk:"created_at"`
 	EnabledLocations []types.String `tfsdk:"enabled_locations"`
+	EnabledPurposes  []types.String `tfsdk:"enabled_purposes"`
 	ID               types.String   `tfsdk:"id"`
 	Manifest         []types.String `tfsdk:"manifest"`
 	Name             types.String   `tfsdk:"name"`
@@ -68,8 +69,14 @@ func (r *TaxonomyClassificationDataSource) Schema(ctx context.Context, req datas
 				ElementType: types.StringType,
 				Description: `List of locations where the classification is enabled to be used. If empty, it's enabled for all locations.`,
 			},
+			"enabled_purposes": schema.ListAttribute{
+				Computed:    true,
+				ElementType: types.StringType,
+				Description: `List of purpose slugs where the classification is enabled to be used. If empty, it's enabled for all purposes.`,
+			},
 			"id": schema.StringAttribute{
 				Computed: true,
+				Optional: true,
 			},
 			"manifest": schema.ListAttribute{
 				Computed:    true,

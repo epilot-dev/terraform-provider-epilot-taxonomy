@@ -66,7 +66,7 @@ func (s *Taxonomy) BulkDeleteClassifications(ctx context.Context, request *opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "bulkDeleteClassifications",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -229,6 +229,7 @@ func (s *Taxonomy) BulkDeleteClassifications(ctx context.Context, request *opera
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -297,7 +298,7 @@ func (s *Taxonomy) BulkMergeClassifications(ctx context.Context, request *operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "bulkMergeClassifications",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -460,6 +461,7 @@ func (s *Taxonomy) BulkMergeClassifications(ctx context.Context, request *operat
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -528,7 +530,7 @@ func (s *Taxonomy) BulkMoveClassifications(ctx context.Context, request *operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "bulkMoveClassifications",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -691,6 +693,7 @@ func (s *Taxonomy) BulkMoveClassifications(ctx context.Context, request *operati
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -759,7 +762,7 @@ func (s *Taxonomy) CancelBulkAction(ctx context.Context, request operations.Canc
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "cancelBulkAction",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -919,6 +922,7 @@ func (s *Taxonomy) CancelBulkAction(ctx context.Context, request operations.Canc
 	case httpRes.StatusCode == 403:
 		fallthrough
 	case httpRes.StatusCode == 404:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -943,6 +947,7 @@ func (s *Taxonomy) CancelBulkAction(ctx context.Context, request operations.Canc
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 500:
+		utils.DrainBody(httpRes)
 	default:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -987,7 +992,7 @@ func (s *Taxonomy) CreateTaxonomy(ctx context.Context, request *shared.TaxonomyI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -1150,6 +1155,7 @@ func (s *Taxonomy) CreateTaxonomy(ctx context.Context, request *shared.TaxonomyI
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 409:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -1217,7 +1223,7 @@ func (s *Taxonomy) CreateTaxonomyClassification(ctx context.Context, request *sh
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "createTaxonomyClassification",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -1380,6 +1386,7 @@ func (s *Taxonomy) CreateTaxonomyClassification(ctx context.Context, request *sh
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 409:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -1447,7 +1454,7 @@ func (s *Taxonomy) DeleteTaxonomy(ctx context.Context, request operations.Delete
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1469,7 +1476,7 @@ func (s *Taxonomy) DeleteTaxonomy(ctx context.Context, request operations.Delete
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -1586,6 +1593,7 @@ func (s *Taxonomy) DeleteTaxonomy(ctx context.Context, request operations.Delete
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -1609,6 +1617,8 @@ func (s *Taxonomy) DeleteTaxonomy(ctx context.Context, request operations.Delete
 			}
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode == 404:
+		utils.DrainBody(httpRes)
 	default:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1653,7 +1663,7 @@ func (s *Taxonomy) DeleteTaxonomyClassification(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "deleteTaxonomyClassification",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1809,6 +1819,7 @@ func (s *Taxonomy) DeleteTaxonomyClassification(ctx context.Context, request ope
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 403:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 429:
 		res.Headers = httpRes.Header
 
@@ -1832,6 +1843,8 @@ func (s *Taxonomy) DeleteTaxonomyClassification(ctx context.Context, request ope
 			}
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode == 404:
+		utils.DrainBody(httpRes)
 	default:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1876,7 +1889,7 @@ func (s *Taxonomy) GetTaxonomy(ctx context.Context, request operations.GetTaxono
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2096,7 +2109,7 @@ func (s *Taxonomy) GetTaxonomyBulkActionJobByID(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getTaxonomyBulkActionJobById",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2299,7 +2312,7 @@ func (s *Taxonomy) GetTaxonomyBulkActionJobs(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getTaxonomyBulkActionJobs",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2321,7 +2334,7 @@ func (s *Taxonomy) GetTaxonomyBulkActionJobs(ctx context.Context, request operat
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -2504,7 +2517,7 @@ func (s *Taxonomy) GetTaxonomyClassification(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "getTaxonomyClassification",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2724,7 +2737,7 @@ func (s *Taxonomy) ListTaxonomies(ctx context.Context, request operations.ListTa
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "listTaxonomies",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2746,7 +2759,7 @@ func (s *Taxonomy) ListTaxonomies(ctx context.Context, request operations.ListTa
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -2927,7 +2940,7 @@ func (s *Taxonomy) TaxonomiesClassificationsSearch(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "taxonomiesClassificationsSearch",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -2956,7 +2969,7 @@ func (s *Taxonomy) TaxonomiesClassificationsSearch(ctx context.Context, request 
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -3160,7 +3173,7 @@ func (s *Taxonomy) TaxonomyAutocomplete(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "taxonomyAutocomplete",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3182,7 +3195,7 @@ func (s *Taxonomy) TaxonomyAutocomplete(ctx context.Context, request operations.
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -3363,7 +3376,7 @@ func (s *Taxonomy) UpdateClassificationsForTaxonomy(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "updateClassificationsForTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "ClassificationsUpdate", "json", `request:"mediaType=application/json"`)
@@ -3613,7 +3626,7 @@ func (s *Taxonomy) UpdateTaxonomy(ctx context.Context, request operations.Update
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "updateTaxonomy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Taxonomy", "json", `request:"mediaType=application/json"`)
@@ -3819,7 +3832,7 @@ func (s *Taxonomy) UpdateTaxonomyClassification(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "updateTaxonomyClassification",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "TaxonomyClassification", "json", `request:"mediaType=application/json"`)
@@ -3982,6 +3995,7 @@ func (s *Taxonomy) UpdateTaxonomyClassification(ctx context.Context, request ope
 			return nil, errors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
+		utils.DrainBody(httpRes)
 	default:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

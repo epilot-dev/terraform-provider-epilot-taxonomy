@@ -14,6 +14,7 @@ TaxonomyClassification DataSource
 
 ```terraform
 data "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
+  id = "taxonomy-slug:classification-slug"
 }
 ```
 
@@ -26,6 +27,7 @@ data "epilot-taxonomy_taxonomy_classification" "my_taxonomyclassification" {
 - `color` (String) Color of the classification
 - `created_at` (String)
 - `enabled_locations` (List of String) List of locations where the classification is enabled to be used. If empty, it's enabled for all locations.
+- `enabled_purposes` (List of String) List of purpose slugs where the classification is enabled to be used. If empty, it's enabled for all purposes.
 - `id` (String) The ID of this resource.
 - `manifest` (List of String) Manifest ID used to create/update the taxonomy classification
 - `name` (String)

@@ -26,47 +26,58 @@ func (r *RelationEntityACL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RelationEntityACL) GetAdditionalProperties() any {
-	if o == nil {
+func (r *RelationEntityACL) GetAdditionalProperties() any {
+	if r == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return r.AdditionalProperties
 }
 
-func (o *RelationEntityACL) GetDelete() []string {
-	if o == nil {
+func (r *RelationEntityACL) GetDelete() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Delete
+	return r.Delete
 }
 
-func (o *RelationEntityACL) GetEdit() []string {
-	if o == nil {
+func (r *RelationEntityACL) GetEdit() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Edit
+	return r.Edit
 }
 
-func (o *RelationEntityACL) GetView() []string {
-	if o == nil {
+func (r *RelationEntityACL) GetView() []string {
+	if r == nil {
 		return nil
 	}
-	return o.View
+	return r.View
 }
 
 type RelationEntity struct {
 	DollarRelation       *RelationItem      `json:"$relation,omitempty"`
 	AdditionalProperties any                `additionalProperties:"true" json:"-"`
 	ACL                  *RelationEntityACL `json:"_acl,omitempty"`
-	CreatedAt            *time.Time         `json:"_created_at"`
-	DeletedAt            *time.Time         `json:"_deleted_at,omitempty"`
-	ID                   string             `json:"_id"`
+	// Pending attribute changesets for attributes configured with external or approval edit mode.
+	//
+	// The value shape is `Changeset` (`proposed_value`, `created_at`, `edit_mode`, ...)
+	// and is what `:apply` / `:dismiss` operate on.
+	//
+	// Read-only via normal entity PATCH/PUT operations — those handlers strip `_changesets`
+	// from request bodies. Use the changeset management endpoints to mutate this field.
+	//
+	Changesets map[string]Changeset `json:"_changesets,omitempty"`
+	CreatedAt  *time.Time           `json:"_created_at"`
+	DeletedAt  *time.Time           `json:"_deleted_at,omitempty"`
+	ID         string               `json:"_id"`
 	// Manifest ID used to create/update the entity
 	Manifest []string `json:"_manifest,omitempty"`
 	// Organization Id the entity belongs to
 	Org     string        `json:"_org"`
 	Owners  []EntityOwner `json:"_owners,omitempty"`
 	Purpose []string      `json:"_purpose,omitempty"`
+	// Automatically computed purpose names from _purpose attribute
+	PurposeName []string `json:"_purpose_name,omitempty"`
 	// URL-friendly identifier for the entity schema
 	Schema string   `json:"_schema"`
 	Tags   []string `json:"_tags,omitempty"`
@@ -80,106 +91,120 @@ func (r RelationEntity) MarshalJSON() ([]byte, error) {
 }
 
 func (r *RelationEntity) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"_created_at", "_id", "_org", "_schema", "_title", "_updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *RelationEntity) GetDollarRelation() *RelationItem {
-	if o == nil {
+func (r *RelationEntity) GetDollarRelation() *RelationItem {
+	if r == nil {
 		return nil
 	}
-	return o.DollarRelation
+	return r.DollarRelation
 }
 
-func (o *RelationEntity) GetAdditionalProperties() any {
-	if o == nil {
+func (r *RelationEntity) GetAdditionalProperties() any {
+	if r == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return r.AdditionalProperties
 }
 
-func (o *RelationEntity) GetACL() *RelationEntityACL {
-	if o == nil {
+func (r *RelationEntity) GetACL() *RelationEntityACL {
+	if r == nil {
 		return nil
 	}
-	return o.ACL
+	return r.ACL
 }
 
-func (o *RelationEntity) GetCreatedAt() *time.Time {
-	if o == nil {
+func (r *RelationEntity) GetChangesets() map[string]Changeset {
+	if r == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return r.Changesets
 }
 
-func (o *RelationEntity) GetDeletedAt() *time.Time {
-	if o == nil {
+func (r *RelationEntity) GetCreatedAt() *time.Time {
+	if r == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return r.CreatedAt
 }
 
-func (o *RelationEntity) GetID() string {
-	if o == nil {
+func (r *RelationEntity) GetDeletedAt() *time.Time {
+	if r == nil {
+		return nil
+	}
+	return r.DeletedAt
+}
+
+func (r *RelationEntity) GetID() string {
+	if r == nil {
 		return ""
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RelationEntity) GetManifest() []string {
-	if o == nil {
+func (r *RelationEntity) GetManifest() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Manifest
+	return r.Manifest
 }
 
-func (o *RelationEntity) GetOrg() string {
-	if o == nil {
+func (r *RelationEntity) GetOrg() string {
+	if r == nil {
 		return ""
 	}
-	return o.Org
+	return r.Org
 }
 
-func (o *RelationEntity) GetOwners() []EntityOwner {
-	if o == nil {
+func (r *RelationEntity) GetOwners() []EntityOwner {
+	if r == nil {
 		return nil
 	}
-	return o.Owners
+	return r.Owners
 }
 
-func (o *RelationEntity) GetPurpose() []string {
-	if o == nil {
+func (r *RelationEntity) GetPurpose() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Purpose
+	return r.Purpose
 }
 
-func (o *RelationEntity) GetSchema() string {
-	if o == nil {
+func (r *RelationEntity) GetPurposeName() []string {
+	if r == nil {
+		return nil
+	}
+	return r.PurposeName
+}
+
+func (r *RelationEntity) GetSchema() string {
+	if r == nil {
 		return ""
 	}
-	return o.Schema
+	return r.Schema
 }
 
-func (o *RelationEntity) GetTags() []string {
-	if o == nil {
+func (r *RelationEntity) GetTags() []string {
+	if r == nil {
 		return nil
 	}
-	return o.Tags
+	return r.Tags
 }
 
-func (o *RelationEntity) GetTitle() *string {
-	if o == nil {
+func (r *RelationEntity) GetTitle() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Title
+	return r.Title
 }
 
-func (o *RelationEntity) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (r *RelationEntity) GetUpdatedAt() *time.Time {
+	if r == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return r.UpdatedAt
 }
